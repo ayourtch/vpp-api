@@ -89,7 +89,9 @@ impl<'de> Deserialize<'de> for VppApiType {
 #[serde(untagged)]
 enum VppApiDefaultValue {
     Str(String),
+    Bool(bool),
     I64(i64),
+    F64(f64),
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -232,6 +234,7 @@ impl<'de> Visitor<'de> for VppApiMessageVisitor {
         } else {
             panic!("Error");
         };
+        log::debug!("API message: {}", &name);
         let mut fields: Vec<VppApiMessageFieldDef> = vec![];
         let mut maybe_info: Option<VppApiMessageInfo> = None;
         loop {
