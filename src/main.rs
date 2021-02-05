@@ -1,7 +1,20 @@
 use clap::Clap;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+use std::string::ToString;
 use std::time::{Duration, SystemTime};
+extern crate strum;
+#[macro_use]
+extern crate strum_macros;
+use env_logger;
+use std::env;
+
+#[derive(Clap, Debug, Serialize, Deserialize, EnumString, Display)]
+enum OptParseType {
+    file,
+    api_type,
+    api_message,
+}
 
 /// Ingest the VPP API JSON definition file and output the Rust code
 #[clap(version = "0.1", author = "Andrew Yourtchenko <ayourtch@gmail.com>")]
@@ -15,21 +28,19 @@ struct Opts {
     #[clap(short, long, default_value = "dummy.rs")]
     out_file: String,
 
+    /// parse type for the operation: file, api_message or api_type
+    #[clap(short, long, default_value = "file")]
+    parse_type: OptParseType,
+
     /// A level of verbosity, and can be used multiple times
     #[clap(short, long, parse(from_occurrences))]
     verbose: i32,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-struct VppApiFieldDef {
-    ctype: String,
-    name: String,
-}
-
 #[derive(Debug, Serialize)]
 struct VppApiType {
     type_name: String,
-    fields: Vec<VppApiFieldDef>,
+    fields: Vec<VppApiMessageFieldDef>,
 }
 
 use serde::de::{self, Deserializer, SeqAccess, Visitor};
@@ -51,9 +62,11 @@ impl<'de> Visitor<'de> for VppApiTypeVisitor {
         let type_name: String = seq
             .next_element()?
             .ok_or_else(|| de::Error::invalid_length(0, &self))?;
-        let mut fields: Vec<VppApiFieldDef> = vec![];
+        let mut fields: Vec<VppApiMessageFieldDef> = vec![];
         loop {
-            if let Ok(Some(v)) = seq.next_element() {
+            let nxt = seq.next_element();
+            log::debug!("Next: {:#?}", &nxt);
+            if let Ok(Some(v)) = nxt {
                 fields.push(v);
             } else {
                 break;
@@ -140,7 +153,6 @@ impl<'de> Visitor<'de> for VppApiMessageFieldDefVisitor {
 
         loop {
             let nxt = seq.next_element();
-            println!("Next: {:?}", &nxt);
             match nxt? {
                 Some(VppApiMessageFieldHelper::Map(m)) => {
                     maybe_options = Some(m);
@@ -169,7 +181,6 @@ impl<'de> Visitor<'de> for VppApiMessageFieldDefVisitor {
             maybe_size,
             maybe_options,
         };
-        println!("Field: {:?}", &ret);
         Ok(ret)
     }
 }
@@ -221,11 +232,12 @@ impl<'de> Visitor<'de> for VppApiMessageVisitor {
         } else {
             panic!("Error");
         };
-        println!("Name: {}", &name);
         let mut fields: Vec<VppApiMessageFieldDef> = vec![];
         let mut maybe_info: Option<VppApiMessageInfo> = None;
         loop {
-            match seq.next_element()? {
+            let nxt = seq.next_element();
+            log::debug!("Next: {:#?}", &nxt);
+            match nxt? {
                 Some(VppApiMessageHelper::Field(f)) => fields.push(f),
                 Some(VppApiMessageHelper::Info(i)) => {
                     maybe_info = Some(i);
@@ -256,11 +268,30 @@ struct VppApiFile {
 }
 
 fn main() {
+    env_logger::init();
     let opts: Opts = Opts::parse();
+    log::info!("Starting file {}", &opts.in_file);
 
     if let Ok(data) = std::fs::read_to_string(&opts.in_file) {
-        let desc: VppApiFile = serde_json::from_str(&data).unwrap();
-        // let desc: VppApiMessage = serde_json::from_str(&data).unwrap();
-        println!("File: {:#?}", &desc);
+        match opts.parse_type {
+            OptParseType::file => {
+                let desc: VppApiFile = serde_json::from_str(&data).unwrap();
+                println!(
+                    "File: {} types: {} messages: {} unions: {}",
+                    &opts.in_file,
+                    desc.types.len(),
+                    desc.messages.len(),
+                    desc.unions.len()
+                );
+            }
+            OptParseType::api_type => {
+                let desc: VppApiType = serde_json::from_str(&data).unwrap();
+                println!("Dump Type: {:#?}", &desc);
+            }
+            OptParseType::api_message => {
+                let desc: VppApiMessage = serde_json::from_str(&data).unwrap();
+                println!("Dump: {:#?}", &desc);
+            }
+        }
     }
 }
