@@ -1,19 +1,16 @@
 use clap::Clap;
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 use std::string::ToString;
-use std::time::{Duration, SystemTime};
 extern crate strum;
 #[macro_use]
 extern crate strum_macros;
 use env_logger;
-use std::env;
 
 #[derive(Clap, Debug, Serialize, Deserialize, EnumString, Display)]
 enum OptParseType {
-    file,
-    api_type,
-    api_message,
+    File,
+    ApiType,
+    ApiMessage,
 }
 
 /// Ingest the VPP API JSON definition file and output the Rust code
@@ -28,8 +25,8 @@ struct Opts {
     #[clap(short, long, default_value = "dummy.rs")]
     out_file: String,
 
-    /// parse type for the operation: file, api_message or api_type
-    #[clap(short, long, default_value = "file")]
+    /// parse type for the operation: File, ApiMessage or ApiType
+    #[clap(short, long, default_value = "File")]
     parse_type: OptParseType,
 
     /// A level of verbosity, and can be used multiple times
@@ -243,6 +240,9 @@ impl<'de> Visitor<'de> for VppApiMessageVisitor {
             match nxt? {
                 Some(VppApiMessageHelper::Field(f)) => fields.push(f),
                 Some(VppApiMessageHelper::Info(i)) => {
+                    if maybe_info.is_some() {
+                        panic!("Info is already set!");
+                    }
                     maybe_info = Some(i);
                     break;
                 }
@@ -277,7 +277,7 @@ fn main() {
 
     if let Ok(data) = std::fs::read_to_string(&opts.in_file) {
         match opts.parse_type {
-            OptParseType::file => {
+            OptParseType::File => {
                 let desc: VppApiFile = serde_json::from_str(&data).unwrap();
                 println!(
                     "File: {} types: {} messages: {} unions: {}",
@@ -287,11 +287,11 @@ fn main() {
                     desc.unions.len()
                 );
             }
-            OptParseType::api_type => {
+            OptParseType::ApiType => {
                 let desc: VppApiType = serde_json::from_str(&data).unwrap();
                 println!("Dump Type: {:#?}", &desc);
             }
-            OptParseType::api_message => {
+            OptParseType::ApiMessage => {
                 let desc: VppApiMessage = serde_json::from_str(&data).unwrap();
                 println!("Dump: {:#?}", &desc);
             }
