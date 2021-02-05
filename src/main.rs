@@ -252,6 +252,7 @@ impl<'de> Deserialize<'de> for VppApiMessage {
 struct VppApiFile {
     types: Vec<VppApiType>,
     messages: Vec<VppApiMessage>,
+    unions: Vec<VppApiType>,
 }
 
 fn main() {
