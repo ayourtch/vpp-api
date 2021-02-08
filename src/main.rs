@@ -365,7 +365,7 @@ struct VppApiFile {
     messages: Vec<VppApiMessage>,
     unions: Vec<VppApiType>,
     enums: Vec<VppApiEnum>,
-    // enumflags
+    enumflags: Vec<VppApiEnum>,
     services: LinkedHashMap<String, VppApiService>,
     options: VppApiOptions,
     aliases: LinkedHashMap<String, VppApiAlias>,
