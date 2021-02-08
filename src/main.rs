@@ -581,11 +581,6 @@ impl VppJsApiFile {
     pub fn from_str(data: &str) -> std::result::Result<VppJsApiFile, serde_json::Error> {
         use serde_json::Value;
         let res = serde_json::from_str::<VppJsApiFile>(&data);
-
-        // a paranoid sanity check...
-        if let Ok(jaf) = &res {
-            Self::verify_data(data, &jaf);
-        }
         res
     }
 }
@@ -673,5 +668,54 @@ fn main() {
                 panic!("inappropriate parse type {:?} for inexistent file", e);
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::path::PathBuf;
+
+    fn get_test_data_path() -> PathBuf {
+        let mut path = PathBuf::from(file!());
+        path.pop();
+        path.pop();
+        path.push("testdata/vpp/");
+        path
+    }
+
+    fn parse_api_tree_with_verify(root: &str, map: &mut LinkedHashMap<String, VppJsApiFile>) {
+        use std::fs;
+        for entry in fs::read_dir(root).unwrap() {
+            let entry = entry.unwrap();
+            let path = entry.path();
+
+            let metadata = fs::metadata(&path).unwrap();
+            if metadata.is_file() {
+                let res = std::fs::read_to_string(&path);
+                if let Ok(data) = res {
+                    let desc = VppJsApiFile::from_str(&data);
+                    if let Ok(d) = desc {
+                        VppJsApiFile::verify_data(&data, &d);
+                        map.insert(path.to_str().unwrap().to_string(), d);
+                    } else {
+                        eprintln!("Error loading {:?}: {:?}", &path, &desc);
+                    }
+                } else {
+                    eprintln!("Error reading {:?}: {:?}", &path, &res);
+                }
+            }
+            if metadata.is_dir() && entry.file_name() != "." && entry.file_name() != ".." {
+                parse_api_tree_with_verify(&path.to_str().unwrap(), map);
+            }
+        }
+    }
+
+    #[test]
+    fn test_tree() {
+        let mut api_files: LinkedHashMap<String, VppJsApiFile> = LinkedHashMap::new();
+        parse_api_tree_with_verify(get_test_data_path().to_str().unwrap(), &mut api_files);
+
+        assert_eq!(123, api_files.len());
     }
 }

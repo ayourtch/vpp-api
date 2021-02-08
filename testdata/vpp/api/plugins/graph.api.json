@@ -1,0 +1,164 @@
+{
+    "types": [],
+    "messages": [
+        [
+            "graph_node_get",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "cursor"
+            ],
+            [
+                "u32",
+                "index"
+            ],
+            [
+                "string",
+                "name",
+                64
+            ],
+            [
+                "vl_api_node_flag_t",
+                "flags"
+            ],
+            [
+                "bool",
+                "want_arcs"
+            ],
+            {
+                "crc": "0x39c8792e"
+            }
+        ],
+        [
+            "graph_node_get_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "u32",
+                "cursor"
+            ],
+            {
+                "crc": "0x53b48f5d"
+            }
+        ],
+        [
+            "graph_node_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "index"
+            ],
+            [
+                "string",
+                "name",
+                64
+            ],
+            [
+                "vl_api_node_flag_t",
+                "flags"
+            ],
+            [
+                "u32",
+                "n_arcs"
+            ],
+            [
+                "u32",
+                "arcs_out",
+                0,
+                "n_arcs"
+            ],
+            {
+                "crc": "0xac762018"
+            }
+        ]
+    ],
+    "unions": [],
+    "enums": [
+        [
+            "node_flag",
+            [
+                "NODE_FLAG_FRAME_NO_FREE_AFTER_DISPATCH",
+                1
+            ],
+            [
+                "NODE_FLAG_IS_OUTPUT",
+                2
+            ],
+            [
+                "NODE_FLAG_IS_DROP",
+                4
+            ],
+            [
+                "NODE_FLAG_IS_PUNT",
+                8
+            ],
+            [
+                "NODE_FLAG_IS_HANDOFF",
+                16
+            ],
+            [
+                "NODE_FLAG_TRACE",
+                32
+            ],
+            [
+                "NODE_FLAG_SWITCH_FROM_INTERRUPT_TO_POLLING_MODE",
+                64
+            ],
+            [
+                "NODE_FLAG_SWITCH_FROM_POLLING_TO_INTERRUPT_MODE",
+                128
+            ],
+            [
+                "NODE_FLAG_TRACE_SUPPORTED",
+                256
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ]
+    ],
+    "enumflags": [],
+    "services": {
+        "graph_node_get": {
+            "reply": "graph_node_get_reply",
+            "stream": true,
+            "stream_msg": "graph_node_details"
+        }
+    },
+    "options": {
+        "version": "1.0.0"
+    },
+    "aliases": {},
+    "vl_api_version": "0xa0b3fd1c",
+    "imports": [],
+    "counters": [],
+    "paths": []
+}
