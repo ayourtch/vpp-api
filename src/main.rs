@@ -272,10 +272,23 @@ struct VppApiAlias {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+struct VppApiService {
+    reply: String,
+    stream: Option<bool>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+struct VppApiOptions {
+    version: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 struct VppApiFile {
     types: Vec<VppApiType>,
     messages: Vec<VppApiMessage>,
     unions: Vec<VppApiType>,
+    services: LinkedHashMap<String, VppApiService>,
+    options: VppApiOptions,
     aliases: LinkedHashMap<String, VppApiAlias>,
     vl_api_version: String,
     imports: Vec<String>,
@@ -291,9 +304,10 @@ fn main() {
             OptParseType::File => {
                 let desc: VppApiFile = serde_json::from_str(&data).unwrap();
                 println!(
-                    "File: {} version: {} types: {} messages: {} aliases: {} imports: {} unions: {}",
+                    "File: {} version: {} services: {} types: {} messages: {} aliases: {} imports: {} unions: {}",
                     &opts.in_file,
                     &desc.vl_api_version,
+                    desc.services.len(),
                     desc.types.len(),
                     desc.messages.len(),
                     desc.aliases.len(),
