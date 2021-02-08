@@ -497,6 +497,28 @@ impl<'de> Deserialize<'de> for VppJsApiEnum {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+struct VppJsApiCounterElement {
+    name: String,
+    severity: String,
+    #[serde(rename = "type")]
+    typ: String,
+    units: String,
+    description: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+struct VppJsApiCounter {
+    name: String,
+    elements: Vec<VppJsApiCounterElement>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+struct VppJsApiPath {
+    path: String,
+    counter: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 struct VppJsApiFile {
     types: Vec<VppJsApiType>,
     messages: Vec<VppJsApiMessage>,
@@ -509,6 +531,8 @@ struct VppJsApiFile {
     aliases: LinkedHashMap<String, VppJsApiAlias>,
     vl_api_version: String,
     imports: Vec<String>,
+    counters: Vec<VppJsApiCounter>,
+    paths: Vec<Vec<VppJsApiPath>>,
 }
 
 impl VppJsApiFile {
