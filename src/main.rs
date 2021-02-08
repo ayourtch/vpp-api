@@ -1,5 +1,6 @@
 use clap::Clap;
-use serde::{Deserialize, Serialize};
+use serde::ser::{SerializeMap, SerializeSeq};
+use serde::{Deserialize, Serialize, Serializer};
 use std::string::ToString;
 extern crate strum;
 #[macro_use]
@@ -36,10 +37,24 @@ struct Opts {
     verbose: i32,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug)]
 struct VppApiType {
     type_name: String,
     fields: Vec<VppApiMessageFieldDef>,
+}
+
+impl Serialize for VppApiType {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let mut seq = serializer.serialize_seq(Some(1 + self.fields.len()))?;
+        seq.serialize_element(&self.type_name)?;
+        for e in &self.fields {
+            seq.serialize_element(e)?;
+        }
+        seq.end()
+    }
 }
 
 use serde::de::{self, Deserializer, SeqAccess, Visitor};
@@ -106,13 +121,11 @@ enum VppApiFieldSize {
     Variable(Option<String>),
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug)]
 struct VppApiMessageFieldDef {
     ctype: String,
     name: String,
-    #[serde(default)]
     maybe_size: Option<VppApiFieldSize>,
-    #[serde(default)]
     maybe_options: Option<VppApiFieldOptions>,
 }
 
@@ -122,6 +135,48 @@ enum VppApiMessageFieldHelper {
     Str(String),
     Usize(usize),
     Map(VppApiFieldOptions),
+}
+
+impl Serialize for VppApiMessageFieldDef {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        use crate::VppApiFieldSize::*;
+
+        let mut len = 2;
+        if self.maybe_options.is_some() {
+            len = len + 1
+        }
+        len = len
+            + match &self.maybe_size {
+                None => 0,
+                Some(Fixed(n)) => 1,
+                Some(Variable(None)) => 1,
+                Some(Variable(Some(x))) => 2,
+            };
+        let mut seq = serializer.serialize_seq(Some(len))?;
+        seq.serialize_element(&self.ctype)?;
+        seq.serialize_element(&self.name)?;
+        match &self.maybe_size {
+            None => { /* do nothing */ }
+            Some(Fixed(n)) => {
+                seq.serialize_element(&n);
+            }
+            Some(Variable(None)) => {
+                seq.serialize_element(&0u32);
+            }
+            Some(Variable(Some(x))) => {
+                seq.serialize_element(&0u32);
+                seq.serialize_element(&x);
+            }
+        }
+
+        if let Some(o) = &self.maybe_options {
+            seq.serialize_element(o);
+        }
+        seq.end()
+    }
 }
 
 struct VppApiMessageFieldDefVisitor;
@@ -200,11 +255,26 @@ struct VppApiMessageInfo {
     crc: String,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug)]
 struct VppApiMessage {
     name: String,
     fields: Vec<VppApiMessageFieldDef>,
     info: VppApiMessageInfo,
+}
+
+impl Serialize for VppApiMessage {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let mut seq = serializer.serialize_seq(Some(1 + self.fields.len() + 1))?;
+        seq.serialize_element(&self.name)?;
+        for e in &self.fields {
+            seq.serialize_element(e)?;
+        }
+        seq.serialize_element(&self.info)?;
+        seq.end()
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -265,17 +335,53 @@ impl<'de> Deserialize<'de> for VppApiMessage {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Deserialize)]
 struct VppApiAlias {
     #[serde(rename = "type")]
     ctype: String,
     length: Option<usize>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+impl Serialize for VppApiAlias {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let mut len = 1;
+        if self.length.is_some() {
+            len = len + 1;
+        }
+        let mut map = serializer.serialize_map(Some(len))?;
+        map.serialize_entry("type", &self.ctype)?;
+        if let Some(s) = &self.length {
+            map.serialize_entry("length", s);
+        }
+        map.end()
+    }
+}
+
+#[derive(Debug, Deserialize)]
 struct VppApiService {
     reply: String,
     stream: Option<bool>,
+}
+
+impl Serialize for VppApiService {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let mut len = 1;
+        if self.stream.is_some() {
+            len = len + 1;
+        }
+        let mut map = serializer.serialize_map(Some(len))?;
+        map.serialize_entry("reply", &self.reply)?;
+        if let Some(s) = &self.stream {
+            map.serialize_entry("stream", s);
+        }
+        map.end()
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -288,17 +394,44 @@ struct VppApiEnumInfo {
     enumtype: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Deserialize)]
 struct VppApiEnumValueDef {
     name: String,
     value: i64,
 }
 
-#[derive(Debug, Serialize)]
+impl Serialize for VppApiEnumValueDef {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let mut seq = serializer.serialize_seq(Some(2))?;
+        seq.serialize_element(&self.name)?;
+        seq.serialize_element(&self.value)?;
+        seq.end()
+    }
+}
+
+#[derive(Debug)]
 struct VppApiEnum {
     name: String,
     values: Vec<VppApiEnumValueDef>,
     info: VppApiEnumInfo,
+}
+
+impl Serialize for VppApiEnum {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let mut seq = serializer.serialize_seq(Some(1 + self.values.len() + 1))?;
+        seq.serialize_element(&self.name)?;
+        for e in &self.values {
+            seq.serialize_element(e)?;
+        }
+        seq.serialize_element(&self.info)?;
+        seq.end()
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -365,6 +498,7 @@ struct VppApiFile {
     messages: Vec<VppApiMessage>,
     unions: Vec<VppApiType>,
     enums: Vec<VppApiEnum>,
+    #[serde(default)]
     enumflags: Vec<VppApiEnum>,
     services: LinkedHashMap<String, VppApiService>,
     options: VppApiOptions,
@@ -417,7 +551,7 @@ fn main() {
             }
             OptParseType::File => {
                 let desc: VppApiFile = serde_json::from_str(&data).unwrap();
-                println!(
+                eprintln!(
                     "File: {} version: {} services: {} types: {} messages: {} aliases: {} imports: {} enums: {} unions: {}",
                     &opts.in_file,
                     &desc.vl_api_version,
@@ -432,6 +566,8 @@ fn main() {
                 if opts.verbose > 1 {
                     println!("Dump File: {:#?}", &desc);
                 }
+                let data = serde_json::to_string_pretty(&desc).unwrap();
+                println!("{}", &data);
             }
             OptParseType::ApiType => {
                 let desc: VppApiType = serde_json::from_str(&data).unwrap();
