@@ -277,6 +277,8 @@ struct VppApiFile {
     messages: Vec<VppApiMessage>,
     unions: Vec<VppApiType>,
     aliases: LinkedHashMap<String, VppApiAlias>,
+    vl_api_version: String,
+    imports: Vec<String>,
 }
 
 fn main() {
@@ -289,11 +291,13 @@ fn main() {
             OptParseType::File => {
                 let desc: VppApiFile = serde_json::from_str(&data).unwrap();
                 println!(
-                    "File: {} types: {} messages: {} aliases: {} unions: {}",
+                    "File: {} version: {} types: {} messages: {} aliases: {} imports: {} unions: {}",
                     &opts.in_file,
+                    &desc.vl_api_version,
                     desc.types.len(),
                     desc.messages.len(),
                     desc.aliases.len(),
+                    desc.imports.len(),
                     desc.unions.len()
                 );
             }
