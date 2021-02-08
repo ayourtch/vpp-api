@@ -35,6 +35,10 @@ struct Opts {
     /// A level of verbosity, and can be used multiple times
     #[clap(short, long, parse(from_occurrences))]
     verbose: i32,
+
+    /// Run various asserts and self-checks in the process
+    #[clap(short, long)]
+    asserts: bool,
 }
 
 #[derive(Debug)]
@@ -507,6 +511,16 @@ struct VppJsApiFile {
     imports: Vec<String>,
 }
 
+impl VppJsApiFile {
+    pub fn from_str(
+        data: &str,
+        asserts: bool,
+    ) -> std::result::Result<VppJsApiFile, serde_json::Error> {
+        let desc = serde_json::from_str::<VppJsApiFile>(&data);
+        desc
+    }
+}
+
 fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppJsApiFile>) {
     use std::fs;
     if opts.verbose > 2 {
@@ -523,7 +537,7 @@ fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppJs
         if metadata.is_file() {
             let res = std::fs::read_to_string(&path);
             if let Ok(data) = res {
-                let desc = serde_json::from_str::<VppJsApiFile>(&data);
+                let desc = VppJsApiFile::from_str(&data, opts.asserts);
                 if let Ok(d) = desc {
                     map.insert(path.to_str().unwrap().to_string(), d);
                 } else {
@@ -550,7 +564,7 @@ fn main() {
                 panic!("Can't parse a tree out of file!");
             }
             OptParseType::File => {
-                let desc: VppJsApiFile = serde_json::from_str(&data).unwrap();
+                let desc = VppJsApiFile::from_str(&data, opts.asserts).unwrap();
                 eprintln!(
                     "File: {} version: {} services: {} types: {} messages: {} aliases: {} imports: {} enums: {} unions: {}",
                     &opts.in_file,
