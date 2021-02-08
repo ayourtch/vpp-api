@@ -38,12 +38,12 @@ struct Opts {
 }
 
 #[derive(Debug)]
-struct VppApiType {
+struct VppJsApiType {
     type_name: String,
-    fields: Vec<VppApiMessageFieldDef>,
+    fields: Vec<VppJsApiMessageFieldDef>,
 }
 
-impl Serialize for VppApiType {
+impl Serialize for VppJsApiType {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
@@ -60,23 +60,23 @@ impl Serialize for VppApiType {
 use serde::de::{self, Deserializer, SeqAccess, Visitor};
 use std::fmt;
 
-struct VppApiTypeVisitor;
+struct VppJsApiTypeVisitor;
 
-impl<'de> Visitor<'de> for VppApiTypeVisitor {
-    type Value = VppApiType;
+impl<'de> Visitor<'de> for VppJsApiTypeVisitor {
+    type Value = VppJsApiType;
 
     fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-        formatter.write_str("struct VppApiType")
+        formatter.write_str("struct VppJsApiType")
     }
 
-    fn visit_seq<V>(self, mut seq: V) -> Result<VppApiType, V::Error>
+    fn visit_seq<V>(self, mut seq: V) -> Result<VppJsApiType, V::Error>
     where
         V: SeqAccess<'de>,
     {
         let type_name: String = seq
             .next_element()?
             .ok_or_else(|| de::Error::invalid_length(0, &self))?;
-        let mut fields: Vec<VppApiMessageFieldDef> = vec![];
+        let mut fields: Vec<VppJsApiMessageFieldDef> = vec![];
         loop {
             let nxt = seq.next_element();
             log::debug!("Next: {:#?}", &nxt);
@@ -86,22 +86,22 @@ impl<'de> Visitor<'de> for VppApiTypeVisitor {
                 break;
             }
         }
-        Ok(VppApiType { type_name, fields })
+        Ok(VppJsApiType { type_name, fields })
     }
 }
 
-impl<'de> Deserialize<'de> for VppApiType {
+impl<'de> Deserialize<'de> for VppJsApiType {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
         D: Deserializer<'de>,
     {
-        deserializer.deserialize_seq(VppApiTypeVisitor)
+        deserializer.deserialize_seq(VppJsApiTypeVisitor)
     }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(untagged)]
-enum VppApiDefaultValue {
+enum VppJsApiDefaultValue {
     Str(String),
     Bool(bool),
     I64(i64),
@@ -109,40 +109,40 @@ enum VppApiDefaultValue {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-struct VppApiFieldOptions {
+struct VppJsApiFieldOptions {
     #[serde(default)]
-    default: Option<VppApiDefaultValue>,
+    default: Option<VppJsApiDefaultValue>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(untagged)]
-enum VppApiFieldSize {
+enum VppJsApiFieldSize {
     Fixed(usize),
     Variable(Option<String>),
 }
 
 #[derive(Debug)]
-struct VppApiMessageFieldDef {
+struct VppJsApiMessageFieldDef {
     ctype: String,
     name: String,
-    maybe_size: Option<VppApiFieldSize>,
-    maybe_options: Option<VppApiFieldOptions>,
+    maybe_size: Option<VppJsApiFieldSize>,
+    maybe_options: Option<VppJsApiFieldOptions>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(untagged)]
-enum VppApiMessageFieldHelper {
+enum VppJsApiMessageFieldHelper {
     Str(String),
     Usize(usize),
-    Map(VppApiFieldOptions),
+    Map(VppJsApiFieldOptions),
 }
 
-impl Serialize for VppApiMessageFieldDef {
+impl Serialize for VppJsApiMessageFieldDef {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
     {
-        use crate::VppApiFieldSize::*;
+        use crate::VppJsApiFieldSize::*;
 
         let mut len = 2;
         if self.maybe_options.is_some() {
@@ -179,25 +179,25 @@ impl Serialize for VppApiMessageFieldDef {
     }
 }
 
-struct VppApiMessageFieldDefVisitor;
+struct VppJsApiMessageFieldDefVisitor;
 
-impl<'de> Visitor<'de> for VppApiMessageFieldDefVisitor {
-    type Value = VppApiMessageFieldDef;
+impl<'de> Visitor<'de> for VppJsApiMessageFieldDefVisitor {
+    type Value = VppJsApiMessageFieldDef;
 
     fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-        formatter.write_str("struct VppApiMessageField")
+        formatter.write_str("struct VppJsApiMessageField")
     }
 
-    fn visit_seq<V>(self, mut seq: V) -> Result<VppApiMessageFieldDef, V::Error>
+    fn visit_seq<V>(self, mut seq: V) -> Result<VppJsApiMessageFieldDef, V::Error>
     where
         V: SeqAccess<'de>,
     {
-        let ctype: String = if let Some(VppApiMessageFieldHelper::Str(s)) = seq.next_element()? {
+        let ctype: String = if let Some(VppJsApiMessageFieldHelper::Str(s)) = seq.next_element()? {
             s
         } else {
             panic!("Error");
         };
-        let name: String = if let Some(VppApiMessageFieldHelper::Str(s)) = seq.next_element()? {
+        let name: String = if let Some(VppJsApiMessageFieldHelper::Str(s)) = seq.next_element()? {
             s
         } else {
             panic!("Error 2");
@@ -205,19 +205,19 @@ impl<'de> Visitor<'de> for VppApiMessageFieldDefVisitor {
 
         let mut maybe_sz: Option<usize> = None;
         let mut maybe_sz_name: Option<String> = None;
-        let mut maybe_options: Option<VppApiFieldOptions> = None;
+        let mut maybe_options: Option<VppJsApiFieldOptions> = None;
 
         loop {
             let nxt = seq.next_element();
             match nxt? {
-                Some(VppApiMessageFieldHelper::Map(m)) => {
+                Some(VppJsApiMessageFieldHelper::Map(m)) => {
                     maybe_options = Some(m);
                     break;
                 }
-                Some(VppApiMessageFieldHelper::Str(o)) => {
+                Some(VppJsApiMessageFieldHelper::Str(o)) => {
                     maybe_sz_name = Some(o);
                 }
-                Some(VppApiMessageFieldHelper::Usize(o)) => {
+                Some(VppJsApiMessageFieldHelper::Usize(o)) => {
                     maybe_sz = Some(o);
                 }
                 None => break,
@@ -225,13 +225,13 @@ impl<'de> Visitor<'de> for VppApiMessageFieldDefVisitor {
         }
         let maybe_size = match (maybe_sz, maybe_sz_name) {
             (None, None) => None,
-            (Some(0), None) => Some(VppApiFieldSize::Variable(None)),
-            (Some(0), Some(s)) => Some(VppApiFieldSize::Variable(Some(s))),
-            (Some(x), None) => Some(VppApiFieldSize::Fixed(x)),
+            (Some(0), None) => Some(VppJsApiFieldSize::Variable(None)),
+            (Some(0), Some(s)) => Some(VppJsApiFieldSize::Variable(Some(s))),
+            (Some(x), None) => Some(VppJsApiFieldSize::Fixed(x)),
             (None, Some(s)) => panic!("Unexpected dependent field {} with no length", s),
             (Some(x), Some(s)) => panic!("Unexpected dependent field {} with length {}", s, x),
         };
-        let ret = VppApiMessageFieldDef {
+        let ret = VppJsApiMessageFieldDef {
             ctype,
             name,
             maybe_size,
@@ -241,28 +241,28 @@ impl<'de> Visitor<'de> for VppApiMessageFieldDefVisitor {
     }
 }
 
-impl<'de> Deserialize<'de> for VppApiMessageFieldDef {
+impl<'de> Deserialize<'de> for VppJsApiMessageFieldDef {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
         D: Deserializer<'de>,
     {
-        deserializer.deserialize_seq(VppApiMessageFieldDefVisitor)
+        deserializer.deserialize_seq(VppJsApiMessageFieldDefVisitor)
     }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-struct VppApiMessageInfo {
+struct VppJsApiMessageInfo {
     crc: String,
 }
 
 #[derive(Debug)]
-struct VppApiMessage {
+struct VppJsApiMessage {
     name: String,
-    fields: Vec<VppApiMessageFieldDef>,
-    info: VppApiMessageInfo,
+    fields: Vec<VppJsApiMessageFieldDef>,
+    info: VppJsApiMessageInfo,
 }
 
-impl Serialize for VppApiMessage {
+impl Serialize for VppJsApiMessage {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
@@ -279,39 +279,39 @@ impl Serialize for VppApiMessage {
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(untagged)]
-enum VppApiMessageHelper {
-    Field(VppApiMessageFieldDef),
-    Info(VppApiMessageInfo),
+enum VppJsApiMessageHelper {
+    Field(VppJsApiMessageFieldDef),
+    Info(VppJsApiMessageInfo),
     Name(String),
 }
 
-struct VppApiMessageVisitor;
+struct VppJsApiMessageVisitor;
 
-impl<'de> Visitor<'de> for VppApiMessageVisitor {
-    type Value = VppApiMessage;
+impl<'de> Visitor<'de> for VppJsApiMessageVisitor {
+    type Value = VppJsApiMessage;
 
     fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-        formatter.write_str("struct VppApiMessage")
+        formatter.write_str("struct VppJsApiMessage")
     }
 
-    fn visit_seq<V>(self, mut seq: V) -> Result<VppApiMessage, V::Error>
+    fn visit_seq<V>(self, mut seq: V) -> Result<VppJsApiMessage, V::Error>
     where
         V: SeqAccess<'de>,
     {
-        let name: String = if let Some(VppApiMessageHelper::Name(s)) = seq.next_element()? {
+        let name: String = if let Some(VppJsApiMessageHelper::Name(s)) = seq.next_element()? {
             s
         } else {
             panic!("Error");
         };
         log::debug!("API message: {}", &name);
-        let mut fields: Vec<VppApiMessageFieldDef> = vec![];
-        let mut maybe_info: Option<VppApiMessageInfo> = None;
+        let mut fields: Vec<VppJsApiMessageFieldDef> = vec![];
+        let mut maybe_info: Option<VppJsApiMessageInfo> = None;
         loop {
             let nxt = seq.next_element();
             log::debug!("Next: {:#?}", &nxt);
             match nxt? {
-                Some(VppApiMessageHelper::Field(f)) => fields.push(f),
-                Some(VppApiMessageHelper::Info(i)) => {
+                Some(VppJsApiMessageHelper::Field(f)) => fields.push(f),
+                Some(VppJsApiMessageHelper::Info(i)) => {
                     if maybe_info.is_some() {
                         panic!("Info is already set!");
                     }
@@ -322,27 +322,27 @@ impl<'de> Visitor<'de> for VppApiMessageVisitor {
             }
         }
         let info = maybe_info.unwrap();
-        Ok(VppApiMessage { name, fields, info })
+        Ok(VppJsApiMessage { name, fields, info })
     }
 }
 
-impl<'de> Deserialize<'de> for VppApiMessage {
+impl<'de> Deserialize<'de> for VppJsApiMessage {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
         D: Deserializer<'de>,
     {
-        deserializer.deserialize_seq(VppApiMessageVisitor)
+        deserializer.deserialize_seq(VppJsApiMessageVisitor)
     }
 }
 
 #[derive(Debug, Deserialize)]
-struct VppApiAlias {
+struct VppJsApiAlias {
     #[serde(rename = "type")]
     ctype: String,
     length: Option<usize>,
 }
 
-impl Serialize for VppApiAlias {
+impl Serialize for VppJsApiAlias {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
@@ -361,12 +361,12 @@ impl Serialize for VppApiAlias {
 }
 
 #[derive(Debug, Deserialize)]
-struct VppApiService {
+struct VppJsApiService {
     reply: String,
     stream: Option<bool>,
 }
 
-impl Serialize for VppApiService {
+impl Serialize for VppJsApiService {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
@@ -385,22 +385,22 @@ impl Serialize for VppApiService {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-struct VppApiOptions {
+struct VppJsApiOptions {
     version: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-struct VppApiEnumInfo {
+struct VppJsApiEnumInfo {
     enumtype: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
-struct VppApiEnumValueDef {
+struct VppJsApiEnumValueDef {
     name: String,
     value: i64,
 }
 
-impl Serialize for VppApiEnumValueDef {
+impl Serialize for VppJsApiEnumValueDef {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
@@ -413,13 +413,13 @@ impl Serialize for VppApiEnumValueDef {
 }
 
 #[derive(Debug)]
-struct VppApiEnum {
+struct VppJsApiEnum {
     name: String,
-    values: Vec<VppApiEnumValueDef>,
-    info: VppApiEnumInfo,
+    values: Vec<VppJsApiEnumValueDef>,
+    info: VppJsApiEnumInfo,
 }
 
-impl Serialize for VppApiEnum {
+impl Serialize for VppJsApiEnum {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
@@ -436,39 +436,39 @@ impl Serialize for VppApiEnum {
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(untagged)]
-enum VppApiEnumHelper {
+enum VppJsApiEnumHelper {
     Str(String),
-    Val(VppApiEnumValueDef),
-    Map(VppApiEnumInfo),
+    Val(VppJsApiEnumValueDef),
+    Map(VppJsApiEnumInfo),
 }
 
-struct VppApiEnumVisitor;
+struct VppJsApiEnumVisitor;
 
-impl<'de> Visitor<'de> for VppApiEnumVisitor {
-    type Value = VppApiEnum;
+impl<'de> Visitor<'de> for VppJsApiEnumVisitor {
+    type Value = VppJsApiEnum;
 
     fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-        formatter.write_str("struct VppApiEnum")
+        formatter.write_str("struct VppJsApiEnum")
     }
 
-    fn visit_seq<V>(self, mut seq: V) -> Result<VppApiEnum, V::Error>
+    fn visit_seq<V>(self, mut seq: V) -> Result<VppJsApiEnum, V::Error>
     where
         V: SeqAccess<'de>,
     {
-        let name: String = if let Some(VppApiEnumHelper::Str(s)) = seq.next_element()? {
+        let name: String = if let Some(VppJsApiEnumHelper::Str(s)) = seq.next_element()? {
             s
         } else {
             panic!("Error");
         };
         log::debug!("API message: {}", &name);
-        let mut values: Vec<VppApiEnumValueDef> = vec![];
-        let mut maybe_info: Option<VppApiEnumInfo> = None;
+        let mut values: Vec<VppJsApiEnumValueDef> = vec![];
+        let mut maybe_info: Option<VppJsApiEnumInfo> = None;
         loop {
             let nxt = seq.next_element();
             log::debug!("Next: {:#?}", &nxt);
             match nxt? {
-                Some(VppApiEnumHelper::Val(f)) => values.push(f),
-                Some(VppApiEnumHelper::Map(i)) => {
+                Some(VppJsApiEnumHelper::Val(f)) => values.push(f),
+                Some(VppJsApiEnumHelper::Map(i)) => {
                     if maybe_info.is_some() {
                         panic!("Info is already set!");
                     }
@@ -479,35 +479,35 @@ impl<'de> Visitor<'de> for VppApiEnumVisitor {
             }
         }
         let info = maybe_info.unwrap();
-        Ok(VppApiEnum { name, values, info })
+        Ok(VppJsApiEnum { name, values, info })
     }
 }
 
-impl<'de> Deserialize<'de> for VppApiEnum {
+impl<'de> Deserialize<'de> for VppJsApiEnum {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
         D: Deserializer<'de>,
     {
-        deserializer.deserialize_seq(VppApiEnumVisitor)
+        deserializer.deserialize_seq(VppJsApiEnumVisitor)
     }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-struct VppApiFile {
-    types: Vec<VppApiType>,
-    messages: Vec<VppApiMessage>,
-    unions: Vec<VppApiType>,
-    enums: Vec<VppApiEnum>,
+struct VppJsApiFile {
+    types: Vec<VppJsApiType>,
+    messages: Vec<VppJsApiMessage>,
+    unions: Vec<VppJsApiType>,
+    enums: Vec<VppJsApiEnum>,
     #[serde(default)]
-    enumflags: Vec<VppApiEnum>,
-    services: LinkedHashMap<String, VppApiService>,
-    options: VppApiOptions,
-    aliases: LinkedHashMap<String, VppApiAlias>,
+    enumflags: Vec<VppJsApiEnum>,
+    services: LinkedHashMap<String, VppJsApiService>,
+    options: VppJsApiOptions,
+    aliases: LinkedHashMap<String, VppJsApiAlias>,
     vl_api_version: String,
     imports: Vec<String>,
 }
 
-fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppApiFile>) {
+fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppJsApiFile>) {
     use std::fs;
     if opts.verbose > 2 {
         println!("parse tree: {:?}", root);
@@ -523,7 +523,7 @@ fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppAp
         if metadata.is_file() {
             let res = std::fs::read_to_string(&path);
             if let Ok(data) = res {
-                let desc = serde_json::from_str::<VppApiFile>(&data);
+                let desc = serde_json::from_str::<VppJsApiFile>(&data);
                 if let Ok(d) = desc {
                     map.insert(path.to_str().unwrap().to_string(), d);
                 } else {
@@ -550,7 +550,7 @@ fn main() {
                 panic!("Can't parse a tree out of file!");
             }
             OptParseType::File => {
-                let desc: VppApiFile = serde_json::from_str(&data).unwrap();
+                let desc: VppJsApiFile = serde_json::from_str(&data).unwrap();
                 eprintln!(
                     "File: {} version: {} services: {} types: {} messages: {} aliases: {} imports: {} enums: {} unions: {}",
                     &opts.in_file,
@@ -570,11 +570,11 @@ fn main() {
                 println!("{}", &data);
             }
             OptParseType::ApiType => {
-                let desc: VppApiType = serde_json::from_str(&data).unwrap();
+                let desc: VppJsApiType = serde_json::from_str(&data).unwrap();
                 println!("Dump Type: {:#?}", &desc);
             }
             OptParseType::ApiMessage => {
-                let desc: VppApiMessage = serde_json::from_str(&data).unwrap();
+                let desc: VppJsApiMessage = serde_json::from_str(&data).unwrap();
                 println!("Dump: {:#?}", &desc);
             }
         }
@@ -582,7 +582,7 @@ fn main() {
         match opts.parse_type {
             OptParseType::Tree => {
                 // it was a directory tree, descend downwards...
-                let mut api_files: LinkedHashMap<String, VppApiFile> = LinkedHashMap::new();
+                let mut api_files: LinkedHashMap<String, VppJsApiFile> = LinkedHashMap::new();
                 parse_api_tree(&opts, &opts.in_file, &mut api_files);
                 println!("Loaded {} API definition files", api_files.len());
             }
