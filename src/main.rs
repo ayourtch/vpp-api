@@ -10,6 +10,7 @@ use linked_hash_map::LinkedHashMap;
 #[derive(Clap, Debug, Serialize, Deserialize, EnumString, Display)]
 enum OptParseType {
     File,
+    Tree,
     ApiType,
     ApiMessage,
 }
@@ -26,7 +27,7 @@ struct Opts {
     #[clap(short, long, default_value = "dummy.rs")]
     out_file: String,
 
-    /// parse type for the operation: File, ApiMessage or ApiType
+    /// parse type for the operation: Tree, File, ApiMessage or ApiType
     #[clap(short, long, default_value = "File")]
     parse_type: OptParseType,
 
@@ -372,6 +373,38 @@ struct VppApiFile {
     imports: Vec<String>,
 }
 
+fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppApiFile>) {
+    use std::fs;
+    if opts.verbose > 2 {
+        println!("parse tree: {:?}", root);
+    }
+    for entry in fs::read_dir(root).unwrap() {
+        let entry = entry.unwrap();
+        let path = entry.path();
+        if opts.verbose > 2 {
+            println!("Entry: {:?}", &entry);
+        }
+
+        let metadata = fs::metadata(&path).unwrap();
+        if metadata.is_file() {
+            let res = std::fs::read_to_string(&path);
+            if let Ok(data) = res {
+                let desc = serde_json::from_str::<VppApiFile>(&data);
+                if let Ok(d) = desc {
+                    map.insert(path.to_str().unwrap().to_string(), d);
+                } else {
+                    eprintln!("Error loading {:?}: {:?}", &path, &desc);
+                }
+            } else {
+                eprintln!("Error reading {:?}: {:?}", &path, &res);
+            }
+        }
+        if metadata.is_dir() && entry.file_name() != "." && entry.file_name() != ".." {
+            parse_api_tree(opts, &path.to_str().unwrap(), map);
+        }
+    }
+}
+
 fn main() {
     env_logger::init();
     let opts: Opts = Opts::parse();
@@ -379,6 +412,9 @@ fn main() {
 
     if let Ok(data) = std::fs::read_to_string(&opts.in_file) {
         match opts.parse_type {
+            OptParseType::Tree => {
+                panic!("Can't parse a tree out of file!");
+            }
             OptParseType::File => {
                 let desc: VppApiFile = serde_json::from_str(&data).unwrap();
                 println!(
@@ -404,6 +440,18 @@ fn main() {
             OptParseType::ApiMessage => {
                 let desc: VppApiMessage = serde_json::from_str(&data).unwrap();
                 println!("Dump: {:#?}", &desc);
+            }
+        }
+    } else {
+        match opts.parse_type {
+            OptParseType::Tree => {
+                // it was a directory tree, descend downwards...
+                let mut api_files: LinkedHashMap<String, VppApiFile> = LinkedHashMap::new();
+                parse_api_tree(&opts, &opts.in_file, &mut api_files);
+                println!("Loaded {} API definition files", api_files.len());
+            }
+            e => {
+                panic!("inappropriate parse type {:?} for inexistent file", e);
             }
         }
     }
