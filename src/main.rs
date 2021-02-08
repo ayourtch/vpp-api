@@ -283,10 +283,88 @@ struct VppApiOptions {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+struct VppApiEnumInfo {
+    enumtype: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+struct VppApiEnumValueDef {
+    name: String,
+    value: i64,
+}
+
+#[derive(Debug, Serialize)]
+struct VppApiEnum {
+    name: String,
+    values: Vec<VppApiEnumValueDef>,
+    info: VppApiEnumInfo,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(untagged)]
+enum VppApiEnumHelper {
+    Str(String),
+    Val(VppApiEnumValueDef),
+    Map(VppApiEnumInfo),
+}
+
+struct VppApiEnumVisitor;
+
+impl<'de> Visitor<'de> for VppApiEnumVisitor {
+    type Value = VppApiEnum;
+
+    fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+        formatter.write_str("struct VppApiEnum")
+    }
+
+    fn visit_seq<V>(self, mut seq: V) -> Result<VppApiEnum, V::Error>
+    where
+        V: SeqAccess<'de>,
+    {
+        let name: String = if let Some(VppApiEnumHelper::Str(s)) = seq.next_element()? {
+            s
+        } else {
+            panic!("Error");
+        };
+        log::debug!("API message: {}", &name);
+        let mut values: Vec<VppApiEnumValueDef> = vec![];
+        let mut maybe_info: Option<VppApiEnumInfo> = None;
+        loop {
+            let nxt = seq.next_element();
+            log::debug!("Next: {:#?}", &nxt);
+            match nxt? {
+                Some(VppApiEnumHelper::Val(f)) => values.push(f),
+                Some(VppApiEnumHelper::Map(i)) => {
+                    if maybe_info.is_some() {
+                        panic!("Info is already set!");
+                    }
+                    maybe_info = Some(i);
+                    break;
+                }
+                x => panic!("Unexpected element {:?}", x),
+            }
+        }
+        let info = maybe_info.unwrap();
+        Ok(VppApiEnum { name, values, info })
+    }
+}
+
+impl<'de> Deserialize<'de> for VppApiEnum {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        deserializer.deserialize_seq(VppApiEnumVisitor)
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 struct VppApiFile {
     types: Vec<VppApiType>,
     messages: Vec<VppApiMessage>,
     unions: Vec<VppApiType>,
+    enums: Vec<VppApiEnum>,
+    // enumflags
     services: LinkedHashMap<String, VppApiService>,
     options: VppApiOptions,
     aliases: LinkedHashMap<String, VppApiAlias>,
@@ -304,7 +382,7 @@ fn main() {
             OptParseType::File => {
                 let desc: VppApiFile = serde_json::from_str(&data).unwrap();
                 println!(
-                    "File: {} version: {} services: {} types: {} messages: {} aliases: {} imports: {} unions: {}",
+                    "File: {} version: {} services: {} types: {} messages: {} aliases: {} imports: {} enums: {} unions: {}",
                     &opts.in_file,
                     &desc.vl_api_version,
                     desc.services.len(),
@@ -312,8 +390,12 @@ fn main() {
                     desc.messages.len(),
                     desc.aliases.len(),
                     desc.imports.len(),
+                    desc.enums.len(),
                     desc.unions.len()
                 );
+                if opts.verbose > 1 {
+                    println!("Dump File: {:#?}", &desc);
+                }
             }
             OptParseType::ApiType => {
                 let desc: VppApiType = serde_json::from_str(&data).unwrap();
