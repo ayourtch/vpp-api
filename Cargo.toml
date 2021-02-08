@@ -14,3 +14,4 @@ strum = "*"
 strum_macros = "*"
 log = "*"
 env_logger = "*"
+linked-hash-map = { version = "*", features = ["serde_impl"] }

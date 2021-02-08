@@ -5,6 +5,7 @@ extern crate strum;
 #[macro_use]
 extern crate strum_macros;
 use env_logger;
+use linked_hash_map::LinkedHashMap;
 
 #[derive(Clap, Debug, Serialize, Deserialize, EnumString, Display)]
 enum OptParseType {
@@ -264,10 +265,18 @@ impl<'de> Deserialize<'de> for VppApiMessage {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+struct VppApiAlias {
+    #[serde(rename = "type")]
+    ctype: String,
+    length: Option<usize>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 struct VppApiFile {
     types: Vec<VppApiType>,
     messages: Vec<VppApiMessage>,
     unions: Vec<VppApiType>,
+    aliases: LinkedHashMap<String, VppApiAlias>,
 }
 
 fn main() {
@@ -280,10 +289,11 @@ fn main() {
             OptParseType::File => {
                 let desc: VppApiFile = serde_json::from_str(&data).unwrap();
                 println!(
-                    "File: {} types: {} messages: {} unions: {}",
+                    "File: {} types: {} messages: {} aliases: {} unions: {}",
                     &opts.in_file,
                     desc.types.len(),
                     desc.messages.len(),
+                    desc.aliases.len(),
                     desc.unions.len()
                 );
             }
