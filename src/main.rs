@@ -35,10 +35,6 @@ struct Opts {
     /// A level of verbosity, and can be used multiple times
     #[clap(short, long, parse(from_occurrences))]
     verbose: i32,
-
-    /// Run various asserts and self-checks in the process
-    #[clap(short, long)]
-    asserts: bool,
 }
 
 #[derive(Debug)]
@@ -366,8 +362,12 @@ impl Serialize for VppJsApiAlias {
 
 #[derive(Debug, Deserialize)]
 struct VppJsApiService {
+    #[serde(default)]
+    events: Vec<String>,
     reply: String,
     stream: Option<bool>,
+    #[serde(default)]
+    stream_msg: Option<String>,
 }
 
 impl Serialize for VppJsApiService {
@@ -379,10 +379,22 @@ impl Serialize for VppJsApiService {
         if self.stream.is_some() {
             len = len + 1;
         }
+        if self.events.len() > 0 {
+            len = len + 1;
+        }
+        if self.stream_msg.is_some() {
+            len = len + 1;
+        }
         let mut map = serializer.serialize_map(Some(len))?;
+        if self.events.len() > 0 {
+            map.serialize_entry("events", &self.events);
+        }
         map.serialize_entry("reply", &self.reply)?;
         if let Some(s) = &self.stream {
             map.serialize_entry("stream", s);
+        }
+        if let Some(s) = &self.stream_msg {
+            map.serialize_entry("stream_msg", s);
         }
         map.end()
     }
@@ -536,12 +548,45 @@ struct VppJsApiFile {
 }
 
 impl VppJsApiFile {
-    pub fn from_str(
-        data: &str,
-        asserts: bool,
-    ) -> std::result::Result<VppJsApiFile, serde_json::Error> {
-        let desc = serde_json::from_str::<VppJsApiFile>(&data);
-        desc
+    pub fn verify_data(data: &str, jaf: &VppJsApiFile) {
+        use serde_json::Value;
+        /*
+         * Here we verify that we are not dropping anything during the
+         * serialization/deserialization. To do that we use the typeless
+         * serde:
+         *
+         * string_data -> json_deserialize -> json_serialize_pretty -> good_json
+         *
+         * string_data -> VPPJAF_deserialize -> VPPJAF_serialize ->
+         *             -> json_deserialize -> json_serialize_pretty -> test_json
+         *
+         * Then we compare the two values for being identical and panic if they
+         * aren't.
+         */
+
+        let good_val: Value = serde_json::from_str(data).unwrap();
+        let good_json = serde_json::to_string_pretty(&good_val).unwrap();
+
+        let jaf_serialized_json = serde_json::to_string_pretty(jaf).unwrap();
+        let test_val: Value = serde_json::from_str(&jaf_serialized_json).unwrap();
+        let test_json = serde_json::to_string_pretty(&test_val).unwrap();
+
+        if good_json != test_json {
+            eprintln!("{}", good_json);
+            println!("{}", test_json);
+            panic!("Different javascript in internal sanity self-test");
+        }
+    }
+
+    pub fn from_str(data: &str) -> std::result::Result<VppJsApiFile, serde_json::Error> {
+        use serde_json::Value;
+        let res = serde_json::from_str::<VppJsApiFile>(&data);
+
+        // a paranoid sanity check...
+        if let Ok(jaf) = &res {
+            Self::verify_data(data, &jaf);
+        }
+        res
     }
 }
 
@@ -561,7 +606,7 @@ fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppJs
         if metadata.is_file() {
             let res = std::fs::read_to_string(&path);
             if let Ok(data) = res {
-                let desc = VppJsApiFile::from_str(&data, opts.asserts);
+                let desc = VppJsApiFile::from_str(&data);
                 if let Ok(d) = desc {
                     map.insert(path.to_str().unwrap().to_string(), d);
                 } else {
@@ -588,7 +633,7 @@ fn main() {
                 panic!("Can't parse a tree out of file!");
             }
             OptParseType::File => {
-                let desc = VppJsApiFile::from_str(&data, opts.asserts).unwrap();
+                let desc = VppJsApiFile::from_str(&data).unwrap();
                 eprintln!(
                     "File: {} version: {} services: {} types: {} messages: {} aliases: {} imports: {} enums: {} unions: {}",
                     &opts.in_file,
