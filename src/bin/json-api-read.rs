@@ -680,6 +680,7 @@ mod tests {
         let mut path = PathBuf::from(file!());
         path.pop();
         path.pop();
+        path.pop();
         path.push("testdata/vpp/");
         path
     }
