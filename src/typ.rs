@@ -80,9 +80,76 @@ impl TryFrom<&str> for VariableSizeString {
     }
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize)]
 pub enum VariableSizeArray<T> {
     VariableSizeData(Vec<T>),
+}
+
+use core::marker::PhantomData;
+use serde::de::{self, Deserializer, SeqAccess, Visitor};
+use std::fmt::Debug;
+// use std::fmt;
+
+impl<'de, T: Deserialize<'de> + Debug> Deserialize<'de> for VariableSizeArray<T> {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        struct VariableSizeArrayVisitor<T> {
+            marker: PhantomData<T>,
+        };
+        impl<'de, T> Visitor<'de> for VariableSizeArrayVisitor<T>
+        where
+            T: Deserialize<'de> + Debug,
+        {
+            type Value = VariableSizeArray<T>;
+            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+                formatter.write_str("VariableSizeArray")
+            }
+
+            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            where
+                A: SeqAccess<'de>,
+            {
+                let mut res: Vec<T> = vec![];
+                println!("visiting");
+                /*
+                                let length: u32 = seq
+                                    .next_element()?
+                                    .ok_or_else(|| serde::de::Error::invalid_length(1, &self))?;
+                */
+
+                loop {
+                    let nxt = seq.next_element();
+                    if nxt.is_ok() {
+                        let nxt = nxt.unwrap();
+                        if nxt.is_none() {
+                            break;
+                        }
+                        res.push(nxt.unwrap());
+                    }
+                }
+                /*
+                for i in 0..length {
+                    res.push(
+                        seq.next_element()?
+                            .ok_or_else(|| serde::de::Error::invalid_length(1, &self))?,
+                    );
+                }
+                */
+                println!("RES: {:?}", &res);
+
+                return Ok(VariableSizeArray::VariableSizeData(res));
+            }
+        }
+
+        return Ok(deserializer.deserialize_tuple(
+            1,
+            VariableSizeArrayVisitor {
+                marker: PhantomData,
+            },
+        )?);
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

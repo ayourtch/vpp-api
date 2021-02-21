@@ -166,7 +166,10 @@ fn main() {
     let res = t.read_one_msg_id_and_msg();
     println!("Read2: {:x?}", &res);
     if let Ok((msg_id, data)) = res {
-        let r: ShowThreadsReply = get_encoder().deserialize(&data).unwrap();
+        let r: ShowThreadsReply = get_encoder()
+            .allow_trailing_bytes()
+            .deserialize(&data)
+            .unwrap();
         println!("{:?}", &r);
     }
     let res = t.read_one_msg_id_and_msg();
