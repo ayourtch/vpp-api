@@ -5,7 +5,7 @@ use std::convert::TryInto;
 use std::fmt;
 use typenum::{U10, U64};
 
-#[derive(Clone, Serialize, Deserialize)]
+#[derive(Clone, Serialize)]
 #[serde(bound = "N: ArrayLength<u8>")]
 pub enum FixedSizeString<N: ArrayLength<u8>> {
     FixedSizeString(GenericArray<u8, N>),
@@ -16,7 +16,7 @@ impl<N: ArrayLength<u8>> fmt::Debug for FixedSizeString<N> {
         match self {
             Self::FixedSizeString(v) => {
                 let val_str = match std::str::from_utf8(v) {
-                    Ok(s) => format!("{:?}", &s),
+                    Ok(s) => format!("{:?}", &s.trim_end_matches("\u{0}")),
                     Err(_) => format!("{:?}", &v),
                 };
                 write!(f, "FixedSizeString[{}]: {}", &N::to_u32(), &val_str)
@@ -45,6 +45,50 @@ impl<N: ArrayLength<u8>> TryFrom<&str> for FixedSizeString<N> {
 
             Ok(Self::FixedSizeString(out))
         }
+    }
+}
+
+impl<'de, N: ArrayLength<u8>> Deserialize<'de> for FixedSizeString<N> {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        struct FixedSizeStringVisitor<N> {
+            marker: PhantomData<N>,
+        };
+        impl<'de, N> Visitor<'de> for FixedSizeStringVisitor<N>
+        where
+            N: ArrayLength<u8>,
+        {
+            type Value = FixedSizeString<N>;
+            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+                formatter.write_str("FixedSizeString")
+            }
+
+            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            where
+                A: SeqAccess<'de>,
+            {
+                let mut res: GenericArray<u8, N> = Default::default();
+                let length = N::to_u32() as usize;
+
+                for i in 0..length {
+                    let b = seq
+                        .next_element()?
+                        .ok_or_else(|| serde::de::Error::invalid_length(1, &self))?;
+                    res[i] = b;
+                }
+
+                return Ok(FixedSizeString::FixedSizeString(res));
+            }
+        }
+
+        return Ok(deserializer.deserialize_tuple(
+            N::to_u32() as usize,
+            FixedSizeStringVisitor {
+                marker: PhantomData,
+            },
+        )?);
     }
 }
 
@@ -112,7 +156,6 @@ impl<'de, T: Deserialize<'de> + Debug> Deserialize<'de> for VariableSizeArray<T>
                 A: SeqAccess<'de>,
             {
                 let mut res: Vec<T> = vec![];
-                println!("visiting");
                 /*
                                 let length: u32 = seq
                                     .next_element()?
@@ -137,7 +180,6 @@ impl<'de, T: Deserialize<'de> + Debug> Deserialize<'de> for VariableSizeArray<T>
                     );
                 }
                 */
-                println!("RES: {:?}", &res);
 
                 return Ok(VariableSizeArray::VariableSizeData(res));
             }
