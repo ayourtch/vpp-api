@@ -111,8 +111,8 @@ fn main() {
     */
 
     println!("Connect result: {}", t.connect("api-test", None, 256));
-    let ping_index: u16 = t.get_msg_index("control_ping_51077d14");
-    let cli_inband = t.get_msg_index("cli_inband_f8377302");
+    let ping_index: u16 = t.get_msg_index("control_ping_51077d14").unwrap();
+    let cli_inband = t.get_msg_index("cli_inband_f8377302").unwrap();
     println!("Ping index: {:#x?}", &ping_index);
     let enc = get_encoder();
 
@@ -144,13 +144,29 @@ fn main() {
     t.write(&v);
     */
 
-    let show_threads = t.get_msg_index("show_threads_51077d14");
+    let show_threads = t.get_msg_index("show_threads_51077d14").unwrap();
     let m = ShowThreads {
         client_index: t.get_client_index(),
         context: 0,
     };
     let enc = get_encoder();
     let mut v = enc.serialize(&show_threads).unwrap();
+    let enc = get_encoder();
+    let msg = enc.serialize(&m).unwrap();
+    v.extend_from_slice(&msg);
+    println!("MSG: {:#x?}", &v);
+    t.write(&v);
+
+    let get_f64_increment_by_one = t
+        .get_msg_index("get_f64_increment_by_one_b64f027e")
+        .unwrap();
+    let m = GetF64IncrementByOne {
+        client_index: t.get_client_index(),
+        context: 0,
+        f64_value: f64::from_bits((1.0f64).to_bits().to_be()),
+    };
+    let enc = get_encoder();
+    let mut v = enc.serialize(&get_f64_increment_by_one).unwrap();
     let enc = get_encoder();
     let msg = enc.serialize(&m).unwrap();
     v.extend_from_slice(&msg);
@@ -179,6 +195,18 @@ fn main() {
     }
     let res = t.read_one_msg_id_and_msg();
     println!("Read3: {:x?}", res);
+
+    if let Ok((msg_id, data)) = res {
+        let mut r: GetF64IncrementByOneReply = get_encoder().deserialize(&data).unwrap();
+        r.f64_value = f64::from_bits(r.f64_value.to_bits().to_be());
+        println!("{:?}", &r);
+        let data = serde_json::to_string_pretty(&r).unwrap();
+        println!("JSON: {}", data);
+    }
+
+    let res = t.read_one_msg_id_and_msg();
+    println!("Read4: {:x?}", res);
+
     // t.control_ping();
     //
     // bench(&mut t);

@@ -290,6 +290,20 @@ pub struct ShowThreadsReply {
     thread_data: VariableSizeArray<ThreadData>,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct GetF64IncrementByOne {
+    pub client_index: u32,
+    pub context: u32,
+    pub f64_value: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct GetF64IncrementByOneReply {
+    pub context: u32,
+    pub retval: u32,
+    pub f64_value: f64,
+}
+
 pub fn test_func() {
     let t = CliInband {
         client_index: 0xaaaabbbb,
