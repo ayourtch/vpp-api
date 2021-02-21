@@ -124,9 +124,29 @@ impl TryFrom<&str> for VariableSizeString {
     }
 }
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug)]
 pub enum VariableSizeArray<T> {
     VariableSizeData(Vec<T>),
+}
+
+use serde::ser::{SerializeSeq, SerializeTuple, Serializer};
+
+impl<T: Debug + Serialize> Serialize for VariableSizeArray<T> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let data = match self {
+            VariableSizeArray::VariableSizeData(v) => v,
+        };
+
+        let mut len = data.len();
+        let mut seq = serializer.serialize_tuple(len)?;
+        for b in data {
+            seq.serialize_element(b)?;
+        }
+        seq.end()
+    }
 }
 
 use core::marker::PhantomData;

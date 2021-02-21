@@ -166,11 +166,16 @@ fn main() {
     let res = t.read_one_msg_id_and_msg();
     println!("Read2: {:x?}", &res);
     if let Ok((msg_id, data)) = res {
-        let r: ShowThreadsReply = get_encoder()
-            .allow_trailing_bytes()
-            .deserialize(&data)
-            .unwrap();
+        println!("Original data len: {}", data.len());
+        println!("from  a bin: {:x?}", &data);
+        let r: ShowThreadsReply = get_encoder().deserialize(&data).unwrap();
         println!("{:?}", &r);
+        let data = serde_json::to_string(&r).unwrap();
+        // println!("JSON: {}", data);
+        let enc = get_encoder();
+        let mut v = enc.serialize(&r).unwrap();
+        println!("back to bin: {:x?}", &v);
+        println!("New data len: {}", v.len());
     }
     let res = t.read_one_msg_id_and_msg();
     println!("Read3: {:x?}", res);
