@@ -5,8 +5,7 @@ use std::convert::TryInto;
 use std::fmt;
 use typenum::{U10, U64};
 
-#[derive(Clone, Serialize)]
-#[serde(bound = "N: ArrayLength<u8>")]
+#[derive(Clone)]
 pub enum FixedSizeString<N: ArrayLength<u8>> {
     FixedSizeString(GenericArray<u8, N>),
 }
@@ -45,6 +44,24 @@ impl<N: ArrayLength<u8>> TryFrom<&str> for FixedSizeString<N> {
 
             Ok(Self::FixedSizeString(out))
         }
+    }
+}
+
+impl<N: ArrayLength<u8>> Serialize for FixedSizeString<N> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let data = match self {
+            FixedSizeString::FixedSizeString(v) => v,
+        };
+
+        let mut len = data.len();
+        let mut seq = serializer.serialize_tuple(len)?;
+        for b in data {
+            seq.serialize_element(b)?;
+        }
+        seq.end()
     }
 }
 

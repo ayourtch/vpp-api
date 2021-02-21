@@ -171,7 +171,7 @@ fn main() {
         let r: ShowThreadsReply = get_encoder().deserialize(&data).unwrap();
         println!("{:?}", &r);
         let data = serde_json::to_string(&r).unwrap();
-        // println!("JSON: {}", data);
+        println!("JSON: {}", data);
         let enc = get_encoder();
         let mut v = enc.serialize(&r).unwrap();
         println!("back to bin: {:x?}", &v);
