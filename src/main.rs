@@ -40,6 +40,37 @@ use vpp_api_transport::afunix;
 use vpp_api_transport::shmem;
 use vpp_api_transport::VppApiTransport;
 
+fn bench(t: &mut dyn VppApiTransport) {
+    use std::thread::sleep;
+    use std::time::{Duration, SystemTime};
+
+    let now = SystemTime::now();
+
+    let count = 1000000;
+    println!("Starting {} requests", count);
+
+    for i in 1..count {
+        let s = t.run_cli_inband("show interface");
+        // t.control_ping();
+        // println!("{:?}", &s);
+    }
+
+    match now.elapsed() {
+        Ok(elapsed) => {
+            // it prints '2'
+            println!(
+                "{} : {}/sec",
+                elapsed.as_secs_f64(),
+                (count as f64) / elapsed.as_secs_f64()
+            );
+        }
+        Err(e) => {
+            // an error occurred!
+            println!("Error: {:?}", e);
+        }
+    }
+}
+
 fn main() {
     let opts: Opts = Opts::parse();
 
@@ -98,6 +129,7 @@ fn main() {
     println!("MSG: {:#x?}", &v);
     t.write(&v);
 
+    /*
     let m = CliInband {
         client_index: t.get_client_index(),
         context: 0,
@@ -105,6 +137,20 @@ fn main() {
     };
     let enc = get_encoder();
     let mut v = enc.serialize(&cli_inband).unwrap();
+    let enc = get_encoder();
+    let msg = enc.serialize(&m).unwrap();
+    v.extend_from_slice(&msg);
+    println!("MSG: {:#x?}", &v);
+    t.write(&v);
+    */
+
+    let show_threads = t.get_msg_index("show_threads_51077d14");
+    let m = ShowThreads {
+        client_index: t.get_client_index(),
+        context: 0,
+    };
+    let enc = get_encoder();
+    let mut v = enc.serialize(&show_threads).unwrap();
     let enc = get_encoder();
     let msg = enc.serialize(&m).unwrap();
     v.extend_from_slice(&msg);
@@ -118,39 +164,16 @@ fn main() {
     let res = t.read_one_msg_id_and_msg();
     println!("Read1: {:x?}", res);
     let res = t.read_one_msg_id_and_msg();
-    println!("Read2: {:x?}", res);
-    // let res = t.read_one_msg_id_and_msg();
-    // println!("Read3: {:x?}", res);
-    t.control_ping();
-
-    use std::thread::sleep;
-    use std::time::{Duration, SystemTime};
-
-    let now = SystemTime::now();
-
-    let count = 1000000;
-    println!("Starting {} requests", count);
-
-    for i in 1..count {
-        let s = t.run_cli_inband("show interface");
-        // t.control_ping();
-        // println!("{:?}", &s);
+    println!("Read2: {:x?}", &res);
+    if let Ok((msg_id, data)) = res {
+        let r: ShowThreadsReply = get_encoder().deserialize(&data).unwrap();
+        println!("{:?}", &r);
     }
-
-    match now.elapsed() {
-        Ok(elapsed) => {
-            // it prints '2'
-            println!(
-                "{} : {}/sec",
-                elapsed.as_secs_f64(),
-                (count as f64) / elapsed.as_secs_f64()
-            );
-        }
-        Err(e) => {
-            // an error occurred!
-            println!("Error: {:?}", e);
-        }
-    }
+    let res = t.read_one_msg_id_and_msg();
+    println!("Read3: {:x?}", res);
+    // t.control_ping();
+    //
+    // bench(&mut t);
 
     std::thread::sleep(std::time::Duration::from_secs(1));
     t.disconnect();
