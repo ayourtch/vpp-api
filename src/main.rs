@@ -140,7 +140,11 @@ fn main() {
     match now.elapsed() {
         Ok(elapsed) => {
             // it prints '2'
-            println!("{} : {}/sec", elapsed.as_secs_f64(), (count as f64)/elapsed.as_secs_f64());
+            println!(
+                "{} : {}/sec",
+                elapsed.as_secs_f64(),
+                (count as f64) / elapsed.as_secs_f64()
+            );
         }
         Err(e) => {
             // an error occurred!
@@ -148,7 +152,6 @@ fn main() {
         }
     }
 
-    
     std::thread::sleep(std::time::Duration::from_secs(1));
     t.disconnect();
 
