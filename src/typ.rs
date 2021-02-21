@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::convert::TryFrom;
 use std::convert::TryInto;
 use std::fmt;
-use typenum::U10;
+use typenum::{U10, U64};
 
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(bound = "N: ArrayLength<u8>")]
@@ -80,6 +80,11 @@ impl TryFrom<&str> for VariableSizeString {
     }
 }
 
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub enum VariableSizeArray<T> {
+    VariableSizeData(Vec<T>),
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TestAPI {
     id: i32,
@@ -112,6 +117,31 @@ pub struct CliInbandReply {
     pub context: u32,
     pub retval: i32,
     pub reply: VariableSizeString,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ShowThreads {
+    pub client_index: u32,
+    pub context: u32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ThreadData {
+    pub id: u32,
+    pub name: FixedSizeString<U64>,
+    pub r#type: FixedSizeString<U64>,
+    pub pid: u32,
+    pub cpu_id: u32,
+    pub core: u32,
+    pub cpu_socket: u32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ShowThreadsReply {
+    pub context: u32,
+    pub retval: i32,
+    pub count: u32,
+    thread_data: VariableSizeArray<ThreadData>,
 }
 
 pub fn test_func() {
