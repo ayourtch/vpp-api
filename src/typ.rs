@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::convert::TryFrom;
 use std::convert::TryInto;
 use std::fmt;
-use typenum::{U10, U64};
+use typenum::{U10, U256, U32, U64};
 
 #[derive(Clone)]
 pub enum FixedSizeString<N: ArrayLength<u8>> {
@@ -200,14 +200,12 @@ impl<'de, T: Deserialize<'de> + Debug> Deserialize<'de> for VariableSizeArray<T>
                 */
 
                 loop {
-                    let nxt = seq.next_element();
-                    if nxt.is_ok() {
-                        let nxt = nxt.unwrap();
-                        if nxt.is_none() {
-                            break;
-                        }
-                        res.push(nxt.unwrap());
+                    let nxt = seq.next_element()?;
+                    let nxt: Option<T> = nxt.unwrap();
+                    if nxt.is_none() {
+                        break;
                     }
+                    res.push(nxt.unwrap());
                 }
                 /*
                 for i in 0..length {
@@ -223,7 +221,7 @@ impl<'de, T: Deserialize<'de> + Debug> Deserialize<'de> for VariableSizeArray<T>
         }
 
         return Ok(deserializer.deserialize_tuple(
-            1,
+            1 << 31,
             VariableSizeArrayVisitor {
                 marker: PhantomData,
             },
@@ -302,6 +300,22 @@ pub struct GetF64IncrementByOneReply {
     pub context: u32,
     pub retval: u32,
     pub f64_value: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ShowVersion {
+    pub client_index: u32,
+    pub context: u32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ShowVersionReply {
+    pub context: u32,
+    pub retval: i32,
+    pub program: FixedSizeString<U32>,
+    pub version: FixedSizeString<U32>,
+    pub build_date: FixedSizeString<U32>,
+    pub build_directory: FixedSizeString<U256>,
 }
 
 pub fn test_func() {

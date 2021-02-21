@@ -25,6 +25,10 @@ struct Opts {
     #[clap(short, long)]
     options_override: Option<String>,
 
+    /// set non-blocking mode for the connection
+    #[clap(short, long)]
+    nonblocking: bool,
+
     /// A level of verbosity, and can be used multiple times
     #[clap(short, long, parse(from_occurrences))]
     verbose: i32,
@@ -46,13 +50,16 @@ fn bench(t: &mut dyn VppApiTransport) {
 
     let now = SystemTime::now();
 
-    let count = 1000000;
+    let count = 100000;
     println!("Starting {} requests", count);
 
     for i in 1..count {
+        let now = SystemTime::now();
         let s = t.run_cli_inband("show interface");
         // t.control_ping();
-        // println!("{:?}", &s);
+
+        // println!("res = {:?}", &s);
+        // println!("{:?}", now.elapsed());
     }
 
     match now.elapsed() {
@@ -69,6 +76,17 @@ fn bench(t: &mut dyn VppApiTransport) {
             println!("Error: {:?}", e);
         }
     }
+}
+
+fn send_msg<'a, T: Serialize + Deserialize<'a>>(name: &str, m: &T, t: &mut dyn VppApiTransport) {
+    let vl_msg_id = t.get_msg_index(name).unwrap();
+    let enc = get_encoder();
+    let mut v = enc.serialize(&vl_msg_id).unwrap();
+    let enc = get_encoder();
+    let msg = enc.serialize(&m).unwrap();
+    v.extend_from_slice(&msg);
+    println!("MSG[{} = 0x{:x}]: {:#x?}", name, vl_msg_id, &v);
+    t.write(&v);
 }
 
 fn main() {
@@ -100,91 +118,76 @@ fn main() {
 
     // println!("Hello, here is your options: {:#?}", &opts);
     test_func();
-    let mut t = shmem::Transport::new();
+    // let mut t = shmem::Transport::new();
     // let mut t = afunix::Transport::new("/tmp/api.sock");
-    /*
     let mut t: Box<dyn VppApiTransport> = if let Some(afunix_path) = &opts.socket_path {
         Box::new(afunix::Transport::new(&afunix_path))
     } else {
         Box::new(shmem::Transport::new())
     };
-    */
 
     println!("Connect result: {}", t.connect("api-test", None, 256));
-    let ping_index: u16 = t.get_msg_index("control_ping_51077d14").unwrap();
-    let cli_inband = t.get_msg_index("cli_inband_f8377302").unwrap();
-    println!("Ping index: {:#x?}", &ping_index);
-    let enc = get_encoder();
+    t.set_nonblocking(opts.nonblocking);
 
-    let mut v = enc.serialize(&ping_index).unwrap();
-    let m = ControlPing {
-        client_index: t.get_client_index(),
-        context: 0,
-    };
-
-    let enc = get_encoder();
-
-    let msg = enc.serialize(&m).unwrap();
-    v.extend_from_slice(&msg);
-    println!("MSG: {:#x?}", &v);
-    t.write(&v);
+    send_msg(
+        "control_ping_51077d14",
+        &ControlPing {
+            client_index: t.get_client_index(),
+            context: 0,
+        },
+        &mut *t,
+    );
 
     /*
-    let m = CliInband {
+
+    send_msg("cli_inband_f8377302", &CliInband {
         client_index: t.get_client_index(),
         context: 0,
         cmd: "show version".try_into().unwrap(),
-    };
-    let enc = get_encoder();
-    let mut v = enc.serialize(&cli_inband).unwrap();
-    let enc = get_encoder();
-    let msg = enc.serialize(&m).unwrap();
-    v.extend_from_slice(&msg);
-    println!("MSG: {:#x?}", &v);
-    t.write(&v);
+    }, &mut t);
+
     */
 
-    let show_threads = t.get_msg_index("show_threads_51077d14").unwrap();
-    let m = ShowThreads {
-        client_index: t.get_client_index(),
-        context: 0,
-    };
-    let enc = get_encoder();
-    let mut v = enc.serialize(&show_threads).unwrap();
-    let enc = get_encoder();
-    let msg = enc.serialize(&m).unwrap();
-    v.extend_from_slice(&msg);
-    println!("MSG: {:#x?}", &v);
-    t.write(&v);
+    send_msg(
+        "show_threads_51077d14",
+        &ShowThreads {
+            client_index: t.get_client_index(),
+            context: 0,
+        },
+        &mut *t,
+    );
 
-    let get_f64_increment_by_one = t
-        .get_msg_index("get_f64_increment_by_one_b64f027e")
-        .unwrap();
-    let m = GetF64IncrementByOne {
-        client_index: t.get_client_index(),
-        context: 0,
-        f64_value: f64::from_bits((1.0f64).to_bits().to_be()),
-    };
-    let enc = get_encoder();
-    let mut v = enc.serialize(&get_f64_increment_by_one).unwrap();
-    let enc = get_encoder();
-    let msg = enc.serialize(&m).unwrap();
-    v.extend_from_slice(&msg);
-    println!("MSG: {:#x?}", &v);
-    t.write(&v);
+    send_msg(
+        "get_f64_increment_by_one_b64f027e",
+        &GetF64IncrementByOne {
+            client_index: t.get_client_index(),
+            context: 0,
+            f64_value: f64::from_bits((1.0f64).to_bits().to_be()),
+        },
+        &mut *t,
+    );
 
-    std::thread::sleep(std::time::Duration::from_secs(1));
     let mut buf = [0; 2048];
     println!("Reading");
     // let res = t.read(&mut buf);
+    let now = SystemTime::now();
+    let res = loop {
+        let res = t.read_one_msg_id_and_msg();
+        if res.is_ok() {
+            break res;
+        }
+    };
+    println!("Read1: {:x?}, took {:?}", res, now.elapsed());
     let res = t.read_one_msg_id_and_msg();
-    println!("Read1: {:x?}", res);
-    let res = t.read_one_msg_id_and_msg();
+
     println!("Read2: {:x?}", &res);
     if let Ok((msg_id, data)) = res {
         println!("Original data len: {}", data.len());
         println!("from  a bin: {:x?}", &data);
-        let r: ShowThreadsReply = get_encoder().deserialize(&data).unwrap();
+        let r: ShowThreadsReply = get_encoder()
+            .allow_trailing_bytes()
+            .deserialize(&data)
+            .unwrap();
         println!("{:?}", &r);
         let data = serde_json::to_string(&r).unwrap();
         println!("JSON: {}", data);
@@ -204,12 +207,12 @@ fn main() {
         println!("JSON: {}", data);
     }
 
-    let res = t.read_one_msg_id_and_msg();
-    println!("Read4: {:x?}", res);
+    //let res = t.read_one_msg_id_and_msg();
+    //println!("Read4: {:x?}", res);
 
     // t.control_ping();
     //
-    // bench(&mut t);
+    bench(&mut *t);
 
     std::thread::sleep(std::time::Duration::from_secs(1));
     t.disconnect();
