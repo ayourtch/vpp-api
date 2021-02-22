@@ -126,7 +126,7 @@ fn main() {
         Box::new(shmem::Transport::new())
     };
 
-    println!("Connect result: {}", t.connect("api-test", None, 256));
+    println!("Connect result: {:?}", t.connect("api-test", None, 256));
     t.set_nonblocking(opts.nonblocking);
 
     send_msg(
