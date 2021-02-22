@@ -3,6 +3,10 @@ name = "vpp-api"
 version = "0.0.0"
 authors = ["ayourtch"]
 edition = "2018"
+description = "fd.io VPP API - the user-facing module"
+license = "Apache-2.0"
+repository = "https://github.com/ayourtch/vpp-api"
+homepage = "https://wiki.fd.io/view/VPP"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
