@@ -8,6 +8,8 @@ use std::time::{Duration, SystemTime};
 use vpp_api_encoding::typ::*;
 use vpp_api_transport::*;
 
+use typenum::{U10, U256, U32, U64};
+
 /// This program does something useful, but its author needs to edit this.
 /// Else it will be just hanging around forever
 #[derive(Debug, Clone, Clap, Serialize, Deserialize)]
@@ -43,6 +45,105 @@ fn get_encoder() -> impl bincode::config::Options {
 use vpp_api_transport::afunix;
 use vpp_api_transport::shmem;
 use vpp_api_transport::VppApiTransport;
+
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct TestAPI {
+    id: i32,
+    foo: FixedSizeString<U10>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ControlPing {
+    pub client_index: u32,
+    pub context: u32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ControlPingReply {
+    pub context: u32,
+    pub retval: i32,
+    pub client_index: u32,
+    pub vpe_pid: u32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct CliInband {
+    pub client_index: u32,
+    pub context: u32,
+    pub cmd: VariableSizeString,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct CliInbandReply {
+    pub context: u32,
+    pub retval: i32,
+    pub reply: VariableSizeString,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ShowThreads {
+    pub client_index: u32,
+    pub context: u32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ThreadData {
+    pub id: u32,
+    pub name: FixedSizeString<U64>,
+    pub r#type: FixedSizeString<U64>,
+    pub pid: u32,
+    pub cpu_id: u32,
+    pub core: u32,
+    pub cpu_socket: u32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ShowThreadsReply {
+    pub context: u32,
+    pub retval: i32,
+    pub count: u32,
+    thread_data: VariableSizeArray<ThreadData>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct GetF64IncrementByOne {
+    pub client_index: u32,
+    pub context: u32,
+    pub f64_value: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct GetF64IncrementByOneReply {
+    pub context: u32,
+    pub retval: u32,
+    pub f64_value: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ShowVersion {
+    pub client_index: u32,
+    pub context: u32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ShowVersionReply {
+    pub context: u32,
+    pub retval: i32,
+    pub program: FixedSizeString<U32>,
+    pub version: FixedSizeString<U32>,
+    pub build_date: FixedSizeString<U32>,
+    pub build_directory: FixedSizeString<U256>,
+}
+
+pub fn test_func() {
+    let t = CliInband {
+        client_index: 0xaaaabbbb,
+        context: 0xccccdddd,
+        cmd: "testng123".try_into().unwrap(),
+    };
+    println!("t: {:#x?}", &t);
+}
 
 fn bench(t: &mut dyn VppApiTransport) {
     use std::thread::sleep;
