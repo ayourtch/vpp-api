@@ -313,7 +313,7 @@ fn main() {
 
     // t.control_ping();
     //
-    bench(&mut *t);
+    // bench(&mut *t);
 
     std::thread::sleep(std::time::Duration::from_secs(1));
     t.disconnect();
