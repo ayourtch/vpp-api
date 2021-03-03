@@ -6,21 +6,16 @@ use std::fmt;
 use typenum::{U10, U256, U32, U64};
 
 #[derive(Clone)]
-pub enum FixedSizeString<N: ArrayLength<u8>> {
-    FixedSizeString(GenericArray<u8, N>),
-}
+pub struct FixedSizeString<N: ArrayLength<u8>>(GenericArray<u8, N>);
 
 impl<N: ArrayLength<u8>> fmt::Debug for FixedSizeString<N> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self {
-            Self::FixedSizeString(v) => {
-                let val_str = match std::str::from_utf8(v) {
-                    Ok(s) => format!("{:?}", &s.trim_end_matches("\u{0}")),
-                    Err(_) => format!("{:?}", &v),
-                };
-                write!(f, "FixedSizeString[{}]: {}", &N::to_u32(), &val_str)
-            }
-        }
+        let v = &self.0;
+        let val_str = match std::str::from_utf8(v) {
+            Ok(s) => format!("{:?}", &s.trim_end_matches("\u{0}")),
+            Err(_) => format!("{:?}", &v),
+        };
+        write!(f, "FixedSizeString[{}]: {}", &N::to_u32(), &val_str)
     }
 }
 
@@ -42,7 +37,7 @@ impl<N: ArrayLength<u8>> TryFrom<&str> for FixedSizeString<N> {
                 out[i] = *b;
             }
 
-            Ok(Self::FixedSizeString(out))
+            Ok(FixedSizeString(out))
         }
     }
 }
@@ -52,9 +47,7 @@ impl<N: ArrayLength<u8>> Serialize for FixedSizeString<N> {
     where
         S: Serializer,
     {
-        let data = match self {
-            FixedSizeString::FixedSizeString(v) => v,
-        };
+        let data = &self.0;
 
         let mut len = data.len();
         let mut seq = serializer.serialize_tuple(len)?;
@@ -96,7 +89,7 @@ impl<'de, N: ArrayLength<u8>> Deserialize<'de> for FixedSizeString<N> {
                     res[i] = b;
                 }
 
-                return Ok(FixedSizeString::FixedSizeString(res));
+                return Ok(FixedSizeString(res));
             }
         }
 
