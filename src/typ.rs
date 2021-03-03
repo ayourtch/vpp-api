@@ -103,21 +103,16 @@ impl<'de, N: ArrayLength<u8>> Deserialize<'de> for FixedSizeString<N> {
 }
 
 #[derive(Clone, Serialize, Deserialize)]
-pub enum VariableSizeString {
-    VariableSizeString(Vec<u8>),
-}
+pub struct VariableSizeString(Vec<u8>);
 
 impl fmt::Debug for VariableSizeString {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self {
-            Self::VariableSizeString(v) => {
-                let val_str = match std::str::from_utf8(v) {
-                    Ok(s) => format!("{:?}", &s),
-                    Err(_) => format!("{:?}", &v),
-                };
-                write!(f, "VariableSizeString: {}", &val_str)
-            }
-        }
+        let v = &self.0;
+        let val_str = match std::str::from_utf8(v) {
+            Ok(s) => format!("{:?}", &s),
+            Err(_) => format!("{:?}", &v),
+        };
+        write!(f, "VariableSizeString: {}", &val_str)
     }
 }
 
@@ -130,7 +125,7 @@ impl TryFrom<&str> for VariableSizeString {
             out.push(*b);
         }
 
-        Ok(Self::VariableSizeString(out))
+        Ok(VariableSizeString(out))
     }
 }
 
