@@ -46,7 +46,6 @@ use vpp_api_transport::afunix;
 use vpp_api_transport::shmem;
 use vpp_api_transport::VppApiTransport;
 
-
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TestAPI {
     id: i32,
@@ -103,7 +102,7 @@ pub struct ShowThreadsReply {
     pub context: u32,
     pub retval: i32,
     pub count: u32,
-    thread_data: VariableSizeArray<ThreadData>,
+    pub thread_data: VariableSizeArray<ThreadData>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -190,7 +189,86 @@ fn send_msg<'a, T: Serialize + Deserialize<'a>>(name: &str, m: &T, t: &mut dyn V
     t.write(&v);
 }
 
+fn deser3_test() {
+    let strep = VariableSizeArray::<u8>(vec![1, 2, 1, 3, 4, 5]);
+
+    println!("structure: {:x?}", &strep);
+    let enc = get_encoder();
+    let mut v = enc.serialize(&strep).unwrap();
+    println!("converted to bin: {:x?}", &v);
+
+    let r: VariableSizeArray<u8> = get_encoder()
+        .allow_trailing_bytes()
+        .deserialize(&v)
+        .unwrap();
+    println!("from bin: {:#x?}", &r);
+
+    let data = serde_json::to_string(&r).unwrap();
+    println!("JSON: {}", data);
+}
+fn deser2_test() {
+    // deser3_test();
+
+    let td = ThreadData {
+        id: 0,
+        name: "some name".try_into().unwrap(),
+        r#type: "worker".try_into().unwrap(),
+        pid: 1234,
+        cpu_id: 0,
+        core: 0,
+        cpu_socket: 42,
+    };
+    let strep = VariableSizeArray(vec![td.clone(), td.clone(), td.clone()]);
+
+    println!("structure: {:x?}", &strep);
+    let enc = get_encoder();
+    let mut v = enc.serialize(&strep).unwrap();
+    println!("converted to bin: {:x?}", &v);
+
+    let r: VariableSizeArray<ThreadData> = get_encoder()
+        .allow_trailing_bytes()
+        .deserialize(&v)
+        .unwrap();
+    println!("from bin: {:x?}", &r);
+
+    let data = serde_json::to_string(&r).unwrap();
+    println!("JSON: {}", data);
+}
+
+fn deser_test() {
+    let td = ThreadData {
+        id: 0,
+        name: "some name".try_into().unwrap(),
+        r#type: "worker".try_into().unwrap(),
+        pid: 1234,
+        cpu_id: 0,
+        core: 0,
+        cpu_socket: 42,
+    };
+    let strep = ShowThreadsReply {
+        context: 0x42424242,
+        retval: 42,
+        count: 1,
+        thread_data: VariableSizeArray(vec![td]),
+    };
+
+    println!("structure: {:x?}", &strep);
+    let enc = get_encoder();
+    let mut v = enc.serialize(&strep).unwrap();
+    println!("converted to bin: {:x?}", &v);
+
+    let r: ShowThreadsReply = get_encoder()
+        .allow_trailing_bytes()
+        .deserialize(&v)
+        .unwrap();
+    println!("from bin: {:#x?}", &r);
+
+    let data = serde_json::to_string(&r).unwrap();
+    println!("JSON: {}", data);
+}
+
 fn main() {
+    deser_test();
     let opts: Opts = Opts::parse();
 
     // allow to load the options, so far there is no good built-in way
@@ -284,12 +362,12 @@ fn main() {
     println!("Read2: {:x?}", &res);
     if let Ok((msg_id, data)) = res {
         println!("Original data len: {}", data.len());
-        println!("from  a bin: {:x?}", &data);
+        println!("from  a bin: {:#x?}", &data);
         let r: ShowThreadsReply = get_encoder()
             .allow_trailing_bytes()
             .deserialize(&data)
             .unwrap();
-        println!("{:?}", &r);
+        println!("{:#?}", &r);
         let data = serde_json::to_string(&r).unwrap();
         println!("JSON: {}", data);
         let enc = get_encoder();

@@ -142,9 +142,7 @@ impl TryFrom<&str> for VariableSizeString {
 }
 
 #[derive(Clone, Debug)]
-pub enum VariableSizeArray<T> {
-    VariableSizeData(Vec<T>),
-}
+pub struct VariableSizeArray<T>(pub Vec<T>);
 
 use serde::ser::{SerializeSeq, SerializeTuple, Serializer};
 
@@ -153,14 +151,12 @@ impl<T: Debug + Serialize> Serialize for VariableSizeArray<T> {
     where
         S: Serializer,
     {
-        let data = match self {
-            VariableSizeArray::VariableSizeData(v) => v,
-        };
+        let data = &self.0;
 
         let mut len = data.len();
         let mut seq = serializer.serialize_tuple(len)?;
         for b in data {
-            seq.serialize_element(b)?;
+            seq.serialize_element(&b)?;
         }
         seq.end()
     }
@@ -200,12 +196,15 @@ impl<'de, T: Deserialize<'de> + Debug> Deserialize<'de> for VariableSizeArray<T>
                 */
 
                 loop {
-                    let nxt = seq.next_element()?;
-                    let nxt: Option<T> = nxt.unwrap();
-                    if nxt.is_none() {
+                    let nxt = seq.next_element();
+                    if nxt.is_err() {
                         break;
                     }
-                    res.push(nxt.unwrap());
+                    let nxt = nxt?;
+                    if nxt.is_some() {
+                        let nxt: T = nxt.unwrap();
+                        res.push(nxt);
+                    }
                 }
                 /*
                 for i in 0..length {
@@ -216,7 +215,7 @@ impl<'de, T: Deserialize<'de> + Debug> Deserialize<'de> for VariableSizeArray<T>
                 }
                 */
 
-                return Ok(VariableSizeArray::VariableSizeData(res));
+                return Ok(VariableSizeArray::<T>(res));
             }
         }
 
@@ -228,4 +227,3 @@ impl<'de, T: Deserialize<'de> + Debug> Deserialize<'de> for VariableSizeArray<T>
         )?);
     }
 }
-
