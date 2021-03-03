@@ -1,6 +1,6 @@
 use bincode::Options;
 use clap::Clap;
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize, de::DeserializeOwned};
 use std::collections::HashMap;
 use std::convert::TryInto;
 use std::io::{Read, Write};
@@ -189,6 +189,39 @@ fn send_msg<'a, T: Serialize + Deserialize<'a>>(name: &str, m: &T, t: &mut dyn V
     t.write(&v);
 }
 
+fn send_recv_msg<'a, T: Serialize + Deserialize<'a>, TR: Serialize + DeserializeOwned>(
+    name: &str,
+    m: &T,
+    t: &mut dyn VppApiTransport,
+    reply_name: &str,
+) -> TR {
+    let vl_msg_id = t.get_msg_index(name).unwrap();
+    let reply_vl_msg_id = t.get_msg_index(reply_name).unwrap();
+    let enc = get_encoder();
+    let mut v = enc.serialize(&vl_msg_id).unwrap();
+    let enc = get_encoder();
+    let msg = enc.serialize(&m).unwrap();
+    v.extend_from_slice(&msg);
+    println!("MSG[{} = 0x{:x}]: {:#x?}", name, vl_msg_id, &v);
+    t.write(&v);
+
+    loop {
+        let res = t.read_one_msg_id_and_msg();
+        if let Ok((msg_id, data)) = res {
+            println!("id: {} data: {:x?}", msg_id, &data);
+            if msg_id == reply_vl_msg_id {
+                let res = get_encoder()
+                    .allow_trailing_bytes()
+                    .deserialize::<TR>(&data)
+                    .unwrap();
+                return res;
+            }
+        } else {
+            panic!("Result is an error: {:?}", &res);
+        }
+    }
+}
+
 fn deser3_test() {
     let strep = VariableSizeArray::<u8>(vec![1, 2, 1, 3, 4, 5]);
 
@@ -308,33 +341,35 @@ fn main() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     t.set_nonblocking(opts.nonblocking);
 
-    send_msg(
+    let ping_reply: ControlPingReply = send_recv_msg(
         "control_ping_51077d14",
         &ControlPing {
             client_index: t.get_client_index(),
             context: 0,
         },
         &mut *t,
+        "control_ping_reply_f6b0b8ca",
     );
+    println!("Control ping reply: {:#?}", &ping_reply);
 
-    /*
-
-    send_msg("cli_inband_f8377302", &CliInband {
+    let cli_reply: CliInbandReply = send_recv_msg("cli_inband_f8377302", &CliInband {
         client_index: t.get_client_index(),
         context: 0,
         cmd: "show version".try_into().unwrap(),
-    }, &mut t);
+    }, &mut *t, "cli_inband_reply_05879051");
+    println!("cli reply: {:#?}", &cli_reply);
 
-    */
 
-    send_msg(
+    let show_threads_reply: ShowThreadsReply = send_recv_msg(
         "show_threads_51077d14",
         &ShowThreads {
             client_index: t.get_client_index(),
             context: 0,
         },
         &mut *t,
+        "show_threads_reply_efd78e83"
     );
+    println!("threads reply: {:#?}", &show_threads_reply);
 
     send_msg(
         "get_f64_increment_by_one_b64f027e",
