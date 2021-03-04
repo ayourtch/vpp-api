@@ -109,14 +109,14 @@ pub struct ShowThreadsReply {
 pub struct GetF64IncrementByOne {
     pub client_index: u32,
     pub context: u32,
-    pub f64_value: f64,
+    pub f64_value: F64,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GetF64IncrementByOneReply {
     pub context: u32,
     pub retval: u32,
-    pub f64_value: f64,
+    pub f64_value: F64,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -403,12 +403,11 @@ fn main() {
         &GetF64IncrementByOne {
             client_index: t.get_client_index(),
             context: 0,
-            f64_value: f64::from_bits((1.0f64).to_bits().to_be()),
+            f64_value: F64(1.0),
         },
         &mut *t,
         "get_f64_increment_by_one_reply_d25dbaa3",
     );
-    f64_inc_reply.f64_value = f64::from_bits(f64_inc_reply.f64_value.to_bits().to_be());
     println!("{:?}", &f64_inc_reply);
 
     // t.control_ping();

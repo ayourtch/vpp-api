@@ -183,6 +183,60 @@ impl<'de> Deserialize<'de> for VariableSizeString {
     }
 }
 
+#[derive(Clone)]
+pub struct F64(pub f64);
+
+impl fmt::Debug for F64 {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let v = &self.0;
+        write!(f, "F64({})", &v)
+    }
+}
+
+impl TryFrom<&f64> for F64 {
+    type Error = String;
+
+    fn try_from(value: &f64) -> Result<Self, Self::Error> {
+        Ok(F64(*value))
+    }
+}
+
+impl Serialize for F64 {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let data = &self.0;
+        let out = f64::from_bits((data).to_bits().to_be());
+        serializer.serialize_f64(out)
+    }
+}
+
+impl<'de> Deserialize<'de> for F64 {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        struct F64Visitor;
+        impl<'de> Visitor<'de> for F64Visitor {
+            type Value = F64;
+            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+                formatter.write_str("F64")
+            }
+
+            fn visit_f64<E>(self, value: f64) -> Result<Self::Value, E>
+            where
+                E: de::Error,
+            {
+                let f64_value = f64::from_bits(value.to_bits().to_be());
+                Ok(F64(f64_value))
+            }
+        }
+
+        return Ok(deserializer.deserialize_f64(F64Visitor)?);
+    }
+}
+
 #[derive(Clone, Debug)]
 pub struct VariableSizeArray<T>(pub Vec<T>);
 
