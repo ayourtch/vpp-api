@@ -375,6 +375,17 @@ fn main() {
     );
     println!("Control ping reply: {:#?}", &ping_reply);
 
+    let show_ver_reply: ShowVersionReply = send_recv_msg(
+        "show_version_51077d14",
+        &ShowVersion {
+            client_index: t.get_client_index(),
+            context: 0,
+        },
+        &mut *t,
+        "show_version_reply_c919bde1",
+    );
+    println!("Show version reply: {:#?}", &show_ver_reply);
+
     let cli_reply: CliInbandReply = send_recv_msg(
         "cli_inband_f8377302",
         &CliInband {
