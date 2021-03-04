@@ -32,6 +32,10 @@ struct Opts {
     #[clap(short, long, default_value = "File")]
     parse_type: OptParseType,
 
+    /// Print message names
+    #[clap(long)]
+    print_message_names: bool,
+
     /// A level of verbosity, and can be used multiple times
     #[clap(short, long, parse(from_occurrences))]
     verbose: i32,
@@ -663,6 +667,14 @@ fn main() {
                 let mut api_files: LinkedHashMap<String, VppJsApiFile> = LinkedHashMap::new();
                 parse_api_tree(&opts, &opts.in_file, &mut api_files);
                 println!("Loaded {} API definition files", api_files.len());
+                if opts.print_message_names {
+                    for (name, f) in &api_files {
+                        for m in &f.messages {
+                            let crc = &m.info.crc.strip_prefix("0x").unwrap();
+                            println!("{}_{}", &m.name, &crc);
+                        }
+                    }
+                }
             }
             e => {
                 panic!("inappropriate parse type {:?} for inexistent file", e);
