@@ -209,6 +209,66 @@
             }
         ],
         [
+            "nat44_ed_plugin_enable_disable",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "inside_vrf"
+            ],
+            [
+                "u32",
+                "outside_vrf"
+            ],
+            [
+                "u32",
+                "sessions"
+            ],
+            [
+                "u32",
+                "session_memory"
+            ],
+            [
+                "bool",
+                "enable"
+            ],
+            [
+                "vl_api_nat44_config_flags_t",
+                "flags"
+            ],
+            {
+                "crc": "0xbe17f8dd"
+            }
+        ],
+        [
+            "nat44_ed_plugin_enable_disable_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ],
+        [
             "nat_control_ping",
             [
                 "u16",
@@ -907,86 +967,6 @@
             ],
             {
                 "crc": "0x3c4df4e1"
-            }
-        ],
-        [
-            "nat_set_fq_options",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "u32",
-                "frame_queue_nelts"
-            ],
-            {
-                "crc": "0x2399bd71"
-            }
-        ],
-        [
-            "nat_set_fq_options_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804"
-            }
-        ],
-        [
-            "nat_show_fq_options",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            {
-                "crc": "0x51077d14"
-            }
-        ],
-        [
-            "nat_show_fq_options_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            [
-                "u32",
-                "frame_queue_nelts"
-            ],
-            {
-                "crc": "0x7213b545"
             }
         ],
         [
@@ -2737,6 +2717,86 @@
             {
                 "crc": "0x46924a06"
             }
+        ],
+        [
+            "nat44_ed_set_fq_options",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "frame_queue_nelts"
+            ],
+            {
+                "crc": "0x2399bd71"
+            }
+        ],
+        [
+            "nat44_ed_set_fq_options_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ],
+        [
+            "nat44_ed_show_fq_options",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            {
+                "crc": "0x51077d14"
+            }
+        ],
+        [
+            "nat44_ed_show_fq_options_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "u32",
+                "frame_queue_nelts"
+            ],
+            {
+                "crc": "0x7213b545"
+            }
         ]
     ],
     "unions": [
@@ -3235,6 +3295,9 @@
         "nat44_plugin_enable_disable": {
             "reply": "nat44_plugin_enable_disable_reply"
         },
+        "nat44_ed_plugin_enable_disable": {
+            "reply": "nat44_ed_plugin_enable_disable_reply"
+        },
         "nat_control_ping": {
             "reply": "nat_control_ping_reply"
         },
@@ -3271,12 +3334,6 @@
         },
         "nat_get_timeouts": {
             "reply": "nat_get_timeouts_reply"
-        },
-        "nat_set_fq_options": {
-            "reply": "nat_set_fq_options_reply"
-        },
-        "nat_show_fq_options": {
-            "reply": "nat_show_fq_options_reply"
         },
         "nat_set_addr_and_port_alloc_alg": {
             "reply": "nat_set_addr_and_port_alloc_alg_reply"
@@ -3379,6 +3436,12 @@
         },
         "nat44_forwarding_is_enabled": {
             "reply": "nat44_forwarding_is_enabled_reply"
+        },
+        "nat44_ed_set_fq_options": {
+            "reply": "nat44_ed_set_fq_options_reply"
+        },
+        "nat44_ed_show_fq_options": {
+            "reply": "nat44_ed_show_fq_options_reply"
         }
     },
     "options": {
@@ -3406,11 +3469,11 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0xb9179080",
+    "vl_api_version": "0xfd9ae40f",
     "imports": [
         "vnet/ip/ip_types.api",
         "vnet/interface_types.api",
-        "plugins/nat/nat_types.api"
+        "plugins/nat/lib/nat_types.api"
     ],
     "counters": [],
     "paths": []

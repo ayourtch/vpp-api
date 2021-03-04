@@ -143,6 +143,50 @@
             }
         ],
         [
+            "sw_interface_set_promisc",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "bool",
+                "promisc_on"
+            ],
+            {
+                "crc": "0xd40860d4"
+            }
+        ],
+        [
+            "sw_interface_set_promisc_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ],
+        [
             "hw_interface_set_mtu",
             [
                 "u16",
@@ -1929,6 +1973,9 @@
         "sw_interface_set_flags": {
             "reply": "sw_interface_set_flags_reply"
         },
+        "sw_interface_set_promisc": {
+            "reply": "sw_interface_set_promisc_reply"
+        },
         "hw_interface_set_mtu": {
             "reply": "hw_interface_set_mtu_reply"
         },
@@ -2039,7 +2086,7 @@
             "type": "vl_api_ip6_prefix_t"
         }
     },
-    "vl_api_version": "0xbe60ee2b",
+    "vl_api_version": "0x29a0076c",
     "imports": [
         "vnet/interface_types.api",
         "vnet/ethernet/ethernet_types.api",

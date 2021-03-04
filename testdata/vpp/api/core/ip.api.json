@@ -555,6 +555,29 @@
                 "vl_api_address_t",
                 "nh"
             ]
+        ],
+        [
+            "ip_path_mtu",
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "table_id"
+            ],
+            [
+                "vl_api_address_t",
+                "nh"
+            ],
+            [
+                "u16",
+                "path_mtu"
+            ]
         ]
     ],
     "messages": [
@@ -2163,6 +2186,180 @@
             {
                 "crc": "0xe8d4e804"
             }
+        ],
+        [
+            "ip_path_mtu_update",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_ip_path_mtu_t",
+                "pmtu"
+            ],
+            {
+                "crc": "0x10bbe5cb"
+            }
+        ],
+        [
+            "ip_path_mtu_update_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ],
+        [
+            "ip_path_mtu_get",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "cursor"
+            ],
+            {
+                "crc": "0xf75ba505"
+            }
+        ],
+        [
+            "ip_path_mtu_get_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "u32",
+                "cursor"
+            ],
+            {
+                "crc": "0x53b48f5d"
+            }
+        ],
+        [
+            "ip_path_mtu_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_ip_path_mtu_t",
+                "pmtu"
+            ],
+            {
+                "crc": "0xac9539a7"
+            }
+        ],
+        [
+            "ip_path_mtu_replace_begin",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            {
+                "crc": "0x51077d14"
+            }
+        ],
+        [
+            "ip_path_mtu_replace_begin_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ],
+        [
+            "ip_path_mtu_replace_end",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            {
+                "crc": "0x51077d14"
+            }
+        ],
+        [
+            "ip_path_mtu_replace_end_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
         ]
     ],
     "unions": [
@@ -3463,6 +3660,11 @@
         ]
     ],
     "services": {
+        "ip_path_mtu_get": {
+            "reply": "ip_path_mtu_get_reply",
+            "stream": true,
+            "stream_msg": "ip_path_mtu_details"
+        },
         "ip_table_add_del": {
             "reply": "ip_table_add_del_reply"
         },
@@ -3571,6 +3773,15 @@
         },
         "ip_reassembly_enable_disable": {
             "reply": "ip_reassembly_enable_disable_reply"
+        },
+        "ip_path_mtu_update": {
+            "reply": "ip_path_mtu_update_reply"
+        },
+        "ip_path_mtu_replace_begin": {
+            "reply": "ip_path_mtu_replace_begin_reply"
+        },
+        "ip_path_mtu_replace_end": {
+            "reply": "ip_path_mtu_replace_end_reply"
         }
     },
     "options": {
@@ -3602,7 +3813,7 @@
             "length": 6
         }
     },
-    "vl_api_version": "0x333d6203",
+    "vl_api_version": "0x4dc31a92",
     "imports": [
         "vnet/interface_types.api",
         "vnet/fib/fib_types.api",

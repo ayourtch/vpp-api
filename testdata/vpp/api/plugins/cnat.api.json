@@ -306,6 +306,10 @@
             [
                 "vl_api_cnat_endpoint_t",
                 "src_ep"
+            ],
+            [
+                "u8",
+                "flags"
             ]
         ],
         [
@@ -329,6 +333,10 @@
             [
                 "u8",
                 "flags"
+            ],
+            [
+                "vl_api_cnat_lb_type_t",
+                "lb_type"
             ],
             [
                 "u32",
@@ -360,6 +368,10 @@
                 "ip_proto"
             ],
             [
+                "u8",
+                "location"
+            ],
+            [
                 "f64",
                 "timestamp"
             ]
@@ -385,7 +397,7 @@
                 "translation"
             ],
             {
-                "crc": "0xe35382b3"
+                "crc": "0xcd5aedf5"
             }
         ],
         [
@@ -465,7 +477,7 @@
                 "translation"
             ],
             {
-                "crc": "0x4ca67cb9"
+                "crc": "0x347e1f16"
             }
         ],
         [
@@ -537,7 +549,7 @@
                 "session"
             ],
             {
-                "crc": "0x6cb91175"
+                "crc": "0x7e5017c7"
             }
         ],
         [
@@ -686,6 +698,46 @@
         ],
         [
             "cnat_add_del_snat_prefix_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ],
+        [
+            "cnat_set_snat_policy",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_cnat_snat_policies_t",
+                "policy"
+            ],
+            {
+                "crc": "0x5329b08d"
+            }
+        ],
+        [
+            "cnat_set_snat_policy_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1417,6 +1469,40 @@
             {
                 "enumtype": "u8"
             }
+        ],
+        [
+            "cnat_endpoint_tuple_flags",
+            [
+                "CNAT_EPT_NO_NAT",
+                1
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ],
+        [
+            "cnat_lb_type",
+            [
+                "CNAT_LB_TYPE_DEFAULT",
+                0
+            ],
+            [
+                "CNAT_LB_TYPE_MAGLEV",
+                1
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ],
+        [
+            "cnat_snat_policies",
+            [
+                "CNAT_SNAT_POLICY_NONE",
+                1
+            ],
+            {
+                "enumtype": "u32"
+            }
         ]
     ],
     "enumflags": [],
@@ -1446,10 +1532,13 @@
         },
         "cnat_add_del_snat_prefix": {
             "reply": "cnat_add_del_snat_prefix_reply"
+        },
+        "cnat_set_snat_policy": {
+            "reply": "cnat_set_snat_policy_reply"
         }
     },
     "options": {
-        "version": "0.1.0"
+        "version": "0.2.0"
     },
     "aliases": {
         "ip4_address": {
@@ -1473,7 +1562,7 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0x6681f424",
+    "vl_api_version": "0xd7e8d1ba",
     "imports": [
         "vnet/ip/ip_types.api",
         "vnet/fib/fib_types.api",

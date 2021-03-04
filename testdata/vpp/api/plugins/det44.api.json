@@ -1675,7 +1675,7 @@
     "imports": [
         "vnet/ip/ip_types.api",
         "vnet/interface_types.api",
-        "plugins/nat/nat_types.api"
+        "plugins/nat/lib/nat_types.api"
     ],
     "counters": [],
     "paths": []
