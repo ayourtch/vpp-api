@@ -398,7 +398,7 @@ fn main() {
     );
     println!("threads reply: {:#?}", &show_threads_reply);
 
-    send_msg(
+    let mut f64_inc_reply: GetF64IncrementByOneReply = send_recv_msg(
         "get_f64_increment_by_one_b64f027e",
         &GetF64IncrementByOne {
             client_index: t.get_client_index(),
@@ -406,50 +406,10 @@ fn main() {
             f64_value: f64::from_bits((1.0f64).to_bits().to_be()),
         },
         &mut *t,
+        "get_f64_increment_by_one_reply_d25dbaa3",
     );
-
-    let mut buf = [0; 2048];
-    println!("Reading");
-    // let res = t.read(&mut buf);
-    let now = SystemTime::now();
-    let res = loop {
-        let res = t.read_one_msg_id_and_msg();
-        if res.is_ok() {
-            break res;
-        }
-    };
-    println!("Read1: {:x?}, took {:?}", res, now.elapsed());
-    let res = t.read_one_msg_id_and_msg();
-
-    println!("Read2: {:x?}", &res);
-    if let Ok((msg_id, data)) = res {
-        println!("Original data len: {}", data.len());
-        println!("from  a bin: {:#x?}", &data);
-        let r: ShowThreadsReply = get_encoder()
-            .allow_trailing_bytes()
-            .deserialize(&data)
-            .unwrap();
-        println!("{:#?}", &r);
-        let data = serde_json::to_string(&r).unwrap();
-        println!("JSON: {}", data);
-        let enc = get_encoder();
-        let mut v = enc.serialize(&r).unwrap();
-        println!("back to bin: {:x?}", &v);
-        println!("New data len: {}", v.len());
-    }
-    let res = t.read_one_msg_id_and_msg();
-    println!("Read3: {:x?}", res);
-
-    if let Ok((msg_id, data)) = res {
-        let mut r: GetF64IncrementByOneReply = get_encoder().deserialize(&data).unwrap();
-        r.f64_value = f64::from_bits(r.f64_value.to_bits().to_be());
-        println!("{:?}", &r);
-        let data = serde_json::to_string_pretty(&r).unwrap();
-        println!("JSON: {}", data);
-    }
-
-    //let res = t.read_one_msg_id_and_msg();
-    //println!("Read4: {:x?}", res);
+    f64_inc_reply.f64_value = f64::from_bits(f64_inc_reply.f64_value.to_bits().to_be());
+    println!("{:?}", &f64_inc_reply);
 
     // t.control_ping();
     //
