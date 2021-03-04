@@ -185,7 +185,7 @@ fn send_msg<'a, T: Serialize + Deserialize<'a>>(name: &str, m: &T, t: &mut dyn V
     let enc = get_encoder();
     let msg = enc.serialize(&m).unwrap();
     v.extend_from_slice(&msg);
-    println!("MSG[{} = 0x{:x}]: {:#x?}", name, vl_msg_id, &v);
+    println!("MSG[{} = 0x{:x}]: {:?}", name, vl_msg_id, &v);
     t.write(&v);
 }
 
@@ -202,7 +202,7 @@ fn send_recv_msg<'a, T: Serialize + Deserialize<'a>, TR: Serialize + Deserialize
     let enc = get_encoder();
     let msg = enc.serialize(&m).unwrap();
     v.extend_from_slice(&msg);
-    println!("MSG[{} = 0x{:x}]: {:#x?}", name, vl_msg_id, &v);
+    println!("MSG[{} = 0x{:x}]: {:?}", name, vl_msg_id, &v);
     t.write(&v);
 
     loop {
