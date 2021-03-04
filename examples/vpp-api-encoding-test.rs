@@ -1,6 +1,6 @@
 use bincode::Options;
 use clap::Clap;
-use serde::{Deserialize, Serialize, de::DeserializeOwned};
+use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use std::collections::HashMap;
 use std::convert::TryInto;
 use std::io::{Read, Write};
@@ -375,13 +375,17 @@ fn main() {
     );
     println!("Control ping reply: {:#?}", &ping_reply);
 
-    let cli_reply: CliInbandReply = send_recv_msg("cli_inband_f8377302", &CliInband {
-        client_index: t.get_client_index(),
-        context: 0,
-        cmd: "show version".try_into().unwrap(),
-    }, &mut *t, "cli_inband_reply_05879051");
+    let cli_reply: CliInbandReply = send_recv_msg(
+        "cli_inband_f8377302",
+        &CliInband {
+            client_index: t.get_client_index(),
+            context: 0,
+            cmd: "show version".try_into().unwrap(),
+        },
+        &mut *t,
+        "cli_inband_reply_05879051",
+    );
     println!("cli reply: {:#?}", &cli_reply);
-
 
     let show_threads_reply: ShowThreadsReply = send_recv_msg(
         "show_threads_51077d14",
@@ -390,7 +394,7 @@ fn main() {
             context: 0,
         },
         &mut *t,
-        "show_threads_reply_efd78e83"
+        "show_threads_reply_efd78e83",
     );
     println!("threads reply: {:#?}", &show_threads_reply);
 
