@@ -102,7 +102,7 @@ impl<'de, N: ArrayLength<u8>> Deserialize<'de> for FixedSizeString<N> {
     }
 }
 
-#[derive(Clone, Serialize, Deserialize)]
+#[derive(Clone)]
 pub struct VariableSizeString(Vec<u8>);
 
 impl fmt::Debug for VariableSizeString {
@@ -126,6 +126,60 @@ impl TryFrom<&str> for VariableSizeString {
         }
 
         Ok(VariableSizeString(out))
+    }
+}
+
+impl Serialize for VariableSizeString {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let data = &self.0;
+
+        let len: usize = data.len();
+        let len_u32: u32 = len.try_into().unwrap();
+        let mut seq = serializer.serialize_tuple(len)?;
+        seq.serialize_element(&len_u32)?;
+        for b in data {
+            seq.serialize_element(&b)?;
+        }
+        seq.end()
+    }
+}
+
+impl<'de> Deserialize<'de> for VariableSizeString {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        struct VariableSizeStringVisitor;
+        impl<'de> Visitor<'de> for VariableSizeStringVisitor {
+            type Value = VariableSizeString;
+            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+                formatter.write_str("VariableSizeString")
+            }
+
+            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            where
+                A: SeqAccess<'de>,
+            {
+                let mut res: Vec<u8> = vec![];
+                let length: u32 = seq
+                    .next_element()?
+                    .ok_or_else(|| serde::de::Error::invalid_length(1, &self))?;
+
+                for i in 0..length {
+                    res.push(
+                        seq.next_element()?
+                            .ok_or_else(|| serde::de::Error::invalid_length(1, &self))?,
+                    );
+                }
+
+                return Ok(VariableSizeString(res));
+            }
+        }
+
+        return Ok(deserializer.deserialize_tuple(1 << 31, VariableSizeStringVisitor)?);
     }
 }
 
