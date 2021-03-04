@@ -8,7 +8,7 @@ use std::time::{Duration, SystemTime};
 use vpp_api_encoding::typ::*;
 use vpp_api_transport::*;
 
-use typenum::{U10, U256, U32, U64};
+use typenum::{U10, U24, U256, U32, U64};
 
 /// This program does something useful, but its author needs to edit this.
 /// Else it will be just hanging around forever
@@ -133,6 +133,49 @@ pub struct ShowVersionReply {
     pub version: FixedSizeString<U32>,
     pub build_date: FixedSizeString<U32>,
     pub build_directory: FixedSizeString<U256>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum MemifRole {
+    API_MASTER = 0,
+    API_SLAVE = 1,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum MemifMode {
+    API_ETHERNET = 0,
+    API_IP = 1,
+    API_PUNT_INJECT = 2,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MacAddress(pub [u8; 6]);
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct InterfaceIndex(pub u32);
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MemifCreate {
+    client_index: u32,
+    context: u32,
+    role: MemifRole,
+    mode: MemifMode,
+    rx_queues: u8,
+    tx_queues: u8,
+    id: u32,
+    socket_id: u32,
+    ring_size: u32,
+    buffer_size: u16,
+    no_zero_copy: bool,
+    hw_addr: MacAddress,
+    secret: FixedSizeString<U24>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MemifCreateReply {
+    context: u32,
+    retval: i32,
+    sw_if_index: InterfaceIndex,
 }
 
 pub fn test_func() {
@@ -420,6 +463,30 @@ fn main() {
         "get_f64_increment_by_one_reply_d25dbaa3",
     );
     println!("{:?}", &f64_inc_reply);
+
+    let mc = MemifCreate {
+        client_index: t.get_client_index(),
+        context: 0,
+        role: MemifRole::API_MASTER,
+        mode: MemifMode::API_ETHERNET,
+        rx_queues: 4,
+        tx_queues: 4,
+        id: 1,
+        socket_id: 0,
+        ring_size: 1024,
+        buffer_size: 2048,
+        no_zero_copy: false,
+        hw_addr: MacAddress([0, 0x01, 0x02, 0x03, 0x04, 0x05]),
+        secret: "cisco123".try_into().unwrap(),
+    };
+    println!("memif request: {:#x?}", &mc);
+    let mcr: MemifCreateReply = send_recv_msg(
+        "memif_create_b1b25061",
+        &mc,
+        &mut *t,
+        "memif_create_reply_5383d31f",
+    );
+    println!("Memif create reply: {:#?}", &mcr);
 
     // t.control_ping();
     //
