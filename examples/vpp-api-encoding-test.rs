@@ -300,8 +300,31 @@ fn deser_test() {
     println!("JSON: {}", data);
 }
 
+fn deser_cli_inband_test() {
+    let strep = CliInbandReply {
+        context: 0x42424242,
+        retval: 42,
+        reply: "testing123".try_into().unwrap(),
+    };
+
+    println!("structure: {:x?}", &strep);
+    let enc = get_encoder();
+    let mut v = enc.serialize(&strep).unwrap();
+    println!("converted to bin: {:x?}", &v);
+
+    let r: CliInbandReply = get_encoder()
+        .allow_trailing_bytes()
+        .deserialize(&v)
+        .unwrap();
+    println!("from bin: {:#x?}", &r);
+
+    let data = serde_json::to_string(&r).unwrap();
+    println!("JSON: {}", data);
+}
+
 fn main() {
     deser_test();
+    deser_cli_inband_test();
     let opts: Opts = Opts::parse();
 
     // allow to load the options, so far there is no good built-in way
