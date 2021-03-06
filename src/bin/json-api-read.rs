@@ -678,7 +678,7 @@ fn get_rust_field_type(
                 if fld.ctype == "string" {
                     format!("FixedSizeString<typenum::U{}>", maxsz)
                 } else {
-                    format!("[{}; {}]", rtype, maxsz)
+                    format!("FixedSizeArray<typenum::U{}, {}>", maxsz, rtype)
                 }
             }
         }
