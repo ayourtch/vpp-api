@@ -626,16 +626,31 @@ fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppJs
     }
 }
 
-fn get_rust_type_from_ctype(opts: &Opts, ctype: &str) -> String {
+fn get_rust_type_from_ctype(
+    opts: &Opts,
+    enum_containers: &HashMap<String, String>,
+    ctype: &str,
+) -> String {
     use convert_case::{Case, Casing};
 
-    let result: String = if ctype.starts_with("vl_api_") {
-        let ctype_trimmed = ctype.trim_left_matches("vl_api_").trim_right_matches("_t");
-        ctype_trimmed.to_case(Case::UpperCamel)
-    } else {
-        format!("{}", ctype)
+    let rtype = {
+        let rtype: String = if ctype.starts_with("vl_api_") {
+            let ctype_trimmed = ctype.trim_left_matches("vl_api_").trim_right_matches("_t");
+            ctype_trimmed.to_case(Case::UpperCamel)
+        } else {
+            format!("{}", ctype)
+        };
+        /* if the candidate Rust type is an enum, we need to create
+        a parametrized type such that we knew which size to
+        deal with at serialization/deserialization time */
+
+        if let Some(container) = enum_containers.get(&rtype) {
+            format!("SizedEnum<{}, {}>", rtype, container)
+        } else {
+            rtype
+        }
     };
-    result
+    rtype
 }
 
 fn get_rust_field_name(opts: &Opts, name: &str) -> String {
@@ -653,18 +668,7 @@ fn get_rust_field_type(
     is_last: bool,
 ) -> String {
     use crate::VppJsApiFieldSize::*;
-    let rtype = {
-        let rtype = get_rust_type_from_ctype(opts, &fld.ctype);
-        /* if the candidate Rust type is an enum, we need to create
-        a parametrized type such that we knew which size to
-        deal with at serialization/deserialization time */
-
-        if let Some(container) = enum_containers.get(&rtype) {
-            format!("SizedEnum<{}, {}>", rtype, container)
-        } else {
-            rtype
-        }
-    };
+    let rtype = get_rust_type_from_ctype(opts, enum_containers, &fld.ctype);
     let full_rtype = if let Some(size) = &fld.maybe_size {
         match size {
             Variable(max_var) => {
@@ -709,6 +713,31 @@ fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
 
     for (name, f) in api_files {
         acc.push_str(&format!("\n/******** {} types *********/\n\n", &name));
+
+        for (mname, m) in &f.aliases {
+            let camel_case_name = camelize(opts, &mname);
+            if type_generated.get(&camel_case_name).is_some() {
+                continue;
+            }
+            acc.push_str(&format!(
+                "#[derive(Debug, Clone, Serialize, Deserialize)]\n"
+            ));
+
+            let rtype = get_rust_type_from_ctype(opts, &enum_containers, &m.ctype);
+            let rtype = if let Some(sz) = m.length {
+                format!("FixedSizeArray<{}, typenum::U{}>", rtype, sz)
+            } else {
+                rtype
+            };
+
+            acc.push_str(&format!(
+                "pub struct {} (pub {});\n",
+                &camel_case_name, rtype
+            ));
+            acc.push_str(&format!("/* {:#?} */\n\n", &m));
+            type_generated.insert(camel_case_name, ());
+        }
+
         for m in &f.enums {
             let camel_case_name = camelize(opts, &m.name);
             if type_generated.get(&camel_case_name).is_some() {
