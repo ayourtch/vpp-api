@@ -7,8 +7,9 @@ extern crate strum;
 extern crate strum_macros;
 use env_logger;
 use linked_hash_map::LinkedHashMap;
+use std::collections::HashMap;
 
-#[derive(Clap, Debug, Serialize, Deserialize, EnumString, Display)]
+#[derive(Clap, Debug, Clone, Serialize, Deserialize, EnumString, Display)]
 enum OptParseType {
     File,
     Tree,
@@ -18,7 +19,7 @@ enum OptParseType {
 
 /// Ingest the VPP API JSON definition file and output the Rust code
 #[clap(version = "0.1", author = "Andrew Yourtchenko <ayourtch@gmail.com>")]
-#[derive(Clap, Debug, Serialize, Deserialize)]
+#[derive(Clap, Debug, Clone, Serialize, Deserialize)]
 struct Opts {
     /// Input file name
     #[clap(short, long)]
@@ -36,12 +37,16 @@ struct Opts {
     #[clap(long)]
     print_message_names: bool,
 
+    /// Generate the code
+    #[clap(long)]
+    generate_code: bool,
+
     /// A level of verbosity, and can be used multiple times
     #[clap(short, long, parse(from_occurrences))]
     verbose: i32,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 struct VppJsApiType {
     type_name: String,
     fields: Vec<VppJsApiMessageFieldDef>,
@@ -103,7 +108,7 @@ impl<'de> Deserialize<'de> for VppJsApiType {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 enum VppJsApiDefaultValue {
     Str(String),
@@ -112,20 +117,20 @@ enum VppJsApiDefaultValue {
     F64(f64),
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct VppJsApiFieldOptions {
     #[serde(default)]
     default: Option<VppJsApiDefaultValue>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 enum VppJsApiFieldSize {
     Fixed(usize),
     Variable(Option<String>),
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 struct VppJsApiMessageFieldDef {
     ctype: String,
     name: String,
@@ -133,7 +138,7 @@ struct VppJsApiMessageFieldDef {
     maybe_options: Option<VppJsApiFieldOptions>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 enum VppJsApiMessageFieldHelper {
     Str(String),
@@ -254,12 +259,12 @@ impl<'de> Deserialize<'de> for VppJsApiMessageFieldDef {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct VppJsApiMessageInfo {
     crc: String,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 struct VppJsApiMessage {
     name: String,
     fields: Vec<VppJsApiMessageFieldDef>,
@@ -281,7 +286,7 @@ impl Serialize for VppJsApiMessage {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 enum VppJsApiMessageHelper {
     Field(VppJsApiMessageFieldDef),
@@ -404,17 +409,17 @@ impl Serialize for VppJsApiService {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct VppJsApiOptions {
     version: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct VppJsApiEnumInfo {
     enumtype: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize)]
 struct VppJsApiEnumValueDef {
     name: String,
     value: i64,
@@ -454,7 +459,7 @@ impl Serialize for VppJsApiEnum {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 enum VppJsApiEnumHelper {
     Str(String),
@@ -512,7 +517,7 @@ impl<'de> Deserialize<'de> for VppJsApiEnum {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct VppJsApiCounterElement {
     name: String,
     severity: String,
@@ -522,13 +527,13 @@ struct VppJsApiCounterElement {
     description: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct VppJsApiCounter {
     name: String,
     elements: Vec<VppJsApiCounterElement>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct VppJsApiPath {
     path: String,
     counter: String,
@@ -621,6 +626,110 @@ fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppJs
     }
 }
 
+fn get_rust_type_from_ctype(opts: &Opts, ctype: &str) -> String {
+    use convert_case::{Case, Casing};
+
+    let result: String = if ctype.starts_with("vl_api_") {
+        let ctype_trimmed = ctype.trim_left_matches("vl_api_").trim_right_matches("_t");
+        ctype_trimmed.to_case(Case::UpperCamel)
+    } else {
+        format!("{}", ctype)
+    };
+    result
+}
+
+fn get_rust_field_type(opts: &Opts, fld: &VppJsApiMessageFieldDef, is_last: bool) -> String {
+    use crate::VppJsApiFieldSize::*;
+    let rtype = get_rust_type_from_ctype(opts, &fld.ctype);
+    let full_rtype = if let Some(size) = &fld.maybe_size {
+        match size {
+            Variable(max_var) => {
+                if fld.ctype == "string" {
+                    format!("VariableSizeString")
+                } else {
+                    format!("VariableSizeArray<{}>", rtype)
+                }
+            }
+            Fixed(maxsz) => {
+                if fld.ctype == "string" {
+                    format!("FixedSizeString<typenum::U{}>", maxsz)
+                } else {
+                    format!("[{}; {}]", rtype, maxsz)
+                }
+            }
+        }
+    } else {
+        format!("{}", rtype)
+    };
+    if fld.maybe_options.is_none() {
+        format!("{},", full_rtype)
+    } else {
+        format!("{}, // {:?} {}", full_rtype, fld, is_last)
+    }
+}
+
+fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
+    use convert_case::{Case, Casing};
+    let mut type_generated: HashMap<String, ()> = HashMap::new();
+
+    let mut acc: String = format!("/* Autogenerated data. Do not edit */\n");
+
+    for (name, f) in api_files {
+        acc.push_str(&format!("\n/******** {} types *********/\n\n", &name));
+        for m in &f.types {
+            let camel_case_name: String = m.type_name.to_case(Case::UpperCamel);
+            if type_generated.get(&camel_case_name).is_some() {
+                continue;
+            }
+            acc.push_str(&format!(
+                "#[derive(Debug, Clone, Serialize, Deserialize)]\n"
+            ));
+            acc.push_str(&format!("pub struct {} {{\n", &camel_case_name));
+            for (i, fld) in m.fields.clone().into_iter().enumerate() {
+                if fld.name == "_vl_msg_id" {
+                    continue;
+                }
+                acc.push_str(&format!(
+                    "    pub {}: {}\n",
+                    &fld.name,
+                    get_rust_field_type(opts, &fld, i == m.fields.len() - 1)
+                ));
+            }
+            acc.push_str(&format!("}}\n\n"));
+            type_generated.insert(camel_case_name, ());
+        }
+
+        acc.push_str(&format!("\n/******** {} messages *********/\n\n", &name));
+
+        for m in &f.messages {
+            let crc = &m.info.crc.strip_prefix("0x").unwrap();
+            let camel_case_name: String = m.name.to_case(Case::UpperCamel);
+            if type_generated.get(&camel_case_name).is_some() {
+                continue;
+            }
+            acc.push_str(&format!(
+                "#[derive(Debug, Clone, Serialize, Deserialize)]\n"
+            ));
+            acc.push_str(&format!("pub struct {} {{\n", &camel_case_name));
+            for (i, fld) in m.fields.clone().into_iter().enumerate() {
+                if fld.name == "_vl_msg_id" {
+                    continue;
+                }
+                acc.push_str(&format!(
+                    "    pub {}: {}\n",
+                    &fld.name,
+                    get_rust_field_type(opts, &fld, i == m.fields.len() - 1)
+                ));
+            }
+            acc.push_str(&format!("}}\n\n"));
+            type_generated.insert(camel_case_name, ());
+
+            // println!("{}_{}", &m.name, &crc);
+        }
+    }
+    println!("{}", acc);
+}
+
 fn main() {
     env_logger::init();
     let opts: Opts = Opts::parse();
@@ -666,7 +775,7 @@ fn main() {
                 // it was a directory tree, descend downwards...
                 let mut api_files: LinkedHashMap<String, VppJsApiFile> = LinkedHashMap::new();
                 parse_api_tree(&opts, &opts.in_file, &mut api_files);
-                println!("Loaded {} API definition files", api_files.len());
+                println!("// Loaded {} API definition files", api_files.len());
                 if opts.print_message_names {
                     for (name, f) in &api_files {
                         for m in &f.messages {
@@ -674,6 +783,9 @@ fn main() {
                             println!("{}_{}", &m.name, &crc);
                         }
                     }
+                }
+                if opts.generate_code {
+                    generate_code(&opts, &api_files);
                 }
             }
             e => {
