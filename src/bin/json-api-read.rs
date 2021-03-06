@@ -638,6 +638,14 @@ fn get_rust_type_from_ctype(opts: &Opts, ctype: &str) -> String {
     result
 }
 
+fn get_rust_field_name(opts: &Opts, name: &str) -> String {
+    if name == "type" {
+        format!("r#{}", name)
+    } else {
+        format!("{}", name)
+    }
+}
+
 fn get_rust_field_type(
     opts: &Opts,
     enum_containers: &HashMap<String, String>,
@@ -764,7 +772,7 @@ fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
                 }
                 acc.push_str(&format!(
                     "    pub {}: {}\n",
-                    &fld.name,
+                    get_rust_field_name(opts, &fld.name),
                     get_rust_field_type(opts, &enum_containers, &fld, i == m.fields.len() - 1)
                 ));
             }
@@ -790,7 +798,7 @@ fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
                 }
                 acc.push_str(&format!(
                     "    pub {}: {}\n",
-                    &fld.name,
+                    get_rust_field_name(opts, &fld.name),
                     get_rust_field_type(opts, &enum_containers, &fld, i == m.fields.len() - 1)
                 ));
             }
