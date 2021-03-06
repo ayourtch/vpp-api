@@ -743,12 +743,16 @@ fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
             acc.push_str(&format!("pub enum {} {{\n", &camel_case_name));
             acc.push_str(&format!("    // Size: {}\n", &enum_container_type));
             for v in &m.values {
+                let short_name = &v.name[value_prefix_len..];
+                let name_prefix = if short_name.chars().nth(0).unwrap().is_ascii_alphabetic() {
+                    format!("")
+                } else {
+                    format!("x")
+                };
+
                 acc.push_str(&format!(
-                    "    // {} = {}\n    {} = {},\n",
-                    &v.name,
-                    &v.value,
-                    &v.name[value_prefix_len..],
-                    v.value
+                    "    // {} = {}\n    {}{} = {},\n",
+                    &v.name, &v.value, &name_prefix, &short_name, v.value
                 ));
             }
             acc.push_str(&format!("}}\n\n"));
