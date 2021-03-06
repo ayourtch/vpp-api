@@ -314,6 +314,33 @@ impl<'de, 'tde, T: Deserialize<'tde>, N: ArrayLength<T>> Deserialize<'de> for Fi
 }
 */
 
+#[derive(Clone, Deserialize)]
+#[serde(bound = "T: Deserialize<'de> + Default")]
+pub struct SizedEnum<T, X>(T, PhantomData<X>);
+
+impl<T: Debug, X> fmt::Debug for SizedEnum<T, X> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let v = &self.0;
+        write!(f, "SizedEnum[{}]: {:?}", std::any::type_name::<X>(), &v)
+    }
+}
+
+impl<T: Serialize + Copy, X: Serialize + From<T>> Serialize for SizedEnum<T, X> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let data = self.0;
+        let data_x: X = data.try_into().unwrap();
+
+        let mut seq = serializer.serialize_tuple(1)?;
+        seq.serialize_element(&data_x)?;
+        seq.end()
+    }
+}
+
+/* FIXME: add deserializer for SizedEnum */
+
 #[derive(Clone, Debug)]
 pub struct VariableSizeArray<T>(pub Vec<T>);
 
