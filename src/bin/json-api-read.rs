@@ -660,7 +660,7 @@ fn get_rust_field_type(
         deal with at serialization/deserialization time */
 
         if let Some(container) = enum_containers.get(&rtype) {
-            format!("SizedEnum<{}, {}>", container, rtype)
+            format!("SizedEnum<{}, {}>", rtype, container)
         } else {
             rtype
         }
@@ -678,7 +678,7 @@ fn get_rust_field_type(
                 if fld.ctype == "string" {
                     format!("FixedSizeString<typenum::U{}>", maxsz)
                 } else {
-                    format!("FixedSizeArray<typenum::U{}, {}>", maxsz, rtype)
+                    format!("FixedSizeArray<{}, typenum::U{}>", rtype, maxsz)
                 }
             }
         }
