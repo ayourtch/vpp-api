@@ -771,10 +771,12 @@ fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
             let enum_container_type = m.info.enumtype.clone().unwrap();
 
             acc.push_str(&format!(
-                "#[derive(Debug, Clone, Serialize, Deserialize)]\n"
+                "#[derive(Debug, Clone, Serialize, Deserialize, Eq, PartialEq)]\n"
             ));
             acc.push_str(&format!("pub enum {} {{\n", &camel_case_name));
             acc.push_str(&format!("    // Size: {}\n", &enum_container_type));
+
+            let mut first_value: Option<String> = None;
             for v in &m.values {
                 let short_name = &v.name[value_prefix_len..];
                 let name_prefix = if short_name.chars().nth(0).unwrap().is_ascii_alphabetic() {
@@ -787,8 +789,17 @@ fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
                     "    // {} = {}\n    {}{} = {},\n",
                     &v.name, &v.value, &name_prefix, &short_name, v.value
                 ));
+                if first_value.is_none() {
+                    first_value = Some(format!("{}{}", &name_prefix, &short_name));
+                }
             }
             acc.push_str(&format!("}}\n\n"));
+
+            acc.push_str(&format!(
+                "impl Default for {} {{ fn default() -> Self {{ Self::{} }} }}\n\n",
+                &camel_case_name,
+                first_value.unwrap()
+            ));
 
             enum_containers.insert(camel_case_name.clone(), enum_container_type);
             type_generated.insert(camel_case_name, ());
