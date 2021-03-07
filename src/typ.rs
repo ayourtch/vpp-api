@@ -5,7 +5,7 @@ use std::convert::TryInto;
 use std::fmt;
 use typenum::{U10, U256, U32, U64};
 
-#[derive(Clone)]
+#[derive(Clone, Default)]
 pub struct FixedSizeString<N: ArrayLength<u8>>(GenericArray<u8, N>);
 
 impl<N: ArrayLength<u8>> fmt::Debug for FixedSizeString<N> {
@@ -102,7 +102,7 @@ impl<'de, N: ArrayLength<u8>> Deserialize<'de> for FixedSizeString<N> {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, Default)]
 pub struct VariableSizeString(Vec<u8>);
 
 impl fmt::Debug for VariableSizeString {
@@ -314,7 +314,7 @@ impl<'de, 'tde, T: Deserialize<'tde>, N: ArrayLength<T>> Deserialize<'de> for Fi
 }
 */
 
-#[derive(Clone, Deserialize)]
+#[derive(Clone, Default, Deserialize)]
 #[serde(bound = "T: Deserialize<'de> + Default")]
 pub struct SizedEnum<T, X>(T, PhantomData<X>);
 
@@ -353,7 +353,7 @@ pub trait AsU32 {
 
 /* FIXME: add deserializer for SizedEnum */
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Default, Debug)]
 pub struct VariableSizeArray<T>(pub Vec<T>);
 
 use serde::ser::{SerializeSeq, SerializeTuple, Serializer};
