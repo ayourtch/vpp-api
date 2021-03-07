@@ -771,7 +771,7 @@ fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
             let enum_container_type = m.info.enumtype.clone().unwrap();
 
             acc.push_str(&format!(
-                "#[derive(Debug, Clone, Serialize, Deserialize, Eq, PartialEq)]\n"
+                "#[derive(Debug, Clone, Copy, Serialize, Deserialize, Eq, PartialEq)]\n"
             ));
             acc.push_str(&format!("pub enum {} {{\n", &camel_case_name));
             acc.push_str(&format!("    // Size: {}\n", &enum_container_type));
@@ -799,6 +799,11 @@ fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
                 "impl Default for {} {{ fn default() -> Self {{ Self::{} }} }}\n\n",
                 &camel_case_name,
                 first_value.unwrap()
+            ));
+
+            acc.push_str(&format!(
+                "impl AsU32 for {} {{ fn as_u32(data: Self) -> u32 {{ data as u32 }} }}\n\n",
+                &camel_case_name
             ));
 
             enum_containers.insert(camel_case_name.clone(), enum_container_type);
