@@ -237,7 +237,7 @@ impl<'de> Deserialize<'de> for F64 {
     }
 }
 
-#[derive(Clone, Deserialize)]
+#[derive(Clone, Default, Deserialize)]
 #[serde(bound = "N: ArrayLength<T>, T: Deserialize<'de> + Default")]
 pub struct FixedSizeArray<T, N: ArrayLength<T>>(GenericArray<T, N>);
 
@@ -325,18 +325,30 @@ impl<T: Debug, X> fmt::Debug for SizedEnum<T, X> {
     }
 }
 
-impl<T: Serialize + Copy, X: Serialize + From<T>> Serialize for SizedEnum<T, X> {
+impl<T: Serialize + Copy + AsU32 + Debug, X: Serialize + Debug + TryFrom<u32>> Serialize
+    for SizedEnum<T, X>
+{
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
     {
-        let data = self.0;
-        let data_x: X = data.try_into().unwrap();
+        let data = self.0.clone();
+        let data_u32: u32 = AsU32::as_u32(data);
+
+        let data_x = if let Ok(x) = X::try_from(data_u32) {
+            x
+        } else {
+            return (Err(serde::ser::Error::custom("does not fit")));
+        };
 
         let mut seq = serializer.serialize_tuple(1)?;
         seq.serialize_element(&data_x)?;
         seq.end()
     }
+}
+
+pub trait AsU32 {
+    fn as_u32(data: Self) -> u32;
 }
 
 /* FIXME: add deserializer for SizedEnum */
