@@ -720,7 +720,7 @@ fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
                 continue;
             }
             acc.push_str(&format!(
-                "#[derive(Debug, Clone, Serialize, Deserialize)]\n"
+                "#[derive(Debug, Clone, Default, Serialize, Deserialize)]\n"
             ));
 
             let rtype = get_rust_type_from_ctype(opts, &enum_containers, &m.ctype);
@@ -816,7 +816,7 @@ fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
                 continue;
             }
             acc.push_str(&format!(
-                "#[derive(Debug, Clone, Serialize, Deserialize)]\n"
+                "#[derive(Debug, Default, Clone, Serialize, Deserialize)]\n"
             ));
             acc.push_str(&format!("pub struct {} {{\n", &camel_case_name));
             for (i, fld) in m.fields.clone().into_iter().enumerate() {
@@ -842,7 +842,7 @@ fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
                 continue;
             }
             acc.push_str(&format!(
-                "#[derive(Debug, Clone, Serialize, Deserialize)]\n"
+                "#[derive(Debug, Default, Clone, Serialize, Deserialize)]\n"
             ));
             acc.push_str(&format!("pub struct {} {{\n", &camel_case_name));
             for (i, fld) in m.fields.clone().into_iter().enumerate() {
