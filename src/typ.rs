@@ -314,7 +314,7 @@ impl<'de, 'tde, T: Deserialize<'tde>, N: ArrayLength<T>> Deserialize<'de> for Fi
 }
 */
 
-#[derive(Clone, Default, Deserialize)]
+#[derive(Copy, Clone, Default, Deserialize)]
 #[serde(bound = "T: Deserialize<'de> + Default")]
 pub struct SizedEnum<T, X>(T, PhantomData<X>);
 
@@ -439,3 +439,34 @@ impl<'de, T: Deserialize<'de> + Debug> Deserialize<'de> for VariableSizeArray<T>
         )?);
     }
 }
+
+
+/*
+
+#[derive(Clone, Default, Debug, Serialize, Deserialize)]
+pub struct AddressUnion {
+    /* FIXME */
+}
+
+#[derive(Clone, Default, Debug, Serialize, Deserialize)]
+pub struct EidAddress {
+}
+
+
+#[derive(Clone, Default, Debug, Serialize, Deserialize)]
+pub struct Flow {
+}
+#[derive(Clone, Default, Debug, Serialize, Deserialize)]
+pub struct PuntUnion {
+}
+
+*/
+
+#[derive(Clone, Default, Debug, Serialize, Deserialize)]
+pub struct TunnelFlags {
+}
+
+#[derive(Clone, Default, Debug, Serialize, Deserialize)]
+pub struct IpFlowHashConfig {
+}
+
