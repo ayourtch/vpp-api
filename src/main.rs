@@ -8,9 +8,12 @@ extern crate strum_macros;
 use env_logger;
 use linked_hash_map::LinkedHashMap;
 use std::collections::HashMap;
+use serde::de::{self, Deserializer, SeqAccess, Visitor};
+use std::fmt;
+
 
 #[derive(Clap, Debug, Clone, Serialize, Deserialize, EnumString, Display)]
-enum OptParseType {
+pub enum OptParseType {
     File,
     Tree,
     ApiType,
@@ -20,36 +23,36 @@ enum OptParseType {
 /// Ingest the VPP API JSON definition file and output the Rust code
 #[clap(version = "0.1", author = "Andrew Yourtchenko <ayourtch@gmail.com>")]
 #[derive(Clap, Debug, Clone, Serialize, Deserialize)]
-struct Opts {
+pub struct Opts {
     /// Input file name
     #[clap(short, long)]
-    in_file: String,
+    pub in_file: String,
 
     /// output file name
     #[clap(short, long, default_value = "dummy.rs")]
-    out_file: String,
+    pub out_file: String,
 
     /// parse type for the operation: Tree, File, ApiMessage or ApiType
     #[clap(short, long, default_value = "File")]
-    parse_type: OptParseType,
+    pub parse_type: OptParseType,
 
     /// Print message names
     #[clap(long)]
-    print_message_names: bool,
+    pub print_message_names: bool,
 
     /// Generate the code
     #[clap(long)]
-    generate_code: bool,
+    pub generate_code: bool,
 
     /// A level of verbosity, and can be used multiple times
     #[clap(short, long, parse(from_occurrences))]
-    verbose: i32,
+    pub verbose: i32,
 }
-
+// This holds the Type and Union Data
 #[derive(Debug, Clone)]
-struct VppJsApiType {
-    type_name: String,
-    fields: Vec<VppJsApiMessageFieldDef>,
+pub struct VppJsApiType {
+    pub type_name: String,
+    pub fields: Vec<VppJsApiMessageFieldDef>,
 }
 
 impl Serialize for VppJsApiType {
@@ -66,10 +69,8 @@ impl Serialize for VppJsApiType {
     }
 }
 
-use serde::de::{self, Deserializer, SeqAccess, Visitor};
-use std::fmt;
 
-struct VppJsApiTypeVisitor;
+pub struct VppJsApiTypeVisitor;
 
 impl<'de> Visitor<'de> for VppJsApiTypeVisitor {
     type Value = VppJsApiType;
@@ -110,7 +111,7 @@ impl<'de> Deserialize<'de> for VppJsApiType {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-enum VppJsApiDefaultValue {
+pub enum VppJsApiDefaultValue {
     Str(String),
     Bool(bool),
     I64(i64),
@@ -118,29 +119,29 @@ enum VppJsApiDefaultValue {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-struct VppJsApiFieldOptions {
+pub struct VppJsApiFieldOptions {
     #[serde(default)]
-    default: Option<VppJsApiDefaultValue>,
+    pub default: Option<VppJsApiDefaultValue>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-enum VppJsApiFieldSize {
+pub enum VppJsApiFieldSize {
     Fixed(usize),
     Variable(Option<String>),
 }
 
 #[derive(Debug, Clone)]
-struct VppJsApiMessageFieldDef {
-    ctype: String,
-    name: String,
-    maybe_size: Option<VppJsApiFieldSize>,
-    maybe_options: Option<VppJsApiFieldOptions>,
+pub struct VppJsApiMessageFieldDef {
+    pub ctype: String,
+    pub name: String,
+    pub maybe_size: Option<VppJsApiFieldSize>,
+    pub maybe_options: Option<VppJsApiFieldOptions>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-enum VppJsApiMessageFieldHelper {
+pub enum VppJsApiMessageFieldHelper {
     Str(String),
     Usize(usize),
     Map(VppJsApiFieldOptions),
@@ -188,7 +189,7 @@ impl Serialize for VppJsApiMessageFieldDef {
     }
 }
 
-struct VppJsApiMessageFieldDefVisitor;
+pub struct VppJsApiMessageFieldDefVisitor;
 
 impl<'de> Visitor<'de> for VppJsApiMessageFieldDefVisitor {
     type Value = VppJsApiMessageFieldDef;
@@ -260,15 +261,15 @@ impl<'de> Deserialize<'de> for VppJsApiMessageFieldDef {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-struct VppJsApiMessageInfo {
-    crc: String,
+pub struct VppJsApiMessageInfo {
+    pub crc: String,
 }
 
 #[derive(Debug, Clone)]
-struct VppJsApiMessage {
-    name: String,
-    fields: Vec<VppJsApiMessageFieldDef>,
-    info: VppJsApiMessageInfo,
+pub struct VppJsApiMessage {
+    pub name: String,
+    pub fields: Vec<VppJsApiMessageFieldDef>,
+    pub info: VppJsApiMessageInfo,
 }
 
 impl Serialize for VppJsApiMessage {
@@ -288,13 +289,13 @@ impl Serialize for VppJsApiMessage {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-enum VppJsApiMessageHelper {
+pub enum VppJsApiMessageHelper {
     Field(VppJsApiMessageFieldDef),
     Info(VppJsApiMessageInfo),
     Name(String),
 }
 
-struct VppJsApiMessageVisitor;
+pub struct VppJsApiMessageVisitor;
 
 impl<'de> Visitor<'de> for VppJsApiMessageVisitor {
     type Value = VppJsApiMessage;
@@ -345,10 +346,10 @@ impl<'de> Deserialize<'de> for VppJsApiMessage {
 }
 
 #[derive(Debug, Deserialize)]
-struct VppJsApiAlias {
+pub struct VppJsApiAlias {
     #[serde(rename = "type")]
-    ctype: String,
-    length: Option<usize>,
+    pub ctype: String,
+    pub length: Option<usize>,
 }
 
 impl Serialize for VppJsApiAlias {
@@ -370,13 +371,13 @@ impl Serialize for VppJsApiAlias {
 }
 
 #[derive(Debug, Deserialize)]
-struct VppJsApiService {
+pub struct VppJsApiService {
     #[serde(default)]
-    events: Vec<String>,
-    reply: String,
-    stream: Option<bool>,
+    pub events: Vec<String>,
+    pub reply: String,
+    pub stream: Option<bool>,
     #[serde(default)]
-    stream_msg: Option<String>,
+    pub stream_msg: Option<String>,
 }
 
 impl Serialize for VppJsApiService {
@@ -410,19 +411,19 @@ impl Serialize for VppJsApiService {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-struct VppJsApiOptions {
-    version: String,
+pub struct VppJsApiOptions {
+    pub version: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-struct VppJsApiEnumInfo {
-    enumtype: Option<String>,
+pub struct VppJsApiEnumInfo {
+    pub enumtype: Option<String>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
-struct VppJsApiEnumValueDef {
-    name: String,
-    value: i64,
+pub struct VppJsApiEnumValueDef {
+    pub name: String,
+    pub value: i64,
 }
 
 impl Serialize for VppJsApiEnumValueDef {
@@ -438,10 +439,10 @@ impl Serialize for VppJsApiEnumValueDef {
 }
 
 #[derive(Debug)]
-struct VppJsApiEnum {
-    name: String,
-    values: Vec<VppJsApiEnumValueDef>,
-    info: VppJsApiEnumInfo,
+pub struct VppJsApiEnum {
+    pub name: String,
+    pub values: Vec<VppJsApiEnumValueDef>,
+    pub info: VppJsApiEnumInfo,
 }
 
 impl Serialize for VppJsApiEnum {
@@ -461,13 +462,13 @@ impl Serialize for VppJsApiEnum {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-enum VppJsApiEnumHelper {
+pub enum VppJsApiEnumHelper {
     Str(String),
     Val(VppJsApiEnumValueDef),
     Map(VppJsApiEnumInfo),
 }
 
-struct VppJsApiEnumVisitor;
+pub struct VppJsApiEnumVisitor;
 
 impl<'de> Visitor<'de> for VppJsApiEnumVisitor {
     type Value = VppJsApiEnum;
@@ -518,42 +519,42 @@ impl<'de> Deserialize<'de> for VppJsApiEnum {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-struct VppJsApiCounterElement {
-    name: String,
-    severity: String,
+pub struct VppJsApiCounterElement {
+    pub name: String,
+    pub severity: String,
     #[serde(rename = "type")]
-    typ: String,
-    units: String,
-    description: String,
+    pub typ: String,
+    pub units: String,
+    pub description: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-struct VppJsApiCounter {
-    name: String,
-    elements: Vec<VppJsApiCounterElement>,
+pub struct VppJsApiCounter {
+    pub name: String,
+    pub elements: Vec<VppJsApiCounterElement>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-struct VppJsApiPath {
-    path: String,
-    counter: String,
+pub struct VppJsApiPath {
+    pub path: String,
+    pub counter: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-struct VppJsApiFile {
-    types: Vec<VppJsApiType>,
-    messages: Vec<VppJsApiMessage>,
-    unions: Vec<VppJsApiType>,
-    enums: Vec<VppJsApiEnum>,
+pub struct VppJsApiFile {
+    pub types: Vec<VppJsApiType>,
+    pub messages: Vec<VppJsApiMessage>,
+    pub unions: Vec<VppJsApiType>,
+    pub enums: Vec<VppJsApiEnum>,
     #[serde(default)]
-    enumflags: Vec<VppJsApiEnum>,
-    services: LinkedHashMap<String, VppJsApiService>,
-    options: VppJsApiOptions,
-    aliases: LinkedHashMap<String, VppJsApiAlias>,
-    vl_api_version: String,
-    imports: Vec<String>,
-    counters: Vec<VppJsApiCounter>,
-    paths: Vec<Vec<VppJsApiPath>>,
+    pub enumflags: Vec<VppJsApiEnum>,
+    pub services: LinkedHashMap<String, VppJsApiService>,
+    pub options: VppJsApiOptions,
+    pub aliases: LinkedHashMap<String, VppJsApiAlias>,
+    pub vl_api_version: String,
+    pub imports: Vec<String>,
+    pub counters: Vec<VppJsApiCounter>,
+    pub paths: Vec<Vec<VppJsApiPath>>,
 }
 
 impl VppJsApiFile {
@@ -594,7 +595,7 @@ impl VppJsApiFile {
     }
 }
 
-fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppJsApiFile>) {
+pub fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppJsApiFile>) {
     use std::fs;
     if opts.verbose > 2 {
         println!("parse tree: {:?}", root);
@@ -626,7 +627,7 @@ fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppJs
     }
 }
 
-fn get_rust_type_from_ctype(
+pub fn get_rust_type_from_ctype(
     opts: &Opts,
     enum_containers: &HashMap<String, String>,
     ctype: &str,
@@ -653,7 +654,7 @@ fn get_rust_type_from_ctype(
     rtype
 }
 
-fn get_rust_field_name(opts: &Opts, name: &str) -> String {
+pub fn get_rust_field_name(opts: &Opts, name: &str) -> String {
     if name == "type" || name == "match" {
         format!("r#{}", name)
     } else {
@@ -661,7 +662,7 @@ fn get_rust_field_name(opts: &Opts, name: &str) -> String {
     }
 }
 
-fn get_rust_field_type(
+pub fn get_rust_field_type(
     opts: &Opts,
     enum_containers: &HashMap<String, String>,
     fld: &VppJsApiMessageFieldDef,
@@ -696,31 +697,31 @@ fn get_rust_field_type(
     }
 }
 
-fn camelize(opts: &Opts, ident: &str) -> String {
+pub fn camelize(opts: &Opts, ident: &str) -> String {
     use convert_case::{Case, Casing};
     ident.to_case(Case::UpperCamel)
 }
 
 #[derive(Clone, Default, Debug)]
-struct GeneratedType {
-    derives: LinkedHashMap<String, ()>,
-    file: String,
-    text: String,
+pub struct GeneratedType {
+    pub derives: LinkedHashMap<String, ()>,
+    pub file: String,
+    pub text: String,
 }
 
 impl GeneratedType {
-    fn add_derives(self: &mut Self, derives: Vec<&str>) {
+    pub fn add_derives(self: &mut Self, derives: Vec<&str>) {
         for d in derives {
             self.derives.insert(d.to_string(), ());
         }
     }
 
-    fn push_str(self: &mut Self, data: &str) {
+    pub fn push_str(self: &mut Self, data: &str) {
         self.text.push_str(data);
     }
 }
 
-fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
+pub fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile>) {
     let mut type_needs_copy_trait: HashMap<String, ()> = HashMap::new();
     let mut enum_containers: HashMap<String, String> = HashMap::new();
 
