@@ -1,15 +1,11 @@
-use clap::Clap;
-use serde::ser::{SerializeMap, SerializeSeq};
-use serde::{Deserialize, Serialize, Serializer};
 use std::string::ToString;
 extern crate strum;
-#[macro_use]
-use env_logger;
 use linked_hash_map::LinkedHashMap;
 use std::collections::HashMap;
-use serde::de::{self, Deserializer, SeqAccess, Visitor};
-use std::fmt;
-use crate::*;
+use crate::file_schema::*;
+use crate::Opts;
+use crate::types::*;
+
 
 pub fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppJsApiFile>) {
     use std::fs;
@@ -44,7 +40,7 @@ pub fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, V
 }
 
 pub fn get_rust_type_from_ctype(
-    opts: &Opts,
+    _opts: &Opts,
     enum_containers: &HashMap<String, String>,
     ctype: &str,
 ) -> String {

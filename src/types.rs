@@ -1,15 +1,9 @@
-use clap::Clap;
-use serde::ser::{SerializeMap, SerializeSeq};
+use serde::ser::{SerializeSeq};
 use serde::{Deserialize, Serialize, Serializer};
-use std::string::ToString;
 extern crate strum;
-#[macro_use]
-use env_logger;
-use linked_hash_map::LinkedHashMap;
-use std::collections::HashMap;
 use serde::de::{self, Deserializer, SeqAccess, Visitor};
 use std::fmt;
-use crate::*;
+
 // This holds the Type and Union Data
 #[derive(Debug, Clone)]
 pub struct VppJsApiType {
@@ -122,9 +116,9 @@ impl Serialize for VppJsApiMessageFieldDef {
         len = len
             + match &self.maybe_size {
                 None => 0,
-                Some(Fixed(n)) => 1,
+                Some(Fixed(_n)) => 1,
                 Some(Variable(None)) => 1,
-                Some(Variable(Some(x))) => 2,
+                Some(Variable(Some(_x))) => 2,
             };
         let mut seq = serializer.serialize_seq(Some(len))?;
         seq.serialize_element(&self.ctype)?;
@@ -132,19 +126,19 @@ impl Serialize for VppJsApiMessageFieldDef {
         match &self.maybe_size {
             None => { /* do nothing */ }
             Some(Fixed(n)) => {
-                seq.serialize_element(&n);
+                seq.serialize_element(&n)?;
             }
             Some(Variable(None)) => {
-                seq.serialize_element(&0u32);
+                seq.serialize_element(&0u32)?;
             }
             Some(Variable(Some(x))) => {
-                seq.serialize_element(&0u32);
-                seq.serialize_element(&x);
+                seq.serialize_element(&0u32)?;
+                seq.serialize_element(&x)?;
             }
         }
 
         if let Some(o) = &self.maybe_options {
-            seq.serialize_element(o);
+            seq.serialize_element(o)?;
         }
         seq.end()
     }

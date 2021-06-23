@@ -1,15 +1,8 @@
-use clap::Clap;
-use serde::ser::{SerializeMap, SerializeSeq};
+use serde::ser::{SerializeSeq};
 use serde::{Deserialize, Serialize, Serializer};
-use std::string::ToString;
 extern crate strum;
-#[macro_use]
-use env_logger;
-use linked_hash_map::LinkedHashMap;
-use std::collections::HashMap;
-use serde::de::{self, Deserializer, SeqAccess, Visitor};
+use serde::de::{Deserializer, SeqAccess, Visitor};
 use std::fmt;
-use crate::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct VppJsApiEnumInfo {

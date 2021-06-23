@@ -1,15 +1,7 @@
-use clap::Clap;
-use serde::ser::{SerializeMap, SerializeSeq};
+use serde::ser::{SerializeMap};
 use serde::{Deserialize, Serialize, Serializer};
-use std::string::ToString;
 extern crate strum;
-#[macro_use]
-use env_logger;
-use linked_hash_map::LinkedHashMap;
-use std::collections::HashMap;
-use serde::de::{self, Deserializer, SeqAccess, Visitor};
-use std::fmt;
-use crate::*;
+
 
 #[derive(Debug, Deserialize)]
 pub struct VppJsApiAlias {
@@ -30,7 +22,7 @@ impl Serialize for VppJsApiAlias {
         let mut map = serializer.serialize_map(Some(len))?;
         map.serialize_entry("type", &self.ctype)?;
         if let Some(s) = &self.length {
-            map.serialize_entry("length", s);
+            map.serialize_entry("length", s)?;
         }
         map.end()
     }

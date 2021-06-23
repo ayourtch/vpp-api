@@ -1,15 +1,6 @@
-use clap::Clap;
-use serde::ser::{SerializeMap, SerializeSeq};
+use serde::ser::{SerializeMap};
 use serde::{Deserialize, Serialize, Serializer};
-use std::string::ToString;
 extern crate strum;
-#[macro_use]
-use env_logger;
-use linked_hash_map::LinkedHashMap;
-use std::collections::HashMap;
-use serde::de::{self, Deserializer, SeqAccess, Visitor};
-use std::fmt;
-use crate::*;
 
 #[derive(Debug, Deserialize)]
 pub struct VppJsApiService {
@@ -38,14 +29,14 @@ impl Serialize for VppJsApiService {
         }
         let mut map = serializer.serialize_map(Some(len))?;
         if self.events.len() > 0 {
-            map.serialize_entry("events", &self.events);
+            map.serialize_entry("events", &self.events)?;
         }
         map.serialize_entry("reply", &self.reply)?;
         if let Some(s) = &self.stream {
-            map.serialize_entry("stream", s);
+            map.serialize_entry("stream", s)?;
         }
         if let Some(s) = &self.stream_msg {
-            map.serialize_entry("stream_msg", s);
+            map.serialize_entry("stream_msg", s)?;
         }
         map.end()
     }

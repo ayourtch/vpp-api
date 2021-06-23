@@ -1,30 +1,22 @@
 use clap::Clap;
-use serde::ser::{SerializeMap, SerializeSeq};
-use serde::{Deserialize, Serialize, Serializer};
+use serde::{Deserialize, Serialize};
 use std::string::ToString;
 extern crate strum;
 #[macro_use]
 extern crate strum_macros;
 use env_logger;
 use linked_hash_map::LinkedHashMap;
-use std::collections::HashMap;
-use serde::de::{self, Deserializer, SeqAccess, Visitor};
-use std::fmt;
-mod types;
-use crate::types::*;
 mod message; 
-use crate::message::*;
+mod types;
 mod alias;
-use crate::alias::*;
 mod services;
-use crate::services::*;
 mod enums;
-use crate::enums::*;
 mod parser_helper;
-use crate::parser_helper::*;
 mod file_schema;
-use crate::file_schema::*;
-
+use crate::parser_helper::*;
+use crate::message::*;
+use crate::file_schema::VppJsApiFile;
+use crate::types::*;
 
 #[derive(Clap, Debug, Clone, Serialize, Deserialize, EnumString, Display)]
 pub enum OptParseType {
@@ -113,7 +105,7 @@ fn main() {
                 parse_api_tree(&opts, &opts.in_file, &mut api_files);
                 println!("// Loaded {} API definition files", api_files.len());
                 if opts.print_message_names {
-                    for (name, f) in &api_files {
+                    for (_name, f) in &api_files {
                         for m in &f.messages {
                             let crc = &m.info.crc.strip_prefix("0x").unwrap();
                             println!("{}_{}", &m.name, &crc);
