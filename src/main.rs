@@ -13,10 +13,13 @@ mod services;
 mod enums;
 mod parser_helper;
 mod file_schema;
+mod code_gen;
+mod basetypes;
 use crate::parser_helper::*;
 use crate::message::*;
 use crate::file_schema::VppJsApiFile;
 use crate::types::*;
+use crate::code_gen::gen_code;
 
 #[derive(Clap, Debug, Clone, Serialize, Deserialize, EnumString, Display)]
 pub enum OptParseType {
@@ -86,7 +89,8 @@ fn main() {
                     println!("Dump File: {:#?}", &desc);
                 }
                 let data = serde_json::to_string_pretty(&desc).unwrap();
-                println!("{}", &data);
+                // println!("{}", &data);
+                gen_code(&desc);
             }
             OptParseType::ApiType => {
                 let desc: VppJsApiType = serde_json::from_str(&data).unwrap();
