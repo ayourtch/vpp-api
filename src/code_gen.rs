@@ -1,3 +1,5 @@
+use std::fmt::format;
+
 use crate::alias::VppJsApiAlias;
 use crate::enums::VppJsApiEnum;
 use crate::file_schema::VppJsApiFile;
@@ -15,9 +17,9 @@ pub fn gen_code(code: &VppJsApiFile){
     for x in 0..code.unions.len(){
         gen_union(&code.unions[x], &mut preamble);
     }
-    /* for x in 0..code.enums.len(){
-        gen_enum(&code.enums[x]);
-    } */
+    for x in 0..code.enums.len(){
+        gen_enum(&code.enums[x], &mut preamble);
+    } 
     // gen_alias(&code.aliases[0]);
     
     /* for x in code.aliases.keys(){
@@ -45,12 +47,12 @@ pub fn gen_union(unions: &VppJsApiType, file: &mut String){
     }
     file.push_str("} \n");
 }
-pub fn gen_enum(enums: &VppJsApiEnum){
-    println!("{}",enums.name);
+pub fn gen_enum(enums: &VppJsApiEnum, file: &mut String){
+    file.push_str(&format!("pub enum {} {{ \n", enums.name));
     for x in 0..enums.values.len(){
-        println!("{}={}",enums.values[x].name, enums.values[x].value);
+        file.push_str(&format!("\t {}={} \n",enums.values[x].name, enums.values[x].value));
     }
-    println!();
+    file.push_str("} \n");
 }
 pub fn gen_alias(alias:&VppJsApiAlias, name: &str){
     println!("{}", name);
