@@ -1,4 +1,6 @@
 use std::fmt::format;
+use std::fs::File;
+use std::io::prelude::*;
 
 use crate::alias::VppJsApiAlias;
 use crate::enums::VppJsApiEnum;
@@ -22,44 +24,54 @@ pub fn gen_code(code: &VppJsApiFile){
     } 
     // gen_alias(&code.aliases[0]);
     
-    /* for x in code.aliases.keys(){
-        gen_alias(&code.aliases[x], x);
-    } */
+    for x in code.aliases.keys(){
+        gen_alias(&code.aliases[x], x, &mut preamble);
+    }
     println!("{}",preamble);
     // dbg!(&code.services);
     // dbg!(&code.imports);
     // dbg!(&code.counters);
     // dbg!(&code.paths);
+    let mut file = File::create("generated.rs").unwrap();
+    file.write_all(preamble.as_bytes())
+        .unwrap();
+
     
 }
 
 pub fn gen_structs(structs: &VppJsApiType, file: &mut String){
+    file.push_str(&format!("#[derive(Debug, Clone, Serialize, Deserialize)] \n"));
     file.push_str(&format!("struct {} {{ \n",structs.type_name));
     for x in 0..structs.fields.len(){
-        file.push_str(&format!("\t {} : {} \n", structs.fields[x].name, structs.fields[x].ctype));
+        file.push_str(&format!("\t {} : {}, \n", structs.fields[x].name, structs.fields[x].ctype));
     }
     file.push_str("} \n");
 }
 pub fn gen_union(unions: &VppJsApiType, file: &mut String){
+    file.push_str(&format!("#[derive(Debug, Clone, Serialize, Deserialize)] \n"));
     file.push_str(&format!("union {} {{ \n",unions.type_name));
     for x in 0..unions.fields.len(){
-        file.push_str(&format!("\t {} : {} \n", unions.fields[x].name, unions.fields[x].ctype));
+        file.push_str(&format!("\t {} : {}, \n", unions.fields[x].name, unions.fields[x].ctype));
     }
     file.push_str("} \n");
 }
 pub fn gen_enum(enums: &VppJsApiEnum, file: &mut String){
+    file.push_str(&format!("#[derive(Debug, Clone, Serialize, Deserialize)] \n"));
     file.push_str(&format!("pub enum {} {{ \n", enums.name));
     for x in 0..enums.values.len(){
-        file.push_str(&format!("\t {}={} \n",enums.values[x].name, enums.values[x].value));
+        file.push_str(&format!("\t {}={}, \n",enums.values[x].name, enums.values[x].value));
     }
     file.push_str("} \n");
 }
-pub fn gen_alias(alias:&VppJsApiAlias, name: &str){
-    println!("{}", name);
-    print!("{} - ", alias.ctype);
+pub fn gen_alias(alias:&VppJsApiAlias, name: &str, file: &mut String){
+    file.push_str(&format!("type {}=", &name));
+    // println!("{}", name);
+    // print!("{} - ", alias.ctype);
     match alias.length{
-        Some(len) => print!("[{}]", len),
-        _ => print!(""),
+        Some(len) => {
+            file.push_str(&format!("[{};{}]; \n",alias.ctype,len));
+        },
+        _ => file.push_str(&format!("{}; \n", alias.ctype)),
     }
-    println!();
+    // println!();
 }
