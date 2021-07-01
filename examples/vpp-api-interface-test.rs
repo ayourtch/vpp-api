@@ -54,12 +54,14 @@ pub struct SWInterfaceAddDelAddress {
     pub sw_if_index: InterfaceIndex,
     pub is_add: bool,
     pub del_all: bool,
-    pub prefix: Prefix,
+    pub af: u8, 
+    pub un: [u8;16], 
+    pub len: u8
 }
 type InterfaceIndex = u32;
 // type InterfaceIndex = u32;
 // Experimental Test so that encoding doesn't have to happen inside send_recv 
-impl SWInterfaceAddDelAddress{
+/* impl SWInterfaceAddDelAddress{
     fn EncodeSWInterfaceAddDelAddress(&self){
         // making bytes 
         let enc = get_encoder();
@@ -71,15 +73,7 @@ impl SWInterfaceAddDelAddress{
         let enc = get_encoder();
         let af = enc.serialize(&self.prefix.address.af).unwrap();
         let enc = get_encoder();
-        let un:Vec<u8>;
-        match self.prefix.address.un {
-            AddressUnion::IP4(arr) => {
-                un = enc.serialize(&arr).unwrap();
-            }
-            AddressUnion::IP6(arr) => {
-                un = enc.serialize(&arr).unwrap();
-            }
-        }
+        let un:Vec<u8> =  enc.serialize(&self.prefix.address.af).unwrap(); 
         let enc = get_encoder();
         let plen = enc.serialize(&self.prefix.len).unwrap();
         
@@ -90,7 +84,7 @@ impl SWInterfaceAddDelAddress{
         v.extend_from_slice(&plen);
         dbg!(v);
     }
-}
+}*/
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Prefix {
     pub address: Address,
@@ -110,18 +104,19 @@ pub enum AddressFamily {
 /* pub struct AddressUnion {
     IP4: [u8; 4],
 }*/
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub enum AddressUnion{
-    IP4([u8;4]), 
+// #[derive(Debug, Clone, Serialize, Deserialize)]
+/* pub enum AddressUnion{
+    IP4([u8;16]), 
     IP6([u8;16]),
-}
+} */ 
+type AddressUnion = [u8;16];
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SWInterfaceAddDelAddressReply {
     pub context: u32,
     pub retval: i32,
 }
 
-pub fn test_func_interface() {
+/* pub fn test_func_interface() {
     let t = SWInterfaceAddDelAddress{
         sw_if_index: 0,
         context: 0,
@@ -138,7 +133,7 @@ pub fn test_func_interface() {
     };
     t.EncodeSWInterfaceAddDelAddress();
     
-}
+} */
 
 
 
@@ -154,6 +149,7 @@ fn send_recv_msg<'a, T: Serialize + Deserialize<'a>, TR: Serialize + Deserialize
     let mut v = enc.serialize(&vl_msg_id).unwrap();
     let enc = get_encoder();
     let msg = enc.serialize(&m).unwrap();
+    
     v.extend_from_slice(&msg);
     println!("MSG[{} = 0x{:x}]: {:?}", name, vl_msg_id, &v);
     t.write(&v);
@@ -209,7 +205,7 @@ fn main() {
 
     println!("Hello, here is your options: {:#?}", &opts);
     println!("Here is your interface reply");
-    test_func_interface();
+    // test_func_interface();
     // test_func();
     // let mut t = shmem::Transport::new();
     // let mut t = afunix::Transport::new("/tmp/api.sock");
@@ -221,28 +217,44 @@ fn main() {
 
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     t.set_nonblocking(opts.nonblocking);
+   /*  let show_interface = SWInterfaceAddDelAddress{
+        client_index: t.get_client_index(),
+            context: 0,
+            sw_if_index: 1,
+            is_add: false,
+            del_all: true,
+            prefix: 
+                        Prefix{
+                            address: Address {
+                                    af: AddressFamily::ADDRESS_IP6,
+                                    un: [0xa,0xa,1,2,7,0x7a,0xb,0xc,0xd,0xf,8,9,5,6,10,10],
+                            },
+                            len: 24,
+                      }
+                    
+    };*/ 
+    /* show_interface.EncodeSWInterfaceAddDelAddress();
+    let enc = get_encoder();
+    let msg = enc.serialize(&show_interface).unwrap();
+    dbg!(msg); */
+
 
     let create_interface_reply: SWInterfaceAddDelAddressReply = send_recv_msg(
         "sw_interface_add_del_address_5803d5c4",
         &SWInterfaceAddDelAddress {
             client_index: t.get_client_index(),
             context: 0,
-            sw_if_index: 0,
+            sw_if_index: 1,
             is_add: true,
             del_all: false,
-            prefix: 
-                        Prefix{
-                            address: Address {
-                                    af: AddressFamily::ADDRESS_IP4,
-                                    un: AddressUnion::IP4([10,10,0,2]),
-                            },
-                            len: 20,
-                      }
-                    
+            af: 0, 
+            un: [0xa,0xa,1,2,7,0x7a,0xb,0xc,0xd,0xf,8,9,5,6,10,10], 
+            len: 24         
         },
         &mut *t,
         "sw_interface_add_del_address_reply_e8d4e804"
     );
+    // [0xa,0xa,1,2,7,0x7a,0xb,0xc,0xd,0xf,8,9,5,6,10,10]
     // 10.10.1.2/24
     println!("Create Interface Reply: {:#?}", &create_interface_reply);
 
