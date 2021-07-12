@@ -38,6 +38,28 @@ pub fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, V
         }
     }
 }
+pub fn get_type(apitype: &str) -> String {
+    let rtype = if apitype.starts_with("vl_api_"){
+        let ctype_trimmed = apitype.trim_start_matches("vl_api_").trim_end_matches("_t");
+        String::from(ctype_trimmed)
+    } else {
+            if apitype == "string" {
+                format!("String")
+            }
+            else {
+                format!("{}", apitype)
+            }
+    };
+    rtype
+}
+pub fn get_ident(api_ident: &str) -> String {
+    if api_ident == "type" {
+        format!("typ")
+    }
+    else {
+        format!("{}",api_ident.trim_start_matches("_"))
+    }
+}
 
 pub fn get_rust_type_from_ctype(
     _opts: &Opts,
@@ -48,7 +70,7 @@ pub fn get_rust_type_from_ctype(
 
     let rtype = {
         let rtype: String = if ctype.starts_with("vl_api_") {
-            let ctype_trimmed = ctype.trim_left_matches("vl_api_").trim_right_matches("_t");
+            let ctype_trimmed = ctype.trim_start_matches("vl_api_").trim_end_matches("_t");
             ctype_trimmed.to_case(Case::UpperCamel)
         } else {
             format!("{}", ctype)

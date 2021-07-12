@@ -1,3 +1,7 @@
+use crate::types::VppJsApiType;
+use crate::alias::VppJsApiAlias;
+use crate::types::VppJsApiMessageFieldDef;
+use crate::file_schema::VppJsApiFile;
 pub enum basetypes{
     U8,
     I8,
@@ -77,3 +81,65 @@ impl basetypes{
     }
     
 }
+pub fn maxSizeUnion(unions: &VppJsApiType) {
+    // dbg!(&unions);
+    for x in &unions.fields{
+        dbg!(&x.ctype);
+    }
+
+}
+// Size of enum 
+// Size of struct 
+// Size of Aliases 
+pub fn sizeof_alias(alias: &VppJsApiAlias) {
+    // dbg!(&alias);
+    if alias.ctype.starts_with("vl_api_"){
+        // println!("Need to calculate struct here")
+        // Search for this struct and then find the size
+    }
+    else { 
+        match alias.length{
+            Some(len) => {
+                let typ = basetypes::ctoSizeR(&alias.ctype);
+                let totalsize = typ.basetypeSizes() * len as u8;
+                // println!("Size is {}",totalsize);
+            },
+            _ => {
+                let typ = basetypes::ctoSizeR(&alias.ctype);
+                // println!("Size is {}", typ as u8);
+                
+            },
+        }
+    }
+}
+pub fn sizeof_struct(structs: &VppJsApiType, apifile:&VppJsApiFile ) {
+    dbg!(&structs);
+    let mut totalsize: u8 = 0;
+    for x in 0..structs.fields.len(){
+        totalsize = totalsize + sizeof_field(&structs.fields[x], &apifile);
+    }
+    println!("Size is {}", totalsize);
+}
+pub fn sizeof_field(fields: &VppJsApiMessageFieldDef, apifile:&VppJsApiFile) -> u8{
+    // dbg!(&fields);
+    if fields.ctype.starts_with("vl_api_"){
+        find_struct(&fields.name, apifile);
+        0
+    }
+    else {
+        let typ = basetypes::ctoSizeR(&fields.ctype);
+        // println!("Size is {}", typ.basetypeSizes());
+        typ.basetypeSizes()
+    }
+}
+// Find the struct 
+pub fn find_struct(name: &str, apifile:&VppJsApiFile)  {
+    for x in 0..apifile.types.len(){
+       if apifile.types[x].type_name == name {
+           println!("Found the struct");
+           sizeof_struct(&apifile.types[x], &apifile);
+           break;
+       }
+    }
+}
+// Size of enum

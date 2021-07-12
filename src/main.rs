@@ -15,11 +15,13 @@ mod parser_helper;
 mod file_schema;
 mod code_gen;
 mod basetypes;
+mod interface;
 use crate::parser_helper::*;
 use crate::message::*;
 use crate::file_schema::VppJsApiFile;
 use crate::types::*;
 use crate::code_gen::gen_code;
+use crate::interface::*;
 
 #[derive(Clap, Debug, Clone, Serialize, Deserialize, EnumString, Display)]
 pub enum OptParseType {
