@@ -14,7 +14,7 @@ minreq = { version = "2.3.0", features = ["https-rustls", "json-using-serde"] }
 clap = "3.0.0-beta.2"
 typenum = "*"
 generic-array = { version = "*", features = ["serde"] }
-vpp-api-transport = { git="https://github.com/ayourtch/vpp-api-transport" }
+vpp-api-transport = "0.1.1"
 bincode = "1.2.1"
 serde_repr = "0.1"
 
