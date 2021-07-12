@@ -1,3 +1,4 @@
+#![allow(dead_code,unused_mut,unused_variables,unused_must_use, non_camel_case_types,unused_imports, unused_parens)]
 use generic_array::{ArrayLength, GenericArray};
 use serde::{Deserialize, Serialize};
 use std::convert::TryFrom;
@@ -316,9 +317,9 @@ impl<'de, 'tde, T: Deserialize<'tde>, N: ArrayLength<T>> Deserialize<'de> for Fi
 
 #[derive(Copy, Clone, Default, Deserialize)]
 #[serde(bound = "T: Deserialize<'de> + Default")]
-pub struct SizedEnum<T, X>(T, PhantomData<X>);
+pub struct SizedEnum<T, X>(T, PhantomData<X>); // This is the sized enum declaration, It's a unit struct 
 
-impl<T: Debug, X> fmt::Debug for SizedEnum<T, X> {
+impl<T: Debug, X> fmt::Debug for SizedEnum<T, X> { // implement debug trait for sized enum 
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let v = &self.0;
         write!(f, "SizedEnum[{}]: {:?}", std::any::type_name::<X>(), &v)
