@@ -41,9 +41,9 @@ pub fn gen_code(code: &VppJsApiFile){
     // dbg!(&code.imports);
     // dbg!(&code.counters);
     // dbg!(&code.paths);
-    let mut file = File::create("src/interface.rs").unwrap();
+    /* let mut file = File::create("src/interface.rs").unwrap();
     file.write_all(preamble.as_bytes())
-        .unwrap();
+        .unwrap(); */
 
     println!("Enum data for size");
     dbg!(&code.enums[0]);
@@ -53,8 +53,8 @@ pub fn gen_code(code: &VppJsApiFile){
     
 }
 // Things to do 
-// 1. Remove vl_message_id in struct 
-// 2. Use serde_repr for enums of certain types 
+// 1. Remove vl_message_id in struct - Done
+// 2. Use serde_repr for enums of certain types - Done  
 // 3. Create generated mod for testing 
 // 4. Test all messages from interface.api.json 
 // 5. Repeat the strategy for the rest of the core api jsons 

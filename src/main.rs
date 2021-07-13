@@ -1,5 +1,4 @@
 use clap::Clap;
-use serde::{Deserialize, Serialize};
 use std::string::ToString;
 extern crate strum;
 #[macro_use]
@@ -16,6 +15,18 @@ mod file_schema;
 mod code_gen;
 mod basetypes;
 mod interface;
+mod MessageFunctions;
+use crate::MessageFunctions::*;
+use bincode::Options;
+use serde::{de::DeserializeOwned, Deserialize, Serialize};
+use std::collections::HashMap;
+use std::convert::TryInto;
+use std::io::{Read, Write};
+use std::ops::Add;
+use std::time::{Duration, SystemTime};
+use vpp_api_encoding::typ::*;
+use vpp_api_transport::*;
+use serde_repr::{Serialize_repr, Deserialize_repr};
 // mod interface;
 use crate::parser_helper::*;
 use crate::message::*;
@@ -134,7 +145,25 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use super::interface::*;
+    use super::MessageFunctions::*;
     use std::path::PathBuf;
+    use bincode::Options;
+    use clap::Clap;
+    use serde::{de::DeserializeOwned, Deserialize, Serialize};
+    use std::collections::HashMap;
+    use std::convert::TryInto;
+    use std::io::{Read, Write};
+    use std::ops::Add;
+    use std::time::{Duration, SystemTime};
+    use vpp_api_encoding::typ::*;
+    use vpp_api_transport::*;
+    use serde_repr::{Serialize_repr, Deserialize_repr};
+    use vpp_api_transport::afunix;
+    use vpp_api_transport::shmem;
+    use vpp_api_transport::VppApiTransport;
+
+    
 
     fn get_test_data_path() -> PathBuf {
         let mut path = PathBuf::from(file!());
@@ -172,11 +201,138 @@ mod tests {
         }
     }
 
-    #[test]
+    /* #[test]
     fn test_tree() {
         let mut api_files: LinkedHashMap<String, VppJsApiFile> = LinkedHashMap::new();
         parse_api_tree_with_verify(get_test_data_path().to_str().unwrap(), &mut api_files);
 
         assert_eq!(123, api_files.len());
-    }
+    }*/ 
+    /* #[test]
+    fn test_ip_address_dump() {
+        let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));
+        // println!("Connect result: {:?}", t.connect("api-test", None, 256));
+        // t.get_msg_index("sw_interface_add_del_address_5803d5c4").unwrap();
+        t.set_nonblocking(false);
+        let create_interface_reply: sw_interface_add_del_address_reply = send_recv_msg(
+            "sw_interface_add_del_address_5803d5c4",
+            &sw_interface_add_del_address {
+                client_index: t.get_client_index(),
+                context: 0, 
+                sw_if_index: 0, 
+                is_add: true, 
+                del_all: false, 
+                prefix: address_with_prefix{
+                    address: Address {
+                        af: address_family::ADDRESS_IP4, 
+                        un: [0xa,0xa,1,2,7,0x7a,0xb,0xc,0xd,0xf,8,9,5,6,10,10],
+                    },
+                    len: 24,   
+                }
+            },
+            &mut *t,
+            &sw_interface_add_del_address_reply::get_message_id()
+        );
+        assert_eq!(create_interface_reply.context, 0);
+        t.disconnect();
+    }*/ 
+    /* #[test]
+    fn test_transport_connection(){
+        let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));
+        // dbg!(t.connect("api-test", None, 256));
+        let check = t.connect("api-test", None, 256);
+        assert_eq!(check,0);
+        t.disconnect();
+    }*/
+    /* #[test]
+    fn test_transport_get_msg_indx(){
+        let mut t = shmem::Transport::new();
+        // dbg!(t.connect("api-test", None, 256));
+        // let check = t.connect("api-test", None, 256);
+        t.set_nonblocking(false);
+        let vl_msg_id = t.get_msg_index("control_ping_51077d14").unwrap();
+        assert_ne!(vl_msg_id,0);
+        // std::thread::sleep(std::time::Duration::from_secs(1));
+        t.disconnect();
+    }*/
+
 }
+#[cfg(test)]
+mod tests_vpp {
+    use std::mem::drop;
+    use super::*;
+    use bincode::Options;
+    use clap::Clap;
+    use serde::{de::DeserializeOwned, Deserialize, Serialize};
+    use std::collections::HashMap;
+    use std::convert::TryInto;
+    use std::io::{Read, Write};
+    use std::ops::Add;
+    use std::time::{Duration, SystemTime};
+    use vpp_api_encoding::typ::*;
+    use vpp_api_transport::*;
+    use serde_repr::{Serialize_repr, Deserialize_repr};
+    
+    use typenum::{U10, U24, U256, U32, U64};
+    
+    use vpp_api_transport::afunix;
+    use vpp_api_transport::shmem;
+    use vpp_api_transport::VppApiTransport;
+    
+    
+    
+    fn get_encoder() -> impl bincode::config::Options {
+        bincode::DefaultOptions::new()
+            .with_big_endian()
+            .with_fixint_encoding()
+    }
+
+    #[test]
+    fn test_vpp_functions() {
+        let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));
+        println!("Connect result: {:?}", t.connect("api-test", None, 256));
+        // dbg!(t.connect("api-test", None, 256));
+        let vl_msg_id = t.get_msg_index("control_ping_51077d14").unwrap();
+        assert_eq!(vl_msg_id,571);
+    }
+    #[test]
+    fn test_sw_interface_add_del_address() {
+        // Setting up VPP Transport 
+            // let mut t = cre
+        let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));    
+        println!("Connect result: {:?}", t.connect("api-test", None, 256));
+        dbg!(t.connect("api-test", None, 256));
+        t.set_nonblocking(false);
+
+        let create_interface: sw_interface_add_del_address_reply = send_recv_msg(
+            "sw_interface_add_del_address_5803d5c4", 
+            &sw_interface_add_del_address{
+                client_index: t.get_client_index(),
+                context: 0, 
+                is_add: true,
+                del_all: false,
+                sw_if_index: 0,
+                prefix: address_with_prefix{
+                    address: Address{
+                        af: address_family::ADDRESS_IP4,
+                        un: [0xa,0xa,1,2,7,0x7a,0xb,0xc,0xd,0xf,8,9,5,6,10,10],
+                    },
+                    len:24
+                }
+                
+            }, 
+            &mut *t, 
+            "sw_interface_add_del_address_reply_e8d4e804");
+       
+        assert_eq!(create_interface.context, 0);
+        t.disconnect();
+        // drop(t);
+        // share_vpp(t);
+        // std::thread::sleep(std::time::Duration::from_secs(10));
+    
+    }
+
+}
+
+
+

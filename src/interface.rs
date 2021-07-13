@@ -4,18 +4,19 @@ use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use vpp_api_encoding::typ::*;
 use vpp_api_transport::*;
 use serde_repr::{Serialize_repr, Deserialize_repr};
+use typenum::{U10, U24, U256, U32, U64};
 #[derive(Debug, Clone, Serialize, Deserialize)] 
-struct address { 
+pub struct Address { 
 	pub af : address_family, 
 	pub un : address_union, 
 } 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
-struct prefix { 
-	pub address : address, 
+pub struct prefix { 
+	pub address : Address, 
 	pub len : u8, 
 } 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
-struct ip4_address_and_mask { 
+pub struct ip4_address_and_mask { 
 	pub addr : ip4_address, 
 	pub mask : ip4_address, 
 } 
@@ -46,11 +47,12 @@ struct prefix_matcher {
 	pub le : u8, 
 	pub ge : u8, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
+/* #[derive(Debug, Clone, Serialize, Deserialize)] 
 union address_union { 
 	 ip4 : ip4_address, 
 	 ip6 : ip6_address, 
-} 
+} */ 
+pub type address_union = [u8;16];
 #[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
 #[repr(u32)]
 pub enum if_status_flags { 
@@ -375,7 +377,7 @@ impl sw_interface_dump {
 	 } 
 } 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
-struct sw_interface_add_del_address { 
+pub struct sw_interface_add_del_address { 
 	pub client_index : u32, 
 	pub context : u32, 
 	pub sw_if_index : interface_index, 
@@ -389,7 +391,7 @@ impl sw_interface_add_del_address {
 	 } 
 } 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
-struct sw_interface_add_del_address_reply { 
+pub struct sw_interface_add_del_address_reply { 
 	pub context : u32, 
 	pub retval : i32, 
 } 
