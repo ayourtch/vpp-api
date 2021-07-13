@@ -3,6 +3,7 @@
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use vpp_api_encoding::typ::*;
 use vpp_api_transport::*;
+use serde_repr::{Serialize_repr, Deserialize_repr};
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 struct address { 
 	pub af : address_family, 
@@ -45,31 +46,34 @@ struct prefix_matcher {
 	pub le : u8, 
 	pub ge : u8, 
 } 
-/* #[derive(Debug, Clone, Serialize, Deserialize)] 
+#[derive(Debug, Clone, Serialize, Deserialize)] 
 union address_union { 
 	 ip4 : ip4_address, 
 	 ip6 : ip6_address, 
-} */ 
-type address_union = [u8;16]; // This tricky part of Union has been edited manually 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
+} 
+#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
+#[repr(u32)]
 pub enum if_status_flags { 
 	 IF_STATUS_API_FLAG_ADMIN_UP=1, 
 	 IF_STATUS_API_FLAG_LINK_UP=2, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
+#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
+#[repr(u32)]
 pub enum mtu_proto { 
 	 MTU_PROTO_API_L3=0, 
 	 MTU_PROTO_API_IP4=1, 
 	 MTU_PROTO_API_IP6=2, 
 	 MTU_PROTO_API_MPLS=3, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
+#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
+#[repr(u32)]
 pub enum link_duplex { 
 	 LINK_DUPLEX_API_UNKNOWN=0, 
 	 LINK_DUPLEX_API_HALF=1, 
 	 LINK_DUPLEX_API_FULL=2, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
+#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
+#[repr(u32)]
 pub enum sub_if_flags { 
 	 SUB_IF_API_FLAG_NO_TAGS=1, 
 	 SUB_IF_API_FLAG_ONE_TAG=2, 
@@ -82,7 +86,8 @@ pub enum sub_if_flags {
 	 SUB_IF_API_FLAG_MASK_VNET=254, 
 	 SUB_IF_API_FLAG_DOT1AH=256, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
+#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
+#[repr(u32)]
 pub enum rx_mode { 
 	 RX_MODE_API_UNKNOWN=0, 
 	 RX_MODE_API_POLLING=1, 
@@ -90,24 +95,28 @@ pub enum rx_mode {
 	 RX_MODE_API_ADAPTIVE=3, 
 	 RX_MODE_API_DEFAULT=4, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
+#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
+#[repr(u32)]
 pub enum if_type { 
 	 IF_API_TYPE_HARDWARE=0, 
 	 IF_API_TYPE_SUB=1, 
 	 IF_API_TYPE_P2P=2, 
 	 IF_API_TYPE_PIPE=3, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
+#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
+#[repr(u8)]
 pub enum direction { 
 	 RX=0, 
 	 TX=1, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
+#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
+#[repr(u8)]
 pub enum address_family { 
 	 ADDRESS_IP4=0, 
 	 ADDRESS_IP6=1, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
+#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
+#[repr(u8)]
 pub enum ip_feature_location { 
 	 IP_API_FEATURE_INPUT=0, 
 	 IP_API_FEATURE_OUTPUT=1, 
@@ -115,14 +124,16 @@ pub enum ip_feature_location {
 	 IP_API_FEATURE_PUNT=3, 
 	 IP_API_FEATURE_DROP=4, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
+#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
+#[repr(u8)]
 pub enum ip_ecn { 
 	 IP_API_ECN_NONE=0, 
 	 IP_API_ECN_ECT0=1, 
 	 IP_API_ECN_ECT1=2, 
 	 IP_API_ECN_CE=3, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
+#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
+#[repr(u8)]
 pub enum ip_dscp { 
 	 IP_API_DSCP_CS0=0, 
 	 IP_API_DSCP_CS1=8, 
@@ -146,7 +157,8 @@ pub enum ip_dscp {
 	 IP_API_DSCP_CS6=48, 
 	 IP_API_DSCP_CS7=50, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
+#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
+#[repr(u8)]
 pub enum ip_proto { 
 	 IP_API_PROTO_HOPOPT=0, 
 	 IP_API_PROTO_ICMP=1, 
@@ -340,9 +352,9 @@ struct sw_interface_details {
 	pub b_smac : mac_address, 
 	pub b_vlanid : u16, 
 	pub i_sid : u32, 
-	pub interface_name : String, 
-	pub interface_dev_type : String, 
-	pub tag : String, 
+	pub interface_name : FixedSizeString<U64>, 
+	pub interface_dev_type : FixedSizeString<U64>, 
+	pub tag : FixedSizeString<U64>, 
 } 
 impl sw_interface_details { 
 	 pub fn get_message_id() -> String { 
@@ -355,7 +367,7 @@ struct sw_interface_dump {
 	pub context : u32, 
 	pub sw_if_index : interface_index, 
 	pub name_filter_valid : bool, 
-	pub name_filter : String, 
+	pub name_filter : VariableSizeString, 
 } 
 impl sw_interface_dump { 
 	 pub fn get_message_id() -> String { 
@@ -522,7 +534,7 @@ struct sw_interface_tag_add_del {
 	pub context : u32, 
 	pub is_add : bool, 
 	pub sw_if_index : interface_index, 
-	pub tag : String, 
+	pub tag : FixedSizeString<U64>, 
 } 
 impl sw_interface_tag_add_del { 
 	 pub fn get_message_id() -> String { 

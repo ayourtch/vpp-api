@@ -7,7 +7,7 @@ use crate::enums::VppJsApiEnum;
 use crate::file_schema::VppJsApiFile;
 use crate::types::VppJsApiType;
 use crate::message::VppJsApiMessage;
-use crate::types::VppJsApiMessageFieldDef;
+use crate::types::{VppJsApiMessageFieldDef, VppJsApiFieldSize};
 use crate::parser_helper::{get_type, get_ident};
 use crate::basetypes::{maxSizeUnion, sizeof_alias, sizeof_struct};
 
@@ -17,6 +17,7 @@ pub fn gen_code(code: &VppJsApiFile){
     preamble.push_str("use serde::{de::DeserializeOwned, Deserialize, Serialize};\n");
     preamble.push_str("use vpp_api_encoding::typ::*;\n");
     preamble.push_str("use vpp_api_transport::*;\n");
+    preamble.push_str("use serde_repr::{Serialize_repr, Deserialize_repr};\n");
     for x in 0..code.types.len(){
         gen_structs(&code.types[x], &mut preamble, &code);
     }
@@ -43,6 +44,11 @@ pub fn gen_code(code: &VppJsApiFile){
     let mut file = File::create("src/interface.rs").unwrap();
     file.write_all(preamble.as_bytes())
         .unwrap();
+
+    println!("Enum data for size");
+    dbg!(&code.enums[0]);
+    // dbg!(&code.enumflags[0]);
+    dbg!(&code.messages);
 
     
 }
@@ -74,7 +80,11 @@ pub fn gen_union(unions: &VppJsApiType, file: &mut String){
     file.push_str("} \n");
 }
 pub fn gen_enum(enums: &VppJsApiEnum, file: &mut String){
-    file.push_str(&format!("#[derive(Debug, Clone, Serialize, Deserialize)] \n"));
+    file.push_str(&format!("#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] \n"));
+    match &enums.info.enumtype {
+        Some(len) => file.push_str(&format!("#[repr({})]\n",&len)),
+        _ => file.push_str(&format!("#[repr(u32)]\n"))
+    }
     file.push_str(&format!("pub enum {} {{ \n", enums.name));
     for x in 0..enums.values.len(){
         file.push_str(&format!("\t {}={}, \n",get_ident(&enums.values[x].name), enums.values[x].value));
@@ -101,6 +111,19 @@ pub fn gen_messages(messages: &VppJsApiMessage, file: &mut String) {
     for x in 0..messages.fields.len(){
         if messages.fields[x].name == "_vl_msg_id" {
             // panic!("Something wrong");
+        }
+        else if messages.fields[x].ctype == "string" {
+            match &messages.fields[x].maybe_size {
+                Some(cont) => {
+                    match cont {
+                        VppJsApiFieldSize::Fixed(len) => file.push_str(&format!("\tpub {} : FixedSizeString<U{}>, \n", get_ident(&messages.fields[x].name), len)),
+                        VppJsApiFieldSize::Variable(None) => file.push_str(&format!("\tpub {} : VariableSizeString, \n", get_ident(&messages.fields[x].name))),
+                        _ => file.push_str(&format!("\tpub {} : , \n", get_ident(&messages.fields[x].name))),
+                    }
+                }
+                _ => file.push_str(&format!("\tpub {} :, \n", get_ident(&messages.fields[x].name)))
+            }
+            // file.push_str(&format!("\tpub {} : {}, \n", get_ident(&messages.fields[x].name), get_type(&messages.fields[x].ctype)));
         }
         else {
             // print!("{}",messages.fields[x].name);
