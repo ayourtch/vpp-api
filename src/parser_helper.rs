@@ -41,7 +41,8 @@ pub fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, V
 pub fn get_type(apitype: &str) -> String {
     let rtype = if apitype.starts_with("vl_api_"){
         let ctype_trimmed = apitype.trim_start_matches("vl_api_").trim_end_matches("_t");
-        String::from(ctype_trimmed)
+        // String::from(ctype_trimmed)
+        camelize_ident(ctype_trimmed)
     } else {
             if apitype == "string" {
                 format!("String")
@@ -129,6 +130,25 @@ pub fn get_rust_field_type(
     } else {
         format!("{} /* {:?} {} */", full_rtype, fld, is_last)
     }
+}
+
+pub fn camelize_ident(ident:&str) -> String {
+    let mut c = ident.split("_");
+    let collection: Vec<&str> = c.collect();
+    let mut finalString = String::new();
+
+    for x in collection{
+        for (i, c) in x.chars().enumerate() {
+            if i==0 {
+                let c_upper: Vec<_> = c.to_uppercase().collect();
+                finalString.push_str(&c_upper[0].to_string());
+            }
+            else {
+                finalString.push_str(&c.to_string());
+            }
+        }
+    }
+    finalString
 }
 
 pub fn camelize(opts: &Opts, ident: &str) -> String {

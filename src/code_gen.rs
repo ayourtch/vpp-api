@@ -8,7 +8,7 @@ use crate::file_schema::VppJsApiFile;
 use crate::types::VppJsApiType;
 use crate::message::VppJsApiMessage;
 use crate::types::{VppJsApiMessageFieldDef, VppJsApiFieldSize};
-use crate::parser_helper::{get_type, get_ident};
+use crate::parser_helper::{get_type, get_ident,camelize_ident};
 use crate::basetypes::{maxSizeUnion, sizeof_alias, sizeof_struct};
 
 pub fn gen_code(code: &VppJsApiFile){
@@ -43,8 +43,8 @@ pub fn gen_code(code: &VppJsApiFile){
     // dbg!(&code.paths);
     /* let mut file = File::create("src/interface.rs").unwrap();
     file.write_all(preamble.as_bytes())
-        .unwrap(); */
-
+        .unwrap(); 
+    */
     println!("Enum data for size");
     dbg!(&code.enums[0]);
     // dbg!(&code.enumflags[0]);
@@ -64,7 +64,7 @@ pub fn gen_code(code: &VppJsApiFile){
 pub fn gen_structs(structs: &VppJsApiType, file: &mut String, apifile: &VppJsApiFile){
     sizeof_struct(&structs, &apifile);
     file.push_str(&format!("#[derive(Debug, Clone, Serialize, Deserialize)] \n"));
-    file.push_str(&format!("struct {} {{ \n",structs.type_name));
+    file.push_str(&format!("pub struct {} {{ \n",camelize_ident(&structs.type_name)));
     for x in 0..structs.fields.len(){
         file.push_str(&format!("\tpub {} : {}, \n", get_ident(&structs.fields[x].name), get_type(&structs.fields[x].ctype)));
     }
@@ -85,7 +85,7 @@ pub fn gen_enum(enums: &VppJsApiEnum, file: &mut String){
         Some(len) => file.push_str(&format!("#[repr({})]\n",&len)),
         _ => file.push_str(&format!("#[repr(u32)]\n"))
     }
-    file.push_str(&format!("pub enum {} {{ \n", enums.name));
+    file.push_str(&format!("pub enum {} {{ \n", camelize_ident(&enums.name)));
     for x in 0..enums.values.len(){
         file.push_str(&format!("\t {}={}, \n",get_ident(&enums.values[x].name), enums.values[x].value));
     }
@@ -93,7 +93,7 @@ pub fn gen_enum(enums: &VppJsApiEnum, file: &mut String){
 }
 pub fn gen_alias(alias:&VppJsApiAlias, name: &str, file: &mut String){
     sizeof_alias(&alias);
-    file.push_str(&format!("pub type {}=", get_ident(&name)));
+    file.push_str(&format!("pub type {}=", camelize_ident(&get_ident(&name))));
     // println!("{}", name);
     // print!("{} - ", alias.ctype);
     match alias.length{
@@ -107,7 +107,7 @@ pub fn gen_alias(alias:&VppJsApiAlias, name: &str, file: &mut String){
 }
 pub fn gen_messages(messages: &VppJsApiMessage, file: &mut String) {
     file.push_str(&format!("#[derive(Debug, Clone, Serialize, Deserialize)] \n"));
-    file.push_str(&format!("struct {} {{ \n",messages.name));
+    file.push_str(&format!("pub struct {} {{ \n",camelize_ident(&messages.name)));
     for x in 0..messages.fields.len(){
         if messages.fields[x].name == "_vl_msg_id" {
             // panic!("Something wrong");
@@ -136,7 +136,7 @@ pub fn gen_messages(messages: &VppJsApiMessage, file: &mut String) {
 }
 
 pub fn gen_impl_messages(messages: &VppJsApiMessage, file: &mut String){
-    file.push_str(&format!("impl {} {{ \n",messages.name));
+    file.push_str(&format!("impl {} {{ \n",camelize_ident(&messages.name)));
     file.push_str(&format!("\t pub fn get_message_id() -> String {{ \n"));
     file.push_str(&format!("\t \t String::from(\"{}_{}\") \n",messages.name, messages.info.crc.trim_start_matches("0x")));
     file.push_str(&format!("\t }} \n"));

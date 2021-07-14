@@ -297,24 +297,22 @@ mod tests_vpp {
     }
     #[test]
     fn test_sw_interface_add_del_address() {
-        // Setting up VPP Transport 
-            // let mut t = cre
         let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));    
         println!("Connect result: {:?}", t.connect("api-test", None, 256));
         dbg!(t.connect("api-test", None, 256));
         t.set_nonblocking(false);
 
-        let create_interface: sw_interface_add_del_address_reply = send_recv_msg(
-            "sw_interface_add_del_address_5803d5c4", 
-            &sw_interface_add_del_address{
+        let create_interface: SwInterfaceAddDelAddressReply = send_recv_msg(
+            &SwInterfaceAddDelAddress::get_message_id(), 
+            &SwInterfaceAddDelAddress{
                 client_index: t.get_client_index(),
                 context: 0, 
                 is_add: true,
                 del_all: false,
                 sw_if_index: 0,
-                prefix: address_with_prefix{
+                prefix: AddressWithPrefix{
                     address: Address{
-                        af: address_family::ADDRESS_IP4,
+                        af: AddressFamily::ADDRESS_IP4,
                         un: [0xa,0xa,1,2,7,0x7a,0xb,0xc,0xd,0xf,8,9,5,6,10,10],
                     },
                     len:24
@@ -322,7 +320,209 @@ mod tests_vpp {
                 
             }, 
             &mut *t, 
-            "sw_interface_add_del_address_reply_e8d4e804");
+            &SwInterfaceAddDelAddressReply::get_message_id());
+       
+        assert_eq!(create_interface.context, 0);
+        t.disconnect();
+        // drop(t);
+        // share_vpp(t);
+        // std::thread::sleep(std::time::Duration::from_secs(10));
+    
+    }
+    #[test]
+    fn test_sw_interface_set_flags() {
+        let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));    
+        println!("Connect result: {:?}", t.connect("api-test", None, 256));
+        dbg!(t.connect("api-test", None, 256));
+        t.set_nonblocking(false);
+
+        let create_interface: SwInterfaceSetFlagsReply = send_recv_msg(
+            &SwInterfaceSetFlags::get_message_id(), 
+            &SwInterfaceSetFlags{
+                client_index: t.get_client_index(),
+                context: 0, 
+                sw_if_index: 0,
+                flags: IfStatusFlags::IF_STATUS_API_FLAG_LINK_UP
+            }, 
+            &mut *t, 
+            &SwInterfaceSetFlagsReply::get_message_id());
+       
+        assert_eq!(create_interface.context, 0);
+        t.disconnect();
+        // drop(t);
+        // share_vpp(t);
+        // std::thread::sleep(std::time::Duration::from_secs(10));
+    
+    }
+    #[test]
+    fn test_sw_interface_set_promisc() {
+        let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));    
+        println!("Connect result: {:?}", t.connect("api-test", None, 256));
+        // dbg!(t.connect("api-test", None, 256));
+        t.set_nonblocking(false);
+
+        let create_interface: SwInterfaceSetPromiscReply = send_recv_msg(
+            &SwInterfaceSetPromisc::get_message_id(), 
+            &SwInterfaceSetPromisc{
+                client_index: t.get_client_index(),
+                context: 0, 
+                sw_if_index: 0,
+                promisc_on: false,
+            }, 
+            &mut *t, 
+            &SwInterfaceSetPromiscReply::get_message_id());
+       
+        assert_eq!(create_interface.context, 0);
+        t.disconnect();
+        // drop(t);
+        // share_vpp(t);
+        // std::thread::sleep(std::time::Duration::from_secs(10));
+    
+    }
+    #[test]
+    fn test_hw_interface_set_mtu() {
+        let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));    
+        println!("Connect result: {:?}", t.connect("api-test", None, 256));
+        dbg!(t.connect("api-test", None, 256));
+        t.set_nonblocking(false);
+        // let vl_msg_id = t.get_msg_index(&HwInterfaceSetMtu::get_message_id()).unwrap();
+
+        let create_interface: HwInterfaceSetMtuReply = send_recv_msg(
+            &HwInterfaceSetMtu::get_message_id(), 
+            &HwInterfaceSetMtu{
+                client_index: t.get_client_index(),
+                context: 0, 
+                sw_if_index: 0,
+                mtu: 50
+            }, 
+            &mut *t, 
+            &HwInterfaceSetMtuReply::get_message_id());
+       
+        assert_eq!(create_interface.context, 0);
+        t.disconnect();
+        // drop(t);
+        // share_vpp(t);
+        // std::thread::sleep(std::time::Duration::from_secs(10));
+    
+    }
+    #[test]
+    fn test_sw_interface_set_mtu() {
+        let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));    
+        println!("Connect result: {:?}", t.connect("api-test", None, 256));
+        dbg!(t.connect("api-test", None, 256));
+        t.set_nonblocking(false);
+        // let vl_msg_id = t.get_msg_index(&SwInterfaceSetMtu::get_message_id()).unwrap();
+
+        let create_interface: SwInterfaceSetMtuReply = send_recv_msg(
+            &SwInterfaceSetMtu::get_message_id(), 
+            &SwInterfaceSetMtu{
+                client_index: t.get_client_index(),
+                context: 0, 
+                sw_if_index: 0,
+                mtu: 50
+            }, 
+            &mut *t, 
+            &SwInterfaceSetMtuReply::get_message_id());
+       
+        assert_eq!(create_interface.context, 0);
+        t.disconnect();
+        // drop(t);
+        // share_vpp(t);
+        // std::thread::sleep(std::time::Duration::from_secs(10));
+    
+    }
+    #[test]
+    fn test_sw_interface_set_ip_directed_broadcast() {
+        let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));    
+        println!("Connect result: {:?}", t.connect("api-test", None, 256));
+        dbg!(t.connect("api-test", None, 256));
+        t.set_nonblocking(false);
+        // let vl_msg_id = t.get_msg_index(&SwInterfaceSetIpDirectedBroadcast::get_message_id()).unwrap();
+
+        let create_interface: SwInterfaceSetIpDirectedBroadcastReply = send_recv_msg(
+            &SwInterfaceSetIpDirectedBroadcast::get_message_id(), 
+            &SwInterfaceSetIpDirectedBroadcast{
+                client_index: t.get_client_index(),
+                context: 0, 
+                sw_if_index: 0,
+                enable: true,
+            }, 
+            &mut *t, 
+            &SwInterfaceSetIpDirectedBroadcastReply::get_message_id());
+       
+        assert_eq!(create_interface.context, 0);
+        t.disconnect();
+        // drop(t);
+        // share_vpp(t);
+        // std::thread::sleep(std::time::Duration::from_secs(10));
+    
+    }
+    #[test]
+    fn test_want_interface_events() {
+        let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));    
+        println!("Connect result: {:?}", t.connect("api-test", None, 256));
+        dbg!(t.connect("api-test", None, 256));
+        t.set_nonblocking(false);
+        // let vl_msg_id = t.get_msg_index(&WantInterfaceEvents::get_message_id()).unwrap();
+
+        let create_interface: WantInterfaceEventsReply = send_recv_msg(
+            &WantInterfaceEvents::get_message_id(), 
+            &WantInterfaceEvents{
+                client_index: t.get_client_index(),
+                context: 0, 
+                enable_disable: 32,
+                pid: 32
+            }, 
+            &mut *t, 
+            &WantInterfaceEventsReply::get_message_id());
+       
+        assert_eq!(create_interface.context, 0);
+        t.disconnect();
+        // drop(t);
+        // share_vpp(t);
+        // std::thread::sleep(std::time::Duration::from_secs(10));
+    
+    }
+    #[test]
+    fn test_sw_interface_address_replace_begin() {
+        let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));    
+        println!("Connect result: {:?}", t.connect("api-test", None, 256));
+        dbg!(t.connect("api-test", None, 256));
+        t.set_nonblocking(false);
+        // let vl_msg_id = t.get_msg_index(&WantInterfaceEvents::get_message_id()).unwrap();
+
+        let create_interface: SwInterfaceAddressReplaceBeginReply = send_recv_msg(
+            &SwInterfaceAddressReplaceBegin::get_message_id(), 
+            &SwInterfaceAddressReplaceBegin{
+                client_index: t.get_client_index(),
+                context: 0, 
+            }, 
+            &mut *t, 
+            &SwInterfaceAddressReplaceBeginReply::get_message_id());
+       
+        assert_eq!(create_interface.context, 0);
+        t.disconnect();
+        // drop(t);
+        // share_vpp(t);
+        // std::thread::sleep(std::time::Duration::from_secs(10));
+    
+    }
+    #[test]
+    fn test_sw_interface_address_replace_end() {
+        let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));    
+        println!("Connect result: {:?}", t.connect("api-test", None, 256));
+        dbg!(t.connect("api-test", None, 256));
+        t.set_nonblocking(false);
+        // let vl_msg_id = t.get_msg_index(&WantInterfaceEvents::get_message_id()).unwrap();
+
+        let create_interface: SwInterfaceAddressReplaceEndReply = send_recv_msg(
+            &SwInterfaceAddressReplaceEnd::get_message_id(), 
+            &SwInterfaceAddressReplaceEnd{
+                client_index: t.get_client_index(),
+                context: 0, 
+            }, 
+            &mut *t, 
+            &SwInterfaceAddressReplaceEndReply::get_message_id());
        
         assert_eq!(create_interface.context, 0);
         t.disconnect();
