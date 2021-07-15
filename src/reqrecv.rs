@@ -1,4 +1,11 @@
-#![allow(dead_code,unused_mut,unused_variables,unused_must_use, non_camel_case_types,unused_imports)]
+#![allow(
+    dead_code,
+    unused_mut,
+    unused_variables,
+    unused_must_use,
+    non_camel_case_types,
+    unused_imports
+)]
 use bincode::Options;
 use clap::Clap;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
@@ -34,7 +41,7 @@ pub struct ControlPingReply {
     pub vpe_pid: u32,
 }
 
-pub fn send_recv_msg<'a, T: Serialize + Deserialize<'a>, TR: Serialize + DeserializeOwned >(
+pub fn send_recv_msg<'a, T: Serialize + Deserialize<'a>, TR: Serialize + DeserializeOwned>(
     name: &str,
     m: &T,
     t: &mut dyn VppApiTransport,
@@ -46,12 +53,10 @@ pub fn send_recv_msg<'a, T: Serialize + Deserialize<'a>, TR: Serialize + Deseria
     let mut v = enc.serialize(&vl_msg_id).unwrap();
     let enc = get_encoder();
     let msg = enc.serialize(&m).unwrap();
-    
+
     v.extend_from_slice(&msg);
     println!("MSG[{} = 0x{:x}]: {:?}", name, vl_msg_id, &v);
     t.write(&v);
-    // let nres = t.read_one_msg_id_and_msg();
-    // dbg!(nres);
     loop {
         let res = t.read_one_msg_id_and_msg();
         // dbg!(&res);
@@ -72,7 +77,11 @@ pub fn send_recv_msg<'a, T: Serialize + Deserialize<'a>, TR: Serialize + Deseria
         }
     }
 }
-pub fn send_bulk_msg<'a, T: Serialize + Deserialize<'a>,TR: Serialize + DeserializeOwned + std::fmt::Debug + Clone>(
+pub fn send_bulk_msg<
+    'a,
+    T: Serialize + Deserialize<'a>,
+    TR: Serialize + DeserializeOwned + std::fmt::Debug + Clone,
+>(
     name: &str,
     m: &T,
     t: &mut dyn VppApiTransport,
@@ -85,10 +94,10 @@ pub fn send_bulk_msg<'a, T: Serialize + Deserialize<'a>,TR: Serialize + Deserial
     let enc = get_encoder();
     let mut v = enc.serialize(&vl_msg_id).unwrap();
     let enc = get_encoder();
-    let msg = enc.serialize(&m).unwrap();/////
+    let msg = enc.serialize(&m).unwrap(); /////
     let control_ping = ControlPing {
-        client_index: t.get_client_index(), 
-        context: 0
+        client_index: t.get_client_index(),
+        context: 0,
     };
     let enc = get_encoder();
     let mut c = enc.serialize(&control_ping_id).unwrap();
@@ -96,39 +105,26 @@ pub fn send_bulk_msg<'a, T: Serialize + Deserialize<'a>,TR: Serialize + Deserial
     let control_ping_message = enc.serialize(&control_ping).unwrap();
     c.extend_from_slice(&control_ping_message);
     v.extend_from_slice(&msg);
-    println!("MSG[{} = 0x{:x}]: {:?}", "control ping", control_ping_id, &c);
+    println!(
+        "MSG[{} = 0x{:x}]: {:?}",
+        "control ping", control_ping_id, &c
+    );
     println!("MSG[{} = 0x{:x}]: {:?}", name, vl_msg_id, &v);
-    // dbg!(&c);
     let mut out: Vec<u8> = vec![];
-    t.write(&v); // Dump message 
-    // let res = t.read_one_msg_into(&mut out);
-    t.write(&c); // Ping message 
-    // dbg!(&out);
+    t.write(&v); // Dump message
+    t.write(&c); // Ping message
     dbg!(control_ping_id_reply);
     let mut out: Vec<TR> = vec![];
     let mut count = 0;
-    // t.write(&c);
     loop {
         println!("Reached loop");
         let res = t.read_one_msg_id_and_msg();
-        // dbg!(&out);
         if let Ok((msg_id, data)) = res {
             println!("id: {} data: {:x?}", msg_id, &data);
-            if msg_id == control_ping_id_reply{
-                /*let res = get_encoder()
-                    .allow_trailing_bytes()
-                    .deserialize::<TR>(&data)
-                    .unwrap();
-                println!("Next thing will be the reply");
-                return res;*/ 
-                // break;
-                // break
-               // return out;
-               // break;
-               // return res;
-               return out;
-            } 
-            if msg_id == reply_vl_msg_id{
+            if msg_id == control_ping_id_reply {
+                return out;
+            }
+            if msg_id == reply_vl_msg_id {
                 println!("Received the intended message");
                 let res = get_encoder()
                     .allow_trailing_bytes()
@@ -136,18 +132,11 @@ pub fn send_bulk_msg<'a, T: Serialize + Deserialize<'a>,TR: Serialize + Deserial
                     .unwrap();
                 println!("Next thing will be the reply");
                 out.extend_from_slice(&[res]);
-                // return res;
-                //return res; 
-
-            }
-            else {
+            } else {
                 println!("Checking the next message for the reply id");
             }
-            
         } else {
             panic!("Result is an error: {:?}", &res);
         }
     }
 }
-
-

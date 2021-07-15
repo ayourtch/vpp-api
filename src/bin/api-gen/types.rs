@@ -1,4 +1,4 @@
-use serde::ser::{SerializeSeq};
+use serde::ser::SerializeSeq;
 use serde::{Deserialize, Serialize, Serializer};
 extern crate strum;
 use serde::de::{self, Deserializer, SeqAccess, Visitor};
@@ -24,7 +24,6 @@ impl Serialize for VppJsApiType {
         seq.end()
     }
 }
-
 
 pub struct VppJsApiTypeVisitor;
 

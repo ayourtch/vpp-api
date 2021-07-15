@@ -1,8 +1,7 @@
-
-use serde::ser::{ SerializeSeq};
-use serde::{Deserialize, Serialize, Serializer};
-use serde::de::{ Deserializer, SeqAccess, Visitor};
 use crate::*;
+use serde::de::{Deserializer, SeqAccess, Visitor};
+use serde::ser::SerializeSeq;
+use serde::{Deserialize, Serialize, Serializer};
 use std::fmt;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

@@ -1,12 +1,11 @@
-
 use serde::{Deserialize, Serialize};
 extern crate strum;
-use linked_hash_map::LinkedHashMap;
-use crate::types::VppJsApiType;
+use crate::alias::VppJsApiAlias;
 use crate::enums::VppJsApiEnum;
 use crate::message::VppJsApiMessage;
-use crate::services::{VppJsApiOptions,VppJsApiService};
-use crate::alias::VppJsApiAlias;
+use crate::services::{VppJsApiOptions, VppJsApiService};
+use crate::types::VppJsApiType;
+use linked_hash_map::LinkedHashMap;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct VppJsApiCounterElement {

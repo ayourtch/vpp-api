@@ -1,4 +1,4 @@
-use serde::ser::{SerializeMap};
+use serde::ser::SerializeMap;
 use serde::{Deserialize, Serialize, Serializer};
 extern crate strum;
 

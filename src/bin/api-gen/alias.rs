@@ -1,7 +1,6 @@
-use serde::ser::{SerializeMap};
+use serde::ser::SerializeMap;
 use serde::{Deserialize, Serialize, Serializer};
 extern crate strum;
-
 
 #[derive(Debug, Deserialize)]
 pub struct VppJsApiAlias {

@@ -1,4 +1,4 @@
-use serde::ser::{SerializeSeq};
+use serde::ser::SerializeSeq;
 use serde::{Deserialize, Serialize, Serializer};
 extern crate strum;
 use serde::de::{Deserializer, SeqAccess, Visitor};

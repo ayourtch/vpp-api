@@ -1,11 +1,10 @@
 use std::string::ToString;
 extern crate strum;
+use crate::file_schema::*;
+use crate::types::*;
+use crate::Opts;
 use linked_hash_map::LinkedHashMap;
 use std::collections::HashMap;
-use crate::file_schema::*;
-use crate::Opts;
-use crate::types::*;
-
 
 pub fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, VppJsApiFile>) {
     use std::fs;
@@ -39,26 +38,24 @@ pub fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, V
     }
 }
 pub fn get_type(apitype: &str) -> String {
-    let rtype = if apitype.starts_with("vl_api_"){
+    let rtype = if apitype.starts_with("vl_api_") {
         let ctype_trimmed = apitype.trim_start_matches("vl_api_").trim_end_matches("_t");
         // String::from(ctype_trimmed)
         camelize_ident(ctype_trimmed)
     } else {
-            if apitype == "string" {
-                format!("String")
-            }
-            else {
-                format!("{}", apitype)
-            }
+        if apitype == "string" {
+            format!("String")
+        } else {
+            format!("{}", apitype)
+        }
     };
     rtype
 }
 pub fn get_ident(api_ident: &str) -> String {
     if api_ident == "type" {
         format!("typ")
-    }
-    else {
-        format!("{}",api_ident.trim_start_matches("_"))
+    } else {
+        format!("{}", api_ident.trim_start_matches("_"))
     }
 }
 
@@ -132,18 +129,17 @@ pub fn get_rust_field_type(
     }
 }
 
-pub fn camelize_ident(ident:&str) -> String {
+pub fn camelize_ident(ident: &str) -> String {
     let mut c = ident.split("_");
     let collection: Vec<&str> = c.collect();
     let mut finalString = String::new();
 
-    for x in collection{
+    for x in collection {
         for (i, c) in x.chars().enumerate() {
-            if i==0 {
+            if i == 0 {
                 let c_upper: Vec<_> = c.to_uppercase().collect();
                 finalString.push_str(&c_upper[0].to_string());
-            }
-            else {
+            } else {
                 finalString.push_str(&c.to_string());
             }
         }
@@ -209,7 +205,7 @@ pub fn generate_code(opts: &Opts, api_files: &LinkedHashMap<String, VppJsApiFile
                 let field_type =
                     get_rust_field_type(opts, &enum_containers, &fld, i == m.fields.len() - 1);
                 /* FIXME: This is very hacky... Special-case the "difficult" types so we don't have
-                 * to propagate the "copy" too far... 
+                 * to propagate the "copy" too far...
                  *
                  * It looks like using the union to determine the max size is not a good idea after
                  * all...
