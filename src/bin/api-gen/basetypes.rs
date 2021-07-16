@@ -1,3 +1,12 @@
+#![allow(
+    dead_code,
+    unused_mut,
+    unused_variables,
+    unused_must_use,
+    non_camel_case_types,
+    unused_imports,
+    non_snake_case
+)]
 use crate::alias::VppJsApiAlias;
 use crate::file_schema::VppJsApiFile;
 use crate::types::VppJsApiMessageFieldDef;

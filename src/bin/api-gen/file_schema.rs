@@ -1,3 +1,11 @@
+#![allow(
+    dead_code,
+    unused_mut,
+    unused_variables,
+    unused_must_use,
+    non_camel_case_types,
+    unused_imports
+)]
 use serde::{Deserialize, Serialize};
 extern crate strum;
 use crate::alias::VppJsApiAlias;
