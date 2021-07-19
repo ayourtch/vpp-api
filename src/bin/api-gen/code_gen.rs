@@ -28,17 +28,25 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
     preamble.push_str("use vpp_api_transport::*;\n");
     preamble.push_str("use serde_repr::{Serialize_repr, Deserialize_repr};\n");
     for x in 0..code.types.len() {
-        for j in 0..api_definition.len(){
+        let mut count: u8= 0;
+        for j in 0..api_definition.len(){            
             if &api_definition[j].0 == &code.types[x].type_name{
                 // Do something else 
-            }
-            else {
-                api_definition.push((code.types[x].type_name.clone(),name.to_string().clone()));
+                println!("Found redundant code for {}, Create an import to {}",&api_definition[j].0,&api_definition[j].1);
+                count = count+1;
+                break;
             }
         }
-        gen_structs(&code.types[x], &mut preamble, &code);
+        if count == 0 {
+            println!("Inserting into linked List {}", &code.types[x].type_name);
+            api_definition.push((code.types[x].type_name.clone(),name.to_string().clone()));
+            gen_structs(&code.types[x], &mut preamble, &code);
+        }
+        // gen_structs(&code.types[x], &mut preamble, &code);
+        
     }
     for x in 0..code.unions.len() {
+        
         gen_union(&code.unions[x], &mut preamble);
     }
     for x in 0..code.enums.len() {

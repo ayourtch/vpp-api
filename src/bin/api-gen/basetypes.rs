@@ -7,6 +7,7 @@
     unused_imports,
     non_snake_case
 )]
+
 use crate::alias::VppJsApiAlias;
 use crate::file_schema::VppJsApiFile;
 use crate::types::VppJsApiMessageFieldDef;
@@ -128,8 +129,8 @@ pub fn sizeof_struct(structs: &VppJsApiType, apifile: &VppJsApiFile) {
 pub fn sizeof_field(fields: &VppJsApiMessageFieldDef, apifile: &VppJsApiFile) -> u8 {
     // dbg!(&fields);
     if fields.ctype.starts_with("vl_api_") {
-        find_struct(&fields.name, apifile);
-        0
+        find_struct(&fields.ctype, apifile);
+        0 // Incomplete
     } else {
         let typ = basetypes::ctoSizeR(&fields.ctype);
         // println!("Size is {}", typ.basetypeSizes());

@@ -73,6 +73,9 @@ pub struct Opts {
     #[clap(long)]
     pub print_message_names: bool,
 
+    #[clap(long)]
+    pub print_import_names: bool,
+
     /// Generate the code
     #[clap(long)]
     pub generate_code: bool,
@@ -145,6 +148,15 @@ fn main() {
                         gen_code(f,name.trim_start_matches("testdata/vpp/api").trim_end_matches("json"), &mut api_definition);
                     }
                     
+                }
+                if opts.print_import_names{
+                    let mut api_definition:Vec<(String, String)> = vec![];
+                    for(name, f) in &api_files{
+                        if name.ends_with("_types.api.json"){
+                            // println!("{}",name);
+                            gen_code(f,name.trim_start_matches("testdata/vpp/api").trim_end_matches("json"), &mut api_definition);
+                        }
+                    }
                 }
             }
             e => {
