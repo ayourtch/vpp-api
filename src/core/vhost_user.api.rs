@@ -87,8 +87,6 @@ pub enum VirtioNetFeaturesFirst32 {
 pub enum VirtioNetFeaturesLast32 { 
 	 VIRTIO_F_API_VERSION_1=1, 
 } 
-pub type InterfaceIndex=u32; 
-pub type MacAddress=[u8;6]; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct CreateVhostUserIf { 
 	pub client_index : u32, 

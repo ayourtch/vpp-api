@@ -139,12 +139,6 @@ pub enum Direction {
 	 RX=0, 
 	 TX=1, 
 } 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 
-pub type InterfaceIndex=u32; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct TeibEntryAddDel { 
 	pub client_index : u32, 

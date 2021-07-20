@@ -456,13 +456,6 @@ pub enum IpReassType {
 	 IP_REASS_TYPE_FULL=0, 
 	 IP_REASS_TYPE_SHALLOW_VIRTUAL=1, 
 } 
-pub type InterfaceIndex=u32; 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 
-pub type MacAddress=[u8;6]; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct IpTableAddDel { 
 	pub client_index : u32, 

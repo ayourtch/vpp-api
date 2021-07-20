@@ -70,7 +70,6 @@ pub enum SpanState {
 	 SPAN_STATE_API_TX=2, 
 	 SPAN_STATE_API_RX_TX=3, 
 } 
-pub type InterfaceIndex=u32; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct SwInterfaceSpanEnableDisable { 
 	pub client_index : u32, 

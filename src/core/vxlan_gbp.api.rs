@@ -149,12 +149,6 @@ pub enum VxlanGbpApiTunnelMode {
 	 VXLAN_GBP_API_TUNNEL_MODE_L2=1, 
 	 VXLAN_GBP_API_TUNNEL_MODE_L3=2, 
 } 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 
-pub type InterfaceIndex=u32; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct VxlanGbpTunnelAddDel { 
 	pub client_index : u32, 

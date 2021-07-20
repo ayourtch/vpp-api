@@ -77,8 +77,6 @@ pub enum Direction {
 	 RX=0, 
 	 TX=1, 
 } 
-pub type InterfaceIndex=u32; 
-pub type MacAddress=[u8;6]; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct Vmxnet3Create { 
 	pub client_index : u32, 

@@ -62,7 +62,6 @@ pub enum Direction {
 	 RX=0, 
 	 TX=1, 
 } 
-pub type InterfaceIndex=u32; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct AvfCreate { 
 	pub client_index : u32, 

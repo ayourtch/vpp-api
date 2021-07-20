@@ -171,12 +171,6 @@ pub enum Nat44ConfigFlags {
 	 NAT44_IS_CONNECTION_TRACKING=4, 
 	 NAT44_IS_OUT2IN_DPO=8, 
 } 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 
-pub type InterfaceIndex=u32; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct Nat44PluginEnableDisable { 
 	pub client_index : u32, 

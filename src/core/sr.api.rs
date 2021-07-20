@@ -174,12 +174,6 @@ pub enum SrSteer {
 	 SR_STEER_API_IPV4=4, 
 	 SR_STEER_API_IPV6=6, 
 } 
-pub type InterfaceIndex=u32; 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct SrLocalsidAddDel { 
 	pub client_index : u32, 

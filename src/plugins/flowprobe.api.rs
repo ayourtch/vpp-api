@@ -76,7 +76,6 @@ pub enum FlowprobeRecordFlags {
 	 FLOWPROBE_RECORD_FLAG_L3=2, 
 	 FLOWPROBE_RECORD_FLAG_L4=4, 
 } 
-pub type InterfaceIndex=u32; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct FlowprobeTxInterfaceAddDel { 
 	pub client_index : u32, 

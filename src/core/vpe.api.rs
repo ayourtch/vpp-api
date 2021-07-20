@@ -27,8 +27,6 @@ pub enum LogLevel {
 	 VPE_API_LOG_LEVEL_DEBUG=7, 
 	 VPE_API_LOG_LEVEL_DISABLED=8, 
 } 
-pub type Timestamp=f64; 
-pub type Timedelta=f64; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct ControlPing { 
 	pub client_index : u32, 

@@ -262,9 +262,3 @@ pub enum FlowAction {
 	 FLOW_ACTION_REDIRECT_TO_QUEUE=16, 
 	 FLOW_ACTION_DROP=64, 
 } 
-pub type MacAddress=[u8;6]; 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 

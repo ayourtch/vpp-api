@@ -140,12 +140,6 @@ pub enum BfdState {
 	 BFD_STATE_API_INIT=2, 
 	 BFD_STATE_API_UP=3, 
 } 
-pub type InterfaceIndex=u32; 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct BfdUdpSetEchoSource { 
 	pub client_index : u32, 

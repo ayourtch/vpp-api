@@ -134,8 +134,3 @@ pub enum FibPathType {
 	 FIB_API_PATH_TYPE_INTERFACE_RX=9, 
 	 FIB_API_PATH_TYPE_CLASSIFY=10, 
 } 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 

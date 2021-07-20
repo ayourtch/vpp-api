@@ -152,13 +152,6 @@ pub enum IpNeighborEventFlags {
 	 IP_NEIGHBOR_API_EVENT_FLAG_ADDED=1, 
 	 IP_NEIGHBOR_API_EVENT_FLAG_REMOVED=2, 
 } 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 
-pub type MacAddress=[u8;6]; 
-pub type InterfaceIndex=u32; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct IpNeighborAddDel { 
 	pub client_index : u32, 

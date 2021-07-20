@@ -72,8 +72,6 @@ pub enum Direction {
 	 RX=0, 
 	 TX=1, 
 } 
-pub type MacAddress=[u8;6]; 
-pub type InterfaceIndex=u32; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct MactimeEnableDisable { 
 	pub client_index : u32, 

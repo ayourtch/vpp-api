@@ -124,8 +124,3 @@ pub enum LbNatProtocol {
 	 LB_API_NAT_PROTOCOL_TCP=23, 
 	 LB_API_NAT_PROTOCOL_ANY=4294967295, 
 } 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 

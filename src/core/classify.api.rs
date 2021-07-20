@@ -83,7 +83,6 @@ pub enum FlowClassifyTable {
 	 FLOW_CLASSIFY_API_TABLE_IP4=1, 
 	 FLOW_CLASSIFY_API_TABLE_IP6=2, 
 } 
-pub type InterfaceIndex=u32; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct ClassifyAddDelTable { 
 	pub client_index : u32, 

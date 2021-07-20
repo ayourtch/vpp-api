@@ -94,7 +94,6 @@ pub enum Sse2QosActionType {
 	 SSE2_QOS_ACTION_API_TRANSMIT=1, 
 	 SSE2_QOS_ACTION_API_MARK_AND_TRANSMIT=2, 
 } 
-pub type InterfaceIndex=u32; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct PolicerBind { 
 	pub client_index : u32, 

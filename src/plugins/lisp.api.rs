@@ -222,13 +222,6 @@ pub enum LispLocatorSetFilter {
 	 LISP_LOCATOR_SET_FILTER_API_LOCAL=1, 
 	 LISP_LOCATOR_SET_FILTER_API_REMOTE=2, 
 } 
-pub type InterfaceIndex=u32; 
-pub type MacAddress=[u8;6]; 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct LispAddDelLocatorSet { 
 	pub client_index : u32, 

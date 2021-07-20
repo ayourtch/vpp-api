@@ -75,8 +75,6 @@ pub enum MemifMode {
 	 MEMIF_MODE_API_IP=1, 
 	 MEMIF_MODE_API_PUNT_INJECT=2, 
 } 
-pub type InterfaceIndex=u32; 
-pub type MacAddress=[u8;6]; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct MemifSocketFilenameAddDel { 
 	pub client_index : u32, 

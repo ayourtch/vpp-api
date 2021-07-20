@@ -288,13 +288,6 @@ pub enum GbpExtItfFlags {
 	 GBP_API_EXT_ITF_F_NONE=0, 
 	 GBP_API_EXT_ITF_F_ANON=1, 
 } 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 
-pub type MacAddress=[u8;6]; 
-pub type InterfaceIndex=u32; 
 pub type GbpScope=u16; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct GbpBridgeDomainAdd { 

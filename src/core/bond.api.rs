@@ -81,8 +81,6 @@ pub enum BondLbAlgo {
 	 BOND_API_LB_ALGO_BC=4, 
 	 BOND_API_LB_ALGO_AB=5, 
 } 
-pub type InterfaceIndex=u32; 
-pub type MacAddress=[u8;6]; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct BondCreate { 
 	pub client_index : u32, 

@@ -72,8 +72,6 @@ pub enum VirtioFlags {
 	 VIRTIO_API_FLAG_IN_ORDER=16, 
 	 VIRTIO_API_FLAG_BUFFERING=32, 
 } 
-pub type InterfaceIndex=u32; 
-pub type MacAddress=[u8;6]; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct VirtioPciCreate { 
 	pub client_index : u32, 

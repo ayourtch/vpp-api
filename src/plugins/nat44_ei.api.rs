@@ -167,12 +167,6 @@ pub enum Nat44EiConfigFlags {
 	 NAT44_EI_IF_OUTSIDE=32, 
 	 NAT44_EI_STATIC_MAPPING=64, 
 } 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 
-pub type InterfaceIndex=u32; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct Nat44EiPluginEnableDisable { 
 	pub client_index : u32, 

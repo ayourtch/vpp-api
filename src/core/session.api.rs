@@ -148,12 +148,6 @@ pub enum SessionRuleScope {
 	 SESSION_RULE_SCOPE_API_LOCAL=1, 
 	 SESSION_RULE_SCOPE_API_BOTH=2, 
 } 
-pub type InterfaceIndex=u32; 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct AppAttach { 
 	pub client_index : u32, 

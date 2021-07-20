@@ -139,13 +139,6 @@ pub enum L2tLookupKey {
 	 L2T_LOOKUP_KEY_API_DST_ADDR=1, 
 	 L2T_LOOKUP_KEY_API_SESSION_ID=2, 
 } 
-pub type InterfaceIndex=u32; 
-pub type MacAddress=[u8;6]; 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct L2tpv3CreateTunnel { 
 	pub client_index : u32, 

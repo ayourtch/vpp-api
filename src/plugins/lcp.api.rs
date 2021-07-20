@@ -68,7 +68,6 @@ pub enum LcpItfHostType {
 	 LCP_API_ITF_HOST_TAP=0, 
 	 LCP_API_ITF_HOST_TUN=1, 
 } 
-pub type InterfaceIndex=u32; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct LcpDefaultNsSet { 
 	pub client_index : u32, 

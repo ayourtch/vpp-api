@@ -69,7 +69,6 @@ pub enum RdmaMode {
 	 RDMA_API_MODE_IBV=1, 
 	 RDMA_API_MODE_DV=2, 
 } 
-pub type InterfaceIndex=u32; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct RdmaCreate { 
 	pub client_index : u32, 

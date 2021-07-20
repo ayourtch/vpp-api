@@ -164,9 +164,3 @@ pub enum TunnelMode {
 	 TUNNEL_API_MODE_P2P=0, 
 	 TUNNEL_API_MODE_MP=1, 
 } 
-pub type InterfaceIndex=u32; 
-pub type Ip4Address=[u8;4]; 
-pub type Ip6Address=[u8;16]; 
-pub type AddressWithPrefix=Prefix; 
-pub type Ip4AddressWithPrefix=Ip4Prefix; 
-pub type Ip6AddressWithPrefix=Ip6Prefix; 

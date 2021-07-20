@@ -55,7 +55,18 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
     // gen_alias(&code.aliases[0]);
 
     for x in code.aliases.keys() {
-        gen_alias(&code.aliases[x], x, &mut preamble);
+        let mut count:u8 = 0; 
+        for j in 0..api_definition.len(){
+            if &api_definition[j].0 == x{
+                count=count+1;
+                break;
+            }
+        }
+        if count==0{
+            gen_alias(&code.aliases[x], x, &mut preamble);
+            api_definition.push((x.to_string().clone(),name.to_string().clone()));
+        }
+        
     }
     for x in 0..code.messages.len() {
         gen_messages(&code.messages[x], &mut preamble);
