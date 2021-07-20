@@ -27,12 +27,13 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
     preamble.push_str("use vpp_api_encoding::typ::*;\n");
     preamble.push_str("use vpp_api_transport::*;\n");
     preamble.push_str("use serde_repr::{Serialize_repr, Deserialize_repr};\n");
+    // Do imports 
     for x in 0..code.types.len() {
         let mut count: u8= 0;
         for j in 0..api_definition.len(){            
             if &api_definition[j].0 == &code.types[x].type_name{
                 // Do something else 
-                println!("Found redundant code for {}, Create an import to {}",&api_definition[j].0,&api_definition[j].1);
+                // println!("Found redundant code for {}, Create an import to {}",&api_definition[j].0,&api_definition[j].1);
                 count = count+1;
                 break;
             }
@@ -46,11 +47,31 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
         
     }
     for x in 0..code.unions.len() {
-        
-        gen_union(&code.unions[x], &mut preamble);
+        let mut count:u8 = 0; 
+        for j in 0..api_definition.len() {
+            if &api_definition[j].0 == &code.unions[x].type_name{
+                count = count+1; 
+                break; 
+            }
+        }
+        if count == 0{
+            api_definition.push((code.unions[x].type_name.clone(),name.to_string().clone()));
+            gen_union(&code.unions[x], &mut preamble);
+        }
     }
     for x in 0..code.enums.len() {
-        gen_enum(&code.enums[x], &mut preamble);
+        let mut count: u8 = 0; 
+        for j in 0..api_definition.len(){
+            if &api_definition[j].0 == &code.enums[x].name{
+                count=count+1;
+                break;
+            }
+        }
+        if count == 0 {
+            api_definition.push((code.enums[x].name.clone(),name.to_string().clone()));
+            gen_enum(&code.enums[x], &mut preamble);
+        }
+        
     }
     // gen_alias(&code.aliases[0]);
 

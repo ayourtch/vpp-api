@@ -14,19 +14,6 @@ pub struct ThreadData {
 	pub core : u32, 
 	pub cpu_socket : u32, 
 } 
-#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
-#[repr(u32)]
-pub enum LogLevel { 
-	 VPE_API_LOG_LEVEL_EMERG=0, 
-	 VPE_API_LOG_LEVEL_ALERT=1, 
-	 VPE_API_LOG_LEVEL_CRIT=2, 
-	 VPE_API_LOG_LEVEL_ERR=3, 
-	 VPE_API_LOG_LEVEL_WARNING=4, 
-	 VPE_API_LOG_LEVEL_NOTICE=5, 
-	 VPE_API_LOG_LEVEL_INFO=6, 
-	 VPE_API_LOG_LEVEL_DEBUG=7, 
-	 VPE_API_LOG_LEVEL_DISABLED=8, 
-} 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct ControlPing { 
 	pub client_index : u32, 
