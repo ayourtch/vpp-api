@@ -2,7 +2,7 @@ use serde::ser::SerializeMap;
 use serde::{Deserialize, Serialize, Serializer};
 extern crate strum;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct VppJsApiService {
     #[serde(default)]
     pub events: Vec<String>,

@@ -5,34 +5,6 @@ use vpp_api_encoding::typ::*;
 use vpp_api_transport::*;
 use serde_repr::{Serialize_repr, Deserialize_repr};
 #[derive(Debug, Clone, Serialize, Deserialize)] 
-pub struct FibMplsLabel { 
-	pub is_uniform : u8, 
-	pub label : u32, 
-	pub ttl : u8, 
-	pub exp : u8, 
-} 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
-pub struct FibPathNh { 
-	pub address : AddressUnion, 
-	pub via_label : u32, 
-	pub obj_id : u32, 
-	pub classify_table_index : u32, 
-} 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
-pub struct FibPath { 
-	pub sw_if_index : u32, 
-	pub table_id : u32, 
-	pub rpf_id : u32, 
-	pub weight : u8, 
-	pub preference : u8, 
-	pub typ : FibPathType, 
-	pub flags : FibPathFlags, 
-	pub proto : FibPathNhProto, 
-	pub nh : FibPathNh, 
-	pub n_labels : u8, 
-	pub label_stack : FibMplsLabel, 
-} 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct MfibPath { 
 	pub itf_flags : MfibItfFlags, 
 	pub path : FibPath, 

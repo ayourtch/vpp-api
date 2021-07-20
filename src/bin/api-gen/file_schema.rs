@@ -37,7 +37,7 @@ pub struct VppJsApiPath {
     pub counter: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct VppJsApiFile {
     pub types: Vec<VppJsApiType>,
     pub messages: Vec<VppJsApiMessage>,

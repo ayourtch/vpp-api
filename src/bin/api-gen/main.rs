@@ -84,6 +84,55 @@ pub struct Opts {
     #[clap(short, long, parse(from_occurrences))]
     pub verbose: i32,
 }
+fn merge_felix(mut arr: Vec<ImportsFiles>, left: usize, mid: usize, right: usize) -> Vec<ImportsFiles> {
+    let n1 = mid - left;
+    let n2 = right - mid;
+    let mut L1 = arr.clone();
+    let mut R1 = arr.clone();
+    let L = &L1[left..mid];
+    let R = &R1[mid..right];
+    /* Merge the temp arrays back into arr[l..r]*/
+    let mut i = 0; // Initial index of first subarray
+    let mut j = 0; // Initial index of second subarray
+    let mut k = left; // Initial index of merged subarray
+    while i < n1 && j < n2 {
+        if L[i].file.imports.len() < R[j].file.imports.len() {
+            arr[k] = L[i].clone();
+            i = i + 1;
+        } else {
+            arr[k] = R[j].clone();
+            j = j + 1;
+        }
+        k = k + 1;
+    }
+    while i < n1 {
+        arr[k] = L[i].clone();
+        i = i + 1;
+        k = k + 1;
+    }
+    /* Copy the remaining elements of R[], if there
+    are any */
+    while j < n2 {
+        arr[k] = R[j].clone();
+        j = j + 1;
+        k = k + 1;
+    }
+    arr
+}
+fn merge_sort_felix(mut arr: Vec<ImportsFiles>, left: usize, right: usize) -> Vec<ImportsFiles> {
+    if right - 1 > left {
+        let mid = left + (right - left) / 2;
+        arr = merge_sort_felix(arr, left, mid);
+        arr = merge_sort_felix(arr, mid, right);
+        arr = merge_felix(arr, left, mid, right);
+    }
+    arr
+}
+#[derive(Debug, Clone)]
+pub struct ImportsFiles{
+    name: String, 
+    file: Box<VppJsApiFile>
+}
 
 fn main() {
     env_logger::init();
@@ -150,11 +199,26 @@ fn main() {
                     
                 }
                 if opts.print_import_names{
-                    let mut api_definition:Vec<(String, String)> = vec![];
-                    for(name, f) in &api_files{
+                    let mut import_collection:Vec<ImportsFiles> = vec![];
+                    for(name, f) in api_files.clone(){
                         if name.ends_with("_types.api.json"){
-                            // println!("{}",name);
-                            gen_code(f,name.trim_start_matches("testdata/vpp/api").trim_end_matches("json"), &mut api_definition);
+                            // println!("{}",f.imports.len());
+                            import_collection.push(ImportsFiles{
+                                name:name.to_string(), 
+                                file: Box::new(f)
+                            })
+                            
+                        }
+                    }
+                    let mut api_definition:Vec<(String, String)> = vec![];
+                    import_collection = merge_sort_felix(import_collection.clone(), 0,  import_collection.len());
+                    for x in import_collection{
+                        println!("{}-{}",x.name,x.file.imports.len());
+                        gen_code(&x.file,x.name.trim_start_matches("testdata/vpp/api").trim_end_matches("json"), &mut api_definition);
+                    }
+                    for(name,f) in api_files{
+                        if !name.ends_with("_types.api.json"){
+                            gen_code(&f,name.trim_start_matches("testdata/vpp/api").trim_end_matches("json"), &mut api_definition);
                         }
                     }
                 }

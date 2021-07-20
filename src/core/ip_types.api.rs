@@ -5,6 +5,48 @@ use vpp_api_encoding::typ::*;
 use vpp_api_transport::*;
 use serde_repr::{Serialize_repr, Deserialize_repr};
 #[derive(Debug, Clone, Serialize, Deserialize)] 
+pub struct Address { 
+	pub af : AddressFamily, 
+	pub un : AddressUnion, 
+} 
+#[derive(Debug, Clone, Serialize, Deserialize)] 
+pub struct Prefix { 
+	pub address : Address, 
+	pub len : u8, 
+} 
+#[derive(Debug, Clone, Serialize, Deserialize)] 
+pub struct Ip4AddressAndMask { 
+	pub addr : Ip4Address, 
+	pub mask : Ip4Address, 
+} 
+#[derive(Debug, Clone, Serialize, Deserialize)] 
+pub struct Ip6AddressAndMask { 
+	pub addr : Ip6Address, 
+	pub mask : Ip6Address, 
+} 
+#[derive(Debug, Clone, Serialize, Deserialize)] 
+pub struct Mprefix { 
+	pub af : AddressFamily, 
+	pub grp_address_length : u16, 
+	pub grp_address : AddressUnion, 
+	pub src_address : AddressUnion, 
+} 
+#[derive(Debug, Clone, Serialize, Deserialize)] 
+pub struct Ip6Prefix { 
+	pub address : Ip6Address, 
+	pub len : u8, 
+} 
+#[derive(Debug, Clone, Serialize, Deserialize)] 
+pub struct Ip4Prefix { 
+	pub address : Ip4Address, 
+	pub len : u8, 
+} 
+#[derive(Debug, Clone, Serialize, Deserialize)] 
+pub struct PrefixMatcher { 
+	pub le : u8, 
+	pub ge : u8, 
+} 
+#[derive(Debug, Clone, Serialize, Deserialize)] 
 union address_union { 
 	 ip4 : Ip4Address, 
 	 ip6 : Ip6Address, 

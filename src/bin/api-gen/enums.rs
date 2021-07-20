@@ -27,7 +27,7 @@ impl Serialize for VppJsApiEnumValueDef {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct VppJsApiEnum {
     pub name: String,
     pub values: Vec<VppJsApiEnumValueDef>,

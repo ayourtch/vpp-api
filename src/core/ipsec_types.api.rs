@@ -5,19 +5,6 @@ use vpp_api_encoding::typ::*;
 use vpp_api_transport::*;
 use serde_repr::{Serialize_repr, Deserialize_repr};
 #[derive(Debug, Clone, Serialize, Deserialize)] 
-pub struct Tunnel { 
-	pub instance : u32, 
-	pub src : Address, 
-	pub dst : Address, 
-	pub sw_if_index : InterfaceIndex, 
-	pub table_id : u32, 
-	pub encap_decap_flags : TunnelEncapDecapFlags, 
-	pub mode : TunnelMode, 
-	pub flags : TunnelFlags, 
-	pub dscp : IpDscp, 
-	pub hop_limit : u8, 
-} 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct Key { 
 	pub length : u8, 
 	pub data : u8, 
