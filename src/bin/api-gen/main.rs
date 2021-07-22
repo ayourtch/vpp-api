@@ -214,11 +214,11 @@ fn main() {
                     import_collection = merge_sort_felix(import_collection.clone(), 0,  import_collection.len());
                     for x in import_collection{
                         println!("{}-{}",x.name,x.file.imports.len());
-                        gen_code(&x.file,x.name.trim_start_matches("testdata/vpp/api").trim_end_matches("json"), &mut api_definition);
+                        gen_code(&x.file,&x.name, &mut api_definition);
                     }
                     for(name,f) in api_files{
                         if !name.ends_with("_types.api.json"){
-                            gen_code(&f,name.trim_start_matches("testdata/vpp/api").trim_end_matches("json"), &mut api_definition);
+                            gen_code(&f,&name, &mut api_definition);
                         }
                     }
                 }
