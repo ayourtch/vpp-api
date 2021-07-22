@@ -46,11 +46,7 @@ pub struct PrefixMatcher {
 	pub le : u8, 
 	pub ge : u8, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
-union address_union { 
-	 ip4 : Ip4Address, 
-	 ip6 : Ip6Address, 
-} 
+type AddressUnion = [u8;16]; 
 #[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
 #[repr(u8)]
 pub enum AddressFamily { 

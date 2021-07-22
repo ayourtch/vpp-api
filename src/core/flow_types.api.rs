@@ -147,23 +147,7 @@ pub struct FlowRule {
 	pub buffer_advance : i32, 
 	pub flow : Flow, 
 } 
-#[derive(Debug, Clone, Serialize, Deserialize)] 
-union flow { 
-	 ethernet : FlowEthernet, 
-	 ip4 : FlowIp4, 
-	 ip6 : FlowIp6, 
-	 ip4_l2tpv3oip : FlowIp4L2tpv3oip, 
-	 ip4_ipsec_esp : FlowIp4IpsecEsp, 
-	 ip4_ipsec_ah : FlowIp4IpsecAh, 
-	 ip4_n_tuple : FlowIp4NTuple, 
-	 ip6_n_tuple : FlowIp6NTuple, 
-	 ip4_n_tuple_tagged : FlowIp4NTupleTagged, 
-	 ip6_n_tuple_tagged : FlowIp6NTupleTagged, 
-	 ip4_vxlan : FlowIp4Vxlan, 
-	 ip6_vxlan : FlowIp6Vxlan, 
-	 ip4_gtpc : FlowIp4Gtpc, 
-	 ip4_gtpu : FlowIp4Gtpu, 
-} 
+type Flow = [u8;80]; 
 #[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
 #[repr(u32)]
 pub enum FlowType { 

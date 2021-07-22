@@ -39,7 +39,7 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
             }
         }
         if count == 0 {
-            println!("Inserting into linked List {}", &code.types[x].type_name);
+            // println!("Inserting into linked List {}", &code.types[x].type_name);
             api_definition.push((code.types[x].type_name.clone(),name.to_string().clone()));
             gen_structs(&code.types[x], &mut preamble, &code);
         }
@@ -56,7 +56,7 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
         }
         if count == 0{
             api_definition.push((code.unions[x].type_name.clone(),name.to_string().clone()));
-            gen_union(&code.unions[x], &mut preamble);
+            gen_union(&code.unions[x], &mut preamble, &code);
         }
     }
     for x in 0..code.enums.len() {
@@ -107,6 +107,7 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
     // dbg!(&code.enums[0]);
     // dbg!(&code.enumflags[0]);
     // dbg!(&code.messages);
+    // dbg!(&api_definition);
 }
 // Things to do
 // 1. Remove vl_message_id in struct - Done
@@ -135,9 +136,10 @@ pub fn gen_structs(structs: &VppJsApiType, file: &mut String, apifile: &VppJsApi
     }
     file.push_str("} \n");
 }
-pub fn gen_union(unions: &VppJsApiType, file: &mut String) {
-    // maxSizeUnion(&unions);
-    file.push_str(&format!(
+pub fn gen_union(unions: &VppJsApiType, file: &mut String, apifile: &VppJsApiFile) {
+    println!("Generating Union");
+    let unionsize = maxSizeUnion(&unions,&apifile);
+    /* file.push_str(&format!(
         "#[derive(Debug, Clone, Serialize, Deserialize)] \n"
     ));
     file.push_str(&format!("union {} {{ \n", unions.type_name));
@@ -147,8 +149,9 @@ pub fn gen_union(unions: &VppJsApiType, file: &mut String) {
             unions.fields[x].name,
             get_type(&unions.fields[x].ctype)
         ));
-    }
-    file.push_str("} \n");
+    }*/ 
+    file.push_str(&format!("type {} = [u8;{}]; \n", camelize_ident(&unions.type_name), unionsize));
+    // file.push_str("} \n");
 }
 pub fn gen_enum(enums: &VppJsApiEnum, file: &mut String) {
     file.push_str(&format!(

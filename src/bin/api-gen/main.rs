@@ -164,7 +164,7 @@ fn main() {
                 let data = serde_json::to_string_pretty(&desc).unwrap();
                 // println!("{}", &data);
                 let mut api_definition:Vec<(String, String)> = vec![];
-                gen_code(&desc,&opts.in_file,&mut api_definition);
+                gen_code(&desc,"generated2.",&mut api_definition);
             }
             OptParseType::ApiType => {
                 let desc: VppJsApiType = serde_json::from_str(&data).unwrap();
