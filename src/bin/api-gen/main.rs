@@ -14,18 +14,15 @@ extern crate strum;
 extern crate strum_macros;
 use env_logger;
 use linked_hash_map::LinkedHashMap;
-mod MessageFunctions;
 mod alias;
 mod basetypes;
 mod code_gen;
 mod enums;
 mod file_schema;
-mod interface;
 mod message;
 mod parser_helper;
 mod services;
 mod types;
-use crate::MessageFunctions::*;
 use bincode::Options;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use serde_repr::{Deserialize_repr, Serialize_repr};
@@ -36,14 +33,11 @@ use std::ops::Add;
 use std::time::{Duration, SystemTime};
 use vpp_api_encoding::typ::*;
 use vpp_api_transport::*;
-// mod interface;
 use crate::code_gen::gen_code;
 use crate::file_schema::VppJsApiFile;
-use crate::interface::*;
 use crate::message::*;
 use crate::parser_helper::*;
 use crate::types::*;
-// use crate::interface::*;
 
 #[derive(Clap, Debug, Clone, Serialize, Deserialize, EnumString, Display)]
 pub enum OptParseType {
@@ -119,6 +113,7 @@ fn merge_felix(mut arr: Vec<ImportsFiles>, left: usize, mid: usize, right: usize
     }
     arr
 }
+// Performing Merge Sort According to import lenght
 fn merge_sort_felix(mut arr: Vec<ImportsFiles>, left: usize, right: usize) -> Vec<ImportsFiles> {
     if right - 1 > left {
         let mid = left + (right - left) / 2;
@@ -200,9 +195,9 @@ fn main() {
                 }
                 if opts.print_import_names{
                     let mut import_collection:Vec<ImportsFiles> = vec![];
+                    // Searching for types
                     for(name, f) in api_files.clone(){
                         if name.ends_with("_types.api.json"){
-                            // println!("{}",f.imports.len());
                             import_collection.push(ImportsFiles{
                                 name:name.to_string(), 
                                 file: Box::new(f)
@@ -216,6 +211,7 @@ fn main() {
                         println!("{}-{}",x.name,x.file.imports.len());
                         gen_code(&x.file,&x.name, &mut api_definition);
                     }
+                    // Searching for non types
                     for(name,f) in api_files{
                         if !name.ends_with("_types.api.json"){
                             gen_code(&f,&name, &mut api_definition);
@@ -232,8 +228,6 @@ fn main() {
 
 #[cfg(test)]
 mod tests {
-    use super::interface::*;
-    use super::MessageFunctions::*;
     use super::*;
     use bincode::Options;
     use clap::Clap;

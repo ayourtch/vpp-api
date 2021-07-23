@@ -54,18 +54,14 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
         let mut count: u8= 0;
         for j in 0..api_definition.len(){            
             if &api_definition[j].0 == &code.types[x].type_name{
-                // Do something else 
-                // println!("Found redundant code for {}, Create an import to {}",&api_definition[j].0,&api_definition[j].1);
                 count = count+1;
                 break;
             }
         }
         if count == 0 {
-            // println!("Inserting into linked List {}", &code.types[x].type_name);
             api_definition.push((code.types[x].type_name.clone(),name.to_string().clone()));
             gen_structs(&code.types[x], &mut preamble, &code);
         }
-        // gen_structs(&code.types[x], &mut preamble, &code);
         
     }
     for x in 0..code.unions.len() {
@@ -95,7 +91,6 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
         }
         
     }
-    // gen_alias(&code.aliases[0]);
 
     for x in code.aliases.keys() {
         let mut count:u8 = 0; 
@@ -114,12 +109,6 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
     for x in 0..code.messages.len() {
         gen_messages(&code.messages[x], &mut preamble);
     }
-    // println!("{}",preamble);
-    // dbg!(&code.messages);
-    // dbg!(&code.services);
-    // dbg!(&code.imports);
-    // dbg!(&code.counters);
-    // dbg!(&code.paths);
     println!("{}",name);
     let fileName = RE.find(&name).unwrap().as_str().trim_end_matches(".api.json");
     println!("{}",fileName);
@@ -128,23 +117,9 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
         .unwrap();
     
     println!("Generated code for {}", fileName);
-    // println!("Enum data for size");
-    // dbg!(&code.enums[0]);
-    // dbg!(&code.enumflags[0]);
-    // dbg!(&code.messages);
-    // dbg!(&api_definition);
 }
-// Things to do
-// 1. Remove vl_message_id in struct - Done
-// 2. Use serde_repr for enums of certain types - Done
-// 3. Create generated mod for testing
-// 4. Test all messages from interface.api.json
-// 5. Repeat the strategy for the rest of the core api jsons
-// 6. Do not waste time trying to test similar messages
-// 7. Find largest field in enum
 
 pub fn gen_structs(structs: &VppJsApiType, file: &mut String, apifile: &VppJsApiFile) {
-    // sizeof_struct(&structs, &apifile);
     file.push_str(&format!(
         "#[derive(Debug, Clone, Serialize, Deserialize)] \n"
     ));
@@ -164,19 +139,7 @@ pub fn gen_structs(structs: &VppJsApiType, file: &mut String, apifile: &VppJsApi
 pub fn gen_union(unions: &VppJsApiType, file: &mut String, apifile: &VppJsApiFile) {
     println!("Generating Union");
     let unionsize = maxSizeUnion(&unions,&apifile);
-    /* file.push_str(&format!(
-        "#[derive(Debug, Clone, Serialize, Deserialize)] \n"
-    ));
-    file.push_str(&format!("union {} {{ \n", unions.type_name));
-    for x in 0..unions.fields.len() {
-        file.push_str(&format!(
-            "\t {} : {}, \n",
-            unions.fields[x].name,
-            get_type(&unions.fields[x].ctype)
-        ));
-    }*/ 
     file.push_str(&format!("type {} = [u8;{}]; \n", camelize_ident(&unions.type_name), unionsize));
-    // file.push_str("} \n");
 }
 pub fn gen_enum(enums: &VppJsApiEnum, file: &mut String) {
     file.push_str(&format!(
@@ -197,10 +160,7 @@ pub fn gen_enum(enums: &VppJsApiEnum, file: &mut String) {
     file.push_str("} \n");
 }
 pub fn gen_alias(alias: &VppJsApiAlias, name: &str, file: &mut String) {
-    // sizeof_alias(&alias);
     file.push_str(&format!("pub type {}=", camelize_ident(&get_ident(&name))));
-    // println!("{}", name);
-    // print!("{} - ", alias.ctype);
     match alias.length {
         Some(len) => {
             let newtype = get_type(&alias.ctype);
@@ -208,7 +168,6 @@ pub fn gen_alias(alias: &VppJsApiAlias, name: &str, file: &mut String) {
         }
         _ => file.push_str(&format!("{}; \n", get_type(&alias.ctype))),
     }
-    // println!();
 }
 pub fn gen_messages(messages: &VppJsApiMessage, file: &mut String) {
     file.push_str(&format!(
@@ -243,9 +202,7 @@ pub fn gen_messages(messages: &VppJsApiMessage, file: &mut String) {
                     get_ident(&messages.fields[x].name)
                 )),
             }
-            // file.push_str(&format!("\tpub {} : {}, \n", get_ident(&messages.fields[x].name), get_type(&messages.fields[x].ctype)));
         } else {
-            // print!("{}",messages.fields[x].name);
             file.push_str(&format!(
                 "\tpub {} : {}, \n",
                 get_ident(&messages.fields[x].name),
@@ -259,7 +216,7 @@ pub fn gen_messages(messages: &VppJsApiMessage, file: &mut String) {
 
 pub fn gen_impl_messages(messages: &VppJsApiMessage, file: &mut String) {
     file.push_str(&format!("impl {} {{ \n", camelize_ident(&messages.name)));
-    file.push_str(&format!("\t pub fn get_message_id() -> String {{ \n"));
+    file.push_str(&format!("\t pub fn get_message_name_and_crc() -> String {{ \n"));
     file.push_str(&format!(
         "\t \t String::from(\"{}_{}\") \n",
         messages.name,
