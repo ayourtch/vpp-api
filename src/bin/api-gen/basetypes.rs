@@ -92,14 +92,14 @@ impl basetypes {
     }
 }
 pub fn maxSizeUnion(unions: &VppJsApiType, file: &VppJsApiFile) -> u8 {
-    let mut max: u8 = 0; 
-    for x in &unions.fields {
-        let sizeof = field_size(&x, &file);
-        if sizeof >= max{
-            max = sizeof
+    unions.fields.iter()
+    .map(|x| field_size(&x,&file))
+    .fold(0,|mut max,x|{
+        if x>max{
+            max=x
         }
-    }
-    max
+        max
+    })
 }
 pub fn field_size(fields: &VppJsApiMessageFieldDef, file: &VppJsApiFile) -> u8{
     if fields.ctype.starts_with("vl_api_"){
