@@ -94,12 +94,7 @@ impl basetypes {
 pub fn maxSizeUnion(unions: &VppJsApiType, file: &VppJsApiFile) -> u8 {
     unions.fields.iter()
     .map(|x| field_size(&x,&file))
-    .fold(0,|mut max,x|{
-        if x>max{
-            max=x
-        }
-        max
-    })
+    .fold(0,|max,x| if x>max {x} else {max})
 }
 pub fn field_size(fields: &VppJsApiMessageFieldDef, file: &VppJsApiFile) -> u8{
     if fields.ctype.starts_with("vl_api_"){
@@ -160,11 +155,10 @@ pub fn sizeof_enum(enums: &VppJsApiEnum) -> u8{
     }
 }
 pub fn sizeof_struct(file: &VppJsApiFile, structs: &VppJsApiType) -> u8{
-    let mut totalsize:u8 = 0; 
-    for x in &structs.fields{
+    structs.fields.iter().fold(0,|mut totalsize, x|{
         totalsize = totalsize + field_size(&x, &file);
-    }
-    totalsize
+        totalsize
+    })
 }
 
 pub fn sizeof_alias(alias: &VppJsApiAlias, file: &VppJsApiFile) -> u8{

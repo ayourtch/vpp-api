@@ -10,10 +10,7 @@ use crate::fib_types::*;
 use crate::ip_types::*; 
 use crate::ethernet_types::*; 
 use crate::mfib_types::*; 
-use crate::fib_types::*; 
-use crate::ip_types::*; 
-use crate::ip_types::*; 
-use crate::interface_types::*; 
+
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct IpTable { 
 	pub table_id : u32, 
