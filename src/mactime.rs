@@ -25,7 +25,7 @@ pub struct MactimeEnableDisable {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl MactimeEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mactime_enable_disable_3865946c") 
 	 } 
 } 
@@ -35,7 +35,7 @@ pub struct MactimeEnableDisableReply {
 	pub retval : i32, 
 } 
 impl MactimeEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mactime_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -55,7 +55,7 @@ pub struct MactimeAddDelRange {
 	pub ranges : TimeRange, 
 } 
 impl MactimeAddDelRange { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mactime_add_del_range_101858ef") 
 	 } 
 } 
@@ -65,7 +65,7 @@ pub struct MactimeAddDelRangeReply {
 	pub retval : i32, 
 } 
 impl MactimeAddDelRangeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mactime_add_del_range_reply_e8d4e804") 
 	 } 
 } 
@@ -76,7 +76,7 @@ pub struct MactimeDump {
 	pub my_table_epoch : u32, 
 } 
 impl MactimeDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mactime_dump_8f454e23") 
 	 } 
 } 
@@ -93,7 +93,7 @@ pub struct MactimeDetails {
 	pub ranges : MactimeTimeRange, 
 } 
 impl MactimeDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mactime_details_44921c06") 
 	 } 
 } 
@@ -104,7 +104,7 @@ pub struct MactimeDumpReply {
 	pub table_epoch : u32, 
 } 
 impl MactimeDumpReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mactime_dump_reply_49bcc753") 
 	 } 
 } 

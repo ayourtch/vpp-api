@@ -21,7 +21,7 @@ pub struct VxlanAddDelTunnel {
 	pub vni : u32, 
 } 
 impl VxlanAddDelTunnel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_add_del_tunnel_a35dc8f5") 
 	 } 
 } 
@@ -41,7 +41,7 @@ pub struct VxlanAddDelTunnelV2 {
 	pub vni : u32, 
 } 
 impl VxlanAddDelTunnelV2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_add_del_tunnel_v2_4f223f40") 
 	 } 
 } 
@@ -52,7 +52,7 @@ pub struct VxlanAddDelTunnelReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl VxlanAddDelTunnelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_add_del_tunnel_reply_5383d31f") 
 	 } 
 } 
@@ -63,7 +63,7 @@ pub struct VxlanAddDelTunnelV2Reply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl VxlanAddDelTunnelV2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_add_del_tunnel_v2_reply_5383d31f") 
 	 } 
 } 
@@ -74,7 +74,7 @@ pub struct VxlanTunnelDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl VxlanTunnelDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_tunnel_dump_f9e6675e") 
 	 } 
 } 
@@ -85,7 +85,7 @@ pub struct VxlanTunnelV2Dump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl VxlanTunnelV2Dump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_tunnel_v2_dump_f9e6675e") 
 	 } 
 } 
@@ -102,7 +102,7 @@ pub struct VxlanTunnelDetails {
 	pub vni : u32, 
 } 
 impl VxlanTunnelDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_tunnel_details_e782f70f") 
 	 } 
 } 
@@ -121,7 +121,7 @@ pub struct VxlanTunnelV2Details {
 	pub vni : u32, 
 } 
 impl VxlanTunnelV2Details { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_tunnel_v2_details_d3bdd4d9") 
 	 } 
 } 
@@ -134,7 +134,7 @@ pub struct SwInterfaceSetVxlanBypass {
 	pub enable : bool, 
 } 
 impl SwInterfaceSetVxlanBypass { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_vxlan_bypass_65247409") 
 	 } 
 } 
@@ -144,7 +144,7 @@ pub struct SwInterfaceSetVxlanBypassReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceSetVxlanBypassReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_vxlan_bypass_reply_e8d4e804") 
 	 } 
 } 
@@ -157,7 +157,7 @@ pub struct VxlanOffloadRx {
 	pub enable : bool, 
 } 
 impl VxlanOffloadRx { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_offload_rx_89a1564b") 
 	 } 
 } 
@@ -167,7 +167,7 @@ pub struct VxlanOffloadRxReply {
 	pub retval : i32, 
 } 
 impl VxlanOffloadRxReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_offload_rx_reply_e8d4e804") 
 	 } 
 } 

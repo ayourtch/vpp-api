@@ -10,7 +10,10 @@ use crate::fib_types::*;
 use crate::ip_types::*; 
 use crate::ethernet_types::*; 
 use crate::mfib_types::*; 
-
+use crate::fib_types::*; 
+use crate::ip_types::*; 
+use crate::ip_types::*; 
+use crate::interface_types::*; 
 #[derive(Debug, Clone, Serialize, Deserialize)] 
 pub struct IpTable { 
 	pub table_id : u32, 
@@ -62,7 +65,7 @@ pub struct IpTableAddDel {
 	pub table : IpTable, 
 } 
 impl IpTableAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_table_add_del_0ffdaec0") 
 	 } 
 } 
@@ -72,7 +75,7 @@ pub struct IpTableAddDelReply {
 	pub retval : i32, 
 } 
 impl IpTableAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_table_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -82,7 +85,7 @@ pub struct IpTableDump {
 	pub context : u32, 
 } 
 impl IpTableDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_table_dump_51077d14") 
 	 } 
 } 
@@ -93,7 +96,7 @@ pub struct IpTableReplaceBegin {
 	pub table : IpTable, 
 } 
 impl IpTableReplaceBegin { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_table_replace_begin_b9d2e09e") 
 	 } 
 } 
@@ -103,7 +106,7 @@ pub struct IpTableReplaceBeginReply {
 	pub retval : i32, 
 } 
 impl IpTableReplaceBeginReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_table_replace_begin_reply_e8d4e804") 
 	 } 
 } 
@@ -114,7 +117,7 @@ pub struct IpTableReplaceEnd {
 	pub table : IpTable, 
 } 
 impl IpTableReplaceEnd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_table_replace_end_b9d2e09e") 
 	 } 
 } 
@@ -124,7 +127,7 @@ pub struct IpTableReplaceEndReply {
 	pub retval : i32, 
 } 
 impl IpTableReplaceEndReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_table_replace_end_reply_e8d4e804") 
 	 } 
 } 
@@ -135,7 +138,7 @@ pub struct IpTableFlush {
 	pub table : IpTable, 
 } 
 impl IpTableFlush { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_table_flush_b9d2e09e") 
 	 } 
 } 
@@ -145,7 +148,7 @@ pub struct IpTableFlushReply {
 	pub retval : i32, 
 } 
 impl IpTableFlushReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_table_flush_reply_e8d4e804") 
 	 } 
 } 
@@ -155,7 +158,7 @@ pub struct IpTableDetails {
 	pub table : IpTable, 
 } 
 impl IpTableDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_table_details_c79fca0f") 
 	 } 
 } 
@@ -168,7 +171,7 @@ pub struct IpRouteAddDel {
 	pub route : IpRoute, 
 } 
 impl IpRouteAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_route_add_del_c1ff832d") 
 	 } 
 } 
@@ -179,7 +182,7 @@ pub struct IpRouteAddDelReply {
 	pub stats_index : u32, 
 } 
 impl IpRouteAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_route_add_del_reply_1992deab") 
 	 } 
 } 
@@ -190,7 +193,7 @@ pub struct IpRouteDump {
 	pub table : IpTable, 
 } 
 impl IpRouteDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_route_dump_b9d2e09e") 
 	 } 
 } 
@@ -200,7 +203,7 @@ pub struct IpRouteDetails {
 	pub route : IpRoute, 
 } 
 impl IpRouteDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_route_details_d1ffaae1") 
 	 } 
 } 
@@ -213,7 +216,7 @@ pub struct IpRouteLookup {
 	pub prefix : Prefix, 
 } 
 impl IpRouteLookup { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_route_lookup_e2986185") 
 	 } 
 } 
@@ -224,7 +227,7 @@ pub struct IpRouteLookupReply {
 	pub route : IpRoute, 
 } 
 impl IpRouteLookupReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_route_lookup_reply_ae99de8e") 
 	 } 
 } 
@@ -243,7 +246,7 @@ pub struct SetIpFlowHash {
 	pub symmetric : bool, 
 } 
 impl SetIpFlowHash { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("set_ip_flow_hash_084ee09e") 
 	 } 
 } 
@@ -253,7 +256,7 @@ pub struct SetIpFlowHashReply {
 	pub retval : i32, 
 } 
 impl SetIpFlowHashReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("set_ip_flow_hash_reply_e8d4e804") 
 	 } 
 } 
@@ -266,7 +269,7 @@ pub struct SetIpFlowHashV2 {
 	pub flow_hash_config : IpFlowHashConfig, 
 } 
 impl SetIpFlowHashV2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("set_ip_flow_hash_v2_6d132100") 
 	 } 
 } 
@@ -276,7 +279,7 @@ pub struct SetIpFlowHashV2Reply {
 	pub retval : i32, 
 } 
 impl SetIpFlowHashV2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("set_ip_flow_hash_v2_reply_e8d4e804") 
 	 } 
 } 
@@ -287,7 +290,7 @@ pub struct SetIpFlowHashRouterId {
 	pub router_id : u32, 
 } 
 impl SetIpFlowHashRouterId { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("set_ip_flow_hash_router_id_03e4f48e") 
 	 } 
 } 
@@ -297,7 +300,7 @@ pub struct SetIpFlowHashRouterIdReply {
 	pub retval : i32, 
 } 
 impl SetIpFlowHashRouterIdReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("set_ip_flow_hash_router_id_reply_e8d4e804") 
 	 } 
 } 
@@ -309,7 +312,7 @@ pub struct SwInterfaceIp6EnableDisable {
 	pub enable : bool, 
 } 
 impl SwInterfaceIp6EnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_ip6_enable_disable_ae6cfcfb") 
 	 } 
 } 
@@ -319,7 +322,7 @@ pub struct SwInterfaceIp6EnableDisableReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceIp6EnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_ip6_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -329,7 +332,7 @@ pub struct IpMtableDump {
 	pub context : u32, 
 } 
 impl IpMtableDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_mtable_dump_51077d14") 
 	 } 
 } 
@@ -340,7 +343,7 @@ pub struct IpMtableDetails {
 	pub table : IpTable, 
 } 
 impl IpMtableDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_mtable_details_b9d2e09e") 
 	 } 
 } 
@@ -353,7 +356,7 @@ pub struct IpMrouteAddDel {
 	pub route : IpMroute, 
 } 
 impl IpMrouteAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_mroute_add_del_0dd7e790") 
 	 } 
 } 
@@ -364,7 +367,7 @@ pub struct IpMrouteAddDelReply {
 	pub stats_index : u32, 
 } 
 impl IpMrouteAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_mroute_add_del_reply_1992deab") 
 	 } 
 } 
@@ -375,7 +378,7 @@ pub struct IpMrouteDump {
 	pub table : IpTable, 
 } 
 impl IpMrouteDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_mroute_dump_b9d2e09e") 
 	 } 
 } 
@@ -385,7 +388,7 @@ pub struct IpMrouteDetails {
 	pub route : IpMroute, 
 } 
 impl IpMrouteDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_mroute_details_c5cb23fc") 
 	 } 
 } 
@@ -396,7 +399,7 @@ pub struct IpAddressDetails {
 	pub prefix : AddressWithPrefix, 
 } 
 impl IpAddressDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_address_details_b1199745") 
 	 } 
 } 
@@ -408,7 +411,7 @@ pub struct IpAddressDump {
 	pub is_ipv6 : bool, 
 } 
 impl IpAddressDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_address_dump_2d033de4") 
 	 } 
 } 
@@ -419,7 +422,7 @@ pub struct IpUnnumberedDetails {
 	pub ip_sw_if_index : InterfaceIndex, 
 } 
 impl IpUnnumberedDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_unnumbered_details_aa12a483") 
 	 } 
 } 
@@ -430,7 +433,7 @@ pub struct IpUnnumberedDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IpUnnumberedDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_unnumbered_dump_f9e6675e") 
 	 } 
 } 
@@ -441,7 +444,7 @@ pub struct IpDetails {
 	pub is_ipv6 : bool, 
 } 
 impl IpDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_details_eb152d07") 
 	 } 
 } 
@@ -452,7 +455,7 @@ pub struct IpDump {
 	pub is_ipv6 : bool, 
 } 
 impl IpDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_dump_98d231ca") 
 	 } 
 } 
@@ -462,7 +465,7 @@ pub struct MfibSignalDump {
 	pub context : u32, 
 } 
 impl MfibSignalDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mfib_signal_dump_51077d14") 
 	 } 
 } 
@@ -476,7 +479,7 @@ pub struct MfibSignalDetails {
 	pub ip_packet_data : u8, 
 } 
 impl MfibSignalDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mfib_signal_details_64398a9a") 
 	 } 
 } 
@@ -489,7 +492,7 @@ pub struct IpPuntPolice {
 	pub is_ip6 : bool, 
 } 
 impl IpPuntPolice { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_punt_police_db867cea") 
 	 } 
 } 
@@ -499,7 +502,7 @@ pub struct IpPuntPoliceReply {
 	pub retval : i32, 
 } 
 impl IpPuntPoliceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_punt_police_reply_e8d4e804") 
 	 } 
 } 
@@ -511,7 +514,7 @@ pub struct IpPuntRedirect {
 	pub is_add : bool, 
 } 
 impl IpPuntRedirect { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_punt_redirect_a9a5592c") 
 	 } 
 } 
@@ -521,7 +524,7 @@ pub struct IpPuntRedirectReply {
 	pub retval : i32, 
 } 
 impl IpPuntRedirectReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_punt_redirect_reply_e8d4e804") 
 	 } 
 } 
@@ -533,7 +536,7 @@ pub struct IpPuntRedirectDump {
 	pub is_ipv6 : bool, 
 } 
 impl IpPuntRedirectDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_punt_redirect_dump_2d033de4") 
 	 } 
 } 
@@ -543,7 +546,7 @@ pub struct IpPuntRedirectDetails {
 	pub punt : PuntRedirect, 
 } 
 impl IpPuntRedirectDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_punt_redirect_details_3924f5d3") 
 	 } 
 } 
@@ -556,7 +559,7 @@ pub struct IpContainerProxyAddDel {
 	pub is_add : bool, 
 } 
 impl IpContainerProxyAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_container_proxy_add_del_91189f40") 
 	 } 
 } 
@@ -566,7 +569,7 @@ pub struct IpContainerProxyAddDelReply {
 	pub retval : i32, 
 } 
 impl IpContainerProxyAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_container_proxy_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -576,7 +579,7 @@ pub struct IpContainerProxyDump {
 	pub context : u32, 
 } 
 impl IpContainerProxyDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_container_proxy_dump_51077d14") 
 	 } 
 } 
@@ -587,7 +590,7 @@ pub struct IpContainerProxyDetails {
 	pub prefix : Prefix, 
 } 
 impl IpContainerProxyDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_container_proxy_details_0ee460e8") 
 	 } 
 } 
@@ -603,7 +606,7 @@ pub struct IpSourceAndPortRangeCheckAddDel {
 	pub vrf_id : u32, 
 } 
 impl IpSourceAndPortRangeCheckAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_source_and_port_range_check_add_del_8bfc76f2") 
 	 } 
 } 
@@ -613,7 +616,7 @@ pub struct IpSourceAndPortRangeCheckAddDelReply {
 	pub retval : i32, 
 } 
 impl IpSourceAndPortRangeCheckAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_source_and_port_range_check_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -629,7 +632,7 @@ pub struct IpSourceAndPortRangeCheckInterfaceAddDel {
 	pub udp_out_vrf_id : u32, 
 } 
 impl IpSourceAndPortRangeCheckInterfaceAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_source_and_port_range_check_interface_add_del_e1ba8987") 
 	 } 
 } 
@@ -639,7 +642,7 @@ pub struct IpSourceAndPortRangeCheckInterfaceAddDelReply {
 	pub retval : i32, 
 } 
 impl IpSourceAndPortRangeCheckInterfaceAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_source_and_port_range_check_interface_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -651,7 +654,7 @@ pub struct SwInterfaceIp6SetLinkLocalAddress {
 	pub ip : Ip6Address, 
 } 
 impl SwInterfaceIp6SetLinkLocalAddress { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_ip6_set_link_local_address_2931d9fa") 
 	 } 
 } 
@@ -661,7 +664,7 @@ pub struct SwInterfaceIp6SetLinkLocalAddressReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceIp6SetLinkLocalAddressReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_ip6_set_link_local_address_reply_e8d4e804") 
 	 } 
 } 
@@ -672,7 +675,7 @@ pub struct SwInterfaceIp6GetLinkLocalAddress {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl SwInterfaceIp6GetLinkLocalAddress { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_ip6_get_link_local_address_f9e6675e") 
 	 } 
 } 
@@ -683,7 +686,7 @@ pub struct SwInterfaceIp6GetLinkLocalAddressReply {
 	pub ip : Ip6Address, 
 } 
 impl SwInterfaceIp6GetLinkLocalAddressReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_ip6_get_link_local_address_reply_d16b7130") 
 	 } 
 } 
@@ -699,7 +702,7 @@ pub struct IoamEnable {
 	pub node_id : u32, 
 } 
 impl IoamEnable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ioam_enable_51ccd868") 
 	 } 
 } 
@@ -709,7 +712,7 @@ pub struct IoamEnableReply {
 	pub retval : i32, 
 } 
 impl IoamEnableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ioam_enable_reply_e8d4e804") 
 	 } 
 } 
@@ -720,7 +723,7 @@ pub struct IoamDisable {
 	pub id : u16, 
 } 
 impl IoamDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ioam_disable_6b16a45e") 
 	 } 
 } 
@@ -730,7 +733,7 @@ pub struct IoamDisableReply {
 	pub retval : i32, 
 } 
 impl IoamDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ioam_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -746,7 +749,7 @@ pub struct IpReassemblySet {
 	pub typ : IpReassType, 
 } 
 impl IpReassemblySet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_reassembly_set_16467d25") 
 	 } 
 } 
@@ -756,7 +759,7 @@ pub struct IpReassemblySetReply {
 	pub retval : i32, 
 } 
 impl IpReassemblySetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_reassembly_set_reply_e8d4e804") 
 	 } 
 } 
@@ -768,7 +771,7 @@ pub struct IpReassemblyGet {
 	pub typ : IpReassType, 
 } 
 impl IpReassemblyGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_reassembly_get_ea13ff63") 
 	 } 
 } 
@@ -783,7 +786,7 @@ pub struct IpReassemblyGetReply {
 	pub is_ip6 : bool, 
 } 
 impl IpReassemblyGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_reassembly_get_reply_d5eb8d34") 
 	 } 
 } 
@@ -797,7 +800,7 @@ pub struct IpReassemblyEnableDisable {
 	pub typ : IpReassType, 
 } 
 impl IpReassemblyEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_reassembly_enable_disable_885c85a6") 
 	 } 
 } 
@@ -807,7 +810,7 @@ pub struct IpReassemblyEnableDisableReply {
 	pub retval : i32, 
 } 
 impl IpReassemblyEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_reassembly_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -818,7 +821,7 @@ pub struct IpPathMtuUpdate {
 	pub pmtu : IpPathMtu, 
 } 
 impl IpPathMtuUpdate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_path_mtu_update_10bbe5cb") 
 	 } 
 } 
@@ -828,7 +831,7 @@ pub struct IpPathMtuUpdateReply {
 	pub retval : i32, 
 } 
 impl IpPathMtuUpdateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_path_mtu_update_reply_e8d4e804") 
 	 } 
 } 
@@ -839,7 +842,7 @@ pub struct IpPathMtuGet {
 	pub cursor : u32, 
 } 
 impl IpPathMtuGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_path_mtu_get_f75ba505") 
 	 } 
 } 
@@ -850,7 +853,7 @@ pub struct IpPathMtuGetReply {
 	pub cursor : u32, 
 } 
 impl IpPathMtuGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_path_mtu_get_reply_53b48f5d") 
 	 } 
 } 
@@ -860,7 +863,7 @@ pub struct IpPathMtuDetails {
 	pub pmtu : IpPathMtu, 
 } 
 impl IpPathMtuDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_path_mtu_details_ac9539a7") 
 	 } 
 } 
@@ -870,7 +873,7 @@ pub struct IpPathMtuReplaceBegin {
 	pub context : u32, 
 } 
 impl IpPathMtuReplaceBegin { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_path_mtu_replace_begin_51077d14") 
 	 } 
 } 
@@ -880,7 +883,7 @@ pub struct IpPathMtuReplaceBeginReply {
 	pub retval : i32, 
 } 
 impl IpPathMtuReplaceBeginReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_path_mtu_replace_begin_reply_e8d4e804") 
 	 } 
 } 
@@ -890,7 +893,7 @@ pub struct IpPathMtuReplaceEnd {
 	pub context : u32, 
 } 
 impl IpPathMtuReplaceEnd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_path_mtu_replace_end_51077d14") 
 	 } 
 } 
@@ -900,7 +903,7 @@ pub struct IpPathMtuReplaceEndReply {
 	pub retval : i32, 
 } 
 impl IpPathMtuReplaceEndReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_path_mtu_replace_end_reply_e8d4e804") 
 	 } 
 } 

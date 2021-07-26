@@ -29,7 +29,7 @@ pub struct L2tpv3CreateTunnel {
 	pub encap_vrf_id : u32, 
 } 
 impl L2tpv3CreateTunnel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2tpv3_create_tunnel_596892cb") 
 	 } 
 } 
@@ -40,7 +40,7 @@ pub struct L2tpv3CreateTunnelReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl L2tpv3CreateTunnelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2tpv3_create_tunnel_reply_5383d31f") 
 	 } 
 } 
@@ -53,7 +53,7 @@ pub struct L2tpv3SetTunnelCookies {
 	pub new_remote_cookie : u64, 
 } 
 impl L2tpv3SetTunnelCookies { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2tpv3_set_tunnel_cookies_b3f4faf7") 
 	 } 
 } 
@@ -63,7 +63,7 @@ pub struct L2tpv3SetTunnelCookiesReply {
 	pub retval : i32, 
 } 
 impl L2tpv3SetTunnelCookiesReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2tpv3_set_tunnel_cookies_reply_e8d4e804") 
 	 } 
 } 
@@ -81,7 +81,7 @@ pub struct SwIfL2tpv3TunnelDetails {
 	pub l2_sublayer_present : bool, 
 } 
 impl SwIfL2tpv3TunnelDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_if_l2tpv3_tunnel_details_1dab5c7e") 
 	 } 
 } 
@@ -91,7 +91,7 @@ pub struct SwIfL2tpv3TunnelDump {
 	pub context : u32, 
 } 
 impl SwIfL2tpv3TunnelDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_if_l2tpv3_tunnel_dump_51077d14") 
 	 } 
 } 
@@ -103,7 +103,7 @@ pub struct L2tpv3InterfaceEnableDisable {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl L2tpv3InterfaceEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2tpv3_interface_enable_disable_3865946c") 
 	 } 
 } 
@@ -113,7 +113,7 @@ pub struct L2tpv3InterfaceEnableDisableReply {
 	pub retval : i32, 
 } 
 impl L2tpv3InterfaceEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2tpv3_interface_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -124,7 +124,7 @@ pub struct L2tpv3SetLookupKey {
 	pub key : L2tLookupKey, 
 } 
 impl L2tpv3SetLookupKey { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2tpv3_set_lookup_key_c9892c86") 
 	 } 
 } 
@@ -134,7 +134,7 @@ pub struct L2tpv3SetLookupKeyReply {
 	pub retval : i32, 
 } 
 impl L2tpv3SetLookupKeyReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2tpv3_set_lookup_key_reply_e8d4e804") 
 	 } 
 } 

@@ -15,7 +15,7 @@ pub struct VxlanGpeIoamExportEnableDisable {
 	pub src_address : Ip4Address, 
 } 
 impl VxlanGpeIoamExportEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_export_enable_disable_e4d4ebfa") 
 	 } 
 } 
@@ -25,7 +25,7 @@ pub struct VxlanGpeIoamExportEnableDisableReply {
 	pub retval : i32, 
 } 
 impl VxlanGpeIoamExportEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_export_enable_disable_reply_e8d4e804") 
 	 } 
 } 

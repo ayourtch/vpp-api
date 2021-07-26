@@ -63,7 +63,7 @@ pub struct IpsecSpdAddDel {
 	pub spd_id : u32, 
 } 
 impl IpsecSpdAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_spd_add_del_20e89a95") 
 	 } 
 } 
@@ -73,7 +73,7 @@ pub struct IpsecSpdAddDelReply {
 	pub retval : i32, 
 } 
 impl IpsecSpdAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_spd_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -86,7 +86,7 @@ pub struct IpsecInterfaceAddDelSpd {
 	pub spd_id : u32, 
 } 
 impl IpsecInterfaceAddDelSpd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_interface_add_del_spd_80f80cbb") 
 	 } 
 } 
@@ -96,7 +96,7 @@ pub struct IpsecInterfaceAddDelSpdReply {
 	pub retval : i32, 
 } 
 impl IpsecInterfaceAddDelSpdReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_interface_add_del_spd_reply_e8d4e804") 
 	 } 
 } 
@@ -108,7 +108,7 @@ pub struct IpsecSpdEntryAddDel {
 	pub entry : IpsecSpdEntry, 
 } 
 impl IpsecSpdEntryAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_spd_entry_add_del_9f384b8d") 
 	 } 
 } 
@@ -119,7 +119,7 @@ pub struct IpsecSpdEntryAddDelReply {
 	pub stat_index : u32, 
 } 
 impl IpsecSpdEntryAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_spd_entry_add_del_reply_9ffac24b") 
 	 } 
 } 
@@ -129,7 +129,7 @@ pub struct IpsecSpdsDump {
 	pub context : u32, 
 } 
 impl IpsecSpdsDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_spds_dump_51077d14") 
 	 } 
 } 
@@ -140,7 +140,7 @@ pub struct IpsecSpdsDetails {
 	pub npolicies : u32, 
 } 
 impl IpsecSpdsDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_spds_details_a04bb254") 
 	 } 
 } 
@@ -152,7 +152,7 @@ pub struct IpsecSpdDump {
 	pub sa_id : u32, 
 } 
 impl IpsecSpdDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_spd_dump_afefbf7d") 
 	 } 
 } 
@@ -162,7 +162,7 @@ pub struct IpsecSpdDetails {
 	pub entry : IpsecSpdEntry, 
 } 
 impl IpsecSpdDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_spd_details_f2222790") 
 	 } 
 } 
@@ -174,7 +174,7 @@ pub struct IpsecSadEntryAddDel {
 	pub entry : IpsecSadEntry, 
 } 
 impl IpsecSadEntryAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_sad_entry_add_del_b8def364") 
 	 } 
 } 
@@ -186,7 +186,7 @@ pub struct IpsecSadEntryAddDelV2 {
 	pub entry : IpsecSadEntryV2, 
 } 
 impl IpsecSadEntryAddDelV2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_sad_entry_add_del_v2_aca78b27") 
 	 } 
 } 
@@ -198,7 +198,7 @@ pub struct IpsecSadEntryAddDelV3 {
 	pub entry : IpsecSadEntryV3, 
 } 
 impl IpsecSadEntryAddDelV3 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_sad_entry_add_del_v3_c77ebd92") 
 	 } 
 } 
@@ -209,7 +209,7 @@ pub struct IpsecSadEntryAddDelReply {
 	pub stat_index : u32, 
 } 
 impl IpsecSadEntryAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_sad_entry_add_del_reply_9ffac24b") 
 	 } 
 } 
@@ -220,7 +220,7 @@ pub struct IpsecSadEntryAddDelV2Reply {
 	pub stat_index : u32, 
 } 
 impl IpsecSadEntryAddDelV2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_sad_entry_add_del_v2_reply_9ffac24b") 
 	 } 
 } 
@@ -231,7 +231,7 @@ pub struct IpsecSadEntryAddDelV3Reply {
 	pub stat_index : u32, 
 } 
 impl IpsecSadEntryAddDelV3Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_sad_entry_add_del_v3_reply_9ffac24b") 
 	 } 
 } 
@@ -242,7 +242,7 @@ pub struct IpsecTunnelProtectUpdate {
 	pub tunnel : IpsecTunnelProtect, 
 } 
 impl IpsecTunnelProtectUpdate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_tunnel_protect_update_143f155d") 
 	 } 
 } 
@@ -252,7 +252,7 @@ pub struct IpsecTunnelProtectUpdateReply {
 	pub retval : i32, 
 } 
 impl IpsecTunnelProtectUpdateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_tunnel_protect_update_reply_e8d4e804") 
 	 } 
 } 
@@ -264,7 +264,7 @@ pub struct IpsecTunnelProtectDel {
 	pub nh : Address, 
 } 
 impl IpsecTunnelProtectDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_tunnel_protect_del_ddd2ba36") 
 	 } 
 } 
@@ -274,7 +274,7 @@ pub struct IpsecTunnelProtectDelReply {
 	pub retval : i32, 
 } 
 impl IpsecTunnelProtectDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_tunnel_protect_del_reply_e8d4e804") 
 	 } 
 } 
@@ -285,7 +285,7 @@ pub struct IpsecTunnelProtectDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IpsecTunnelProtectDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_tunnel_protect_dump_f9e6675e") 
 	 } 
 } 
@@ -295,7 +295,7 @@ pub struct IpsecTunnelProtectDetails {
 	pub tun : IpsecTunnelProtect, 
 } 
 impl IpsecTunnelProtectDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_tunnel_protect_details_ac6c823b") 
 	 } 
 } 
@@ -307,7 +307,7 @@ pub struct IpsecSpdInterfaceDump {
 	pub spd_index_valid : u8, 
 } 
 impl IpsecSpdInterfaceDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_spd_interface_dump_8971de19") 
 	 } 
 } 
@@ -318,7 +318,7 @@ pub struct IpsecSpdInterfaceDetails {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IpsecSpdInterfaceDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_spd_interface_details_7a0bcf3e") 
 	 } 
 } 
@@ -329,7 +329,7 @@ pub struct IpsecItfCreate {
 	pub itf : IpsecItf, 
 } 
 impl IpsecItfCreate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_itf_create_6f50b3bc") 
 	 } 
 } 
@@ -340,7 +340,7 @@ pub struct IpsecItfCreateReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IpsecItfCreateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_itf_create_reply_5383d31f") 
 	 } 
 } 
@@ -351,7 +351,7 @@ pub struct IpsecItfDelete {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IpsecItfDelete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_itf_delete_f9e6675e") 
 	 } 
 } 
@@ -361,7 +361,7 @@ pub struct IpsecItfDeleteReply {
 	pub retval : i32, 
 } 
 impl IpsecItfDeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_itf_delete_reply_e8d4e804") 
 	 } 
 } 
@@ -372,7 +372,7 @@ pub struct IpsecItfDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IpsecItfDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_itf_dump_f9e6675e") 
 	 } 
 } 
@@ -382,7 +382,7 @@ pub struct IpsecItfDetails {
 	pub itf : IpsecItf, 
 } 
 impl IpsecItfDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_itf_details_548a73b8") 
 	 } 
 } 
@@ -393,7 +393,7 @@ pub struct IpsecSaDump {
 	pub sa_id : u32, 
 } 
 impl IpsecSaDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_sa_dump_2076c2f4") 
 	 } 
 } 
@@ -404,7 +404,7 @@ pub struct IpsecSaV2Dump {
 	pub sa_id : u32, 
 } 
 impl IpsecSaV2Dump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_sa_v2_dump_2076c2f4") 
 	 } 
 } 
@@ -415,7 +415,7 @@ pub struct IpsecSaV3Dump {
 	pub sa_id : u32, 
 } 
 impl IpsecSaV3Dump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_sa_v3_dump_2076c2f4") 
 	 } 
 } 
@@ -431,7 +431,7 @@ pub struct IpsecSaDetails {
 	pub stat_index : u32, 
 } 
 impl IpsecSaDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_sa_details_b30c7f41") 
 	 } 
 } 
@@ -447,7 +447,7 @@ pub struct IpsecSaV2Details {
 	pub stat_index : u32, 
 } 
 impl IpsecSaV2Details { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_sa_v2_details_e2130051") 
 	 } 
 } 
@@ -462,7 +462,7 @@ pub struct IpsecSaV3Details {
 	pub stat_index : u32, 
 } 
 impl IpsecSaV3Details { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_sa_v3_details_2fc991ee") 
 	 } 
 } 
@@ -472,7 +472,7 @@ pub struct IpsecBackendDump {
 	pub context : u32, 
 } 
 impl IpsecBackendDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_backend_dump_51077d14") 
 	 } 
 } 
@@ -485,7 +485,7 @@ pub struct IpsecBackendDetails {
 	pub active : bool, 
 } 
 impl IpsecBackendDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_backend_details_ee601c29") 
 	 } 
 } 
@@ -497,7 +497,7 @@ pub struct IpsecSelectBackend {
 	pub index : u8, 
 } 
 impl IpsecSelectBackend { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_select_backend_5bcfd3b7") 
 	 } 
 } 
@@ -507,7 +507,7 @@ pub struct IpsecSelectBackendReply {
 	pub retval : i32, 
 } 
 impl IpsecSelectBackendReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_select_backend_reply_e8d4e804") 
 	 } 
 } 
@@ -518,7 +518,7 @@ pub struct IpsecSetAsyncMode {
 	pub async_enable : bool, 
 } 
 impl IpsecSetAsyncMode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_set_async_mode_a6465f7c") 
 	 } 
 } 
@@ -528,7 +528,7 @@ pub struct IpsecSetAsyncModeReply {
 	pub retval : i32, 
 } 
 impl IpsecSetAsyncModeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipsec_set_async_mode_reply_e8d4e804") 
 	 } 
 } 

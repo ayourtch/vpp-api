@@ -22,7 +22,7 @@ pub struct ControlPing {
 	pub context : u32, 
 } 
 impl ControlPing { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("control_ping_51077d14") 
 	 } 
 } 
@@ -34,7 +34,7 @@ pub struct ControlPingReply {
 	pub vpe_pid : u32, 
 } 
 impl ControlPingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("control_ping_reply_f6b0b8ca") 
 	 } 
 } 
@@ -45,7 +45,7 @@ pub struct Cli {
 	pub cmd_in_shmem : u64, 
 } 
 impl Cli { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cli_23bfbfff") 
 	 } 
 } 
@@ -56,7 +56,7 @@ pub struct CliInband {
 	pub cmd : VariableSizeString, 
 } 
 impl CliInband { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cli_inband_f8377302") 
 	 } 
 } 
@@ -67,7 +67,7 @@ pub struct CliReply {
 	pub reply_in_shmem : u64, 
 } 
 impl CliReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cli_reply_06d68297") 
 	 } 
 } 
@@ -78,7 +78,7 @@ pub struct CliInbandReply {
 	pub reply : VariableSizeString, 
 } 
 impl CliInbandReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cli_inband_reply_05879051") 
 	 } 
 } 
@@ -89,7 +89,7 @@ pub struct GetNodeIndex {
 	pub node_name : FixedSizeString<U64>, 
 } 
 impl GetNodeIndex { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("get_node_index_f1984c64") 
 	 } 
 } 
@@ -100,7 +100,7 @@ pub struct GetNodeIndexReply {
 	pub node_index : u32, 
 } 
 impl GetNodeIndexReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("get_node_index_reply_a8600b89") 
 	 } 
 } 
@@ -112,7 +112,7 @@ pub struct AddNodeNext {
 	pub next_name : FixedSizeString<U64>, 
 } 
 impl AddNodeNext { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("add_node_next_2457116d") 
 	 } 
 } 
@@ -123,7 +123,7 @@ pub struct AddNodeNextReply {
 	pub next_index : u32, 
 } 
 impl AddNodeNextReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("add_node_next_reply_2ed75f32") 
 	 } 
 } 
@@ -133,7 +133,7 @@ pub struct ShowVersion {
 	pub context : u32, 
 } 
 impl ShowVersion { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_version_51077d14") 
 	 } 
 } 
@@ -147,7 +147,7 @@ pub struct ShowVersionReply {
 	pub build_directory : FixedSizeString<U256>, 
 } 
 impl ShowVersionReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_version_reply_c919bde1") 
 	 } 
 } 
@@ -157,7 +157,7 @@ pub struct ShowThreads {
 	pub context : u32, 
 } 
 impl ShowThreads { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_threads_51077d14") 
 	 } 
 } 
@@ -169,7 +169,7 @@ pub struct ShowThreadsReply {
 	pub thread_data : ThreadData, 
 } 
 impl ShowThreadsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_threads_reply_efd78e83") 
 	 } 
 } 
@@ -179,7 +179,7 @@ pub struct GetNodeGraph {
 	pub context : u32, 
 } 
 impl GetNodeGraph { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("get_node_graph_51077d14") 
 	 } 
 } 
@@ -190,7 +190,7 @@ pub struct GetNodeGraphReply {
 	pub reply_in_shmem : u64, 
 } 
 impl GetNodeGraphReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("get_node_graph_reply_06d68297") 
 	 } 
 } 
@@ -202,7 +202,7 @@ pub struct GetNextIndex {
 	pub next_name : FixedSizeString<U64>, 
 } 
 impl GetNextIndex { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("get_next_index_2457116d") 
 	 } 
 } 
@@ -213,7 +213,7 @@ pub struct GetNextIndexReply {
 	pub next_index : u32, 
 } 
 impl GetNextIndexReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("get_next_index_reply_2ed75f32") 
 	 } 
 } 
@@ -224,7 +224,7 @@ pub struct LogDump {
 	pub start_timestamp : Timestamp, 
 } 
 impl LogDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("log_dump_6ab31753") 
 	 } 
 } 
@@ -237,7 +237,7 @@ pub struct LogDetails {
 	pub message : FixedSizeString<U256>, 
 } 
 impl LogDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("log_details_255827a1") 
 	 } 
 } 
@@ -247,7 +247,7 @@ pub struct ShowVpeSystemTime {
 	pub context : u32, 
 } 
 impl ShowVpeSystemTime { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_vpe_system_time_51077d14") 
 	 } 
 } 
@@ -258,7 +258,7 @@ pub struct ShowVpeSystemTimeReply {
 	pub vpe_system_time : Timestamp, 
 } 
 impl ShowVpeSystemTimeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_vpe_system_time_reply_7ffd8193") 
 	 } 
 } 
@@ -269,7 +269,7 @@ pub struct GetF64EndianValue {
 	pub f64_one : f64, 
 } 
 impl GetF64EndianValue { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("get_f64_endian_value_809fcd44") 
 	 } 
 } 
@@ -280,7 +280,7 @@ pub struct GetF64EndianValueReply {
 	pub f64_one_result : f64, 
 } 
 impl GetF64EndianValueReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("get_f64_endian_value_reply_7e02e404") 
 	 } 
 } 
@@ -291,7 +291,7 @@ pub struct GetF64IncrementByOne {
 	pub f64_value : f64, 
 } 
 impl GetF64IncrementByOne { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("get_f64_increment_by_one_b64f027e") 
 	 } 
 } 
@@ -302,7 +302,7 @@ pub struct GetF64IncrementByOneReply {
 	pub f64_value : f64, 
 } 
 impl GetF64IncrementByOneReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("get_f64_increment_by_one_reply_d25dbaa3") 
 	 } 
 } 

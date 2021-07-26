@@ -49,7 +49,7 @@ pub struct QosStoreEnableDisable {
 	pub store : QosStore, 
 } 
 impl QosStoreEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_store_enable_disable_3507235e") 
 	 } 
 } 
@@ -59,7 +59,7 @@ pub struct QosStoreEnableDisableReply {
 	pub retval : i32, 
 } 
 impl QosStoreEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_store_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -69,7 +69,7 @@ pub struct QosStoreDump {
 	pub context : u32, 
 } 
 impl QosStoreDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_store_dump_51077d14") 
 	 } 
 } 
@@ -79,7 +79,7 @@ pub struct QosStoreDetails {
 	pub store : QosStore, 
 } 
 impl QosStoreDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_store_details_038a6d48") 
 	 } 
 } 
@@ -91,7 +91,7 @@ pub struct QosRecordEnableDisable {
 	pub record : QosRecord, 
 } 
 impl QosRecordEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_record_enable_disable_25b33f88") 
 	 } 
 } 
@@ -101,7 +101,7 @@ pub struct QosRecordEnableDisableReply {
 	pub retval : i32, 
 } 
 impl QosRecordEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_record_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -111,7 +111,7 @@ pub struct QosRecordDump {
 	pub context : u32, 
 } 
 impl QosRecordDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_record_dump_51077d14") 
 	 } 
 } 
@@ -121,7 +121,7 @@ pub struct QosRecordDetails {
 	pub record : QosRecord, 
 } 
 impl QosRecordDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_record_details_4956ccdd") 
 	 } 
 } 
@@ -132,7 +132,7 @@ pub struct QosEgressMapUpdate {
 	pub map : QosEgressMap, 
 } 
 impl QosEgressMapUpdate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_egress_map_update_6d1c065f") 
 	 } 
 } 
@@ -142,7 +142,7 @@ pub struct QosEgressMapUpdateReply {
 	pub retval : i32, 
 } 
 impl QosEgressMapUpdateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_egress_map_update_reply_e8d4e804") 
 	 } 
 } 
@@ -153,7 +153,7 @@ pub struct QosEgressMapDelete {
 	pub id : u32, 
 } 
 impl QosEgressMapDelete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_egress_map_delete_3a91bde5") 
 	 } 
 } 
@@ -163,7 +163,7 @@ pub struct QosEgressMapDeleteReply {
 	pub retval : i32, 
 } 
 impl QosEgressMapDeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_egress_map_delete_reply_e8d4e804") 
 	 } 
 } 
@@ -173,7 +173,7 @@ pub struct QosEgressMapDump {
 	pub context : u32, 
 } 
 impl QosEgressMapDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_egress_map_dump_51077d14") 
 	 } 
 } 
@@ -183,7 +183,7 @@ pub struct QosEgressMapDetails {
 	pub map : QosEgressMap, 
 } 
 impl QosEgressMapDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_egress_map_details_46c5653c") 
 	 } 
 } 
@@ -195,7 +195,7 @@ pub struct QosMarkEnableDisable {
 	pub mark : QosMark, 
 } 
 impl QosMarkEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_mark_enable_disable_1a010f74") 
 	 } 
 } 
@@ -205,7 +205,7 @@ pub struct QosMarkEnableDisableReply {
 	pub retval : i32, 
 } 
 impl QosMarkEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_mark_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -216,7 +216,7 @@ pub struct QosMarkDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl QosMarkDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_mark_dump_f9e6675e") 
 	 } 
 } 
@@ -226,7 +226,7 @@ pub struct QosMarkDetails {
 	pub mark : QosMark, 
 } 
 impl QosMarkDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_mark_details_89fe81a9") 
 	 } 
 } 
@@ -236,7 +236,7 @@ pub struct QosMarkDetailsReply {
 	pub retval : i32, 
 } 
 impl QosMarkDetailsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("qos_mark_details_reply_e8d4e804") 
 	 } 
 } 

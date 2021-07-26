@@ -18,7 +18,7 @@ pub struct LbConf {
 	pub flow_timeout : u32, 
 } 
 impl LbConf { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_conf_22ddb739") 
 	 } 
 } 
@@ -28,7 +28,7 @@ pub struct LbConfReply {
 	pub retval : i32, 
 } 
 impl LbConfReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_conf_reply_e8d4e804") 
 	 } 
 } 
@@ -48,7 +48,7 @@ pub struct LbAddDelVip {
 	pub is_del : bool, 
 } 
 impl LbAddDelVip { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_add_del_vip_d15b7ddc") 
 	 } 
 } 
@@ -58,7 +58,7 @@ pub struct LbAddDelVipReply {
 	pub retval : i32, 
 } 
 impl LbAddDelVipReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_add_del_vip_reply_e8d4e804") 
 	 } 
 } 
@@ -74,7 +74,7 @@ pub struct LbAddDelAs {
 	pub is_flush : bool, 
 } 
 impl LbAddDelAs { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_add_del_as_78628987") 
 	 } 
 } 
@@ -84,7 +84,7 @@ pub struct LbAddDelAsReply {
 	pub retval : i32, 
 } 
 impl LbAddDelAsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_add_del_as_reply_e8d4e804") 
 	 } 
 } 
@@ -97,7 +97,7 @@ pub struct LbFlushVip {
 	pub port : u16, 
 } 
 impl LbFlushVip { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_flush_vip_1063f819") 
 	 } 
 } 
@@ -107,7 +107,7 @@ pub struct LbFlushVipReply {
 	pub retval : i32, 
 } 
 impl LbFlushVipReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_flush_vip_reply_e8d4e804") 
 	 } 
 } 
@@ -121,7 +121,7 @@ pub struct LbVipDump {
 	pub port : u16, 
 } 
 impl LbVipDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_vip_dump_c7bcb124") 
 	 } 
 } 
@@ -136,7 +136,7 @@ pub struct LbVipDetails {
 	pub flow_table_length : u16, 
 } 
 impl LbVipDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_vip_details_08f39bed") 
 	 } 
 } 
@@ -149,7 +149,7 @@ pub struct LbAsDump {
 	pub port : u16, 
 } 
 impl LbAsDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_as_dump_1063f819") 
 	 } 
 } 
@@ -162,7 +162,7 @@ pub struct LbAsDetails {
 	pub in_use_since : u32, 
 } 
 impl LbAsDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_as_details_9c39f60e") 
 	 } 
 } 
@@ -174,7 +174,7 @@ pub struct LbAddDelIntfNat4 {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl LbAddDelIntfNat4 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_add_del_intf_nat4_47d6e753") 
 	 } 
 } 
@@ -184,7 +184,7 @@ pub struct LbAddDelIntfNat4Reply {
 	pub retval : i32, 
 } 
 impl LbAddDelIntfNat4Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_add_del_intf_nat4_reply_e8d4e804") 
 	 } 
 } 
@@ -196,7 +196,7 @@ pub struct LbAddDelIntfNat6 {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl LbAddDelIntfNat6 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_add_del_intf_nat6_47d6e753") 
 	 } 
 } 
@@ -206,7 +206,7 @@ pub struct LbAddDelIntfNat6Reply {
 	pub retval : i32, 
 } 
 impl LbAddDelIntfNat6Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lb_add_del_intf_nat6_reply_e8d4e804") 
 	 } 
 } 

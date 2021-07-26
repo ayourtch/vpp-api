@@ -12,7 +12,7 @@ pub struct IoamCacheIp6EnableDisable {
 	pub is_disable : bool, 
 } 
 impl IoamCacheIp6EnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ioam_cache_ip6_enable_disable_47705c03") 
 	 } 
 } 
@@ -22,7 +22,7 @@ pub struct IoamCacheIp6EnableDisableReply {
 	pub retval : i32, 
 } 
 impl IoamCacheIp6EnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ioam_cache_ip6_enable_disable_reply_e8d4e804") 
 	 } 
 } 

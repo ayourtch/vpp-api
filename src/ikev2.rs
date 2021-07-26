@@ -16,7 +16,7 @@ pub struct Ikev2PluginGetVersion {
 	pub context : u32, 
 } 
 impl Ikev2PluginGetVersion { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_plugin_get_version_51077d14") 
 	 } 
 } 
@@ -27,7 +27,7 @@ pub struct Ikev2PluginGetVersionReply {
 	pub minor : u32, 
 } 
 impl Ikev2PluginGetVersionReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_plugin_get_version_reply_9b32cf86") 
 	 } 
 } 
@@ -37,7 +37,7 @@ pub struct Ikev2ProfileDump {
 	pub context : u32, 
 } 
 impl Ikev2ProfileDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_dump_51077d14") 
 	 } 
 } 
@@ -47,7 +47,7 @@ pub struct Ikev2ProfileDetails {
 	pub profile : Ikev2Profile, 
 } 
 impl Ikev2ProfileDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_details_670d01d9") 
 	 } 
 } 
@@ -57,7 +57,7 @@ pub struct Ikev2SaDump {
 	pub context : u32, 
 } 
 impl Ikev2SaDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_sa_dump_51077d14") 
 	 } 
 } 
@@ -68,7 +68,7 @@ pub struct Ikev2SaDetails {
 	pub sa : Ikev2Sa, 
 } 
 impl Ikev2SaDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_sa_details_937c22d5") 
 	 } 
 } 
@@ -79,7 +79,7 @@ pub struct Ikev2ChildSaDump {
 	pub sa_index : u32, 
 } 
 impl Ikev2ChildSaDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_child_sa_dump_01eab609") 
 	 } 
 } 
@@ -90,7 +90,7 @@ pub struct Ikev2ChildSaDetails {
 	pub child_sa : Ikev2ChildSa, 
 } 
 impl Ikev2ChildSaDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_child_sa_details_ff67741f") 
 	 } 
 } 
@@ -102,7 +102,7 @@ pub struct Ikev2NonceGet {
 	pub sa_index : u32, 
 } 
 impl Ikev2NonceGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_nonce_get_7fe9ad51") 
 	 } 
 } 
@@ -114,7 +114,7 @@ pub struct Ikev2NonceGetReply {
 	pub nonce : u8, 
 } 
 impl Ikev2NonceGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_nonce_get_reply_1b37a342") 
 	 } 
 } 
@@ -127,7 +127,7 @@ pub struct Ikev2TrafficSelectorDump {
 	pub child_sa_index : u32, 
 } 
 impl Ikev2TrafficSelectorDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_traffic_selector_dump_a7385e33") 
 	 } 
 } 
@@ -138,7 +138,7 @@ pub struct Ikev2TrafficSelectorDetails {
 	pub ts : Ikev2Ts, 
 } 
 impl Ikev2TrafficSelectorDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_traffic_selector_details_518cb06f") 
 	 } 
 } 
@@ -150,7 +150,7 @@ pub struct Ikev2ProfileAddDel {
 	pub is_add : bool, 
 } 
 impl Ikev2ProfileAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_add_del_2c925b55") 
 	 } 
 } 
@@ -160,7 +160,7 @@ pub struct Ikev2ProfileAddDelReply {
 	pub retval : i32, 
 } 
 impl Ikev2ProfileAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -175,7 +175,7 @@ pub struct Ikev2ProfileSetAuth {
 	pub data : u8, 
 } 
 impl Ikev2ProfileSetAuth { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_set_auth_642c97cd") 
 	 } 
 } 
@@ -185,7 +185,7 @@ pub struct Ikev2ProfileSetAuthReply {
 	pub retval : i32, 
 } 
 impl Ikev2ProfileSetAuthReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_set_auth_reply_e8d4e804") 
 	 } 
 } 
@@ -200,7 +200,7 @@ pub struct Ikev2ProfileSetId {
 	pub data : u8, 
 } 
 impl Ikev2ProfileSetId { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_set_id_4d7e2418") 
 	 } 
 } 
@@ -210,7 +210,7 @@ pub struct Ikev2ProfileSetIdReply {
 	pub retval : i32, 
 } 
 impl Ikev2ProfileSetIdReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_set_id_reply_e8d4e804") 
 	 } 
 } 
@@ -221,7 +221,7 @@ pub struct Ikev2ProfileDisableNatt {
 	pub name : FixedSizeString<U64>, 
 } 
 impl Ikev2ProfileDisableNatt { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_disable_natt_ebf79a66") 
 	 } 
 } 
@@ -231,7 +231,7 @@ pub struct Ikev2ProfileDisableNattReply {
 	pub retval : i32, 
 } 
 impl Ikev2ProfileDisableNattReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_disable_natt_reply_e8d4e804") 
 	 } 
 } 
@@ -243,7 +243,7 @@ pub struct Ikev2ProfileSetTs {
 	pub ts : Ikev2Ts, 
 } 
 impl Ikev2ProfileSetTs { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_set_ts_8eb8cfd1") 
 	 } 
 } 
@@ -253,7 +253,7 @@ pub struct Ikev2ProfileSetTsReply {
 	pub retval : i32, 
 } 
 impl Ikev2ProfileSetTsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_set_ts_reply_e8d4e804") 
 	 } 
 } 
@@ -264,7 +264,7 @@ pub struct Ikev2SetLocalKey {
 	pub key_file : FixedSizeString<U256>, 
 } 
 impl Ikev2SetLocalKey { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_set_local_key_799b69ec") 
 	 } 
 } 
@@ -274,7 +274,7 @@ pub struct Ikev2SetLocalKeyReply {
 	pub retval : i32, 
 } 
 impl Ikev2SetLocalKeyReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_set_local_key_reply_e8d4e804") 
 	 } 
 } 
@@ -286,7 +286,7 @@ pub struct Ikev2SetTunnelInterface {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Ikev2SetTunnelInterface { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_set_tunnel_interface_ca67182c") 
 	 } 
 } 
@@ -296,7 +296,7 @@ pub struct Ikev2SetTunnelInterfaceReply {
 	pub retval : i32, 
 } 
 impl Ikev2SetTunnelInterfaceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_set_tunnel_interface_reply_e8d4e804") 
 	 } 
 } 
@@ -308,7 +308,7 @@ pub struct Ikev2SetResponder {
 	pub responder : Ikev2Responder, 
 } 
 impl Ikev2SetResponder { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_set_responder_a2055df1") 
 	 } 
 } 
@@ -318,7 +318,7 @@ pub struct Ikev2SetResponderReply {
 	pub retval : i32, 
 } 
 impl Ikev2SetResponderReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_set_responder_reply_e8d4e804") 
 	 } 
 } 
@@ -330,7 +330,7 @@ pub struct Ikev2SetIkeTransforms {
 	pub tr : Ikev2IkeTransforms, 
 } 
 impl Ikev2SetIkeTransforms { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_set_ike_transforms_076d7378") 
 	 } 
 } 
@@ -340,7 +340,7 @@ pub struct Ikev2SetIkeTransformsReply {
 	pub retval : i32, 
 } 
 impl Ikev2SetIkeTransformsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_set_ike_transforms_reply_e8d4e804") 
 	 } 
 } 
@@ -352,7 +352,7 @@ pub struct Ikev2SetEspTransforms {
 	pub tr : Ikev2EspTransforms, 
 } 
 impl Ikev2SetEspTransforms { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_set_esp_transforms_a63dc205") 
 	 } 
 } 
@@ -362,7 +362,7 @@ pub struct Ikev2SetEspTransformsReply {
 	pub retval : i32, 
 } 
 impl Ikev2SetEspTransformsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_set_esp_transforms_reply_e8d4e804") 
 	 } 
 } 
@@ -377,7 +377,7 @@ pub struct Ikev2SetSaLifetime {
 	pub lifetime_maxdata : u64, 
 } 
 impl Ikev2SetSaLifetime { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_set_sa_lifetime_7039feaa") 
 	 } 
 } 
@@ -387,7 +387,7 @@ pub struct Ikev2SetSaLifetimeReply {
 	pub retval : i32, 
 } 
 impl Ikev2SetSaLifetimeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_set_sa_lifetime_reply_e8d4e804") 
 	 } 
 } 
@@ -398,7 +398,7 @@ pub struct Ikev2InitiateSaInit {
 	pub name : FixedSizeString<U64>, 
 } 
 impl Ikev2InitiateSaInit { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_initiate_sa_init_ebf79a66") 
 	 } 
 } 
@@ -408,7 +408,7 @@ pub struct Ikev2InitiateSaInitReply {
 	pub retval : i32, 
 } 
 impl Ikev2InitiateSaInitReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_initiate_sa_init_reply_e8d4e804") 
 	 } 
 } 
@@ -419,7 +419,7 @@ pub struct Ikev2InitiateDelIkeSa {
 	pub ispi : u64, 
 } 
 impl Ikev2InitiateDelIkeSa { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_initiate_del_ike_sa_8d125bdd") 
 	 } 
 } 
@@ -429,7 +429,7 @@ pub struct Ikev2InitiateDelIkeSaReply {
 	pub retval : i32, 
 } 
 impl Ikev2InitiateDelIkeSaReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_initiate_del_ike_sa_reply_e8d4e804") 
 	 } 
 } 
@@ -440,7 +440,7 @@ pub struct Ikev2InitiateDelChildSa {
 	pub ispi : u32, 
 } 
 impl Ikev2InitiateDelChildSa { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_initiate_del_child_sa_7f004d2e") 
 	 } 
 } 
@@ -450,7 +450,7 @@ pub struct Ikev2InitiateDelChildSaReply {
 	pub retval : i32, 
 } 
 impl Ikev2InitiateDelChildSaReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_initiate_del_child_sa_reply_e8d4e804") 
 	 } 
 } 
@@ -461,7 +461,7 @@ pub struct Ikev2InitiateRekeyChildSa {
 	pub ispi : u32, 
 } 
 impl Ikev2InitiateRekeyChildSa { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_initiate_rekey_child_sa_7f004d2e") 
 	 } 
 } 
@@ -471,7 +471,7 @@ pub struct Ikev2InitiateRekeyChildSaReply {
 	pub retval : i32, 
 } 
 impl Ikev2InitiateRekeyChildSaReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_initiate_rekey_child_sa_reply_e8d4e804") 
 	 } 
 } 
@@ -482,7 +482,7 @@ pub struct Ikev2ProfileSetUdpEncap {
 	pub name : FixedSizeString<U64>, 
 } 
 impl Ikev2ProfileSetUdpEncap { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_set_udp_encap_ebf79a66") 
 	 } 
 } 
@@ -492,7 +492,7 @@ pub struct Ikev2ProfileSetUdpEncapReply {
 	pub retval : i32, 
 } 
 impl Ikev2ProfileSetUdpEncapReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_set_udp_encap_reply_e8d4e804") 
 	 } 
 } 
@@ -505,7 +505,7 @@ pub struct Ikev2ProfileSetIpsecUdpPort {
 	pub name : FixedSizeString<U64>, 
 } 
 impl Ikev2ProfileSetIpsecUdpPort { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_set_ipsec_udp_port_615ce758") 
 	 } 
 } 
@@ -515,7 +515,7 @@ pub struct Ikev2ProfileSetIpsecUdpPortReply {
 	pub retval : i32, 
 } 
 impl Ikev2ProfileSetIpsecUdpPortReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_set_ipsec_udp_port_reply_e8d4e804") 
 	 } 
 } 
@@ -527,7 +527,7 @@ pub struct Ikev2ProfileSetLiveness {
 	pub max_retries : u32, 
 } 
 impl Ikev2ProfileSetLiveness { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_set_liveness_6bdf4d65") 
 	 } 
 } 
@@ -537,7 +537,7 @@ pub struct Ikev2ProfileSetLivenessReply {
 	pub retval : i32, 
 } 
 impl Ikev2ProfileSetLivenessReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ikev2_profile_set_liveness_reply_e8d4e804") 
 	 } 
 } 

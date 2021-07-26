@@ -14,7 +14,7 @@ pub struct Dhcp6ClientEnableDisable {
 	pub enable : bool, 
 } 
 impl Dhcp6ClientEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_client_enable_disable_ae6cfcfb") 
 	 } 
 } 
@@ -24,7 +24,7 @@ pub struct Dhcp6ClientEnableDisableReply {
 	pub retval : i32, 
 } 
 impl Dhcp6ClientEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_client_enable_disable_reply_e8d4e804") 
 	 } 
 } 

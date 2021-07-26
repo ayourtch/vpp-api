@@ -15,7 +15,7 @@ pub struct PgCreateInterface {
 	pub gso_size : u32, 
 } 
 impl PgCreateInterface { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pg_create_interface_b7c893d7") 
 	 } 
 } 
@@ -26,7 +26,7 @@ pub struct PgCreateInterfaceReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl PgCreateInterfaceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pg_create_interface_reply_5383d31f") 
 	 } 
 } 
@@ -38,7 +38,7 @@ pub struct PgInterfaceEnableDisableCoalesce {
 	pub coalesce_enabled : bool, 
 } 
 impl PgInterfaceEnableDisableCoalesce { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pg_interface_enable_disable_coalesce_a2ef99e7") 
 	 } 
 } 
@@ -48,7 +48,7 @@ pub struct PgInterfaceEnableDisableCoalesceReply {
 	pub retval : i32, 
 } 
 impl PgInterfaceEnableDisableCoalesceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pg_interface_enable_disable_coalesce_reply_e8d4e804") 
 	 } 
 } 
@@ -62,7 +62,7 @@ pub struct PgCapture {
 	pub pcap_file_name : VariableSizeString, 
 } 
 impl PgCapture { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pg_capture_3712fb6c") 
 	 } 
 } 
@@ -72,7 +72,7 @@ pub struct PgCaptureReply {
 	pub retval : i32, 
 } 
 impl PgCaptureReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pg_capture_reply_e8d4e804") 
 	 } 
 } 
@@ -84,7 +84,7 @@ pub struct PgEnableDisable {
 	pub stream_name : VariableSizeString, 
 } 
 impl PgEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pg_enable_disable_01f94f3a") 
 	 } 
 } 
@@ -94,7 +94,7 @@ pub struct PgEnableDisableReply {
 	pub retval : i32, 
 } 
 impl PgEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pg_enable_disable_reply_e8d4e804") 
 	 } 
 } 

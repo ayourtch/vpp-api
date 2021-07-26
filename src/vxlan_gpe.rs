@@ -21,7 +21,7 @@ pub struct VxlanGpeAddDelTunnel {
 	pub is_add : bool, 
 } 
 impl VxlanGpeAddDelTunnel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_add_del_tunnel_7c6da6ae") 
 	 } 
 } 
@@ -32,7 +32,7 @@ pub struct VxlanGpeAddDelTunnelReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl VxlanGpeAddDelTunnelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_add_del_tunnel_reply_5383d31f") 
 	 } 
 } 
@@ -43,7 +43,7 @@ pub struct VxlanGpeTunnelDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl VxlanGpeTunnelDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_tunnel_dump_f9e6675e") 
 	 } 
 } 
@@ -61,7 +61,7 @@ pub struct VxlanGpeTunnelDetails {
 	pub is_ipv6 : bool, 
 } 
 impl VxlanGpeTunnelDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_tunnel_details_57712346") 
 	 } 
 } 
@@ -74,7 +74,7 @@ pub struct SwInterfaceSetVxlanGpeBypass {
 	pub enable : bool, 
 } 
 impl SwInterfaceSetVxlanGpeBypass { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_vxlan_gpe_bypass_65247409") 
 	 } 
 } 
@@ -84,7 +84,7 @@ pub struct SwInterfaceSetVxlanGpeBypassReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceSetVxlanGpeBypassReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_vxlan_gpe_bypass_reply_e8d4e804") 
 	 } 
 } 

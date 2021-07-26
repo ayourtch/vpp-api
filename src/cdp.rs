@@ -12,7 +12,7 @@ pub struct CdpEnableDisable {
 	pub enable_disable : bool, 
 } 
 impl CdpEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cdp_enable_disable_2e7b47df") 
 	 } 
 } 
@@ -22,7 +22,7 @@ pub struct CdpEnableDisableReply {
 	pub retval : i32, 
 } 
 impl CdpEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cdp_enable_disable_reply_e8d4e804") 
 	 } 
 } 

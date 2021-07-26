@@ -39,7 +39,7 @@ pub struct IgmpListen {
 	pub group : IgmpGroup, 
 } 
 impl IgmpListen { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_listen_3f93a51a") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct IgmpListenReply {
 	pub retval : i32, 
 } 
 impl IgmpListenReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_listen_reply_e8d4e804") 
 	 } 
 } 
@@ -62,7 +62,7 @@ pub struct IgmpEnableDisable {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IgmpEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_enable_disable_b1edfb96") 
 	 } 
 } 
@@ -72,7 +72,7 @@ pub struct IgmpEnableDisableReply {
 	pub retval : i32, 
 } 
 impl IgmpEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -85,7 +85,7 @@ pub struct IgmpProxyDeviceAddDel {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IgmpProxyDeviceAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_proxy_device_add_del_0b9be9ce") 
 	 } 
 } 
@@ -95,7 +95,7 @@ pub struct IgmpProxyDeviceAddDelReply {
 	pub retval : i32, 
 } 
 impl IgmpProxyDeviceAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_proxy_device_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -108,7 +108,7 @@ pub struct IgmpProxyDeviceAddDelInterface {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IgmpProxyDeviceAddDelInterface { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_proxy_device_add_del_interface_1a9ec24a") 
 	 } 
 } 
@@ -118,7 +118,7 @@ pub struct IgmpProxyDeviceAddDelInterfaceReply {
 	pub retval : i32, 
 } 
 impl IgmpProxyDeviceAddDelInterfaceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_proxy_device_add_del_interface_reply_e8d4e804") 
 	 } 
 } 
@@ -129,7 +129,7 @@ pub struct IgmpDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IgmpDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_dump_f9e6675e") 
 	 } 
 } 
@@ -141,7 +141,7 @@ pub struct IgmpDetails {
 	pub gaddr : Ip4Address, 
 } 
 impl IgmpDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_details_52f12a89") 
 	 } 
 } 
@@ -152,7 +152,7 @@ pub struct IgmpClearInterface {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IgmpClearInterface { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_clear_interface_f9e6675e") 
 	 } 
 } 
@@ -162,7 +162,7 @@ pub struct IgmpClearInterfaceReply {
 	pub retval : i32, 
 } 
 impl IgmpClearInterfaceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_clear_interface_reply_e8d4e804") 
 	 } 
 } 
@@ -174,7 +174,7 @@ pub struct WantIgmpEvents {
 	pub pid : u32, 
 } 
 impl WantIgmpEvents { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_igmp_events_cfaccc1f") 
 	 } 
 } 
@@ -184,7 +184,7 @@ pub struct WantIgmpEventsReply {
 	pub retval : i32, 
 } 
 impl WantIgmpEventsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_igmp_events_reply_e8d4e804") 
 	 } 
 } 
@@ -196,7 +196,7 @@ pub struct IgmpEvent {
 	pub gaddr : Ip4Address, 
 } 
 impl IgmpEvent { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_event_d7696eaf") 
 	 } 
 } 
@@ -207,7 +207,7 @@ pub struct IgmpGroupPrefixSet {
 	pub gp : GroupPrefix, 
 } 
 impl IgmpGroupPrefixSet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_group_prefix_set_d4f20ac5") 
 	 } 
 } 
@@ -217,7 +217,7 @@ pub struct IgmpGroupPrefixSetReply {
 	pub retval : i32, 
 } 
 impl IgmpGroupPrefixSetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_group_prefix_set_reply_e8d4e804") 
 	 } 
 } 
@@ -227,7 +227,7 @@ pub struct IgmpGroupPrefixDump {
 	pub context : u32, 
 } 
 impl IgmpGroupPrefixDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_group_prefix_dump_51077d14") 
 	 } 
 } 
@@ -237,7 +237,7 @@ pub struct IgmpGroupPrefixDetails {
 	pub gp : GroupPrefix, 
 } 
 impl IgmpGroupPrefixDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("igmp_group_prefix_details_c3b3c526") 
 	 } 
 } 

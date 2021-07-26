@@ -14,7 +14,7 @@ pub struct FeatureGsoEnableDisable {
 	pub enable_disable : bool, 
 } 
 impl FeatureGsoEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("feature_gso_enable_disable_5501adee") 
 	 } 
 } 
@@ -24,7 +24,7 @@ pub struct FeatureGsoEnableDisableReply {
 	pub retval : i32, 
 } 
 impl FeatureGsoEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("feature_gso_enable_disable_reply_e8d4e804") 
 	 } 
 } 

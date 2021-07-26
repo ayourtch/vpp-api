@@ -21,7 +21,7 @@ pub struct GtpuAddDelTunnel {
 	pub tteid : u32, 
 } 
 impl GtpuAddDelTunnel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gtpu_add_del_tunnel_9a9c0426") 
 	 } 
 } 
@@ -32,7 +32,7 @@ pub struct GtpuAddDelTunnelReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl GtpuAddDelTunnelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gtpu_add_del_tunnel_reply_5383d31f") 
 	 } 
 } 
@@ -46,7 +46,7 @@ pub struct GtpuTunnelUpdateTteid {
 	pub tteid : u32, 
 } 
 impl GtpuTunnelUpdateTteid { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gtpu_tunnel_update_tteid_8a2db108") 
 	 } 
 } 
@@ -56,7 +56,7 @@ pub struct GtpuTunnelUpdateTteidReply {
 	pub retval : i32, 
 } 
 impl GtpuTunnelUpdateTteidReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gtpu_tunnel_update_tteid_reply_e8d4e804") 
 	 } 
 } 
@@ -67,7 +67,7 @@ pub struct GtpuTunnelDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl GtpuTunnelDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gtpu_tunnel_dump_f9e6675e") 
 	 } 
 } 
@@ -84,7 +84,7 @@ pub struct GtpuTunnelDetails {
 	pub tteid : u32, 
 } 
 impl GtpuTunnelDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gtpu_tunnel_details_4535cf95") 
 	 } 
 } 
@@ -97,7 +97,7 @@ pub struct SwInterfaceSetGtpuBypass {
 	pub enable : bool, 
 } 
 impl SwInterfaceSetGtpuBypass { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_gtpu_bypass_65247409") 
 	 } 
 } 
@@ -107,7 +107,7 @@ pub struct SwInterfaceSetGtpuBypassReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceSetGtpuBypassReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_gtpu_bypass_reply_e8d4e804") 
 	 } 
 } 
@@ -120,7 +120,7 @@ pub struct GtpuOffloadRx {
 	pub enable : u8, 
 } 
 impl GtpuOffloadRx { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gtpu_offload_rx_f0b08786") 
 	 } 
 } 
@@ -130,7 +130,7 @@ pub struct GtpuOffloadRxReply {
 	pub retval : i32, 
 } 
 impl GtpuOffloadRxReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gtpu_offload_rx_reply_e8d4e804") 
 	 } 
 } 

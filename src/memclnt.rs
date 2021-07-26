@@ -26,7 +26,7 @@ pub struct MemclntCreate {
 	pub api_versions : u32, 
 } 
 impl MemclntCreate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memclnt_create_9c5e1c2f") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct MemclntCreateReply {
 	pub message_table : u64, 
 } 
 impl MemclntCreateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memclnt_create_reply_42ec4560") 
 	 } 
 } 
@@ -50,7 +50,7 @@ pub struct MemclntDelete {
 	pub do_cleanup : bool, 
 } 
 impl MemclntDelete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memclnt_delete_7e1c04e3") 
 	 } 
 } 
@@ -60,7 +60,7 @@ pub struct MemclntDeleteReply {
 	pub handle : u64, 
 } 
 impl MemclntDeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memclnt_delete_reply_3d3b6312") 
 	 } 
 } 
@@ -69,7 +69,7 @@ pub struct RxThreadExit {
 	pub dummy : u8, 
 } 
 impl RxThreadExit { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("rx_thread_exit_c3a3a452") 
 	 } 
 } 
@@ -78,7 +78,7 @@ pub struct MemclntRxThreadSuspend {
 	pub dummy : u8, 
 } 
 impl MemclntRxThreadSuspend { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memclnt_rx_thread_suspend_c3a3a452") 
 	 } 
 } 
@@ -87,7 +87,7 @@ pub struct MemclntReadTimeout {
 	pub dummy : u8, 
 } 
 impl MemclntReadTimeout { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memclnt_read_timeout_c3a3a452") 
 	 } 
 } 
@@ -103,7 +103,7 @@ pub struct RpcCall {
 	pub data : u8, 
 } 
 impl RpcCall { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("rpc_call_7e8a2c95") 
 	 } 
 } 
@@ -113,7 +113,7 @@ pub struct RpcCallReply {
 	pub retval : i32, 
 } 
 impl RpcCallReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("rpc_call_reply_e8d4e804") 
 	 } 
 } 
@@ -124,7 +124,7 @@ pub struct GetFirstMsgId {
 	pub name : FixedSizeString<U64>, 
 } 
 impl GetFirstMsgId { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("get_first_msg_id_ebf79a66") 
 	 } 
 } 
@@ -135,7 +135,7 @@ pub struct GetFirstMsgIdReply {
 	pub first_msg_id : u16, 
 } 
 impl GetFirstMsgIdReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("get_first_msg_id_reply_7d337472") 
 	 } 
 } 
@@ -145,7 +145,7 @@ pub struct ApiVersions {
 	pub context : u32, 
 } 
 impl ApiVersions { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("api_versions_51077d14") 
 	 } 
 } 
@@ -157,7 +157,7 @@ pub struct ApiVersionsReply {
 	pub api_versions : ModuleVersion, 
 } 
 impl ApiVersionsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("api_versions_reply_5f0d99d6") 
 	 } 
 } 
@@ -170,7 +170,7 @@ pub struct TracePluginMsgIds {
 	pub last_msg_id : u16, 
 } 
 impl TracePluginMsgIds { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_plugin_msg_ids_f476d3ce") 
 	 } 
 } 
@@ -180,7 +180,7 @@ pub struct SockclntCreate {
 	pub name : FixedSizeString<U64>, 
 } 
 impl SockclntCreate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sockclnt_create_455fb9c4") 
 	 } 
 } 
@@ -194,7 +194,7 @@ pub struct SockclntCreateReply {
 	pub message_table : MessageTableEntry, 
 } 
 impl SockclntCreateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sockclnt_create_reply_35166268") 
 	 } 
 } 
@@ -205,7 +205,7 @@ pub struct SockclntDelete {
 	pub index : u32, 
 } 
 impl SockclntDelete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sockclnt_delete_8ac76db6") 
 	 } 
 } 
@@ -215,7 +215,7 @@ pub struct SockclntDeleteReply {
 	pub response : i32, 
 } 
 impl SockclntDeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sockclnt_delete_reply_8f38b1ee") 
 	 } 
 } 
@@ -228,7 +228,7 @@ pub struct SockInitShm {
 	pub configs : u64, 
 } 
 impl SockInitShm { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sock_init_shm_51646d92") 
 	 } 
 } 
@@ -238,7 +238,7 @@ pub struct SockInitShmReply {
 	pub retval : i32, 
 } 
 impl SockInitShmReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sock_init_shm_reply_e8d4e804") 
 	 } 
 } 
@@ -248,7 +248,7 @@ pub struct MemclntKeepalive {
 	pub context : u32, 
 } 
 impl MemclntKeepalive { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memclnt_keepalive_51077d14") 
 	 } 
 } 
@@ -258,7 +258,7 @@ pub struct MemclntKeepaliveReply {
 	pub retval : i32, 
 } 
 impl MemclntKeepaliveReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memclnt_keepalive_reply_e8d4e804") 
 	 } 
 } 

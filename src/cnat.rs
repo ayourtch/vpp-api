@@ -70,7 +70,7 @@ pub struct CnatTranslationUpdate {
 	pub translation : CnatTranslation, 
 } 
 impl CnatTranslationUpdate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_translation_update_cd5aedf5") 
 	 } 
 } 
@@ -81,7 +81,7 @@ pub struct CnatTranslationUpdateReply {
 	pub id : u32, 
 } 
 impl CnatTranslationUpdateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_translation_update_reply_e2fc8294") 
 	 } 
 } 
@@ -92,7 +92,7 @@ pub struct CnatTranslationDel {
 	pub id : u32, 
 } 
 impl CnatTranslationDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_translation_del_3a91bde5") 
 	 } 
 } 
@@ -102,7 +102,7 @@ pub struct CnatTranslationDelReply {
 	pub retval : i32, 
 } 
 impl CnatTranslationDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_translation_del_reply_e8d4e804") 
 	 } 
 } 
@@ -112,7 +112,7 @@ pub struct CnatTranslationDetails {
 	pub translation : CnatTranslation, 
 } 
 impl CnatTranslationDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_translation_details_347e1f16") 
 	 } 
 } 
@@ -122,7 +122,7 @@ pub struct CnatTranslationDump {
 	pub context : u32, 
 } 
 impl CnatTranslationDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_translation_dump_51077d14") 
 	 } 
 } 
@@ -132,7 +132,7 @@ pub struct CnatSessionPurge {
 	pub context : u32, 
 } 
 impl CnatSessionPurge { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_session_purge_51077d14") 
 	 } 
 } 
@@ -142,7 +142,7 @@ pub struct CnatSessionPurgeReply {
 	pub retval : i32, 
 } 
 impl CnatSessionPurgeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_session_purge_reply_e8d4e804") 
 	 } 
 } 
@@ -152,7 +152,7 @@ pub struct CnatSessionDetails {
 	pub session : CnatSession, 
 } 
 impl CnatSessionDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_session_details_7e5017c7") 
 	 } 
 } 
@@ -162,7 +162,7 @@ pub struct CnatSessionDump {
 	pub context : u32, 
 } 
 impl CnatSessionDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_session_dump_51077d14") 
 	 } 
 } 
@@ -175,7 +175,7 @@ pub struct CnatSetSnatAddresses {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl CnatSetSnatAddresses { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_set_snat_addresses_d997e96c") 
 	 } 
 } 
@@ -185,7 +185,7 @@ pub struct CnatSetSnatAddressesReply {
 	pub retval : i32, 
 } 
 impl CnatSetSnatAddressesReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_set_snat_addresses_reply_e8d4e804") 
 	 } 
 } 
@@ -195,7 +195,7 @@ pub struct CnatGetSnatAddresses {
 	pub context : u32, 
 } 
 impl CnatGetSnatAddresses { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_get_snat_addresses_51077d14") 
 	 } 
 } 
@@ -209,7 +209,7 @@ pub struct CnatGetSnatAddressesReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl CnatGetSnatAddressesReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_get_snat_addresses_reply_879513c1") 
 	 } 
 } 
@@ -221,7 +221,7 @@ pub struct CnatAddDelSnatPrefix {
 	pub prefix : Prefix, 
 } 
 impl CnatAddDelSnatPrefix { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_add_del_snat_prefix_e26dd79a") 
 	 } 
 } 
@@ -231,7 +231,7 @@ pub struct CnatAddDelSnatPrefixReply {
 	pub retval : i32, 
 } 
 impl CnatAddDelSnatPrefixReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_add_del_snat_prefix_reply_e8d4e804") 
 	 } 
 } 
@@ -242,7 +242,7 @@ pub struct CnatSetSnatPolicy {
 	pub policy : CnatSnatPolicies, 
 } 
 impl CnatSetSnatPolicy { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_set_snat_policy_5329b08d") 
 	 } 
 } 
@@ -252,7 +252,7 @@ pub struct CnatSetSnatPolicyReply {
 	pub retval : i32, 
 } 
 impl CnatSetSnatPolicyReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cnat_set_snat_policy_reply_e8d4e804") 
 	 } 
 } 

@@ -109,21 +109,20 @@ pub fn find_type(file: &VppJsApiFile, name: &str) -> u8{
     let mut totalsize: u8 = 0; 
     let mut count = 0; 
     while count == 0 {
-        for x in 0..file.types.len(){
-            if name.trim_start_matches("vl_api_").trim_end_matches("_t") == file.types[x].type_name {
-                totalsize = sizeof_struct(&file, &file.types[x]);
-                count = count+1; 
-                break;
-            }
-            
-        }
-        for x in 0..file.enums.len(){
-            if name.trim_start_matches("vl_api_").trim_end_matches("_t") == file.enums[x].name {
-                totalsize = sizeof_enum(&file.enums[x]);
-                count = count+1; 
-                break;
-            }           
-        }
+        file.types.iter()
+        .filter(|x| name.trim_start_matches("vl_api_").trim_end_matches("_t") == x.type_name)
+        .fold(0, |acc,x|{
+            totalsize = sizeof_struct(&file, &x);
+            count = count+1; 
+            totalsize
+        });
+        file.enums.iter()
+        .filter(|x|  name.trim_start_matches("vl_api_").trim_end_matches("_t") == x.name )
+        .fold(0, |acc, x|{
+            totalsize = sizeof_enum(&x);
+            count = count + 1;
+            totalsize
+        });
         for x in file.aliases.keys() {
             if name.trim_start_matches("vl_api_").trim_end_matches("_t") == x {
                 totalsize = sizeof_alias(&file.aliases[x], &file);
@@ -131,14 +130,13 @@ pub fn find_type(file: &VppJsApiFile, name: &str) -> u8{
                 break;
             }
         }
-        for x in 0..file.unions.len(){
-            if name.trim_start_matches("vl_api_").trim_end_matches("_t") == file.unions[x].type_name {
-                totalsize = maxSizeUnion(&file.unions[x], &file);
-                count = count+1; 
-                break;
-            }
-            
-        }
+        file.unions.iter()
+        .filter(|x| name.trim_start_matches("vl_api_").trim_end_matches("_t") == x.type_name)
+        .fold(0, |acc, x|{
+            totalsize = maxSizeUnion(&x, &file);
+            count = count + 1; 
+            totalsize
+        });
     }
     if count == 0 {
         println!("Could not find type");

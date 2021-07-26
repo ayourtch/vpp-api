@@ -29,7 +29,7 @@ pub struct SyslogSetSender {
 	pub max_msg_size : u32, 
 } 
 impl SyslogSetSender { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("syslog_set_sender_bb641285") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct SyslogSetSenderReply {
 	pub retval : i32, 
 } 
 impl SyslogSetSenderReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("syslog_set_sender_reply_e8d4e804") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct SyslogGetSender {
 	pub context : u32, 
 } 
 impl SyslogGetSender { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("syslog_get_sender_51077d14") 
 	 } 
 } 
@@ -64,7 +64,7 @@ pub struct SyslogGetSenderReply {
 	pub max_msg_size : u32, 
 } 
 impl SyslogGetSenderReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("syslog_get_sender_reply_d3da60ac") 
 	 } 
 } 
@@ -75,7 +75,7 @@ pub struct SyslogSetFilter {
 	pub severity : SyslogSeverity, 
 } 
 impl SyslogSetFilter { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("syslog_set_filter_571348c3") 
 	 } 
 } 
@@ -85,7 +85,7 @@ pub struct SyslogSetFilterReply {
 	pub retval : i32, 
 } 
 impl SyslogSetFilterReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("syslog_set_filter_reply_e8d4e804") 
 	 } 
 } 
@@ -95,7 +95,7 @@ pub struct SyslogGetFilter {
 	pub context : u32, 
 } 
 impl SyslogGetFilter { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("syslog_get_filter_51077d14") 
 	 } 
 } 
@@ -106,7 +106,7 @@ pub struct SyslogGetFilterReply {
 	pub severity : SyslogSeverity, 
 } 
 impl SyslogGetFilterReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("syslog_get_filter_reply_eb1833f8") 
 	 } 
 } 

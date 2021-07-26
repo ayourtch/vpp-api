@@ -29,7 +29,7 @@ pub struct MemifSocketFilenameAddDel {
 	pub socket_filename : FixedSizeString<U108>, 
 } 
 impl MemifSocketFilenameAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memif_socket_filename_add_del_a2ce1a10") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct MemifSocketFilenameAddDelReply {
 	pub retval : i32, 
 } 
 impl MemifSocketFilenameAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memif_socket_filename_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -60,7 +60,7 @@ pub struct MemifCreate {
 	pub secret : FixedSizeString<U24>, 
 } 
 impl MemifCreate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memif_create_b1b25061") 
 	 } 
 } 
@@ -71,7 +71,7 @@ pub struct MemifCreateReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl MemifCreateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memif_create_reply_5383d31f") 
 	 } 
 } 
@@ -82,7 +82,7 @@ pub struct MemifDelete {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl MemifDelete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memif_delete_f9e6675e") 
 	 } 
 } 
@@ -92,7 +92,7 @@ pub struct MemifDeleteReply {
 	pub retval : i32, 
 } 
 impl MemifDeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memif_delete_reply_e8d4e804") 
 	 } 
 } 
@@ -103,7 +103,7 @@ pub struct MemifSocketFilenameDetails {
 	pub socket_filename : FixedSizeString<U108>, 
 } 
 impl MemifSocketFilenameDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memif_socket_filename_details_7ff326f7") 
 	 } 
 } 
@@ -113,7 +113,7 @@ pub struct MemifSocketFilenameDump {
 	pub context : u32, 
 } 
 impl MemifSocketFilenameDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memif_socket_filename_dump_51077d14") 
 	 } 
 } 
@@ -133,7 +133,7 @@ pub struct MemifDetails {
 	pub if_name : FixedSizeString<U64>, 
 } 
 impl MemifDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memif_details_d0382c4c") 
 	 } 
 } 
@@ -143,7 +143,7 @@ pub struct MemifDump {
 	pub context : u32, 
 } 
 impl MemifDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("memif_dump_51077d14") 
 	 } 
 } 

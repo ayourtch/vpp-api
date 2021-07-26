@@ -35,7 +35,7 @@ pub struct SrLocalsidAddDel {
 	pub nh_addr : Address, 
 } 
 impl SrLocalsidAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_localsid_add_del_26fa3309") 
 	 } 
 } 
@@ -45,7 +45,7 @@ pub struct SrLocalsidAddDelReply {
 	pub retval : i32, 
 } 
 impl SrLocalsidAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_localsid_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -61,7 +61,7 @@ pub struct SrPolicyAdd {
 	pub sids : Srv6SidList, 
 } 
 impl SrPolicyAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_policy_add_ec79ee6a") 
 	 } 
 } 
@@ -71,7 +71,7 @@ pub struct SrPolicyAddReply {
 	pub retval : i32, 
 } 
 impl SrPolicyAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_policy_add_reply_e8d4e804") 
 	 } 
 } 
@@ -88,7 +88,7 @@ pub struct SrPolicyMod {
 	pub sids : Srv6SidList, 
 } 
 impl SrPolicyMod { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_policy_mod_e531a102") 
 	 } 
 } 
@@ -98,7 +98,7 @@ pub struct SrPolicyModReply {
 	pub retval : i32, 
 } 
 impl SrPolicyModReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_policy_mod_reply_e8d4e804") 
 	 } 
 } 
@@ -110,7 +110,7 @@ pub struct SrPolicyDel {
 	pub sr_policy_index : u32, 
 } 
 impl SrPolicyDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_policy_del_cb4d48d5") 
 	 } 
 } 
@@ -120,7 +120,7 @@ pub struct SrPolicyDelReply {
 	pub retval : i32, 
 } 
 impl SrPolicyDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_policy_del_reply_e8d4e804") 
 	 } 
 } 
@@ -131,7 +131,7 @@ pub struct SrSetEncapSource {
 	pub encaps_source : Ip6Address, 
 } 
 impl SrSetEncapSource { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_set_encap_source_d3bad5e1") 
 	 } 
 } 
@@ -141,7 +141,7 @@ pub struct SrSetEncapSourceReply {
 	pub retval : i32, 
 } 
 impl SrSetEncapSourceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_set_encap_source_reply_e8d4e804") 
 	 } 
 } 
@@ -152,7 +152,7 @@ pub struct SrSetEncapHopLimit {
 	pub hop_limit : u8, 
 } 
 impl SrSetEncapHopLimit { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_set_encap_hop_limit_aa75d7d0") 
 	 } 
 } 
@@ -162,7 +162,7 @@ pub struct SrSetEncapHopLimitReply {
 	pub retval : i32, 
 } 
 impl SrSetEncapHopLimitReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_set_encap_hop_limit_reply_e8d4e804") 
 	 } 
 } 
@@ -179,7 +179,7 @@ pub struct SrSteeringAddDel {
 	pub traffic_type : SrSteer, 
 } 
 impl SrSteeringAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_steering_add_del_3711dace") 
 	 } 
 } 
@@ -189,7 +189,7 @@ pub struct SrSteeringAddDelReply {
 	pub retval : i32, 
 } 
 impl SrSteeringAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_steering_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -199,7 +199,7 @@ pub struct SrLocalsidsDump {
 	pub context : u32, 
 } 
 impl SrLocalsidsDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_localsids_dump_51077d14") 
 	 } 
 } 
@@ -215,7 +215,7 @@ pub struct SrLocalsidsDetails {
 	pub xconnect_iface_or_vrf_table : u32, 
 } 
 impl SrLocalsidsDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_localsids_details_6a6c0265") 
 	 } 
 } 
@@ -225,7 +225,7 @@ pub struct SrPoliciesDump {
 	pub context : u32, 
 } 
 impl SrPoliciesDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_policies_dump_51077d14") 
 	 } 
 } 
@@ -240,7 +240,7 @@ pub struct SrPoliciesDetails {
 	pub sid_lists : Srv6SidList, 
 } 
 impl SrPoliciesDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_policies_details_07ec2d93") 
 	 } 
 } 
@@ -250,7 +250,7 @@ pub struct SrPoliciesWithSlIndexDump {
 	pub context : u32, 
 } 
 impl SrPoliciesWithSlIndexDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_policies_with_sl_index_dump_51077d14") 
 	 } 
 } 
@@ -265,7 +265,7 @@ pub struct SrPoliciesWithSlIndexDetails {
 	pub sid_lists : Srv6SidListWithSlIndex, 
 } 
 impl SrPoliciesWithSlIndexDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_policies_with_sl_index_details_ca2e9bc8") 
 	 } 
 } 
@@ -275,7 +275,7 @@ pub struct SrSteeringPolDump {
 	pub context : u32, 
 } 
 impl SrSteeringPolDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_steering_pol_dump_51077d14") 
 	 } 
 } 
@@ -289,7 +289,7 @@ pub struct SrSteeringPolDetails {
 	pub bsid : Ip6Address, 
 } 
 impl SrSteeringPolDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_steering_pol_details_1c1ee786") 
 	 } 
 } 

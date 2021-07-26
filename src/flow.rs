@@ -17,7 +17,7 @@ pub struct FlowAdd {
 	pub flow : FlowRule, 
 } 
 impl FlowAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flow_add_3e5bf1a9") 
 	 } 
 } 
@@ -28,7 +28,7 @@ pub struct FlowAddReply {
 	pub flow_index : u32, 
 } 
 impl FlowAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flow_add_reply_8587dc85") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct FlowDel {
 	pub flow_index : u32, 
 } 
 impl FlowDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flow_del_b6b9b02c") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct FlowDelReply {
 	pub retval : i32, 
 } 
 impl FlowDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flow_del_reply_e8d4e804") 
 	 } 
 } 
@@ -61,7 +61,7 @@ pub struct FlowEnable {
 	pub hw_if_index : u32, 
 } 
 impl FlowEnable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flow_enable_2024be69") 
 	 } 
 } 
@@ -71,7 +71,7 @@ pub struct FlowEnableReply {
 	pub retval : i32, 
 } 
 impl FlowEnableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flow_enable_reply_e8d4e804") 
 	 } 
 } 
@@ -83,7 +83,7 @@ pub struct FlowDisable {
 	pub hw_if_index : u32, 
 } 
 impl FlowDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flow_disable_2024be69") 
 	 } 
 } 
@@ -93,7 +93,7 @@ pub struct FlowDisableReply {
 	pub retval : i32, 
 } 
 impl FlowDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flow_disable_reply_e8d4e804") 
 	 } 
 } 

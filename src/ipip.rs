@@ -28,7 +28,7 @@ pub struct IpipAddTunnel {
 	pub tunnel : IpipTunnel, 
 } 
 impl IpipAddTunnel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipip_add_tunnel_a9decfcd") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct IpipAddTunnelReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IpipAddTunnelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipip_add_tunnel_reply_5383d31f") 
 	 } 
 } 
@@ -50,7 +50,7 @@ pub struct IpipDelTunnel {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IpipDelTunnel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipip_del_tunnel_f9e6675e") 
 	 } 
 } 
@@ -60,7 +60,7 @@ pub struct IpipDelTunnelReply {
 	pub retval : i32, 
 } 
 impl IpipDelTunnelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipip_del_tunnel_reply_e8d4e804") 
 	 } 
 } 
@@ -77,7 +77,7 @@ pub struct Ipip6rdAddTunnel {
 	pub tc_tos : u8, 
 } 
 impl Ipip6rdAddTunnel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipip_6rd_add_tunnel_56e93cc0") 
 	 } 
 } 
@@ -88,7 +88,7 @@ pub struct Ipip6rdAddTunnelReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Ipip6rdAddTunnelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipip_6rd_add_tunnel_reply_5383d31f") 
 	 } 
 } 
@@ -99,7 +99,7 @@ pub struct Ipip6rdDelTunnel {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Ipip6rdDelTunnel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipip_6rd_del_tunnel_f9e6675e") 
 	 } 
 } 
@@ -109,7 +109,7 @@ pub struct Ipip6rdDelTunnelReply {
 	pub retval : i32, 
 } 
 impl Ipip6rdDelTunnelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipip_6rd_del_tunnel_reply_e8d4e804") 
 	 } 
 } 
@@ -120,7 +120,7 @@ pub struct IpipTunnelDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IpipTunnelDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipip_tunnel_dump_f9e6675e") 
 	 } 
 } 
@@ -130,7 +130,7 @@ pub struct IpipTunnelDetails {
 	pub tunnel : IpipTunnel, 
 } 
 impl IpipTunnelDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipip_tunnel_details_53236d75") 
 	 } 
 } 

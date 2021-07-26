@@ -15,7 +15,7 @@ pub struct TlsOpensslSetEngine {
 	pub ciphers : u8, 
 } 
 impl TlsOpensslSetEngine { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("tls_openssl_set_engine_e34d95c1") 
 	 } 
 } 
@@ -25,7 +25,7 @@ pub struct TlsOpensslSetEngineReply {
 	pub retval : i32, 
 } 
 impl TlsOpensslSetEngineReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("tls_openssl_set_engine_reply_e8d4e804") 
 	 } 
 } 

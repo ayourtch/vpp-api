@@ -71,7 +71,7 @@ pub struct VrrpVrAddDel {
 	pub addrs : Address, 
 } 
 impl VrrpVrAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_add_del_6dc4b881") 
 	 } 
 } 
@@ -81,7 +81,7 @@ pub struct VrrpVrAddDelReply {
 	pub retval : i32, 
 } 
 impl VrrpVrAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -92,7 +92,7 @@ pub struct VrrpVrDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl VrrpVrDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_dump_f9e6675e") 
 	 } 
 } 
@@ -105,7 +105,7 @@ pub struct VrrpVrDetails {
 	pub addrs : Address, 
 } 
 impl VrrpVrDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_details_0412fa71") 
 	 } 
 } 
@@ -119,7 +119,7 @@ pub struct VrrpVrStartStop {
 	pub is_start : u8, 
 } 
 impl VrrpVrStartStop { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_start_stop_0662a3b7") 
 	 } 
 } 
@@ -129,7 +129,7 @@ pub struct VrrpVrStartStopReply {
 	pub retval : i32, 
 } 
 impl VrrpVrStartStopReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_start_stop_reply_e8d4e804") 
 	 } 
 } 
@@ -144,7 +144,7 @@ pub struct VrrpVrSetPeers {
 	pub addrs : Address, 
 } 
 impl VrrpVrSetPeers { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_set_peers_baa2e52b") 
 	 } 
 } 
@@ -154,7 +154,7 @@ pub struct VrrpVrSetPeersReply {
 	pub retval : i32, 
 } 
 impl VrrpVrSetPeersReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_set_peers_reply_e8d4e804") 
 	 } 
 } 
@@ -167,7 +167,7 @@ pub struct VrrpVrPeerDump {
 	pub vr_id : u8, 
 } 
 impl VrrpVrPeerDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_peer_dump_6fa3f7c4") 
 	 } 
 } 
@@ -182,7 +182,7 @@ pub struct VrrpVrPeerDetails {
 	pub peer_addrs : Address, 
 } 
 impl VrrpVrPeerDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_peer_details_abd9145e") 
 	 } 
 } 
@@ -198,7 +198,7 @@ pub struct VrrpVrTrackIfAddDel {
 	pub ifs : VrrpVrTrackIf, 
 } 
 impl VrrpVrTrackIfAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_track_if_add_del_337f4ba4") 
 	 } 
 } 
@@ -208,7 +208,7 @@ pub struct VrrpVrTrackIfAddDelReply {
 	pub retval : i32, 
 } 
 impl VrrpVrTrackIfAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_track_if_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -222,7 +222,7 @@ pub struct VrrpVrTrackIfDump {
 	pub dump_all : u8, 
 } 
 impl VrrpVrTrackIfDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_track_if_dump_a34dfc6d") 
 	 } 
 } 
@@ -237,7 +237,7 @@ pub struct VrrpVrTrackIfDetails {
 	pub ifs : VrrpVrTrackIf, 
 } 
 impl VrrpVrTrackIfDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_track_if_details_99bcca9c") 
 	 } 
 } 
@@ -250,7 +250,7 @@ pub struct VrrpVrEvent {
 	pub new_state : VrrpVrState, 
 } 
 impl VrrpVrEvent { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vrrp_vr_event_c1fea6a5") 
 	 } 
 } 
@@ -262,7 +262,7 @@ pub struct WantVrrpVrEvents {
 	pub pid : u32, 
 } 
 impl WantVrrpVrEvents { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_vrrp_vr_events_c5e2af94") 
 	 } 
 } 
@@ -272,7 +272,7 @@ pub struct WantVrrpVrEventsReply {
 	pub retval : i32, 
 } 
 impl WantVrrpVrEventsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_vrrp_vr_events_reply_e8d4e804") 
 	 } 
 } 

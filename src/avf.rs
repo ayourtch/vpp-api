@@ -17,7 +17,7 @@ pub struct AvfCreate {
 	pub txq_size : u16, 
 } 
 impl AvfCreate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("avf_create_daab8ae2") 
 	 } 
 } 
@@ -28,7 +28,7 @@ pub struct AvfCreateReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl AvfCreateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("avf_create_reply_5383d31f") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct AvfDelete {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl AvfDelete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("avf_delete_f9e6675e") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct AvfDeleteReply {
 	pub retval : i32, 
 } 
 impl AvfDeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("avf_delete_reply_e8d4e804") 
 	 } 
 } 

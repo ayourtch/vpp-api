@@ -29,7 +29,7 @@ pub struct BierTableAddDel {
 	pub bt_is_add : bool, 
 } 
 impl BierTableAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_table_add_del_35e59209") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct BierTableAddDelReply {
 	pub retval : i32, 
 } 
 impl BierTableAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_table_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct BierTableDump {
 	pub context : u32, 
 } 
 impl BierTableDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_table_dump_51077d14") 
 	 } 
 } 
@@ -60,7 +60,7 @@ pub struct BierTableDetails {
 	pub bt_tbl_id : BierTableId, 
 } 
 impl BierTableDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_table_details_fc44a9dd") 
 	 } 
 } 
@@ -73,7 +73,7 @@ pub struct BierRouteAddDel {
 	pub br_route : BierRoute, 
 } 
 impl BierRouteAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_route_add_del_f29edca0") 
 	 } 
 } 
@@ -83,7 +83,7 @@ pub struct BierRouteAddDelReply {
 	pub retval : i32, 
 } 
 impl BierRouteAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_route_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -94,7 +94,7 @@ pub struct BierRouteDump {
 	pub br_tbl_id : BierTableId, 
 } 
 impl BierRouteDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_route_dump_38339846") 
 	 } 
 } 
@@ -104,7 +104,7 @@ pub struct BierRouteDetails {
 	pub br_route : BierRoute, 
 } 
 impl BierRouteDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_route_details_39ee6a56") 
 	 } 
 } 
@@ -118,7 +118,7 @@ pub struct BierImpAdd {
 	pub bi_bytes : u8, 
 } 
 impl BierImpAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_imp_add_3856dc3d") 
 	 } 
 } 
@@ -129,7 +129,7 @@ pub struct BierImpAddReply {
 	pub bi_index : u32, 
 } 
 impl BierImpAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_imp_add_reply_d49c5793") 
 	 } 
 } 
@@ -140,7 +140,7 @@ pub struct BierImpDel {
 	pub bi_index : u32, 
 } 
 impl BierImpDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_imp_del_7d45edf6") 
 	 } 
 } 
@@ -150,7 +150,7 @@ pub struct BierImpDelReply {
 	pub retval : i32, 
 } 
 impl BierImpDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_imp_del_reply_e8d4e804") 
 	 } 
 } 
@@ -160,7 +160,7 @@ pub struct BierImpDump {
 	pub context : u32, 
 } 
 impl BierImpDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_imp_dump_51077d14") 
 	 } 
 } 
@@ -173,7 +173,7 @@ pub struct BierImpDetails {
 	pub bi_bytes : u8, 
 } 
 impl BierImpDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_imp_details_b76192df") 
 	 } 
 } 
@@ -185,7 +185,7 @@ pub struct BierDispTableAddDel {
 	pub bdt_is_add : bool, 
 } 
 impl BierDispTableAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_disp_table_add_del_889657ac") 
 	 } 
 } 
@@ -195,7 +195,7 @@ pub struct BierDispTableAddDelReply {
 	pub retval : i32, 
 } 
 impl BierDispTableAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_disp_table_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -205,7 +205,7 @@ pub struct BierDispTableDump {
 	pub context : u32, 
 } 
 impl BierDispTableDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_disp_table_dump_51077d14") 
 	 } 
 } 
@@ -215,7 +215,7 @@ pub struct BierDispTableDetails {
 	pub bdt_tbl_id : u32, 
 } 
 impl BierDispTableDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_disp_table_details_d27942c0") 
 	 } 
 } 
@@ -231,7 +231,7 @@ pub struct BierDispEntryAddDel {
 	pub bde_paths : FibPath, 
 } 
 impl BierDispEntryAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_disp_entry_add_del_648323eb") 
 	 } 
 } 
@@ -241,7 +241,7 @@ pub struct BierDispEntryAddDelReply {
 	pub retval : i32, 
 } 
 impl BierDispEntryAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_disp_entry_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -252,7 +252,7 @@ pub struct BierDispEntryDump {
 	pub bde_tbl_id : u32, 
 } 
 impl BierDispEntryDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_disp_entry_dump_b5fa54ad") 
 	 } 
 } 
@@ -267,7 +267,7 @@ pub struct BierDispEntryDetails {
 	pub bde_paths : FibPath, 
 } 
 impl BierDispEntryDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bier_disp_entry_details_e5b039a9") 
 	 } 
 } 

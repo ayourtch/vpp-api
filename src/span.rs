@@ -24,7 +24,7 @@ pub struct SwInterfaceSpanEnableDisable {
 	pub is_l2 : bool, 
 } 
 impl SwInterfaceSpanEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_span_enable_disable_acc8fea1") 
 	 } 
 } 
@@ -34,7 +34,7 @@ pub struct SwInterfaceSpanEnableDisableReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceSpanEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_span_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -45,7 +45,7 @@ pub struct SwInterfaceSpanDump {
 	pub is_l2 : bool, 
 } 
 impl SwInterfaceSpanDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_span_dump_d6cf0c3d") 
 	 } 
 } 
@@ -58,7 +58,7 @@ pub struct SwInterfaceSpanDetails {
 	pub is_l2 : bool, 
 } 
 impl SwInterfaceSpanDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_span_details_055643fc") 
 	 } 
 } 

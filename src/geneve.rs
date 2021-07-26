@@ -21,7 +21,7 @@ pub struct GeneveAddDelTunnel {
 	pub vni : u32, 
 } 
 impl GeneveAddDelTunnel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("geneve_add_del_tunnel_976693b5") 
 	 } 
 } 
@@ -32,7 +32,7 @@ pub struct GeneveAddDelTunnelReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl GeneveAddDelTunnelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("geneve_add_del_tunnel_reply_5383d31f") 
 	 } 
 } 
@@ -50,7 +50,7 @@ pub struct GeneveAddDelTunnel2 {
 	pub l3_mode : bool, 
 } 
 impl GeneveAddDelTunnel2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("geneve_add_del_tunnel2_8c2a9999") 
 	 } 
 } 
@@ -61,7 +61,7 @@ pub struct GeneveAddDelTunnel2Reply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl GeneveAddDelTunnel2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("geneve_add_del_tunnel2_reply_5383d31f") 
 	 } 
 } 
@@ -72,7 +72,7 @@ pub struct GeneveTunnelDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl GeneveTunnelDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("geneve_tunnel_dump_f9e6675e") 
 	 } 
 } 
@@ -88,7 +88,7 @@ pub struct GeneveTunnelDetails {
 	pub vni : u32, 
 } 
 impl GeneveTunnelDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("geneve_tunnel_details_e27e2748") 
 	 } 
 } 
@@ -101,7 +101,7 @@ pub struct SwInterfaceSetGeneveBypass {
 	pub enable : bool, 
 } 
 impl SwInterfaceSetGeneveBypass { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_geneve_bypass_65247409") 
 	 } 
 } 
@@ -111,7 +111,7 @@ pub struct SwInterfaceSetGeneveBypassReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceSetGeneveBypassReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_geneve_bypass_reply_e8d4e804") 
 	 } 
 } 

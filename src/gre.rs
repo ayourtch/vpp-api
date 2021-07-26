@@ -37,7 +37,7 @@ pub struct GreTunnelAddDel {
 	pub tunnel : GreTunnel, 
 } 
 impl GreTunnelAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gre_tunnel_add_del_6efc9c22") 
 	 } 
 } 
@@ -48,7 +48,7 @@ pub struct GreTunnelAddDelReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl GreTunnelAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gre_tunnel_add_del_reply_5383d31f") 
 	 } 
 } 
@@ -59,7 +59,7 @@ pub struct GreTunnelDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl GreTunnelDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gre_tunnel_dump_f9e6675e") 
 	 } 
 } 
@@ -69,7 +69,7 @@ pub struct GreTunnelDetails {
 	pub tunnel : GreTunnel, 
 } 
 impl GreTunnelDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gre_tunnel_details_003bfbf1") 
 	 } 
 } 

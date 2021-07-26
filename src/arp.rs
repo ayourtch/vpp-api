@@ -22,7 +22,7 @@ pub struct ProxyArpAddDel {
 	pub proxy : ProxyArp, 
 } 
 impl ProxyArpAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("proxy_arp_add_del_85486cbd") 
 	 } 
 } 
@@ -32,7 +32,7 @@ pub struct ProxyArpAddDelReply {
 	pub retval : i32, 
 } 
 impl ProxyArpAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("proxy_arp_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -42,7 +42,7 @@ pub struct ProxyArpDump {
 	pub context : u32, 
 } 
 impl ProxyArpDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("proxy_arp_dump_51077d14") 
 	 } 
 } 
@@ -52,7 +52,7 @@ pub struct ProxyArpDetails {
 	pub proxy : ProxyArp, 
 } 
 impl ProxyArpDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("proxy_arp_details_9228c150") 
 	 } 
 } 
@@ -64,7 +64,7 @@ pub struct ProxyArpIntfcEnableDisable {
 	pub enable : bool, 
 } 
 impl ProxyArpIntfcEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("proxy_arp_intfc_enable_disable_ae6cfcfb") 
 	 } 
 } 
@@ -74,7 +74,7 @@ pub struct ProxyArpIntfcEnableDisableReply {
 	pub retval : i32, 
 } 
 impl ProxyArpIntfcEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("proxy_arp_intfc_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -84,7 +84,7 @@ pub struct ProxyArpIntfcDump {
 	pub context : u32, 
 } 
 impl ProxyArpIntfcDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("proxy_arp_intfc_dump_51077d14") 
 	 } 
 } 
@@ -94,7 +94,7 @@ pub struct ProxyArpIntfcDetails {
 	pub sw_if_index : u32, 
 } 
 impl ProxyArpIntfcDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("proxy_arp_intfc_details_f6458e5f") 
 	 } 
 } 

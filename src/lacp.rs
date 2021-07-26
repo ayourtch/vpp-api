@@ -13,7 +13,7 @@ pub struct SwInterfaceLacpDump {
 	pub context : u32, 
 } 
 impl SwInterfaceLacpDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_lacp_dump_51077d14") 
 	 } 
 } 
@@ -41,7 +41,7 @@ pub struct SwInterfaceLacpDetails {
 	pub partner_state : u8, 
 } 
 impl SwInterfaceLacpDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_lacp_details_745ae0ba") 
 	 } 
 } 

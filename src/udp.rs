@@ -22,7 +22,7 @@ pub struct UdpEncapAdd {
 	pub udp_encap : UdpEncap, 
 } 
 impl UdpEncapAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("udp_encap_add_61d5fc48") 
 	 } 
 } 
@@ -33,7 +33,7 @@ pub struct UdpEncapAddReply {
 	pub id : u32, 
 } 
 impl UdpEncapAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("udp_encap_add_reply_e2fc8294") 
 	 } 
 } 
@@ -44,7 +44,7 @@ pub struct UdpEncapDel {
 	pub id : u32, 
 } 
 impl UdpEncapDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("udp_encap_del_3a91bde5") 
 	 } 
 } 
@@ -54,7 +54,7 @@ pub struct UdpEncapDelReply {
 	pub retval : i32, 
 } 
 impl UdpEncapDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("udp_encap_del_reply_e8d4e804") 
 	 } 
 } 
@@ -64,7 +64,7 @@ pub struct UdpEncapDump {
 	pub context : u32, 
 } 
 impl UdpEncapDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("udp_encap_dump_51077d14") 
 	 } 
 } 
@@ -74,7 +74,7 @@ pub struct UdpEncapDetails {
 	pub udp_encap : UdpEncap, 
 } 
 impl UdpEncapDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("udp_encap_details_87c82821") 
 	 } 
 } 

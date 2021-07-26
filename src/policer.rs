@@ -16,7 +16,7 @@ pub struct PolicerBind {
 	pub bind_enable : bool, 
 } 
 impl PolicerBind { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("policer_bind_dcf516f9") 
 	 } 
 } 
@@ -26,7 +26,7 @@ pub struct PolicerBindReply {
 	pub retval : i32, 
 } 
 impl PolicerBindReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("policer_bind_reply_e8d4e804") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct PolicerInput {
 	pub apply : bool, 
 } 
 impl PolicerInput { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("policer_input_233f0ef5") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct PolicerInputReply {
 	pub retval : i32, 
 } 
 impl PolicerInputReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("policer_input_reply_e8d4e804") 
 	 } 
 } 
@@ -72,7 +72,7 @@ pub struct PolicerAddDel {
 	pub violate_action : Sse2QosAction, 
 } 
 impl PolicerAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("policer_add_del_cb948f6e") 
 	 } 
 } 
@@ -83,7 +83,7 @@ pub struct PolicerAddDelReply {
 	pub policer_index : u32, 
 } 
 impl PolicerAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("policer_add_del_reply_a177cef2") 
 	 } 
 } 
@@ -95,7 +95,7 @@ pub struct PolicerDump {
 	pub match_name : FixedSizeString<U64>, 
 } 
 impl PolicerDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("policer_dump_35f1ae0f") 
 	 } 
 } 
@@ -125,7 +125,7 @@ pub struct PolicerDetails {
 	pub last_update_time : u64, 
 } 
 impl PolicerDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("policer_details_a43f781a") 
 	 } 
 } 

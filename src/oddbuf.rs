@@ -14,7 +14,7 @@ pub struct OddbufEnableDisable {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl OddbufEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("oddbuf_enable_disable_3865946c") 
 	 } 
 } 
@@ -24,7 +24,7 @@ pub struct OddbufEnableDisableReply {
 	pub retval : i32, 
 } 
 impl OddbufEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("oddbuf_enable_disable_reply_e8d4e804") 
 	 } 
 } 

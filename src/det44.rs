@@ -17,7 +17,7 @@ pub struct Det44PluginEnableDisable {
 	pub enable : bool, 
 } 
 impl Det44PluginEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_plugin_enable_disable_617b6bf8") 
 	 } 
 } 
@@ -27,7 +27,7 @@ pub struct Det44PluginEnableDisableReply {
 	pub retval : i32, 
 } 
 impl Det44PluginEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_plugin_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -40,7 +40,7 @@ pub struct Det44InterfaceAddDelFeature {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Det44InterfaceAddDelFeature { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_interface_add_del_feature_dc17a836") 
 	 } 
 } 
@@ -50,7 +50,7 @@ pub struct Det44InterfaceAddDelFeatureReply {
 	pub retval : i32, 
 } 
 impl Det44InterfaceAddDelFeatureReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_interface_add_del_feature_reply_e8d4e804") 
 	 } 
 } 
@@ -60,7 +60,7 @@ pub struct Det44InterfaceDump {
 	pub context : u32, 
 } 
 impl Det44InterfaceDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_interface_dump_51077d14") 
 	 } 
 } 
@@ -72,7 +72,7 @@ pub struct Det44InterfaceDetails {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Det44InterfaceDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_interface_details_e60cc5be") 
 	 } 
 } 
@@ -87,7 +87,7 @@ pub struct Det44AddDelMap {
 	pub out_plen : u8, 
 } 
 impl Det44AddDelMap { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_add_del_map_1150a190") 
 	 } 
 } 
@@ -97,7 +97,7 @@ pub struct Det44AddDelMapReply {
 	pub retval : i32, 
 } 
 impl Det44AddDelMapReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_add_del_map_reply_e8d4e804") 
 	 } 
 } 
@@ -108,7 +108,7 @@ pub struct Det44Forward {
 	pub in_addr : Ip4Address, 
 } 
 impl Det44Forward { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_forward_7f8a89cd") 
 	 } 
 } 
@@ -121,7 +121,7 @@ pub struct Det44ForwardReply {
 	pub out_addr : Ip4Address, 
 } 
 impl Det44ForwardReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_forward_reply_a8ccbdc0") 
 	 } 
 } 
@@ -133,7 +133,7 @@ pub struct Det44Reverse {
 	pub out_addr : Ip4Address, 
 } 
 impl Det44Reverse { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_reverse_a7573fe1") 
 	 } 
 } 
@@ -144,7 +144,7 @@ pub struct Det44ReverseReply {
 	pub in_addr : Ip4Address, 
 } 
 impl Det44ReverseReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_reverse_reply_34066d48") 
 	 } 
 } 
@@ -154,7 +154,7 @@ pub struct Det44MapDump {
 	pub context : u32, 
 } 
 impl Det44MapDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_map_dump_51077d14") 
 	 } 
 } 
@@ -170,7 +170,7 @@ pub struct Det44MapDetails {
 	pub ses_num : u32, 
 } 
 impl Det44MapDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_map_details_ad91dc83") 
 	 } 
 } 
@@ -184,7 +184,7 @@ pub struct Det44CloseSessionOut {
 	pub ext_port : u16, 
 } 
 impl Det44CloseSessionOut { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_close_session_out_f6b259d1") 
 	 } 
 } 
@@ -194,7 +194,7 @@ pub struct Det44CloseSessionOutReply {
 	pub retval : i32, 
 } 
 impl Det44CloseSessionOutReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_close_session_out_reply_e8d4e804") 
 	 } 
 } 
@@ -208,7 +208,7 @@ pub struct Det44CloseSessionIn {
 	pub ext_port : u16, 
 } 
 impl Det44CloseSessionIn { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_close_session_in_3c68e073") 
 	 } 
 } 
@@ -218,7 +218,7 @@ pub struct Det44CloseSessionInReply {
 	pub retval : i32, 
 } 
 impl Det44CloseSessionInReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_close_session_in_reply_e8d4e804") 
 	 } 
 } 
@@ -229,7 +229,7 @@ pub struct Det44SessionDump {
 	pub user_addr : Ip4Address, 
 } 
 impl Det44SessionDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_session_dump_e45a3af7") 
 	 } 
 } 
@@ -244,7 +244,7 @@ pub struct Det44SessionDetails {
 	pub expire : u32, 
 } 
 impl Det44SessionDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_session_details_27f3c171") 
 	 } 
 } 
@@ -258,7 +258,7 @@ pub struct Det44SetTimeouts {
 	pub icmp : u32, 
 } 
 impl Det44SetTimeouts { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_set_timeouts_d4746b16") 
 	 } 
 } 
@@ -268,7 +268,7 @@ pub struct Det44SetTimeoutsReply {
 	pub retval : i32, 
 } 
 impl Det44SetTimeoutsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_set_timeouts_reply_e8d4e804") 
 	 } 
 } 
@@ -278,7 +278,7 @@ pub struct Det44GetTimeouts {
 	pub context : u32, 
 } 
 impl Det44GetTimeouts { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_get_timeouts_51077d14") 
 	 } 
 } 
@@ -292,7 +292,7 @@ pub struct Det44GetTimeoutsReply {
 	pub icmp : u32, 
 } 
 impl Det44GetTimeoutsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("det44_get_timeouts_reply_3c4df4e1") 
 	 } 
 } 
@@ -307,7 +307,7 @@ pub struct NatDetAddDelMap {
 	pub out_plen : u8, 
 } 
 impl NatDetAddDelMap { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_add_del_map_112fde05") 
 	 } 
 } 
@@ -317,7 +317,7 @@ pub struct NatDetAddDelMapReply {
 	pub retval : i32, 
 } 
 impl NatDetAddDelMapReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_add_del_map_reply_e8d4e804") 
 	 } 
 } 
@@ -328,7 +328,7 @@ pub struct NatDetForward {
 	pub in_addr : Ip4Address, 
 } 
 impl NatDetForward { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_forward_7f8a89cd") 
 	 } 
 } 
@@ -341,7 +341,7 @@ pub struct NatDetForwardReply {
 	pub out_addr : Ip4Address, 
 } 
 impl NatDetForwardReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_forward_reply_a8ccbdc0") 
 	 } 
 } 
@@ -353,7 +353,7 @@ pub struct NatDetReverse {
 	pub out_addr : Ip4Address, 
 } 
 impl NatDetReverse { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_reverse_a7573fe1") 
 	 } 
 } 
@@ -364,7 +364,7 @@ pub struct NatDetReverseReply {
 	pub in_addr : Ip4Address, 
 } 
 impl NatDetReverseReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_reverse_reply_34066d48") 
 	 } 
 } 
@@ -374,7 +374,7 @@ pub struct NatDetMapDump {
 	pub context : u32, 
 } 
 impl NatDetMapDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_map_dump_51077d14") 
 	 } 
 } 
@@ -390,7 +390,7 @@ pub struct NatDetMapDetails {
 	pub ses_num : u32, 
 } 
 impl NatDetMapDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_map_details_88000ee1") 
 	 } 
 } 
@@ -404,7 +404,7 @@ pub struct NatDetCloseSessionOut {
 	pub ext_port : u16, 
 } 
 impl NatDetCloseSessionOut { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_close_session_out_c1b6cbfb") 
 	 } 
 } 
@@ -414,7 +414,7 @@ pub struct NatDetCloseSessionOutReply {
 	pub retval : i32, 
 } 
 impl NatDetCloseSessionOutReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_close_session_out_reply_e8d4e804") 
 	 } 
 } 
@@ -428,7 +428,7 @@ pub struct NatDetCloseSessionIn {
 	pub ext_port : u16, 
 } 
 impl NatDetCloseSessionIn { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_close_session_in_0a10ef64") 
 	 } 
 } 
@@ -438,7 +438,7 @@ pub struct NatDetCloseSessionInReply {
 	pub retval : i32, 
 } 
 impl NatDetCloseSessionInReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_close_session_in_reply_e8d4e804") 
 	 } 
 } 
@@ -449,7 +449,7 @@ pub struct NatDetSessionDump {
 	pub user_addr : Ip4Address, 
 } 
 impl NatDetSessionDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_session_dump_e45a3af7") 
 	 } 
 } 
@@ -464,7 +464,7 @@ pub struct NatDetSessionDetails {
 	pub expire : u32, 
 } 
 impl NatDetSessionDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_det_session_details_27f3c171") 
 	 } 
 } 

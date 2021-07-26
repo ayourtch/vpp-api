@@ -14,7 +14,7 @@ pub struct PipeCreate {
 	pub user_instance : u32, 
 } 
 impl PipeCreate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pipe_create_bb263bd3") 
 	 } 
 } 
@@ -26,7 +26,7 @@ pub struct PipeCreateReply {
 	pub pipe_sw_if_index : InterfaceIndex, 
 } 
 impl PipeCreateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pipe_create_reply_d4c2c2b3") 
 	 } 
 } 
@@ -37,7 +37,7 @@ pub struct PipeDelete {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl PipeDelete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pipe_delete_f9e6675e") 
 	 } 
 } 
@@ -47,7 +47,7 @@ pub struct PipeDeleteReply {
 	pub retval : i32, 
 } 
 impl PipeDeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pipe_delete_reply_e8d4e804") 
 	 } 
 } 
@@ -57,7 +57,7 @@ pub struct PipeDump {
 	pub context : u32, 
 } 
 impl PipeDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pipe_dump_51077d14") 
 	 } 
 } 
@@ -69,7 +69,7 @@ pub struct PipeDetails {
 	pub instance : u32, 
 } 
 impl PipeDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pipe_details_43ac107a") 
 	 } 
 } 

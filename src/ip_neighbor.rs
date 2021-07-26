@@ -36,7 +36,7 @@ pub struct IpNeighborAddDel {
 	pub neighbor : IpNeighbor, 
 } 
 impl IpNeighborAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_add_del_105518b6") 
 	 } 
 } 
@@ -47,7 +47,7 @@ pub struct IpNeighborAddDelReply {
 	pub stats_index : u32, 
 } 
 impl IpNeighborAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_add_del_reply_1992deab") 
 	 } 
 } 
@@ -59,7 +59,7 @@ pub struct IpNeighborDump {
 	pub af : AddressFamily, 
 } 
 impl IpNeighborDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_dump_cd831298") 
 	 } 
 } 
@@ -70,7 +70,7 @@ pub struct IpNeighborDetails {
 	pub neighbor : IpNeighbor, 
 } 
 impl IpNeighborDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_details_870e80b9") 
 	 } 
 } 
@@ -84,7 +84,7 @@ pub struct IpNeighborConfig {
 	pub recycle : bool, 
 } 
 impl IpNeighborConfig { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_config_f4a5cf44") 
 	 } 
 } 
@@ -94,7 +94,7 @@ pub struct IpNeighborConfigReply {
 	pub retval : i32, 
 } 
 impl IpNeighborConfigReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_config_reply_e8d4e804") 
 	 } 
 } 
@@ -104,7 +104,7 @@ pub struct IpNeighborReplaceBegin {
 	pub context : u32, 
 } 
 impl IpNeighborReplaceBegin { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_replace_begin_51077d14") 
 	 } 
 } 
@@ -114,7 +114,7 @@ pub struct IpNeighborReplaceBeginReply {
 	pub retval : i32, 
 } 
 impl IpNeighborReplaceBeginReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_replace_begin_reply_e8d4e804") 
 	 } 
 } 
@@ -124,7 +124,7 @@ pub struct IpNeighborReplaceEnd {
 	pub context : u32, 
 } 
 impl IpNeighborReplaceEnd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_replace_end_51077d14") 
 	 } 
 } 
@@ -134,7 +134,7 @@ pub struct IpNeighborReplaceEndReply {
 	pub retval : i32, 
 } 
 impl IpNeighborReplaceEndReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_replace_end_reply_e8d4e804") 
 	 } 
 } 
@@ -146,7 +146,7 @@ pub struct IpNeighborFlush {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl IpNeighborFlush { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_flush_16aa35d2") 
 	 } 
 } 
@@ -156,7 +156,7 @@ pub struct IpNeighborFlushReply {
 	pub retval : i32, 
 } 
 impl IpNeighborFlushReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_flush_reply_e8d4e804") 
 	 } 
 } 
@@ -170,7 +170,7 @@ pub struct WantIpNeighborEvents {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl WantIpNeighborEvents { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_ip_neighbor_events_1a312870") 
 	 } 
 } 
@@ -180,7 +180,7 @@ pub struct WantIpNeighborEventsReply {
 	pub retval : i32, 
 } 
 impl WantIpNeighborEventsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_ip_neighbor_events_reply_e8d4e804") 
 	 } 
 } 
@@ -191,7 +191,7 @@ pub struct IpNeighborEvent {
 	pub neighbor : IpNeighbor, 
 } 
 impl IpNeighborEvent { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_event_83933131") 
 	 } 
 } 
@@ -205,7 +205,7 @@ pub struct WantIpNeighborEventsV2 {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl WantIpNeighborEventsV2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_ip_neighbor_events_v2_73e70a86") 
 	 } 
 } 
@@ -215,7 +215,7 @@ pub struct WantIpNeighborEventsV2Reply {
 	pub retval : i32, 
 } 
 impl WantIpNeighborEventsV2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_ip_neighbor_events_v2_reply_e8d4e804") 
 	 } 
 } 
@@ -227,7 +227,7 @@ pub struct IpNeighborEventV2 {
 	pub neighbor : IpNeighbor, 
 } 
 impl IpNeighborEventV2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip_neighbor_event_v2_c1d53dc0") 
 	 } 
 } 

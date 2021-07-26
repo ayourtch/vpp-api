@@ -44,7 +44,7 @@ pub struct GpeAddDelFwdEntry {
 	pub locs : GpeLocator, 
 } 
 impl GpeAddDelFwdEntry { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_add_del_fwd_entry_de6df50f") 
 	 } 
 } 
@@ -55,7 +55,7 @@ pub struct GpeAddDelFwdEntryReply {
 	pub fwd_entry_index : u32, 
 } 
 impl GpeAddDelFwdEntryReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_add_del_fwd_entry_reply_efe5f176") 
 	 } 
 } 
@@ -66,7 +66,7 @@ pub struct GpeEnableDisable {
 	pub is_enable : bool, 
 } 
 impl GpeEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_enable_disable_c264d7bf") 
 	 } 
 } 
@@ -76,7 +76,7 @@ pub struct GpeEnableDisableReply {
 	pub retval : i32, 
 } 
 impl GpeEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -90,7 +90,7 @@ pub struct GpeAddDelIface {
 	pub vni : u32, 
 } 
 impl GpeAddDelIface { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_add_del_iface_3ccff273") 
 	 } 
 } 
@@ -100,7 +100,7 @@ pub struct GpeAddDelIfaceReply {
 	pub retval : i32, 
 } 
 impl GpeAddDelIfaceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_add_del_iface_reply_e8d4e804") 
 	 } 
 } 
@@ -110,7 +110,7 @@ pub struct GpeFwdEntryVnisGet {
 	pub context : u32, 
 } 
 impl GpeFwdEntryVnisGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_fwd_entry_vnis_get_51077d14") 
 	 } 
 } 
@@ -122,7 +122,7 @@ pub struct GpeFwdEntryVnisGetReply {
 	pub vnis : u32, 
 } 
 impl GpeFwdEntryVnisGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_fwd_entry_vnis_get_reply_aa70da20") 
 	 } 
 } 
@@ -133,7 +133,7 @@ pub struct GpeFwdEntriesGet {
 	pub vni : u32, 
 } 
 impl GpeFwdEntriesGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_fwd_entries_get_8d1f2fe9") 
 	 } 
 } 
@@ -145,7 +145,7 @@ pub struct GpeFwdEntriesGetReply {
 	pub entries : GpeFwdEntry, 
 } 
 impl GpeFwdEntriesGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_fwd_entries_get_reply_f9f53f1b") 
 	 } 
 } 
@@ -156,7 +156,7 @@ pub struct GpeFwdEntryPathDump {
 	pub fwd_entry_index : u32, 
 } 
 impl GpeFwdEntryPathDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_fwd_entry_path_dump_39bce980") 
 	 } 
 } 
@@ -167,7 +167,7 @@ pub struct GpeFwdEntryPathDetails {
 	pub rmt_loc : GpeLocator, 
 } 
 impl GpeFwdEntryPathDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_fwd_entry_path_details_ee80b19a") 
 	 } 
 } 
@@ -178,7 +178,7 @@ pub struct GpeSetEncapMode {
 	pub is_vxlan : bool, 
 } 
 impl GpeSetEncapMode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_set_encap_mode_bd819eac") 
 	 } 
 } 
@@ -188,7 +188,7 @@ pub struct GpeSetEncapModeReply {
 	pub retval : i32, 
 } 
 impl GpeSetEncapModeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_set_encap_mode_reply_e8d4e804") 
 	 } 
 } 
@@ -198,7 +198,7 @@ pub struct GpeGetEncapMode {
 	pub context : u32, 
 } 
 impl GpeGetEncapMode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_get_encap_mode_51077d14") 
 	 } 
 } 
@@ -209,7 +209,7 @@ pub struct GpeGetEncapModeReply {
 	pub encap_mode : u8, 
 } 
 impl GpeGetEncapModeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_get_encap_mode_reply_36e3f7ca") 
 	 } 
 } 
@@ -223,7 +223,7 @@ pub struct GpeAddDelNativeFwdRpath {
 	pub nh_addr : Address, 
 } 
 impl GpeAddDelNativeFwdRpath { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_add_del_native_fwd_rpath_812da2f2") 
 	 } 
 } 
@@ -233,7 +233,7 @@ pub struct GpeAddDelNativeFwdRpathReply {
 	pub retval : i32, 
 } 
 impl GpeAddDelNativeFwdRpathReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_add_del_native_fwd_rpath_reply_e8d4e804") 
 	 } 
 } 
@@ -244,7 +244,7 @@ pub struct GpeNativeFwdRpathsGet {
 	pub is_ip4 : bool, 
 } 
 impl GpeNativeFwdRpathsGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_native_fwd_rpaths_get_f652ceb4") 
 	 } 
 } 
@@ -256,7 +256,7 @@ pub struct GpeNativeFwdRpathsGetReply {
 	pub entries : GpeNativeFwdRpath, 
 } 
 impl GpeNativeFwdRpathsGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gpe_native_fwd_rpaths_get_reply_79d54eb9") 
 	 } 
 } 

@@ -52,7 +52,7 @@ pub struct TapCreateV2 {
 	pub tag : VariableSizeString, 
 } 
 impl TapCreateV2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("tap_create_v2_445835fd") 
 	 } 
 } 
@@ -63,7 +63,7 @@ pub struct TapCreateV2Reply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl TapCreateV2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("tap_create_v2_reply_5383d31f") 
 	 } 
 } 
@@ -74,7 +74,7 @@ pub struct TapDeleteV2 {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl TapDeleteV2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("tap_delete_v2_f9e6675e") 
 	 } 
 } 
@@ -84,7 +84,7 @@ pub struct TapDeleteV2Reply {
 	pub retval : i32, 
 } 
 impl TapDeleteV2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("tap_delete_v2_reply_e8d4e804") 
 	 } 
 } 
@@ -95,7 +95,7 @@ pub struct SwInterfaceTapV2Dump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl SwInterfaceTapV2Dump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_tap_v2_dump_f9e6675e") 
 	 } 
 } 
@@ -117,7 +117,7 @@ pub struct SwInterfaceTapV2Details {
 	pub host_bridge : FixedSizeString<U64>, 
 } 
 impl SwInterfaceTapV2Details { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_tap_v2_details_e53c16de") 
 	 } 
 } 

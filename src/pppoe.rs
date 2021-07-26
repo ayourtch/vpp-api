@@ -19,7 +19,7 @@ pub struct PppoeAddDelSession {
 	pub client_mac : MacAddress, 
 } 
 impl PppoeAddDelSession { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pppoe_add_del_session_46ace853") 
 	 } 
 } 
@@ -30,7 +30,7 @@ pub struct PppoeAddDelSessionReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl PppoeAddDelSessionReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pppoe_add_del_session_reply_5383d31f") 
 	 } 
 } 
@@ -41,7 +41,7 @@ pub struct PppoeSessionDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl PppoeSessionDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pppoe_session_dump_f9e6675e") 
 	 } 
 } 
@@ -57,7 +57,7 @@ pub struct PppoeSessionDetails {
 	pub client_mac : MacAddress, 
 } 
 impl PppoeSessionDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pppoe_session_details_332bc742") 
 	 } 
 } 
@@ -69,7 +69,7 @@ pub struct PppoeAddDelCp {
 	pub is_add : u8, 
 } 
 impl PppoeAddDelCp { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pppoe_add_del_cp_eacd9aaa") 
 	 } 
 } 
@@ -79,7 +79,7 @@ pub struct PppoeAddDelCpReply {
 	pub retval : i32, 
 } 
 impl PppoeAddDelCpReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pppoe_add_del_cp_reply_e8d4e804") 
 	 } 
 } 

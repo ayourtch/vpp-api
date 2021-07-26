@@ -16,7 +16,7 @@ pub struct StnAddDelRule {
 	pub is_add : bool, 
 } 
 impl StnAddDelRule { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("stn_add_del_rule_53f751e6") 
 	 } 
 } 
@@ -26,7 +26,7 @@ pub struct StnAddDelRuleReply {
 	pub retval : i32, 
 } 
 impl StnAddDelRuleReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("stn_add_del_rule_reply_e8d4e804") 
 	 } 
 } 
@@ -36,7 +36,7 @@ pub struct StnRulesDump {
 	pub context : u32, 
 } 
 impl StnRulesDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("stn_rules_dump_51077d14") 
 	 } 
 } 
@@ -47,7 +47,7 @@ pub struct StnRulesDetails {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl StnRulesDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("stn_rules_details_b0f6606c") 
 	 } 
 } 

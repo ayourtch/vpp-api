@@ -15,7 +15,7 @@ pub struct Ct6EnableDisable {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Ct6EnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ct6_enable_disable_5d02ac02") 
 	 } 
 } 
@@ -25,7 +25,7 @@ pub struct Ct6EnableDisableReply {
 	pub retval : i32, 
 } 
 impl Ct6EnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ct6_enable_disable_reply_e8d4e804") 
 	 } 
 } 

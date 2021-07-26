@@ -16,7 +16,7 @@ pub struct AfPacketCreate {
 	pub host_if_name : FixedSizeString<U64>, 
 } 
 impl AfPacketCreate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("af_packet_create_a190415f") 
 	 } 
 } 
@@ -27,7 +27,7 @@ pub struct AfPacketCreateReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl AfPacketCreateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("af_packet_create_reply_5383d31f") 
 	 } 
 } 
@@ -38,7 +38,7 @@ pub struct AfPacketDelete {
 	pub host_if_name : FixedSizeString<U64>, 
 } 
 impl AfPacketDelete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("af_packet_delete_863fa648") 
 	 } 
 } 
@@ -48,7 +48,7 @@ pub struct AfPacketDeleteReply {
 	pub retval : i32, 
 } 
 impl AfPacketDeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("af_packet_delete_reply_e8d4e804") 
 	 } 
 } 
@@ -60,7 +60,7 @@ pub struct AfPacketSetL4CksumOffload {
 	pub set : bool, 
 } 
 impl AfPacketSetL4CksumOffload { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("af_packet_set_l4_cksum_offload_319cd5c8") 
 	 } 
 } 
@@ -70,7 +70,7 @@ pub struct AfPacketSetL4CksumOffloadReply {
 	pub retval : i32, 
 } 
 impl AfPacketSetL4CksumOffloadReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("af_packet_set_l4_cksum_offload_reply_e8d4e804") 
 	 } 
 } 
@@ -80,7 +80,7 @@ pub struct AfPacketDump {
 	pub context : u32, 
 } 
 impl AfPacketDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("af_packet_dump_51077d14") 
 	 } 
 } 
@@ -91,7 +91,7 @@ pub struct AfPacketDetails {
 	pub host_if_name : FixedSizeString<U64>, 
 } 
 impl AfPacketDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("af_packet_details_58c7c042") 
 	 } 
 } 

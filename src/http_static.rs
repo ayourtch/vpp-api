@@ -17,7 +17,7 @@ pub struct HttpStaticEnable {
 	pub uri : FixedSizeString<U256>, 
 } 
 impl HttpStaticEnable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("http_static_enable_075f8292") 
 	 } 
 } 
@@ -27,7 +27,7 @@ pub struct HttpStaticEnableReply {
 	pub retval : i32, 
 } 
 impl HttpStaticEnableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("http_static_enable_reply_e8d4e804") 
 	 } 
 } 

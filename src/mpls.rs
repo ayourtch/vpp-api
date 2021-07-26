@@ -45,7 +45,7 @@ pub struct MplsIpBindUnbind {
 	pub mb_prefix : Prefix, 
 } 
 impl MplsIpBindUnbind { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_ip_bind_unbind_48249a27") 
 	 } 
 } 
@@ -55,7 +55,7 @@ pub struct MplsIpBindUnbindReply {
 	pub retval : i32, 
 } 
 impl MplsIpBindUnbindReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_ip_bind_unbind_reply_e8d4e804") 
 	 } 
 } 
@@ -67,7 +67,7 @@ pub struct MplsTunnelAddDel {
 	pub mt_tunnel : MplsTunnel, 
 } 
 impl MplsTunnelAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_tunnel_add_del_e57ce61d") 
 	 } 
 } 
@@ -79,7 +79,7 @@ pub struct MplsTunnelAddDelReply {
 	pub tunnel_index : u32, 
 } 
 impl MplsTunnelAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_tunnel_add_del_reply_afb01472") 
 	 } 
 } 
@@ -90,7 +90,7 @@ pub struct MplsTunnelDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl MplsTunnelDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_tunnel_dump_f9e6675e") 
 	 } 
 } 
@@ -100,7 +100,7 @@ pub struct MplsTunnelDetails {
 	pub mt_tunnel : MplsTunnel, 
 } 
 impl MplsTunnelDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_tunnel_details_f3c0928e") 
 	 } 
 } 
@@ -112,7 +112,7 @@ pub struct MplsTableAddDel {
 	pub mt_table : MplsTable, 
 } 
 impl MplsTableAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_table_add_del_57817512") 
 	 } 
 } 
@@ -122,7 +122,7 @@ pub struct MplsTableAddDelReply {
 	pub retval : i32, 
 } 
 impl MplsTableAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_table_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -132,7 +132,7 @@ pub struct MplsTableDump {
 	pub context : u32, 
 } 
 impl MplsTableDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_table_dump_51077d14") 
 	 } 
 } 
@@ -142,7 +142,7 @@ pub struct MplsTableDetails {
 	pub mt_table : MplsTable, 
 } 
 impl MplsTableDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_table_details_f03ecdc8") 
 	 } 
 } 
@@ -155,7 +155,7 @@ pub struct MplsRouteAddDel {
 	pub mr_route : MplsRoute, 
 } 
 impl MplsRouteAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_route_add_del_343cff54") 
 	 } 
 } 
@@ -166,7 +166,7 @@ pub struct MplsRouteAddDelReply {
 	pub stats_index : u32, 
 } 
 impl MplsRouteAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_route_add_del_reply_1992deab") 
 	 } 
 } 
@@ -177,7 +177,7 @@ pub struct MplsRouteDump {
 	pub table : MplsTable, 
 } 
 impl MplsRouteDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_route_dump_935fdefa") 
 	 } 
 } 
@@ -187,7 +187,7 @@ pub struct MplsRouteDetails {
 	pub mr_route : MplsRoute, 
 } 
 impl MplsRouteDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mpls_route_details_d0ac384c") 
 	 } 
 } 
@@ -199,7 +199,7 @@ pub struct SwInterfaceSetMplsEnable {
 	pub enable : bool, 
 } 
 impl SwInterfaceSetMplsEnable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_mpls_enable_ae6cfcfb") 
 	 } 
 } 
@@ -209,7 +209,7 @@ pub struct SwInterfaceSetMplsEnableReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceSetMplsEnableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_mpls_enable_reply_e8d4e804") 
 	 } 
 } 

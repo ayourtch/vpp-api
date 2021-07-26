@@ -13,7 +13,7 @@ pub struct SvsPluginGetVersion {
 	pub context : u32, 
 } 
 impl SvsPluginGetVersion { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("svs_plugin_get_version_51077d14") 
 	 } 
 } 
@@ -24,7 +24,7 @@ pub struct SvsPluginGetVersionReply {
 	pub minor : u32, 
 } 
 impl SvsPluginGetVersionReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("svs_plugin_get_version_reply_9b32cf86") 
 	 } 
 } 
@@ -37,7 +37,7 @@ pub struct SvsTableAddDel {
 	pub table_id : u32, 
 } 
 impl SvsTableAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("svs_table_add_del_7d21cb2a") 
 	 } 
 } 
@@ -47,7 +47,7 @@ pub struct SvsTableAddDelReply {
 	pub retval : i32, 
 } 
 impl SvsTableAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("svs_table_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -61,7 +61,7 @@ pub struct SvsRouteAddDel {
 	pub source_table_id : u32, 
 } 
 impl SvsRouteAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("svs_route_add_del_d39e31fc") 
 	 } 
 } 
@@ -71,7 +71,7 @@ pub struct SvsRouteAddDelReply {
 	pub retval : i32, 
 } 
 impl SvsRouteAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("svs_route_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -85,7 +85,7 @@ pub struct SvsEnableDisable {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl SvsEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("svs_enable_disable_634b89d2") 
 	 } 
 } 
@@ -95,7 +95,7 @@ pub struct SvsEnableDisableReply {
 	pub retval : i32, 
 } 
 impl SvsEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("svs_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -105,7 +105,7 @@ pub struct SvsDump {
 	pub context : u32, 
 } 
 impl SvsDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("svs_dump_51077d14") 
 	 } 
 } 
@@ -117,7 +117,7 @@ pub struct SvsDetails {
 	pub af : AddressFamily, 
 } 
 impl SvsDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("svs_details_b8523d64") 
 	 } 
 } 

@@ -15,7 +15,7 @@ pub struct Ip6NdAddressAutoconfig {
 	pub install_default_routes : bool, 
 } 
 impl Ip6NdAddressAutoconfig { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip6_nd_address_autoconfig_9e14a4a7") 
 	 } 
 } 
@@ -25,7 +25,7 @@ pub struct Ip6NdAddressAutoconfigReply {
 	pub retval : i32, 
 } 
 impl Ip6NdAddressAutoconfigReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip6_nd_address_autoconfig_reply_e8d4e804") 
 	 } 
 } 

@@ -41,7 +41,7 @@ pub struct WireguardInterfaceCreate {
 	pub generate_key : bool, 
 } 
 impl WireguardInterfaceCreate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("wireguard_interface_create_a530137e") 
 	 } 
 } 
@@ -52,7 +52,7 @@ pub struct WireguardInterfaceCreateReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl WireguardInterfaceCreateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("wireguard_interface_create_reply_5383d31f") 
 	 } 
 } 
@@ -63,7 +63,7 @@ pub struct WireguardInterfaceDelete {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl WireguardInterfaceDelete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("wireguard_interface_delete_f9e6675e") 
 	 } 
 } 
@@ -73,7 +73,7 @@ pub struct WireguardInterfaceDeleteReply {
 	pub retval : i32, 
 } 
 impl WireguardInterfaceDeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("wireguard_interface_delete_reply_e8d4e804") 
 	 } 
 } 
@@ -85,7 +85,7 @@ pub struct WireguardInterfaceDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl WireguardInterfaceDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("wireguard_interface_dump_2c954158") 
 	 } 
 } 
@@ -95,7 +95,7 @@ pub struct WireguardInterfaceDetails {
 	pub interface : WireguardInterface, 
 } 
 impl WireguardInterfaceDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("wireguard_interface_details_0dd4865d") 
 	 } 
 } 
@@ -106,7 +106,7 @@ pub struct WireguardPeerAdd {
 	pub peer : WireguardPeer, 
 } 
 impl WireguardPeerAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("wireguard_peer_add_ed792326") 
 	 } 
 } 
@@ -117,7 +117,7 @@ pub struct WireguardPeerAddReply {
 	pub peer_index : u32, 
 } 
 impl WireguardPeerAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("wireguard_peer_add_reply_084a0cd3") 
 	 } 
 } 
@@ -128,7 +128,7 @@ pub struct WireguardPeerRemove {
 	pub peer_index : u32, 
 } 
 impl WireguardPeerRemove { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("wireguard_peer_remove_3b74607a") 
 	 } 
 } 
@@ -138,7 +138,7 @@ pub struct WireguardPeerRemoveReply {
 	pub retval : i32, 
 } 
 impl WireguardPeerRemoveReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("wireguard_peer_remove_reply_e8d4e804") 
 	 } 
 } 
@@ -148,7 +148,7 @@ pub struct WireguardPeersDump {
 	pub context : u32, 
 } 
 impl WireguardPeersDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("wireguard_peers_dump_51077d14") 
 	 } 
 } 
@@ -158,7 +158,7 @@ pub struct WireguardPeersDetails {
 	pub peer : WireguardPeer, 
 } 
 impl WireguardPeersDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("wireguard_peers_details_2097f740") 
 	 } 
 } 

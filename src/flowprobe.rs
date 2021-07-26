@@ -29,7 +29,7 @@ pub struct FlowprobeTxInterfaceAddDel {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl FlowprobeTxInterfaceAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flowprobe_tx_interface_add_del_b782c976") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct FlowprobeTxInterfaceAddDelReply {
 	pub retval : i32, 
 } 
 impl FlowprobeTxInterfaceAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flowprobe_tx_interface_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -52,7 +52,7 @@ pub struct FlowprobeParams {
 	pub passive_timer : u32, 
 } 
 impl FlowprobeParams { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flowprobe_params_baa46c09") 
 	 } 
 } 
@@ -62,7 +62,7 @@ pub struct FlowprobeParamsReply {
 	pub retval : i32, 
 } 
 impl FlowprobeParamsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flowprobe_params_reply_e8d4e804") 
 	 } 
 } 

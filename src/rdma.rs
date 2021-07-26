@@ -25,7 +25,7 @@ pub struct RdmaCreate {
 	pub mode : RdmaMode, 
 } 
 impl RdmaCreate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("rdma_create_076fe418") 
 	 } 
 } 
@@ -43,7 +43,7 @@ pub struct RdmaCreateV2 {
 	pub max_pktlen : u16, 
 } 
 impl RdmaCreateV2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("rdma_create_v2_5826a4f3") 
 	 } 
 } 
@@ -54,7 +54,7 @@ pub struct RdmaCreateReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl RdmaCreateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("rdma_create_reply_5383d31f") 
 	 } 
 } 
@@ -65,7 +65,7 @@ pub struct RdmaCreateV2Reply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl RdmaCreateV2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("rdma_create_v2_reply_5383d31f") 
 	 } 
 } 
@@ -76,7 +76,7 @@ pub struct RdmaDelete {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl RdmaDelete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("rdma_delete_f9e6675e") 
 	 } 
 } 
@@ -86,7 +86,7 @@ pub struct RdmaDeleteReply {
 	pub retval : i32, 
 } 
 impl RdmaDeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("rdma_delete_reply_e8d4e804") 
 	 } 
 } 

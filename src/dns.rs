@@ -12,7 +12,7 @@ pub struct DnsEnableDisable {
 	pub enable : u8, 
 } 
 impl DnsEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dns_enable_disable_8050327d") 
 	 } 
 } 
@@ -22,7 +22,7 @@ pub struct DnsEnableDisableReply {
 	pub retval : i32, 
 } 
 impl DnsEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dns_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -35,7 +35,7 @@ pub struct DnsNameServerAddDel {
 	pub server_address : u8, 
 } 
 impl DnsNameServerAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dns_name_server_add_del_3bb05d8c") 
 	 } 
 } 
@@ -45,7 +45,7 @@ pub struct DnsNameServerAddDelReply {
 	pub retval : i32, 
 } 
 impl DnsNameServerAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dns_name_server_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -56,7 +56,7 @@ pub struct DnsResolveName {
 	pub name : u8, 
 } 
 impl DnsResolveName { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dns_resolve_name_c6566676") 
 	 } 
 } 
@@ -70,7 +70,7 @@ pub struct DnsResolveNameReply {
 	pub ip6_address : u8, 
 } 
 impl DnsResolveNameReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dns_resolve_name_reply_c2d758c3") 
 	 } 
 } 
@@ -82,7 +82,7 @@ pub struct DnsResolveIp {
 	pub address : u8, 
 } 
 impl DnsResolveIp { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dns_resolve_ip_ae96a1a3") 
 	 } 
 } 
@@ -93,7 +93,7 @@ pub struct DnsResolveIpReply {
 	pub name : u8, 
 } 
 impl DnsResolveIpReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dns_resolve_ip_reply_49ed78d6") 
 	 } 
 } 

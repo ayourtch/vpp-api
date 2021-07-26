@@ -25,7 +25,7 @@ pub struct CryptoSetAsyncDispatch {
 	pub mode : CryptoDispatchMode, 
 } 
 impl CryptoSetAsyncDispatch { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("crypto_set_async_dispatch_5ca4adc0") 
 	 } 
 } 
@@ -35,7 +35,7 @@ pub struct CryptoSetAsyncDispatchReply {
 	pub retval : i32, 
 } 
 impl CryptoSetAsyncDispatchReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("crypto_set_async_dispatch_reply_e8d4e804") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct CryptoSetHandler {
 	pub is_async : u8, 
 } 
 impl CryptoSetHandler { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("crypto_set_handler_ce9ad00d") 
 	 } 
 } 
@@ -59,7 +59,7 @@ pub struct CryptoSetHandlerReply {
 	pub retval : i32, 
 } 
 impl CryptoSetHandlerReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("crypto_set_handler_reply_e8d4e804") 
 	 } 
 } 

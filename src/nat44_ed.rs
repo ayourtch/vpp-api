@@ -39,7 +39,7 @@ pub struct Nat44PluginEnableDisable {
 	pub flags : Nat44ConfigFlags, 
 } 
 impl Nat44PluginEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_plugin_enable_disable_dea0d501") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct Nat44PluginEnableDisableReply {
 	pub retval : i32, 
 } 
 impl Nat44PluginEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_plugin_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -65,7 +65,7 @@ pub struct Nat44EdPluginEnableDisable {
 	pub flags : Nat44ConfigFlags, 
 } 
 impl Nat44EdPluginEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ed_plugin_enable_disable_be17f8dd") 
 	 } 
 } 
@@ -75,7 +75,7 @@ pub struct Nat44EdPluginEnableDisableReply {
 	pub retval : i32, 
 } 
 impl Nat44EdPluginEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ed_plugin_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -85,7 +85,7 @@ pub struct NatControlPing {
 	pub context : u32, 
 } 
 impl NatControlPing { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_control_ping_51077d14") 
 	 } 
 } 
@@ -97,7 +97,7 @@ pub struct NatControlPingReply {
 	pub vpe_pid : u32, 
 } 
 impl NatControlPingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_control_ping_reply_f6b0b8ca") 
 	 } 
 } 
@@ -107,7 +107,7 @@ pub struct NatShowConfig {
 	pub context : u32, 
 } 
 impl NatShowConfig { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_show_config_51077d14") 
 	 } 
 } 
@@ -134,7 +134,7 @@ pub struct NatShowConfigReply {
 	pub nat64_st_memory_size : u64, 
 } 
 impl NatShowConfigReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_show_config_reply_7903ef06") 
 	 } 
 } 
@@ -144,7 +144,7 @@ pub struct NatShowConfig2 {
 	pub context : u32, 
 } 
 impl NatShowConfig2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_show_config_2_51077d14") 
 	 } 
 } 
@@ -173,7 +173,7 @@ pub struct NatShowConfig2Reply {
 	pub max_users_per_thread : u32, 
 } 
 impl NatShowConfig2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_show_config_2_reply_0404a5b4") 
 	 } 
 } 
@@ -183,7 +183,7 @@ pub struct Nat44ShowRunningConfig {
 	pub context : u32, 
 } 
 impl Nat44ShowRunningConfig { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_show_running_config_51077d14") 
 	 } 
 } 
@@ -205,7 +205,7 @@ pub struct Nat44ShowRunningConfigReply {
 	pub flags : Nat44ConfigFlags, 
 } 
 impl Nat44ShowRunningConfigReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_show_running_config_reply_93d8e267") 
 	 } 
 } 
@@ -215,7 +215,7 @@ pub struct Nat44SessionCleanup {
 	pub context : u32, 
 } 
 impl Nat44SessionCleanup { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_session_cleanup_51077d14") 
 	 } 
 } 
@@ -225,7 +225,7 @@ pub struct Nat44SessionCleanupReply {
 	pub retval : i32, 
 } 
 impl Nat44SessionCleanupReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_session_cleanup_reply_e8d4e804") 
 	 } 
 } 
@@ -237,7 +237,7 @@ pub struct Nat44SetSessionLimit {
 	pub vrf_id : u32, 
 } 
 impl Nat44SetSessionLimit { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_set_session_limit_8899bbb1") 
 	 } 
 } 
@@ -247,7 +247,7 @@ pub struct Nat44SetSessionLimitReply {
 	pub retval : i32, 
 } 
 impl Nat44SetSessionLimitReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_set_session_limit_reply_e8d4e804") 
 	 } 
 } 
@@ -258,7 +258,7 @@ pub struct NatSetLogLevel {
 	pub log_level : NatLogLevel, 
 } 
 impl NatSetLogLevel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_set_log_level_70076bfe") 
 	 } 
 } 
@@ -268,7 +268,7 @@ pub struct NatSetLogLevelReply {
 	pub retval : i32, 
 } 
 impl NatSetLogLevelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_set_log_level_reply_e8d4e804") 
 	 } 
 } 
@@ -279,7 +279,7 @@ pub struct NatSetWorkers {
 	pub worker_mask : u64, 
 } 
 impl NatSetWorkers { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_set_workers_da926638") 
 	 } 
 } 
@@ -289,7 +289,7 @@ pub struct NatSetWorkersReply {
 	pub retval : i32, 
 } 
 impl NatSetWorkersReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_set_workers_reply_e8d4e804") 
 	 } 
 } 
@@ -299,7 +299,7 @@ pub struct NatWorkerDump {
 	pub context : u32, 
 } 
 impl NatWorkerDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_worker_dump_51077d14") 
 	 } 
 } 
@@ -311,7 +311,7 @@ pub struct NatWorkerDetails {
 	pub name : FixedSizeString<U64>, 
 } 
 impl NatWorkerDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_worker_details_84bf06fc") 
 	 } 
 } 
@@ -324,7 +324,7 @@ pub struct NatIpfixEnableDisable {
 	pub enable : bool, 
 } 
 impl NatIpfixEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ipfix_enable_disable_9af4a2d2") 
 	 } 
 } 
@@ -334,7 +334,7 @@ pub struct NatIpfixEnableDisableReply {
 	pub retval : i32, 
 } 
 impl NatIpfixEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ipfix_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -348,7 +348,7 @@ pub struct NatSetTimeouts {
 	pub icmp : u32, 
 } 
 impl NatSetTimeouts { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_set_timeouts_d4746b16") 
 	 } 
 } 
@@ -358,7 +358,7 @@ pub struct NatSetTimeoutsReply {
 	pub retval : i32, 
 } 
 impl NatSetTimeoutsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_set_timeouts_reply_e8d4e804") 
 	 } 
 } 
@@ -368,7 +368,7 @@ pub struct NatGetTimeouts {
 	pub context : u32, 
 } 
 impl NatGetTimeouts { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_get_timeouts_51077d14") 
 	 } 
 } 
@@ -382,7 +382,7 @@ pub struct NatGetTimeoutsReply {
 	pub icmp : u32, 
 } 
 impl NatGetTimeoutsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_get_timeouts_reply_3c4df4e1") 
 	 } 
 } 
@@ -398,7 +398,7 @@ pub struct NatSetAddrAndPortAllocAlg {
 	pub end_port : u16, 
 } 
 impl NatSetAddrAndPortAllocAlg { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_set_addr_and_port_alloc_alg_deeb746f") 
 	 } 
 } 
@@ -408,7 +408,7 @@ pub struct NatSetAddrAndPortAllocAlgReply {
 	pub retval : i32, 
 } 
 impl NatSetAddrAndPortAllocAlgReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_set_addr_and_port_alloc_alg_reply_e8d4e804") 
 	 } 
 } 
@@ -418,7 +418,7 @@ pub struct NatGetAddrAndPortAllocAlg {
 	pub context : u32, 
 } 
 impl NatGetAddrAndPortAllocAlg { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_get_addr_and_port_alloc_alg_51077d14") 
 	 } 
 } 
@@ -434,7 +434,7 @@ pub struct NatGetAddrAndPortAllocAlgReply {
 	pub end_port : u16, 
 } 
 impl NatGetAddrAndPortAllocAlgReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_get_addr_and_port_alloc_alg_reply_3607a7d0") 
 	 } 
 } 
@@ -446,7 +446,7 @@ pub struct NatSetMssClamping {
 	pub enable : bool, 
 } 
 impl NatSetMssClamping { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_set_mss_clamping_25e90abb") 
 	 } 
 } 
@@ -456,7 +456,7 @@ pub struct NatSetMssClampingReply {
 	pub retval : i32, 
 } 
 impl NatSetMssClampingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_set_mss_clamping_reply_e8d4e804") 
 	 } 
 } 
@@ -466,7 +466,7 @@ pub struct NatGetMssClamping {
 	pub context : u32, 
 } 
 impl NatGetMssClamping { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_get_mss_clamping_51077d14") 
 	 } 
 } 
@@ -478,7 +478,7 @@ pub struct NatGetMssClampingReply {
 	pub enable : bool, 
 } 
 impl NatGetMssClampingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_get_mss_clamping_reply_1c0b2a78") 
 	 } 
 } 
@@ -491,7 +491,7 @@ pub struct NatHaSetListener {
 	pub path_mtu : u32, 
 } 
 impl NatHaSetListener { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ha_set_listener_e4a8cb4e") 
 	 } 
 } 
@@ -501,7 +501,7 @@ pub struct NatHaSetListenerReply {
 	pub retval : i32, 
 } 
 impl NatHaSetListenerReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ha_set_listener_reply_e8d4e804") 
 	 } 
 } 
@@ -514,7 +514,7 @@ pub struct NatHaSetFailover {
 	pub session_refresh_interval : u32, 
 } 
 impl NatHaSetFailover { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ha_set_failover_718246af") 
 	 } 
 } 
@@ -524,7 +524,7 @@ pub struct NatHaSetFailoverReply {
 	pub retval : i32, 
 } 
 impl NatHaSetFailoverReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ha_set_failover_reply_e8d4e804") 
 	 } 
 } 
@@ -534,7 +534,7 @@ pub struct NatHaGetListener {
 	pub context : u32, 
 } 
 impl NatHaGetListener { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ha_get_listener_51077d14") 
 	 } 
 } 
@@ -547,7 +547,7 @@ pub struct NatHaGetListenerReply {
 	pub path_mtu : u32, 
 } 
 impl NatHaGetListenerReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ha_get_listener_reply_123ea41f") 
 	 } 
 } 
@@ -557,7 +557,7 @@ pub struct NatHaGetFailover {
 	pub context : u32, 
 } 
 impl NatHaGetFailover { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ha_get_failover_51077d14") 
 	 } 
 } 
@@ -570,7 +570,7 @@ pub struct NatHaGetFailoverReply {
 	pub session_refresh_interval : u32, 
 } 
 impl NatHaGetFailoverReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ha_get_failover_reply_a67d8752") 
 	 } 
 } 
@@ -580,7 +580,7 @@ pub struct NatHaFlush {
 	pub context : u32, 
 } 
 impl NatHaFlush { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ha_flush_51077d14") 
 	 } 
 } 
@@ -590,7 +590,7 @@ pub struct NatHaFlushReply {
 	pub retval : i32, 
 } 
 impl NatHaFlushReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ha_flush_reply_e8d4e804") 
 	 } 
 } 
@@ -602,7 +602,7 @@ pub struct NatHaResync {
 	pub pid : u32, 
 } 
 impl NatHaResync { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ha_resync_c8ab9e03") 
 	 } 
 } 
@@ -612,7 +612,7 @@ pub struct NatHaResyncReply {
 	pub retval : i32, 
 } 
 impl NatHaResyncReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ha_resync_reply_e8d4e804") 
 	 } 
 } 
@@ -623,7 +623,7 @@ pub struct NatHaResyncCompletedEvent {
 	pub missed_count : u32, 
 } 
 impl NatHaResyncCompletedEvent { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat_ha_resync_completed_event_fdc598fb") 
 	 } 
 } 
@@ -635,7 +635,7 @@ pub struct Nat44DelUser {
 	pub fib_index : u32, 
 } 
 impl Nat44DelUser { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_del_user_99a9f998") 
 	 } 
 } 
@@ -645,7 +645,7 @@ pub struct Nat44DelUserReply {
 	pub retval : i32, 
 } 
 impl Nat44DelUserReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_del_user_reply_e8d4e804") 
 	 } 
 } 
@@ -660,7 +660,7 @@ pub struct Nat44AddDelAddressRange {
 	pub flags : NatConfigFlags, 
 } 
 impl Nat44AddDelAddressRange { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_add_del_address_range_d4c7568c") 
 	 } 
 } 
@@ -670,7 +670,7 @@ pub struct Nat44AddDelAddressRangeReply {
 	pub retval : i32, 
 } 
 impl Nat44AddDelAddressRangeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_add_del_address_range_reply_e8d4e804") 
 	 } 
 } 
@@ -680,7 +680,7 @@ pub struct Nat44AddressDump {
 	pub context : u32, 
 } 
 impl Nat44AddressDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_address_dump_51077d14") 
 	 } 
 } 
@@ -692,7 +692,7 @@ pub struct Nat44AddressDetails {
 	pub vrf_id : u32, 
 } 
 impl Nat44AddressDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_address_details_45410ac4") 
 	 } 
 } 
@@ -705,7 +705,7 @@ pub struct Nat44InterfaceAddDelFeature {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Nat44InterfaceAddDelFeature { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_interface_add_del_feature_f3699b83") 
 	 } 
 } 
@@ -715,7 +715,7 @@ pub struct Nat44InterfaceAddDelFeatureReply {
 	pub retval : i32, 
 } 
 impl Nat44InterfaceAddDelFeatureReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_interface_add_del_feature_reply_e8d4e804") 
 	 } 
 } 
@@ -725,7 +725,7 @@ pub struct Nat44InterfaceDump {
 	pub context : u32, 
 } 
 impl Nat44InterfaceDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_interface_dump_51077d14") 
 	 } 
 } 
@@ -736,7 +736,7 @@ pub struct Nat44InterfaceDetails {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Nat44InterfaceDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_interface_details_5d286289") 
 	 } 
 } 
@@ -749,7 +749,7 @@ pub struct Nat44InterfaceAddDelOutputFeature {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Nat44InterfaceAddDelOutputFeature { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_interface_add_del_output_feature_f3699b83") 
 	 } 
 } 
@@ -759,7 +759,7 @@ pub struct Nat44InterfaceAddDelOutputFeatureReply {
 	pub retval : i32, 
 } 
 impl Nat44InterfaceAddDelOutputFeatureReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_interface_add_del_output_feature_reply_e8d4e804") 
 	 } 
 } 
@@ -769,7 +769,7 @@ pub struct Nat44InterfaceOutputFeatureDump {
 	pub context : u32, 
 } 
 impl Nat44InterfaceOutputFeatureDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_interface_output_feature_dump_51077d14") 
 	 } 
 } 
@@ -780,7 +780,7 @@ pub struct Nat44InterfaceOutputFeatureDetails {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Nat44InterfaceOutputFeatureDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_interface_output_feature_details_5d286289") 
 	 } 
 } 
@@ -800,7 +800,7 @@ pub struct Nat44AddDelStaticMapping {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl Nat44AddDelStaticMapping { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_add_del_static_mapping_e165e83b") 
 	 } 
 } 
@@ -810,7 +810,7 @@ pub struct Nat44AddDelStaticMappingReply {
 	pub retval : i32, 
 } 
 impl Nat44AddDelStaticMappingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_add_del_static_mapping_reply_e8d4e804") 
 	 } 
 } 
@@ -832,7 +832,7 @@ pub struct Nat44AddDelStaticMappingV2 {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl Nat44AddDelStaticMappingV2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_add_del_static_mapping_v2_5e205f1a") 
 	 } 
 } 
@@ -842,7 +842,7 @@ pub struct Nat44AddDelStaticMappingV2Reply {
 	pub retval : i32, 
 } 
 impl Nat44AddDelStaticMappingV2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_add_del_static_mapping_v2_reply_e8d4e804") 
 	 } 
 } 
@@ -852,7 +852,7 @@ pub struct Nat44StaticMappingDump {
 	pub context : u32, 
 } 
 impl Nat44StaticMappingDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_static_mapping_dump_51077d14") 
 	 } 
 } 
@@ -870,7 +870,7 @@ pub struct Nat44StaticMappingDetails {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl Nat44StaticMappingDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_static_mapping_details_1a433ef7") 
 	 } 
 } 
@@ -888,7 +888,7 @@ pub struct Nat44AddDelIdentityMapping {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl Nat44AddDelIdentityMapping { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_add_del_identity_mapping_8e12743f") 
 	 } 
 } 
@@ -898,7 +898,7 @@ pub struct Nat44AddDelIdentityMappingReply {
 	pub retval : i32, 
 } 
 impl Nat44AddDelIdentityMappingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_add_del_identity_mapping_reply_e8d4e804") 
 	 } 
 } 
@@ -908,7 +908,7 @@ pub struct Nat44IdentityMappingDump {
 	pub context : u32, 
 } 
 impl Nat44IdentityMappingDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_identity_mapping_dump_51077d14") 
 	 } 
 } 
@@ -924,7 +924,7 @@ pub struct Nat44IdentityMappingDetails {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl Nat44IdentityMappingDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_identity_mapping_details_36d21351") 
 	 } 
 } 
@@ -937,7 +937,7 @@ pub struct Nat44AddDelInterfaceAddr {
 	pub flags : NatConfigFlags, 
 } 
 impl Nat44AddDelInterfaceAddr { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_add_del_interface_addr_fc835325") 
 	 } 
 } 
@@ -947,7 +947,7 @@ pub struct Nat44AddDelInterfaceAddrReply {
 	pub retval : i32, 
 } 
 impl Nat44AddDelInterfaceAddrReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_add_del_interface_addr_reply_e8d4e804") 
 	 } 
 } 
@@ -957,7 +957,7 @@ pub struct Nat44InterfaceAddrDump {
 	pub context : u32, 
 } 
 impl Nat44InterfaceAddrDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_interface_addr_dump_51077d14") 
 	 } 
 } 
@@ -968,7 +968,7 @@ pub struct Nat44InterfaceAddrDetails {
 	pub flags : NatConfigFlags, 
 } 
 impl Nat44InterfaceAddrDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_interface_addr_details_3e687514") 
 	 } 
 } 
@@ -978,7 +978,7 @@ pub struct Nat44UserDump {
 	pub context : u32, 
 } 
 impl Nat44UserDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_user_dump_51077d14") 
 	 } 
 } 
@@ -991,7 +991,7 @@ pub struct Nat44UserDetails {
 	pub nstaticsessions : u32, 
 } 
 impl Nat44UserDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_user_details_355896c2") 
 	 } 
 } 
@@ -1003,7 +1003,7 @@ pub struct Nat44UserSessionDump {
 	pub vrf_id : u32, 
 } 
 impl Nat44UserSessionDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_user_session_dump_e1899c98") 
 	 } 
 } 
@@ -1025,7 +1025,7 @@ pub struct Nat44UserSessionDetails {
 	pub ext_host_nat_port : u16, 
 } 
 impl Nat44UserSessionDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_user_session_details_1965fd69") 
 	 } 
 } 
@@ -1044,7 +1044,7 @@ pub struct Nat44AddDelLbStaticMapping {
 	pub locals : Nat44LbAddrPort, 
 } 
 impl Nat44AddDelLbStaticMapping { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_add_del_lb_static_mapping_53b24611") 
 	 } 
 } 
@@ -1054,7 +1054,7 @@ pub struct Nat44AddDelLbStaticMappingReply {
 	pub retval : i32, 
 } 
 impl Nat44AddDelLbStaticMappingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_add_del_lb_static_mapping_reply_e8d4e804") 
 	 } 
 } 
@@ -1069,7 +1069,7 @@ pub struct Nat44LbStaticMappingAddDelLocal {
 	pub local : Nat44LbAddrPort, 
 } 
 impl Nat44LbStaticMappingAddDelLocal { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_lb_static_mapping_add_del_local_2910a151") 
 	 } 
 } 
@@ -1079,7 +1079,7 @@ pub struct Nat44LbStaticMappingAddDelLocalReply {
 	pub retval : i32, 
 } 
 impl Nat44LbStaticMappingAddDelLocalReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_lb_static_mapping_add_del_local_reply_e8d4e804") 
 	 } 
 } 
@@ -1089,7 +1089,7 @@ pub struct Nat44LbStaticMappingDump {
 	pub context : u32, 
 } 
 impl Nat44LbStaticMappingDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_lb_static_mapping_dump_51077d14") 
 	 } 
 } 
@@ -1106,7 +1106,7 @@ pub struct Nat44LbStaticMappingDetails {
 	pub locals : Nat44LbAddrPort, 
 } 
 impl Nat44LbStaticMappingDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_lb_static_mapping_details_2267b9e8") 
 	 } 
 } 
@@ -1123,7 +1123,7 @@ pub struct Nat44DelSession {
 	pub ext_host_port : u16, 
 } 
 impl Nat44DelSession { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_del_session_4c49c387") 
 	 } 
 } 
@@ -1133,7 +1133,7 @@ pub struct Nat44DelSessionReply {
 	pub retval : i32, 
 } 
 impl Nat44DelSessionReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_del_session_reply_e8d4e804") 
 	 } 
 } 
@@ -1144,7 +1144,7 @@ pub struct Nat44ForwardingEnableDisable {
 	pub enable : bool, 
 } 
 impl Nat44ForwardingEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_forwarding_enable_disable_b3e225d2") 
 	 } 
 } 
@@ -1154,7 +1154,7 @@ pub struct Nat44ForwardingEnableDisableReply {
 	pub retval : i32, 
 } 
 impl Nat44ForwardingEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_forwarding_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -1164,7 +1164,7 @@ pub struct Nat44ForwardingIsEnabled {
 	pub context : u32, 
 } 
 impl Nat44ForwardingIsEnabled { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_forwarding_is_enabled_51077d14") 
 	 } 
 } 
@@ -1174,7 +1174,7 @@ pub struct Nat44ForwardingIsEnabledReply {
 	pub enabled : bool, 
 } 
 impl Nat44ForwardingIsEnabledReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_forwarding_is_enabled_reply_46924a06") 
 	 } 
 } 
@@ -1185,7 +1185,7 @@ pub struct Nat44EdSetFqOptions {
 	pub frame_queue_nelts : u32, 
 } 
 impl Nat44EdSetFqOptions { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ed_set_fq_options_2399bd71") 
 	 } 
 } 
@@ -1195,7 +1195,7 @@ pub struct Nat44EdSetFqOptionsReply {
 	pub retval : i32, 
 } 
 impl Nat44EdSetFqOptionsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ed_set_fq_options_reply_e8d4e804") 
 	 } 
 } 
@@ -1205,7 +1205,7 @@ pub struct Nat44EdShowFqOptions {
 	pub context : u32, 
 } 
 impl Nat44EdShowFqOptions { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ed_show_fq_options_51077d14") 
 	 } 
 } 
@@ -1216,7 +1216,7 @@ pub struct Nat44EdShowFqOptionsReply {
 	pub frame_queue_nelts : u32, 
 } 
 impl Nat44EdShowFqOptionsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ed_show_fq_options_reply_7213b545") 
 	 } 
 } 

@@ -39,7 +39,7 @@ pub struct PnatBindingAdd {
 	pub rewrite : Pnat5tuple, 
 } 
 impl PnatBindingAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_binding_add_7935dd86") 
 	 } 
 } 
@@ -50,7 +50,7 @@ pub struct PnatBindingAddReply {
 	pub binding_index : u32, 
 } 
 impl PnatBindingAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_binding_add_reply_4cd980a7") 
 	 } 
 } 
@@ -61,7 +61,7 @@ pub struct PnatBindingDel {
 	pub binding_index : u32, 
 } 
 impl PnatBindingDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_binding_del_9259df7b") 
 	 } 
 } 
@@ -71,7 +71,7 @@ pub struct PnatBindingDelReply {
 	pub retval : i32, 
 } 
 impl PnatBindingDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_binding_del_reply_e8d4e804") 
 	 } 
 } 
@@ -84,7 +84,7 @@ pub struct PnatBindingAttach {
 	pub binding_index : u32, 
 } 
 impl PnatBindingAttach { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_binding_attach_48695a5a") 
 	 } 
 } 
@@ -94,7 +94,7 @@ pub struct PnatBindingAttachReply {
 	pub retval : i32, 
 } 
 impl PnatBindingAttachReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_binding_attach_reply_e8d4e804") 
 	 } 
 } 
@@ -107,7 +107,7 @@ pub struct PnatBindingDetach {
 	pub binding_index : u32, 
 } 
 impl PnatBindingDetach { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_binding_detach_48695a5a") 
 	 } 
 } 
@@ -117,7 +117,7 @@ pub struct PnatBindingDetachReply {
 	pub retval : i32, 
 } 
 impl PnatBindingDetachReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_binding_detach_reply_e8d4e804") 
 	 } 
 } 
@@ -128,7 +128,7 @@ pub struct PnatBindingsGet {
 	pub cursor : u32, 
 } 
 impl PnatBindingsGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_bindings_get_f75ba505") 
 	 } 
 } 
@@ -139,7 +139,7 @@ pub struct PnatBindingsGetReply {
 	pub cursor : u32, 
 } 
 impl PnatBindingsGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_bindings_get_reply_53b48f5d") 
 	 } 
 } 
@@ -150,7 +150,7 @@ pub struct PnatBindingsDetails {
 	pub rewrite : Pnat5tuple, 
 } 
 impl PnatBindingsDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_bindings_details_5399c492") 
 	 } 
 } 
@@ -161,7 +161,7 @@ pub struct PnatInterfacesGet {
 	pub cursor : u32, 
 } 
 impl PnatInterfacesGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_interfaces_get_f75ba505") 
 	 } 
 } 
@@ -172,7 +172,7 @@ pub struct PnatInterfacesGetReply {
 	pub cursor : u32, 
 } 
 impl PnatInterfacesGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_interfaces_get_reply_53b48f5d") 
 	 } 
 } 
@@ -184,7 +184,7 @@ pub struct PnatInterfacesDetails {
 	pub lookup_mask : PnatMask, 
 } 
 impl PnatInterfacesDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pnat_interfaces_details_af98c8a5") 
 	 } 
 } 

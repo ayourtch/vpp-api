@@ -13,7 +13,7 @@ pub struct MdataEnableDisable {
 	pub enable_disable : bool, 
 } 
 impl MdataEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mdata_enable_disable_2e7b47df") 
 	 } 
 } 
@@ -23,7 +23,7 @@ pub struct MdataEnableDisableReply {
 	pub retval : i32, 
 } 
 impl MdataEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("mdata_enable_disable_reply_e8d4e804") 
 	 } 
 } 

@@ -35,7 +35,7 @@ pub struct HmacKey {
 	pub id : HmacKeyId, 
 	pub key : u8, 
 } 
-type EidAddress = [u8;18]; 
+pub type EidAddress = [u8;18]; 
 #[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
 #[repr(u8)]
 pub enum EidType { 

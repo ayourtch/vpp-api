@@ -16,7 +16,7 @@ pub struct VxlanGpeIoamEnable {
 	pub trace_enable : bool, 
 } 
 impl VxlanGpeIoamEnable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_enable_2481bef7") 
 	 } 
 } 
@@ -26,7 +26,7 @@ pub struct VxlanGpeIoamEnableReply {
 	pub retval : i32, 
 } 
 impl VxlanGpeIoamEnableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_enable_reply_e8d4e804") 
 	 } 
 } 
@@ -37,7 +37,7 @@ pub struct VxlanGpeIoamDisable {
 	pub id : u16, 
 } 
 impl VxlanGpeIoamDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_disable_6b16a45e") 
 	 } 
 } 
@@ -47,7 +47,7 @@ pub struct VxlanGpeIoamDisableReply {
 	pub retval : i32, 
 } 
 impl VxlanGpeIoamDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -60,7 +60,7 @@ pub struct VxlanGpeIoamVniEnable {
 	pub remote : Address, 
 } 
 impl VxlanGpeIoamVniEnable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_vni_enable_997161fb") 
 	 } 
 } 
@@ -70,7 +70,7 @@ pub struct VxlanGpeIoamVniEnableReply {
 	pub retval : i32, 
 } 
 impl VxlanGpeIoamVniEnableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_vni_enable_reply_e8d4e804") 
 	 } 
 } 
@@ -83,7 +83,7 @@ pub struct VxlanGpeIoamVniDisable {
 	pub remote : Address, 
 } 
 impl VxlanGpeIoamVniDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_vni_disable_997161fb") 
 	 } 
 } 
@@ -93,7 +93,7 @@ pub struct VxlanGpeIoamVniDisableReply {
 	pub retval : i32, 
 } 
 impl VxlanGpeIoamVniDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_vni_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -105,7 +105,7 @@ pub struct VxlanGpeIoamTransitEnable {
 	pub dst_addr : Address, 
 } 
 impl VxlanGpeIoamTransitEnable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_transit_enable_553f5b7b") 
 	 } 
 } 
@@ -115,7 +115,7 @@ pub struct VxlanGpeIoamTransitEnableReply {
 	pub retval : i32, 
 } 
 impl VxlanGpeIoamTransitEnableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_transit_enable_reply_e8d4e804") 
 	 } 
 } 
@@ -127,7 +127,7 @@ pub struct VxlanGpeIoamTransitDisable {
 	pub dst_addr : Address, 
 } 
 impl VxlanGpeIoamTransitDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_transit_disable_553f5b7b") 
 	 } 
 } 
@@ -137,7 +137,7 @@ pub struct VxlanGpeIoamTransitDisableReply {
 	pub retval : i32, 
 } 
 impl VxlanGpeIoamTransitDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gpe_ioam_transit_disable_reply_e8d4e804") 
 	 } 
 } 

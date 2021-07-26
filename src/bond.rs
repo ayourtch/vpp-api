@@ -38,7 +38,7 @@ pub struct BondCreate {
 	pub numa_only : bool, 
 } 
 impl BondCreate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_create_48883c7e") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct BondCreateReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl BondCreateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_create_reply_5383d31f") 
 	 } 
 } 
@@ -66,7 +66,7 @@ pub struct BondCreate2 {
 	pub id : u32, 
 } 
 impl BondCreate2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_create2_912fda76") 
 	 } 
 } 
@@ -77,7 +77,7 @@ pub struct BondCreate2Reply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl BondCreate2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_create2_reply_5383d31f") 
 	 } 
 } 
@@ -88,7 +88,7 @@ pub struct BondDelete {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl BondDelete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_delete_f9e6675e") 
 	 } 
 } 
@@ -98,7 +98,7 @@ pub struct BondDeleteReply {
 	pub retval : i32, 
 } 
 impl BondDeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_delete_reply_e8d4e804") 
 	 } 
 } 
@@ -112,7 +112,7 @@ pub struct BondEnslave {
 	pub is_long_timeout : bool, 
 } 
 impl BondEnslave { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_enslave_076ecfa7") 
 	 } 
 } 
@@ -122,7 +122,7 @@ pub struct BondEnslaveReply {
 	pub retval : i32, 
 } 
 impl BondEnslaveReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_enslave_reply_e8d4e804") 
 	 } 
 } 
@@ -136,7 +136,7 @@ pub struct BondAddMember {
 	pub is_long_timeout : bool, 
 } 
 impl BondAddMember { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_add_member_e7d14948") 
 	 } 
 } 
@@ -146,7 +146,7 @@ pub struct BondAddMemberReply {
 	pub retval : i32, 
 } 
 impl BondAddMemberReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_add_member_reply_e8d4e804") 
 	 } 
 } 
@@ -157,7 +157,7 @@ pub struct BondDetachSlave {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl BondDetachSlave { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_detach_slave_f9e6675e") 
 	 } 
 } 
@@ -167,7 +167,7 @@ pub struct BondDetachSlaveReply {
 	pub retval : i32, 
 } 
 impl BondDetachSlaveReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_detach_slave_reply_e8d4e804") 
 	 } 
 } 
@@ -178,7 +178,7 @@ pub struct BondDetachMember {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl BondDetachMember { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_detach_member_f9e6675e") 
 	 } 
 } 
@@ -188,7 +188,7 @@ pub struct BondDetachMemberReply {
 	pub retval : i32, 
 } 
 impl BondDetachMemberReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bond_detach_member_reply_e8d4e804") 
 	 } 
 } 
@@ -198,7 +198,7 @@ pub struct SwInterfaceBondDump {
 	pub context : u32, 
 } 
 impl SwInterfaceBondDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_bond_dump_51077d14") 
 	 } 
 } 
@@ -215,7 +215,7 @@ pub struct SwInterfaceBondDetails {
 	pub interface_name : FixedSizeString<U64>, 
 } 
 impl SwInterfaceBondDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_bond_details_f5ef2106") 
 	 } 
 } 
@@ -226,7 +226,7 @@ pub struct SwBondInterfaceDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl SwBondInterfaceDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_bond_interface_dump_f9e6675e") 
 	 } 
 } 
@@ -243,7 +243,7 @@ pub struct SwBondInterfaceDetails {
 	pub interface_name : FixedSizeString<U64>, 
 } 
 impl SwBondInterfaceDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_bond_interface_details_9428a69c") 
 	 } 
 } 
@@ -254,7 +254,7 @@ pub struct SwInterfaceSlaveDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl SwInterfaceSlaveDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_slave_dump_f9e6675e") 
 	 } 
 } 
@@ -269,7 +269,7 @@ pub struct SwInterfaceSlaveDetails {
 	pub weight : u32, 
 } 
 impl SwInterfaceSlaveDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_slave_details_3c4a0e23") 
 	 } 
 } 
@@ -280,7 +280,7 @@ pub struct SwMemberInterfaceDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl SwMemberInterfaceDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_member_interface_dump_f9e6675e") 
 	 } 
 } 
@@ -295,7 +295,7 @@ pub struct SwMemberInterfaceDetails {
 	pub weight : u32, 
 } 
 impl SwMemberInterfaceDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_member_interface_details_3c4a0e23") 
 	 } 
 } 
@@ -307,7 +307,7 @@ pub struct SwInterfaceSetBondWeight {
 	pub weight : u32, 
 } 
 impl SwInterfaceSetBondWeight { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_bond_weight_deb510a0") 
 	 } 
 } 
@@ -317,7 +317,7 @@ pub struct SwInterfaceSetBondWeightReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceSetBondWeightReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_bond_weight_reply_e8d4e804") 
 	 } 
 } 

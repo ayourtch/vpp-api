@@ -19,7 +19,7 @@ pub struct LcpDefaultNsSet {
 	pub namespace : FixedSizeString<U32>, 
 } 
 impl LcpDefaultNsSet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lcp_default_ns_set_b561a74a") 
 	 } 
 } 
@@ -29,7 +29,7 @@ pub struct LcpDefaultNsSetReply {
 	pub retval : i32, 
 } 
 impl LcpDefaultNsSetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lcp_default_ns_set_reply_e8d4e804") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct LcpDefaultNsGet {
 	pub context : u32, 
 } 
 impl LcpDefaultNsGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lcp_default_ns_get_51077d14") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct LcpDefaultNsGetReply {
 	pub namespace : FixedSizeString<U32>, 
 } 
 impl LcpDefaultNsGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lcp_default_ns_get_reply_eaeef6d3") 
 	 } 
 } 
@@ -64,7 +64,7 @@ pub struct LcpItfPairAddDel {
 	pub namespace : FixedSizeString<U32>, 
 } 
 impl LcpItfPairAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lcp_itf_pair_add_del_f3157f59") 
 	 } 
 } 
@@ -74,7 +74,7 @@ pub struct LcpItfPairAddDelReply {
 	pub retval : i32, 
 } 
 impl LcpItfPairAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lcp_itf_pair_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -85,7 +85,7 @@ pub struct LcpItfPairGet {
 	pub cursor : u32, 
 } 
 impl LcpItfPairGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lcp_itf_pair_get_f75ba505") 
 	 } 
 } 
@@ -96,7 +96,7 @@ pub struct LcpItfPairGetReply {
 	pub cursor : u32, 
 } 
 impl LcpItfPairGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lcp_itf_pair_get_reply_53b48f5d") 
 	 } 
 } 
@@ -111,7 +111,7 @@ pub struct LcpItfPairDetails {
 	pub namespace : FixedSizeString<U32>, 
 } 
 impl LcpItfPairDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lcp_itf_pair_details_5a95842f") 
 	 } 
 } 
@@ -121,7 +121,7 @@ pub struct LcpItfPairReplaceBegin {
 	pub context : u32, 
 } 
 impl LcpItfPairReplaceBegin { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lcp_itf_pair_replace_begin_51077d14") 
 	 } 
 } 
@@ -131,7 +131,7 @@ pub struct LcpItfPairReplaceBeginReply {
 	pub retval : i32, 
 } 
 impl LcpItfPairReplaceBeginReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lcp_itf_pair_replace_begin_reply_e8d4e804") 
 	 } 
 } 
@@ -141,7 +141,7 @@ pub struct LcpItfPairReplaceEnd {
 	pub context : u32, 
 } 
 impl LcpItfPairReplaceEnd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lcp_itf_pair_replace_end_51077d14") 
 	 } 
 } 
@@ -151,7 +151,7 @@ pub struct LcpItfPairReplaceEndReply {
 	pub retval : i32, 
 } 
 impl LcpItfPairReplaceEndReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lcp_itf_pair_replace_end_reply_e8d4e804") 
 	 } 
 } 

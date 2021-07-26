@@ -11,7 +11,7 @@ pub struct BuiltinurlEnable {
 	pub context : u32, 
 } 
 impl BuiltinurlEnable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("builtinurl_enable_51077d14") 
 	 } 
 } 
@@ -21,7 +21,7 @@ pub struct BuiltinurlEnableReply {
 	pub retval : i32, 
 } 
 impl BuiltinurlEnableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("builtinurl_enable_reply_e8d4e804") 
 	 } 
 } 

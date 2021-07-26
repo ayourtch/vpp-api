@@ -16,7 +16,7 @@ pub struct LldpConfig {
 	pub system_name : VariableSizeString, 
 } 
 impl LldpConfig { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lldp_config_c14445df") 
 	 } 
 } 
@@ -26,7 +26,7 @@ pub struct LldpConfigReply {
 	pub retval : i32, 
 } 
 impl LldpConfigReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lldp_config_reply_e8d4e804") 
 	 } 
 } 
@@ -42,7 +42,7 @@ pub struct SwInterfaceSetLldp {
 	pub port_desc : VariableSizeString, 
 } 
 impl SwInterfaceSetLldp { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_lldp_d646ae0f") 
 	 } 
 } 
@@ -52,7 +52,7 @@ pub struct SwInterfaceSetLldpReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceSetLldpReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_lldp_reply_e8d4e804") 
 	 } 
 } 

@@ -172,7 +172,7 @@ pub struct GbpBridgeDomainAdd {
 	pub bd : GbpBridgeDomain, 
 } 
 impl GbpBridgeDomainAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_bridge_domain_add_8454bfdf") 
 	 } 
 } 
@@ -182,7 +182,7 @@ pub struct GbpBridgeDomainAddReply {
 	pub retval : i32, 
 } 
 impl GbpBridgeDomainAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_bridge_domain_add_reply_e8d4e804") 
 	 } 
 } 
@@ -193,7 +193,7 @@ pub struct GbpBridgeDomainDel {
 	pub bd_id : u32, 
 } 
 impl GbpBridgeDomainDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_bridge_domain_del_c25fdce6") 
 	 } 
 } 
@@ -203,7 +203,7 @@ pub struct GbpBridgeDomainDelReply {
 	pub retval : i32, 
 } 
 impl GbpBridgeDomainDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_bridge_domain_del_reply_e8d4e804") 
 	 } 
 } 
@@ -213,7 +213,7 @@ pub struct GbpBridgeDomainDump {
 	pub context : u32, 
 } 
 impl GbpBridgeDomainDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_bridge_domain_dump_51077d14") 
 	 } 
 } 
@@ -223,7 +223,7 @@ pub struct GbpBridgeDomainDumpReply {
 	pub retval : i32, 
 } 
 impl GbpBridgeDomainDumpReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_bridge_domain_dump_reply_e8d4e804") 
 	 } 
 } 
@@ -233,7 +233,7 @@ pub struct GbpBridgeDomainDetails {
 	pub bd : GbpBridgeDomain, 
 } 
 impl GbpBridgeDomainDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_bridge_domain_details_2acd15f9") 
 	 } 
 } 
@@ -244,7 +244,7 @@ pub struct GbpRouteDomainAdd {
 	pub rd : GbpRouteDomain, 
 } 
 impl GbpRouteDomainAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_route_domain_add_2d0afe38") 
 	 } 
 } 
@@ -254,7 +254,7 @@ pub struct GbpRouteDomainAddReply {
 	pub retval : i32, 
 } 
 impl GbpRouteDomainAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_route_domain_add_reply_e8d4e804") 
 	 } 
 } 
@@ -265,7 +265,7 @@ pub struct GbpRouteDomainDel {
 	pub rd_id : u32, 
 } 
 impl GbpRouteDomainDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_route_domain_del_bee4edcd") 
 	 } 
 } 
@@ -275,7 +275,7 @@ pub struct GbpRouteDomainDelReply {
 	pub retval : i32, 
 } 
 impl GbpRouteDomainDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_route_domain_del_reply_e8d4e804") 
 	 } 
 } 
@@ -285,7 +285,7 @@ pub struct GbpRouteDomainDump {
 	pub context : u32, 
 } 
 impl GbpRouteDomainDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_route_domain_dump_51077d14") 
 	 } 
 } 
@@ -295,7 +295,7 @@ pub struct GbpRouteDomainDumpReply {
 	pub retval : i32, 
 } 
 impl GbpRouteDomainDumpReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_route_domain_dump_reply_e8d4e804") 
 	 } 
 } 
@@ -305,7 +305,7 @@ pub struct GbpRouteDomainDetails {
 	pub rd : GbpRouteDomain, 
 } 
 impl GbpRouteDomainDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_route_domain_details_8ab11375") 
 	 } 
 } 
@@ -316,7 +316,7 @@ pub struct GbpEndpointAdd {
 	pub endpoint : GbpEndpoint, 
 } 
 impl GbpEndpointAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_endpoint_add_9ce16d5a") 
 	 } 
 } 
@@ -327,7 +327,7 @@ pub struct GbpEndpointAddReply {
 	pub handle : u32, 
 } 
 impl GbpEndpointAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_endpoint_add_reply_1dd3ff3e") 
 	 } 
 } 
@@ -338,7 +338,7 @@ pub struct GbpEndpointDel {
 	pub handle : u32, 
 } 
 impl GbpEndpointDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_endpoint_del_b93cd566") 
 	 } 
 } 
@@ -348,7 +348,7 @@ pub struct GbpEndpointDelReply {
 	pub retval : i32, 
 } 
 impl GbpEndpointDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_endpoint_del_reply_e8d4e804") 
 	 } 
 } 
@@ -358,7 +358,7 @@ pub struct GbpEndpointDump {
 	pub context : u32, 
 } 
 impl GbpEndpointDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_endpoint_dump_51077d14") 
 	 } 
 } 
@@ -370,7 +370,7 @@ pub struct GbpEndpointDetails {
 	pub endpoint : GbpEndpoint, 
 } 
 impl GbpEndpointDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_endpoint_details_08aecb60") 
 	 } 
 } 
@@ -381,7 +381,7 @@ pub struct GbpEndpointGroupAdd {
 	pub epg : GbpEndpointGroup, 
 } 
 impl GbpEndpointGroupAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_endpoint_group_add_8e0f4054") 
 	 } 
 } 
@@ -391,7 +391,7 @@ pub struct GbpEndpointGroupAddReply {
 	pub retval : i32, 
 } 
 impl GbpEndpointGroupAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_endpoint_group_add_reply_e8d4e804") 
 	 } 
 } 
@@ -402,7 +402,7 @@ pub struct GbpEndpointGroupDel {
 	pub sclass : u16, 
 } 
 impl GbpEndpointGroupDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_endpoint_group_del_3436b8b7") 
 	 } 
 } 
@@ -412,7 +412,7 @@ pub struct GbpEndpointGroupDelReply {
 	pub retval : i32, 
 } 
 impl GbpEndpointGroupDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_endpoint_group_del_reply_e8d4e804") 
 	 } 
 } 
@@ -422,7 +422,7 @@ pub struct GbpEndpointGroupDump {
 	pub context : u32, 
 } 
 impl GbpEndpointGroupDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_endpoint_group_dump_51077d14") 
 	 } 
 } 
@@ -432,7 +432,7 @@ pub struct GbpEndpointGroupDetails {
 	pub epg : GbpEndpointGroup, 
 } 
 impl GbpEndpointGroupDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_endpoint_group_details_8f38292c") 
 	 } 
 } 
@@ -444,7 +444,7 @@ pub struct GbpRecircAddDel {
 	pub recirc : GbpRecirc, 
 } 
 impl GbpRecircAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_recirc_add_del_718c69c3") 
 	 } 
 } 
@@ -454,7 +454,7 @@ pub struct GbpRecircAddDelReply {
 	pub retval : i32, 
 } 
 impl GbpRecircAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_recirc_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -464,7 +464,7 @@ pub struct GbpRecircDump {
 	pub context : u32, 
 } 
 impl GbpRecircDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_recirc_dump_51077d14") 
 	 } 
 } 
@@ -474,7 +474,7 @@ pub struct GbpRecircDetails {
 	pub recirc : GbpRecirc, 
 } 
 impl GbpRecircDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_recirc_details_66ecc42e") 
 	 } 
 } 
@@ -486,7 +486,7 @@ pub struct GbpSubnetAddDel {
 	pub subnet : GbpSubnet, 
 } 
 impl GbpSubnetAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_subnet_add_del_888aca35") 
 	 } 
 } 
@@ -496,7 +496,7 @@ pub struct GbpSubnetAddDelReply {
 	pub retval : i32, 
 } 
 impl GbpSubnetAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_subnet_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -506,7 +506,7 @@ pub struct GbpSubnetDump {
 	pub context : u32, 
 } 
 impl GbpSubnetDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_subnet_dump_51077d14") 
 	 } 
 } 
@@ -516,7 +516,7 @@ pub struct GbpSubnetDetails {
 	pub subnet : GbpSubnet, 
 } 
 impl GbpSubnetDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_subnet_details_4ed84156") 
 	 } 
 } 
@@ -528,7 +528,7 @@ pub struct GbpContractAddDel {
 	pub contract : GbpContract, 
 } 
 impl GbpContractAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_contract_add_del_553e275b") 
 	 } 
 } 
@@ -539,7 +539,7 @@ pub struct GbpContractAddDelReply {
 	pub stats_index : u32, 
 } 
 impl GbpContractAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_contract_add_del_reply_1992deab") 
 	 } 
 } 
@@ -549,7 +549,7 @@ pub struct GbpContractDump {
 	pub context : u32, 
 } 
 impl GbpContractDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_contract_dump_51077d14") 
 	 } 
 } 
@@ -559,7 +559,7 @@ pub struct GbpContractDetails {
 	pub contract : GbpContract, 
 } 
 impl GbpContractDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_contract_details_2a18db6e") 
 	 } 
 } 
@@ -570,7 +570,7 @@ pub struct GbpVxlanTunnelAdd {
 	pub tunnel : GbpVxlanTunnel, 
 } 
 impl GbpVxlanTunnelAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_vxlan_tunnel_add_3e070b35") 
 	 } 
 } 
@@ -581,7 +581,7 @@ pub struct GbpVxlanTunnelAddReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl GbpVxlanTunnelAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_vxlan_tunnel_add_reply_5383d31f") 
 	 } 
 } 
@@ -592,7 +592,7 @@ pub struct GbpVxlanTunnelDel {
 	pub vni : u32, 
 } 
 impl GbpVxlanTunnelDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_vxlan_tunnel_del_8d1f2fe9") 
 	 } 
 } 
@@ -602,7 +602,7 @@ pub struct GbpVxlanTunnelDelReply {
 	pub retval : i32, 
 } 
 impl GbpVxlanTunnelDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_vxlan_tunnel_del_reply_e8d4e804") 
 	 } 
 } 
@@ -612,7 +612,7 @@ pub struct GbpVxlanTunnelDump {
 	pub context : u32, 
 } 
 impl GbpVxlanTunnelDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_vxlan_tunnel_dump_51077d14") 
 	 } 
 } 
@@ -622,7 +622,7 @@ pub struct GbpVxlanTunnelDetails {
 	pub tunnel : GbpVxlanTunnel, 
 } 
 impl GbpVxlanTunnelDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_vxlan_tunnel_details_65c6c818") 
 	 } 
 } 
@@ -634,7 +634,7 @@ pub struct GbpExtItfAddDel {
 	pub ext_itf : GbpExtItf, 
 } 
 impl GbpExtItfAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_ext_itf_add_del_12ed5700") 
 	 } 
 } 
@@ -644,7 +644,7 @@ pub struct GbpExtItfAddDelReply {
 	pub retval : i32, 
 } 
 impl GbpExtItfAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_ext_itf_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -654,7 +654,7 @@ pub struct GbpExtItfDump {
 	pub context : u32, 
 } 
 impl GbpExtItfDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_ext_itf_dump_51077d14") 
 	 } 
 } 
@@ -664,7 +664,7 @@ pub struct GbpExtItfDetails {
 	pub ext_itf : GbpExtItf, 
 } 
 impl GbpExtItfDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("gbp_ext_itf_details_408a45c0") 
 	 } 
 } 

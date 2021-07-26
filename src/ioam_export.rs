@@ -15,7 +15,7 @@ pub struct IoamExportIp6EnableDisable {
 	pub src_address : Ip4Address, 
 } 
 impl IoamExportIp6EnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ioam_export_ip6_enable_disable_e4d4ebfa") 
 	 } 
 } 
@@ -25,7 +25,7 @@ pub struct IoamExportIp6EnableDisableReply {
 	pub retval : i32, 
 } 
 impl IoamExportIp6EnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ioam_export_ip6_enable_disable_reply_e8d4e804") 
 	 } 
 } 

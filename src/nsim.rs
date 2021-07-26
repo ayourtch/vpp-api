@@ -15,7 +15,7 @@ pub struct NsimCrossConnectEnableDisable {
 	pub sw_if_index1 : InterfaceIndex, 
 } 
 impl NsimCrossConnectEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsim_cross_connect_enable_disable_16f70bdf") 
 	 } 
 } 
@@ -25,7 +25,7 @@ pub struct NsimCrossConnectEnableDisableReply {
 	pub retval : i32, 
 } 
 impl NsimCrossConnectEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsim_cross_connect_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -37,7 +37,7 @@ pub struct NsimOutputFeatureEnableDisable {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl NsimOutputFeatureEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsim_output_feature_enable_disable_3865946c") 
 	 } 
 } 
@@ -47,7 +47,7 @@ pub struct NsimOutputFeatureEnableDisableReply {
 	pub retval : i32, 
 } 
 impl NsimOutputFeatureEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsim_output_feature_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -61,7 +61,7 @@ pub struct NsimConfigure {
 	pub packets_per_drop : u32, 
 } 
 impl NsimConfigure { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsim_configure_16ed400f") 
 	 } 
 } 
@@ -71,7 +71,7 @@ pub struct NsimConfigureReply {
 	pub retval : i32, 
 } 
 impl NsimConfigureReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsim_configure_reply_e8d4e804") 
 	 } 
 } 
@@ -86,7 +86,7 @@ pub struct NsimConfigure2 {
 	pub packets_per_reorder : u32, 
 } 
 impl NsimConfigure2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsim_configure2_64de8ed3") 
 	 } 
 } 
@@ -96,7 +96,7 @@ pub struct NsimConfigure2Reply {
 	pub retval : i32, 
 } 
 impl NsimConfigure2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsim_configure2_reply_e8d4e804") 
 	 } 
 } 

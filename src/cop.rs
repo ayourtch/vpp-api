@@ -14,7 +14,7 @@ pub struct CopInterfaceEnableDisable {
 	pub enable_disable : bool, 
 } 
 impl CopInterfaceEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cop_interface_enable_disable_5501adee") 
 	 } 
 } 
@@ -24,7 +24,7 @@ pub struct CopInterfaceEnableDisableReply {
 	pub retval : i32, 
 } 
 impl CopInterfaceEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cop_interface_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct CopWhitelistEnableDisable {
 	pub default_cop : bool, 
 } 
 impl CopWhitelistEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cop_whitelist_enable_disable_debe13ea") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct CopWhitelistEnableDisableReply {
 	pub retval : i32, 
 } 
 impl CopWhitelistEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("cop_whitelist_enable_disable_reply_e8d4e804") 
 	 } 
 } 

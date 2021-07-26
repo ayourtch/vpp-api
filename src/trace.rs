@@ -16,7 +16,7 @@ pub struct TraceProfileAdd {
 	pub app_data : u32, 
 } 
 impl TraceProfileAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_profile_add_de08aa6d") 
 	 } 
 } 
@@ -26,7 +26,7 @@ pub struct TraceProfileAddReply {
 	pub retval : i32, 
 } 
 impl TraceProfileAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_profile_add_reply_e8d4e804") 
 	 } 
 } 
@@ -36,7 +36,7 @@ pub struct TraceProfileDel {
 	pub context : u32, 
 } 
 impl TraceProfileDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_profile_del_51077d14") 
 	 } 
 } 
@@ -46,7 +46,7 @@ pub struct TraceProfileDelReply {
 	pub retval : i32, 
 } 
 impl TraceProfileDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_profile_del_reply_e8d4e804") 
 	 } 
 } 
@@ -56,7 +56,7 @@ pub struct TraceProfileShowConfig {
 	pub context : u32, 
 } 
 impl TraceProfileShowConfig { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_profile_show_config_51077d14") 
 	 } 
 } 
@@ -71,7 +71,7 @@ pub struct TraceProfileShowConfigReply {
 	pub app_data : u32, 
 } 
 impl TraceProfileShowConfigReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_profile_show_config_reply_0f1d374c") 
 	 } 
 } 

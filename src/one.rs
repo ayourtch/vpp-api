@@ -48,7 +48,7 @@ pub struct OneAddDelLocatorSet {
 	pub locators : LocalLocator, 
 } 
 impl OneAddDelLocatorSet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_locator_set_6fcd6471") 
 	 } 
 } 
@@ -59,7 +59,7 @@ pub struct OneAddDelLocatorSetReply {
 	pub ls_index : u32, 
 } 
 impl OneAddDelLocatorSetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_locator_set_reply_b6666db4") 
 	 } 
 } 
@@ -74,7 +74,7 @@ pub struct OneAddDelLocator {
 	pub weight : u8, 
 } 
 impl OneAddDelLocator { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_locator_af4d8f13") 
 	 } 
 } 
@@ -84,7 +84,7 @@ pub struct OneAddDelLocatorReply {
 	pub retval : i32, 
 } 
 impl OneAddDelLocatorReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_locator_reply_e8d4e804") 
 	 } 
 } 
@@ -99,7 +99,7 @@ pub struct OneAddDelLocalEid {
 	pub key : HmacKey, 
 } 
 impl OneAddDelLocalEid { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_local_eid_21f573bd") 
 	 } 
 } 
@@ -109,7 +109,7 @@ pub struct OneAddDelLocalEidReply {
 	pub retval : i32, 
 } 
 impl OneAddDelLocalEidReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_local_eid_reply_e8d4e804") 
 	 } 
 } 
@@ -120,7 +120,7 @@ pub struct OneMapRegisterSetTtl {
 	pub ttl : u32, 
 } 
 impl OneMapRegisterSetTtl { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_map_register_set_ttl_dd59f1f3") 
 	 } 
 } 
@@ -130,7 +130,7 @@ pub struct OneMapRegisterSetTtlReply {
 	pub retval : i32, 
 } 
 impl OneMapRegisterSetTtlReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_map_register_set_ttl_reply_e8d4e804") 
 	 } 
 } 
@@ -140,7 +140,7 @@ pub struct ShowOneMapRegisterTtl {
 	pub context : u32, 
 } 
 impl ShowOneMapRegisterTtl { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_map_register_ttl_51077d14") 
 	 } 
 } 
@@ -151,7 +151,7 @@ pub struct ShowOneMapRegisterTtlReply {
 	pub ttl : u32, 
 } 
 impl ShowOneMapRegisterTtlReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_map_register_ttl_reply_fa83dd66") 
 	 } 
 } 
@@ -163,7 +163,7 @@ pub struct OneAddDelMapServer {
 	pub ip_address : Address, 
 } 
 impl OneAddDelMapServer { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_map_server_6598ea7c") 
 	 } 
 } 
@@ -173,7 +173,7 @@ pub struct OneAddDelMapServerReply {
 	pub retval : i32, 
 } 
 impl OneAddDelMapServerReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_map_server_reply_e8d4e804") 
 	 } 
 } 
@@ -185,7 +185,7 @@ pub struct OneAddDelMapResolver {
 	pub ip_address : Address, 
 } 
 impl OneAddDelMapResolver { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_map_resolver_6598ea7c") 
 	 } 
 } 
@@ -195,7 +195,7 @@ pub struct OneAddDelMapResolverReply {
 	pub retval : i32, 
 } 
 impl OneAddDelMapResolverReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_map_resolver_reply_e8d4e804") 
 	 } 
 } 
@@ -206,7 +206,7 @@ pub struct OneEnableDisable {
 	pub is_enable : bool, 
 } 
 impl OneEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_enable_disable_c264d7bf") 
 	 } 
 } 
@@ -216,7 +216,7 @@ pub struct OneEnableDisableReply {
 	pub retval : i32, 
 } 
 impl OneEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -228,7 +228,7 @@ pub struct OneNshSetLocatorSet {
 	pub ls_name : FixedSizeString<U64>, 
 } 
 impl OneNshSetLocatorSet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_nsh_set_locator_set_486e2b76") 
 	 } 
 } 
@@ -238,7 +238,7 @@ pub struct OneNshSetLocatorSetReply {
 	pub retval : i32, 
 } 
 impl OneNshSetLocatorSetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_nsh_set_locator_set_reply_e8d4e804") 
 	 } 
 } 
@@ -250,7 +250,7 @@ pub struct OnePitrSetLocatorSet {
 	pub ls_name : FixedSizeString<U64>, 
 } 
 impl OnePitrSetLocatorSet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_pitr_set_locator_set_486e2b76") 
 	 } 
 } 
@@ -260,7 +260,7 @@ pub struct OnePitrSetLocatorSetReply {
 	pub retval : i32, 
 } 
 impl OnePitrSetLocatorSetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_pitr_set_locator_set_reply_e8d4e804") 
 	 } 
 } 
@@ -272,7 +272,7 @@ pub struct OneUsePetr {
 	pub is_add : bool, 
 } 
 impl OneUsePetr { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_use_petr_9e141831") 
 	 } 
 } 
@@ -282,7 +282,7 @@ pub struct OneUsePetrReply {
 	pub retval : i32, 
 } 
 impl OneUsePetrReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_use_petr_reply_e8d4e804") 
 	 } 
 } 
@@ -292,7 +292,7 @@ pub struct ShowOneUsePetr {
 	pub context : u32, 
 } 
 impl ShowOneUsePetr { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_use_petr_51077d14") 
 	 } 
 } 
@@ -304,7 +304,7 @@ pub struct ShowOneUsePetrReply {
 	pub ip_address : Address, 
 } 
 impl ShowOneUsePetrReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_use_petr_reply_10e744a6") 
 	 } 
 } 
@@ -314,7 +314,7 @@ pub struct ShowOneRlocProbeState {
 	pub context : u32, 
 } 
 impl ShowOneRlocProbeState { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_rloc_probe_state_51077d14") 
 	 } 
 } 
@@ -325,7 +325,7 @@ pub struct ShowOneRlocProbeStateReply {
 	pub is_enable : bool, 
 } 
 impl ShowOneRlocProbeStateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_rloc_probe_state_reply_f15abb16") 
 	 } 
 } 
@@ -336,7 +336,7 @@ pub struct OneRlocProbeEnableDisable {
 	pub is_enable : bool, 
 } 
 impl OneRlocProbeEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_rloc_probe_enable_disable_c264d7bf") 
 	 } 
 } 
@@ -346,7 +346,7 @@ pub struct OneRlocProbeEnableDisableReply {
 	pub retval : i32, 
 } 
 impl OneRlocProbeEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_rloc_probe_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -357,7 +357,7 @@ pub struct OneMapRegisterEnableDisable {
 	pub is_enable : bool, 
 } 
 impl OneMapRegisterEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_map_register_enable_disable_c264d7bf") 
 	 } 
 } 
@@ -367,7 +367,7 @@ pub struct OneMapRegisterEnableDisableReply {
 	pub retval : i32, 
 } 
 impl OneMapRegisterEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_map_register_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -377,7 +377,7 @@ pub struct ShowOneMapRegisterState {
 	pub context : u32, 
 } 
 impl ShowOneMapRegisterState { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_map_register_state_51077d14") 
 	 } 
 } 
@@ -388,7 +388,7 @@ pub struct ShowOneMapRegisterStateReply {
 	pub is_enable : bool, 
 } 
 impl ShowOneMapRegisterStateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_map_register_state_reply_f15abb16") 
 	 } 
 } 
@@ -399,7 +399,7 @@ pub struct OneMapRequestMode {
 	pub mode : OneMapMode, 
 } 
 impl OneMapRequestMode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_map_request_mode_ffa5d2f5") 
 	 } 
 } 
@@ -409,7 +409,7 @@ pub struct OneMapRequestModeReply {
 	pub retval : i32, 
 } 
 impl OneMapRequestModeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_map_request_mode_reply_e8d4e804") 
 	 } 
 } 
@@ -419,7 +419,7 @@ pub struct ShowOneMapRequestMode {
 	pub context : u32, 
 } 
 impl ShowOneMapRequestMode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_map_request_mode_51077d14") 
 	 } 
 } 
@@ -430,7 +430,7 @@ pub struct ShowOneMapRequestModeReply {
 	pub mode : OneMapMode, 
 } 
 impl ShowOneMapRequestModeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_map_request_mode_reply_d41f3c1d") 
 	 } 
 } 
@@ -449,7 +449,7 @@ pub struct OneAddDelRemoteMapping {
 	pub rlocs : RemoteLocator, 
 } 
 impl OneAddDelRemoteMapping { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_remote_mapping_fae8ed77") 
 	 } 
 } 
@@ -459,7 +459,7 @@ pub struct OneAddDelRemoteMappingReply {
 	pub retval : i32, 
 } 
 impl OneAddDelRemoteMappingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_remote_mapping_reply_e8d4e804") 
 	 } 
 } 
@@ -472,7 +472,7 @@ pub struct OneAddDelL2ArpEntry {
 	pub entry : OneL2ArpEntry, 
 } 
 impl OneAddDelL2ArpEntry { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_l2_arp_entry_33209078") 
 	 } 
 } 
@@ -482,7 +482,7 @@ pub struct OneAddDelL2ArpEntryReply {
 	pub retval : i32, 
 } 
 impl OneAddDelL2ArpEntryReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_l2_arp_entry_reply_e8d4e804") 
 	 } 
 } 
@@ -493,7 +493,7 @@ pub struct OneL2ArpEntriesGet {
 	pub bd : u32, 
 } 
 impl OneL2ArpEntriesGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_l2_arp_entries_get_4d418cf4") 
 	 } 
 } 
@@ -505,7 +505,7 @@ pub struct OneL2ArpEntriesGetReply {
 	pub entries : OneL2ArpEntry, 
 } 
 impl OneL2ArpEntriesGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_l2_arp_entries_get_reply_b0a47bbe") 
 	 } 
 } 
@@ -518,7 +518,7 @@ pub struct OneAddDelNdpEntry {
 	pub entry : OneNdpEntry, 
 } 
 impl OneAddDelNdpEntry { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_ndp_entry_d1629a2f") 
 	 } 
 } 
@@ -528,7 +528,7 @@ pub struct OneAddDelNdpEntryReply {
 	pub retval : i32, 
 } 
 impl OneAddDelNdpEntryReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_ndp_entry_reply_e8d4e804") 
 	 } 
 } 
@@ -539,7 +539,7 @@ pub struct OneNdpEntriesGet {
 	pub bd : u32, 
 } 
 impl OneNdpEntriesGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_ndp_entries_get_4d418cf4") 
 	 } 
 } 
@@ -551,7 +551,7 @@ pub struct OneNdpEntriesGetReply {
 	pub entries : OneNdpEntry, 
 } 
 impl OneNdpEntriesGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_ndp_entries_get_reply_0bd34161") 
 	 } 
 } 
@@ -562,7 +562,7 @@ pub struct OneSetTransportProtocol {
 	pub protocol : u8, 
 } 
 impl OneSetTransportProtocol { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_set_transport_protocol_07b6b85f") 
 	 } 
 } 
@@ -572,7 +572,7 @@ pub struct OneSetTransportProtocolReply {
 	pub retval : i32, 
 } 
 impl OneSetTransportProtocolReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_set_transport_protocol_reply_e8d4e804") 
 	 } 
 } 
@@ -582,7 +582,7 @@ pub struct OneGetTransportProtocol {
 	pub context : u32, 
 } 
 impl OneGetTransportProtocol { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_get_transport_protocol_51077d14") 
 	 } 
 } 
@@ -593,7 +593,7 @@ pub struct OneGetTransportProtocolReply {
 	pub protocol : u8, 
 } 
 impl OneGetTransportProtocolReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_get_transport_protocol_reply_62a28eb3") 
 	 } 
 } 
@@ -603,7 +603,7 @@ pub struct OneNdpBdGet {
 	pub context : u32, 
 } 
 impl OneNdpBdGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_ndp_bd_get_51077d14") 
 	 } 
 } 
@@ -615,7 +615,7 @@ pub struct OneNdpBdGetReply {
 	pub bridge_domains : u32, 
 } 
 impl OneNdpBdGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_ndp_bd_get_reply_221ac888") 
 	 } 
 } 
@@ -625,7 +625,7 @@ pub struct OneL2ArpBdGet {
 	pub context : u32, 
 } 
 impl OneL2ArpBdGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_l2_arp_bd_get_51077d14") 
 	 } 
 } 
@@ -637,7 +637,7 @@ pub struct OneL2ArpBdGetReply {
 	pub bridge_domains : u32, 
 } 
 impl OneL2ArpBdGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_l2_arp_bd_get_reply_221ac888") 
 	 } 
 } 
@@ -651,7 +651,7 @@ pub struct OneAddDelAdjacency {
 	pub leid : Eid, 
 } 
 impl OneAddDelAdjacency { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_adjacency_e48e7afe") 
 	 } 
 } 
@@ -661,7 +661,7 @@ pub struct OneAddDelAdjacencyReply {
 	pub retval : i32, 
 } 
 impl OneAddDelAdjacencyReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_adjacency_reply_e8d4e804") 
 	 } 
 } 
@@ -673,7 +673,7 @@ pub struct OneAddDelMapRequestItrRlocs {
 	pub locator_set_name : FixedSizeString<U64>, 
 } 
 impl OneAddDelMapRequestItrRlocs { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_map_request_itr_rlocs_6be88e45") 
 	 } 
 } 
@@ -683,7 +683,7 @@ pub struct OneAddDelMapRequestItrRlocsReply {
 	pub retval : i32, 
 } 
 impl OneAddDelMapRequestItrRlocsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_add_del_map_request_itr_rlocs_reply_e8d4e804") 
 	 } 
 } 
@@ -697,7 +697,7 @@ pub struct OneEidTableAddDelMap {
 	pub is_l2 : bool, 
 } 
 impl OneEidTableAddDelMap { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_eid_table_add_del_map_9481416b") 
 	 } 
 } 
@@ -707,7 +707,7 @@ pub struct OneEidTableAddDelMapReply {
 	pub retval : i32, 
 } 
 impl OneEidTableAddDelMapReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_eid_table_add_del_map_reply_e8d4e804") 
 	 } 
 } 
@@ -720,7 +720,7 @@ pub struct OneLocatorDump {
 	pub is_index_set : bool, 
 } 
 impl OneLocatorDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_locator_dump_9b11076c") 
 	 } 
 } 
@@ -734,7 +734,7 @@ pub struct OneLocatorDetails {
 	pub weight : u8, 
 } 
 impl OneLocatorDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_locator_details_c0c4c2a7") 
 	 } 
 } 
@@ -745,7 +745,7 @@ pub struct OneLocatorSetDetails {
 	pub ls_name : FixedSizeString<U64>, 
 } 
 impl OneLocatorSetDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_locator_set_details_5b33a105") 
 	 } 
 } 
@@ -756,7 +756,7 @@ pub struct OneLocatorSetDump {
 	pub filter : OneFilter, 
 } 
 impl OneLocatorSetDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_locator_set_dump_71190768") 
 	 } 
 } 
@@ -775,7 +775,7 @@ pub struct OneEidTableDetails {
 	pub key : HmacKey, 
 } 
 impl OneEidTableDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_eid_table_details_4bc32e3a") 
 	 } 
 } 
@@ -789,7 +789,7 @@ pub struct OneEidTableDump {
 	pub filter : OneFilter, 
 } 
 impl OneEidTableDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_eid_table_dump_95151038") 
 	 } 
 } 
@@ -801,7 +801,7 @@ pub struct OneAdjacenciesGetReply {
 	pub adjacencies : OneAdjacency, 
 } 
 impl OneAdjacenciesGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_adjacencies_get_reply_a8ed89a5") 
 	 } 
 } 
@@ -812,7 +812,7 @@ pub struct OneAdjacenciesGet {
 	pub vni : u32, 
 } 
 impl OneAdjacenciesGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_adjacencies_get_8d1f2fe9") 
 	 } 
 } 
@@ -823,7 +823,7 @@ pub struct OneEidTableMapDetails {
 	pub dp_table : u32, 
 } 
 impl OneEidTableMapDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_eid_table_map_details_0b6859e2") 
 	 } 
 } 
@@ -834,7 +834,7 @@ pub struct OneEidTableMapDump {
 	pub is_l2 : bool, 
 } 
 impl OneEidTableMapDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_eid_table_map_dump_d6cf0c3d") 
 	 } 
 } 
@@ -844,7 +844,7 @@ pub struct OneEidTableVniDump {
 	pub context : u32, 
 } 
 impl OneEidTableVniDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_eid_table_vni_dump_51077d14") 
 	 } 
 } 
@@ -854,7 +854,7 @@ pub struct OneEidTableVniDetails {
 	pub vni : u32, 
 } 
 impl OneEidTableVniDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_eid_table_vni_details_64abc01e") 
 	 } 
 } 
@@ -864,7 +864,7 @@ pub struct OneMapResolverDetails {
 	pub ip_address : Address, 
 } 
 impl OneMapResolverDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_map_resolver_details_82a09deb") 
 	 } 
 } 
@@ -874,7 +874,7 @@ pub struct OneMapResolverDump {
 	pub context : u32, 
 } 
 impl OneMapResolverDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_map_resolver_dump_51077d14") 
 	 } 
 } 
@@ -884,7 +884,7 @@ pub struct OneMapServerDetails {
 	pub ip_address : Address, 
 } 
 impl OneMapServerDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_map_server_details_82a09deb") 
 	 } 
 } 
@@ -894,7 +894,7 @@ pub struct OneMapServerDump {
 	pub context : u32, 
 } 
 impl OneMapServerDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_map_server_dump_51077d14") 
 	 } 
 } 
@@ -904,7 +904,7 @@ pub struct ShowOneStatus {
 	pub context : u32, 
 } 
 impl ShowOneStatus { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_status_51077d14") 
 	 } 
 } 
@@ -916,7 +916,7 @@ pub struct ShowOneStatusReply {
 	pub gpe_status : bool, 
 } 
 impl ShowOneStatusReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_status_reply_961bb25b") 
 	 } 
 } 
@@ -926,7 +926,7 @@ pub struct OneGetMapRequestItrRlocs {
 	pub context : u32, 
 } 
 impl OneGetMapRequestItrRlocs { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_get_map_request_itr_rlocs_51077d14") 
 	 } 
 } 
@@ -937,7 +937,7 @@ pub struct OneGetMapRequestItrRlocsReply {
 	pub locator_set_name : FixedSizeString<U64>, 
 } 
 impl OneGetMapRequestItrRlocsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_get_map_request_itr_rlocs_reply_76580f3a") 
 	 } 
 } 
@@ -947,7 +947,7 @@ pub struct ShowOneNshMapping {
 	pub context : u32, 
 } 
 impl ShowOneNshMapping { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_nsh_mapping_51077d14") 
 	 } 
 } 
@@ -959,7 +959,7 @@ pub struct ShowOneNshMappingReply {
 	pub locator_set_name : FixedSizeString<U64>, 
 } 
 impl ShowOneNshMappingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_nsh_mapping_reply_46478c02") 
 	 } 
 } 
@@ -969,7 +969,7 @@ pub struct ShowOnePitr {
 	pub context : u32, 
 } 
 impl ShowOnePitr { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_pitr_51077d14") 
 	 } 
 } 
@@ -981,7 +981,7 @@ pub struct ShowOnePitrReply {
 	pub locator_set_name : FixedSizeString<U64>, 
 } 
 impl ShowOnePitrReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_pitr_reply_a2d1a49f") 
 	 } 
 } 
@@ -991,7 +991,7 @@ pub struct OneStatsDump {
 	pub context : u32, 
 } 
 impl OneStatsDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_stats_dump_51077d14") 
 	 } 
 } 
@@ -1007,7 +1007,7 @@ pub struct OneStatsDetails {
 	pub bytes : u32, 
 } 
 impl OneStatsDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_stats_details_ff6ef238") 
 	 } 
 } 
@@ -1017,7 +1017,7 @@ pub struct OneStatsFlush {
 	pub context : u32, 
 } 
 impl OneStatsFlush { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_stats_flush_51077d14") 
 	 } 
 } 
@@ -1027,7 +1027,7 @@ pub struct OneStatsFlushReply {
 	pub retval : i32, 
 } 
 impl OneStatsFlushReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_stats_flush_reply_e8d4e804") 
 	 } 
 } 
@@ -1038,7 +1038,7 @@ pub struct OneStatsEnableDisable {
 	pub is_enable : bool, 
 } 
 impl OneStatsEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_stats_enable_disable_c264d7bf") 
 	 } 
 } 
@@ -1048,7 +1048,7 @@ pub struct OneStatsEnableDisableReply {
 	pub retval : i32, 
 } 
 impl OneStatsEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_stats_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -1058,7 +1058,7 @@ pub struct ShowOneStatsEnableDisable {
 	pub context : u32, 
 } 
 impl ShowOneStatsEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_stats_enable_disable_51077d14") 
 	 } 
 } 
@@ -1069,7 +1069,7 @@ pub struct ShowOneStatsEnableDisableReply {
 	pub is_enable : bool, 
 } 
 impl ShowOneStatsEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_stats_enable_disable_reply_f15abb16") 
 	 } 
 } 
@@ -1080,7 +1080,7 @@ pub struct OneMapRegisterFallbackThreshold {
 	pub value : u32, 
 } 
 impl OneMapRegisterFallbackThreshold { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_map_register_fallback_threshold_f7d4a475") 
 	 } 
 } 
@@ -1090,7 +1090,7 @@ pub struct OneMapRegisterFallbackThresholdReply {
 	pub retval : i32, 
 } 
 impl OneMapRegisterFallbackThresholdReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_map_register_fallback_threshold_reply_e8d4e804") 
 	 } 
 } 
@@ -1100,7 +1100,7 @@ pub struct ShowOneMapRegisterFallbackThreshold {
 	pub context : u32, 
 } 
 impl ShowOneMapRegisterFallbackThreshold { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_map_register_fallback_threshold_51077d14") 
 	 } 
 } 
@@ -1111,7 +1111,7 @@ pub struct ShowOneMapRegisterFallbackThresholdReply {
 	pub value : u32, 
 } 
 impl ShowOneMapRegisterFallbackThresholdReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_one_map_register_fallback_threshold_reply_c93a9113") 
 	 } 
 } 
@@ -1122,7 +1122,7 @@ pub struct OneEnableDisableXtrMode {
 	pub is_enable : bool, 
 } 
 impl OneEnableDisableXtrMode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_enable_disable_xtr_mode_c264d7bf") 
 	 } 
 } 
@@ -1132,7 +1132,7 @@ pub struct OneEnableDisableXtrModeReply {
 	pub retval : i32, 
 } 
 impl OneEnableDisableXtrModeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_enable_disable_xtr_mode_reply_e8d4e804") 
 	 } 
 } 
@@ -1142,7 +1142,7 @@ pub struct OneShowXtrMode {
 	pub context : u32, 
 } 
 impl OneShowXtrMode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_show_xtr_mode_51077d14") 
 	 } 
 } 
@@ -1153,7 +1153,7 @@ pub struct OneShowXtrModeReply {
 	pub is_enable : bool, 
 } 
 impl OneShowXtrModeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_show_xtr_mode_reply_f15abb16") 
 	 } 
 } 
@@ -1164,7 +1164,7 @@ pub struct OneEnableDisablePetrMode {
 	pub is_enable : bool, 
 } 
 impl OneEnableDisablePetrMode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_enable_disable_petr_mode_c264d7bf") 
 	 } 
 } 
@@ -1174,7 +1174,7 @@ pub struct OneEnableDisablePetrModeReply {
 	pub retval : i32, 
 } 
 impl OneEnableDisablePetrModeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_enable_disable_petr_mode_reply_e8d4e804") 
 	 } 
 } 
@@ -1184,7 +1184,7 @@ pub struct OneShowPetrMode {
 	pub context : u32, 
 } 
 impl OneShowPetrMode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_show_petr_mode_51077d14") 
 	 } 
 } 
@@ -1195,7 +1195,7 @@ pub struct OneShowPetrModeReply {
 	pub is_enable : bool, 
 } 
 impl OneShowPetrModeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_show_petr_mode_reply_f15abb16") 
 	 } 
 } 
@@ -1206,7 +1206,7 @@ pub struct OneEnableDisablePitrMode {
 	pub is_enable : bool, 
 } 
 impl OneEnableDisablePitrMode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_enable_disable_pitr_mode_c264d7bf") 
 	 } 
 } 
@@ -1216,7 +1216,7 @@ pub struct OneEnableDisablePitrModeReply {
 	pub retval : i32, 
 } 
 impl OneEnableDisablePitrModeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_enable_disable_pitr_mode_reply_e8d4e804") 
 	 } 
 } 
@@ -1226,7 +1226,7 @@ pub struct OneShowPitrMode {
 	pub context : u32, 
 } 
 impl OneShowPitrMode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_show_pitr_mode_51077d14") 
 	 } 
 } 
@@ -1237,7 +1237,7 @@ pub struct OneShowPitrModeReply {
 	pub is_enable : bool, 
 } 
 impl OneShowPitrModeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("one_show_pitr_mode_reply_f15abb16") 
 	 } 
 } 

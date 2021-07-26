@@ -32,7 +32,7 @@ pub struct VxlanGbpTunnelAddDel {
 	pub tunnel : VxlanGbpTunnel, 
 } 
 impl VxlanGbpTunnelAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gbp_tunnel_add_del_8c819166") 
 	 } 
 } 
@@ -43,7 +43,7 @@ pub struct VxlanGbpTunnelAddDelReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl VxlanGbpTunnelAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gbp_tunnel_add_del_reply_5383d31f") 
 	 } 
 } 
@@ -54,7 +54,7 @@ pub struct VxlanGbpTunnelDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl VxlanGbpTunnelDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gbp_tunnel_dump_f9e6675e") 
 	 } 
 } 
@@ -64,7 +64,7 @@ pub struct VxlanGbpTunnelDetails {
 	pub tunnel : VxlanGbpTunnel, 
 } 
 impl VxlanGbpTunnelDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vxlan_gbp_tunnel_details_1da24016") 
 	 } 
 } 
@@ -77,7 +77,7 @@ pub struct SwInterfaceSetVxlanGbpBypass {
 	pub enable : bool, 
 } 
 impl SwInterfaceSetVxlanGbpBypass { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_vxlan_gbp_bypass_65247409") 
 	 } 
 } 
@@ -87,7 +87,7 @@ pub struct SwInterfaceSetVxlanGbpBypassReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceSetVxlanGbpBypassReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_vxlan_gbp_bypass_reply_e8d4e804") 
 	 } 
 } 

@@ -13,7 +13,7 @@ pub struct CryptoSwSchedulerSetWorker {
 	pub crypto_enable : bool, 
 } 
 impl CryptoSwSchedulerSetWorker { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("crypto_sw_scheduler_set_worker_b4274502") 
 	 } 
 } 
@@ -23,7 +23,7 @@ pub struct CryptoSwSchedulerSetWorkerReply {
 	pub retval : i32, 
 } 
 impl CryptoSwSchedulerSetWorkerReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("crypto_sw_scheduler_set_worker_reply_e8d4e804") 
 	 } 
 } 

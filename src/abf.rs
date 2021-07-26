@@ -29,7 +29,7 @@ pub struct AbfPluginGetVersion {
 	pub context : u32, 
 } 
 impl AbfPluginGetVersion { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("abf_plugin_get_version_51077d14") 
 	 } 
 } 
@@ -40,7 +40,7 @@ pub struct AbfPluginGetVersionReply {
 	pub minor : u32, 
 } 
 impl AbfPluginGetVersionReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("abf_plugin_get_version_reply_9b32cf86") 
 	 } 
 } 
@@ -52,7 +52,7 @@ pub struct AbfPolicyAddDel {
 	pub policy : AbfPolicy, 
 } 
 impl AbfPolicyAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("abf_policy_add_del_ee66f93e") 
 	 } 
 } 
@@ -62,7 +62,7 @@ pub struct AbfPolicyAddDelReply {
 	pub retval : i32, 
 } 
 impl AbfPolicyAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("abf_policy_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -72,7 +72,7 @@ pub struct AbfPolicyDetails {
 	pub policy : AbfPolicy, 
 } 
 impl AbfPolicyDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("abf_policy_details_6769e504") 
 	 } 
 } 
@@ -82,7 +82,7 @@ pub struct AbfPolicyDump {
 	pub context : u32, 
 } 
 impl AbfPolicyDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("abf_policy_dump_51077d14") 
 	 } 
 } 
@@ -94,7 +94,7 @@ pub struct AbfItfAttachAddDel {
 	pub attach : AbfItfAttach, 
 } 
 impl AbfItfAttachAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("abf_itf_attach_add_del_25c8621b") 
 	 } 
 } 
@@ -104,7 +104,7 @@ pub struct AbfItfAttachAddDelReply {
 	pub retval : i32, 
 } 
 impl AbfItfAttachAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("abf_itf_attach_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -114,7 +114,7 @@ pub struct AbfItfAttachDetails {
 	pub attach : AbfItfAttach, 
 } 
 impl AbfItfAttachDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("abf_itf_attach_details_7819523e") 
 	 } 
 } 
@@ -124,7 +124,7 @@ pub struct AbfItfAttachDump {
 	pub context : u32, 
 } 
 impl AbfItfAttachDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("abf_itf_attach_dump_51077d14") 
 	 } 
 } 

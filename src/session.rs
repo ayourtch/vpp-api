@@ -31,7 +31,7 @@ pub struct AppAttach {
 	pub namespace_id : VariableSizeString, 
 } 
 impl AppAttach { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("app_attach_5f4a260d") 
 	 } 
 } 
@@ -50,7 +50,7 @@ pub struct AppAttachReply {
 	pub segment_name : VariableSizeString, 
 } 
 impl AppAttachReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("app_attach_reply_5c89c3b0") 
 	 } 
 } 
@@ -60,7 +60,7 @@ pub struct ApplicationDetach {
 	pub context : u32, 
 } 
 impl ApplicationDetach { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("application_detach_51077d14") 
 	 } 
 } 
@@ -70,7 +70,7 @@ pub struct ApplicationDetachReply {
 	pub retval : i32, 
 } 
 impl ApplicationDetachReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("application_detach_reply_e8d4e804") 
 	 } 
 } 
@@ -83,7 +83,7 @@ pub struct AppAddCertKeyPair {
 	pub certkey : u8, 
 } 
 impl AppAddCertKeyPair { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("app_add_cert_key_pair_02eb8016") 
 	 } 
 } 
@@ -94,7 +94,7 @@ pub struct AppAddCertKeyPairReply {
 	pub index : u32, 
 } 
 impl AppAddCertKeyPairReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("app_add_cert_key_pair_reply_b42958d0") 
 	 } 
 } 
@@ -105,7 +105,7 @@ pub struct AppDelCertKeyPair {
 	pub index : u32, 
 } 
 impl AppDelCertKeyPair { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("app_del_cert_key_pair_8ac76db6") 
 	 } 
 } 
@@ -115,7 +115,7 @@ pub struct AppDelCertKeyPairReply {
 	pub retval : i32, 
 } 
 impl AppDelCertKeyPairReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("app_del_cert_key_pair_reply_e8d4e804") 
 	 } 
 } 
@@ -128,7 +128,7 @@ pub struct ApplicationTlsCertAdd {
 	pub cert : u8, 
 } 
 impl ApplicationTlsCertAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("application_tls_cert_add_3f5cfe45") 
 	 } 
 } 
@@ -138,7 +138,7 @@ pub struct ApplicationTlsCertAddReply {
 	pub retval : i32, 
 } 
 impl ApplicationTlsCertAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("application_tls_cert_add_reply_e8d4e804") 
 	 } 
 } 
@@ -151,7 +151,7 @@ pub struct ApplicationTlsKeyAdd {
 	pub key : u8, 
 } 
 impl ApplicationTlsKeyAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("application_tls_key_add_5eaf70cd") 
 	 } 
 } 
@@ -161,7 +161,7 @@ pub struct ApplicationTlsKeyAddReply {
 	pub retval : i32, 
 } 
 impl ApplicationTlsKeyAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("application_tls_key_add_reply_e8d4e804") 
 	 } 
 } 
@@ -174,7 +174,7 @@ pub struct AppWorkerAddDel {
 	pub is_add : bool, 
 } 
 impl AppWorkerAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("app_worker_add_del_753253dc") 
 	 } 
 } 
@@ -191,7 +191,7 @@ pub struct AppWorkerAddDelReply {
 	pub segment_name : VariableSizeString, 
 } 
 impl AppWorkerAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("app_worker_add_del_reply_5735ffe7") 
 	 } 
 } 
@@ -202,7 +202,7 @@ pub struct SessionEnableDisable {
 	pub is_enable : bool, 
 } 
 impl SessionEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("session_enable_disable_c264d7bf") 
 	 } 
 } 
@@ -212,7 +212,7 @@ pub struct SessionEnableDisableReply {
 	pub retval : i32, 
 } 
 impl SessionEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("session_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -227,7 +227,7 @@ pub struct AppNamespaceAddDel {
 	pub namespace_id : VariableSizeString, 
 } 
 impl AppNamespaceAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("app_namespace_add_del_6306aecb") 
 	 } 
 } 
@@ -238,7 +238,7 @@ pub struct AppNamespaceAddDelReply {
 	pub appns_index : u32, 
 } 
 impl AppNamespaceAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("app_namespace_add_del_reply_85137120") 
 	 } 
 } 
@@ -258,7 +258,7 @@ pub struct SessionRuleAddDel {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl SessionRuleAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("session_rule_add_del_e31f9443") 
 	 } 
 } 
@@ -268,7 +268,7 @@ pub struct SessionRuleAddDelReply {
 	pub retval : i32, 
 } 
 impl SessionRuleAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("session_rule_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -278,7 +278,7 @@ pub struct SessionRulesDump {
 	pub context : u32, 
 } 
 impl SessionRulesDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("session_rules_dump_51077d14") 
 	 } 
 } 
@@ -296,7 +296,7 @@ pub struct SessionRulesDetails {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl SessionRulesDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("session_rules_details_304b91f0") 
 	 } 
 } 

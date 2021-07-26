@@ -30,7 +30,7 @@ pub struct VirtioPciCreate {
 	pub features : u64, 
 } 
 impl VirtioPciCreate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("virtio_pci_create_a9f1370c") 
 	 } 
 } 
@@ -41,7 +41,7 @@ pub struct VirtioPciCreateReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl VirtioPciCreateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("virtio_pci_create_reply_5383d31f") 
 	 } 
 } 
@@ -56,7 +56,7 @@ pub struct VirtioPciCreateV2 {
 	pub features : u64, 
 } 
 impl VirtioPciCreateV2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("virtio_pci_create_v2_5d096e1a") 
 	 } 
 } 
@@ -67,7 +67,7 @@ pub struct VirtioPciCreateV2Reply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl VirtioPciCreateV2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("virtio_pci_create_v2_reply_5383d31f") 
 	 } 
 } 
@@ -78,7 +78,7 @@ pub struct VirtioPciDelete {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl VirtioPciDelete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("virtio_pci_delete_f9e6675e") 
 	 } 
 } 
@@ -88,7 +88,7 @@ pub struct VirtioPciDeleteReply {
 	pub retval : i32, 
 } 
 impl VirtioPciDeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("virtio_pci_delete_reply_e8d4e804") 
 	 } 
 } 
@@ -98,7 +98,7 @@ pub struct SwInterfaceVirtioPciDump {
 	pub context : u32, 
 } 
 impl SwInterfaceVirtioPciDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_virtio_pci_dump_51077d14") 
 	 } 
 } 
@@ -113,7 +113,7 @@ pub struct SwInterfaceVirtioPciDetails {
 	pub features : u64, 
 } 
 impl SwInterfaceVirtioPciDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_virtio_pci_details_16187f3a") 
 	 } 
 } 

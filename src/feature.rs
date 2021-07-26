@@ -16,7 +16,7 @@ pub struct FeatureEnableDisable {
 	pub feature_name : FixedSizeString<U64>, 
 } 
 impl FeatureEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("feature_enable_disable_7531c862") 
 	 } 
 } 
@@ -26,7 +26,7 @@ pub struct FeatureEnableDisableReply {
 	pub retval : i32, 
 } 
 impl FeatureEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("feature_enable_disable_reply_e8d4e804") 
 	 } 
 } 

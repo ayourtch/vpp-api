@@ -34,7 +34,7 @@ pub struct SwInterfaceIp6ndRaConfig {
 	pub initial_interval : u32, 
 } 
 impl SwInterfaceIp6ndRaConfig { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_ip6nd_ra_config_3eb00b1c") 
 	 } 
 } 
@@ -44,7 +44,7 @@ pub struct SwInterfaceIp6ndRaConfigReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceIp6ndRaConfigReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_ip6nd_ra_config_reply_e8d4e804") 
 	 } 
 } 
@@ -64,7 +64,7 @@ pub struct SwInterfaceIp6ndRaPrefix {
 	pub pref_lifetime : u32, 
 } 
 impl SwInterfaceIp6ndRaPrefix { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_ip6nd_ra_prefix_e098785f") 
 	 } 
 } 
@@ -74,7 +74,7 @@ pub struct SwInterfaceIp6ndRaPrefixReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceIp6ndRaPrefixReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_ip6nd_ra_prefix_reply_e8d4e804") 
 	 } 
 } 
@@ -87,7 +87,7 @@ pub struct Ip6ndProxyAddDel {
 	pub ip : Ip6Address, 
 } 
 impl Ip6ndProxyAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip6nd_proxy_add_del_3fdf6659") 
 	 } 
 } 
@@ -97,7 +97,7 @@ pub struct Ip6ndProxyAddDelReply {
 	pub retval : i32, 
 } 
 impl Ip6ndProxyAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip6nd_proxy_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -108,7 +108,7 @@ pub struct Ip6ndProxyDetails {
 	pub ip : Ip6Address, 
 } 
 impl Ip6ndProxyDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip6nd_proxy_details_d35be8ff") 
 	 } 
 } 
@@ -118,7 +118,7 @@ pub struct Ip6ndProxyDump {
 	pub context : u32, 
 } 
 impl Ip6ndProxyDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip6nd_proxy_dump_51077d14") 
 	 } 
 } 
@@ -134,7 +134,7 @@ pub struct Ip6ndSendRouterSolicitation {
 	pub stop : bool, 
 } 
 impl Ip6ndSendRouterSolicitation { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip6nd_send_router_solicitation_e5de609c") 
 	 } 
 } 
@@ -144,7 +144,7 @@ pub struct Ip6ndSendRouterSolicitationReply {
 	pub retval : i32, 
 } 
 impl Ip6ndSendRouterSolicitationReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip6nd_send_router_solicitation_reply_e8d4e804") 
 	 } 
 } 
@@ -156,7 +156,7 @@ pub struct WantIp6RaEvents {
 	pub pid : u32, 
 } 
 impl WantIp6RaEvents { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_ip6_ra_events_3ec6d6c2") 
 	 } 
 } 
@@ -166,7 +166,7 @@ pub struct WantIp6RaEventsReply {
 	pub retval : i32, 
 } 
 impl WantIp6RaEventsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_ip6_ra_events_reply_e8d4e804") 
 	 } 
 } 
@@ -185,7 +185,7 @@ pub struct Ip6RaEvent {
 	pub prefixes : Ip6RaPrefixInfo, 
 } 
 impl Ip6RaEvent { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip6_ra_event_47e8cfbe") 
 	 } 
 } 

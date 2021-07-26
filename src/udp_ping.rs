@@ -22,7 +22,7 @@ pub struct UdpPingAddDel {
 	pub reserve : u8, 
 } 
 impl UdpPingAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("udp_ping_add_del_c692b188") 
 	 } 
 } 
@@ -32,7 +32,7 @@ pub struct UdpPingAddDelReply {
 	pub retval : i32, 
 } 
 impl UdpPingAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("udp_ping_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -43,7 +43,7 @@ pub struct UdpPingExport {
 	pub enable : bool, 
 } 
 impl UdpPingExport { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("udp_ping_export_b3e225d2") 
 	 } 
 } 
@@ -53,7 +53,7 @@ pub struct UdpPingExportReply {
 	pub retval : i32, 
 } 
 impl UdpPingExportReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("udp_ping_export_reply_e8d4e804") 
 	 } 
 } 

@@ -19,7 +19,7 @@ pub struct SetIpfixExporter {
 	pub udp_checksum : bool, 
 } 
 impl SetIpfixExporter { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("set_ipfix_exporter_69284e07") 
 	 } 
 } 
@@ -29,7 +29,7 @@ pub struct SetIpfixExporterReply {
 	pub retval : i32, 
 } 
 impl SetIpfixExporterReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("set_ipfix_exporter_reply_e8d4e804") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct IpfixExporterDump {
 	pub context : u32, 
 } 
 impl IpfixExporterDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipfix_exporter_dump_51077d14") 
 	 } 
 } 
@@ -55,7 +55,7 @@ pub struct IpfixExporterDetails {
 	pub udp_checksum : bool, 
 } 
 impl IpfixExporterDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipfix_exporter_details_11e07413") 
 	 } 
 } 
@@ -67,7 +67,7 @@ pub struct SetIpfixClassifyStream {
 	pub src_port : u16, 
 } 
 impl SetIpfixClassifyStream { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("set_ipfix_classify_stream_c9cbe053") 
 	 } 
 } 
@@ -77,7 +77,7 @@ pub struct SetIpfixClassifyStreamReply {
 	pub retval : i32, 
 } 
 impl SetIpfixClassifyStreamReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("set_ipfix_classify_stream_reply_e8d4e804") 
 	 } 
 } 
@@ -87,7 +87,7 @@ pub struct IpfixClassifyStreamDump {
 	pub context : u32, 
 } 
 impl IpfixClassifyStreamDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipfix_classify_stream_dump_51077d14") 
 	 } 
 } 
@@ -98,7 +98,7 @@ pub struct IpfixClassifyStreamDetails {
 	pub src_port : u16, 
 } 
 impl IpfixClassifyStreamDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipfix_classify_stream_details_2903539d") 
 	 } 
 } 
@@ -112,7 +112,7 @@ pub struct IpfixClassifyTableAddDel {
 	pub is_add : bool, 
 } 
 impl IpfixClassifyTableAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipfix_classify_table_add_del_3e449bb9") 
 	 } 
 } 
@@ -122,7 +122,7 @@ pub struct IpfixClassifyTableAddDelReply {
 	pub retval : i32, 
 } 
 impl IpfixClassifyTableAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipfix_classify_table_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -132,7 +132,7 @@ pub struct IpfixClassifyTableDump {
 	pub context : u32, 
 } 
 impl IpfixClassifyTableDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipfix_classify_table_dump_51077d14") 
 	 } 
 } 
@@ -144,7 +144,7 @@ pub struct IpfixClassifyTableDetails {
 	pub transport_protocol : IpProto, 
 } 
 impl IpfixClassifyTableDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipfix_classify_table_details_1af8c28c") 
 	 } 
 } 
@@ -154,7 +154,7 @@ pub struct IpfixFlush {
 	pub context : u32, 
 } 
 impl IpfixFlush { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipfix_flush_51077d14") 
 	 } 
 } 
@@ -164,7 +164,7 @@ pub struct IpfixFlushReply {
 	pub retval : i32, 
 } 
 impl IpfixFlushReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ipfix_flush_reply_e8d4e804") 
 	 } 
 } 

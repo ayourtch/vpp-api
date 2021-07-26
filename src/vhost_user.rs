@@ -25,7 +25,7 @@ pub struct CreateVhostUserIf {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl CreateVhostUserIf { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("create_vhost_user_if_c785c6fc") 
 	 } 
 } 
@@ -36,7 +36,7 @@ pub struct CreateVhostUserIfReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl CreateVhostUserIfReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("create_vhost_user_if_reply_5383d31f") 
 	 } 
 } 
@@ -53,7 +53,7 @@ pub struct ModifyVhostUserIf {
 	pub custom_dev_instance : u32, 
 } 
 impl ModifyVhostUserIf { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("modify_vhost_user_if_0e71d40b") 
 	 } 
 } 
@@ -63,7 +63,7 @@ pub struct ModifyVhostUserIfReply {
 	pub retval : i32, 
 } 
 impl ModifyVhostUserIfReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("modify_vhost_user_if_reply_e8d4e804") 
 	 } 
 } 
@@ -85,7 +85,7 @@ pub struct CreateVhostUserIfV2 {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl CreateVhostUserIfV2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("create_vhost_user_if_v2_dba1cc1d") 
 	 } 
 } 
@@ -96,7 +96,7 @@ pub struct CreateVhostUserIfV2Reply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl CreateVhostUserIfV2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("create_vhost_user_if_v2_reply_5383d31f") 
 	 } 
 } 
@@ -114,7 +114,7 @@ pub struct ModifyVhostUserIfV2 {
 	pub custom_dev_instance : u32, 
 } 
 impl ModifyVhostUserIfV2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("modify_vhost_user_if_v2_b2483771") 
 	 } 
 } 
@@ -124,7 +124,7 @@ pub struct ModifyVhostUserIfV2Reply {
 	pub retval : i32, 
 } 
 impl ModifyVhostUserIfV2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("modify_vhost_user_if_v2_reply_e8d4e804") 
 	 } 
 } 
@@ -135,7 +135,7 @@ pub struct DeleteVhostUserIf {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl DeleteVhostUserIf { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("delete_vhost_user_if_f9e6675e") 
 	 } 
 } 
@@ -145,7 +145,7 @@ pub struct DeleteVhostUserIfReply {
 	pub retval : i32, 
 } 
 impl DeleteVhostUserIfReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("delete_vhost_user_if_reply_e8d4e804") 
 	 } 
 } 
@@ -163,7 +163,7 @@ pub struct SwInterfaceVhostUserDetails {
 	pub sock_errno : i32, 
 } 
 impl SwInterfaceVhostUserDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_vhost_user_details_98530df1") 
 	 } 
 } 
@@ -174,7 +174,7 @@ pub struct SwInterfaceVhostUserDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl SwInterfaceVhostUserDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_vhost_user_dump_f9e6675e") 
 	 } 
 } 

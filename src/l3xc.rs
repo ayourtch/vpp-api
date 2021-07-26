@@ -21,7 +21,7 @@ pub struct L3xcPluginGetVersion {
 	pub context : u32, 
 } 
 impl L3xcPluginGetVersion { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l3xc_plugin_get_version_51077d14") 
 	 } 
 } 
@@ -32,7 +32,7 @@ pub struct L3xcPluginGetVersionReply {
 	pub minor : u32, 
 } 
 impl L3xcPluginGetVersionReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l3xc_plugin_get_version_reply_9b32cf86") 
 	 } 
 } 
@@ -43,7 +43,7 @@ pub struct L3xcUpdate {
 	pub l3xc : L3xc, 
 } 
 impl L3xcUpdate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l3xc_update_0787b1d3") 
 	 } 
 } 
@@ -54,7 +54,7 @@ pub struct L3xcUpdateReply {
 	pub stats_index : u32, 
 } 
 impl L3xcUpdateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l3xc_update_reply_1992deab") 
 	 } 
 } 
@@ -66,7 +66,7 @@ pub struct L3xcDel {
 	pub is_ip6 : bool, 
 } 
 impl L3xcDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l3xc_del_e7dbef91") 
 	 } 
 } 
@@ -76,7 +76,7 @@ pub struct L3xcDelReply {
 	pub retval : i32, 
 } 
 impl L3xcDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l3xc_del_reply_e8d4e804") 
 	 } 
 } 
@@ -87,7 +87,7 @@ pub struct L3xcDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl L3xcDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l3xc_dump_f9e6675e") 
 	 } 
 } 
@@ -97,7 +97,7 @@ pub struct L3xcDetails {
 	pub l3xc : L3xc, 
 } 
 impl L3xcDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l3xc_details_d4f69627") 
 	 } 
 } 

@@ -14,7 +14,7 @@ pub struct AdlInterfaceEnableDisable {
 	pub enable_disable : bool, 
 } 
 impl AdlInterfaceEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("adl_interface_enable_disable_5501adee") 
 	 } 
 } 
@@ -24,7 +24,7 @@ pub struct AdlInterfaceEnableDisableReply {
 	pub retval : i32, 
 } 
 impl AdlInterfaceEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("adl_interface_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct AdlAllowlistEnableDisable {
 	pub default_adl : bool, 
 } 
 impl AdlAllowlistEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("adl_allowlist_enable_disable_ea88828d") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct AdlAllowlistEnableDisableReply {
 	pub retval : i32, 
 } 
 impl AdlAllowlistEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("adl_allowlist_enable_disable_reply_e8d4e804") 
 	 } 
 } 

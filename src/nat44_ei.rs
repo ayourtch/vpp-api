@@ -35,7 +35,7 @@ pub struct Nat44EiPluginEnableDisable {
 	pub flags : Nat44EiConfigFlags, 
 } 
 impl Nat44EiPluginEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_plugin_enable_disable_bf692144") 
 	 } 
 } 
@@ -45,7 +45,7 @@ pub struct Nat44EiPluginEnableDisableReply {
 	pub retval : i32, 
 } 
 impl Nat44EiPluginEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_plugin_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -55,7 +55,7 @@ pub struct Nat44EiShowRunningConfig {
 	pub context : u32, 
 } 
 impl Nat44EiShowRunningConfig { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_show_running_config_51077d14") 
 	 } 
 } 
@@ -77,7 +77,7 @@ pub struct Nat44EiShowRunningConfigReply {
 	pub flags : Nat44EiConfigFlags, 
 } 
 impl Nat44EiShowRunningConfigReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_show_running_config_reply_41b66a81") 
 	 } 
 } 
@@ -88,7 +88,7 @@ pub struct Nat44EiSetLogLevel {
 	pub log_level : NatLogLevel, 
 } 
 impl Nat44EiSetLogLevel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_set_log_level_70076bfe") 
 	 } 
 } 
@@ -98,7 +98,7 @@ pub struct Nat44EiSetLogLevelReply {
 	pub retval : i32, 
 } 
 impl Nat44EiSetLogLevelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_set_log_level_reply_e8d4e804") 
 	 } 
 } 
@@ -109,7 +109,7 @@ pub struct Nat44EiSetWorkers {
 	pub worker_mask : u64, 
 } 
 impl Nat44EiSetWorkers { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_set_workers_da926638") 
 	 } 
 } 
@@ -119,7 +119,7 @@ pub struct Nat44EiSetWorkersReply {
 	pub retval : i32, 
 } 
 impl Nat44EiSetWorkersReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_set_workers_reply_e8d4e804") 
 	 } 
 } 
@@ -129,7 +129,7 @@ pub struct Nat44EiWorkerDump {
 	pub context : u32, 
 } 
 impl Nat44EiWorkerDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_worker_dump_51077d14") 
 	 } 
 } 
@@ -141,7 +141,7 @@ pub struct Nat44EiWorkerDetails {
 	pub name : FixedSizeString<U64>, 
 } 
 impl Nat44EiWorkerDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_worker_details_84bf06fc") 
 	 } 
 } 
@@ -154,7 +154,7 @@ pub struct Nat44EiIpfixEnableDisable {
 	pub enable : bool, 
 } 
 impl Nat44EiIpfixEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ipfix_enable_disable_9af4a2d2") 
 	 } 
 } 
@@ -164,7 +164,7 @@ pub struct Nat44EiIpfixEnableDisableReply {
 	pub retval : i32, 
 } 
 impl Nat44EiIpfixEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ipfix_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -178,7 +178,7 @@ pub struct Nat44EiSetTimeouts {
 	pub icmp : u32, 
 } 
 impl Nat44EiSetTimeouts { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_set_timeouts_d4746b16") 
 	 } 
 } 
@@ -188,7 +188,7 @@ pub struct Nat44EiSetTimeoutsReply {
 	pub retval : i32, 
 } 
 impl Nat44EiSetTimeoutsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_set_timeouts_reply_e8d4e804") 
 	 } 
 } 
@@ -204,7 +204,7 @@ pub struct Nat44EiSetAddrAndPortAllocAlg {
 	pub end_port : u16, 
 } 
 impl Nat44EiSetAddrAndPortAllocAlg { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_set_addr_and_port_alloc_alg_deeb746f") 
 	 } 
 } 
@@ -214,7 +214,7 @@ pub struct Nat44EiSetAddrAndPortAllocAlgReply {
 	pub retval : i32, 
 } 
 impl Nat44EiSetAddrAndPortAllocAlgReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_set_addr_and_port_alloc_alg_reply_e8d4e804") 
 	 } 
 } 
@@ -224,7 +224,7 @@ pub struct Nat44EiGetAddrAndPortAllocAlg {
 	pub context : u32, 
 } 
 impl Nat44EiGetAddrAndPortAllocAlg { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_get_addr_and_port_alloc_alg_51077d14") 
 	 } 
 } 
@@ -240,7 +240,7 @@ pub struct Nat44EiGetAddrAndPortAllocAlgReply {
 	pub end_port : u16, 
 } 
 impl Nat44EiGetAddrAndPortAllocAlgReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_get_addr_and_port_alloc_alg_reply_3607a7d0") 
 	 } 
 } 
@@ -252,7 +252,7 @@ pub struct Nat44EiSetMssClamping {
 	pub enable : bool, 
 } 
 impl Nat44EiSetMssClamping { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_set_mss_clamping_25e90abb") 
 	 } 
 } 
@@ -262,7 +262,7 @@ pub struct Nat44EiSetMssClampingReply {
 	pub retval : i32, 
 } 
 impl Nat44EiSetMssClampingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_set_mss_clamping_reply_e8d4e804") 
 	 } 
 } 
@@ -272,7 +272,7 @@ pub struct Nat44EiGetMssClamping {
 	pub context : u32, 
 } 
 impl Nat44EiGetMssClamping { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_get_mss_clamping_51077d14") 
 	 } 
 } 
@@ -284,7 +284,7 @@ pub struct Nat44EiGetMssClampingReply {
 	pub enable : bool, 
 } 
 impl Nat44EiGetMssClampingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_get_mss_clamping_reply_1c0b2a78") 
 	 } 
 } 
@@ -297,7 +297,7 @@ pub struct Nat44EiHaSetListener {
 	pub path_mtu : u32, 
 } 
 impl Nat44EiHaSetListener { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ha_set_listener_e4a8cb4e") 
 	 } 
 } 
@@ -307,7 +307,7 @@ pub struct Nat44EiHaSetListenerReply {
 	pub retval : i32, 
 } 
 impl Nat44EiHaSetListenerReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ha_set_listener_reply_e8d4e804") 
 	 } 
 } 
@@ -320,7 +320,7 @@ pub struct Nat44EiHaSetFailover {
 	pub session_refresh_interval : u32, 
 } 
 impl Nat44EiHaSetFailover { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ha_set_failover_718246af") 
 	 } 
 } 
@@ -330,7 +330,7 @@ pub struct Nat44EiHaSetFailoverReply {
 	pub retval : i32, 
 } 
 impl Nat44EiHaSetFailoverReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ha_set_failover_reply_e8d4e804") 
 	 } 
 } 
@@ -340,7 +340,7 @@ pub struct Nat44EiHaGetListener {
 	pub context : u32, 
 } 
 impl Nat44EiHaGetListener { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ha_get_listener_51077d14") 
 	 } 
 } 
@@ -353,7 +353,7 @@ pub struct Nat44EiHaGetListenerReply {
 	pub path_mtu : u32, 
 } 
 impl Nat44EiHaGetListenerReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ha_get_listener_reply_123ea41f") 
 	 } 
 } 
@@ -363,7 +363,7 @@ pub struct Nat44EiHaGetFailover {
 	pub context : u32, 
 } 
 impl Nat44EiHaGetFailover { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ha_get_failover_51077d14") 
 	 } 
 } 
@@ -376,7 +376,7 @@ pub struct Nat44EiHaGetFailoverReply {
 	pub session_refresh_interval : u32, 
 } 
 impl Nat44EiHaGetFailoverReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ha_get_failover_reply_a67d8752") 
 	 } 
 } 
@@ -386,7 +386,7 @@ pub struct Nat44EiHaFlush {
 	pub context : u32, 
 } 
 impl Nat44EiHaFlush { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ha_flush_51077d14") 
 	 } 
 } 
@@ -396,7 +396,7 @@ pub struct Nat44EiHaFlushReply {
 	pub retval : i32, 
 } 
 impl Nat44EiHaFlushReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ha_flush_reply_e8d4e804") 
 	 } 
 } 
@@ -408,7 +408,7 @@ pub struct Nat44EiHaResync {
 	pub pid : u32, 
 } 
 impl Nat44EiHaResync { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ha_resync_c8ab9e03") 
 	 } 
 } 
@@ -418,7 +418,7 @@ pub struct Nat44EiHaResyncReply {
 	pub retval : i32, 
 } 
 impl Nat44EiHaResyncReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ha_resync_reply_e8d4e804") 
 	 } 
 } 
@@ -429,7 +429,7 @@ pub struct Nat44EiHaResyncCompletedEvent {
 	pub missed_count : u32, 
 } 
 impl Nat44EiHaResyncCompletedEvent { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_ha_resync_completed_event_fdc598fb") 
 	 } 
 } 
@@ -441,7 +441,7 @@ pub struct Nat44EiDelUser {
 	pub fib_index : u32, 
 } 
 impl Nat44EiDelUser { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_del_user_99a9f998") 
 	 } 
 } 
@@ -451,7 +451,7 @@ pub struct Nat44EiDelUserReply {
 	pub retval : i32, 
 } 
 impl Nat44EiDelUserReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_del_user_reply_e8d4e804") 
 	 } 
 } 
@@ -465,7 +465,7 @@ pub struct Nat44EiAddDelAddressRange {
 	pub is_add : bool, 
 } 
 impl Nat44EiAddDelAddressRange { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_add_del_address_range_35f21abc") 
 	 } 
 } 
@@ -475,7 +475,7 @@ pub struct Nat44EiAddDelAddressRangeReply {
 	pub retval : i32, 
 } 
 impl Nat44EiAddDelAddressRangeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_add_del_address_range_reply_e8d4e804") 
 	 } 
 } 
@@ -485,7 +485,7 @@ pub struct Nat44EiAddressDump {
 	pub context : u32, 
 } 
 impl Nat44EiAddressDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_address_dump_51077d14") 
 	 } 
 } 
@@ -496,7 +496,7 @@ pub struct Nat44EiAddressDetails {
 	pub vrf_id : u32, 
 } 
 impl Nat44EiAddressDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_address_details_318f1202") 
 	 } 
 } 
@@ -509,7 +509,7 @@ pub struct Nat44EiInterfaceAddDelFeature {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Nat44EiInterfaceAddDelFeature { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_interface_add_del_feature_63a2db8b") 
 	 } 
 } 
@@ -519,7 +519,7 @@ pub struct Nat44EiInterfaceAddDelFeatureReply {
 	pub retval : i32, 
 } 
 impl Nat44EiInterfaceAddDelFeatureReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_interface_add_del_feature_reply_e8d4e804") 
 	 } 
 } 
@@ -529,7 +529,7 @@ pub struct Nat44EiInterfaceDump {
 	pub context : u32, 
 } 
 impl Nat44EiInterfaceDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_interface_dump_51077d14") 
 	 } 
 } 
@@ -540,7 +540,7 @@ pub struct Nat44EiInterfaceDetails {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Nat44EiInterfaceDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_interface_details_f446e508") 
 	 } 
 } 
@@ -553,7 +553,7 @@ pub struct Nat44EiInterfaceAddDelOutputFeature {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Nat44EiInterfaceAddDelOutputFeature { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_interface_add_del_output_feature_63a2db8b") 
 	 } 
 } 
@@ -563,7 +563,7 @@ pub struct Nat44EiInterfaceAddDelOutputFeatureReply {
 	pub retval : i32, 
 } 
 impl Nat44EiInterfaceAddDelOutputFeatureReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_interface_add_del_output_feature_reply_e8d4e804") 
 	 } 
 } 
@@ -573,7 +573,7 @@ pub struct Nat44EiInterfaceOutputFeatureDump {
 	pub context : u32, 
 } 
 impl Nat44EiInterfaceOutputFeatureDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_interface_output_feature_dump_51077d14") 
 	 } 
 } 
@@ -584,7 +584,7 @@ pub struct Nat44EiInterfaceOutputFeatureDetails {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Nat44EiInterfaceOutputFeatureDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_interface_output_feature_details_f446e508") 
 	 } 
 } 
@@ -604,7 +604,7 @@ pub struct Nat44EiAddDelStaticMapping {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl Nat44EiAddDelStaticMapping { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_add_del_static_mapping_b404b7fe") 
 	 } 
 } 
@@ -614,7 +614,7 @@ pub struct Nat44EiAddDelStaticMappingReply {
 	pub retval : i32, 
 } 
 impl Nat44EiAddDelStaticMappingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_add_del_static_mapping_reply_e8d4e804") 
 	 } 
 } 
@@ -624,7 +624,7 @@ pub struct Nat44EiStaticMappingDump {
 	pub context : u32, 
 } 
 impl Nat44EiStaticMappingDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_static_mapping_dump_51077d14") 
 	 } 
 } 
@@ -642,7 +642,7 @@ pub struct Nat44EiStaticMappingDetails {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl Nat44EiStaticMappingDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_static_mapping_details_6b51ca6e") 
 	 } 
 } 
@@ -660,7 +660,7 @@ pub struct Nat44EiAddDelIdentityMapping {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl Nat44EiAddDelIdentityMapping { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_add_del_identity_mapping_cb8606b9") 
 	 } 
 } 
@@ -670,7 +670,7 @@ pub struct Nat44EiAddDelIdentityMappingReply {
 	pub retval : i32, 
 } 
 impl Nat44EiAddDelIdentityMappingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_add_del_identity_mapping_reply_e8d4e804") 
 	 } 
 } 
@@ -680,7 +680,7 @@ pub struct Nat44EiIdentityMappingDump {
 	pub context : u32, 
 } 
 impl Nat44EiIdentityMappingDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_identity_mapping_dump_51077d14") 
 	 } 
 } 
@@ -696,7 +696,7 @@ pub struct Nat44EiIdentityMappingDetails {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl Nat44EiIdentityMappingDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_identity_mapping_details_30d53e26") 
 	 } 
 } 
@@ -709,7 +709,7 @@ pub struct Nat44EiAddDelInterfaceAddr {
 	pub flags : Nat44EiConfigFlags, 
 } 
 impl Nat44EiAddDelInterfaceAddr { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_add_del_interface_addr_883abbcc") 
 	 } 
 } 
@@ -719,7 +719,7 @@ pub struct Nat44EiAddDelInterfaceAddrReply {
 	pub retval : i32, 
 } 
 impl Nat44EiAddDelInterfaceAddrReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_add_del_interface_addr_reply_e8d4e804") 
 	 } 
 } 
@@ -729,7 +729,7 @@ pub struct Nat44EiInterfaceAddrDump {
 	pub context : u32, 
 } 
 impl Nat44EiInterfaceAddrDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_interface_addr_dump_51077d14") 
 	 } 
 } 
@@ -739,7 +739,7 @@ pub struct Nat44EiInterfaceAddrDetails {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Nat44EiInterfaceAddrDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_interface_addr_details_0b45011c") 
 	 } 
 } 
@@ -749,7 +749,7 @@ pub struct Nat44EiUserDump {
 	pub context : u32, 
 } 
 impl Nat44EiUserDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_user_dump_51077d14") 
 	 } 
 } 
@@ -762,7 +762,7 @@ pub struct Nat44EiUserDetails {
 	pub nstaticsessions : u32, 
 } 
 impl Nat44EiUserDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_user_details_355896c2") 
 	 } 
 } 
@@ -774,7 +774,7 @@ pub struct Nat44EiUserSessionDump {
 	pub vrf_id : u32, 
 } 
 impl Nat44EiUserSessionDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_user_session_dump_e1899c98") 
 	 } 
 } 
@@ -794,7 +794,7 @@ pub struct Nat44EiUserSessionDetails {
 	pub ext_host_port : u16, 
 } 
 impl Nat44EiUserSessionDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_user_session_details_19b7c0ac") 
 	 } 
 } 
@@ -811,7 +811,7 @@ pub struct Nat44EiDelSession {
 	pub ext_host_port : u16, 
 } 
 impl Nat44EiDelSession { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_del_session_74969ffe") 
 	 } 
 } 
@@ -821,7 +821,7 @@ pub struct Nat44EiDelSessionReply {
 	pub retval : i32, 
 } 
 impl Nat44EiDelSessionReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_del_session_reply_e8d4e804") 
 	 } 
 } 
@@ -832,7 +832,7 @@ pub struct Nat44EiForwardingEnableDisable {
 	pub enable : bool, 
 } 
 impl Nat44EiForwardingEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_forwarding_enable_disable_b3e225d2") 
 	 } 
 } 
@@ -842,7 +842,7 @@ pub struct Nat44EiForwardingEnableDisableReply {
 	pub retval : i32, 
 } 
 impl Nat44EiForwardingEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_forwarding_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -853,7 +853,7 @@ pub struct Nat44EiSetFqOptions {
 	pub frame_queue_nelts : u32, 
 } 
 impl Nat44EiSetFqOptions { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_set_fq_options_2399bd71") 
 	 } 
 } 
@@ -863,7 +863,7 @@ pub struct Nat44EiSetFqOptionsReply {
 	pub retval : i32, 
 } 
 impl Nat44EiSetFqOptionsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_set_fq_options_reply_e8d4e804") 
 	 } 
 } 
@@ -873,7 +873,7 @@ pub struct Nat44EiShowFqOptions {
 	pub context : u32, 
 } 
 impl Nat44EiShowFqOptions { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_show_fq_options_51077d14") 
 	 } 
 } 
@@ -884,7 +884,7 @@ pub struct Nat44EiShowFqOptionsReply {
 	pub frame_queue_nelts : u32, 
 } 
 impl Nat44EiShowFqOptionsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat44_ei_show_fq_options_reply_7213b545") 
 	 } 
 } 

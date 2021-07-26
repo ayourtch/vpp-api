@@ -22,7 +22,7 @@ pub struct BfdUdpSetEchoSource {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl BfdUdpSetEchoSource { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_set_echo_source_f9e6675e") 
 	 } 
 } 
@@ -32,7 +32,7 @@ pub struct BfdUdpSetEchoSourceReply {
 	pub retval : i32, 
 } 
 impl BfdUdpSetEchoSourceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_set_echo_source_reply_e8d4e804") 
 	 } 
 } 
@@ -42,7 +42,7 @@ pub struct BfdUdpDelEchoSource {
 	pub context : u32, 
 } 
 impl BfdUdpDelEchoSource { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_del_echo_source_51077d14") 
 	 } 
 } 
@@ -52,7 +52,7 @@ pub struct BfdUdpDelEchoSourceReply {
 	pub retval : i32, 
 } 
 impl BfdUdpDelEchoSourceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_del_echo_source_reply_e8d4e804") 
 	 } 
 } 
@@ -62,7 +62,7 @@ pub struct BfdUdpGetEchoSource {
 	pub context : u32, 
 } 
 impl BfdUdpGetEchoSource { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_get_echo_source_51077d14") 
 	 } 
 } 
@@ -78,7 +78,7 @@ pub struct BfdUdpGetEchoSourceReply {
 	pub ip6_addr : Ip6Address, 
 } 
 impl BfdUdpGetEchoSourceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_get_echo_source_reply_1e00cfce") 
 	 } 
 } 
@@ -97,7 +97,7 @@ pub struct BfdUdpAdd {
 	pub conf_key_id : u32, 
 } 
 impl BfdUdpAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_add_7a6d1185") 
 	 } 
 } 
@@ -107,7 +107,7 @@ pub struct BfdUdpAddReply {
 	pub retval : i32, 
 } 
 impl BfdUdpAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_add_reply_e8d4e804") 
 	 } 
 } 
@@ -123,7 +123,7 @@ pub struct BfdUdpMod {
 	pub detect_mult : u8, 
 } 
 impl BfdUdpMod { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_mod_783a3ff6") 
 	 } 
 } 
@@ -133,7 +133,7 @@ pub struct BfdUdpModReply {
 	pub retval : i32, 
 } 
 impl BfdUdpModReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_mod_reply_e8d4e804") 
 	 } 
 } 
@@ -146,7 +146,7 @@ pub struct BfdUdpDel {
 	pub peer_addr : Address, 
 } 
 impl BfdUdpDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_del_8096514d") 
 	 } 
 } 
@@ -156,7 +156,7 @@ pub struct BfdUdpDelReply {
 	pub retval : i32, 
 } 
 impl BfdUdpDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_del_reply_e8d4e804") 
 	 } 
 } 
@@ -166,7 +166,7 @@ pub struct BfdUdpSessionDump {
 	pub context : u32, 
 } 
 impl BfdUdpSessionDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_session_dump_51077d14") 
 	 } 
 } 
@@ -185,7 +185,7 @@ pub struct BfdUdpSessionDetails {
 	pub detect_mult : u8, 
 } 
 impl BfdUdpSessionDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_session_details_60653c02") 
 	 } 
 } 
@@ -199,7 +199,7 @@ pub struct BfdUdpSessionSetFlags {
 	pub flags : IfStatusFlags, 
 } 
 impl BfdUdpSessionSetFlags { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_session_set_flags_cf313851") 
 	 } 
 } 
@@ -209,7 +209,7 @@ pub struct BfdUdpSessionSetFlagsReply {
 	pub retval : i32, 
 } 
 impl BfdUdpSessionSetFlagsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_session_set_flags_reply_e8d4e804") 
 	 } 
 } 
@@ -221,7 +221,7 @@ pub struct WantBfdEvents {
 	pub pid : u32, 
 } 
 impl WantBfdEvents { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_bfd_events_c5e2af94") 
 	 } 
 } 
@@ -231,7 +231,7 @@ pub struct WantBfdEventsReply {
 	pub retval : i32, 
 } 
 impl WantBfdEventsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_bfd_events_reply_e8d4e804") 
 	 } 
 } 
@@ -245,7 +245,7 @@ pub struct BfdAuthSetKey {
 	pub key : u8, 
 } 
 impl BfdAuthSetKey { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_auth_set_key_690b8877") 
 	 } 
 } 
@@ -255,7 +255,7 @@ pub struct BfdAuthSetKeyReply {
 	pub retval : i32, 
 } 
 impl BfdAuthSetKeyReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_auth_set_key_reply_e8d4e804") 
 	 } 
 } 
@@ -266,7 +266,7 @@ pub struct BfdAuthDelKey {
 	pub conf_key_id : u32, 
 } 
 impl BfdAuthDelKey { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_auth_del_key_65310b22") 
 	 } 
 } 
@@ -276,7 +276,7 @@ pub struct BfdAuthDelKeyReply {
 	pub retval : i32, 
 } 
 impl BfdAuthDelKeyReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_auth_del_key_reply_e8d4e804") 
 	 } 
 } 
@@ -286,7 +286,7 @@ pub struct BfdAuthKeysDump {
 	pub context : u32, 
 } 
 impl BfdAuthKeysDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_auth_keys_dump_51077d14") 
 	 } 
 } 
@@ -298,7 +298,7 @@ pub struct BfdAuthKeysDetails {
 	pub auth_type : u8, 
 } 
 impl BfdAuthKeysDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_auth_keys_details_84130e9f") 
 	 } 
 } 
@@ -314,7 +314,7 @@ pub struct BfdUdpAuthActivate {
 	pub conf_key_id : u32, 
 } 
 impl BfdUdpAuthActivate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_auth_activate_493ee0ec") 
 	 } 
 } 
@@ -324,7 +324,7 @@ pub struct BfdUdpAuthActivateReply {
 	pub retval : i32, 
 } 
 impl BfdUdpAuthActivateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_auth_activate_reply_e8d4e804") 
 	 } 
 } 
@@ -338,7 +338,7 @@ pub struct BfdUdpAuthDeactivate {
 	pub is_delayed : bool, 
 } 
 impl BfdUdpAuthDeactivate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_auth_deactivate_99978c32") 
 	 } 
 } 
@@ -348,7 +348,7 @@ pub struct BfdUdpAuthDeactivateReply {
 	pub retval : i32, 
 } 
 impl BfdUdpAuthDeactivateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bfd_udp_auth_deactivate_reply_e8d4e804") 
 	 } 
 } 

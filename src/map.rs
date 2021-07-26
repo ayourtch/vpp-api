@@ -21,7 +21,7 @@ pub struct MapAddDomain {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl MapAddDomain { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_add_domain_7a5a18c9") 
 	 } 
 } 
@@ -32,7 +32,7 @@ pub struct MapAddDomainReply {
 	pub retval : i32, 
 } 
 impl MapAddDomainReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_add_domain_reply_3e6d4e2c") 
 	 } 
 } 
@@ -43,7 +43,7 @@ pub struct MapDelDomain {
 	pub index : u32, 
 } 
 impl MapDelDomain { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_del_domain_8ac76db6") 
 	 } 
 } 
@@ -53,7 +53,7 @@ pub struct MapDelDomainReply {
 	pub retval : i32, 
 } 
 impl MapDelDomainReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_del_domain_reply_e8d4e804") 
 	 } 
 } 
@@ -67,7 +67,7 @@ pub struct MapAddDelRule {
 	pub psid : u16, 
 } 
 impl MapAddDelRule { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_add_del_rule_c65b32f7") 
 	 } 
 } 
@@ -77,7 +77,7 @@ pub struct MapAddDelRuleReply {
 	pub retval : i32, 
 } 
 impl MapAddDelRuleReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_add_del_rule_reply_e8d4e804") 
 	 } 
 } 
@@ -88,7 +88,7 @@ pub struct MapDomainsGet {
 	pub cursor : u32, 
 } 
 impl MapDomainsGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_domains_get_f75ba505") 
 	 } 
 } 
@@ -99,7 +99,7 @@ pub struct MapDomainsGetReply {
 	pub cursor : u32, 
 } 
 impl MapDomainsGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_domains_get_reply_53b48f5d") 
 	 } 
 } 
@@ -109,7 +109,7 @@ pub struct MapDomainDump {
 	pub context : u32, 
 } 
 impl MapDomainDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_domain_dump_51077d14") 
 	 } 
 } 
@@ -128,7 +128,7 @@ pub struct MapDomainDetails {
 	pub tag : FixedSizeString<U64>, 
 } 
 impl MapDomainDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_domain_details_fc1859dd") 
 	 } 
 } 
@@ -139,7 +139,7 @@ pub struct MapRuleDump {
 	pub domain_index : u32, 
 } 
 impl MapRuleDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_rule_dump_e43e6ff6") 
 	 } 
 } 
@@ -150,7 +150,7 @@ pub struct MapRuleDetails {
 	pub psid : u16, 
 } 
 impl MapRuleDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_rule_details_c7cbeea5") 
 	 } 
 } 
@@ -163,7 +163,7 @@ pub struct MapIfEnableDisable {
 	pub is_translation : bool, 
 } 
 impl MapIfEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_if_enable_disable_59bb32f4") 
 	 } 
 } 
@@ -173,7 +173,7 @@ pub struct MapIfEnableDisableReply {
 	pub retval : i32, 
 } 
 impl MapIfEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_if_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -183,7 +183,7 @@ pub struct MapSummaryStats {
 	pub context : u32, 
 } 
 impl MapSummaryStats { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_summary_stats_51077d14") 
 	 } 
 } 
@@ -198,7 +198,7 @@ pub struct MapSummaryStatsReply {
 	pub total_security_check : u64, 
 } 
 impl MapSummaryStatsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_summary_stats_reply_0e4ace0e") 
 	 } 
 } 
@@ -210,7 +210,7 @@ pub struct MapParamSetFragmentation {
 	pub ignore_df : bool, 
 } 
 impl MapParamSetFragmentation { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_set_fragmentation_9ff54d90") 
 	 } 
 } 
@@ -220,7 +220,7 @@ pub struct MapParamSetFragmentationReply {
 	pub retval : i32, 
 } 
 impl MapParamSetFragmentationReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_set_fragmentation_reply_e8d4e804") 
 	 } 
 } 
@@ -231,7 +231,7 @@ pub struct MapParamSetIcmp {
 	pub ip4_err_relay_src : Ip4Address, 
 } 
 impl MapParamSetIcmp { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_set_icmp_58210cbf") 
 	 } 
 } 
@@ -241,7 +241,7 @@ pub struct MapParamSetIcmpReply {
 	pub retval : i32, 
 } 
 impl MapParamSetIcmpReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_set_icmp_reply_e8d4e804") 
 	 } 
 } 
@@ -252,7 +252,7 @@ pub struct MapParamSetIcmp6 {
 	pub enable_unreachable : bool, 
 } 
 impl MapParamSetIcmp6 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_set_icmp6_5d01f8c1") 
 	 } 
 } 
@@ -262,7 +262,7 @@ pub struct MapParamSetIcmp6Reply {
 	pub retval : i32, 
 } 
 impl MapParamSetIcmp6Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_set_icmp6_reply_e8d4e804") 
 	 } 
 } 
@@ -275,7 +275,7 @@ pub struct MapParamAddDelPreResolve {
 	pub ip6_nh_address : Ip6Address, 
 } 
 impl MapParamAddDelPreResolve { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_add_del_pre_resolve_17008c66") 
 	 } 
 } 
@@ -285,7 +285,7 @@ pub struct MapParamAddDelPreResolveReply {
 	pub retval : i32, 
 } 
 impl MapParamAddDelPreResolveReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_add_del_pre_resolve_reply_e8d4e804") 
 	 } 
 } 
@@ -297,7 +297,7 @@ pub struct MapParamSetSecurityCheck {
 	pub fragments : bool, 
 } 
 impl MapParamSetSecurityCheck { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_set_security_check_6abe9836") 
 	 } 
 } 
@@ -307,7 +307,7 @@ pub struct MapParamSetSecurityCheckReply {
 	pub retval : i32, 
 } 
 impl MapParamSetSecurityCheckReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_set_security_check_reply_e8d4e804") 
 	 } 
 } 
@@ -319,7 +319,7 @@ pub struct MapParamSetTrafficClass {
 	pub tc_class : u8, 
 } 
 impl MapParamSetTrafficClass { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_set_traffic_class_9cac455c") 
 	 } 
 } 
@@ -329,7 +329,7 @@ pub struct MapParamSetTrafficClassReply {
 	pub retval : i32, 
 } 
 impl MapParamSetTrafficClassReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_set_traffic_class_reply_e8d4e804") 
 	 } 
 } 
@@ -340,7 +340,7 @@ pub struct MapParamSetTcp {
 	pub tcp_mss : u16, 
 } 
 impl MapParamSetTcp { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_set_tcp_87a825d9") 
 	 } 
 } 
@@ -350,7 +350,7 @@ pub struct MapParamSetTcpReply {
 	pub retval : i32, 
 } 
 impl MapParamSetTcpReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_set_tcp_reply_e8d4e804") 
 	 } 
 } 
@@ -360,7 +360,7 @@ pub struct MapParamGet {
 	pub context : u32, 
 } 
 impl MapParamGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_get_51077d14") 
 	 } 
 } 
@@ -384,7 +384,7 @@ pub struct MapParamGetReply {
 	pub tc_class : u8, 
 } 
 impl MapParamGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("map_param_get_reply_28092156") 
 	 } 
 } 

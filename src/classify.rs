@@ -46,7 +46,7 @@ pub struct ClassifyAddDelTable {
 	pub mask : u8, 
 } 
 impl ClassifyAddDelTable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_add_del_table_6849e39e") 
 	 } 
 } 
@@ -59,7 +59,7 @@ pub struct ClassifyAddDelTableReply {
 	pub match_n_vectors : u32, 
 } 
 impl ClassifyAddDelTableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_add_del_table_reply_05486349") 
 	 } 
 } 
@@ -78,7 +78,7 @@ pub struct ClassifyAddDelSession {
 	pub match : u8, 
 } 
 impl ClassifyAddDelSession { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_add_del_session_f20879f0") 
 	 } 
 } 
@@ -88,7 +88,7 @@ pub struct ClassifyAddDelSessionReply {
 	pub retval : i32, 
 } 
 impl ClassifyAddDelSessionReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_add_del_session_reply_e8d4e804") 
 	 } 
 } 
@@ -103,7 +103,7 @@ pub struct PolicerClassifySetInterface {
 	pub is_add : bool, 
 } 
 impl PolicerClassifySetInterface { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("policer_classify_set_interface_de7ad708") 
 	 } 
 } 
@@ -113,7 +113,7 @@ pub struct PolicerClassifySetInterfaceReply {
 	pub retval : i32, 
 } 
 impl PolicerClassifySetInterfaceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("policer_classify_set_interface_reply_e8d4e804") 
 	 } 
 } 
@@ -125,7 +125,7 @@ pub struct PolicerClassifyDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl PolicerClassifyDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("policer_classify_dump_6bfe6603") 
 	 } 
 } 
@@ -136,7 +136,7 @@ pub struct PolicerClassifyDetails {
 	pub table_index : u32, 
 } 
 impl PolicerClassifyDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("policer_classify_details_dfd08765") 
 	 } 
 } 
@@ -146,7 +146,7 @@ pub struct ClassifyTableIds {
 	pub context : u32, 
 } 
 impl ClassifyTableIds { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_table_ids_51077d14") 
 	 } 
 } 
@@ -158,7 +158,7 @@ pub struct ClassifyTableIdsReply {
 	pub ids : u32, 
 } 
 impl ClassifyTableIdsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_table_ids_reply_d1d20e1d") 
 	 } 
 } 
@@ -169,7 +169,7 @@ pub struct ClassifyTableByInterface {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl ClassifyTableByInterface { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_table_by_interface_f9e6675e") 
 	 } 
 } 
@@ -183,7 +183,7 @@ pub struct ClassifyTableByInterfaceReply {
 	pub ip6_table_id : u32, 
 } 
 impl ClassifyTableByInterfaceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_table_by_interface_reply_ed4197db") 
 	 } 
 } 
@@ -194,7 +194,7 @@ pub struct ClassifyTableInfo {
 	pub table_id : u32, 
 } 
 impl ClassifyTableInfo { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_table_info_0cca2cd9") 
 	 } 
 } 
@@ -213,7 +213,7 @@ pub struct ClassifyTableInfoReply {
 	pub mask : u8, 
 } 
 impl ClassifyTableInfoReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_table_info_reply_4a573c0e") 
 	 } 
 } 
@@ -224,7 +224,7 @@ pub struct ClassifySessionDump {
 	pub table_id : u32, 
 } 
 impl ClassifySessionDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_session_dump_0cca2cd9") 
 	 } 
 } 
@@ -240,7 +240,7 @@ pub struct ClassifySessionDetails {
 	pub match : u8, 
 } 
 impl ClassifySessionDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_session_details_60e3ef94") 
 	 } 
 } 
@@ -254,7 +254,7 @@ pub struct FlowClassifySetInterface {
 	pub is_add : bool, 
 } 
 impl FlowClassifySetInterface { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flow_classify_set_interface_b6192f1c") 
 	 } 
 } 
@@ -264,7 +264,7 @@ pub struct FlowClassifySetInterfaceReply {
 	pub retval : i32, 
 } 
 impl FlowClassifySetInterfaceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flow_classify_set_interface_reply_e8d4e804") 
 	 } 
 } 
@@ -276,7 +276,7 @@ pub struct FlowClassifyDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl FlowClassifyDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flow_classify_dump_8a6ad43d") 
 	 } 
 } 
@@ -287,7 +287,7 @@ pub struct FlowClassifyDetails {
 	pub table_index : u32, 
 } 
 impl FlowClassifyDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("flow_classify_details_dfd08765") 
 	 } 
 } 
@@ -300,7 +300,7 @@ pub struct ClassifySetInterfaceIpTable {
 	pub table_index : u32, 
 } 
 impl ClassifySetInterfaceIpTable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_set_interface_ip_table_e0b097c7") 
 	 } 
 } 
@@ -310,7 +310,7 @@ pub struct ClassifySetInterfaceIpTableReply {
 	pub retval : i32, 
 } 
 impl ClassifySetInterfaceIpTableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_set_interface_ip_table_reply_e8d4e804") 
 	 } 
 } 
@@ -325,7 +325,7 @@ pub struct ClassifySetInterfaceL2Tables {
 	pub is_input : bool, 
 } 
 impl ClassifySetInterfaceL2Tables { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_set_interface_l2_tables_5a6ddf65") 
 	 } 
 } 
@@ -335,7 +335,7 @@ pub struct ClassifySetInterfaceL2TablesReply {
 	pub retval : i32, 
 } 
 impl ClassifySetInterfaceL2TablesReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_set_interface_l2_tables_reply_e8d4e804") 
 	 } 
 } 
@@ -350,7 +350,7 @@ pub struct InputAclSetInterface {
 	pub is_add : bool, 
 } 
 impl InputAclSetInterface { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("input_acl_set_interface_de7ad708") 
 	 } 
 } 
@@ -360,7 +360,7 @@ pub struct InputAclSetInterfaceReply {
 	pub retval : i32, 
 } 
 impl InputAclSetInterfaceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("input_acl_set_interface_reply_e8d4e804") 
 	 } 
 } 
@@ -375,7 +375,7 @@ pub struct OutputAclSetInterface {
 	pub is_add : bool, 
 } 
 impl OutputAclSetInterface { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("output_acl_set_interface_de7ad708") 
 	 } 
 } 
@@ -385,7 +385,7 @@ pub struct OutputAclSetInterfaceReply {
 	pub retval : i32, 
 } 
 impl OutputAclSetInterfaceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("output_acl_set_interface_reply_e8d4e804") 
 	 } 
 } 
@@ -400,7 +400,7 @@ pub struct ClassifyPcapLookupTable {
 	pub mask : u8, 
 } 
 impl ClassifyPcapLookupTable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_pcap_lookup_table_e1b4cc6b") 
 	 } 
 } 
@@ -411,7 +411,7 @@ pub struct ClassifyPcapLookupTableReply {
 	pub table_index : u32, 
 } 
 impl ClassifyPcapLookupTableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_pcap_lookup_table_reply_9c6c6773") 
 	 } 
 } 
@@ -424,7 +424,7 @@ pub struct ClassifyPcapSetTable {
 	pub sort_masks : bool, 
 } 
 impl ClassifyPcapSetTable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_pcap_set_table_006051b3") 
 	 } 
 } 
@@ -435,7 +435,7 @@ pub struct ClassifyPcapSetTableReply {
 	pub table_index : u32, 
 } 
 impl ClassifyPcapSetTableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_pcap_set_table_reply_9c6c6773") 
 	 } 
 } 
@@ -446,7 +446,7 @@ pub struct ClassifyPcapGetTables {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl ClassifyPcapGetTables { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_pcap_get_tables_f9e6675e") 
 	 } 
 } 
@@ -458,7 +458,7 @@ pub struct ClassifyPcapGetTablesReply {
 	pub indices : u32, 
 } 
 impl ClassifyPcapGetTablesReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_pcap_get_tables_reply_5f5bc9e6") 
 	 } 
 } 
@@ -472,7 +472,7 @@ pub struct ClassifyTraceLookupTable {
 	pub mask : u8, 
 } 
 impl ClassifyTraceLookupTable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_trace_lookup_table_3f7b72e4") 
 	 } 
 } 
@@ -483,7 +483,7 @@ pub struct ClassifyTraceLookupTableReply {
 	pub table_index : u32, 
 } 
 impl ClassifyTraceLookupTableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_trace_lookup_table_reply_9c6c6773") 
 	 } 
 } 
@@ -495,7 +495,7 @@ pub struct ClassifyTraceSetTable {
 	pub sort_masks : bool, 
 } 
 impl ClassifyTraceSetTable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_trace_set_table_3909b55a") 
 	 } 
 } 
@@ -506,7 +506,7 @@ pub struct ClassifyTraceSetTableReply {
 	pub table_index : u32, 
 } 
 impl ClassifyTraceSetTableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_trace_set_table_reply_9c6c6773") 
 	 } 
 } 
@@ -516,7 +516,7 @@ pub struct ClassifyTraceGetTables {
 	pub context : u32, 
 } 
 impl ClassifyTraceGetTables { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_trace_get_tables_51077d14") 
 	 } 
 } 
@@ -528,7 +528,7 @@ pub struct ClassifyTraceGetTablesReply {
 	pub indices : u32, 
 } 
 impl ClassifyTraceGetTablesReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("classify_trace_get_tables_reply_5f5bc9e6") 
 	 } 
 } 

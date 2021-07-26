@@ -22,7 +22,7 @@ pub struct TeibEntryAddDel {
 	pub entry : TeibEntry, 
 } 
 impl TeibEntryAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("teib_entry_add_del_5aa0a538") 
 	 } 
 } 
@@ -32,7 +32,7 @@ pub struct TeibEntryAddDelReply {
 	pub retval : i32, 
 } 
 impl TeibEntryAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("teib_entry_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -42,7 +42,7 @@ pub struct TeibDump {
 	pub context : u32, 
 } 
 impl TeibDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("teib_dump_51077d14") 
 	 } 
 } 
@@ -52,7 +52,7 @@ pub struct TeibDetails {
 	pub entry : TeibEntry, 
 } 
 impl TeibDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("teib_details_e3b6a503") 
 	 } 
 } 

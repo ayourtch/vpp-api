@@ -15,7 +15,7 @@ pub struct TcpConfigureSrcAddresses {
 	pub last_address : Address, 
 } 
 impl TcpConfigureSrcAddresses { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("tcp_configure_src_addresses_4b02b946") 
 	 } 
 } 
@@ -25,7 +25,7 @@ pub struct TcpConfigureSrcAddressesReply {
 	pub retval : i32, 
 } 
 impl TcpConfigureSrcAddressesReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("tcp_configure_src_addresses_reply_e8d4e804") 
 	 } 
 } 

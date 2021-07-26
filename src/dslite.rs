@@ -16,7 +16,7 @@ pub struct DsliteAddDelPoolAddrRange {
 	pub is_add : bool, 
 } 
 impl DsliteAddDelPoolAddrRange { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dslite_add_del_pool_addr_range_c448457a") 
 	 } 
 } 
@@ -26,7 +26,7 @@ pub struct DsliteAddDelPoolAddrRangeReply {
 	pub retval : i32, 
 } 
 impl DsliteAddDelPoolAddrRangeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dslite_add_del_pool_addr_range_reply_e8d4e804") 
 	 } 
 } 
@@ -36,7 +36,7 @@ pub struct DsliteAddressDump {
 	pub context : u32, 
 } 
 impl DsliteAddressDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dslite_address_dump_51077d14") 
 	 } 
 } 
@@ -46,7 +46,7 @@ pub struct DsliteAddressDetails {
 	pub ip_address : Ip4Address, 
 } 
 impl DsliteAddressDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dslite_address_details_ec26d648") 
 	 } 
 } 
@@ -58,7 +58,7 @@ pub struct DsliteSetAftrAddr {
 	pub ip6_addr : Ip6Address, 
 } 
 impl DsliteSetAftrAddr { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dslite_set_aftr_addr_1e955f8d") 
 	 } 
 } 
@@ -68,7 +68,7 @@ pub struct DsliteSetAftrAddrReply {
 	pub retval : i32, 
 } 
 impl DsliteSetAftrAddrReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dslite_set_aftr_addr_reply_e8d4e804") 
 	 } 
 } 
@@ -78,7 +78,7 @@ pub struct DsliteGetAftrAddr {
 	pub context : u32, 
 } 
 impl DsliteGetAftrAddr { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dslite_get_aftr_addr_51077d14") 
 	 } 
 } 
@@ -90,7 +90,7 @@ pub struct DsliteGetAftrAddrReply {
 	pub ip6_addr : Ip6Address, 
 } 
 impl DsliteGetAftrAddrReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dslite_get_aftr_addr_reply_38e30db1") 
 	 } 
 } 
@@ -102,7 +102,7 @@ pub struct DsliteSetB4Addr {
 	pub ip6_addr : Ip6Address, 
 } 
 impl DsliteSetB4Addr { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dslite_set_b4_addr_1e955f8d") 
 	 } 
 } 
@@ -112,7 +112,7 @@ pub struct DsliteSetB4AddrReply {
 	pub retval : i32, 
 } 
 impl DsliteSetB4AddrReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dslite_set_b4_addr_reply_e8d4e804") 
 	 } 
 } 
@@ -122,7 +122,7 @@ pub struct DsliteGetB4Addr {
 	pub context : u32, 
 } 
 impl DsliteGetB4Addr { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dslite_get_b4_addr_51077d14") 
 	 } 
 } 
@@ -134,7 +134,7 @@ pub struct DsliteGetB4AddrReply {
 	pub ip6_addr : Ip6Address, 
 } 
 impl DsliteGetB4AddrReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dslite_get_b4_addr_reply_38e30db1") 
 	 } 
 } 

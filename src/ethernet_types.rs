@@ -5,4 +5,4 @@ use vpp_api_encoding::typ::*;
 use vpp_api_transport::*;
 use serde_repr::{Serialize_repr, Deserialize_repr};
 use typenum::{U10, U24, U256, U32, U64};
-pub type MacAddress=[u8;6];
+pub type MacAddress=[u8;6]; 

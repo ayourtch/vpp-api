@@ -17,7 +17,7 @@ pub struct Nat66AddDelInterface {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Nat66AddDelInterface { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat66_add_del_interface_f3699b83") 
 	 } 
 } 
@@ -27,7 +27,7 @@ pub struct Nat66AddDelInterfaceReply {
 	pub retval : i32, 
 } 
 impl Nat66AddDelInterfaceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat66_add_del_interface_reply_e8d4e804") 
 	 } 
 } 
@@ -37,7 +37,7 @@ pub struct Nat66InterfaceDump {
 	pub context : u32, 
 } 
 impl Nat66InterfaceDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat66_interface_dump_51077d14") 
 	 } 
 } 
@@ -48,7 +48,7 @@ pub struct Nat66InterfaceDetails {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Nat66InterfaceDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat66_interface_details_5d286289") 
 	 } 
 } 
@@ -62,7 +62,7 @@ pub struct Nat66AddDelStaticMapping {
 	pub vrf_id : u32, 
 } 
 impl Nat66AddDelStaticMapping { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat66_add_del_static_mapping_fb64e50b") 
 	 } 
 } 
@@ -72,7 +72,7 @@ pub struct Nat66AddDelStaticMappingReply {
 	pub retval : i32, 
 } 
 impl Nat66AddDelStaticMappingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat66_add_del_static_mapping_reply_e8d4e804") 
 	 } 
 } 
@@ -82,7 +82,7 @@ pub struct Nat66StaticMappingDump {
 	pub context : u32, 
 } 
 impl Nat66StaticMappingDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat66_static_mapping_dump_51077d14") 
 	 } 
 } 
@@ -96,7 +96,7 @@ pub struct Nat66StaticMappingDetails {
 	pub total_pkts : u64, 
 } 
 impl Nat66StaticMappingDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nat66_static_mapping_details_5c568448") 
 	 } 
 } 

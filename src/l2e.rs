@@ -14,7 +14,7 @@ pub struct L2Emulation {
 	pub enable : bool, 
 } 
 impl L2Emulation { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_emulation_ae6cfcfb") 
 	 } 
 } 
@@ -24,7 +24,7 @@ pub struct L2EmulationReply {
 	pub retval : i32, 
 } 
 impl L2EmulationReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_emulation_reply_e8d4e804") 
 	 } 
 } 

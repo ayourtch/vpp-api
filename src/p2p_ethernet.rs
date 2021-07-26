@@ -16,7 +16,7 @@ pub struct P2pEthernetAdd {
 	pub remote_mac : MacAddress, 
 } 
 impl P2pEthernetAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("p2p_ethernet_add_eeb8e717") 
 	 } 
 } 
@@ -27,7 +27,7 @@ pub struct P2pEthernetAddReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl P2pEthernetAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("p2p_ethernet_add_reply_5383d31f") 
 	 } 
 } 
@@ -39,7 +39,7 @@ pub struct P2pEthernetDel {
 	pub remote_mac : MacAddress, 
 } 
 impl P2pEthernetDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("p2p_ethernet_del_0b62c386") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct P2pEthernetDelReply {
 	pub retval : i32, 
 } 
 impl P2pEthernetDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("p2p_ethernet_del_reply_e8d4e804") 
 	 } 
 } 

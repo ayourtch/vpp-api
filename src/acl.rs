@@ -15,7 +15,7 @@ pub struct AclPluginGetVersion {
 	pub context : u32, 
 } 
 impl AclPluginGetVersion { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_plugin_get_version_51077d14") 
 	 } 
 } 
@@ -26,7 +26,7 @@ pub struct AclPluginGetVersionReply {
 	pub minor : u32, 
 } 
 impl AclPluginGetVersionReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_plugin_get_version_reply_9b32cf86") 
 	 } 
 } 
@@ -36,7 +36,7 @@ pub struct AclPluginControlPing {
 	pub context : u32, 
 } 
 impl AclPluginControlPing { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_plugin_control_ping_51077d14") 
 	 } 
 } 
@@ -48,7 +48,7 @@ pub struct AclPluginControlPingReply {
 	pub vpe_pid : u32, 
 } 
 impl AclPluginControlPingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_plugin_control_ping_reply_f6b0b8ca") 
 	 } 
 } 
@@ -58,7 +58,7 @@ pub struct AclPluginGetConnTableMaxEntries {
 	pub context : u32, 
 } 
 impl AclPluginGetConnTableMaxEntries { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_plugin_get_conn_table_max_entries_51077d14") 
 	 } 
 } 
@@ -68,7 +68,7 @@ pub struct AclPluginGetConnTableMaxEntriesReply {
 	pub conn_table_max_entries : u64, 
 } 
 impl AclPluginGetConnTableMaxEntriesReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_plugin_get_conn_table_max_entries_reply_7a096d3d") 
 	 } 
 } 
@@ -82,7 +82,7 @@ pub struct AclAddReplace {
 	pub r : AclRule, 
 } 
 impl AclAddReplace { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_add_replace_1cabdeab") 
 	 } 
 } 
@@ -93,7 +93,7 @@ pub struct AclAddReplaceReply {
 	pub retval : i32, 
 } 
 impl AclAddReplaceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_add_replace_reply_ac407b0c") 
 	 } 
 } 
@@ -104,7 +104,7 @@ pub struct AclDel {
 	pub acl_index : u32, 
 } 
 impl AclDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_del_ef34fea4") 
 	 } 
 } 
@@ -114,7 +114,7 @@ pub struct AclDelReply {
 	pub retval : i32, 
 } 
 impl AclDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_del_reply_e8d4e804") 
 	 } 
 } 
@@ -128,7 +128,7 @@ pub struct AclInterfaceAddDel {
 	pub acl_index : u32, 
 } 
 impl AclInterfaceAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_interface_add_del_4b54bebd") 
 	 } 
 } 
@@ -138,7 +138,7 @@ pub struct AclInterfaceAddDelReply {
 	pub retval : i32, 
 } 
 impl AclInterfaceAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_interface_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -152,7 +152,7 @@ pub struct AclInterfaceSetAclList {
 	pub acls : u32, 
 } 
 impl AclInterfaceSetAclList { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_interface_set_acl_list_473982bd") 
 	 } 
 } 
@@ -162,7 +162,7 @@ pub struct AclInterfaceSetAclListReply {
 	pub retval : i32, 
 } 
 impl AclInterfaceSetAclListReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_interface_set_acl_list_reply_e8d4e804") 
 	 } 
 } 
@@ -173,7 +173,7 @@ pub struct AclDump {
 	pub acl_index : u32, 
 } 
 impl AclDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_dump_ef34fea4") 
 	 } 
 } 
@@ -186,7 +186,7 @@ pub struct AclDetails {
 	pub r : AclRule, 
 } 
 impl AclDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_details_7a97f21c") 
 	 } 
 } 
@@ -197,7 +197,7 @@ pub struct AclInterfaceListDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl AclInterfaceListDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_interface_list_dump_f9e6675e") 
 	 } 
 } 
@@ -210,7 +210,7 @@ pub struct AclInterfaceListDetails {
 	pub acls : u32, 
 } 
 impl AclInterfaceListDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_interface_list_details_e695d256") 
 	 } 
 } 
@@ -223,7 +223,7 @@ pub struct MacipAclAdd {
 	pub r : MacipAclRule, 
 } 
 impl MacipAclAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_add_d648fd0a") 
 	 } 
 } 
@@ -234,7 +234,7 @@ pub struct MacipAclAddReply {
 	pub retval : i32, 
 } 
 impl MacipAclAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_add_reply_ac407b0c") 
 	 } 
 } 
@@ -248,7 +248,7 @@ pub struct MacipAclAddReplace {
 	pub r : MacipAclRule, 
 } 
 impl MacipAclAddReplace { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_add_replace_e34402a7") 
 	 } 
 } 
@@ -259,7 +259,7 @@ pub struct MacipAclAddReplaceReply {
 	pub retval : i32, 
 } 
 impl MacipAclAddReplaceReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_add_replace_reply_ac407b0c") 
 	 } 
 } 
@@ -270,7 +270,7 @@ pub struct MacipAclDel {
 	pub acl_index : u32, 
 } 
 impl MacipAclDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_del_ef34fea4") 
 	 } 
 } 
@@ -280,7 +280,7 @@ pub struct MacipAclDelReply {
 	pub retval : i32, 
 } 
 impl MacipAclDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_del_reply_e8d4e804") 
 	 } 
 } 
@@ -293,7 +293,7 @@ pub struct MacipAclInterfaceAddDel {
 	pub acl_index : u32, 
 } 
 impl MacipAclInterfaceAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_interface_add_del_4b8690b1") 
 	 } 
 } 
@@ -303,7 +303,7 @@ pub struct MacipAclInterfaceAddDelReply {
 	pub retval : i32, 
 } 
 impl MacipAclInterfaceAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_interface_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -314,7 +314,7 @@ pub struct MacipAclDump {
 	pub acl_index : u32, 
 } 
 impl MacipAclDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_dump_ef34fea4") 
 	 } 
 } 
@@ -327,7 +327,7 @@ pub struct MacipAclDetails {
 	pub r : MacipAclRule, 
 } 
 impl MacipAclDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_details_57c7482f") 
 	 } 
 } 
@@ -337,7 +337,7 @@ pub struct MacipAclInterfaceGet {
 	pub context : u32, 
 } 
 impl MacipAclInterfaceGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_interface_get_51077d14") 
 	 } 
 } 
@@ -348,7 +348,7 @@ pub struct MacipAclInterfaceGetReply {
 	pub acls : u32, 
 } 
 impl MacipAclInterfaceGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_interface_get_reply_accf9b05") 
 	 } 
 } 
@@ -359,7 +359,7 @@ pub struct MacipAclInterfaceListDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl MacipAclInterfaceListDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_interface_list_dump_f9e6675e") 
 	 } 
 } 
@@ -371,7 +371,7 @@ pub struct MacipAclInterfaceListDetails {
 	pub acls : u32, 
 } 
 impl MacipAclInterfaceListDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("macip_acl_interface_list_details_a0c5d56d") 
 	 } 
 } 
@@ -385,7 +385,7 @@ pub struct AclInterfaceSetEtypeWhitelist {
 	pub whitelist : u16, 
 } 
 impl AclInterfaceSetEtypeWhitelist { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_interface_set_etype_whitelist_3f5c2d2d") 
 	 } 
 } 
@@ -395,7 +395,7 @@ pub struct AclInterfaceSetEtypeWhitelistReply {
 	pub retval : i32, 
 } 
 impl AclInterfaceSetEtypeWhitelistReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_interface_set_etype_whitelist_reply_e8d4e804") 
 	 } 
 } 
@@ -406,7 +406,7 @@ pub struct AclInterfaceEtypeWhitelistDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl AclInterfaceEtypeWhitelistDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_interface_etype_whitelist_dump_f9e6675e") 
 	 } 
 } 
@@ -419,7 +419,7 @@ pub struct AclInterfaceEtypeWhitelistDetails {
 	pub whitelist : u16, 
 } 
 impl AclInterfaceEtypeWhitelistDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_interface_etype_whitelist_details_cc2bfded") 
 	 } 
 } 
@@ -430,7 +430,7 @@ pub struct AclStatsIntfCountersEnable {
 	pub enable : bool, 
 } 
 impl AclStatsIntfCountersEnable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_stats_intf_counters_enable_b3e225d2") 
 	 } 
 } 
@@ -440,7 +440,7 @@ pub struct AclStatsIntfCountersEnableReply {
 	pub retval : i32, 
 } 
 impl AclStatsIntfCountersEnableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("acl_stats_intf_counters_enable_reply_e8d4e804") 
 	 } 
 } 

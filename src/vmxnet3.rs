@@ -36,7 +36,7 @@ pub struct Vmxnet3Create {
 	pub enable_gso : bool, 
 } 
 impl Vmxnet3Create { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vmxnet3_create_71a07314") 
 	 } 
 } 
@@ -47,7 +47,7 @@ pub struct Vmxnet3CreateReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Vmxnet3CreateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vmxnet3_create_reply_5383d31f") 
 	 } 
 } 
@@ -58,7 +58,7 @@ pub struct Vmxnet3Delete {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl Vmxnet3Delete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vmxnet3_delete_f9e6675e") 
 	 } 
 } 
@@ -68,7 +68,7 @@ pub struct Vmxnet3DeleteReply {
 	pub retval : i32, 
 } 
 impl Vmxnet3DeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vmxnet3_delete_reply_e8d4e804") 
 	 } 
 } 
@@ -87,7 +87,7 @@ pub struct Vmxnet3Details {
 	pub tx_list : Vmxnet3TxList, 
 } 
 impl Vmxnet3Details { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vmxnet3_details_829ba055") 
 	 } 
 } 
@@ -97,7 +97,7 @@ pub struct Vmxnet3Dump {
 	pub context : u32, 
 } 
 impl Vmxnet3Dump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("vmxnet3_dump_51077d14") 
 	 } 
 } 
@@ -108,7 +108,7 @@ pub struct SwVmxnet3InterfaceDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl SwVmxnet3InterfaceDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_vmxnet3_interface_dump_f9e6675e") 
 	 } 
 } 
@@ -127,7 +127,7 @@ pub struct SwVmxnet3InterfaceDetails {
 	pub tx_list : Vmxnet3TxList, 
 } 
 impl SwVmxnet3InterfaceDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_vmxnet3_interface_details_6a1a5498") 
 	 } 
 } 

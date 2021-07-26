@@ -150,7 +150,7 @@ pub struct FlowRule {
 	pub buffer_advance : i32, 
 	pub flow : Flow, 
 } 
-type Flow = [u8;80]; 
+pub type Flow = [u8;80]; 
 #[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] 
 #[repr(u32)]
 pub enum FlowType { 

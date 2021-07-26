@@ -25,7 +25,7 @@ pub struct NshAddDelEntry {
 	pub tlv : u8, 
 } 
 impl NshAddDelEntry { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsh_add_del_entry_7dea480b") 
 	 } 
 } 
@@ -36,7 +36,7 @@ pub struct NshAddDelEntryReply {
 	pub entry_index : u32, 
 } 
 impl NshAddDelEntryReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsh_add_del_entry_reply_6296a9eb") 
 	 } 
 } 
@@ -47,7 +47,7 @@ pub struct NshEntryDump {
 	pub entry_index : u32, 
 } 
 impl NshEntryDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsh_entry_dump_cdaf8ccb") 
 	 } 
 } 
@@ -69,7 +69,7 @@ pub struct NshEntryDetails {
 	pub tlv : u8, 
 } 
 impl NshEntryDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsh_entry_details_046fb556") 
 	 } 
 } 
@@ -86,7 +86,7 @@ pub struct NshAddDelMap {
 	pub next_node : u32, 
 } 
 impl NshAddDelMap { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsh_add_del_map_898d857d") 
 	 } 
 } 
@@ -97,7 +97,7 @@ pub struct NshAddDelMapReply {
 	pub map_index : u32, 
 } 
 impl NshAddDelMapReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsh_add_del_map_reply_b2b127ef") 
 	 } 
 } 
@@ -108,7 +108,7 @@ pub struct NshMapDump {
 	pub map_index : u32, 
 } 
 impl NshMapDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsh_map_dump_8fc06b82") 
 	 } 
 } 
@@ -124,7 +124,7 @@ pub struct NshMapDetails {
 	pub next_node : u32, 
 } 
 impl NshMapDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("nsh_map_details_b34ac8a1") 
 	 } 
 } 

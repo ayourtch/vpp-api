@@ -29,7 +29,7 @@ pub struct GraphNodeGet {
 	pub want_arcs : bool, 
 } 
 impl GraphNodeGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("graph_node_get_39c8792e") 
 	 } 
 } 
@@ -40,7 +40,7 @@ pub struct GraphNodeGetReply {
 	pub cursor : u32, 
 } 
 impl GraphNodeGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("graph_node_get_reply_53b48f5d") 
 	 } 
 } 
@@ -54,7 +54,7 @@ pub struct GraphNodeDetails {
 	pub arcs_out : u32, 
 } 
 impl GraphNodeDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("graph_node_details_ac762018") 
 	 } 
 } 

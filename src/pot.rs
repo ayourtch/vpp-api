@@ -20,7 +20,7 @@ pub struct PotProfileAdd {
 	pub list_name : VariableSizeString, 
 } 
 impl PotProfileAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pot_profile_add_ad5da3a3") 
 	 } 
 } 
@@ -30,7 +30,7 @@ pub struct PotProfileAddReply {
 	pub retval : i32, 
 } 
 impl PotProfileAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pot_profile_add_reply_e8d4e804") 
 	 } 
 } 
@@ -42,7 +42,7 @@ pub struct PotProfileActivate {
 	pub list_name : VariableSizeString, 
 } 
 impl PotProfileActivate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pot_profile_activate_0770af98") 
 	 } 
 } 
@@ -52,7 +52,7 @@ pub struct PotProfileActivateReply {
 	pub retval : i32, 
 } 
 impl PotProfileActivateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pot_profile_activate_reply_e8d4e804") 
 	 } 
 } 
@@ -63,7 +63,7 @@ pub struct PotProfileDel {
 	pub list_name : VariableSizeString, 
 } 
 impl PotProfileDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pot_profile_del_cd63f53b") 
 	 } 
 } 
@@ -73,7 +73,7 @@ pub struct PotProfileDelReply {
 	pub retval : i32, 
 } 
 impl PotProfileDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pot_profile_del_reply_e8d4e804") 
 	 } 
 } 
@@ -84,7 +84,7 @@ pub struct PotProfileShowConfigDump {
 	pub id : u8, 
 } 
 impl PotProfileShowConfigDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pot_profile_show_config_dump_005b7d59") 
 	 } 
 } 
@@ -102,7 +102,7 @@ pub struct PotProfileShowConfigDetails {
 	pub polynomial_public : u64, 
 } 
 impl PotProfileShowConfigDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("pot_profile_show_config_details_b7ce0618") 
 	 } 
 } 

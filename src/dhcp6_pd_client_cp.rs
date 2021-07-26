@@ -16,7 +16,7 @@ pub struct Dhcp6PdClientEnableDisable {
 	pub enable : bool, 
 } 
 impl Dhcp6PdClientEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_pd_client_enable_disable_a75a0772") 
 	 } 
 } 
@@ -26,7 +26,7 @@ pub struct Dhcp6PdClientEnableDisableReply {
 	pub retval : i32, 
 } 
 impl Dhcp6PdClientEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_pd_client_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -40,7 +40,7 @@ pub struct Ip6AddDelAddressUsingPrefix {
 	pub is_add : bool, 
 } 
 impl Ip6AddDelAddressUsingPrefix { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip6_add_del_address_using_prefix_9b3d11e0") 
 	 } 
 } 
@@ -50,7 +50,7 @@ pub struct Ip6AddDelAddressUsingPrefixReply {
 	pub retval : i32, 
 } 
 impl Ip6AddDelAddressUsingPrefixReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("ip6_add_del_address_using_prefix_reply_e8d4e804") 
 	 } 
 } 

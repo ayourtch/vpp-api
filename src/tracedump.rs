@@ -24,7 +24,7 @@ pub struct TraceSetFilters {
 	pub classifier_table_index : u32, 
 } 
 impl TraceSetFilters { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_set_filters_f522b44a") 
 	 } 
 } 
@@ -34,7 +34,7 @@ pub struct TraceSetFiltersReply {
 	pub retval : i32, 
 } 
 impl TraceSetFiltersReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_set_filters_reply_e8d4e804") 
 	 } 
 } 
@@ -49,7 +49,7 @@ pub struct TraceCapturePackets {
 	pub pre_capture_clear : bool, 
 } 
 impl TraceCapturePackets { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_capture_packets_9e791a9b") 
 	 } 
 } 
@@ -59,7 +59,7 @@ pub struct TraceCapturePacketsReply {
 	pub retval : i32, 
 } 
 impl TraceCapturePacketsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_capture_packets_reply_e8d4e804") 
 	 } 
 } 
@@ -69,7 +69,7 @@ pub struct TraceClearCapture {
 	pub context : u32, 
 } 
 impl TraceClearCapture { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_clear_capture_51077d14") 
 	 } 
 } 
@@ -79,7 +79,7 @@ pub struct TraceClearCaptureReply {
 	pub retval : i32, 
 } 
 impl TraceClearCaptureReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_clear_capture_reply_e8d4e804") 
 	 } 
 } 
@@ -93,7 +93,7 @@ pub struct TraceDump {
 	pub max_records : u32, 
 } 
 impl TraceDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_dump_c7d6681f") 
 	 } 
 } 
@@ -109,7 +109,7 @@ pub struct TraceDumpReply {
 	pub done : u8, 
 } 
 impl TraceDumpReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_dump_reply_e0e87f9d") 
 	 } 
 } 
@@ -126,7 +126,7 @@ pub struct TraceDetails {
 	pub trace_data : VariableSizeString, 
 } 
 impl TraceDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("trace_details_1553e9eb") 
 	 } 
 } 

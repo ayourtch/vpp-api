@@ -19,7 +19,7 @@ pub struct SrMplsPolicyAdd {
 	pub segments : u32, 
 } 
 impl SrMplsPolicyAdd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_mpls_policy_add_a1a70c70") 
 	 } 
 } 
@@ -29,7 +29,7 @@ pub struct SrMplsPolicyAddReply {
 	pub retval : i32, 
 } 
 impl SrMplsPolicyAddReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_mpls_policy_add_reply_e8d4e804") 
 	 } 
 } 
@@ -45,7 +45,7 @@ pub struct SrMplsPolicyMod {
 	pub segments : u32, 
 } 
 impl SrMplsPolicyMod { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_mpls_policy_mod_88482c17") 
 	 } 
 } 
@@ -55,7 +55,7 @@ pub struct SrMplsPolicyModReply {
 	pub retval : i32, 
 } 
 impl SrMplsPolicyModReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_mpls_policy_mod_reply_e8d4e804") 
 	 } 
 } 
@@ -66,7 +66,7 @@ pub struct SrMplsPolicyDel {
 	pub bsid : u32, 
 } 
 impl SrMplsPolicyDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_mpls_policy_del_e29d34fa") 
 	 } 
 } 
@@ -76,7 +76,7 @@ pub struct SrMplsPolicyDelReply {
 	pub retval : i32, 
 } 
 impl SrMplsPolicyDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_mpls_policy_del_reply_e8d4e804") 
 	 } 
 } 
@@ -95,7 +95,7 @@ pub struct SrMplsSteeringAddDel {
 	pub vpn_label : u32, 
 } 
 impl SrMplsSteeringAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_mpls_steering_add_del_7d1b0a0b") 
 	 } 
 } 
@@ -105,7 +105,7 @@ pub struct SrMplsSteeringAddDelReply {
 	pub retval : i32, 
 } 
 impl SrMplsSteeringAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_mpls_steering_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -118,7 +118,7 @@ pub struct SrMplsPolicyAssignEndpointColor {
 	pub color : u32, 
 } 
 impl SrMplsPolicyAssignEndpointColor { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_mpls_policy_assign_endpoint_color_5e1c5c13") 
 	 } 
 } 
@@ -128,7 +128,7 @@ pub struct SrMplsPolicyAssignEndpointColorReply {
 	pub retval : i32, 
 } 
 impl SrMplsPolicyAssignEndpointColorReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sr_mpls_policy_assign_endpoint_color_reply_e8d4e804") 
 	 } 
 } 

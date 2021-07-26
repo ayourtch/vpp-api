@@ -32,7 +32,7 @@ pub struct LispAddDelLocatorSet {
 	pub locators : LocalLocator, 
 } 
 impl LispAddDelLocatorSet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_locator_set_6fcd6471") 
 	 } 
 } 
@@ -43,7 +43,7 @@ pub struct LispAddDelLocatorSetReply {
 	pub ls_index : u32, 
 } 
 impl LispAddDelLocatorSetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_locator_set_reply_b6666db4") 
 	 } 
 } 
@@ -58,7 +58,7 @@ pub struct LispAddDelLocator {
 	pub weight : u8, 
 } 
 impl LispAddDelLocator { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_locator_af4d8f13") 
 	 } 
 } 
@@ -68,7 +68,7 @@ pub struct LispAddDelLocatorReply {
 	pub retval : i32, 
 } 
 impl LispAddDelLocatorReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_locator_reply_e8d4e804") 
 	 } 
 } 
@@ -83,7 +83,7 @@ pub struct LispAddDelLocalEid {
 	pub key : HmacKey, 
 } 
 impl LispAddDelLocalEid { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_local_eid_21f573bd") 
 	 } 
 } 
@@ -93,7 +93,7 @@ pub struct LispAddDelLocalEidReply {
 	pub retval : i32, 
 } 
 impl LispAddDelLocalEidReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_local_eid_reply_e8d4e804") 
 	 } 
 } 
@@ -105,7 +105,7 @@ pub struct LispAddDelMapServer {
 	pub ip_address : Address, 
 } 
 impl LispAddDelMapServer { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_map_server_6598ea7c") 
 	 } 
 } 
@@ -115,7 +115,7 @@ pub struct LispAddDelMapServerReply {
 	pub retval : i32, 
 } 
 impl LispAddDelMapServerReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_map_server_reply_e8d4e804") 
 	 } 
 } 
@@ -127,7 +127,7 @@ pub struct LispAddDelMapResolver {
 	pub ip_address : Address, 
 } 
 impl LispAddDelMapResolver { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_map_resolver_6598ea7c") 
 	 } 
 } 
@@ -137,7 +137,7 @@ pub struct LispAddDelMapResolverReply {
 	pub retval : i32, 
 } 
 impl LispAddDelMapResolverReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_map_resolver_reply_e8d4e804") 
 	 } 
 } 
@@ -148,7 +148,7 @@ pub struct LispEnableDisable {
 	pub is_enable : bool, 
 } 
 impl LispEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_enable_disable_c264d7bf") 
 	 } 
 } 
@@ -158,7 +158,7 @@ pub struct LispEnableDisableReply {
 	pub retval : i32, 
 } 
 impl LispEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -170,7 +170,7 @@ pub struct LispPitrSetLocatorSet {
 	pub ls_name : FixedSizeString<U64>, 
 } 
 impl LispPitrSetLocatorSet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_pitr_set_locator_set_486e2b76") 
 	 } 
 } 
@@ -180,7 +180,7 @@ pub struct LispPitrSetLocatorSetReply {
 	pub retval : i32, 
 } 
 impl LispPitrSetLocatorSetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_pitr_set_locator_set_reply_e8d4e804") 
 	 } 
 } 
@@ -192,7 +192,7 @@ pub struct LispUsePetr {
 	pub is_add : bool, 
 } 
 impl LispUsePetr { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_use_petr_9e141831") 
 	 } 
 } 
@@ -202,7 +202,7 @@ pub struct LispUsePetrReply {
 	pub retval : i32, 
 } 
 impl LispUsePetrReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_use_petr_reply_e8d4e804") 
 	 } 
 } 
@@ -212,7 +212,7 @@ pub struct ShowLispUsePetr {
 	pub context : u32, 
 } 
 impl ShowLispUsePetr { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_lisp_use_petr_51077d14") 
 	 } 
 } 
@@ -224,7 +224,7 @@ pub struct ShowLispUsePetrReply {
 	pub ip_address : Address, 
 } 
 impl ShowLispUsePetrReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_lisp_use_petr_reply_dcad8a81") 
 	 } 
 } 
@@ -234,7 +234,7 @@ pub struct ShowLispRlocProbeState {
 	pub context : u32, 
 } 
 impl ShowLispRlocProbeState { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_lisp_rloc_probe_state_51077d14") 
 	 } 
 } 
@@ -245,7 +245,7 @@ pub struct ShowLispRlocProbeStateReply {
 	pub is_enabled : bool, 
 } 
 impl ShowLispRlocProbeStateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_lisp_rloc_probe_state_reply_e33a377b") 
 	 } 
 } 
@@ -256,7 +256,7 @@ pub struct LispRlocProbeEnableDisable {
 	pub is_enable : bool, 
 } 
 impl LispRlocProbeEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_rloc_probe_enable_disable_c264d7bf") 
 	 } 
 } 
@@ -266,7 +266,7 @@ pub struct LispRlocProbeEnableDisableReply {
 	pub retval : i32, 
 } 
 impl LispRlocProbeEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_rloc_probe_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -277,7 +277,7 @@ pub struct LispMapRegisterEnableDisable {
 	pub is_enable : bool, 
 } 
 impl LispMapRegisterEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_map_register_enable_disable_c264d7bf") 
 	 } 
 } 
@@ -287,7 +287,7 @@ pub struct LispMapRegisterEnableDisableReply {
 	pub retval : i32, 
 } 
 impl LispMapRegisterEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_map_register_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -297,7 +297,7 @@ pub struct ShowLispMapRegisterState {
 	pub context : u32, 
 } 
 impl ShowLispMapRegisterState { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_lisp_map_register_state_51077d14") 
 	 } 
 } 
@@ -308,7 +308,7 @@ pub struct ShowLispMapRegisterStateReply {
 	pub is_enabled : bool, 
 } 
 impl ShowLispMapRegisterStateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_lisp_map_register_state_reply_e33a377b") 
 	 } 
 } 
@@ -319,7 +319,7 @@ pub struct LispMapRequestMode {
 	pub is_src_dst : bool, 
 } 
 impl LispMapRequestMode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_map_request_mode_f43c26ae") 
 	 } 
 } 
@@ -329,7 +329,7 @@ pub struct LispMapRequestModeReply {
 	pub retval : i32, 
 } 
 impl LispMapRequestModeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_map_request_mode_reply_e8d4e804") 
 	 } 
 } 
@@ -339,7 +339,7 @@ pub struct ShowLispMapRequestMode {
 	pub context : u32, 
 } 
 impl ShowLispMapRequestMode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_lisp_map_request_mode_51077d14") 
 	 } 
 } 
@@ -350,7 +350,7 @@ pub struct ShowLispMapRequestModeReply {
 	pub is_src_dst : bool, 
 } 
 impl ShowLispMapRequestModeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_lisp_map_request_mode_reply_5b05038e") 
 	 } 
 } 
@@ -369,7 +369,7 @@ pub struct LispAddDelRemoteMapping {
 	pub rlocs : RemoteLocator, 
 } 
 impl LispAddDelRemoteMapping { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_remote_mapping_fae8ed77") 
 	 } 
 } 
@@ -379,7 +379,7 @@ pub struct LispAddDelRemoteMappingReply {
 	pub retval : i32, 
 } 
 impl LispAddDelRemoteMappingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_remote_mapping_reply_e8d4e804") 
 	 } 
 } 
@@ -393,7 +393,7 @@ pub struct LispAddDelAdjacency {
 	pub leid : Eid, 
 } 
 impl LispAddDelAdjacency { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_adjacency_cf5edb61") 
 	 } 
 } 
@@ -403,7 +403,7 @@ pub struct LispAddDelAdjacencyReply {
 	pub retval : i32, 
 } 
 impl LispAddDelAdjacencyReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_adjacency_reply_e8d4e804") 
 	 } 
 } 
@@ -415,7 +415,7 @@ pub struct LispAddDelMapRequestItrRlocs {
 	pub locator_set_name : FixedSizeString<U64>, 
 } 
 impl LispAddDelMapRequestItrRlocs { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_map_request_itr_rlocs_6be88e45") 
 	 } 
 } 
@@ -425,7 +425,7 @@ pub struct LispAddDelMapRequestItrRlocsReply {
 	pub retval : i32, 
 } 
 impl LispAddDelMapRequestItrRlocsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_add_del_map_request_itr_rlocs_reply_e8d4e804") 
 	 } 
 } 
@@ -439,7 +439,7 @@ pub struct LispEidTableAddDelMap {
 	pub is_l2 : bool, 
 } 
 impl LispEidTableAddDelMap { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_eid_table_add_del_map_9481416b") 
 	 } 
 } 
@@ -449,7 +449,7 @@ pub struct LispEidTableAddDelMapReply {
 	pub retval : i32, 
 } 
 impl LispEidTableAddDelMapReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_eid_table_add_del_map_reply_e8d4e804") 
 	 } 
 } 
@@ -462,7 +462,7 @@ pub struct LispLocatorDump {
 	pub is_index_set : u8, 
 } 
 impl LispLocatorDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_locator_dump_b954fad7") 
 	 } 
 } 
@@ -476,7 +476,7 @@ pub struct LispLocatorDetails {
 	pub weight : u8, 
 } 
 impl LispLocatorDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_locator_details_c0c4c2a7") 
 	 } 
 } 
@@ -487,7 +487,7 @@ pub struct LispLocatorSetDetails {
 	pub ls_name : FixedSizeString<U64>, 
 } 
 impl LispLocatorSetDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_locator_set_details_5b33a105") 
 	 } 
 } 
@@ -498,7 +498,7 @@ pub struct LispLocatorSetDump {
 	pub filter : LispLocatorSetFilter, 
 } 
 impl LispLocatorSetDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_locator_set_dump_c2cb5922") 
 	 } 
 } 
@@ -517,7 +517,7 @@ pub struct LispEidTableDetails {
 	pub key : HmacKey, 
 } 
 impl LispEidTableDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_eid_table_details_4bc32e3a") 
 	 } 
 } 
@@ -532,7 +532,7 @@ pub struct LispEidTableDump {
 	pub filter : LispLocatorSetFilter, 
 } 
 impl LispEidTableDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_eid_table_dump_b959b73b") 
 	 } 
 } 
@@ -544,7 +544,7 @@ pub struct LispAdjacenciesGetReply {
 	pub adjacencies : LispAdjacency, 
 } 
 impl LispAdjacenciesGetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_adjacencies_get_reply_3f97bcdd") 
 	 } 
 } 
@@ -555,7 +555,7 @@ pub struct LispAdjacenciesGet {
 	pub vni : u32, 
 } 
 impl LispAdjacenciesGet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_adjacencies_get_8d1f2fe9") 
 	 } 
 } 
@@ -566,7 +566,7 @@ pub struct LispEidTableMapDetails {
 	pub dp_table : u32, 
 } 
 impl LispEidTableMapDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_eid_table_map_details_0b6859e2") 
 	 } 
 } 
@@ -577,7 +577,7 @@ pub struct LispEidTableMapDump {
 	pub is_l2 : bool, 
 } 
 impl LispEidTableMapDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_eid_table_map_dump_d6cf0c3d") 
 	 } 
 } 
@@ -587,7 +587,7 @@ pub struct LispEidTableVniDump {
 	pub context : u32, 
 } 
 impl LispEidTableVniDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_eid_table_vni_dump_51077d14") 
 	 } 
 } 
@@ -597,7 +597,7 @@ pub struct LispEidTableVniDetails {
 	pub vni : u32, 
 } 
 impl LispEidTableVniDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_eid_table_vni_details_64abc01e") 
 	 } 
 } 
@@ -607,7 +607,7 @@ pub struct LispMapResolverDetails {
 	pub ip_address : Address, 
 } 
 impl LispMapResolverDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_map_resolver_details_82a09deb") 
 	 } 
 } 
@@ -617,7 +617,7 @@ pub struct LispMapResolverDump {
 	pub context : u32, 
 } 
 impl LispMapResolverDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_map_resolver_dump_51077d14") 
 	 } 
 } 
@@ -627,7 +627,7 @@ pub struct LispMapServerDetails {
 	pub ip_address : Address, 
 } 
 impl LispMapServerDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_map_server_details_82a09deb") 
 	 } 
 } 
@@ -637,7 +637,7 @@ pub struct LispMapServerDump {
 	pub context : u32, 
 } 
 impl LispMapServerDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_map_server_dump_51077d14") 
 	 } 
 } 
@@ -647,7 +647,7 @@ pub struct ShowLispStatus {
 	pub context : u32, 
 } 
 impl ShowLispStatus { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_lisp_status_51077d14") 
 	 } 
 } 
@@ -659,7 +659,7 @@ pub struct ShowLispStatusReply {
 	pub is_gpe_enabled : bool, 
 } 
 impl ShowLispStatusReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_lisp_status_reply_9e8f10c0") 
 	 } 
 } 
@@ -669,7 +669,7 @@ pub struct LispGetMapRequestItrRlocs {
 	pub context : u32, 
 } 
 impl LispGetMapRequestItrRlocs { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_get_map_request_itr_rlocs_51077d14") 
 	 } 
 } 
@@ -680,7 +680,7 @@ pub struct LispGetMapRequestItrRlocsReply {
 	pub locator_set_name : FixedSizeString<U64>, 
 } 
 impl LispGetMapRequestItrRlocsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("lisp_get_map_request_itr_rlocs_reply_76580f3a") 
 	 } 
 } 
@@ -690,7 +690,7 @@ pub struct ShowLispPitr {
 	pub context : u32, 
 } 
 impl ShowLispPitr { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_lisp_pitr_51077d14") 
 	 } 
 } 
@@ -702,7 +702,7 @@ pub struct ShowLispPitrReply {
 	pub locator_set_name : FixedSizeString<U64>, 
 } 
 impl ShowLispPitrReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("show_lisp_pitr_reply_27aa69b1") 
 	 } 
 } 

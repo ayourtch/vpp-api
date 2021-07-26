@@ -90,7 +90,7 @@ pub struct DhcpPluginGetVersion {
 	pub context : u32, 
 } 
 impl DhcpPluginGetVersion { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_plugin_get_version_51077d14") 
 	 } 
 } 
@@ -101,7 +101,7 @@ pub struct DhcpPluginGetVersionReply {
 	pub minor : u32, 
 } 
 impl DhcpPluginGetVersionReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_plugin_get_version_reply_9b32cf86") 
 	 } 
 } 
@@ -111,7 +111,7 @@ pub struct DhcpPluginControlPing {
 	pub context : u32, 
 } 
 impl DhcpPluginControlPing { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_plugin_control_ping_51077d14") 
 	 } 
 } 
@@ -123,7 +123,7 @@ pub struct DhcpPluginControlPingReply {
 	pub vpe_pid : u32, 
 } 
 impl DhcpPluginControlPingReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_plugin_control_ping_reply_f6b0b8ca") 
 	 } 
 } 
@@ -138,7 +138,7 @@ pub struct DhcpProxyConfig {
 	pub dhcp_src_address : Address, 
 } 
 impl DhcpProxyConfig { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_proxy_config_6767230e") 
 	 } 
 } 
@@ -148,7 +148,7 @@ pub struct DhcpProxyConfigReply {
 	pub retval : i32, 
 } 
 impl DhcpProxyConfigReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_proxy_config_reply_e8d4e804") 
 	 } 
 } 
@@ -165,7 +165,7 @@ pub struct DhcpProxySetVss {
 	pub is_add : bool, 
 } 
 impl DhcpProxySetVss { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_proxy_set_vss_50537301") 
 	 } 
 } 
@@ -175,7 +175,7 @@ pub struct DhcpProxySetVssReply {
 	pub retval : i32, 
 } 
 impl DhcpProxySetVssReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_proxy_set_vss_reply_e8d4e804") 
 	 } 
 } 
@@ -187,7 +187,7 @@ pub struct DhcpClientConfig {
 	pub client : DhcpClient, 
 } 
 impl DhcpClientConfig { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_client_config_959b80a3") 
 	 } 
 } 
@@ -197,7 +197,7 @@ pub struct DhcpClientConfigReply {
 	pub retval : i32, 
 } 
 impl DhcpClientConfigReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_client_config_reply_e8d4e804") 
 	 } 
 } 
@@ -208,7 +208,7 @@ pub struct DhcpComplEvent {
 	pub lease : DhcpLease, 
 } 
 impl DhcpComplEvent { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_compl_event_e908fd1d") 
 	 } 
 } 
@@ -218,7 +218,7 @@ pub struct DhcpClientDump {
 	pub context : u32, 
 } 
 impl DhcpClientDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_client_dump_51077d14") 
 	 } 
 } 
@@ -229,7 +229,7 @@ pub struct DhcpClientDetails {
 	pub lease : DhcpLease, 
 } 
 impl DhcpClientDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_client_details_acd82f5a") 
 	 } 
 } 
@@ -240,7 +240,7 @@ pub struct DhcpProxyDump {
 	pub is_ip6 : bool, 
 } 
 impl DhcpProxyDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_proxy_dump_5c5b063f") 
 	 } 
 } 
@@ -258,7 +258,7 @@ pub struct DhcpProxyDetails {
 	pub servers : DhcpServer, 
 } 
 impl DhcpProxyDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp_proxy_details_ce16f044") 
 	 } 
 } 
@@ -269,7 +269,7 @@ pub struct Dhcp6DuidLlSet {
 	pub duid_ll : u8, 
 } 
 impl Dhcp6DuidLlSet { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_duid_ll_set_0f6ca323") 
 	 } 
 } 
@@ -279,7 +279,7 @@ pub struct Dhcp6DuidLlSetReply {
 	pub retval : i32, 
 } 
 impl Dhcp6DuidLlSetReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_duid_ll_set_reply_e8d4e804") 
 	 } 
 } 
@@ -290,7 +290,7 @@ pub struct Dhcp6ClientsEnableDisable {
 	pub enable : bool, 
 } 
 impl Dhcp6ClientsEnableDisable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_clients_enable_disable_b3e225d2") 
 	 } 
 } 
@@ -300,7 +300,7 @@ pub struct Dhcp6ClientsEnableDisableReply {
 	pub retval : i32, 
 } 
 impl Dhcp6ClientsEnableDisableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_clients_enable_disable_reply_e8d4e804") 
 	 } 
 } 
@@ -322,7 +322,7 @@ pub struct Dhcp6SendClientMessage {
 	pub addresses : Dhcp6AddressInfo, 
 } 
 impl Dhcp6SendClientMessage { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_send_client_message_f6f14ef0") 
 	 } 
 } 
@@ -332,7 +332,7 @@ pub struct Dhcp6SendClientMessageReply {
 	pub retval : i32, 
 } 
 impl Dhcp6SendClientMessageReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_send_client_message_reply_e8d4e804") 
 	 } 
 } 
@@ -354,7 +354,7 @@ pub struct Dhcp6PdSendClientMessage {
 	pub prefixes : Dhcp6PdPrefixInfo, 
 } 
 impl Dhcp6PdSendClientMessage { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_pd_send_client_message_064badb8") 
 	 } 
 } 
@@ -364,7 +364,7 @@ pub struct Dhcp6PdSendClientMessageReply {
 	pub retval : i32, 
 } 
 impl Dhcp6PdSendClientMessageReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_pd_send_client_message_reply_e8d4e804") 
 	 } 
 } 
@@ -376,7 +376,7 @@ pub struct WantDhcp6ReplyEvents {
 	pub pid : u32, 
 } 
 impl WantDhcp6ReplyEvents { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_dhcp6_reply_events_05b454b5") 
 	 } 
 } 
@@ -386,7 +386,7 @@ pub struct WantDhcp6ReplyEventsReply {
 	pub retval : i32, 
 } 
 impl WantDhcp6ReplyEventsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_dhcp6_reply_events_reply_e8d4e804") 
 	 } 
 } 
@@ -398,7 +398,7 @@ pub struct WantDhcp6PdReplyEvents {
 	pub pid : u32, 
 } 
 impl WantDhcp6PdReplyEvents { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_dhcp6_pd_reply_events_c5e2af94") 
 	 } 
 } 
@@ -408,7 +408,7 @@ pub struct WantDhcp6PdReplyEventsReply {
 	pub retval : i32, 
 } 
 impl WantDhcp6PdReplyEventsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_dhcp6_pd_reply_events_reply_e8d4e804") 
 	 } 
 } 
@@ -428,7 +428,7 @@ pub struct Dhcp6ReplyEvent {
 	pub addresses : Dhcp6AddressInfo, 
 } 
 impl Dhcp6ReplyEvent { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_reply_event_9f3af9e5") 
 	 } 
 } 
@@ -448,7 +448,7 @@ pub struct Dhcp6PdReplyEvent {
 	pub prefixes : Dhcp6PdPrefixInfo, 
 } 
 impl Dhcp6PdReplyEvent { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("dhcp6_pd_reply_event_cb3e462b") 
 	 } 
 } 

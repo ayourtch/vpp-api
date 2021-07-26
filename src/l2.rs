@@ -59,7 +59,7 @@ pub struct L2XconnectDetails {
 	pub tx_sw_if_index : InterfaceIndex, 
 } 
 impl L2XconnectDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_xconnect_details_c8aa6b37") 
 	 } 
 } 
@@ -69,7 +69,7 @@ pub struct L2XconnectDump {
 	pub context : u32, 
 } 
 impl L2XconnectDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_xconnect_dump_51077d14") 
 	 } 
 } 
@@ -84,7 +84,7 @@ pub struct L2FibTableDetails {
 	pub bvi_mac : bool, 
 } 
 impl L2FibTableDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_fib_table_details_e8d2fc72") 
 	 } 
 } 
@@ -95,7 +95,7 @@ pub struct L2FibTableDump {
 	pub bd_id : u32, 
 } 
 impl L2FibTableDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_fib_table_dump_c25fdce6") 
 	 } 
 } 
@@ -105,7 +105,7 @@ pub struct L2FibClearTable {
 	pub context : u32, 
 } 
 impl L2FibClearTable { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_fib_clear_table_51077d14") 
 	 } 
 } 
@@ -115,7 +115,7 @@ pub struct L2FibClearTableReply {
 	pub retval : i32, 
 } 
 impl L2FibClearTableReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_fib_clear_table_reply_e8d4e804") 
 	 } 
 } 
@@ -125,7 +125,7 @@ pub struct L2fibFlushAll {
 	pub context : u32, 
 } 
 impl L2fibFlushAll { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2fib_flush_all_51077d14") 
 	 } 
 } 
@@ -135,7 +135,7 @@ pub struct L2fibFlushAllReply {
 	pub retval : i32, 
 } 
 impl L2fibFlushAllReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2fib_flush_all_reply_e8d4e804") 
 	 } 
 } 
@@ -146,7 +146,7 @@ pub struct L2fibFlushBd {
 	pub bd_id : u32, 
 } 
 impl L2fibFlushBd { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2fib_flush_bd_c25fdce6") 
 	 } 
 } 
@@ -156,7 +156,7 @@ pub struct L2fibFlushBdReply {
 	pub retval : i32, 
 } 
 impl L2fibFlushBdReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2fib_flush_bd_reply_e8d4e804") 
 	 } 
 } 
@@ -167,7 +167,7 @@ pub struct L2fibFlushInt {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl L2fibFlushInt { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2fib_flush_int_f9e6675e") 
 	 } 
 } 
@@ -177,7 +177,7 @@ pub struct L2fibFlushIntReply {
 	pub retval : i32, 
 } 
 impl L2fibFlushIntReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2fib_flush_int_reply_e8d4e804") 
 	 } 
 } 
@@ -194,7 +194,7 @@ pub struct L2fibAddDel {
 	pub bvi_mac : bool, 
 } 
 impl L2fibAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2fib_add_del_f29d796c") 
 	 } 
 } 
@@ -204,7 +204,7 @@ pub struct L2fibAddDelReply {
 	pub retval : i32, 
 } 
 impl L2fibAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2fib_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -219,7 +219,7 @@ pub struct WantL2MacsEvents {
 	pub pid : u32, 
 } 
 impl WantL2MacsEvents { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_l2_macs_events_9aabdfde") 
 	 } 
 } 
@@ -229,7 +229,7 @@ pub struct WantL2MacsEventsReply {
 	pub retval : i32, 
 } 
 impl WantL2MacsEventsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_l2_macs_events_reply_e8d4e804") 
 	 } 
 } 
@@ -242,7 +242,7 @@ pub struct WantL2MacsEvents2 {
 	pub pid : u32, 
 } 
 impl WantL2MacsEvents2 { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_l2_macs_events2_cc1377b0") 
 	 } 
 } 
@@ -252,7 +252,7 @@ pub struct WantL2MacsEvents2Reply {
 	pub retval : i32, 
 } 
 impl WantL2MacsEvents2Reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_l2_macs_events2_reply_e8d4e804") 
 	 } 
 } 
@@ -263,7 +263,7 @@ pub struct L2fibSetScanDelay {
 	pub scan_delay : u16, 
 } 
 impl L2fibSetScanDelay { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2fib_set_scan_delay_a3b968a4") 
 	 } 
 } 
@@ -273,7 +273,7 @@ pub struct L2fibSetScanDelayReply {
 	pub retval : i32, 
 } 
 impl L2fibSetScanDelayReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2fib_set_scan_delay_reply_e8d4e804") 
 	 } 
 } 
@@ -285,7 +285,7 @@ pub struct L2MacsEvent {
 	pub mac : MacEntry, 
 } 
 impl L2MacsEvent { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_macs_event_2eadfc8b") 
 	 } 
 } 
@@ -298,7 +298,7 @@ pub struct L2Flags {
 	pub feature_bitmap : u32, 
 } 
 impl L2Flags { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_flags_fc41cfe8") 
 	 } 
 } 
@@ -309,7 +309,7 @@ pub struct L2FlagsReply {
 	pub resulting_feature_bitmap : u32, 
 } 
 impl L2FlagsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_flags_reply_29b2a2b3") 
 	 } 
 } 
@@ -321,7 +321,7 @@ pub struct BridgeDomainSetMacAge {
 	pub mac_age : u8, 
 } 
 impl BridgeDomainSetMacAge { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bridge_domain_set_mac_age_b537ad7b") 
 	 } 
 } 
@@ -331,7 +331,7 @@ pub struct BridgeDomainSetMacAgeReply {
 	pub retval : i32, 
 } 
 impl BridgeDomainSetMacAgeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bridge_domain_set_mac_age_reply_e8d4e804") 
 	 } 
 } 
@@ -342,7 +342,7 @@ pub struct BridgeDomainSetDefaultLearnLimit {
 	pub learn_limit : u32, 
 } 
 impl BridgeDomainSetDefaultLearnLimit { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bridge_domain_set_default_learn_limit_f097ffce") 
 	 } 
 } 
@@ -352,7 +352,7 @@ pub struct BridgeDomainSetDefaultLearnLimitReply {
 	pub retval : i32, 
 } 
 impl BridgeDomainSetDefaultLearnLimitReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bridge_domain_set_default_learn_limit_reply_e8d4e804") 
 	 } 
 } 
@@ -364,7 +364,7 @@ pub struct BridgeDomainSetLearnLimit {
 	pub learn_limit : u32, 
 } 
 impl BridgeDomainSetLearnLimit { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bridge_domain_set_learn_limit_89c52b5f") 
 	 } 
 } 
@@ -374,7 +374,7 @@ pub struct BridgeDomainSetLearnLimitReply {
 	pub retval : i32, 
 } 
 impl BridgeDomainSetLearnLimitReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bridge_domain_set_learn_limit_reply_e8d4e804") 
 	 } 
 } 
@@ -394,7 +394,7 @@ pub struct BridgeDomainAddDel {
 	pub is_add : bool, 
 } 
 impl BridgeDomainAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bridge_domain_add_del_600b7170") 
 	 } 
 } 
@@ -404,7 +404,7 @@ pub struct BridgeDomainAddDelReply {
 	pub retval : i32, 
 } 
 impl BridgeDomainAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bridge_domain_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -416,7 +416,7 @@ pub struct BridgeDomainDump {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl BridgeDomainDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bridge_domain_dump_74396a43") 
 	 } 
 } 
@@ -438,7 +438,7 @@ pub struct BridgeDomainDetails {
 	pub sw_if_details : BridgeDomainSwIf, 
 } 
 impl BridgeDomainDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bridge_domain_details_979f549d") 
 	 } 
 } 
@@ -451,7 +451,7 @@ pub struct BridgeFlags {
 	pub flags : BdFlags, 
 } 
 impl BridgeFlags { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bridge_flags_1b0c5fbd") 
 	 } 
 } 
@@ -462,7 +462,7 @@ pub struct BridgeFlagsReply {
 	pub resulting_feature_bitmap : u32, 
 } 
 impl BridgeFlagsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bridge_flags_reply_29b2a2b3") 
 	 } 
 } 
@@ -477,7 +477,7 @@ pub struct L2InterfaceVlanTagRewrite {
 	pub tag2 : u32, 
 } 
 impl L2InterfaceVlanTagRewrite { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_interface_vlan_tag_rewrite_62cc0bbc") 
 	 } 
 } 
@@ -487,7 +487,7 @@ pub struct L2InterfaceVlanTagRewriteReply {
 	pub retval : i32, 
 } 
 impl L2InterfaceVlanTagRewriteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_interface_vlan_tag_rewrite_reply_e8d4e804") 
 	 } 
 } 
@@ -504,7 +504,7 @@ pub struct L2InterfacePbbTagRewrite {
 	pub i_sid : u32, 
 } 
 impl L2InterfacePbbTagRewrite { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_interface_pbb_tag_rewrite_612efa5a") 
 	 } 
 } 
@@ -514,7 +514,7 @@ pub struct L2InterfacePbbTagRewriteReply {
 	pub retval : i32, 
 } 
 impl L2InterfacePbbTagRewriteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_interface_pbb_tag_rewrite_reply_e8d4e804") 
 	 } 
 } 
@@ -527,7 +527,7 @@ pub struct L2PatchAddDel {
 	pub is_add : bool, 
 } 
 impl L2PatchAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_patch_add_del_522f3445") 
 	 } 
 } 
@@ -537,7 +537,7 @@ pub struct L2PatchAddDelReply {
 	pub retval : i32, 
 } 
 impl L2PatchAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_patch_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -550,7 +550,7 @@ pub struct SwInterfaceSetL2Xconnect {
 	pub enable : bool, 
 } 
 impl SwInterfaceSetL2Xconnect { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_l2_xconnect_1aaa2dbb") 
 	 } 
 } 
@@ -560,7 +560,7 @@ pub struct SwInterfaceSetL2XconnectReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceSetL2XconnectReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_l2_xconnect_reply_e8d4e804") 
 	 } 
 } 
@@ -575,7 +575,7 @@ pub struct SwInterfaceSetL2Bridge {
 	pub enable : bool, 
 } 
 impl SwInterfaceSetL2Bridge { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_l2_bridge_2e483cd0") 
 	 } 
 } 
@@ -585,7 +585,7 @@ pub struct SwInterfaceSetL2BridgeReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceSetL2BridgeReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_l2_bridge_reply_e8d4e804") 
 	 } 
 } 
@@ -597,7 +597,7 @@ pub struct BdIpMacAddDel {
 	pub entry : BdIpMac, 
 } 
 impl BdIpMacAddDel { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bd_ip_mac_add_del_5f2b84e2") 
 	 } 
 } 
@@ -607,7 +607,7 @@ pub struct BdIpMacAddDelReply {
 	pub retval : i32, 
 } 
 impl BdIpMacAddDelReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bd_ip_mac_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -618,7 +618,7 @@ pub struct BdIpMacFlush {
 	pub bd_id : u32, 
 } 
 impl BdIpMacFlush { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bd_ip_mac_flush_c25fdce6") 
 	 } 
 } 
@@ -628,7 +628,7 @@ pub struct BdIpMacFlushReply {
 	pub retval : i32, 
 } 
 impl BdIpMacFlushReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bd_ip_mac_flush_reply_e8d4e804") 
 	 } 
 } 
@@ -638,7 +638,7 @@ pub struct BdIpMacDetails {
 	pub entry : BdIpMac, 
 } 
 impl BdIpMacDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bd_ip_mac_details_a52f8044") 
 	 } 
 } 
@@ -649,7 +649,7 @@ pub struct BdIpMacDump {
 	pub bd_id : u32, 
 } 
 impl BdIpMacDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bd_ip_mac_dump_c25fdce6") 
 	 } 
 } 
@@ -661,7 +661,7 @@ pub struct L2InterfaceEfpFilter {
 	pub enable_disable : bool, 
 } 
 impl L2InterfaceEfpFilter { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_interface_efp_filter_5501adee") 
 	 } 
 } 
@@ -671,7 +671,7 @@ pub struct L2InterfaceEfpFilterReply {
 	pub retval : i32, 
 } 
 impl L2InterfaceEfpFilterReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_interface_efp_filter_reply_e8d4e804") 
 	 } 
 } 
@@ -683,7 +683,7 @@ pub struct SwInterfaceSetVpath {
 	pub enable : bool, 
 } 
 impl SwInterfaceSetVpath { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_vpath_ae6cfcfb") 
 	 } 
 } 
@@ -693,7 +693,7 @@ pub struct SwInterfaceSetVpathReply {
 	pub retval : i32, 
 } 
 impl SwInterfaceSetVpathReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_vpath_reply_e8d4e804") 
 	 } 
 } 
@@ -705,7 +705,7 @@ pub struct BviCreate {
 	pub user_instance : u32, 
 } 
 impl BviCreate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bvi_create_f5398559") 
 	 } 
 } 
@@ -716,7 +716,7 @@ pub struct BviCreateReply {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl BviCreateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bvi_create_reply_5383d31f") 
 	 } 
 } 
@@ -727,7 +727,7 @@ pub struct BviDelete {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl BviDelete { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bvi_delete_f9e6675e") 
 	 } 
 } 
@@ -737,7 +737,7 @@ pub struct BviDeleteReply {
 	pub retval : i32, 
 } 
 impl BviDeleteReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("bvi_delete_reply_e8d4e804") 
 	 } 
 } 
@@ -749,7 +749,7 @@ pub struct WantL2ArpTermEvents {
 	pub pid : u32, 
 } 
 impl WantL2ArpTermEvents { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_l2_arp_term_events_3ec6d6c2") 
 	 } 
 } 
@@ -759,7 +759,7 @@ pub struct WantL2ArpTermEventsReply {
 	pub retval : i32, 
 } 
 impl WantL2ArpTermEventsReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_l2_arp_term_events_reply_e8d4e804") 
 	 } 
 } 
@@ -772,7 +772,7 @@ pub struct L2ArpTermEvent {
 	pub mac : MacAddress, 
 } 
 impl L2ArpTermEvent { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("l2_arp_term_event_85ff71ea") 
 	 } 
 } 

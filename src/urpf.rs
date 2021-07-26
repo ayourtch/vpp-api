@@ -26,7 +26,7 @@ pub struct UrpfUpdate {
 	pub sw_if_index : InterfaceIndex, 
 } 
 impl UrpfUpdate { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("urpf_update_2bf8a77c") 
 	 } 
 } 
@@ -36,7 +36,7 @@ pub struct UrpfUpdateReply {
 	pub retval : i32, 
 } 
 impl UrpfUpdateReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("urpf_update_reply_e8d4e804") 
 	 } 
 } 

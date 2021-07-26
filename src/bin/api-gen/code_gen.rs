@@ -139,7 +139,7 @@ pub fn gen_structs(structs: &VppJsApiType, file: &mut String, apifile: &VppJsApi
 pub fn gen_union(unions: &VppJsApiType, file: &mut String, apifile: &VppJsApiFile) {
     println!("Generating Union");
     let unionsize = maxSizeUnion(&unions,&apifile);
-    file.push_str(&format!("type {} = [u8;{}]; \n", camelize_ident(&unions.type_name), unionsize));
+    file.push_str(&format!("pub type {} = [u8;{}]; \n", camelize_ident(&unions.type_name), unionsize));
 }
 pub fn gen_enum(enums: &VppJsApiEnum, file: &mut String) {
     file.push_str(&format!(
