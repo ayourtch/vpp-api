@@ -9,6 +9,7 @@
 use std::fmt::format;
 use std::fs::File;
 use std::io::prelude::*;
+use env_logger::filter;
 use linked_hash_map::LinkedHashMap;
 use regex::Regex;
 use lazy_static::lazy_static;
@@ -40,6 +41,20 @@ impl VppJsApiType{
             ));
         }
         code.push_str("} \n");
+        code
+    }
+}
+impl VppJsApiAlias{
+    pub fn generate_code(&self, name: &str) -> String {
+        let mut code = String::new();
+        code.push_str(&format!("pub type {}=", camelize_ident(&get_ident(&name))));
+    match self.length {
+        Some(len) => {
+            let newtype = get_type(&self.ctype);
+            code.push_str(&format!("[{};{}]; \n", newtype, len));
+        }
+        _ => code.push_str(&format!("{}; \n", get_type(&self.ctype))),
+    }
         code
     }
 }
@@ -98,6 +113,7 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
         acc
     });
     preamble.push_str(&structString);
+
     for x in 0..code.unions.len() {
         let mut count:u8 = 0; 
         for j in 0..api_definition.len() {
@@ -126,20 +142,21 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
         
     }
 
-    for x in code.aliases.keys() {
-        let mut count:u8 = 0; 
-        for j in 0..api_definition.len(){
-            if &api_definition[j].0 == x{
-                count=count+1;
-                break;
+    let aliasString = code.aliases.keys()
+    .filter(|x|{
+        for j in 0..api_definition.len(){            
+            if &api_definition[j].0 == *x{
+                return false
             }
         }
-        if count==0{
-            gen_alias(&code.aliases[x], x, &mut preamble);
-            api_definition.push((x.to_string().clone(),name.to_string().clone()));
-        }
-        
-    }
+        api_definition.push((x.clone().to_string(),name.to_string().clone()));
+        return true
+    })
+    .fold(String::new(), |mut acc, x|{
+        acc.push_str(&code.aliases[x].generate_code(x));
+        acc
+    });
+    preamble.push_str(&aliasString);
     for x in 0..code.messages.len() {
         gen_messages(&code.messages[x], &mut preamble);
     }
@@ -153,23 +170,6 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
     println!("Generated code for {}", fileName);
 }
 
-pub fn gen_structs(structs: &VppJsApiType, file: &mut String, apifile: &VppJsApiFile) {
-    file.push_str(&format!(
-        "#[derive(Debug, Clone, Serialize, Deserialize)] \n"
-    ));
-    file.push_str(&format!(
-        "pub struct {} {{ \n",
-        camelize_ident(&structs.type_name)
-    ));
-    for x in 0..structs.fields.len() {
-        file.push_str(&format!(
-            "\tpub {} : {}, \n",
-            get_ident(&structs.fields[x].name),
-            get_type(&structs.fields[x].ctype)
-        ));
-    }
-    file.push_str("} \n");
-}
 pub fn gen_union(unions: &VppJsApiType, file: &mut String, apifile: &VppJsApiFile) {
     println!("Generating Union");
     let unionsize = maxSizeUnion(&unions,&apifile);
@@ -192,16 +192,6 @@ pub fn gen_enum(enums: &VppJsApiEnum, file: &mut String) {
         ));
     }
     file.push_str("} \n");
-}
-pub fn gen_alias(alias: &VppJsApiAlias, name: &str, file: &mut String) {
-    file.push_str(&format!("pub type {}=", camelize_ident(&get_ident(&name))));
-    match alias.length {
-        Some(len) => {
-            let newtype = get_type(&alias.ctype);
-            file.push_str(&format!("[{};{}]; \n", newtype, len));
-        }
-        _ => file.push_str(&format!("{}; \n", get_type(&alias.ctype))),
-    }
 }
 pub fn gen_messages(messages: &VppJsApiMessage, file: &mut String) {
     file.push_str(&format!(
