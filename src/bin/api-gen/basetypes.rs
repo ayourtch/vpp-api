@@ -123,13 +123,13 @@ pub fn find_type(file: &VppJsApiFile, name: &str) -> u8{
             count = count + 1;
             totalsize
         });
-        for x in file.aliases.keys() {
-            if name.trim_start_matches("vl_api_").trim_end_matches("_t") == x {
-                totalsize = sizeof_alias(&file.aliases[x], &file);
-                count = count + 1; 
-                break;
-            }
-        }
+        file.aliases.keys()
+        .filter(|x| name.trim_start_matches("vl_api_").trim_end_matches("_t") == *x)
+        .fold(0, |acc, x|{
+            totalsize = sizeof_alias(&file.aliases[x], &file); 
+            count = count +1;
+            totalsize
+        });
         file.unions.iter()
         .filter(|x| name.trim_start_matches("vl_api_").trim_end_matches("_t") == x.type_name)
         .fold(0, |acc, x|{
@@ -137,9 +137,6 @@ pub fn find_type(file: &VppJsApiFile, name: &str) -> u8{
             count = count + 1; 
             totalsize
         });
-    }
-    if count == 0 {
-        println!("Could not find type");
     }
     totalsize
 }

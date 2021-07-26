@@ -22,6 +22,38 @@ use crate::parser_helper::{camelize_ident, get_ident, get_type};
 use crate::types::VppJsApiType;
 use crate::types::{VppJsApiFieldSize, VppJsApiMessageFieldDef};
 
+impl VppJsApiType{
+    pub fn generate_code(&self) -> String {
+        let mut code = String::new(); 
+        code.push_str(&format!(
+            "#[derive(Debug, Clone, Serialize, Deserialize)] \n"
+        ));
+        code.push_str(&format!(
+            "pub struct {} {{ \n",
+            camelize_ident(&self.type_name)
+        ));
+        for x in 0..self.fields.len() {
+            code.push_str(&format!(
+                "\tpub {} : {}, \n",
+                get_ident(&self.fields[x].name),
+                get_type(&self.fields[x].ctype)
+            ));
+        }
+        code.push_str("} \n");
+        code
+    }
+}
+
+pub fn check_implementation(types: &VppJsApiType, api_definition:&mut Vec<(String,String)>) -> bool {
+    for j in 0..api_definition.len(){            
+        if &api_definition[j].0 == &types.type_name{
+            return false
+        }
+    }
+    return false
+
+}
+
 pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,String)>) {
     lazy_static! {
         static ref RE: Regex = Regex::new(r"/[a-z_0-9]*.api.json").unwrap();
@@ -50,20 +82,22 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
         }
        
     }
-    for x in 0..code.types.len() {
-        let mut count: u8= 0;
+    let structString = code.types.iter()
+    .filter(|x| {
         for j in 0..api_definition.len(){            
-            if &api_definition[j].0 == &code.types[x].type_name{
-                count = count+1;
-                break;
+            if &api_definition[j].0 == &x.type_name{
+                return false
             }
         }
-        if count == 0 {
-            api_definition.push((code.types[x].type_name.clone(),name.to_string().clone()));
-            gen_structs(&code.types[x], &mut preamble, &code);
-        }
-        
-    }
+        api_definition.push((x.type_name.clone(),name.to_string().clone()));
+        return true
+
+    })
+    .fold(String::new(),|mut acc, x|{
+        acc.push_str(&x.generate_code());
+        acc
+    });
+    preamble.push_str(&structString);
     for x in 0..code.unions.len() {
         let mut count:u8 = 0; 
         for j in 0..api_definition.len() {
