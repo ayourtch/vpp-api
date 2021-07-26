@@ -43,6 +43,13 @@ impl VppJsApiType{
         code.push_str("} \n");
         code
     }
+    pub fn generate_code_union(&self, apifile: &VppJsApiFile) -> String {
+        let mut code = String::new();
+        let unionsize = maxSizeUnion(&self,&apifile);
+        code.push_str(&format!("pub type {} = [u8;{}]; \n", camelize_ident(&self.type_name), unionsize));
+        code
+
+    }
 }
 impl VppJsApiAlias{
     pub fn generate_code(&self, name: &str) -> String {
@@ -57,6 +64,29 @@ impl VppJsApiAlias{
     }
         code
     }
+}
+impl VppJsApiEnum{
+    pub fn generate_code(&self) -> String{
+        let mut code = String::new();
+        code.push_str(&format!(
+            "#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] \n"
+        ));
+        match &self.info.enumtype {
+            Some(len) => code.push_str(&format!("#[repr({})]\n", &len)),
+            _ => code.push_str(&format!("#[repr(u32)]\n")),
+        }
+        code.push_str(&format!("pub enum {} {{ \n", camelize_ident(&self.name)));
+        for x in 0..self.values.len() {
+            code.push_str(&format!(
+                "\t {}={}, \n",
+                get_ident(&self.values[x].name),
+                self.values[x].value
+            ));
+        }
+        code.push_str("} \n");
+        code
+    }
+
 }
 
 pub fn check_implementation(types: &VppJsApiType, api_definition:&mut Vec<(String,String)>) -> bool {
@@ -114,7 +144,25 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
     });
     preamble.push_str(&structString);
 
-    for x in 0..code.unions.len() {
+    let unionString = code.unions.iter()
+    .filter(|x|{
+        for j in 0..api_definition.len(){            
+            if &api_definition[j].0 == &x.type_name{
+                return false
+            }
+        }
+        api_definition.push((x.type_name.clone(),name.to_string().clone()));
+        return true
+    })
+    .fold(String::new(), |mut acc, x|{
+        acc.push_str(&x.generate_code_union(&code));
+        acc
+    });
+    preamble.push_str(&unionString);
+    // println!("union - {}", unionString);
+
+
+    /* for x in 0..code.unions.len() {
         let mut count:u8 = 0; 
         for j in 0..api_definition.len() {
             if &api_definition[j].0 == &code.unions[x].type_name{
@@ -126,21 +174,22 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
             api_definition.push((code.unions[x].type_name.clone(),name.to_string().clone()));
             gen_union(&code.unions[x], &mut preamble, &code);
         }
-    }
-    for x in 0..code.enums.len() {
-        let mut count: u8 = 0; 
-        for j in 0..api_definition.len(){
-            if &api_definition[j].0 == &code.enums[x].name{
-                count=count+1;
-                break;
+    } */
+    let enumString = code.enums.iter()
+    .filter(|x|{
+        for j in 0..api_definition.len(){            
+            if &api_definition[j].0 == &x.name{
+                return false
             }
         }
-        if count == 0 {
-            api_definition.push((code.enums[x].name.clone(),name.to_string().clone()));
-            gen_enum(&code.enums[x], &mut preamble);
-        }
-        
-    }
+        api_definition.push((x.name.clone(),name.to_string().clone()));
+        return true
+    })
+    .fold(String::new(), |mut acc, x|{
+        acc.push_str(&x.generate_code());
+        acc
+    });
+    preamble.push_str(&enumString);
 
     let aliasString = code.aliases.keys()
     .filter(|x|{
@@ -169,29 +218,10 @@ pub fn gen_code(code: &VppJsApiFile, name:&str, api_definition:&mut Vec<(String,
     
     println!("Generated code for {}", fileName);
 }
-
 pub fn gen_union(unions: &VppJsApiType, file: &mut String, apifile: &VppJsApiFile) {
     println!("Generating Union");
     let unionsize = maxSizeUnion(&unions,&apifile);
     file.push_str(&format!("pub type {} = [u8;{}]; \n", camelize_ident(&unions.type_name), unionsize));
-}
-pub fn gen_enum(enums: &VppJsApiEnum, file: &mut String) {
-    file.push_str(&format!(
-        "#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] \n"
-    ));
-    match &enums.info.enumtype {
-        Some(len) => file.push_str(&format!("#[repr({})]\n", &len)),
-        _ => file.push_str(&format!("#[repr(u32)]\n")),
-    }
-    file.push_str(&format!("pub enum {} {{ \n", camelize_ident(&enums.name)));
-    for x in 0..enums.values.len() {
-        file.push_str(&format!(
-            "\t {}={}, \n",
-            get_ident(&enums.values[x].name),
-            enums.values[x].value
-        ));
-    }
-    file.push_str("} \n");
 }
 pub fn gen_messages(messages: &VppJsApiMessage, file: &mut String) {
     file.push_str(&format!(
