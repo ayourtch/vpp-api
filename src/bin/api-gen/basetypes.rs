@@ -92,71 +92,69 @@ impl basetypes {
     }
 }
 pub fn maxSizeUnion(unions: &VppJsApiType, file: &VppJsApiFile) -> u8 {
-    unions.fields.iter()
-    .map(|x| field_size(&x,&file))
-    .fold(0,|max,x| if x>max {x} else {max})
+    unions
+        .fields
+        .iter()
+        .map(|x| field_size(&x, &file))
+        .fold(0, |max, x| if x > max { x } else { max })
 }
-pub fn field_size(fields: &VppJsApiMessageFieldDef, file: &VppJsApiFile) -> u8{
-    if fields.ctype.starts_with("vl_api_"){
-        find_type(&file, &fields.ctype)      
-    }
-    else {
+pub fn field_size(fields: &VppJsApiMessageFieldDef, file: &VppJsApiFile) -> u8 {
+    if fields.ctype.starts_with("vl_api_") {
+        find_type(&file, &fields.ctype)
+    } else {
         let typ = basetypes::ctoSizeR(&fields.ctype);
         typ.basetypeSizes()
     }
 }
-pub fn find_type(file: &VppJsApiFile, name: &str) -> u8{
-    let mut totalsize: u8 = 0; 
-    let mut count = 0; 
-    while count == 0 {
-        file.types.iter()
+pub fn find_type(file: &VppJsApiFile, name: &str) -> u8 {
+    let mut totalsize: u8 = 0;
+    file.types
+        .iter()
         .filter(|x| name.trim_start_matches("vl_api_").trim_end_matches("_t") == x.type_name)
-        .fold(0, |acc,x|{
+        .fold(0, |acc, x| {
             totalsize = sizeof_struct(&file, &x);
-            count = count+1; 
             totalsize
         });
-        file.enums.iter()
-        .filter(|x|  name.trim_start_matches("vl_api_").trim_end_matches("_t") == x.name )
-        .fold(0, |acc, x|{
+    file.enums
+        .iter()
+        .filter(|x| name.trim_start_matches("vl_api_").trim_end_matches("_t") == x.name)
+        .fold(0, |acc, x| {
             totalsize = sizeof_enum(&x);
-            count = count + 1;
             totalsize
         });
-        file.aliases.keys()
+    file.aliases
+        .keys()
         .filter(|x| name.trim_start_matches("vl_api_").trim_end_matches("_t") == *x)
-        .fold(0, |acc, x|{
-            totalsize = sizeof_alias(&file.aliases[x], &file); 
-            count = count +1;
+        .fold(0, |acc, x| {
+            totalsize = sizeof_alias(&file.aliases[x], &file);
             totalsize
         });
-        file.unions.iter()
+    file.unions
+        .iter()
         .filter(|x| name.trim_start_matches("vl_api_").trim_end_matches("_t") == x.type_name)
-        .fold(0, |acc, x|{
+        .fold(0, |acc, x| {
             totalsize = maxSizeUnion(&x, &file);
-            count = count + 1; 
             totalsize
         });
-    }
     totalsize
 }
-pub fn sizeof_enum(enums: &VppJsApiEnum) -> u8{
+pub fn sizeof_enum(enums: &VppJsApiEnum) -> u8 {
     match &enums.info.enumtype {
         Some(len) => {
             let typ = basetypes::ctoSizeR(len);
             typ.basetypeSizes()
-        },
+        }
         _ => 32,
     }
 }
-pub fn sizeof_struct(file: &VppJsApiFile, structs: &VppJsApiType) -> u8{
-    structs.fields.iter().fold(0,|mut totalsize, x|{
+pub fn sizeof_struct(file: &VppJsApiFile, structs: &VppJsApiType) -> u8 {
+    structs.fields.iter().fold(0, |mut totalsize, x| {
         totalsize = totalsize + field_size(&x, &file);
         totalsize
     })
 }
 
-pub fn sizeof_alias(alias: &VppJsApiAlias, file: &VppJsApiFile) -> u8{
+pub fn sizeof_alias(alias: &VppJsApiAlias, file: &VppJsApiFile) -> u8 {
     if alias.ctype.starts_with("vl_api_") {
         find_type(&file, &alias.ctype)
     } else {

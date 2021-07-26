@@ -23,6 +23,11 @@ mod message;
 mod parser_helper;
 mod services;
 mod types;
+use crate::code_gen::gen_code;
+use crate::file_schema::VppJsApiFile;
+use crate::message::*;
+use crate::parser_helper::*;
+use crate::types::*;
 use bincode::Options;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use serde_repr::{Deserialize_repr, Serialize_repr};
@@ -33,11 +38,6 @@ use std::ops::Add;
 use std::time::{Duration, SystemTime};
 use vpp_api_encoding::typ::*;
 use vpp_api_transport::*;
-use crate::code_gen::gen_code;
-use crate::file_schema::VppJsApiFile;
-use crate::message::*;
-use crate::parser_helper::*;
-use crate::types::*;
 
 #[derive(Clap, Debug, Clone, Serialize, Deserialize, EnumString, Display)]
 pub enum OptParseType {
@@ -78,7 +78,12 @@ pub struct Opts {
     #[clap(short, long, parse(from_occurrences))]
     pub verbose: i32,
 }
-fn merge_felix(mut arr: Vec<ImportsFiles>, left: usize, mid: usize, right: usize) -> Vec<ImportsFiles> {
+fn merge_felix(
+    mut arr: Vec<ImportsFiles>,
+    left: usize,
+    mid: usize,
+    right: usize,
+) -> Vec<ImportsFiles> {
     let n1 = mid - left;
     let n2 = right - mid;
     let mut L1 = arr.clone();
@@ -124,9 +129,9 @@ fn merge_sort_felix(mut arr: Vec<ImportsFiles>, left: usize, right: usize) -> Ve
     arr
 }
 #[derive(Debug, Clone)]
-pub struct ImportsFiles{
-    name: String, 
-    file: Box<VppJsApiFile>
+pub struct ImportsFiles {
+    name: String,
+    file: Box<VppJsApiFile>,
 }
 
 fn main() {
@@ -158,8 +163,8 @@ fn main() {
                 }
                 let data = serde_json::to_string_pretty(&desc).unwrap();
                 // println!("{}", &data);
-                let mut api_definition:Vec<(String, String)> = vec![];
-                gen_code(&desc,"generated2.",&mut api_definition);
+                let mut api_definition: Vec<(String, String)> = vec![];
+                gen_code(&desc, "generated2.", &mut api_definition);
             }
             OptParseType::ApiType => {
                 let desc: VppJsApiType = serde_json::from_str(&data).unwrap();
@@ -179,7 +184,7 @@ fn main() {
                 println!("// Loaded {} API definition files", api_files.len());
                 if opts.print_message_names {
                     for (name, f) in &api_files {
-                        println!("{}",name);
+                        println!("{}", name);
                         for m in &f.messages {
                             let crc = &m.info.crc.strip_prefix("0x").unwrap();
                             // println!("{}_{}", &m.name, &crc);
@@ -187,34 +192,38 @@ fn main() {
                     }
                 }
                 if opts.generate_code {
-                    let mut api_definition:Vec<(String, String)> = vec![];
-                    for(name, f) in &api_files {
-                        gen_code(f,name.trim_start_matches("testdata/vpp/api").trim_end_matches("json"), &mut api_definition);
+                    let mut api_definition: Vec<(String, String)> = vec![];
+                    for (name, f) in &api_files {
+                        gen_code(
+                            f,
+                            name.trim_start_matches("testdata/vpp/api")
+                                .trim_end_matches("json"),
+                            &mut api_definition,
+                        );
                     }
-                    
                 }
-                if opts.print_import_names{
-                    let mut import_collection:Vec<ImportsFiles> = vec![];
+                if opts.print_import_names {
+                    let mut import_collection: Vec<ImportsFiles> = vec![];
                     // Searching for types
-                    for(name, f) in api_files.clone(){
-                        if name.ends_with("_types.api.json"){
-                            import_collection.push(ImportsFiles{
-                                name:name.to_string(), 
-                                file: Box::new(f)
+                    for (name, f) in api_files.clone() {
+                        if name.ends_with("_types.api.json") {
+                            import_collection.push(ImportsFiles {
+                                name: name.to_string(),
+                                file: Box::new(f),
                             })
-                            
                         }
                     }
-                    let mut api_definition:Vec<(String, String)> = vec![];
-                    import_collection = merge_sort_felix(import_collection.clone(), 0,  import_collection.len());
-                    for x in import_collection{
-                        println!("{}-{}",x.name,x.file.imports.len());
-                        gen_code(&x.file,&x.name, &mut api_definition);
+                    let mut api_definition: Vec<(String, String)> = vec![];
+                    import_collection =
+                        merge_sort_felix(import_collection.clone(), 0, import_collection.len());
+                    for x in import_collection {
+                        println!("{}-{}", x.name, x.file.imports.len());
+                        gen_code(&x.file, &x.name, &mut api_definition);
                     }
                     // Searching for non types
-                    for(name,f) in api_files{
-                        if !name.ends_with("_types.api.json"){
-                            gen_code(&f,&name, &mut api_definition);
+                    for (name, f) in api_files {
+                        if !name.ends_with("_types.api.json") {
+                            gen_code(&f, &name, &mut api_definition);
                         }
                     }
                 }
