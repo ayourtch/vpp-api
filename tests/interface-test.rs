@@ -4,27 +4,15 @@
     unused_variables,
     unused_must_use,
     non_camel_case_types,
-    unused_imports
 )]
-use bincode::Options;
-use clap::Clap;
-use serde::{de::DeserializeOwned, Deserialize, Serialize};
-use serde_repr::{Deserialize_repr, Serialize_repr};
-use std::collections::HashMap;
 use std::convert::TryInto;
-use std::io::{Read, Write};
-use std::mem::drop;
-use std::ops::Add;
-use std::time::{Duration, SystemTime};
-use vpp_api_encoding::typ::*;
+use bincode::Options;
 use vpp_api_gen::interface::*;
+use vpp_api_gen::interface_types::*;
+use vpp_api_gen::ip_types::*;
 use vpp_api_gen::reqrecv::*;
-use vpp_api_transport::*;
-
-use typenum::{U10, U24, U256, U32, U64};
 
 use vpp_api_transport::afunix;
-use vpp_api_transport::shmem;
 use vpp_api_transport::VppApiTransport;
 
 fn get_encoder() -> impl bincode::config::Options {
@@ -49,7 +37,7 @@ fn test_sw_interface_add_del_address() {
     t.set_nonblocking(false);
 
     let create_interface: SwInterfaceAddDelAddressReply = send_recv_msg(
-        &SwInterfaceAddDelAddress::get_message_id(),
+        &SwInterfaceAddDelAddress::get_message_name_and_crc(),
         &SwInterfaceAddDelAddress {
             client_index: t.get_client_index(),
             context: 0,
@@ -67,7 +55,7 @@ fn test_sw_interface_add_del_address() {
             },
         },
         &mut *t,
-        &SwInterfaceAddDelAddressReply::get_message_id(),
+        &SwInterfaceAddDelAddressReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -84,7 +72,7 @@ fn test_sw_interface_set_flags() {
     t.set_nonblocking(false);
 
     let create_interface: SwInterfaceSetFlagsReply = send_recv_msg(
-        &SwInterfaceSetFlags::get_message_id(),
+        &SwInterfaceSetFlags::get_message_name_and_crc(),
         &SwInterfaceSetFlags {
             client_index: t.get_client_index(),
             context: 0,
@@ -92,7 +80,7 @@ fn test_sw_interface_set_flags() {
             flags: IfStatusFlags::IF_STATUS_API_FLAG_LINK_UP,
         },
         &mut *t,
-        &SwInterfaceSetFlagsReply::get_message_id(),
+        &SwInterfaceSetFlagsReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -107,9 +95,12 @@ fn test_sw_interface_set_promisc() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     // dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
+    let vl_msg_id = t
+        .get_msg_index(&SwInterfaceSetPromisc::get_message_name_and_crc())
+        .unwrap();
 
     let create_interface: SwInterfaceSetPromiscReply = send_recv_msg(
-        &SwInterfaceSetPromisc::get_message_id(),
+        &SwInterfaceSetPromisc::get_message_name_and_crc(),
         &SwInterfaceSetPromisc {
             client_index: t.get_client_index(),
             context: 0,
@@ -117,7 +108,7 @@ fn test_sw_interface_set_promisc() {
             promisc_on: false,
         },
         &mut *t,
-        &SwInterfaceSetPromiscReply::get_message_id(),
+        &SwInterfaceSetPromiscReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -132,10 +123,10 @@ fn test_hw_interface_set_mtu() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&HwInterfaceSetMtu::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&HwInterfaceSetMtu::get_message_name_and_crc()).unwrap();
 
     let create_interface: HwInterfaceSetMtuReply = send_recv_msg(
-        &HwInterfaceSetMtu::get_message_id(),
+        &HwInterfaceSetMtu::get_message_name_and_crc(),
         &HwInterfaceSetMtu {
             client_index: t.get_client_index(),
             context: 0,
@@ -143,7 +134,7 @@ fn test_hw_interface_set_mtu() {
             mtu: 50,
         },
         &mut *t,
-        &HwInterfaceSetMtuReply::get_message_id(),
+        &HwInterfaceSetMtuReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -158,10 +149,10 @@ fn test_sw_interface_set_mtu() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetMtu::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetMtu::get_message_name_and_crc()).unwrap();
 
     let create_interface: SwInterfaceSetMtuReply = send_recv_msg(
-        &SwInterfaceSetMtu::get_message_id(),
+        &SwInterfaceSetMtu::get_message_name_and_crc(),
         &SwInterfaceSetMtu {
             client_index: t.get_client_index(),
             context: 0,
@@ -169,7 +160,7 @@ fn test_sw_interface_set_mtu() {
             mtu: 50,
         },
         &mut *t,
-        &SwInterfaceSetMtuReply::get_message_id(),
+        &SwInterfaceSetMtuReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -184,10 +175,10 @@ fn test_sw_interface_set_ip_directed_broadcast() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetIpDirectedBroadcast::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetIpDirectedBroadcast::get_message_name_and_crc()).unwrap();
 
     let create_interface: SwInterfaceSetIpDirectedBroadcastReply = send_recv_msg(
-        &SwInterfaceSetIpDirectedBroadcast::get_message_id(),
+        &SwInterfaceSetIpDirectedBroadcast::get_message_name_and_crc(),
         &SwInterfaceSetIpDirectedBroadcast {
             client_index: t.get_client_index(),
             context: 0,
@@ -195,7 +186,7 @@ fn test_sw_interface_set_ip_directed_broadcast() {
             enable: true,
         },
         &mut *t,
-        &SwInterfaceSetIpDirectedBroadcastReply::get_message_id(),
+        &SwInterfaceSetIpDirectedBroadcastReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -210,10 +201,10 @@ fn test_want_interface_events() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&WantInterfaceEvents::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&WantInterfaceEvents::get_message_name_and_crc()).unwrap();
 
     let create_interface: WantInterfaceEventsReply = send_recv_msg(
-        &WantInterfaceEvents::get_message_id(),
+        &WantInterfaceEvents::get_message_name_and_crc(),
         &WantInterfaceEvents {
             client_index: t.get_client_index(),
             context: 0,
@@ -221,7 +212,7 @@ fn test_want_interface_events() {
             pid: 32,
         },
         &mut *t,
-        &WantInterfaceEventsReply::get_message_id(),
+        &WantInterfaceEventsReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -236,16 +227,16 @@ fn test_sw_interface_address_replace_begin() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&WantInterfaceEvents::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&WantInterfaceEvents::get_message_name_and_crc()).unwrap();
 
     let create_interface: SwInterfaceAddressReplaceBeginReply = send_recv_msg(
-        &SwInterfaceAddressReplaceBegin::get_message_id(),
+        &SwInterfaceAddressReplaceBegin::get_message_name_and_crc(),
         &SwInterfaceAddressReplaceBegin {
             client_index: t.get_client_index(),
             context: 0,
         },
         &mut *t,
-        &SwInterfaceAddressReplaceBeginReply::get_message_id(),
+        &SwInterfaceAddressReplaceBeginReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -260,16 +251,16 @@ fn test_sw_interface_address_replace_end() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&WantInterfaceEvents::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&WantInterfaceEvents::get_message_name_and_crc()).unwrap();
 
     let create_interface: SwInterfaceAddressReplaceEndReply = send_recv_msg(
-        &SwInterfaceAddressReplaceEnd::get_message_id(),
+        &SwInterfaceAddressReplaceEnd::get_message_name_and_crc(),
         &SwInterfaceAddressReplaceEnd {
             client_index: t.get_client_index(),
             context: 0,
         },
         &mut *t,
-        &SwInterfaceAddressReplaceEndReply::get_message_id(),
+        &SwInterfaceAddressReplaceEndReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -284,10 +275,10 @@ fn test_sw_interface_set_table() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_name_and_crc()).unwrap();
 
     let create_interface: SwInterfaceSetTableReply = send_recv_msg(
-        &SwInterfaceSetTable::get_message_id(),
+        &SwInterfaceSetTable::get_message_name_and_crc(),
         &SwInterfaceSetTable {
             client_index: t.get_client_index(),
             context: 0,
@@ -296,7 +287,7 @@ fn test_sw_interface_set_table() {
             vrf_id: 32,
         },
         &mut *t,
-        &SwInterfaceSetTableReply::get_message_id(),
+        &SwInterfaceSetTableReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -311,10 +302,10 @@ fn test_sw_interface_get_table() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_name_and_crc()).unwrap();
 
     let create_interface: SwInterfaceGetTableReply = send_recv_msg(
-        &SwInterfaceGetTable::get_message_id(),
+        &SwInterfaceGetTable::get_message_name_and_crc(),
         &SwInterfaceGetTable {
             client_index: t.get_client_index(),
             context: 0,
@@ -322,7 +313,7 @@ fn test_sw_interface_get_table() {
             is_ipv6: false,
         },
         &mut *t,
-        &SwInterfaceGetTableReply::get_message_id(),
+        &SwInterfaceGetTableReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -337,10 +328,10 @@ fn test_sw_interface_set_unnumbered() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_name_and_crc()).unwrap();
 
     let create_interface: SwInterfaceSetUnnumberedReply = send_recv_msg(
-        &SwInterfaceSetUnnumbered::get_message_id(),
+        &SwInterfaceSetUnnumbered::get_message_name_and_crc(),
         &SwInterfaceSetUnnumbered {
             client_index: t.get_client_index(),
             context: 0,
@@ -349,7 +340,7 @@ fn test_sw_interface_set_unnumbered() {
             is_add: false,
         },
         &mut *t,
-        &SwInterfaceSetUnnumberedReply::get_message_id(),
+        &SwInterfaceSetUnnumberedReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -364,17 +355,17 @@ fn test_sw_interface_clear_stats() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_name_and_crc()).unwrap();
 
     let create_interface: SwInterfaceClearStatsReply = send_recv_msg(
-        &SwInterfaceClearStats::get_message_id(),
+        &SwInterfaceClearStats::get_message_name_and_crc(),
         &SwInterfaceClearStats {
             client_index: t.get_client_index(),
             context: 0,
             sw_if_index: 1,
         },
         &mut *t,
-        &SwInterfaceClearStatsReply::get_message_id(),
+        &SwInterfaceClearStatsReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -389,10 +380,10 @@ fn test_sw_interface_tag_add_del() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_name_and_crc()).unwrap();
 
     let create_interface: SwInterfaceTagAddDelReply = send_recv_msg(
-        &SwInterfaceTagAddDel::get_message_id(),
+        &SwInterfaceTagAddDel::get_message_name_and_crc(),
         &SwInterfaceTagAddDel {
             client_index: t.get_client_index(),
             context: 0,
@@ -401,7 +392,7 @@ fn test_sw_interface_tag_add_del() {
             tag: "Faisal".try_into().unwrap(),
         },
         &mut *t,
-        &SwInterfaceTagAddDelReply::get_message_id(),
+        &SwInterfaceTagAddDelReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -416,10 +407,10 @@ fn test_sw_interface_add_del_mac_address() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_name_and_crc()).unwrap();
 
     let create_interface: SwInterfaceAddDelMacAddressReply = send_recv_msg(
-        &SwInterfaceAddDelMacAddress::get_message_id(),
+        &SwInterfaceAddDelMacAddress::get_message_name_and_crc(),
         &SwInterfaceAddDelMacAddress {
             client_index: t.get_client_index(),
             context: 0,
@@ -428,7 +419,7 @@ fn test_sw_interface_add_del_mac_address() {
             addr: [0, 0x01, 0x02, 0x03, 0x04, 0x05],
         },
         &mut *t,
-        &SwInterfaceAddDelMacAddressReply::get_message_id(),
+        &SwInterfaceAddDelMacAddressReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -443,10 +434,10 @@ fn test_sw_interface_set_mac_address() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_name_and_crc()).unwrap();
 
     let create_interface: SwInterfaceSetMacAddressReply = send_recv_msg(
-        &SwInterfaceSetMacAddress::get_message_id(),
+        &SwInterfaceSetMacAddress::get_message_name_and_crc(),
         &SwInterfaceSetMacAddress {
             client_index: t.get_client_index(),
             context: 0,
@@ -454,7 +445,7 @@ fn test_sw_interface_set_mac_address() {
             mac_address: [0, 0x01, 0x02, 0x03, 0x04, 0x05],
         },
         &mut *t,
-        &SwInterfaceSetMacAddressReply::get_message_id(),
+        &SwInterfaceSetMacAddressReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -469,17 +460,17 @@ fn test_sw_interface_get_mac_address() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_name_and_crc()).unwrap();
 
     let create_interface: SwInterfaceGetMacAddressReply = send_recv_msg(
-        &SwInterfaceGetMacAddress::get_message_id(),
+        &SwInterfaceGetMacAddress::get_message_name_and_crc(),
         &SwInterfaceGetMacAddress {
             client_index: t.get_client_index(),
             context: 0,
             sw_if_index: 1,
         },
         &mut *t,
-        &SwInterfaceGetMacAddressReply::get_message_id(),
+        &SwInterfaceGetMacAddressReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
@@ -494,17 +485,17 @@ fn test_sw_interface_set_rx_mode() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     dbg!(t.connect("api-test", None, 256));
     t.set_nonblocking(false);
-    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_id()).unwrap();
+    // let vl_msg_id = t.get_msg_index(&SwInterfaceSetTable::get_message_name_and_crc()).unwrap();
 
     let create_interface: SwInterfaceGetMacAddressReply = send_recv_msg(
-        &SwInterfaceGetMacAddress::get_message_id(),
+        &SwInterfaceGetMacAddress::get_message_name_and_crc(),
         &SwInterfaceGetMacAddress {
             client_index: t.get_client_index(),
             context: 0,
             sw_if_index: 1,
         },
         &mut *t,
-        &SwInterfaceGetMacAddressReply::get_message_id(),
+        &SwInterfaceGetMacAddressReply::get_message_name_and_crc(),
     );
 
     assert_eq!(create_interface.context, 0);
