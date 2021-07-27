@@ -320,7 +320,7 @@ mod tests {
                 }
             },
             &mut *t,
-            &sw_interface_add_del_address_reply::get_message_id()
+            &sw_interface_add_del_address_reply::get_message_name_and_crc()
         );
         assert_eq!(create_interface_reply.context, 0);
         t.disconnect();

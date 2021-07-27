@@ -176,7 +176,7 @@ struct sw_interface_set_flags {
 	pub flags : if_status_flags, 
 } 
 impl sw_interface_set_flags { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_flags_6a2b491a") 
 	 } 
 } 
@@ -186,7 +186,7 @@ struct sw_interface_set_flags_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_set_flags_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_flags_reply_e8d4e804") 
 	 } 
 } 
@@ -198,7 +198,7 @@ struct sw_interface_set_promisc {
 	pub promisc_on : bool, 
 } 
 impl sw_interface_set_promisc { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_promisc_d40860d4") 
 	 } 
 } 
@@ -208,7 +208,7 @@ struct sw_interface_set_promisc_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_set_promisc_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_promisc_reply_e8d4e804") 
 	 } 
 } 
@@ -220,7 +220,7 @@ struct hw_interface_set_mtu {
 	pub mtu : u16, 
 } 
 impl hw_interface_set_mtu { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("hw_interface_set_mtu_e6746899") 
 	 } 
 } 
@@ -230,7 +230,7 @@ struct hw_interface_set_mtu_reply {
 	pub retval : i32, 
 } 
 impl hw_interface_set_mtu_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("hw_interface_set_mtu_reply_e8d4e804") 
 	 } 
 } 
@@ -242,7 +242,7 @@ struct sw_interface_set_mtu {
 	pub mtu : u32, 
 } 
 impl sw_interface_set_mtu { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_mtu_5cbe85e5") 
 	 } 
 } 
@@ -252,7 +252,7 @@ struct sw_interface_set_mtu_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_set_mtu_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_mtu_reply_e8d4e804") 
 	 } 
 } 
@@ -264,7 +264,7 @@ struct sw_interface_set_ip_directed_broadcast {
 	pub enable : bool, 
 } 
 impl sw_interface_set_ip_directed_broadcast { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_ip_directed_broadcast_ae6cfcfb") 
 	 } 
 } 
@@ -274,7 +274,7 @@ struct sw_interface_set_ip_directed_broadcast_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_set_ip_directed_broadcast_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_ip_directed_broadcast_reply_e8d4e804") 
 	 } 
 } 
@@ -287,7 +287,7 @@ struct sw_interface_event {
 	pub deleted : bool, 
 } 
 impl sw_interface_event { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_event_f709f78d") 
 	 } 
 } 
@@ -299,7 +299,7 @@ struct want_interface_events {
 	pub pid : u32, 
 } 
 impl want_interface_events { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_interface_events_476f5a08") 
 	 } 
 } 
@@ -309,7 +309,7 @@ struct want_interface_events_reply {
 	pub retval : i32, 
 } 
 impl want_interface_events_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("want_interface_events_reply_e8d4e804") 
 	 } 
 } 
@@ -344,7 +344,7 @@ struct sw_interface_details {
 	pub tag : String, 
 } 
 impl sw_interface_details { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_details_17b69fa2") 
 	 } 
 } 
@@ -357,7 +357,7 @@ struct sw_interface_dump {
 	pub name_filter : String, 
 } 
 impl sw_interface_dump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_dump_aa610c27") 
 	 } 
 } 
@@ -371,7 +371,7 @@ struct sw_interface_add_del_address {
 	pub prefix : address_with_prefix, 
 } 
 impl sw_interface_add_del_address { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_add_del_address_5803d5c4") 
 	 } 
 } 
@@ -381,7 +381,7 @@ struct sw_interface_add_del_address_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_add_del_address_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_add_del_address_reply_e8d4e804") 
 	 } 
 } 
@@ -391,7 +391,7 @@ struct sw_interface_address_replace_begin {
 	pub context : u32, 
 } 
 impl sw_interface_address_replace_begin { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_address_replace_begin_51077d14") 
 	 } 
 } 
@@ -401,7 +401,7 @@ struct sw_interface_address_replace_begin_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_address_replace_begin_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_address_replace_begin_reply_e8d4e804") 
 	 } 
 } 
@@ -411,7 +411,7 @@ struct sw_interface_address_replace_end {
 	pub context : u32, 
 } 
 impl sw_interface_address_replace_end { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_address_replace_end_51077d14") 
 	 } 
 } 
@@ -421,7 +421,7 @@ struct sw_interface_address_replace_end_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_address_replace_end_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_address_replace_end_reply_e8d4e804") 
 	 } 
 } 
@@ -434,7 +434,7 @@ struct sw_interface_set_table {
 	pub vrf_id : u32, 
 } 
 impl sw_interface_set_table { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_table_df42a577") 
 	 } 
 } 
@@ -444,7 +444,7 @@ struct sw_interface_set_table_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_set_table_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_table_reply_e8d4e804") 
 	 } 
 } 
@@ -456,7 +456,7 @@ struct sw_interface_get_table {
 	pub is_ipv6 : bool, 
 } 
 impl sw_interface_get_table { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_get_table_2d033de4") 
 	 } 
 } 
@@ -467,7 +467,7 @@ struct sw_interface_get_table_reply {
 	pub vrf_id : u32, 
 } 
 impl sw_interface_get_table_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_get_table_reply_a6eb0109") 
 	 } 
 } 
@@ -480,7 +480,7 @@ struct sw_interface_set_unnumbered {
 	pub is_add : bool, 
 } 
 impl sw_interface_set_unnumbered { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_unnumbered_938ef33b") 
 	 } 
 } 
@@ -490,7 +490,7 @@ struct sw_interface_set_unnumbered_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_set_unnumbered_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_unnumbered_reply_e8d4e804") 
 	 } 
 } 
@@ -501,7 +501,7 @@ struct sw_interface_clear_stats {
 	pub sw_if_index : interface_index, 
 } 
 impl sw_interface_clear_stats { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_clear_stats_f9e6675e") 
 	 } 
 } 
@@ -511,7 +511,7 @@ struct sw_interface_clear_stats_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_clear_stats_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_clear_stats_reply_e8d4e804") 
 	 } 
 } 
@@ -524,7 +524,7 @@ struct sw_interface_tag_add_del {
 	pub tag : String, 
 } 
 impl sw_interface_tag_add_del { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_tag_add_del_426f8bc1") 
 	 } 
 } 
@@ -534,7 +534,7 @@ struct sw_interface_tag_add_del_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_tag_add_del_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_tag_add_del_reply_e8d4e804") 
 	 } 
 } 
@@ -547,7 +547,7 @@ struct sw_interface_add_del_mac_address {
 	pub is_add : u8, 
 } 
 impl sw_interface_add_del_mac_address { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_add_del_mac_address_638bb9f4") 
 	 } 
 } 
@@ -557,7 +557,7 @@ struct sw_interface_add_del_mac_address_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_add_del_mac_address_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_add_del_mac_address_reply_e8d4e804") 
 	 } 
 } 
@@ -569,7 +569,7 @@ struct sw_interface_set_mac_address {
 	pub mac_address : mac_address, 
 } 
 impl sw_interface_set_mac_address { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_mac_address_6aca746a") 
 	 } 
 } 
@@ -579,7 +579,7 @@ struct sw_interface_set_mac_address_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_set_mac_address_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_mac_address_reply_e8d4e804") 
 	 } 
 } 
@@ -590,7 +590,7 @@ struct sw_interface_get_mac_address {
 	pub sw_if_index : interface_index, 
 } 
 impl sw_interface_get_mac_address { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_get_mac_address_f9e6675e") 
 	 } 
 } 
@@ -601,7 +601,7 @@ struct sw_interface_get_mac_address_reply {
 	pub mac_address : mac_address, 
 } 
 impl sw_interface_get_mac_address_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_get_mac_address_reply_40ef2c08") 
 	 } 
 } 
@@ -615,7 +615,7 @@ struct sw_interface_set_rx_mode {
 	pub mode : rx_mode, 
 } 
 impl sw_interface_set_rx_mode { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_rx_mode_780f5cee") 
 	 } 
 } 
@@ -625,7 +625,7 @@ struct sw_interface_set_rx_mode_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_set_rx_mode_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_rx_mode_reply_e8d4e804") 
 	 } 
 } 
@@ -639,7 +639,7 @@ struct sw_interface_set_rx_placement {
 	pub is_main : bool, 
 } 
 impl sw_interface_set_rx_placement { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_rx_placement_db65f3c9") 
 	 } 
 } 
@@ -649,7 +649,7 @@ struct sw_interface_set_rx_placement_reply {
 	pub retval : i32, 
 } 
 impl sw_interface_set_rx_placement_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_set_rx_placement_reply_e8d4e804") 
 	 } 
 } 
@@ -660,7 +660,7 @@ struct sw_interface_rx_placement_dump {
 	pub sw_if_index : interface_index, 
 } 
 impl sw_interface_rx_placement_dump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_rx_placement_dump_f9e6675e") 
 	 } 
 } 
@@ -674,7 +674,7 @@ struct sw_interface_rx_placement_details {
 	pub mode : rx_mode, 
 } 
 impl sw_interface_rx_placement_details { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("sw_interface_rx_placement_details_f6d7d024") 
 	 } 
 } 
@@ -686,7 +686,7 @@ struct interface_name_renumber {
 	pub new_show_dev_instance : u32, 
 } 
 impl interface_name_renumber { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("interface_name_renumber_2b8858b8") 
 	 } 
 } 
@@ -696,7 +696,7 @@ struct interface_name_renumber_reply {
 	pub retval : i32, 
 } 
 impl interface_name_renumber_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("interface_name_renumber_reply_e8d4e804") 
 	 } 
 } 
@@ -711,7 +711,7 @@ struct create_subif {
 	pub inner_vlan_id : u16, 
 } 
 impl create_subif { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("create_subif_cb371063") 
 	 } 
 } 
@@ -722,7 +722,7 @@ struct create_subif_reply {
 	pub sw_if_index : interface_index, 
 } 
 impl create_subif_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("create_subif_reply_5383d31f") 
 	 } 
 } 
@@ -734,7 +734,7 @@ struct create_vlan_subif {
 	pub vlan_id : u32, 
 } 
 impl create_vlan_subif { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("create_vlan_subif_af34ac8b") 
 	 } 
 } 
@@ -745,7 +745,7 @@ struct create_vlan_subif_reply {
 	pub sw_if_index : interface_index, 
 } 
 impl create_vlan_subif_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("create_vlan_subif_reply_5383d31f") 
 	 } 
 } 
@@ -756,7 +756,7 @@ struct delete_subif {
 	pub sw_if_index : interface_index, 
 } 
 impl delete_subif { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("delete_subif_f9e6675e") 
 	 } 
 } 
@@ -766,7 +766,7 @@ struct delete_subif_reply {
 	pub retval : i32, 
 } 
 impl delete_subif_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("delete_subif_reply_e8d4e804") 
 	 } 
 } 
@@ -777,7 +777,7 @@ struct create_loopback {
 	pub mac_address : mac_address, 
 } 
 impl create_loopback { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("create_loopback_42bb5d22") 
 	 } 
 } 
@@ -788,7 +788,7 @@ struct create_loopback_reply {
 	pub sw_if_index : interface_index, 
 } 
 impl create_loopback_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("create_loopback_reply_5383d31f") 
 	 } 
 } 
@@ -801,7 +801,7 @@ struct create_loopback_instance {
 	pub user_instance : u32, 
 } 
 impl create_loopback_instance { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("create_loopback_instance_d36a3ee2") 
 	 } 
 } 
@@ -812,7 +812,7 @@ struct create_loopback_instance_reply {
 	pub sw_if_index : interface_index, 
 } 
 impl create_loopback_instance_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("create_loopback_instance_reply_5383d31f") 
 	 } 
 } 
@@ -823,7 +823,7 @@ struct delete_loopback {
 	pub sw_if_index : interface_index, 
 } 
 impl delete_loopback { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("delete_loopback_f9e6675e") 
 	 } 
 } 
@@ -833,7 +833,7 @@ struct delete_loopback_reply {
 	pub retval : i32, 
 } 
 impl delete_loopback_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("delete_loopback_reply_e8d4e804") 
 	 } 
 } 
@@ -845,7 +845,7 @@ struct collect_detailed_interface_stats {
 	pub enable_disable : bool, 
 } 
 impl collect_detailed_interface_stats { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("collect_detailed_interface_stats_5501adee") 
 	 } 
 } 
@@ -855,7 +855,7 @@ struct collect_detailed_interface_stats_reply {
 	pub retval : i32, 
 } 
 impl collect_detailed_interface_stats_reply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("collect_detailed_interface_stats_reply_e8d4e804") 
 	 } 
 } 

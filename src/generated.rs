@@ -158,7 +158,7 @@ pub struct SetPunt {
 	pub punt : Punt, 
 } 
 impl SetPunt { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("set_punt_83799618") 
 	 } 
 } 
@@ -168,7 +168,7 @@ pub struct SetPuntReply {
 	pub retval : i32, 
 } 
 impl SetPuntReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("set_punt_reply_e8d4e804") 
 	 } 
 } 
@@ -181,7 +181,7 @@ pub struct PuntSocketRegister {
 	pub pathname : FixedSizeString<U108>, 
 } 
 impl PuntSocketRegister { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("punt_socket_register_c8cd10fa") 
 	 } 
 } 
@@ -192,7 +192,7 @@ pub struct PuntSocketRegisterReply {
 	pub pathname : FixedSizeString<U108>, 
 } 
 impl PuntSocketRegisterReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("punt_socket_register_reply_bd30ae90") 
 	 } 
 } 
@@ -203,7 +203,7 @@ pub struct PuntSocketDump {
 	pub typ : PuntType, 
 } 
 impl PuntSocketDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("punt_socket_dump_52974935") 
 	 } 
 } 
@@ -214,7 +214,7 @@ pub struct PuntSocketDetails {
 	pub pathname : FixedSizeString<U108>, 
 } 
 impl PuntSocketDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("punt_socket_details_1de0ce75") 
 	 } 
 } 
@@ -225,7 +225,7 @@ pub struct PuntSocketDeregister {
 	pub punt : Punt, 
 } 
 impl PuntSocketDeregister { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("punt_socket_deregister_98a444f4") 
 	 } 
 } 
@@ -235,7 +235,7 @@ pub struct PuntSocketDeregisterReply {
 	pub retval : i32, 
 } 
 impl PuntSocketDeregisterReply { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("punt_socket_deregister_reply_e8d4e804") 
 	 } 
 } 
@@ -246,7 +246,7 @@ pub struct PuntReasonDump {
 	pub reason : PuntReason, 
 } 
 impl PuntReasonDump { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("punt_reason_dump_5c0dd4fe") 
 	 } 
 } 
@@ -256,7 +256,7 @@ pub struct PuntReasonDetails {
 	pub reason : PuntReason, 
 } 
 impl PuntReasonDetails { 
-	 pub fn get_message_id() -> String { 
+	 pub fn get_message_name_and_crc() -> String { 
 	 	 String::from("punt_reason_details_2c9d4a40") 
 	 } 
 } 
