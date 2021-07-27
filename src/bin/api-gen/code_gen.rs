@@ -67,6 +67,24 @@ impl VppJsApiAlias {
         }
         code
     }
+    // Handling Vector of Alias
+    pub fn handle_alias_vec(aliases: &LinkedHashMap<String,VppJsApiAlias>, api_definition: &mut Vec<(String, String)>, name: &str) -> String {
+        aliases
+        .keys()
+        .filter(|x| {
+            for j in 0..api_definition.len() {
+                if &api_definition[j].0 == *x {
+                    return false;
+                }
+            }
+            api_definition.push((x.clone().to_string(), name.to_string().clone()));
+            return true;
+        })
+        .fold(String::new(), |mut acc, x| {
+            acc.push_str(&aliases[x].generate_code(x));
+            acc
+        })
+    }
 }
 impl VppJsApiEnum {
     pub fn generate_code(&self) -> String {
@@ -240,24 +258,8 @@ pub fn gen_code(code: &VppJsApiFile, name: &str, api_definition: &mut Vec<(Strin
             acc
         });
     preamble.push_str(&enumString);
-
-    let aliasString = code
-        .aliases
-        .keys()
-        .filter(|x| {
-            for j in 0..api_definition.len() {
-                if &api_definition[j].0 == *x {
-                    return false;
-                }
-            }
-            api_definition.push((x.clone().to_string(), name.to_string().clone()));
-            return true;
-        })
-        .fold(String::new(), |mut acc, x| {
-            acc.push_str(&code.aliases[x].generate_code(x));
-            acc
-        });
-    preamble.push_str(&aliasString);
+    // Generating Code for all the aliases
+    preamble.push_str(&VppJsApiAlias::handle_alias_vec(&code.aliases, api_definition, name));
     let messageString = code.messages.iter().fold(String::new(), |mut acc, x| {
         acc.push_str(&x.generate_code());
         acc
