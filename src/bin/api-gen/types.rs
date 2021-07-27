@@ -3,6 +3,9 @@ use serde::{Deserialize, Serialize, Serializer};
 extern crate strum;
 use serde::de::{self, Deserializer, SeqAccess, Visitor};
 use std::fmt;
+use crate::basetypes::{maxSizeUnion, sizeof_alias, sizeof_struct};
+use crate::parser_helper::{camelize_ident, get_ident, get_type};
+use crate::file_schema::VppJsApiFile;
 
 // This holds the Type and Union Data
 #[derive(Debug, Clone)]
@@ -61,6 +64,80 @@ impl<'de> Deserialize<'de> for VppJsApiType {
         D: Deserializer<'de>,
     {
         deserializer.deserialize_seq(VppJsApiTypeVisitor)
+    }
+}
+impl VppJsApiType {
+    pub fn generate_code(&self) -> String {
+        let mut code = String::new();
+        code.push_str(&format!(
+            "#[derive(Debug, Clone, Serialize, Deserialize)] \n"
+        ));
+        code.push_str(&format!(
+            "pub struct {} {{ \n",
+            camelize_ident(&self.type_name)
+        ));
+        for x in 0..self.fields.len() {
+            code.push_str(&format!(
+                "\tpub {} : {}, \n",
+                get_ident(&self.fields[x].name),
+                get_type(&self.fields[x].ctype)
+            ));
+        }
+        code.push_str("} \n");
+        code
+    }
+    pub fn generate_code_union(&self, apifile: &VppJsApiFile) -> String {
+        let mut code = String::new();
+        let unionsize = maxSizeUnion(&self, &apifile);
+        code.push_str(&format!(
+            "pub type {} = [u8;{}]; \n",
+            camelize_ident(&self.type_name),
+            unionsize
+        ));
+        code
+    }
+    pub fn iter_and_generate_code(
+        structs: &Vec<VppJsApiType>,
+        api_definition: &mut Vec<(String, String)>,
+        name: &str,
+    ) -> String {
+        structs
+            .iter()
+            .filter(|x| {
+                for j in 0..api_definition.len() {
+                    if &api_definition[j].0 == &x.type_name {
+                        return false;
+                    }
+                }
+                api_definition.push((x.type_name.clone(), name.to_string().clone()));
+                return true;
+            })
+            .fold(String::new(), |mut acc, x| {
+                acc.push_str(&x.generate_code());
+                acc
+            })
+    }
+    pub fn iter_and_generate_code_union(
+        unions: &Vec<VppJsApiType>,
+        api_definition: &mut Vec<(String, String)>,
+        name: &str,
+        file: &VppJsApiFile,
+    ) -> String {
+        unions
+            .iter()
+            .filter(|x| {
+                for j in 0..api_definition.len() {
+                    if &api_definition[j].0 == &x.type_name {
+                        return false;
+                    }
+                }
+                api_definition.push((x.type_name.clone(), name.to_string().clone()));
+                return true;
+            })
+            .fold(String::new(), |mut acc, x| {
+                acc.push_str(&x.generate_code_union(&file));
+                acc
+            })
     }
 }
 #[derive(Debug, Clone, Serialize, Deserialize)]

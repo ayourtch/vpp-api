@@ -3,6 +3,8 @@ use serde::{Deserialize, Serialize, Serializer};
 extern crate strum;
 use serde::de::{Deserializer, SeqAccess, Visitor};
 use std::fmt;
+use crate::basetypes::{maxSizeUnion, sizeof_alias, sizeof_struct};
+use crate::parser_helper::{camelize_ident, get_ident, get_type};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct VppJsApiEnumInfo {
@@ -104,5 +106,48 @@ impl<'de> Deserialize<'de> for VppJsApiEnum {
         D: Deserializer<'de>,
     {
         deserializer.deserialize_seq(VppJsApiEnumVisitor)
+    }
+}
+impl VppJsApiEnum {
+    pub fn generate_code(&self) -> String {
+        let mut code = String::new();
+        code.push_str(&format!(
+            "#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] \n"
+        ));
+        match &self.info.enumtype {
+            Some(len) => code.push_str(&format!("#[repr({})]\n", &len)),
+            _ => code.push_str(&format!("#[repr(u32)]\n")),
+        }
+        code.push_str(&format!("pub enum {} {{ \n", camelize_ident(&self.name)));
+        for x in 0..self.values.len() {
+            code.push_str(&format!(
+                "\t {}={}, \n",
+                get_ident(&self.values[x].name),
+                self.values[x].value
+            ));
+        }
+        code.push_str("} \n");
+        code
+    }
+    pub fn iter_and_generate_code(
+        enums: &Vec<VppJsApiEnum>,
+        api_definition: &mut Vec<(String, String)>,
+        name: &str,
+    ) -> String {
+        enums
+            .iter()
+            .filter(|x| {
+                for j in 0..api_definition.len() {
+                    if &api_definition[j].0 == &x.name {
+                        return false;
+                    }
+                }
+                api_definition.push((x.name.clone(), name.to_string().clone()));
+                return true;
+            })
+            .fold(String::new(), |mut acc, x| {
+                acc.push_str(&x.generate_code());
+                acc
+            })
     }
 }
