@@ -53,6 +53,49 @@ impl VppJsApiType {
         ));
         code
     }
+    pub fn iter_and_generate_code(
+        structs: &Vec<VppJsApiType>,
+        api_definition: &mut Vec<(String, String)>,
+        name: &str,
+    ) -> String {
+        structs
+            .iter()
+            .filter(|x| {
+                for j in 0..api_definition.len() {
+                    if &api_definition[j].0 == &x.type_name {
+                        return false;
+                    }
+                }
+                api_definition.push((x.type_name.clone(), name.to_string().clone()));
+                return true;
+            })
+            .fold(String::new(), |mut acc, x| {
+                acc.push_str(&x.generate_code());
+                acc
+            })
+    }
+    pub fn iter_and_generate_code_union(
+        unions: &Vec<VppJsApiType>,
+        api_definition: &mut Vec<(String, String)>,
+        name: &str,
+        file: &VppJsApiFile,
+    ) -> String {
+        unions
+            .iter()
+            .filter(|x| {
+                for j in 0..api_definition.len() {
+                    if &api_definition[j].0 == &x.type_name {
+                        return false;
+                    }
+                }
+                api_definition.push((x.type_name.clone(), name.to_string().clone()));
+                return true;
+            })
+            .fold(String::new(), |mut acc, x| {
+                acc.push_str(&x.generate_code_union(&file));
+                acc
+            })
+    }
 }
 impl VppJsApiAlias {
     pub fn generate_code(&self, name: &str) -> String {
@@ -68,22 +111,26 @@ impl VppJsApiAlias {
         code
     }
     // Handling Vector of Alias
-    pub fn handle_alias_vec(aliases: &LinkedHashMap<String,VppJsApiAlias>, api_definition: &mut Vec<(String, String)>, name: &str) -> String {
+    pub fn handle_alias_vec(
+        aliases: &LinkedHashMap<String, VppJsApiAlias>,
+        api_definition: &mut Vec<(String, String)>,
+        name: &str,
+    ) -> String {
         aliases
-        .keys()
-        .filter(|x| {
-            for j in 0..api_definition.len() {
-                if &api_definition[j].0 == *x {
-                    return false;
+            .keys()
+            .filter(|x| {
+                for j in 0..api_definition.len() {
+                    if &api_definition[j].0 == *x {
+                        return false;
+                    }
                 }
-            }
-            api_definition.push((x.clone().to_string(), name.to_string().clone()));
-            return true;
-        })
-        .fold(String::new(), |mut acc, x| {
-            acc.push_str(&aliases[x].generate_code(x));
-            acc
-        })
+                api_definition.push((x.clone().to_string(), name.to_string().clone()));
+                return true;
+            })
+            .fold(String::new(), |mut acc, x| {
+                acc.push_str(&aliases[x].generate_code(x));
+                acc
+            })
     }
 }
 impl VppJsApiEnum {
@@ -106,6 +153,27 @@ impl VppJsApiEnum {
         }
         code.push_str("} \n");
         code
+    }
+    pub fn iter_and_generate_code(
+        enums: &Vec<VppJsApiEnum>,
+        api_definition: &mut Vec<(String, String)>,
+        name: &str,
+    ) -> String {
+        enums
+            .iter()
+            .filter(|x| {
+                for j in 0..api_definition.len() {
+                    if &api_definition[j].0 == &x.name {
+                        return false;
+                    }
+                }
+                api_definition.push((x.name.clone(), name.to_string().clone()));
+                return true;
+            })
+            .fold(String::new(), |mut acc, x| {
+                acc.push_str(&x.generate_code());
+                acc
+            })
     }
 }
 impl VppJsApiMessage {
@@ -160,6 +228,12 @@ impl VppJsApiMessage {
         file.push_str(&format!("\t }} \n"));
         file.push_str(&format!("}} \n"));
     }
+    pub fn iter_and_generate_code(messages: &Vec<VppJsApiMessage>) -> String {
+        messages.iter().fold(String::new(), |mut acc, x| {
+            acc.push_str(&x.generate_code());
+            acc
+        })
+    }
 }
 
 pub fn check_implementation(
@@ -206,68 +280,33 @@ pub fn gen_code(code: &VppJsApiFile, name: &str, api_definition: &mut Vec<(Strin
             preamble.push_str(&format!("use crate::{}::*; \n", check));
         }
     }
-    let structString = code
-        .types
-        .iter()
-        .filter(|x| {
-            for j in 0..api_definition.len() {
-                if &api_definition[j].0 == &x.type_name {
-                    return false;
-                }
-            }
-            api_definition.push((x.type_name.clone(), name.to_string().clone()));
-            return true;
-        })
-        .fold(String::new(), |mut acc, x| {
-            acc.push_str(&x.generate_code());
-            acc
-        });
-    preamble.push_str(&structString);
-
-    let unionString = code
-        .unions
-        .iter()
-        .filter(|x| {
-            for j in 0..api_definition.len() {
-                if &api_definition[j].0 == &x.type_name {
-                    return false;
-                }
-            }
-            api_definition.push((x.type_name.clone(), name.to_string().clone()));
-            return true;
-        })
-        .fold(String::new(), |mut acc, x| {
-            acc.push_str(&x.generate_code_union(&code));
-            acc
-        });
-    preamble.push_str(&unionString);
-    let enumString = code
-        .enums
-        .iter()
-        .filter(|x| {
-            for j in 0..api_definition.len() {
-                if &api_definition[j].0 == &x.name {
-                    return false;
-                }
-            }
-            api_definition.push((x.name.clone(), name.to_string().clone()));
-            return true;
-        })
-        .fold(String::new(), |mut acc, x| {
-            acc.push_str(&x.generate_code());
-            acc
-        });
-    preamble.push_str(&enumString);
-    // Generating Code for all the aliases
-    preamble.push_str(&VppJsApiAlias::handle_alias_vec(&code.aliases, api_definition, name));
-    let messageString = code.messages.iter().fold(String::new(), |mut acc, x| {
-        acc.push_str(&x.generate_code());
-        acc
-    });
-    preamble.push_str(&messageString);
-    /* for x in 0..code.messages.len() {
-        gen_messages(&code.messages[x], &mut preamble);
-    } */
+    // Generating Code for all the Types(Structs)
+    preamble.push_str(&VppJsApiType::iter_and_generate_code(
+        &code.types,
+        api_definition,
+        name,
+    ));
+    // Generatingg Code for all the Unions
+    preamble.push_str(&VppJsApiType::iter_and_generate_code_union(
+        &code.unions,
+        api_definition,
+        name,
+        code,
+    ));
+    // Generating Code for all the Enums
+    preamble.push_str(&VppJsApiEnum::iter_and_generate_code(
+        &code.enums,
+        api_definition,
+        name,
+    ));
+    // Generating Code for all the Aliases
+    preamble.push_str(&VppJsApiAlias::handle_alias_vec(
+        &code.aliases,
+        api_definition,
+        name,
+    ));
+    // Generating Code for all the Messages
+    preamble.push_str(&VppJsApiMessage::iter_and_generate_code(&code.messages));
     println!("{}", name);
     let fileName = RE
         .find(&name)
