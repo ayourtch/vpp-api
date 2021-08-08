@@ -22,7 +22,7 @@ pub fn derive_message(input:proc_macro::TokenStream) -> proc_macro::TokenStream 
         let name = input.ident;
         let expanded = quote! {
                  impl #name {
-                    fn get_message_name_and_crc() -> String {
+                    pub fn get_message_name_and_crc() -> String {
                          String::from(#ident)
                     }
                 }
