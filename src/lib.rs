@@ -46,6 +46,12 @@ pub fn derive_message(input:proc_macro::TokenStream) -> proc_macro::TokenStream 
             }
 
         });
+        let build_fields = fields.iter().map(|f|{
+            let name = &f.ident; 
+            quote! {
+                #name: self.#name.clone().ok_or(concat!(stringify!(#name), "is not set"))?
+            }
+        });
         let builder_ident = syn::Ident::new(&format!("Builder{}",name.to_string()), name.span());
         let expanded = quote! {
                  pub struct #builder_ident{
@@ -53,6 +59,11 @@ pub fn derive_message(input:proc_macro::TokenStream) -> proc_macro::TokenStream 
                  }
                  impl #builder_ident{
                      #(#field_methods)*
+                     fn build(&mut self) -> Result<#name, Box<dyn str::error::Error>>{
+                         Ok(#name{
+                             #(#build_fields,)*
+                        })
+                     }
                  }
                  impl #name {
                     pub fn get_message_name_and_crc() -> String {
