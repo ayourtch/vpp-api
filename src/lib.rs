@@ -35,10 +35,24 @@ pub fn derive_message(input:proc_macro::TokenStream) -> proc_macro::TokenStream 
             let name = &f.ident; 
             quote! {#name: None}
         });
+        let field_methods = fields.iter().map(|f|{
+            let name = &f.ident; 
+            let ty = &f.ty; 
+            quote! {
+                fn #name(&mut self, #name:#ty) -> &mut Self{
+                    self.#name = Some(#name); 
+                    self 
+                }
+            }
+
+        });
         let builder_ident = syn::Ident::new(&format!("Builder{}",name.to_string()), name.span());
         let expanded = quote! {
                  pub struct #builder_ident{
                      #(#option_fields,)*
+                 }
+                 impl #builder_ident{
+                     #(#field_methods)*
                  }
                  impl #name {
                     pub fn get_message_name_and_crc() -> String {
