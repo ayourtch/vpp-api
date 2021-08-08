@@ -20,7 +20,22 @@ pub fn derive_message(input:proc_macro::TokenStream) -> proc_macro::TokenStream 
             _ => panic!("Wrong format for message name and crc")
         };
         let name = input.ident;
+        let fields = if let syn::Data::Struct(syn::DataStruct{fields: syn::Fields::Named(syn::FieldsNamed{ref named, .. }), .. }) = input.data {
+            named
+        } 
+        else{
+            unimplemented!();
+        };
+        let option_fields = fields.iter().map(|f|{
+            let name = &f.ident; 
+            let ty = &f.ty; 
+            quote! {#name: std::option::Option<#ty>}
+        });
+        let builder_ident = syn::Ident::new(&format!("Builder{}",name.to_string()), name.span());
         let expanded = quote! {
+                 pub struct #builder_ident{
+                     #(#option_fields,)*
+                 }
                  impl #name {
                     pub fn get_message_name_and_crc() -> String {
                          String::from(#ident)
