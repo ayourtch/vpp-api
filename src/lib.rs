@@ -31,6 +31,10 @@ pub fn derive_message(input:proc_macro::TokenStream) -> proc_macro::TokenStream 
             let ty = &f.ty; 
             quote! {#name: std::option::Option<#ty>}
         });
+        let builder_init = fields.iter().map(|f|{
+            let name = &f.ident; 
+            quote! {#name: None}
+        });
         let builder_ident = syn::Ident::new(&format!("Builder{}",name.to_string()), name.span());
         let expanded = quote! {
                  pub struct #builder_ident{
@@ -39,6 +43,11 @@ pub fn derive_message(input:proc_macro::TokenStream) -> proc_macro::TokenStream 
                  impl #name {
                     pub fn get_message_name_and_crc() -> String {
                          String::from(#ident)
+                    }
+                    pub fn builder() -> #builder_ident{
+                        #builder_ident{
+                         #(#builder_init,)*
+                        }
                     }
                 }
             };
