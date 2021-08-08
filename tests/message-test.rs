@@ -1,12 +1,16 @@
 use vpp_macros::Message;
-#[derive(Message)]
-#[message_name_and_crc(Idiot)]
+#[derive(Message, Debug)]
+#[message_name_and_crc(Idiot_76fe)]
 struct InterfaceAPIAddress{
-    uid: i32, 
+    uid: u32, 
+    name: String,
 }
 
 fn main(){
     println!("{}", InterfaceAPIAddress::get_message_name_and_crc());
-    assert_eq!(1,1);
+    let builder = InterfaceAPIAddress::builder().uid(33).name("Faisal".to_owned()).build().unwrap();
+    // let finalc = builder.build().unwrap();
+    eprintln!("{:#?}",builder);
+    assert_eq!(builder.uid,33);
     
 }
