@@ -18,7 +18,7 @@ fn get_encoder() -> impl bincode::config::Options {
 
 fn main(){
     // Connecting to the VPP API socket
-    let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));
+   let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));
     // Testing Connection and loading Message buffers
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     // Checking Control Ping ID 
@@ -62,13 +62,10 @@ fn main(){
     // [0xa,0xa,1,2,7,0x7a,0xb,0xc,0xd,0xf,8,9,5,6,10,10]
     // 10.10.1.2/24
     println!("Show IP Address Reply: {:#?}", &ipaddress);*/
+    // let vhostuserdump = SwInterfaceVhostUserDump::builder().client_index(t.get_client_index()).context(0).sw_if_index(1).build().unwrap();
     let vhostDetails:Vec<SwInterfaceVhostUserDetails> = send_bulk_msg(
         &SwInterfaceVhostUserDump::get_message_name_and_crc(), 
-        &SwInterfaceVhostUserDump{
-            client_index: t.get_client_index(),
-            context: 0, 
-            sw_if_index: 1
-        }, 
+        &SwInterfaceVhostUserDump::builder().client_index(t.get_client_index()).context(0).sw_if_index(1).build().unwrap(), 
         &mut *t, 
         &SwInterfaceVhostUserDetails::get_message_name_and_crc());
     
@@ -76,13 +73,7 @@ fn main(){
 
     let swinterfacedetails:Vec<SwInterfaceDetails> = send_bulk_msg(
         &SwInterfaceDump::get_message_name_and_crc(), 
-        &SwInterfaceDump{
-            client_index: t.get_client_index(),
-            context: 0, 
-            sw_if_index: 0, 
-            name_filter_valid: true, 
-            name_filter: "local".try_into().unwrap()
-        }, 
+        &SwInterfaceDump::builder().client_index(t.get_client_index()).context(0).sw_if_index(0).name_filter_valid(false).name_filter("faisa".try_into().unwrap()).build().unwrap(), 
         &mut *t, 
         &SwInterfaceDetails::get_message_name_and_crc()
     );
