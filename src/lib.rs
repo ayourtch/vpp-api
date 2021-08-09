@@ -60,7 +60,7 @@ pub fn derive_message(input: proc_macro::TokenStream) -> proc_macro::TokenStream
          }
          impl #builder_ident{
              #(#field_methods)*
-             fn build(&mut self) -> Result<#name, Box<dyn std::error::Error>>{
+             pub fn build(&mut self) -> Result<#name, Box<dyn std::error::Error>>{
                  Ok(#name{
                      #(#build_fields,)*
                 })
