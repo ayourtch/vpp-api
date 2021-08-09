@@ -1,11 +1,11 @@
 use serde::ser::SerializeSeq;
 use serde::{Deserialize, Serialize, Serializer};
 extern crate strum;
+use crate::basetypes::{maxSizeUnion, sizeof_alias, sizeof_struct};
+use crate::file_schema::VppJsApiFile;
+use crate::parser_helper::{camelize_ident, get_ident, get_type};
 use serde::de::{self, Deserializer, SeqAccess, Visitor};
 use std::fmt;
-use crate::basetypes::{maxSizeUnion, sizeof_alias, sizeof_struct};
-use crate::parser_helper::{camelize_ident, get_ident, get_type};
-use crate::file_schema::VppJsApiFile;
 
 // This holds the Type and Union Data
 #[derive(Debug, Clone)]
@@ -69,6 +69,7 @@ impl<'de> Deserialize<'de> for VppJsApiType {
 impl VppJsApiType {
     pub fn generate_code(&self) -> String {
         let mut code = String::new();
+        code.push_str(&format!("// Implementation for {} \n",&self.type_name));
         code.push_str(&format!(
             "#[derive(Debug, Clone, Serialize, Deserialize)] \n"
         ));

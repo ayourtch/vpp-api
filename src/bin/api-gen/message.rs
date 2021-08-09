@@ -31,7 +31,6 @@ impl Serialize for VppJsApiMessage {
     }
 }
 
-
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum VppJsApiMessageHelper {
@@ -93,8 +92,9 @@ impl VppJsApiMessage {
     pub fn generate_code(&self) -> String {
         let mut code = String::new();
         code.push_str(&format!(
-            "#[derive(Debug, Clone, Serialize, Deserialize)] \n"
+            "#[derive(Debug, Clone, Serialize, Deserialize, Message)] \n"
         ));
+        code.push_str(&format!("#[message_name_and_crc({}_{})] \n",self.name,self.info.crc.trim_start_matches("0x")));
         code.push_str(&format!("pub struct {} {{ \n", camelize_ident(&self.name)));
         for x in 0..self.fields.len() {
             if self.fields[x].name == "_vl_msg_id" {
@@ -125,7 +125,7 @@ impl VppJsApiMessage {
             }
         }
         code.push_str("} \n");
-        self.gen_impl_messages(&mut code);
+        // self.gen_impl_messages(&mut code);
         code
     }
     pub fn gen_impl_messages(&self, file: &mut String) {
@@ -148,4 +148,3 @@ impl VppJsApiMessage {
         })
     }
 }
-

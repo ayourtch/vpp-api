@@ -1,10 +1,10 @@
 use serde::ser::SerializeSeq;
 use serde::{Deserialize, Serialize, Serializer};
 extern crate strum;
-use serde::de::{Deserializer, SeqAccess, Visitor};
-use std::fmt;
 use crate::basetypes::{maxSizeUnion, sizeof_alias, sizeof_struct};
 use crate::parser_helper::{camelize_ident, get_ident, get_type};
+use serde::de::{Deserializer, SeqAccess, Visitor};
+use std::fmt;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct VppJsApiEnumInfo {
@@ -126,6 +126,7 @@ impl VppJsApiEnum {
                 self.values[x].value
             ));
         }
+        code.push_str("\t #[serde(other)] \n\t Invalid \n");
         code.push_str("} \n");
         code
     }

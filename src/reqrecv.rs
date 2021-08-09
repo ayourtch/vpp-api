@@ -121,6 +121,7 @@ pub fn send_bulk_msg<
         let res = t.read_one_msg_id_and_msg();
         if let Ok((msg_id, data)) = res {
             println!("id: {} data: {:x?}", msg_id, &data);
+            println!("{}", data.len());
             if msg_id == control_ping_id_reply {
                 return out;
             }

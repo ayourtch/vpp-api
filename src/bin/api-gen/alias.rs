@@ -1,8 +1,8 @@
-use serde::ser::SerializeMap;
-use serde::{Deserialize, Serialize, Serializer};
 use crate::basetypes::{maxSizeUnion, sizeof_alias, sizeof_struct};
 use crate::parser_helper::{camelize_ident, get_ident, get_type};
 use linked_hash_map::LinkedHashMap;
+use serde::ser::SerializeMap;
+use serde::{Deserialize, Serialize, Serializer};
 extern crate strum;
 
 #[derive(Debug, Deserialize, Clone)]
