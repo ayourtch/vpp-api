@@ -41,7 +41,7 @@ pub fn derive_message(input: proc_macro::TokenStream) -> proc_macro::TokenStream
         let name = &f.ident;
         let ty = &f.ty;
         quote! {
-            fn #name(&mut self, #name:#ty) -> &mut Self{
+            pub fn #name(&mut self, #name:#ty) -> &mut Self{
                 self.#name = Some(#name);
                 self
             }
