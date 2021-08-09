@@ -5,7 +5,7 @@ use std::convert::TryInto;
 use std::process::Command;
 use vpp_api_gen::interface::*;
 use vpp_api_gen::interface_types::*;
-use vpp_api_gen::vpe;
+use vpp_api_gen::vpe::*;
 use vpp_api_gen::ip_types::*;
 use vpp_api_gen::reqrecv::*;
 use vpp_api_gen::vhost_user::*;
@@ -59,7 +59,7 @@ fn main() {
     // Step 4: Set Host Interface State up 
     let set_interface_link_up: SwInterfaceSetFlagsReply = send_recv_msg(
         &SwInterfaceSetFlags::get_message_name_and_crc(), 
-        &SwInterfaceSetFlags::builder().client_index(t.get_client_index()).context(0).sw_if_index(1).flags(IfStatusFlags::IF_STATUS_API_FLAG_LINK_UP).build().unwrap(), 
+        &SwInterfaceSetFlags::builder().client_index(t.get_client_index()).context(0).sw_if_index(1).flags(IfStatusFlags::IF_STATUS_API_FLAG_ADMIN_UP).build().unwrap(), 
         &mut *t, 
         &SwInterfaceSetFlagsReply::get_message_name_and_crc());
     println!("{:?}", create_host_interface);
