@@ -69,7 +69,7 @@ impl<'de> Deserialize<'de> for VppJsApiType {
 impl VppJsApiType {
     pub fn generate_code(&self) -> String {
         let mut code = String::new();
-        code.push_str(&format!("// Implementation for {} \n",&self.type_name));
+        code.push_str(&format!("// Implementation for {} \n", &self.type_name));
         code.push_str(&format!(
             "#[derive(Debug, Clone, Serialize, Deserialize)] \n"
         ));

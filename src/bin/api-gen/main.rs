@@ -38,6 +38,7 @@ use std::ops::Add;
 use std::time::{Duration, SystemTime};
 use vpp_api_encoding::typ::*;
 use vpp_api_transport::*;
+use std::fs; 
 
 #[derive(Clap, Debug, Clone, Serialize, Deserialize, EnumString, Display)]
 pub enum OptParseType {
@@ -69,6 +70,9 @@ pub struct Opts {
 
     #[clap(long)]
     pub print_import_names: bool,
+
+    #[clap(long)] 
+    pub create_package: bool, 
 
     /// Generate the code
     #[clap(long)]
@@ -221,11 +225,33 @@ fn main() {
                         gen_code(&x.file, &x.name, &mut api_definition);
                     }
                     // Searching for non types
-                    for (name, f) in api_files {
+                    for (name, f) in api_files.clone() {
                         if !name.ends_with("_types.api.json") {
                             gen_code(&f, &name, &mut api_definition);
                         }
                     }
+                }
+               if opts.create_package{
+                   // Create Directory 
+                   // Create SRC
+                   // Copy Cargo.toml 
+                   // Copy Tests 
+                   // Copy lib.rs 
+                   // Copy Example directory
+                   println!("Do whatever you need to hear with creating package");
+                   fs::create_dir(".././some").unwrap(); 
+                   fs::create_dir(".././some/src").unwrap(); 
+                   fs::create_dir(".././some/tests").unwrap();
+                   fs::create_dir(".././some/examples").unwrap();
+                   fs::File::create(".././some/Cargo.toml").unwrap(); 
+                   fs::File::create(".././some/tests/interface-test.rs").unwrap(); 
+                   fs::File::create(".././some/examples/progressive-vpp.rs").unwrap();
+                   fs::copy("./Cargo.toml", ".././some/Cargo.toml"); 
+                   fs::copy("./tests/interface-test.rs", ".././some/tests/interface-test.rs").unwrap();
+                   fs::copy("./examples/vhost-example.rs",".././some/examples/progressive-vpp.rs").unwrap();
+                   for (name,f) in api_files.clone(){
+                       println!("Loaded {}",name);
+                   }
                 }
             }
             e => {

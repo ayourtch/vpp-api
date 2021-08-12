@@ -4,7 +4,9 @@ pub mod interface_types;
 pub mod ip_types;
 pub mod ethernet_types;
 pub mod vhost_user; 
-pub mod virtio_types; 
+pub mod virtio_types;
+pub mod vpe; 
+pub mod vpe_types;
 /* pub mod abf; // Check import situation 
 pub mod fib_types; 
 pub mod acl; 
