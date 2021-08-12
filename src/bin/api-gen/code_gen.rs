@@ -23,7 +23,7 @@ use crate::parser_helper::{camelize_ident, get_ident, get_type};
 use crate::types::VppJsApiType;
 use crate::types::{VppJsApiFieldSize, VppJsApiMessageFieldDef};
 
-pub fn gen_code(code: &VppJsApiFile, name: &str, api_definition: &mut Vec<(String, String)>) {
+pub fn gen_code(code: &VppJsApiFile, name: &str, api_definition: &mut Vec<(String, String)>, packageName: &str) {
     // Using Regex to extract output filename
     lazy_static! {
         static ref RE: Regex = Regex::new(r"/[a-z_0-9]*.api.json").unwrap();
@@ -33,7 +33,7 @@ pub fn gen_code(code: &VppJsApiFile, name: &str, api_definition: &mut Vec<(Strin
         .unwrap()
         .as_str()
         .trim_end_matches(".api.json");
-    let mut file = File::create(format!("src/{}.rs", fileName)).unwrap();
+    let mut file = File::create(format!(".././{}/src/{}.rs", packageName,fileName)).unwrap();
     file.write_all(code.generate_code(name, api_definition).as_bytes())
         .unwrap();
 
