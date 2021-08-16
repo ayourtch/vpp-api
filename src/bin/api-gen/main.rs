@@ -23,7 +23,7 @@ mod message;
 mod parser_helper;
 mod services;
 mod types;
-use crate::code_gen::gen_code;
+use crate::code_gen::{gen_code, create_cargo_toml};
 use crate::file_schema::VppJsApiFile;
 use crate::message::*;
 use crate::parser_helper::*;
@@ -239,14 +239,16 @@ fn main() {
                     fs::create_dir(".././some/src").unwrap();
                     fs::create_dir(".././some/tests").unwrap();
                     fs::create_dir(".././some/examples").unwrap();
-                    fs::File::create(".././some/Cargo.toml").unwrap();
+                    // fs::File::create(".././some/Cargo.toml").unwrap();
                     fs::File::create(".././some/tests/interface-test.rs").unwrap();
                     fs::File::create(".././some/examples/progressive-vpp.rs").unwrap();
                     fs::File::create(".././some/src/lib.rs").unwrap();
                     fs::File::create(".././some/src/reqrecv.rs").unwrap();
-                    fs::copy("./src/lib.rs", ".././some/src/lib.rs").unwrap();
+                    // fs::copy("./src/lib.rs", ".././some/src/lib.rs").unwrap();
                     fs::copy("./src/reqrecv.rs", ".././some/src/reqrecv.rs").unwrap();
-                    fs::copy("./Cargo.toml", ".././some/Cargo.toml").unwrap();
+                    // fs::copy("./Cargo.toml", ".././some/Cargo.toml").unwrap();
+                    println!("going to create files");
+                    create_cargo_toml("some");
                     fs::copy(
                         "./tests/interface-test.rs",
                         ".././some/tests/interface-test.rs",
