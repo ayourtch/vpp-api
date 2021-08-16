@@ -33,12 +33,12 @@ use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use serde_repr::{Deserialize_repr, Serialize_repr};
 use std::collections::HashMap;
 use std::convert::TryInto;
+use std::fs;
 use std::io::{Read, Write};
 use std::ops::Add;
 use std::time::{Duration, SystemTime};
 use vpp_api_encoding::typ::*;
 use vpp_api_transport::*;
-use std::fs; 
 
 #[derive(Clap, Debug, Clone, Serialize, Deserialize, EnumString, Display)]
 pub enum OptParseType {
@@ -71,8 +71,8 @@ pub struct Opts {
     #[clap(long)]
     pub print_import_names: bool,
 
-    #[clap(long)] 
-    pub create_package: bool, 
+    #[clap(long)]
+    pub create_package: bool,
 
     /// Generate the code
     #[clap(long)]
@@ -203,7 +203,7 @@ fn main() {
                             name.trim_start_matches("testdata/vpp/api")
                                 .trim_end_matches("json"),
                             &mut api_definition,
-                            "test"
+                            "test",
                         );
                     }
                 }
@@ -232,42 +232,50 @@ fn main() {
                         }
                     }
                 }
-               if opts.create_package{
-                   let mut api_definition:Vec<(String, String)> = vec![]; 
-                   println!("Do whatever you need to hear with creating package");
-                   fs::create_dir(".././some").unwrap(); 
-                   fs::create_dir(".././some/src").unwrap(); 
-                   fs::create_dir(".././some/tests").unwrap();
-                   fs::create_dir(".././some/examples").unwrap();
-                   fs::File::create(".././some/Cargo.toml").unwrap(); 
-                   fs::File::create(".././some/tests/interface-test.rs").unwrap(); 
-                   fs::File::create(".././some/examples/progressive-vpp.rs").unwrap();
-                   fs::File::create(".././some/src/lib.rs").unwrap(); 
-                   fs::File::create(".././some/src/reqrecv.rs").unwrap(); 
-                   fs::copy("./src/lib.rs", ".././some/src/lib.rs").unwrap(); 
-                   fs::copy("./src/reqrecv.rs", ".././some/src/reqrecv.rs").unwrap(); 
-                   fs::copy("./Cargo.toml", ".././some/Cargo.toml").unwrap();
-                   fs::copy("./tests/interface-test.rs", ".././some/tests/interface-test.rs").unwrap();
-                   fs::copy("./examples/vhost-example.rs",".././some/examples/progressive-vpp.rs").unwrap();
-                   let mut import_collection: Vec<ImportsFiles> = vec![]; 
-                   for (name, f) in api_files.clone(){
-                       if name.ends_with("_types.api.json"){
-                           import_collection.push(ImportsFiles{
-                               name: name.to_string(),
-                               file: Box::new(f)
-                           })
+                if opts.create_package {
+                    let mut api_definition: Vec<(String, String)> = vec![];
+                    println!("Do whatever you need to hear with creating package");
+                    fs::create_dir(".././some").unwrap();
+                    fs::create_dir(".././some/src").unwrap();
+                    fs::create_dir(".././some/tests").unwrap();
+                    fs::create_dir(".././some/examples").unwrap();
+                    fs::File::create(".././some/Cargo.toml").unwrap();
+                    fs::File::create(".././some/tests/interface-test.rs").unwrap();
+                    fs::File::create(".././some/examples/progressive-vpp.rs").unwrap();
+                    fs::File::create(".././some/src/lib.rs").unwrap();
+                    fs::File::create(".././some/src/reqrecv.rs").unwrap();
+                    fs::copy("./src/lib.rs", ".././some/src/lib.rs").unwrap();
+                    fs::copy("./src/reqrecv.rs", ".././some/src/reqrecv.rs").unwrap();
+                    fs::copy("./Cargo.toml", ".././some/Cargo.toml").unwrap();
+                    fs::copy(
+                        "./tests/interface-test.rs",
+                        ".././some/tests/interface-test.rs",
+                    )
+                    .unwrap();
+                    fs::copy(
+                        "./examples/vhost-example.rs",
+                        ".././some/examples/progressive-vpp.rs",
+                    )
+                    .unwrap();
+                    let mut import_collection: Vec<ImportsFiles> = vec![];
+                    for (name, f) in api_files.clone() {
+                        if name.ends_with("_types.api.json") {
+                            import_collection.push(ImportsFiles {
+                                name: name.to_string(),
+                                file: Box::new(f),
+                            })
                         }
                     }
-                   import_collection = merge_sort_felix(import_collection.clone(), 0, import_collection.len());
-                   for x in import_collection {
-                       gen_code(&x.file, &x.name, &mut api_definition, "some");
+                    import_collection =
+                        merge_sort_felix(import_collection.clone(), 0, import_collection.len());
+                    for x in import_collection {
+                        gen_code(&x.file, &x.name, &mut api_definition, "some");
                     }
-                   for(name,f) in api_files.clone() {
-                       if !name.ends_with("_types.api.json"){
-                           gen_code(&f, &name, &mut api_definition, "some");
-                       }
+                    for (name, f) in api_files.clone() {
+                        if !name.ends_with("_types.api.json") {
+                            gen_code(&f, &name, &mut api_definition, "some");
+                        }
                     }
-
                 }
             }
             e => {
