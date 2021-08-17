@@ -246,7 +246,7 @@ fn main() {
                     fs::File::create(".././some/src/reqrecv.rs").unwrap();
                     // fs::copy("./src/lib.rs", ".././some/src/lib.rs").unwrap();
                     fs::copy("./src/reqrecv.rs", ".././some/src/reqrecv.rs").unwrap();
-                    // fs::copy("./Cargo.toml", ".././some/Cargo.toml").unwrap();
+                    //fs::copy("./Cargo.toml", ".././some/Cargo.toml").unwrap();
                     println!("going to create files");
                     create_cargo_toml("some");
                     fs::copy(

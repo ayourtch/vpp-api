@@ -51,11 +51,11 @@ pub fn create_cargo_toml(packageName: &str) {
     code.push_str("[package] \n");
     code.push_str(&format!("name = \"{}\" \n", packageName));
     code.push_str("version = \"0.1.0\" \n"); 
-    code.push_str("authors = \"[Andrew Yourtchenko <ayourtch@gmail.com>]\" \n"); 
-    code.push_str("edition = \"2018\" \n");
+    code.push_str("authors = [\"Andrew Yourtchenko <ayourtch@gmail.com>\"] \n"); 
+    code.push_str("edition = \"2018\" \n\n");
     
     code.push_str("[dev-dependencies] \n"); 
-    code.push_str("tybuild = {version = \"1.0\", features = [\"diff\"]} \n"); 
+    code.push_str("trybuild = {version = \"1.0\", features = [\"diff\"]} \n\n"); 
     
     code.push_str("[dependencies] \n");
     code.push_str("serde = { version = \"1.0\", features = [\"derive\"] } \n");

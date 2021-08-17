@@ -53,8 +53,13 @@ pub fn get_type(apitype: &str) -> String {
 }
 pub fn get_ident(api_ident: &str) -> String {
     if api_ident == "type" {
-        format!("typ")
-    } else {
+        return format!("typ")
+    }
+    if api_ident == "match" {
+        println!("Found match");
+        format!("mach")
+    }
+    else {
         format!("{}", api_ident.trim_start_matches("_"))
     }
 }
@@ -150,23 +155,4 @@ pub fn camelize_ident(ident: &str) -> String {
 pub fn camelize(opts: &Opts, ident: &str) -> String {
     use convert_case::{Case, Casing};
     ident.to_case(Case::UpperCamel)
-}
-
-#[derive(Clone, Default, Debug)]
-pub struct GeneratedType {
-    pub derives: LinkedHashMap<String, ()>,
-    pub file: String,
-    pub text: String,
-}
-
-impl GeneratedType {
-    pub fn add_derives(self: &mut Self, derives: Vec<&str>) {
-        for d in derives {
-            self.derives.insert(d.to_string(), ());
-        }
-    }
-
-    pub fn push_str(self: &mut Self, data: &str) {
-        self.text.push_str(data);
-    }
 }
