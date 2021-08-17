@@ -84,3 +84,22 @@ pub fn create_cargo_toml(packageName: &str) {
     let mut file = File::create(format!(".././{}/Cargo.toml", packageName)).unwrap();
     file.write_all(code.as_bytes()).unwrap();
 }
+
+pub fn generate_lib_file(api_files: &LinkedHashMap<String, VppJsApiFile>, packageName: &str) {
+    let mut code = String::new();
+    code.push_str("pub mod reqrecv; \n");
+    for (name, f) in api_files.clone() {
+        lazy_static! {
+            static ref RE: Regex = Regex::new(r"/[a-z_0-9]*.api.json").unwrap();
+        }
+        let fileName = RE
+            .find(&name)
+            .unwrap()
+            .as_str()
+            .trim_end_matches(".api.json");
+        code.push_str(&format!("pub mod {}; \n", fileName.trim_start_matches("/")));
+    }
+    let mut file = File::create(format!(".././{}/src/lib.rs", packageName)).unwrap();
+    file.write_all(code.as_bytes()).unwrap();
+    println!("{}", code);
+}

@@ -126,7 +126,7 @@ impl VppJsApiEnum {
                 self.values[x].value
             ));
         }
-        code.push_str("\t #[serde(other)] \n\t Invalid \n");
+        // code.push_str("\t #[serde(other)] \n\t Invalid \n");
         code.push_str("} \n");
         code
     }

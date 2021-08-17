@@ -107,7 +107,7 @@ impl VppJsApiMessage {
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
                         VppJsApiFieldSize::Fixed(len) => code.push_str(&format!(
-                            "\tpub {} : FixedSizeString<U{}>, \n",
+                            "\tpub {} : FixedSizeString<typenum::U{}>, \n",
                             get_ident(&self.fields[x].name),
                             len
                         )),

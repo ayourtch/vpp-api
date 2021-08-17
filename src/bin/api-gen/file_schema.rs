@@ -106,7 +106,7 @@ impl VppJsApiFile {
         preamble.push_str("use vpp_api_encoding::typ::*;\n");
         preamble.push_str("use vpp_api_transport::*;\n");
         preamble.push_str("use serde_repr::{Serialize_repr, Deserialize_repr};\n");
-        preamble.push_str("use typenum::{U10, U24, U256, U32, U64};\n");
+        preamble.push_str("use typenum;\n");
         // preamble.push_str(&VppJsApiFile::generate_header());
 
         let importTable: Vec<String> = vec![];
