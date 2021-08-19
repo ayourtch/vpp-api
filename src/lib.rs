@@ -83,21 +83,15 @@ pub fn derive_message(input: proc_macro::TokenStream) -> proc_macro::TokenStream
 #[proc_macro_derive(UnionIdent, attributes(types))] 
 pub fn derive_unionident(input:proc_macro::TokenStream) -> proc_macro::TokenStream{
     let input = parse_macro_input!(input as DeriveInput); 
-    // eprintln!("{:#?}", input.attrs);
-    eprintln!("{:#?}", input.data);
     let ty: &syn::LitInt;
     match input.data{
         syn::Data::Struct(ref ds) => {
-            eprintln!("{:#?}", ds.fields);
             match ds.fields{
                 syn::Fields::Unnamed(ref fu) => {
-                    // eprintln!("{:#?}", fu.unnamed.first().unwrap().ty);
                     match fu.unnamed.first().unwrap().ty {
                         syn::Type::Array(ref tarr) => {
-                            // eprintln!("{:#?}", tarr.len);
                             match tarr.len {
                                 syn::Expr::Lit(ref exprlit) => {
-                                    // eprintln!("{:#?}", exprlit.lit);
                                     match exprlit.lit{
                                         syn::Lit::Int(ref litin) => {
                                             ty = litin;
@@ -128,11 +122,9 @@ pub fn derive_unionident(input:proc_macro::TokenStream) -> proc_macro::TokenStre
                 ident = iterterator.next().unwrap(); 
                 let _punt = iterterator.next().unwrap();
                 liter = iterterator.next().unwrap();
-                eprintln!("{:#?}",ident);
             }
             _ => panic!("Felix! Something went wrong")
         }
-        // eprintln!("{:#?}", liter);
         let function_name_new = format!("new_{}",ident.to_string());
         let function_name_new_ident = syn::Ident::new(&function_name_new, name.span());
         let function_name_set_ident = syn::Ident::new(&format!("set_{}",ident.to_string()), name.span()); 
@@ -158,8 +150,8 @@ pub fn derive_unionident(input:proc_macro::TokenStream) -> proc_macro::TokenStre
                 }
         }
     });
-    eprintln!("{:#?}", helperfunctions);
     let expanded = quote! {
+        use bincode;
         impl #name{
             fn new() -> #name {
                 #name([0;#ty])
