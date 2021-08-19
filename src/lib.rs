@@ -1,6 +1,7 @@
 extern crate proc_macro;
 use quote::quote;
 use syn::{parse_macro_input, DeriveInput};
+use syn;
 
 use proc_macro2::TokenTree;
 
@@ -79,3 +80,93 @@ pub fn derive_message(input: proc_macro::TokenStream) -> proc_macro::TokenStream
     };
     expanded.into()
 }
+#[proc_macro_derive(UnionIdent, attributes(types))] 
+pub fn derive_unionident(input:proc_macro::TokenStream) -> proc_macro::TokenStream{
+    let input = parse_macro_input!(input as DeriveInput); 
+    // eprintln!("{:#?}", input.attrs);
+    eprintln!("{:#?}", input.data);
+    let ty: &syn::LitInt;
+    match input.data{
+        syn::Data::Struct(ref ds) => {
+            eprintln!("{:#?}", ds.fields);
+            match ds.fields{
+                syn::Fields::Unnamed(ref fu) => {
+                    // eprintln!("{:#?}", fu.unnamed.first().unwrap().ty);
+                    match fu.unnamed.first().unwrap().ty {
+                        syn::Type::Array(ref tarr) => {
+                            // eprintln!("{:#?}", tarr.len);
+                            match tarr.len {
+                                syn::Expr::Lit(ref exprlit) => {
+                                    // eprintln!("{:#?}", exprlit.lit);
+                                    match exprlit.lit{
+                                        syn::Lit::Int(ref litin) => {
+                                            ty = litin;
+                                        }, 
+                                        _ => panic!("Wrong data structure")
+                                    }
+                                }, 
+                                _ => panic!("Wrong data structure passed")
+                            }
+                        },
+                        _ => panic!("Wrong input")
+                    }
+                }, 
+                _ => panic!("Named fields")
+            }
+        },
+        _ => panic!("Wrong data structure")
+    }
+    let name = input.ident;
+    let helperfunctions = input.attrs.iter().map(|f| {
+        let mut group_stream = f.tokens.clone().into_iter();
+        let stream_group = group_stream.next().unwrap();
+        let ident;
+        let liter; 
+        match stream_group{
+            TokenTree::Group(ref g) => {
+                let mut iterterator = g.stream().into_iter(); 
+                ident = iterterator.next().unwrap(); 
+                let _punt = iterterator.next().unwrap();
+                liter = iterterator.next().unwrap();
+                eprintln!("{:#?}",ident);
+            }
+            _ => panic!("Felix! Something went wrong")
+        }
+        // eprintln!("{:#?}", liter);
+        let function_name_new = format!("new_{}",ident.to_string());
+        let function_name_new_ident = syn::Ident::new(&function_name_new, name.span());
+        let function_name_set_ident = syn::Ident::new(&format!("set_{}",ident.to_string()), name.span()); 
+        let function_name_get_ident = syn::Ident::new(&format!("get_{}",ident.to_string()), name.span()); 
+        quote! {
+                pub fn #function_name_new_ident(some: #ident) -> #name{
+                    let mut arr: [u8;#ty] = [0;#ty];
+                    let some_arr: Vec<u8> = bincode::serialize(&some).unwrap();
+                    for x in 0..#liter{
+                        arr[x] = some_arr[x];
+                    }
+                    #name(arr)
+                 }
+                pub fn #function_name_set_ident(&mut self, some:#ident){
+                    self.0[0..#liter].clone_from_slice(&some);
+                }
+                pub fn #function_name_get_ident(&self) -> #ident{
+                    let some = self.0.clone();
+                    let mut someIdent: [u8;#liter] = [0;#liter];
+                    someIdent.clone_from_slice(&some[0..#liter]);
+                    let decoded: #ident = bincode::deserialize(&someIdent).unwrap();
+                    decoded   
+                }
+        }
+    });
+    eprintln!("{:#?}", helperfunctions);
+    let expanded = quote! {
+        impl #name{
+            fn new() -> #name {
+                #name([0;#ty])
+            } 
+            #(#helperfunctions)*
+        } 
+    }; 
+    expanded.into()
+}
+
