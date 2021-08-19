@@ -97,6 +97,7 @@ impl VppJsApiFile {
     pub fn generate_code(&self, name: &str, api_definition: &mut Vec<(String, String)>) -> String {
         lazy_static! {
             static ref IE: Regex = Regex::new(r"/[a-z_0-9]*.api").unwrap();
+            static ref RE: Regex = Regex::new(r"/[a-z_0-9]*.api.json").unwrap();
         }
         let mut preamble: String = String::new();
         preamble.push_str(&VppJsApiFile::generate_header());
@@ -107,9 +108,10 @@ impl VppJsApiFile {
         preamble.push_str("use vpp_api_transport::*;\n");
         preamble.push_str("use serde_repr::{Serialize_repr, Deserialize_repr};\n");
         preamble.push_str("use typenum;\n");
+        let mut import_table: Vec<(String, Vec<String>)> = vec![];
         // preamble.push_str(&VppJsApiFile::generate_header());
 
-        let importTable: Vec<String> = vec![];
+        /* let importTable: Vec<String> = vec![];
         for x in 0..self.imports.len() {
             let mut count: u8 = 0;
             let check = IE
@@ -127,8 +129,13 @@ impl VppJsApiFile {
             if count == 0 {
                 preamble.push_str(&format!("use crate::{}::*; \n", check));
             }
-        }
-        // Generating Code for all the Types(Structs)
+        } */
+        let typstructs = VppJsApiType::iter_and_generate_code(&self.types, api_definition, name, &mut import_table);
+        let typunions = VppJsApiType::iter_and_generate_code_union(&self.unions, api_definition, name, &self, &mut import_table);
+        let typenum = VppJsApiEnum::iter_and_generate_code(&self.enums, api_definition, name, &mut import_table);
+        let typalias = VppJsApiAlias::iter_and_generate_code(&self.aliases, api_definition, name, &mut import_table);
+        let typmessage = VppJsApiMessage::iter_and_generate_code(&self.messages);
+        /* // Generating Code for all the Types(Structs)
         preamble.push_str(&VppJsApiType::iter_and_generate_code(
             &self.types,
             api_definition,
@@ -154,7 +161,26 @@ impl VppJsApiFile {
             name,
         ));
         // Generating Code for all the Messages
-        preamble.push_str(&VppJsApiMessage::iter_and_generate_code(&self.messages));
+        preamble.push_str(&VppJsApiMessage::iter_and_generate_code(&self.messages)); */ 
+        
+
+        for x in 0..import_table.len(){
+            let name = &import_table[x].0;
+            let fileName = RE
+            .find(&name)
+            .unwrap()
+            .as_str()
+            .trim_end_matches(".api.json")
+            .trim_start_matches("/");
+            println!("{}", import_table[x].0);
+            preamble.push_str(&format!("use crate::{}::*; \n", fileName));
+        }
+        preamble.push_str(&typstructs);
+        preamble.push_str(&typunions);
+        preamble.push_str(&typenum);
+        preamble.push_str(&typalias);
+        preamble.push_str(&typmessage);
+        println!("{:#?}", import_table);
         preamble
     }
 }

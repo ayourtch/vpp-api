@@ -134,12 +134,27 @@ impl VppJsApiEnum {
         enums: &Vec<VppJsApiEnum>,
         api_definition: &mut Vec<(String, String)>,
         name: &str,
+        import_table: &mut Vec<(String, Vec<String>)>
     ) -> String {
         enums
             .iter()
             .filter(|x| {
                 for j in 0..api_definition.len() {
                     if &api_definition[j].0 == &x.name {
+                        for k in 0..import_table.len(){
+                            if &import_table[k].0 == &api_definition[j].1 {
+                                if !import_table[k].1.contains(&x.name){
+                                    println!("Pushing");
+                                    import_table[k].1.push(x.name.clone());
+                                    return false;
+                                }
+                                else{
+                                    println!("Ignoring");
+                                    return false;
+                                }
+                            }
+                        }
+                        import_table.push((api_definition[j].1.clone(), vec![x.name.clone()]));
                         return false;
                     }
                 }
