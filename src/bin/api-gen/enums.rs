@@ -109,11 +109,31 @@ impl<'de> Deserialize<'de> for VppJsApiEnum {
     }
 }
 impl VppJsApiEnum {
+    pub fn if_flag(&self) -> bool{
+        let mut prev: i64 = self.values[0].value;
+        for x in 1..self.values.len(){
+           if self.values[x].value == 0{
+               continue;
+           }
+           let next = prev + 1;
+           if self.values[x].value == next{
+               prev = next;
+               continue;
+           }
+           else{
+               return false;
+           }
+        }
+        true
+    }
     pub fn generate_code(&self) -> String {
         let mut code = String::new();
         code.push_str(&format!(
             "#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] \n"
         ));
+        if !self.if_flag(){
+            println!("{:#?}",self);
+        }
         match &self.info.enumtype {
             Some(len) => code.push_str(&format!("#[repr({})]\n", &len)),
             _ => code.push_str(&format!("#[repr(u32)]\n")),
@@ -128,6 +148,19 @@ impl VppJsApiEnum {
         }
         // code.push_str("\t #[serde(other)] \n\t Invalid \n");
         code.push_str("} \n");
+        code.push_str(&self.impl_default());
+        code
+    }
+    /* 
+    impl Default for Kind {
+    fn default() -> Self { Kind::A }
+}
+    */
+    pub fn impl_default(&self) -> String {
+        let mut code = String::new();
+        code.push_str(&format!("impl Default for {} {{ \n",camelize_ident(&self.name))); 
+        code.push_str(&format!("\tfn default() -> Self {{ {}::{} }}\n",camelize_ident(&self.name), get_ident(&self.values[0].name)));
+        code.push_str("}\n");
         code
     }
     pub fn iter_and_generate_code(
@@ -144,12 +177,12 @@ impl VppJsApiEnum {
                         for k in 0..import_table.len(){
                             if &import_table[k].0 == &api_definition[j].1 {
                                 if !import_table[k].1.contains(&x.name){
-                                    println!("Pushing");
+                                    // println!("Pushing");
                                     import_table[k].1.push(x.name.clone());
                                     return false;
                                 }
                                 else{
-                                    println!("Ignoring");
+                                    // println!("Ignoring");
                                     return false;
                                 }
                             }

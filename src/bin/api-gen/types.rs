@@ -72,14 +72,14 @@ impl VppJsApiType {
         let mut code = String::new();
         code.push_str(&format!("// Implementation for {} \n", &self.type_name));
         code.push_str(&format!(
-            "#[derive(Debug, Clone, Serialize, Deserialize)] \n"
+            "#[derive(Debug, Clone, Serialize, Deserialize, Default)] \n"
         ));
         code.push_str(&format!(
             "pub struct {} {{ \n",
             camelize_ident(&self.type_name)
         ));
         for x in 0..self.fields.len() {
-            println!("{:#?}", self.fields);
+            // println!("{:#?}", self.fields);
             code.push_str(&format!(
                 "\tpub {} : ",
                 get_ident(&self.fields[x].name)
@@ -104,7 +104,7 @@ impl VppJsApiType {
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
                         VppJsApiFieldSize::Fixed(len) => code.push_str(&format!(
-                            "[{};{}], \n",
+                            "FixedSizeArray<{}, typenum::U{}>, \n",
                             get_type(&self.fields[x].ctype),
                             len
                         )),
@@ -127,7 +127,7 @@ impl VppJsApiType {
         let mut code = String::new();
         let unionsize = maxSizeUnion(&self, &apifile);
         code.push_str(&format!(
-            "pub type {} = [u8;{}]; \n",
+            "pub type {} = FixedSizeArray<u8, typenum::U{}>; \n",
             camelize_ident(&self.type_name),
             unionsize
         ));
@@ -147,19 +147,19 @@ impl VppJsApiType {
                         for k in 0..import_table.len(){
                             if &import_table[k].0 == &api_definition[j].1 {
                                 if !import_table[k].1.contains(&x.type_name){
-                                    println!("Pushing");
+                                    // println!("Pushing");
                                     import_table[k].1.push(x.type_name.clone());
                                     return false;
                                 }
                                 else{
-                                    println!("Ignoring");
+                                    // println!("Ignoring");
                                     return false;
                                 }
                                 
                             }
                         }
-                        println!("Contents of api defintion: {}", api_definition[j].1);
-                        println!("pushing into arr {} {}", api_definition[j].1, x.type_name);
+                        // println!("Contents of api defintion: {}", api_definition[j].1);
+                        // println!("pushing into arr {} {}", api_definition[j].1, x.type_name);
                         import_table.push((api_definition[j].1.clone(), vec![x.type_name.clone()]));
                         return false;
                     }
@@ -187,12 +187,12 @@ impl VppJsApiType {
                         for k in 0..import_table.len(){
                             if &import_table[k].0 == &api_definition[j].1 {
                                 if !import_table[k].1.contains(&x.type_name){
-                                    println!("Pushing");
+                                    // println!("Pushing");
                                     import_table[k].1.push(x.type_name.clone());
                                     return false;
                                 }
                                 else{
-                                    println!("Ignoring");
+                                    // println!("Ignoring");
                                     return false;
                                 }
                             }

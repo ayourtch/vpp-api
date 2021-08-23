@@ -172,7 +172,6 @@ impl VppJsApiFile {
             .as_str()
             .trim_end_matches(".api.json")
             .trim_start_matches("/");
-            println!("{}", import_table[x].0);
             preamble.push_str(&format!("use crate::{}::*; \n", fileName));
         }
         preamble.push_str(&typstructs);
@@ -180,7 +179,6 @@ impl VppJsApiFile {
         preamble.push_str(&typenum);
         preamble.push_str(&typalias);
         preamble.push_str(&typmessage);
-        println!("{:#?}", import_table);
         preamble
     }
 }

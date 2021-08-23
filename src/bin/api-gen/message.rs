@@ -125,7 +125,7 @@ impl VppJsApiMessage {
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
                         VppJsApiFieldSize::Fixed(len) => code.push_str(&format!(
-                            "[{};{}], \n",
+                            "FixedSizeArray<{}, typenum::U{}>, \n",
                             get_type(&self.fields[x].ctype),
                             len
                         )),

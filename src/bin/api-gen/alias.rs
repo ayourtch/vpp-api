@@ -57,12 +57,12 @@ impl VppJsApiAlias {
                         for k in 0..import_table.len(){
                             if &import_table[k].0 == &api_definition[j].1 {
                                 if !import_table[k].1.contains(&x){
-                                    println!("Pushing");
+                                    // println!("Pushing");
                                     import_table[k].1.push(x.clone().to_string());
                                     return false;
                                 }
                                 else{
-                                    println!("Ignoring");
+                                    // println!("Ignoring");
                                     return false;
                                 }
                             }
