@@ -47,27 +47,27 @@ impl VppJsApiAlias {
         aliases: &LinkedHashMap<String, VppJsApiAlias>,
         api_definition: &mut Vec<(String, String)>,
         name: &str,
-        import_table: &mut Vec<(String, Vec<String>)>
+        import_table: &mut Vec<(String, Vec<String>)>,
     ) -> String {
         aliases
             .keys()
             .filter(|x| {
                 for j in 0..api_definition.len() {
                     if &api_definition[j].0 == *x {
-                        for k in 0..import_table.len(){
+                        for k in 0..import_table.len() {
                             if &import_table[k].0 == &api_definition[j].1 {
-                                if !import_table[k].1.contains(&x){
+                                if !import_table[k].1.contains(&x) {
                                     // println!("Pushing");
                                     import_table[k].1.push(x.clone().to_string());
                                     return false;
-                                }
-                                else{
+                                } else {
                                     // println!("Ignoring");
                                     return false;
                                 }
                             }
                         }
-                        import_table.push((api_definition[j].1.clone(), vec![x.clone().to_string()]));
+                        import_table
+                            .push((api_definition[j].1.clone(), vec![x.clone().to_string()]));
                         return false;
                     }
                 }

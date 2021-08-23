@@ -53,13 +53,12 @@ pub fn get_type(apitype: &str) -> String {
 }
 pub fn get_ident(api_ident: &str) -> String {
     if api_ident == "type" {
-        return format!("typ")
+        return format!("typ");
     }
     if api_ident == "match" {
-        println!("Found match");
+        // println!("Found match");
         format!("mach")
-    }
-    else {
+    } else {
         format!("{}", api_ident.trim_start_matches("_"))
     }
 }

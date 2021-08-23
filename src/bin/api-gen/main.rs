@@ -23,7 +23,7 @@ mod message;
 mod parser_helper;
 mod services;
 mod types;
-use crate::code_gen::{gen_code, create_cargo_toml, generate_lib_file};
+use crate::code_gen::{create_cargo_toml, gen_code, generate_lib_file};
 use crate::file_schema::VppJsApiFile;
 use crate::message::*;
 use crate::parser_helper::*;
@@ -68,9 +68,11 @@ pub struct Opts {
     #[clap(long)]
     pub print_message_names: bool,
 
+    /// Generate the bindings within the directory
     #[clap(long)]
-    pub print_import_names: bool,
+    pub create_binding: bool,
 
+    /// Generate the package for the binding
     #[clap(long)]
     pub create_package: bool,
 
@@ -82,12 +84,7 @@ pub struct Opts {
     #[clap(short, long, parse(from_occurrences))]
     pub verbose: i32,
 }
-fn merge_felix(
-    mut arr: Vec<ImportsFiles>,
-    left: usize,
-    mid: usize,
-    right: usize,
-) -> Vec<ImportsFiles> {
+fn merge(mut arr: Vec<ImportsFiles>, left: usize, mid: usize, right: usize) -> Vec<ImportsFiles> {
     let n1 = mid - left;
     let n2 = right - mid;
     let mut L1 = arr.clone();
@@ -123,12 +120,12 @@ fn merge_felix(
     arr
 }
 // Performing Merge Sort According to import lenght
-fn merge_sort_felix(mut arr: Vec<ImportsFiles>, left: usize, right: usize) -> Vec<ImportsFiles> {
+fn merge_sort(mut arr: Vec<ImportsFiles>, left: usize, right: usize) -> Vec<ImportsFiles> {
     if right - 1 > left {
         let mid = left + (right - left) / 2;
-        arr = merge_sort_felix(arr, left, mid);
-        arr = merge_sort_felix(arr, mid, right);
-        arr = merge_felix(arr, left, mid, right);
+        arr = merge_sort(arr, left, mid);
+        arr = merge_sort(arr, mid, right);
+        arr = merge(arr, left, mid, right);
     }
     arr
 }
@@ -207,7 +204,7 @@ fn main() {
                         );
                     }
                 }
-                if opts.print_import_names {
+                if opts.create_binding {
                     let mut import_collection: Vec<ImportsFiles> = vec![];
                     // Searching for types
                     for (name, f) in api_files.clone() {
@@ -220,7 +217,7 @@ fn main() {
                     }
                     let mut api_definition: Vec<(String, String)> = vec![];
                     import_collection =
-                        merge_sort_felix(import_collection.clone(), 0, import_collection.len());
+                        merge_sort(import_collection.clone(), 0, import_collection.len());
                     for x in import_collection {
                         println!("{}-{}", x.name, x.file.imports.len());
                         gen_code(&x.file, &x.name, &mut api_definition, "test");
@@ -239,14 +236,10 @@ fn main() {
                     fs::create_dir(".././some/src").unwrap();
                     fs::create_dir(".././some/tests").unwrap();
                     fs::create_dir(".././some/examples").unwrap();
-                    // fs::File::create(".././some/Cargo.toml").unwrap();
                     fs::File::create(".././some/tests/interface-test.rs").unwrap();
                     fs::File::create(".././some/examples/progressive-vpp.rs").unwrap();
-                    // fs::File::create(".././some/src/lib.rs").unwrap();
                     fs::File::create(".././some/src/reqrecv.rs").unwrap();
-                    // fs::copy("./src/lib.rs", ".././some/src/lib.rs").unwrap();
                     fs::copy("./src/reqrecv.rs", ".././some/src/reqrecv.rs").unwrap();
-                    //fs::copy("./Cargo.toml", ".././some/Cargo.toml").unwrap();
                     generate_lib_file(&api_files, "some");
                     create_cargo_toml("some");
                     fs::copy(
@@ -269,7 +262,7 @@ fn main() {
                         }
                     }
                     import_collection =
-                        merge_sort_felix(import_collection.clone(), 0, import_collection.len());
+                        merge_sort(import_collection.clone(), 0, import_collection.len());
                     for x in import_collection {
                         gen_code(&x.file, &x.name, &mut api_definition, "some");
                     }

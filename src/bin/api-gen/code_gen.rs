@@ -50,35 +50,37 @@ pub fn create_cargo_toml(packageName: &str) {
     let mut code = String::new();
     code.push_str("[package] \n");
     code.push_str(&format!("name = \"{}\" \n", packageName));
-    code.push_str("version = \"0.1.0\" \n"); 
-    code.push_str("authors = [\"Andrew Yourtchenko <ayourtch@gmail.com>\"] \n"); 
+    code.push_str("version = \"0.1.0\" \n");
+    code.push_str("authors = [\"Andrew Yourtchenko <ayourtch@gmail.com>\"] \n");
     code.push_str("edition = \"2018\" \n\n");
-    
-    code.push_str("[dev-dependencies] \n"); 
-    code.push_str("trybuild = {version = \"1.0\", features = [\"diff\"]} \n\n"); 
-    
+
+    code.push_str("[dev-dependencies] \n");
+    code.push_str("trybuild = {version = \"1.0\", features = [\"diff\"]} \n\n");
+
     code.push_str("[dependencies] \n");
     code.push_str("serde = { version = \"1.0\", features = [\"derive\"] } \n");
-    code.push_str("serde_json = \"1.0\" \n"); 
-    code.push_str("clap = \"3.0.0-beta.2\" \n"); 
-    code.push_str("strum = \"*\" \n"); 
-    code.push_str("strum_macros = \"*\" \n"); 
-    code.push_str("log = \"*\" \n"); 
+    code.push_str("serde_json = \"1.0\" \n");
+    code.push_str("clap = \"3.0.0-beta.2\" \n");
+    code.push_str("strum = \"*\" \n");
+    code.push_str("strum_macros = \"*\" \n");
+    code.push_str("log = \"*\" \n");
     code.push_str("env_logger = \"*\" \n");
-    code.push_str("linked-hash-map = { version = \"*\", features = [\"serde_impl\"] } \n"); 
-    code.push_str("convert_case = \"*\" \n"); 
-    code.push_str("serde_repr = \"0.1\" \n"); 
+    code.push_str("linked-hash-map = { version = \"*\", features = [\"serde_impl\"] } \n");
+    code.push_str("convert_case = \"*\" \n");
+    code.push_str("serde_repr = \"0.1\" \n");
     code.push_str("typenum = \"*\" \n");
-    code.push_str("bincode = \"1.2.1\" \n"); 
+    code.push_str("bincode = \"1.2.1\" \n");
     code.push_str("serde_yaml = \"0.8\" \n");
-    code.push_str("vpp-api-encoding = {git=\"https://github.com/felixfaisal/vpp-api-encoding\", branch=\"main\" } \n"); 
-    code.push_str("vpp-api-transport = { git=\"https://github.com/felixfaisal/vpp-api-transport/\", branch=\"main\" } \n"); 
-    code.push_str("lazy_static = \"1.4.0\" \n"); 
+    code.push_str("vpp-api-encoding = {git=\"https://github.com/felixfaisal/vpp-api-encoding\", branch=\"main\" } \n");
+    code.push_str("vpp-api-transport = { git=\"https://github.com/felixfaisal/vpp-api-transport/\", branch=\"main\" } \n");
+    code.push_str("lazy_static = \"1.4.0\" \n");
     code.push_str("regex = \"1\" \n");
     code.push_str("syn ={ version= \"1.0\", features=[\"extra-traits\",\"full\"]} \n");
-    code.push_str("quote = \"1.0\" \n"); 
-    code.push_str("proc-macro2 = \"1.0.26\" \n"); 
-    code.push_str("vpp-macros = {git=\"https://github.com/felixfaisal/vpp-macros\", branch=\"main\"} \n");
+    code.push_str("quote = \"1.0\" \n");
+    code.push_str("proc-macro2 = \"1.0.26\" \n");
+    code.push_str(
+        "vpp-macros = {git=\"https://github.com/felixfaisal/vpp-macros\", branch=\"main\"} \n",
+    );
     code.push_str("enumset = {version=\"1.0.7\", features=[\"serde\"]} \n");
 
     let mut file = File::create(format!(".././{}/Cargo.toml", packageName)).unwrap();
@@ -101,5 +103,5 @@ pub fn generate_lib_file(api_files: &LinkedHashMap<String, VppJsApiFile>, packag
     }
     let mut file = File::create(format!(".././{}/src/lib.rs", packageName)).unwrap();
     file.write_all(code.as_bytes()).unwrap();
-    println!("{}", code);
+    // println!("{}", code);
 }
