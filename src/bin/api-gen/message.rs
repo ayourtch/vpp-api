@@ -94,7 +94,11 @@ impl VppJsApiMessage {
         code.push_str(&format!(
             "#[derive(Debug, Clone, Serialize, Deserialize, Message)] \n"
         ));
-        code.push_str(&format!("#[message_name_and_crc({}_{})] \n",self.name,self.info.crc.trim_start_matches("0x")));
+        code.push_str(&format!(
+            "#[message_name_and_crc({}_{})] \n",
+            self.name,
+            self.info.crc.trim_start_matches("0x")
+        ));
         code.push_str(&format!("pub struct {} {{ \n", camelize_ident(&self.name)));
         for x in 0..self.fields.len() {
             if self.fields[x].name == "_vl_msg_id" {
@@ -103,7 +107,7 @@ impl VppJsApiMessage {
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
                         VppJsApiFieldSize::Fixed(len) => code.push_str(&format!(
-                            "\tpub {} : FixedSizeString<U{}>, \n",
+                            "\tpub {} : FixedSizeString<typenum::U{}>, \n",
                             get_ident(&self.fields[x].name),
                             len
                         )),
@@ -117,11 +121,26 @@ impl VppJsApiMessage {
                     _ => code.push_str(&format!("\tpub {} :, \n", get_ident(&self.fields[x].name))),
                 }
             } else {
-                code.push_str(&format!(
-                    "\tpub {} : {}, \n",
-                    get_ident(&self.fields[x].name),
-                    get_type(&self.fields[x].ctype)
-                ));
+                code.push_str(&format!("\tpub {} : ", get_ident(&self.fields[x].name)));
+                match &self.fields[x].maybe_size {
+                    Some(cont) => match cont {
+                        VppJsApiFieldSize::Fixed(len) => code.push_str(&format!(
+                            "FixedSizeArray<{}, typenum::U{}>, \n",
+                            get_type(&self.fields[x].ctype),
+                            len
+                        )),
+                        VppJsApiFieldSize::Variable(t) => {
+                            code.push_str(&format!("Vec<{}>, \n", get_type(&self.fields[x].ctype)))
+                        }
+                        _ => code.push_str(&format!("{},\n", get_type(&self.fields[x].ctype))),
+                    },
+                    _ => code.push_str(&format!("{}, \n", get_type(&self.fields[x].ctype))),
+                    /*code.push_str(&format!(
+                        "\tpub {} : {}, \n",
+                        get_ident(&self.fields[x].name),
+                        get_type(&self.fields[x].ctype)
+                    ));*/
+                }
             }
         }
         code.push_str("} \n");

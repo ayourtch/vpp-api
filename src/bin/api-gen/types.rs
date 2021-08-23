@@ -4,6 +4,7 @@ extern crate strum;
 use crate::basetypes::{maxSizeUnion, sizeof_alias, sizeof_struct};
 use crate::file_schema::VppJsApiFile;
 use crate::parser_helper::{camelize_ident, get_ident, get_type};
+use linked_hash_map::LinkedHashMap;
 use serde::de::{self, Deserializer, SeqAccess, Visitor};
 use std::fmt;
 
@@ -69,20 +70,46 @@ impl<'de> Deserialize<'de> for VppJsApiType {
 impl VppJsApiType {
     pub fn generate_code(&self) -> String {
         let mut code = String::new();
-        code.push_str(&format!("// Implementation for {} \n",&self.type_name));
+        code.push_str(&format!("// Implementation for {} \n", &self.type_name));
         code.push_str(&format!(
-            "#[derive(Debug, Clone, Serialize, Deserialize)] \n"
+            "#[derive(Debug, Clone, Serialize, Deserialize, Default)] \n"
         ));
         code.push_str(&format!(
             "pub struct {} {{ \n",
             camelize_ident(&self.type_name)
         ));
         for x in 0..self.fields.len() {
-            code.push_str(&format!(
-                "\tpub {} : {}, \n",
-                get_ident(&self.fields[x].name),
-                get_type(&self.fields[x].ctype)
-            ));
+            // println!("{:#?}", self.fields);
+            code.push_str(&format!("\tpub {} : ", get_ident(&self.fields[x].name)));
+            if self.fields[x].ctype == "string" {
+                match &self.fields[x].maybe_size {
+                    Some(cont) => match cont {
+                        VppJsApiFieldSize::Fixed(len) => {
+                            code.push_str(&format!("FixedSizeString<typenum::U{}>, \n", len))
+                        }
+                        VppJsApiFieldSize::Variable(None) => {
+                            code.push_str(&format!("VariableSizeString, \n"))
+                        }
+                        _ => code.push_str(&format!("{},\n", get_ident(&self.fields[x].name))),
+                    },
+                    _ => code.push_str(&format!("{}, \n", get_ident(&self.fields[x].name))),
+                }
+            } else {
+                match &self.fields[x].maybe_size {
+                    Some(cont) => match cont {
+                        VppJsApiFieldSize::Fixed(len) => code.push_str(&format!(
+                            "FixedSizeArray<{}, typenum::U{}>, \n",
+                            get_type(&self.fields[x].ctype),
+                            len
+                        )),
+                        VppJsApiFieldSize::Variable(t) => {
+                            code.push_str(&format!("Vec<{}>, \n", get_type(&self.fields[x].ctype)))
+                        }
+                        _ => code.push_str(&format!("{},\n", get_type(&self.fields[x].ctype))),
+                    },
+                    _ => code.push_str(&format!("{}, \n", get_type(&self.fields[x].ctype))),
+                }
+            }
         }
         code.push_str("} \n");
         code
@@ -91,7 +118,7 @@ impl VppJsApiType {
         let mut code = String::new();
         let unionsize = maxSizeUnion(&self, &apifile);
         code.push_str(&format!(
-            "pub type {} = [u8;{}]; \n",
+            "pub type {} = FixedSizeArray<u8, typenum::U{}>; \n",
             camelize_ident(&self.type_name),
             unionsize
         ));
@@ -101,12 +128,28 @@ impl VppJsApiType {
         structs: &Vec<VppJsApiType>,
         api_definition: &mut Vec<(String, String)>,
         name: &str,
+        import_table: &mut Vec<(String, Vec<String>)>,
     ) -> String {
         structs
             .iter()
             .filter(|x| {
                 for j in 0..api_definition.len() {
                     if &api_definition[j].0 == &x.type_name {
+                        for k in 0..import_table.len() {
+                            if &import_table[k].0 == &api_definition[j].1 {
+                                if !import_table[k].1.contains(&x.type_name) {
+                                    // println!("Pushing");
+                                    import_table[k].1.push(x.type_name.clone());
+                                    return false;
+                                } else {
+                                    // println!("Ignoring");
+                                    return false;
+                                }
+                            }
+                        }
+                        // println!("Contents of api defintion: {}", api_definition[j].1);
+                        // println!("pushing into arr {} {}", api_definition[j].1, x.type_name);
+                        import_table.push((api_definition[j].1.clone(), vec![x.type_name.clone()]));
                         return false;
                     }
                 }
@@ -123,12 +166,26 @@ impl VppJsApiType {
         api_definition: &mut Vec<(String, String)>,
         name: &str,
         file: &VppJsApiFile,
+        import_table: &mut Vec<(String, Vec<String>)>,
     ) -> String {
         unions
             .iter()
             .filter(|x| {
                 for j in 0..api_definition.len() {
                     if &api_definition[j].0 == &x.type_name {
+                        for k in 0..import_table.len() {
+                            if &import_table[k].0 == &api_definition[j].1 {
+                                if !import_table[k].1.contains(&x.type_name) {
+                                    // println!("Pushing");
+                                    import_table[k].1.push(x.type_name.clone());
+                                    return false;
+                                } else {
+                                    // println!("Ignoring");
+                                    return false;
+                                }
+                            }
+                        }
+                        import_table.push((api_definition[j].1.clone(), vec![x.type_name.clone()]));
                         return false;
                     }
                 }
