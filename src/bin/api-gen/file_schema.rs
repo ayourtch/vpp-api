@@ -128,6 +128,12 @@ impl VppJsApiFile {
             name,
             &mut import_table,
         );
+        let typenumflags = VppJsApiEnum::iter_and_generate_code(
+            &self.enumflags,
+            api_definition,
+            name,
+            &mut import_table,
+        );
         let typalias = VppJsApiAlias::iter_and_generate_code(
             &self.aliases,
             api_definition,
@@ -149,6 +155,7 @@ impl VppJsApiFile {
         preamble.push_str(&typstructs);
         preamble.push_str(&typunions);
         preamble.push_str(&typenum);
+        preamble.push_str(&typenumflags);
         preamble.push_str(&typalias);
         preamble.push_str(&typmessage);
         preamble
