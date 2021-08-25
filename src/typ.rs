@@ -249,6 +249,29 @@ impl<T: Debug, N: ArrayLength<T>> fmt::Debug for FixedSizeArray<T, N> {
     }
 }
 
+impl<T: Debug+Default+Clone, N: ArrayLength<T>> TryFrom<Vec<T>> for FixedSizeArray<T,N> {
+    type Error = String;
+
+    fn try_from(value: Vec<T>) -> Result<Self, Self::Error> {
+        let mut out: GenericArray<T, N> = Default::default();
+        let max_len = out.len() - 1;
+        if value.len() > max_len {
+            Err(format!(
+                "The source length of {:?} is {} > max {}",
+                value,
+                value.len(),
+                max_len
+            ))
+        } else {
+            for i in 0..value.len() {
+                out[i] = value[i].clone() as T;
+            }
+
+            Ok(FixedSizeArray(out))
+        }
+    }
+}
+
 impl<T: Serialize, N: ArrayLength<T>> Serialize for FixedSizeArray<T, N> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
