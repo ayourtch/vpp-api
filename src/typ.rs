@@ -254,7 +254,7 @@ impl<T: Debug+Default+Clone, N: ArrayLength<T>> TryFrom<Vec<T>> for FixedSizeArr
 
     fn try_from(value: Vec<T>) -> Result<Self, Self::Error> {
         let mut out: GenericArray<T, N> = Default::default();
-        let max_len = out.len() - 1;
+        let max_len = out.len();
         if value.len() > max_len {
             Err(format!(
                 "The source length of {:?} is {} > max {}",
