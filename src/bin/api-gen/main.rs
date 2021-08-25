@@ -64,6 +64,10 @@ pub struct Opts {
     #[clap(short, long, default_value = "File")]
     pub parse_type: OptParseType,
 
+    /// Package name for the generated package
+    #[clap(long, default_value = "someVPP")]
+    pub package_name: String,
+
     /// Print message names
     #[clap(long)]
     pub print_message_names: bool,
@@ -230,26 +234,27 @@ fn main() {
                     }
                 }
                 if opts.create_package {
+                    // println!("{}", opts.package_name);
                     let mut api_definition: Vec<(String, String)> = vec![];
                     println!("Do whatever you need to hear with creating package");
-                    fs::create_dir(".././some").unwrap();
-                    fs::create_dir(".././some/src").unwrap();
-                    fs::create_dir(".././some/tests").unwrap();
-                    fs::create_dir(".././some/examples").unwrap();
-                    fs::File::create(".././some/tests/interface-test.rs").unwrap();
-                    fs::File::create(".././some/examples/progressive-vpp.rs").unwrap();
-                    fs::File::create(".././some/src/reqrecv.rs").unwrap();
-                    fs::copy("./src/reqrecv.rs", ".././some/src/reqrecv.rs").unwrap();
-                    generate_lib_file(&api_files, "some");
-                    create_cargo_toml("some");
+                    fs::create_dir(&format!(".././{}", opts.package_name)).unwrap();
+                    fs::create_dir(&format!(".././{}/src", opts.package_name)).unwrap();
+                    fs::create_dir(&format!(".././{}/tests", opts.package_name)).unwrap();
+                    fs::create_dir(&format!(".././{}/examples", opts.package_name)).unwrap();
+                    fs::File::create(&format!(".././{}/tests/interface-test.rs", opts.package_name)).unwrap();
+                    fs::File::create(&format!(".././{}/examples/progressive-vpp.rs", opts.package_name)).unwrap();
+                    fs::File::create(&format!(".././{}/src/reqrecv.rs", opts.package_name)).unwrap();
+                    fs::copy("./src/reqrecv.rs", &format!(".././{}/src/reqrecv.rs", opts.package_name)).unwrap();
+                    generate_lib_file(&api_files, &opts.package_name);
+                    create_cargo_toml(&opts.package_name);
                     fs::copy(
                         "./tests/interface-test.rs",
-                        ".././some/tests/interface-test.rs",
+                        &format!(".././{}/tests/interface-test.rs",opts.package_name),
                     )
                     .unwrap();
                     fs::copy(
                         "./examples/vhost-example.rs",
-                        ".././some/examples/progressive-vpp.rs",
+                        &format!(".././{}/examples/progressive-vpp.rs", opts.package_name),
                     )
                     .unwrap();
                     let mut import_collection: Vec<ImportsFiles> = vec![];
@@ -264,11 +269,11 @@ fn main() {
                     import_collection =
                         merge_sort(import_collection.clone(), 0, import_collection.len());
                     for x in import_collection {
-                        gen_code(&x.file, &x.name, &mut api_definition, "some");
+                        gen_code(&x.file, &x.name, &mut api_definition, &opts.package_name);
                     }
                     for (name, f) in api_files.clone() {
                         if !name.ends_with("_types.api.json") {
-                            gen_code(&f, &name, &mut api_definition, "some");
+                            gen_code(&f, &name, &mut api_definition, &opts.package_name);
                         }
                     }
                 }
