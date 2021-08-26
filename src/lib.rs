@@ -119,6 +119,8 @@ pub fn derive_unionident(input:proc_macro::TokenStream) -> proc_macro::TokenStre
         },
         _ => panic!("Wrong data structure")
     }
+    let maxsize = ty.clone().to_string().trim_start_matches("U").to_string();
+    let maxsize_literal = syn::LitInt::new(&maxsize, ty.span());
     let name = input.ident;
     let helperfunctions = input.attrs.iter().map(|f| {
         let mut group_stream = f.tokens.clone().into_iter();
@@ -140,14 +142,14 @@ pub fn derive_unionident(input:proc_macro::TokenStream) -> proc_macro::TokenStre
         let function_name_get_ident = syn::Ident::new(&format!("get_{}",ident.to_string()), name.span()); 
         quote! {
                 pub fn #function_name_new_ident(some: #ident) -> #name{
-                    let mut arr: [u8;#ty] = [0;#ty];
+                    let mut arr: Vec<u8> = vec![0;#maxsize_literal];
                     let some_arr: Vec<u8> = bincode::serialize(&some).unwrap();
                     for x in 0..#liter{
                         arr[x] = some_arr[x];
                     }
-                    #name(arr)
+                    #name(arr.try_into().unwrap())
                  }
-                pub fn #function_name_set_ident(&mut self, some:#ident){
+                /* pub fn #function_name_set_ident(&mut self, some:#ident){
                     self.0[0..#liter].clone_from_slice(&some);
                 }
                 pub fn #function_name_get_ident(&self) -> #ident{
@@ -156,14 +158,15 @@ pub fn derive_unionident(input:proc_macro::TokenStream) -> proc_macro::TokenStre
                     someIdent.clone_from_slice(&some[0..#liter]);
                     let decoded: #ident = bincode::deserialize(&someIdent).unwrap();
                     decoded   
-                }
+                }*/
         }
     });
     let expanded = quote! {
         use bincode;
         impl #name{
             fn new() -> #name {
-                #name([0;#ty])
+                let mut out: FixedSizeArray<u8, typenum::#ty> = Default::default();
+                #name(out)
             } 
             #(#helperfunctions)*
         } 
