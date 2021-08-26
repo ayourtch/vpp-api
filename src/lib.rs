@@ -149,9 +149,9 @@ pub fn derive_unionident(input:proc_macro::TokenStream) -> proc_macro::TokenStre
                     }
                     #name(arr.try_into().unwrap())
                  }
-                /* pub fn #function_name_set_ident(&mut self, some:#ident){
-                    self.0[0..#liter].clone_from_slice(&some);
-                } */
+                pub fn #function_name_set_ident(&mut self, some:#ident){
+                    self.0.0[0..#liter].clone_from_slice(&some);
+                } 
                 pub fn #function_name_get_ident(&self) -> #ident{
                     let some = self.0.0.clone();
                     let mut someIdent: Vec<u8> = vec![0;#liter];
