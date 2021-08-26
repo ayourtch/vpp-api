@@ -1,7 +1,7 @@
 use serde::ser::SerializeSeq;
 use serde::{Deserialize, Serialize, Serializer};
 extern crate strum;
-use crate::basetypes::{maxSizeUnion, sizeof_alias, sizeof_struct};
+use crate::basetypes::{maxSizeUnion, sizeof_alias, sizeof_struct, field_size};
 use crate::file_schema::VppJsApiFile;
 use crate::parser_helper::{camelize_ident, get_ident, get_type};
 use linked_hash_map::LinkedHashMap;
@@ -116,9 +116,17 @@ impl VppJsApiType {
     }
     pub fn generate_code_union(&self, apifile: &VppJsApiFile) -> String {
         let mut code = String::new();
+        code.push_str(&format!(
+            "#[derive(Debug, Clone, Serialize, Deserialize, Default, UnionIdent)] \n"
+        ));
+        for x in 0..self.fields.len(){
+            let size_of_typ = field_size(&self.fields[x], &apifile);
+            let ident =  get_type(&self.fields[x].ctype);
+            code.push_str(&format!("#[types({}:{})] \n",ident, size_of_typ));
+        }
         let unionsize = maxSizeUnion(&self, &apifile);
         code.push_str(&format!(
-            "pub type {} = FixedSizeArray<u8, typenum::U{}>; \n",
+            "pub struct {}(FixedSizeArray<u8, typenum::U{}>); \n",
             camelize_ident(&self.type_name),
             unionsize
         ));

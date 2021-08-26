@@ -12,6 +12,7 @@ use linked_hash_map::LinkedHashMap;
 use regex::Regex;
 use std::fmt::format;
 use std::fs::File;
+use std::fs;
 use std::io::prelude::*;
 
 use crate::alias::VppJsApiAlias;
@@ -104,4 +105,10 @@ pub fn generate_lib_file(api_files: &LinkedHashMap<String, VppJsApiFile>, packag
     let mut file = File::create(format!(".././{}/src/lib.rs", packageName)).unwrap();
     file.write_all(code.as_bytes()).unwrap();
     // println!("{}", code);
+}
+pub fn generate_example_file(example_file: &str, packageName: &str, example_name: &str){
+    let data = fs::read_to_string(example_file).unwrap();
+    let updated_test = data.replace("vpp_api_gen", packageName); 
+    let mut file = File::create(format!(".././{}/examples/{}.rs", packageName, example_name)).unwrap();
+    file.write_all(updated_test.as_bytes()).unwrap();
 }
