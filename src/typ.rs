@@ -1,3 +1,4 @@
+#![allow(dead_code,unused_mut,unused_variables,unused_must_use, non_camel_case_types,unused_imports, unused_parens)]
 use generic_array::{ArrayLength, GenericArray};
 use serde::{Deserialize, Serialize};
 use std::convert::TryFrom;
@@ -239,12 +240,35 @@ impl<'de> Deserialize<'de> for F64 {
 
 #[derive(Clone, Default, Deserialize)]
 #[serde(bound = "N: ArrayLength<T>, T: Deserialize<'de> + Default")]
-pub struct FixedSizeArray<T, N: ArrayLength<T>>(GenericArray<T, N>);
+pub struct FixedSizeArray<T, N: ArrayLength<T>>(pub GenericArray<T, N>);
 
 impl<T: Debug, N: ArrayLength<T>> fmt::Debug for FixedSizeArray<T, N> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let v = &self.0;
         write!(f, "FixedSizeArray[{}]: [{:?}]", &N::to_u32(), &v)
+    }
+}
+
+impl<T: Debug+Default+Clone, N: ArrayLength<T>> TryFrom<Vec<T>> for FixedSizeArray<T,N> {
+    type Error = String;
+
+    fn try_from(value: Vec<T>) -> Result<Self, Self::Error> {
+        let mut out: GenericArray<T, N> = Default::default();
+        let max_len = out.len();
+        if value.len() > max_len {
+            Err(format!(
+                "The source length of {:?} is {} > max {}",
+                value,
+                value.len(),
+                max_len
+            ))
+        } else {
+            for i in 0..value.len() {
+                out[i] = value[i].clone() as T;
+            }
+
+            Ok(FixedSizeArray(out))
+        }
     }
 }
 
@@ -264,24 +288,24 @@ impl<T: Serialize, N: ArrayLength<T>> Serialize for FixedSizeArray<T, N> {
     }
 }
 
-/*
 
-FIXME: implement the deserialize manually.
 
-impl<'de, 'tde, T: Deserialize<'tde>, N: ArrayLength<T>> Deserialize<'de> for FixedSizeArray<'tde, T, N> {
-    fn deserialize<T, D>(deserializer: D) -> Result<Self, D::Error>
+// FIXME: implement the deserialize manually.
+
+/* impl<'de, 'tde, T: Deserialize<'tde>, N: ArrayLength<T>> Deserialize<'de> for FixedSizeArray<T, N> {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
-        T: Deserialize<'tde>,
         D: Deserializer<'de>,
     {
         struct FixedSizeArrayVisitor<N> {
             marker: PhantomData<N>,
         };
-        impl<'de, N> Visitor<'de> for FixedSizeArrayVisitor<N>
+        impl<'de, N, T> Visitor<'de> for FixedSizeArrayVisitor<N>
         where
-            N: ArrayLength<u8>,
+            T: Deserialize+Default
+            N: ArrayLength<T>,
         {
-            type Value = FixedSizeArray<'tde, T, N>;
+            type Value = FixedSizeArray<T, N>;
             fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
                 formatter.write_str("FixedSizeArray")
             }
@@ -290,7 +314,52 @@ impl<'de, 'tde, T: Deserialize<'tde>, N: ArrayLength<T>> Deserialize<'de> for Fi
             where
                 A: SeqAccess<'de>,
             {
-                let mut res: GenericArray<u8, N> = Default::default();
+                let mut res: GenericArray<T, N> = Default::default();
+                let length = N::to_u32() as usize;
+
+                for i in 0..length {
+                    let b = seq
+                        .next_element()?
+                        .ok_or_else(|| serde::de::Error::invalid_length(1, &self))?;
+                    res[i] = b as T;
+                }
+
+                return Ok(FixedSizeArray(res));
+            }
+        }
+
+        return Ok(deserializer.deserialize_tuple(
+            N::to_u32() as usize,
+            FixedSizeArrayVisitor {
+                marker: PhantomData,
+            },
+        )?);
+    }
+}
+*/
+/* impl<'de, T: Deserialize<'de>+Default,N: ArrayLength<T>> Deserialize<'de> for FixedSizeArray<T,N> {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        struct FixedSizeArrayVisitor<T:Default,N> {
+            marker: PhantomData<N>,
+        };
+        impl<'de, T, N> Visitor<'de> for FixedSizeArrayVisitor<T,N>
+        where
+            T: Deserialize<'de>+Default,
+            N: ArrayLength<T>,
+        {
+            type Value = FixedSizeArray<T,N>;
+            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+                formatter.write_str("FixedSizeArray")
+            }
+
+            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            where
+                A: SeqAccess<'de>,
+            {
+                let mut res: GenericArray<T, N> = Default::default();
                 let length = N::to_u32() as usize;
 
                 for i in 0..length {
@@ -313,12 +382,11 @@ impl<'de, 'tde, T: Deserialize<'tde>, N: ArrayLength<T>> Deserialize<'de> for Fi
     }
 }
 */
-
 #[derive(Copy, Clone, Default, Deserialize)]
 #[serde(bound = "T: Deserialize<'de> + Default")]
-pub struct SizedEnum<T, X>(T, PhantomData<X>);
+pub struct SizedEnum<T, X>(T, PhantomData<X>); // This is the sized enum declaration, It's a unit struct 
 
-impl<T: Debug, X> fmt::Debug for SizedEnum<T, X> {
+impl<T: Debug, X> fmt::Debug for SizedEnum<T, X> { // implement debug trait for sized enum 
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let v = &self.0;
         write!(f, "SizedEnum[{}]: {:?}", std::any::type_name::<X>(), &v)
