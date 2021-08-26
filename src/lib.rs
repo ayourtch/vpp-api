@@ -83,26 +83,35 @@ pub fn derive_message(input: proc_macro::TokenStream) -> proc_macro::TokenStream
 #[proc_macro_derive(UnionIdent, attributes(types))] 
 pub fn derive_unionident(input:proc_macro::TokenStream) -> proc_macro::TokenStream{
     let input = parse_macro_input!(input as DeriveInput); 
-    let ty: &syn::LitInt;
+    let ty: &syn::Ident;
     match input.data{
         syn::Data::Struct(ref ds) => {
             match ds.fields{
                 syn::Fields::Unnamed(ref fu) => {
                     match fu.unnamed.first().unwrap().ty {
-                        syn::Type::Array(ref tarr) => {
-                            match tarr.len {
-                                syn::Expr::Lit(ref exprlit) => {
-                                    match exprlit.lit{
-                                        syn::Lit::Int(ref litin) => {
-                                            ty = litin;
-                                        }, 
-                                        _ => panic!("Wrong data structure")
+                        syn::Type::Path(ref tp) => {
+                            // eprintln!("{:#?}", tp.path.segments[0].arguments);
+                            match tp.path.segments[0].arguments{
+                                syn::PathArguments::AngleBracketed(ref arg) => {
+                                    // eprintln!("{:#?}", arg.args[0]);
+                                    // eprintln!("{:#?}", arg.args);
+                                    match arg.args[1] {
+                                        syn::GenericArgument::Type(ref typt) => {
+                                            match typt{
+                                                syn::Type::Path(ref typath) => {
+                                                    // eprintln!("{:#?}", typath.path.segments[1].ident);
+                                                    ty = &typath.path.segments[1].ident;
+                                                }, 
+                                                _ => panic!("Wrong input")
+                                            }
+                                        },
+                                        _ => panic!("Wrong Input")
                                     }
-                                }, 
-                                _ => panic!("Wrong data structure passed")
+                                },
+                                _ => panic!("Wrong input")
                             }
                         },
-                        _ => panic!("Wrong input")
+                        _ => panic!("Wrong Input")
                     }
                 }, 
                 _ => panic!("Named fields")
