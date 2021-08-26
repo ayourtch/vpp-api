@@ -151,14 +151,14 @@ pub fn derive_unionident(input:proc_macro::TokenStream) -> proc_macro::TokenStre
                  }
                 /* pub fn #function_name_set_ident(&mut self, some:#ident){
                     self.0[0..#liter].clone_from_slice(&some);
-                }
+                } */
                 pub fn #function_name_get_ident(&self) -> #ident{
-                    let some = self.0.clone();
-                    let mut someIdent: [u8;#liter] = [0;#liter];
+                    let some = self.0.0.clone();
+                    let mut someIdent: Vec<u8> = vec![0;#liter];
                     someIdent.clone_from_slice(&some[0..#liter]);
                     let decoded: #ident = bincode::deserialize(&someIdent).unwrap();
                     decoded   
-                }*/
+                }
         }
     });
     let expanded = quote! {
