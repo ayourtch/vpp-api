@@ -238,7 +238,8 @@ impl<'de> Deserialize<'de> for F64 {
     }
 }
 
-#[derive(Clone, Default)]
+#[derive(Clone, Default, Deserialize)]
+#[serde(bound = "N: ArrayLength<T>, T: Deserialize<'de> + Default")]
 pub struct FixedSizeArray<T, N: ArrayLength<T>>(pub GenericArray<T, N>);
 
 impl<T: Debug, N: ArrayLength<T>> fmt::Debug for FixedSizeArray<T, N> {
@@ -336,7 +337,7 @@ impl<T: Serialize, N: ArrayLength<T>> Serialize for FixedSizeArray<T, N> {
     }
 }
 */
-impl<'de, T: Deserialize<'de>+Default,N: ArrayLength<T>> Deserialize<'de> for FixedSizeArray<T,N> {
+/* impl<'de, T: Deserialize<'de>+Default,N: ArrayLength<T>> Deserialize<'de> for FixedSizeArray<T,N> {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
         D: Deserializer<'de>,
@@ -380,7 +381,7 @@ impl<'de, T: Deserialize<'de>+Default,N: ArrayLength<T>> Deserialize<'de> for Fi
         )?);
     }
 }
-
+*/
 #[derive(Copy, Clone, Default, Deserialize)]
 #[serde(bound = "T: Deserialize<'de> + Default")]
 pub struct SizedEnum<T, X>(T, PhantomData<X>); // This is the sized enum declaration, It's a unit struct 
