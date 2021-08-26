@@ -15,8 +15,8 @@ type IP6Address = [u8;16];
 
 
 fn main(){
-//let mut felix = AddressUnion::new_IP4Address([10,10,1,2]);
-println!("{:#?}", AddressUnion::new_IP4Address([10,10,1,2]).0);
+let mut felix = AddressUnion::new_IP4Address([10,10,1,2]);
+println!("{:#?}", felix.get_IP4Address());
 
 assert_eq!(32, 32);
 // assert_eq!("Idiot", MyStruct::get_message_name_and_crc());
