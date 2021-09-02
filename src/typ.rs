@@ -455,6 +455,7 @@ impl<'de, T: Deserialize<'de> + Debug> Deserialize<'de> for VariableSizeArray<T>
         struct VariableSizeArrayVisitor<T> {
             marker: PhantomData<T>,
         };
+        let mut size = 0;
         impl<'de, T> Visitor<'de> for VariableSizeArrayVisitor<T>
         where
             T: Deserialize<'de> + Debug,
@@ -507,6 +508,15 @@ impl<'de, T: Deserialize<'de> + Debug> Deserialize<'de> for VariableSizeArray<T>
         )?);
     }
 }
+
+pub trait AsEnumFlag {
+    fn as_u32(data: &Self) -> u32;
+    fn from_u32(data: u32) -> Self;
+    fn size_of_enum_flag() -> u32;
+}
+
+#[derive(Clone, Debug)]
+pub struct EnumFlag<T: Clone+Debug+AsEnumFlag>(Vec<T>);
 
 
 /*
