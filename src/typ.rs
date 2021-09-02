@@ -518,7 +518,17 @@ pub trait AsEnumFlag {
 #[derive(Clone, Debug)]
 pub struct EnumFlag<T: Clone+Debug+AsEnumFlag>(Vec<T>);
 
+impl<T: Clone+Debug+AsEnumFlag> TryFrom<Vec<T>> for EnumFlag<T> {
+    type Error = String;
 
+    fn try_from(value: Vec<T>) -> Result<Self, Self::Error> {
+        let mut out = vec![];
+        for i in 0..value.len() {
+            out.push(value[i].clone());
+        }
+        Ok(EnumFlag(out))   
+    }
+}
 /*
 
 #[derive(Clone, Default, Debug, Serialize, Deserialize)]
