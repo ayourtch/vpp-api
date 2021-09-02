@@ -538,6 +538,21 @@ impl <T:Clone+Debug+AsEnumFlag> EnumFlag<T>{
         sum
     }
 }
+impl <T:Clone+Debug+AsEnumFlag>Serialize for EnumFlag<T> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+            let size: u32 = T::size_of_enum_flag();
+            match size{
+                32 => serializer.serialize_u32(self.sum()),
+                16 => serializer.serialize_u16(self.sum() as u16),
+                8 => serializer.serialize_u8(self.sum() as u8),
+                _ => panic!("EnumFlags do not support {} bit type flag",size)
+            }
+       
+    }
+}
 /*
 
 #[derive(Clone, Default, Debug, Serialize, Deserialize)]
