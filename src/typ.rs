@@ -529,6 +529,15 @@ impl<T: Clone+Debug+AsEnumFlag> TryFrom<Vec<T>> for EnumFlag<T> {
         Ok(EnumFlag(out))   
     }
 }
+impl <T:Clone+Debug+AsEnumFlag> EnumFlag<T>{
+    pub fn sum(&self) -> u32 {
+        let mut sum:u32 = 0;
+        for x in &self.0{
+            sum = sum + T::as_u32(x); // AsU8 and AsU32 trait needed for using T 
+        }
+        sum
+    }
+}
 /*
 
 #[derive(Clone, Default, Debug, Serialize, Deserialize)]
