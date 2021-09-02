@@ -4,6 +4,7 @@ use serde::{Deserialize, Serialize};
 use std::convert::TryFrom;
 use std::convert::TryInto;
 use std::fmt;
+use serde::de::Error;
 use typenum::{U10, U256, U32, U64};
 
 #[derive(Clone, Default)]
@@ -551,6 +552,112 @@ impl <T:Clone+Debug+AsEnumFlag>Serialize for EnumFlag<T> {
                 _ => panic!("EnumFlags do not support {} bit type flag",size)
             }
        
+    }
+}
+impl<'de, T: Debug+Clone+AsEnumFlag+Deserialize<'de>> Deserialize<'de> for EnumFlag<T> {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        struct EnumFlagVisitor<T> {
+            marker: PhantomData<T>,
+        };
+        // let mut size = 0;
+        impl<'de, T> Visitor<'de> for EnumFlagVisitor<T>
+        where
+            T:Debug+Clone+AsEnumFlag,
+        {
+            type Value = EnumFlag<T>;
+            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+                formatter.write_str("EnumFlag")
+            }
+
+            fn visit_u32<E>(self, v: u32) -> Result<Self::Value, E> where
+                E: Error, {
+                    let mut res: Vec<T> = vec![];
+                    println!("{}",v);
+                    /* let number = u32::pow(2, v);
+                    let enum_d: T = AsU32::from_u32(number);
+                    res.push(enum_d);*/
+                    let felix = format!("{:032b}", v);
+                    let char_vec: Vec<char> = felix.chars().collect();
+                    for c in 0..char_vec.len() {
+                        if char_vec[c] == '1'{
+                            let size: u32 = char_vec.len() as u32-c as u32-1;
+                            let number = u32::pow(2, size);
+                            let enum_d = T::from_u32(number);
+                            res.push(enum_d);
+                        }
+                    }
+                    return Ok(EnumFlag::<T>(res));
+
+            }
+            fn visit_u16<E>(self, v: u16) -> Result<Self::Value, E> where
+                E: Error, {
+                    let mut res: Vec<T> = vec![];
+                    println!("{}",v);
+                    /* let number = u32::pow(2, v);
+                    let enum_d: T = AsU32::from_u32(number);
+                    res.push(enum_d);*/
+                    let felix = format!("{:016b}", v);
+                    let char_vec: Vec<char> = felix.chars().collect();
+                    for c in 0..char_vec.len() {
+                        if char_vec[c] == '1'{
+                            let size: u32 = char_vec.len() as u32-c as u32-1;
+                            let number = u32::pow(2, size);
+                            let enum_d = T::from_u32(number);
+                            res.push(enum_d);
+                        }
+                    }
+                    return Ok(EnumFlag::<T>(res));
+
+            }
+            fn visit_u8<E>(self, v: u8) -> Result<Self::Value, E> where
+                E: Error, {
+                    let mut res: Vec<T> = vec![];
+                    println!("{}",v);
+                    /* let number = u32::pow(2, v);
+                    let enum_d: T = AsU32::from_u32(number);
+                    res.push(enum_d);*/
+                    let felix = format!("{:08b}", v);
+                    let char_vec: Vec<char> = felix.chars().collect();
+                    for c in 0..char_vec.len() {
+                        if char_vec[c] == '1'{
+                            let size: u32 = char_vec.len() as u32-c as u32-1;
+                            let number = u32::pow(2, size);
+                            let enum_d = T::from_u32(number);
+                            res.push(enum_d);
+                        }
+                    }
+                    return Ok(EnumFlag::<T>(res));
+
+            }
+        }
+        let size: u32 = T::size_of_enum_flag();
+        match size{
+            32 => {
+                return Ok(deserializer.deserialize_u32(
+                    EnumFlagVisitor {
+                        marker: PhantomData,
+                    },
+                )?);
+            },
+            16 => {
+                return Ok(deserializer.deserialize_u16(
+                    EnumFlagVisitor {
+                        marker: PhantomData,
+                    },
+                )?);
+            },
+            8 => {
+                return Ok(deserializer.deserialize_u8(
+                    EnumFlagVisitor {
+                        marker: PhantomData,
+                    },
+                )?);
+            },
+            _ => panic!("Deserializing not supported for {} bit set flags", size)
+        }
     }
 }
 /*
