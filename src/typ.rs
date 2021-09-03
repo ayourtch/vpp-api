@@ -239,7 +239,7 @@ impl<'de> Deserialize<'de> for F64 {
     }
 }
 
-#[derive(Clone, Default)]
+#[derive(Clone, Default, Deserialize)]
 pub struct FixedSizeArray<T:Default+Debug, N: ArrayLength<T>>(pub GenericArray<T, N>);
 
 impl<T: Debug+Default, N: ArrayLength<T>> fmt::Debug for FixedSizeArray<T, N> {
@@ -290,7 +290,7 @@ impl<T: Serialize+Default+Debug, N: ArrayLength<T>> Serialize for FixedSizeArray
 
 
 // Copying Fixed Size String Deserialize for u8
-impl<'de, N: ArrayLength<u8>> Deserialize<'de> for FixedSizeArray<u8,N> {
+/* impl<'de, N: ArrayLength<u8>> Deserialize<'de> for FixedSizeArray<u8,N> {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
         D: Deserializer<'de>,
@@ -333,7 +333,7 @@ impl<'de, N: ArrayLength<u8>> Deserialize<'de> for FixedSizeArray<u8,N> {
         )?);
     }
 }
-
+*/ 
 // FIXME: implement the deserialize manually.
 
 /* impl<'de, 'tde, T: Deserialize<'tde>, N: ArrayLength<T>> Deserialize<'de> for FixedSizeArray<T, N> {
