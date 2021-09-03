@@ -239,11 +239,10 @@ impl<'de> Deserialize<'de> for F64 {
     }
 }
 
-#[derive(Clone, Default, Deserialize)]
-#[serde(bound = "N: ArrayLength<T>, T: Deserialize<'de> + Default")]
-pub struct FixedSizeArray<T, N: ArrayLength<T>>(pub GenericArray<T, N>);
+#[derive(Clone, Default)]
+pub struct FixedSizeArray<T:Default+Debug, N: ArrayLength<T>>(pub GenericArray<T, N>);
 
-impl<T: Debug, N: ArrayLength<T>> fmt::Debug for FixedSizeArray<T, N> {
+impl<T: Debug+Default, N: ArrayLength<T>> fmt::Debug for FixedSizeArray<T, N> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let v = &self.0;
         write!(f, "FixedSizeArray[{}]: [{:?}]", &N::to_u32(), &v)
@@ -273,7 +272,7 @@ impl<T: Debug+Default+Clone, N: ArrayLength<T>> TryFrom<Vec<T>> for FixedSizeArr
     }
 }
 
-impl<T: Serialize, N: ArrayLength<T>> Serialize for FixedSizeArray<T, N> {
+impl<T: Serialize+Default+Debug, N: ArrayLength<T>> Serialize for FixedSizeArray<T, N> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
@@ -290,6 +289,50 @@ impl<T: Serialize, N: ArrayLength<T>> Serialize for FixedSizeArray<T, N> {
 }
 
 
+// Copying Fixed Size String Deserialize for u8
+impl<'de, N: ArrayLength<u8>> Deserialize<'de> for FixedSizeArray<u8,N> {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        struct FixedSizeArrayVisitor<N> {
+            marker: PhantomData<N>,
+        };
+        impl<'de, N> Visitor<'de> for FixedSizeArrayVisitor<N>
+        where
+            N: ArrayLength<u8>,
+        {
+            type Value = FixedSizeArray<u8,N>;
+            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+                formatter.write_str("FixedSizeString")
+            }
+
+            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            where
+                A: SeqAccess<'de>,
+            {
+                let mut res: GenericArray<u8, N> = Default::default();
+                let length = N::to_u32() as usize;
+
+                for i in 0..length {
+                    let b = seq
+                        .next_element()?
+                        .ok_or_else(|| serde::de::Error::invalid_length(1, &self))?;
+                    res[i] = b;
+                }
+
+                return Ok(FixedSizeArray(res));
+            }
+        }
+
+        return Ok(deserializer.deserialize_tuple(
+            N::to_u32() as usize,
+            FixedSizeArrayVisitor {
+                marker: PhantomData,
+            },
+        )?);
+    }
+}
 
 // FIXME: implement the deserialize manually.
 
