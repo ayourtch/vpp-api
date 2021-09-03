@@ -530,6 +530,9 @@ impl<T: Clone+Debug+AsEnumFlag> TryFrom<Vec<T>> for EnumFlag<T> {
         Ok(EnumFlag(out))   
     }
 }
+impl <T: Clone+Debug+AsEnumFlag>Default for EnumFlag<T> {
+    fn default() -> Self { vec![].try_into().unwrap() }
+}
 impl <T:Clone+Debug+AsEnumFlag> EnumFlag<T>{
     pub fn sum(&self) -> u32 {
         let mut sum:u32 = 0;
