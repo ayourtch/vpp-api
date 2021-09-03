@@ -94,7 +94,11 @@ impl VppJsApiType {
                     },
                     _ => code.push_str(&format!("{}, \n", get_ident(&self.fields[x].name))),
                 }
-            } else {
+            } 
+            else if self.fields[x].ctype.contains("flag"){
+                code.push_str(&format!("EnumFlag<{}>, \n",get_type(&self.fields[x].ctype) ));
+            }
+            else {
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
                         VppJsApiFieldSize::Fixed(len) => code.push_str(&format!(

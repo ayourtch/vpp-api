@@ -150,7 +150,7 @@ impl VppJsApiEnum {
     }
     pub fn generate_as_enumflag_trait(&self) -> String{
         let mut code = String::new();
-        code.push_str(&format!("impl AsEnumFlag for {}\n",camelize_ident(&self.name)));
+        code.push_str(&format!("impl AsEnumFlag for {} {{\n",camelize_ident(&self.name)));
         code.push_str("\t fn as_u32(data: &Self) -> u32{\n");
         code.push_str("\t\t *data as u32\n");
         code.push_str("\t }\n");
@@ -182,7 +182,7 @@ impl VppJsApiEnum {
             println!("{:#?}", self);
             // This tells if the enum is a flag or not
             code.push_str(&format!(
-                "#[derive(Debug,Serialize, Deserialize)] \n"
+                "#[derive(Debug,Serialize, Deserialize, Clone, Copy)] \n"
             ));
             /* match &self.info.enumtype {
                 Some(len) => code.push_str(&format!("#[repr({})]\n", &len)),
