@@ -240,6 +240,7 @@ impl<'de> Deserialize<'de> for F64 {
 }
 
 #[derive(Clone, Default, Deserialize)]
+#[serde(bound = "N: ArrayLength<T>, T: Deserialize<'de> + Default")]
 pub struct FixedSizeArray<T:Default+Debug, N: ArrayLength<T>>(pub GenericArray<T, N>);
 
 impl<T: Debug+Default, N: ArrayLength<T>> fmt::Debug for FixedSizeArray<T, N> {
