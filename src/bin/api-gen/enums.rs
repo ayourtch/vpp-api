@@ -108,35 +108,96 @@ impl<'de> Deserialize<'de> for VppJsApiEnum {
         deserializer.deserialize_seq(VppJsApiEnumVisitor)
     }
 }
+pub fn isPowerOfTwo(n: &mut i64) -> bool 
+{
+    if *n == 0{
+        return false;
+    }
+    while *n != 1
+    {
+        if *n%2 != 0{
+            return false;
+        }    
+        *n = *n/2;
+    }
+    return true;
+}
 impl VppJsApiEnum {
     pub fn if_flag(&self) -> bool {
+        if self.name.contains("flag"){
+            return true;
+        }
         let mut prev: i64 = self.values[0].value;
         for x in 1..self.values.len() {
             if self.values[x].value == 0 {
                 continue;
+            }
+            if !isPowerOfTwo(&mut self.values[x].value.clone()){
+                return false;
             }
             let next = prev + 1;
             if self.values[x].value == next {
                 prev = next;
                 continue;
             } else {
+                if isPowerOfTwo(&mut self.values[x+1].value.clone()){
+                    return true;
+                }
                 return false;
             }
         }
-        true
+        false
+    }
+    pub fn generate_as_enumflag_trait(&self) -> String{
+        let mut code = String::new();
+        code.push_str(&format!("impl AsEnumFlag for {} {{\n",camelize_ident(&self.name)));
+        code.push_str("\t fn as_u32(data: &Self) -> u32{\n");
+        code.push_str("\t\t *data as u32\n");
+        code.push_str("\t }\n");
+        code.push_str("\t fn from_u32(data: u32) -> Self{\n");
+        code.push_str("\t\t match data{\n");
+        for x in 0..self.values.len() {
+            code.push_str(&format!(
+                "\t\t\t {} => {}::{}, \n",
+                self.values[x].value,
+                camelize_ident(&self.name),
+                get_ident(&self.values[x].name)
+            ));
+        }
+        code.push_str("\t\t\t_ => panic!(\"Invalid Enum Descriminant\")\n");
+        code.push_str("\t\t }\n");
+        code.push_str("\t }\n");
+        code.push_str("\t fn size_of_enum_flag() -> u32{\n");
+        match &self.info.enumtype {
+            Some(len) => code.push_str(&format!("\t\t {} as u32\n", len.trim_start_matches("u"))),
+            _ => code.push_str(&format!("\t\t 32 as u32\n")),
+        }
+        code.push_str("\t}\n");
+        code.push_str("}\n");
+        code
     }
     pub fn generate_code(&self) -> String {
         let mut code = String::new();
-        code.push_str(&format!(
-            "#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] \n"
-        ));
-        if !self.if_flag() {
-            // println!("{:#?}", self);
+        if self.if_flag() {
+            println!("{:#?}", self);
             // This tells if the enum is a flag or not
+            code.push_str(&format!(
+                "#[derive(Debug,Serialize, Deserialize, Clone, Copy)] \n"
+            ));
+            /* match &self.info.enumtype {
+                Some(len) => code.push_str(&format!("#[repr({})]\n", &len)),
+                _ => code.push_str(&format!("#[repr({})]\n")),
+            }*/
         }
-        match &self.info.enumtype {
-            Some(len) => code.push_str(&format!("#[repr({})]\n", &len)),
-            _ => code.push_str(&format!("#[repr(u32)]\n")),
+        else{ 
+             // This tells if the enum is a flag or not
+             code.push_str(&format!(
+                "#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] \n"
+            ));
+            match &self.info.enumtype {
+                Some(len) => code.push_str(&format!("#[repr({})]\n", &len)),
+                _ => code.push_str(&format!("#[repr(u32)]\n")),
+            }
         }
         code.push_str(&format!("pub enum {} {{ \n", camelize_ident(&self.name)));
         for x in 0..self.values.len() {
@@ -149,6 +210,9 @@ impl VppJsApiEnum {
         // code.push_str("\t #[serde(other)] \n\t Invalid \n");
         code.push_str("} \n");
         code.push_str(&self.impl_default());
+        if self.if_flag(){
+            code.push_str(&self.generate_as_enumflag_trait());
+        }
         code
     }
     pub fn impl_default(&self) -> String {
