@@ -82,7 +82,6 @@ pub fn create_cargo_toml(packageName: &str) {
     code.push_str(
         "vpp-macros = {git=\"https://github.com/felixfaisal/vpp-macros\", branch=\"main\"} \n",
     );
-    code.push_str("enumset = {git=\"https://github.com/ayourtch/enumset\", branch=\"master\", features=[\"serde\", \"enumflags\"]} \n");
 
     let mut file = File::create(format!(".././{}/Cargo.toml", packageName)).unwrap();
     file.write_all(code.as_bytes()).unwrap();

@@ -109,7 +109,6 @@ impl VppJsApiFile {
         preamble.push_str("use vpp_api_transport::*;\n");
         preamble.push_str("use serde_repr::{Serialize_repr, Deserialize_repr};\n");
         preamble.push_str("use typenum;\n");
-        preamble.push_str("use enumset::EnumSetType;\n");
         let mut import_table: Vec<(String, Vec<String>)> = vec![];
         let typstructs = VppJsApiType::iter_and_generate_code(
             &self.types,
