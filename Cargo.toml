@@ -30,5 +30,5 @@ regex = "1"
 syn ={ version= "1.0", features=["extra-traits","full"]}
 quote = "1.0"
 proc-macro2 = "1.0.26"
-vpp-macros = {git="https://github.com/felixfaisal/vpp-macros", branch="main"}
+vpp-api-macros = {git="https://github.com/ayourtch/vpp-api-macros", branch="main"}
 

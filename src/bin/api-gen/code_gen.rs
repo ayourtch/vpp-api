@@ -80,7 +80,7 @@ pub fn create_cargo_toml(packageName: &str) {
     code.push_str("quote = \"1.0\" \n");
     code.push_str("proc-macro2 = \"1.0.26\" \n");
     code.push_str(
-        "vpp-macros = {git=\"https://github.com/felixfaisal/vpp-macros\", branch=\"main\"} \n",
+        "vpp-api-macros = {git=\"https://github.com/ayourtch/vpp-api-macros\", branch=\"main\"} \n",
     );
 
     let mut file = File::create(format!(".././{}/Cargo.toml", packageName)).unwrap();

@@ -734,8 +734,18 @@ dependencies = [
  "trybuild",
  "typenum",
  "vpp-api-encoding",
+ "vpp-api-macros",
  "vpp-api-transport 0.1.5",
- "vpp-macros",
+]
+
+[[package]]
+name = "vpp-api-macros"
+version = "0.1.0"
+source = "git+https://github.com/ayourtch/vpp-api-macros?branch=main#78b8e9cb48f719062aed913e37430e895ddb0770"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
@@ -759,16 +769,6 @@ dependencies = [
  "bindgen",
  "lazy_static",
  "serde",
-]
-
-[[package]]
-name = "vpp-macros"
-version = "0.1.0"
-source = "git+https://github.com/felixfaisal/vpp-macros?branch=main#c4804b7d135ae184c81455733c78832cc46e288b"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
 ]
 
 [[package]]

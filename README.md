@@ -103,7 +103,7 @@ let create_host_interface: CliInbandReply = send_recv_msg(
 - This file contains structures and functions for parsing messages that interact with VPP. 
 
 ## VPP Macros 
-These macros help improve the code readability of the bindings and reduce the amount of code - [VPP-Macros](https://github.com/felixfaisal/vpp-macros)
+These macros help improve the code readability of the bindings and reduce the amount of code - [vpp-api-macros](https://github.com/ayourtch/vpp-api-macros)
 Currently, Macros are being used for **Builder** of Messages and for handling **Unions**
 
 
