@@ -1,0 +1,41 @@
+name: Rust
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install and start VPP
+      run: |
+        curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | sudo bash
+        sudo apt-get install vpp libvppinfra libvppinfra-dev vpp-plugin-core vpp-plugin-dpdk python3-vpp-api vpp-dbg vpp-dev
+        echo "#"  | sudo tee -a /etc/vpp/startup.conf
+        echo "plugins { plugin dpdk_plugin.so { disable } }" | sudo tee -a /etc/vpp/startup.conf
+        echo "#" | sudo tee -a /etc/vpp/startup.conf
+        sudo service vpp stop
+        sudo service vpp start
+        sudo chmod o+w /run/vpp/api.sock
+        sudo chmod o+w /run/vpp/cli.sock
+        vppctl show version
+    - name: Install build prerequisites
+      run: |
+        sudo apt-get install -y build-essential clang-12
+    - name: Create a test package
+      run: |
+        cargo run -- --in-file /usr/share/vpp/api/ --parse-type Tree --create-package --package-name testvpp
+    - name: Run tests
+      run: |
+        cd ../testvpp
+        cargo test --verbose
