@@ -26,6 +26,9 @@ jobs:
         echo "#" | sudo tee -a /etc/vpp/startup.conf
         sudo service vpp stop
         sudo service vpp start
+        echo "Sleeping for 10 sec"
+        sleep 10
+        echo "Changing permissions and testing that VPP is alive"
         sudo chmod o+w /run/vpp/api.sock
         sudo chmod o+w /run/vpp/cli.sock
         vppctl show version
