@@ -102,7 +102,7 @@ impl VppJsApiFile {
         let mut preamble: String = String::new();
         preamble.push_str(&VppJsApiFile::generate_header());
         preamble.push_str("#![allow(dead_code,unused_mut,unused_variables,unused_must_use,non_camel_case_types,unused_imports,non_snake_case)]\n");
-        preamble.push_str("use vpp_api_macros::{Message,UnionIdent}; \n");
+        preamble.push_str("use vpp_api_macros::{VppMessage,VppUnionIdent}; \n");
         preamble.push_str("use std::convert::TryInto; \n");
         preamble.push_str("use serde::{de::DeserializeOwned, Deserialize, Serialize};\n");
         preamble.push_str("use vpp_api_encoding::typ::*;\n");

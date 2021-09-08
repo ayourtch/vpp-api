@@ -121,7 +121,7 @@ impl VppJsApiType {
     pub fn generate_code_union(&self, apifile: &VppJsApiFile) -> String {
         let mut code = String::new();
         code.push_str(&format!(
-            "#[derive(Debug, Clone, Serialize, Deserialize, Default, UnionIdent)] \n"
+            "#[derive(Debug, Clone, Serialize, Deserialize, Default, VppUnionIdent)] \n"
         ));
         for x in 0..self.fields.len(){
             let size_of_typ = field_size(&self.fields[x], &apifile);

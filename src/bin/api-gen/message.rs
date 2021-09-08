@@ -92,7 +92,7 @@ impl VppJsApiMessage {
     pub fn generate_code(&self) -> String {
         let mut code = String::new();
         code.push_str(&format!(
-            "#[derive(Debug, Clone, Serialize, Deserialize, Message)] \n"
+            "#[derive(Debug, Clone, Serialize, Deserialize, VppMessage)] \n"
         ));
         code.push_str(&format!(
             "#[message_name_and_crc({}_{})] \n",
