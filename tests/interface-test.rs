@@ -26,8 +26,8 @@ fn test_vpp_functions() {
     let mut t: Box<dyn VppApiTransport> = Box::new(afunix::Transport::new("/run/vpp/api.sock"));
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
     // dbg!(t.connect("api-test", None, 256));
-    let vl_msg_id = t.get_msg_index("control_ping_51077d14").unwrap();
-    assert_eq!(vl_msg_id, 571);
+    let vl_msg_id_res = t.get_msg_index("control_ping_51077d14");
+    assert_eq!(vl_msg_id_res.is_some(), true);
 }
 #[test]
 fn test_sw_interface_add_del_address() {
@@ -47,9 +47,7 @@ fn test_sw_interface_add_del_address() {
             prefix: AddressWithPrefix {
                 address: Address {
                     af: AddressFamily::ADDRESS_IP4,
-                    un: [
-                        0xa, 0xa, 1, 2, 7, 0x7a, 0xb, 0xc, 0xd, 0xf, 8, 9, 5, 6, 10, 10,
-                    ],
+                    un: AddressUnion::new_Ip4Address([10,10,1,2]),
                 },
                 len: 24,
             },
@@ -77,7 +75,7 @@ fn test_sw_interface_set_flags() {
             client_index: t.get_client_index(),
             context: 0,
             sw_if_index: 0,
-            flags: IfStatusFlags::IF_STATUS_API_FLAG_LINK_UP,
+            flags: vec![IfStatusFlags::IF_STATUS_API_FLAG_ADMIN_UP, IfStatusFlags::IF_STATUS_API_FLAG_LINK_UP].try_into().unwrap()
         },
         &mut *t,
         &SwInterfaceSetFlagsReply::get_message_name_and_crc(),
@@ -157,7 +155,7 @@ fn test_sw_interface_set_mtu() {
             client_index: t.get_client_index(),
             context: 0,
             sw_if_index: 0,
-            mtu: 50,
+            mtu: vec![1500, 0, 0, 0].try_into().unwrap(),
         },
         &mut *t,
         &SwInterfaceSetMtuReply::get_message_name_and_crc(),
