@@ -1,5 +1,6 @@
-use vpp_macros::Message;
-#[derive(Message, Debug)]
+use vpp_api_macros::VppMessage;
+
+#[derive(VppMessage, Debug)]
 #[message_name_and_crc(Idiot_76fe)]
 pub struct InterfaceAPIAddress {
     uid: u32,

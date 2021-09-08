@@ -5,7 +5,7 @@ use syn;
 
 use proc_macro2::TokenTree;
 
-#[proc_macro_derive(Message, attributes(message_name_and_crc))]
+#[proc_macro_derive(VppMessage, attributes(message_name_and_crc))]
 pub fn derive_message(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let input = parse_macro_input!(input as DeriveInput);
     let attribute_tokens = input.attrs[0].tokens.clone();
@@ -80,7 +80,7 @@ pub fn derive_message(input: proc_macro::TokenStream) -> proc_macro::TokenStream
     };
     expanded.into()
 }
-#[proc_macro_derive(UnionIdent, attributes(types))] 
+#[proc_macro_derive(VppUnionIdent, attributes(types))] 
 pub fn derive_unionident(input:proc_macro::TokenStream) -> proc_macro::TokenStream{
     let input = parse_macro_input!(input as DeriveInput); 
     let ty: &syn::Ident;

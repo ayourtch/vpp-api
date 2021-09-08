@@ -1,11 +1,11 @@
-use vpp_macros::UnionIdent;
+use vpp_api_macros::VppUnionIdent;
 use generic_array::{ArrayLength, GenericArray};
 use serde::{Serialize, Deserialize};
 use vpp_api_encoding::typ::*;
 use std::convert::TryInto;
 use typenum;
 
-#[derive(Debug, Clone, UnionIdent)]
+#[derive(Debug, Clone, VppUnionIdent)]
 #[types(IP4Address:4)]
 pub struct AddressUnion(FixedSizeArray<u8, typenum::U16>);
 
