@@ -12,16 +12,25 @@ To use this crate to generate low level VPP API in Rust, You need to ensure that
 ## Tutorial 
 To generate the package, enter the following command
 ```
-sudo cargo run -- --in-file <build-dir> --parse-type Tree --create-package --package-name <package-name> 
+cargo run -- --in-file <build-dir> --parse-type Tree --create-package --package-name <package-name> 
 ```
 Here **build-dir** refers to the build directory of VPP where VPP API JSONs can be found, You can also alternatively use `testdata` 
 however it has been tested with VPP version 21.01, It could potentially have problems when interacting with different releases of VPP 
 
 To test the generated package, You can run the example **progressive-vpp** 
+
 ``` 
-sudo cargo run --example progressive-vpp
+cargo run --example progressive-vpp
 ``` 
-If everything works correctly, To verify it, Hop into vppctl and type 
+
+To ensure that you do not encounter a permission denied, either ensure that your user is in group "vpp" (preferred) or relax the write
+permission on the VPP sockets:
+```
+sudo chmod o+w /run/vpp/api.sock
+sudo chmod o+w /run/vpp/cli.sock
+```
+
+To verify that everything has worked correctly, hop into vppctl and type
 ```
 show int addr
 ``` 
