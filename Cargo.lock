@@ -696,7 +696,7 @@ checksum = "b5a972e5669d67ba988ce3dc826706fb0a8b01471c088cb0b6110b805cc36aed"
 [[package]]
 name = "vpp-api-encoding"
 version = "0.1.0"
-source = "git+https://github.com/felixfaisal/vpp-api-encoding?branch=main#22de3bbd90058dee369bdb5bbf39b7b10538eea8"
+source = "git+https://github.com/ayourtch/vpp-api-encoding?branch=main#b500a0cc60983e593c083e79695dd166589f1e9e"
 dependencies = [
  "bincode",
  "clap 3.0.0-beta.2",
@@ -763,7 +763,7 @@ dependencies = [
 [[package]]
 name = "vpp-api-transport"
 version = "0.1.5"
-source = "git+https://github.com/felixfaisal/vpp-api-transport/?branch=main#b208b9d2c6308ec60b9922fde85de1f9044b6875"
+source = "git+https://github.com/ayourtch/vpp-api-transport/?branch=main#65652a348dbcd810501d7e1b9765d18505b9633d"
 dependencies = [
  "bincode",
  "bindgen",
