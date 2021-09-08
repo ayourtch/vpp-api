@@ -105,9 +105,9 @@ pub fn generate_lib_file(api_files: &LinkedHashMap<String, VppJsApiFile>, packag
     file.write_all(code.as_bytes()).unwrap();
     // println!("{}", code);
 }
-pub fn generate_example_file(example_file: &str, packageName: &str, example_name: &str){
+pub fn copy_file_with_fixup(example_file: &str, packageName: &str, target_name: &str){
     let data = fs::read_to_string(example_file).unwrap();
     let updated_test = data.replace("vpp_api_gen", packageName); 
-    let mut file = File::create(format!(".././{}/examples/{}.rs", packageName, example_name)).unwrap();
+    let mut file = File::create(format!(".././{}/{}", packageName, target_name)).unwrap();
     file.write_all(updated_test.as_bytes()).unwrap();
 }

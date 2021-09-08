@@ -23,7 +23,7 @@ mod message;
 mod parser_helper;
 mod services;
 mod types;
-use crate::code_gen::{create_cargo_toml, gen_code, generate_lib_file, generate_example_file};
+use crate::code_gen::{create_cargo_toml, gen_code, generate_lib_file, copy_file_with_fixup};
 use crate::file_schema::VppJsApiFile;
 use crate::message::*;
 use crate::parser_helper::*;
@@ -241,23 +241,12 @@ fn main() {
                     fs::create_dir(&format!(".././{}/src", opts.package_name)).unwrap();
                     fs::create_dir(&format!(".././{}/tests", opts.package_name)).unwrap();
                     fs::create_dir(&format!(".././{}/examples", opts.package_name)).unwrap();
-                    fs::File::create(&format!(".././{}/tests/interface-test.rs", opts.package_name)).unwrap();
-                    // fs::File::create(&format!(".././{}/examples/progressive-vpp.rs", opts.package_name)).unwrap();
                     fs::File::create(&format!(".././{}/src/reqrecv.rs", opts.package_name)).unwrap();
                     fs::copy("./src/reqrecv.rs", &format!(".././{}/src/reqrecv.rs", opts.package_name)).unwrap();
                     generate_lib_file(&api_files, &opts.package_name);
                     create_cargo_toml(&opts.package_name);
-                    fs::copy(
-                        "./tests/interface-test.rs",
-                        &format!(".././{}/tests/interface-test.rs",opts.package_name),
-                    )
-                    .unwrap();
-                    /* fs::copy(
-                        "./examples/vhost-example.rs",
-                        &format!(".././{}/examples/progressive-vpp.rs", opts.package_name),
-                    )
-                    .unwrap();*/
-                    generate_example_file("./examples/vhost-example.rs", &opts.package_name, "progressive-vpp");
+                    copy_file_with_fixup("./tests/interface-test.rs", &opts.package_name, "tests/interface_test.rs");
+                    copy_file_with_fixup("./examples/vhost-example.rs", &opts.package_name, "examples/progressive-vpp.rs");
 
                     let mut import_collection: Vec<ImportsFiles> = vec![];
                     for (name, f) in api_files.clone() {
