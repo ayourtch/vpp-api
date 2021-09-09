@@ -38,7 +38,6 @@ use std::io::{Read, Write};
 use std::ops::Add;
 use std::time::{Duration, SystemTime};
 use vpp_api_encoding::typ::*;
-use vpp_api_transport::*;
 
 #[derive(Clap, Debug, Clone, Serialize, Deserialize, EnumString, Display)]
 pub enum OptParseType {
@@ -290,10 +289,6 @@ mod tests {
     use std::path::PathBuf;
     use std::time::{Duration, SystemTime};
     use vpp_api_encoding::typ::*;
-    use vpp_api_transport::afunix;
-    use vpp_api_transport::shmem;
-    use vpp_api_transport::VppApiTransport;
-    use vpp_api_transport::*;
 
     fn get_test_data_path() -> PathBuf {
         let mut path = PathBuf::from(file!());
