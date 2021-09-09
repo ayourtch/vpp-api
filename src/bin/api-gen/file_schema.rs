@@ -106,7 +106,6 @@ impl VppJsApiFile {
         preamble.push_str("use std::convert::TryInto; \n");
         preamble.push_str("use serde::{de::DeserializeOwned, Deserialize, Serialize};\n");
         preamble.push_str("use vpp_api_encoding::typ::*;\n");
-        preamble.push_str("use vpp_api_transport::*;\n");
         preamble.push_str("use serde_repr::{Serialize_repr, Deserialize_repr};\n");
         preamble.push_str("use typenum;\n");
         let mut import_table: Vec<(String, Vec<String>)> = vec![];
