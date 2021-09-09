@@ -67,7 +67,7 @@ impl<'de, N: ArrayLength<u8>> Deserialize<'de> for FixedSizeString<N> {
     {
         struct FixedSizeStringVisitor<N> {
             marker: PhantomData<N>,
-        };
+        }
         impl<'de, N> Visitor<'de> for FixedSizeStringVisitor<N>
         where
             N: ArrayLength<u8>,
@@ -499,7 +499,7 @@ impl<'de, T: Deserialize<'de> + Debug> Deserialize<'de> for VariableSizeArray<T>
     {
         struct VariableSizeArrayVisitor<T> {
             marker: PhantomData<T>,
-        };
+        }
         let mut size = 0;
         impl<'de, T> Visitor<'de> for VariableSizeArrayVisitor<T>
         where
@@ -608,7 +608,7 @@ impl<'de, T: Debug+Clone+AsEnumFlag+Deserialize<'de>> Deserialize<'de> for EnumF
     {
         struct EnumFlagVisitor<T> {
             marker: PhantomData<T>,
-        };
+        }
         // let mut size = 0;
         impl<'de, T> Visitor<'de> for EnumFlagVisitor<T>
         where
