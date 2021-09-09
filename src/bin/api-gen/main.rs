@@ -37,7 +37,6 @@ use std::fs;
 use std::io::{Read, Write};
 use std::ops::Add;
 use std::time::{Duration, SystemTime};
-use vpp_api_encoding::typ::*;
 
 #[derive(Clap, Debug, Clone, Serialize, Deserialize, EnumString, Display)]
 pub enum OptParseType {
@@ -287,7 +286,6 @@ mod tests {
     use std::ops::Add;
     use std::path::PathBuf;
     use std::time::{Duration, SystemTime};
-    use vpp_api_encoding::typ::*;
 
     fn get_test_data_path() -> PathBuf {
         let mut path = PathBuf::from(file!());
