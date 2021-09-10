@@ -55,7 +55,6 @@ pub fn send_recv_msg<'a, T: Serialize + Deserialize<'a>, TR: Serialize + Deseria
     let msg = enc.serialize(&m).unwrap();
 
     v.extend_from_slice(&msg);
-    println!("MSG[{} = 0x{:x}]: {:?}", name, vl_msg_id, &v);
     t.write(&v);
     loop {
         let res = t.read_one_msg_id_and_msg();
@@ -67,10 +66,7 @@ pub fn send_recv_msg<'a, T: Serialize + Deserialize<'a>, TR: Serialize + Deseria
                     .allow_trailing_bytes()
                     .deserialize::<TR>(&data)
                     .unwrap();
-                println!("Next thing will be the reply");
                 return res;
-            } else {
-                println!("Checking the next message for the reply id");
             }
         } else {
             panic!("Result is an error: {:?}", &res);
@@ -105,11 +101,6 @@ pub fn send_bulk_msg<
     let control_ping_message = enc.serialize(&control_ping).unwrap();
     c.extend_from_slice(&control_ping_message);
     v.extend_from_slice(&msg);
-    println!(
-        "MSG[{} = 0x{:x}]: {:?}",
-        "control ping", control_ping_id, &c
-    );
-    println!("MSG[{} = 0x{:x}]: {:?}", name, vl_msg_id, &v);
     let mut out: Vec<u8> = vec![];
     t.write(&v); // Dump message
     t.write(&c); // Ping message
