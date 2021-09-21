@@ -109,7 +109,6 @@ impl VppJsApiType {
                         VppJsApiFieldSize::Variable(t) => {
                             code.push_str(&format!("VariableSizeArray<{}>, \n", get_type(&self.fields[x].ctype)))
                         }
-                        //_ => code.push_str(&format!("{},\n", get_type(&self.fields[x].ctype))),
                     },
                     _ => code.push_str(&format!("{}, \n", get_type(&self.fields[x].ctype))),
                 }
