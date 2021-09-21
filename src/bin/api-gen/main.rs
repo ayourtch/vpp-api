@@ -23,7 +23,7 @@ mod message;
 mod parser_helper;
 mod services;
 mod types;
-use crate::code_gen::{create_cargo_toml, gen_code, generate_lib_file, copy_file_with_fixup};
+use crate::code_gen::{create_cargo_toml, gen_code, generate_lib_file, copy_file_with_fixup, gen_code_file};
 use crate::file_schema::VppJsApiFile;
 use crate::message::*;
 use crate::parser_helper::*;
@@ -47,8 +47,9 @@ pub enum OptParseType {
 }
 
 /// Ingest the VPP API JSON definition file and output the Rust code
-#[clap(version = "1.0", author = "Andrew Yourtchenko <ayourtch@gmail.com>")]
 #[derive(Clap, Debug, Clone, Serialize, Deserialize)]
+#[clap(version = "1.0", author = "Andrew Yourtchenko <ayourtch@gmail.com>")]
+
 pub struct Opts {
     /// Input file name
     #[clap(short, long)]
@@ -167,7 +168,9 @@ fn main() {
                 let data = serde_json::to_string_pretty(&desc).unwrap();
                 // println!("{}", &data);
                 let mut api_definition: Vec<(String, String)> = vec![];
-                gen_code(&desc, "generated2.", &mut api_definition, "test");
+                if opts.generate_code{
+                    gen_code_file(&desc, &opts.in_file, &mut api_definition);
+                }
             }
             OptParseType::ApiType => {
                 let desc: VppJsApiType = serde_json::from_str(&data).unwrap();

@@ -179,7 +179,6 @@ impl VppJsApiEnum {
     pub fn generate_code(&self) -> String {
         let mut code = String::new();
         if self.if_flag() {
-            println!("{:#?}", self);
             // This tells if the enum is a flag or not
             code.push_str(&format!(
                 "#[derive(Debug,Serialize, Deserialize, Clone, Copy)] \n"
