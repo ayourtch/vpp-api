@@ -121,6 +121,7 @@ pub fn generate_lib_file(api_files: &LinkedHashMap<String, VppJsApiFile>, packag
 }
 pub fn copy_file_with_fixup(example_file: &str, packageName: &str, target_name: &str){
     let data = fs::read_to_string(example_file).unwrap();
+    let packageName = &packageName.replace("-","_");
     let updated_test = data.replace("vpp_api_gen", packageName); 
     let mut file = File::create(format!(".././{}/{}", packageName, target_name)).unwrap();
     file.write_all(updated_test.as_bytes()).unwrap();
