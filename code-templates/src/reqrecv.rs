@@ -7,7 +7,6 @@
     unused_imports
 )]
 use bincode::Options;
-use clap::Clap;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use std::collections::HashMap;
 use std::convert::TryInto;
