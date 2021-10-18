@@ -7,7 +7,7 @@
     unused_imports,
     non_snake_case
 )]
-use clap::Clap;
+use clap::{AppSettings, Parser};
 use std::string::ToString;
 extern crate strum;
 #[macro_use]
@@ -38,7 +38,7 @@ use std::io::{Read, Write};
 use std::ops::Add;
 use std::time::{Duration, SystemTime};
 
-#[derive(Clap, Debug, Clone, Serialize, Deserialize, EnumString, Display)]
+#[derive(Parser, Debug, Clone, Serialize, Deserialize, EnumString, Display)]
 pub enum OptParseType {
     File,
     Tree,
@@ -47,7 +47,7 @@ pub enum OptParseType {
 }
 
 /// Ingest the VPP API JSON definition file and output the Rust code
-#[derive(Clap, Debug, Clone, Serialize, Deserialize)]
+#[derive(Parser, Debug, Clone, Serialize, Deserialize)]
 #[clap(version = "1.0", author = "Andrew Yourtchenko <ayourtch@gmail.com>")]
 
 pub struct Opts {
@@ -280,7 +280,7 @@ fn main() {
 mod tests {
     use super::*;
     use bincode::Options;
-    use clap::Clap;
+    use clap::Parser;
     use serde::{de::DeserializeOwned, Deserialize, Serialize};
     use serde_repr::{Deserialize_repr, Serialize_repr};
     use std::collections::HashMap;
