@@ -11,8 +11,8 @@ use lazy_static::lazy_static;
 use linked_hash_map::LinkedHashMap;
 use regex::Regex;
 use std::fmt::format;
-use std::fs::File;
 use std::fs;
+use std::fs::File;
 use std::io::prelude::*;
 
 use crate::alias::VppJsApiAlias;
@@ -24,7 +24,7 @@ use crate::parser_helper::{camelize_ident, get_ident, get_type};
 use crate::types::VppJsApiType;
 use crate::types::{VppJsApiFieldSize, VppJsApiMessageFieldDef};
 
-pub fn gen_code_file(code: &VppJsApiFile, name: &str, api_definition: &mut Vec<(String, String)>){
+pub fn gen_code_file(code: &VppJsApiFile, name: &str, api_definition: &mut Vec<(String, String)>) {
     lazy_static! {
         static ref RE: Regex = Regex::new(r"[a-z_0-9]*.api.json").unwrap();
     }
@@ -33,7 +33,7 @@ pub fn gen_code_file(code: &VppJsApiFile, name: &str, api_definition: &mut Vec<(
         .unwrap()
         .as_str()
         .trim_end_matches(".api.json");
-        let mut file = File::create(format!(".././{}.rs",fileName)).unwrap();
+    let mut file = File::create(format!(".././{}.rs", fileName)).unwrap();
     file.write_all(code.generate_code(name, api_definition).as_bytes())
         .unwrap();
     println!("Generated {}.rs", fileName.trim_start_matches("/"));
@@ -119,10 +119,12 @@ pub fn generate_lib_file(api_files: &LinkedHashMap<String, VppJsApiFile>, packag
     file.write_all(code.as_bytes()).unwrap();
     // println!("{}", code);
 }
-pub fn copy_file_with_fixup(example_file: &str, packageName: &str, target_name: &str){
-    let data = fs::read_to_string(example_file).unwrap();
-    let packageName = &packageName.replace("-","_");
-    let updated_test = data.replace("vpp_api_gen", packageName); 
-    let mut file = File::create(format!(".././{}/{}", packageName, target_name)).unwrap();
-    file.write_all(updated_test.as_bytes()).unwrap();
+pub fn copy_file_with_fixup(example_file: &str, packageName: &str, target_name: &str) {
+    let data = fs::read_to_string(example_file).expect("Could not read file");
+    let packageCodeName = &packageName.replace("-", "_");
+    let updated_test = data.replace("vpp_api_gen", packageCodeName);
+    let mut file =
+        File::create(format!(".././{}/{}", packageName, target_name)).expect("Error writing file");
+    file.write_all(updated_test.as_bytes())
+        .expect("error writing to file");
 }

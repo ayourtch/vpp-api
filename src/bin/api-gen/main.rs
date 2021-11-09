@@ -23,7 +23,9 @@ mod message;
 mod parser_helper;
 mod services;
 mod types;
-use crate::code_gen::{create_cargo_toml, gen_code, generate_lib_file, copy_file_with_fixup, gen_code_file};
+use crate::code_gen::{
+    copy_file_with_fixup, create_cargo_toml, gen_code, gen_code_file, generate_lib_file,
+};
 use crate::file_schema::VppJsApiFile;
 use crate::message::*;
 use crate::parser_helper::*;
@@ -168,7 +170,7 @@ fn main() {
                 let data = serde_json::to_string_pretty(&desc).unwrap();
                 // println!("{}", &data);
                 let mut api_definition: Vec<(String, String)> = vec![];
-                if opts.generate_code{
+                if opts.generate_code {
                     gen_code_file(&desc, &opts.in_file, &mut api_definition);
                 }
             }
@@ -238,15 +240,31 @@ fn main() {
                     // println!("{}", opts.package_name);
                     let mut api_definition: Vec<(String, String)> = vec![];
                     println!("Do whatever you need to hear with creating package");
-                    fs::create_dir(&format!(".././{}", opts.package_name)).unwrap();
-                    fs::create_dir(&format!(".././{}/src", opts.package_name)).unwrap();
-                    fs::create_dir(&format!(".././{}/tests", opts.package_name)).unwrap();
-                    fs::create_dir(&format!(".././{}/examples", opts.package_name)).unwrap();
+                    fs::create_dir_all(&format!(".././{}", opts.package_name))
+                        .expect("Error creating package dir");
+                    fs::create_dir_all(&format!(".././{}/src", opts.package_name))
+                        .expect("Error creating package/src dir");
+                    fs::create_dir_all(&format!(".././{}/tests", opts.package_name))
+                        .expect("Error creating package/tests dir");
+                    fs::create_dir_all(&format!(".././{}/examples", opts.package_name))
+                        .expect("Error creating package/examples dir");
                     generate_lib_file(&api_files, &opts.package_name);
                     create_cargo_toml(&opts.package_name);
-                    copy_file_with_fixup("./code-templates/src/reqrecv.rs", &opts.package_name, "src/reqrecv.rs");
-                    copy_file_with_fixup("./code-templates/tests/interface-test.rs", &opts.package_name, "tests/interface_test.rs");
-                    copy_file_with_fixup("./code-templates/examples/progressive-vpp.rs", &opts.package_name, "examples/progressive-vpp.rs");
+                    copy_file_with_fixup(
+                        "./code-templates/src/reqrecv.rs",
+                        &opts.package_name,
+                        "src/reqrecv.rs",
+                    );
+                    copy_file_with_fixup(
+                        "./code-templates/tests/interface-test.rs",
+                        &opts.package_name,
+                        "tests/interface_test.rs",
+                    );
+                    copy_file_with_fixup(
+                        "./code-templates/examples/progressive-vpp.rs",
+                        &opts.package_name,
+                        "examples/progressive-vpp.rs",
+                    );
 
                     let mut import_collection: Vec<ImportsFiles> = vec![];
                     for (name, f) in api_files.clone() {
