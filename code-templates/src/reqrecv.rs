@@ -6,6 +6,7 @@
     non_camel_case_types,
     unused_imports
 )]
+use crate::VppNamedMessage;
 use bincode::Options;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use std::collections::HashMap;
@@ -38,6 +39,37 @@ pub struct ControlPingReply {
     pub retval: i32,
     pub client_index: u32,
     pub vpe_pid: u32,
+}
+
+pub fn send_recv_one<
+    'a,
+    T: Serialize + Deserialize<'a> + VppNamedMessage,
+    TR: Serialize + DeserializeOwned + VppNamedMessage,
+>(
+    m: &T,
+    t: &mut dyn VppApiTransport,
+) -> TR {
+    send_recv_msg(
+        &T::get_message_name_and_crc(),
+        m,
+        t,
+        &TR::get_message_name_and_crc(),
+    )
+}
+pub fn send_recv_many<
+    'a,
+    T: Serialize + Deserialize<'a> + VppNamedMessage,
+    TR: Serialize + DeserializeOwned + VppNamedMessage + std::fmt::Debug + Clone,
+>(
+    m: &T,
+    t: &mut dyn VppApiTransport,
+) -> Vec<TR> {
+    send_bulk_msg(
+        &T::get_message_name_and_crc(),
+        m,
+        t,
+        &TR::get_message_name_and_crc(),
+    )
 }
 
 pub fn send_recv_msg<'a, T: Serialize + Deserialize<'a>, TR: Serialize + DeserializeOwned>(

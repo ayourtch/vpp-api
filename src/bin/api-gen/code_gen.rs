@@ -104,6 +104,7 @@ pub fn create_cargo_toml(packageName: &str) {
 pub fn generate_lib_file(api_files: &LinkedHashMap<String, VppJsApiFile>, packageName: &str) {
     let mut code = String::new();
     code.push_str("pub mod reqrecv; \n");
+    code.push_str("pub trait VppNamedMessage {\n fn get_message_name_and_crc() -> String;\n}\n");
     for (name, f) in api_files.clone() {
         lazy_static! {
             static ref RE: Regex = Regex::new(r"/[a-z_0-9]*.api.json").unwrap();
