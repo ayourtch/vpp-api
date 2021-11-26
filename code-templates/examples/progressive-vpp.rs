@@ -4,7 +4,6 @@ use std::process::Command;
 use vpp_api_gen::interface::*;
 use vpp_api_gen::interface_types::*;
 use vpp_api_gen::ip_types::*;
-use vpp_api_gen::reqrecv::*;
 use vpp_api_gen::vhost_user::*;
 use vpp_api_gen::virtio_types::*;
 use vpp_api_gen::vlib::CliInband;
@@ -12,6 +11,7 @@ use vpp_api_gen::vlib::CliInbandReply;
 use vpp_api_gen::vlib::*;
 use vpp_api_transport::afunix;
 use vpp_api_transport::VppApiTransport;
+use vpp_api_transport::reqrecv::*;
 
 fn get_encoder() -> impl bincode::config::Options {
     bincode::DefaultOptions::new()

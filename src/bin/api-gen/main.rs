@@ -251,11 +251,6 @@ fn main() {
                     generate_lib_file(&api_files, &opts.package_name);
                     create_cargo_toml(&opts.package_name);
                     copy_file_with_fixup(
-                        "./code-templates/src/reqrecv.rs",
-                        &opts.package_name,
-                        "src/reqrecv.rs",
-                    );
-                    copy_file_with_fixup(
                         "./code-templates/tests/interface-test.rs",
                         &opts.package_name,
                         "tests/interface_test.rs",
