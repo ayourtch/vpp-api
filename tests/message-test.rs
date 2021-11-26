@@ -1,4 +1,5 @@
 use vpp_api_macros::VppMessage;
+use vpp_api_message::VppApiMessage;
 
 #[derive(VppMessage, Debug)]
 #[message_name_and_crc(Idiot_76fe)]
