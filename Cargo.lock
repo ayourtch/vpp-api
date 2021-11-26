@@ -497,7 +497,14 @@ dependencies = [
  "trybuild",
  "typenum",
  "vpp-api-encoding",
+ "vpp-api-message",
 ]
+
+[[package]]
+name = "vpp-api-message"
+version = "0.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ddd581ea0fe461b4eb778642a91b7678f6cfe2c6840674f6c1340c4f5b26da6e"
 
 [[package]]
 name = "wasm-bindgen"
