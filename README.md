@@ -41,7 +41,7 @@ host-vpp1out (dn):
 local0 (dn):
 ``` 
 ## Example Message 
-Sending a message to VPP without using a builder 
+Sending a message to VPP without using a builder, using low level function:
 ```rust 
 let create_interface: SwInterfaceAddDelAddressReply = send_recv_msg(
         &SwInterfaceAddDelAddress::get_message_name_and_crc(),
@@ -63,6 +63,7 @@ let create_interface: SwInterfaceAddDelAddressReply = send_recv_msg(
         &SwInterfaceAddDelAddressReply::get_message_name_and_crc(),
     );
 ```
+
 Sending a message to VPP using a builder 
 ```rust
 let create_host_interface: CliInbandReply = send_recv_msg(
@@ -77,6 +78,22 @@ let create_host_interface: CliInbandReply = send_recv_msg(
         &CliInbandReply::get_message_name_and_crc(),
     );
 ```
+
+Sending a message to VPP using a builder, using trait (thanks to Jim Pepin for the idea):
+
+```rust
+let create_host_interface: CliInbandReply = send_recv_one(
+        &CliInband::builder()
+            .client_index(t.get_client_index())
+            .context(0)
+            .cmd("create host-interface name vpp1out".try_into().unwrap())
+            .build()
+            .unwrap(),
+        &mut *t,
+    );
+```
+
+(This method works without the builder as well)
 
 ## File Architecture
 **alias.rs** 

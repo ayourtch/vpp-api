@@ -48,8 +48,7 @@ fn main() {
     println!("Connect result: {:?}", t.connect("api-test", None, 256));
 
     // Step 3: Create Host interface
-    let create_host_interface: CliInbandReply = send_recv_msg(
-        &CliInband::get_message_name_and_crc(),
+    let create_host_interface: CliInbandReply = send_recv_one(
         &CliInband::builder()
             .client_index(t.get_client_index())
             .context(0)
@@ -57,7 +56,6 @@ fn main() {
             .build()
             .unwrap(),
         &mut *t,
-        &CliInbandReply::get_message_name_and_crc(),
     );
     println!("{:?}", create_host_interface);
 
@@ -71,8 +69,7 @@ fn main() {
     println!("{:?}", create_host_interface);
 
     // Step 5: Assign IP Address to Host Interface
-    let create_interface: SwInterfaceAddDelAddressReply = send_recv_msg(
-        &SwInterfaceAddDelAddress::get_message_name_and_crc(),
+    let create_interface: SwInterfaceAddDelAddressReply = send_recv_one(
         &SwInterfaceAddDelAddress {
             client_index: t.get_client_index(),
             context: 0,
@@ -88,7 +85,6 @@ fn main() {
             },
         },
         &mut *t,
-        &SwInterfaceAddDelAddressReply::get_message_name_and_crc(),
     );
     println!("{:?}", create_interface);
 
@@ -123,8 +119,7 @@ fn main() {
 
     // Verify creation of Interface
     // FIXME: Need to implement Deserialize for FixedSizeArray to make this work
-    let swinterfacedetails: Vec<SwInterfaceDetails> = send_bulk_msg(
-        &SwInterfaceDump::get_message_name_and_crc(),
+    let swinterfacedetails: Vec<SwInterfaceDetails> = send_recv_many(
         &SwInterfaceDump::builder()
             .client_index(t.get_client_index())
             .context(0)
@@ -134,7 +129,6 @@ fn main() {
             .build()
             .unwrap(),
         &mut *t,
-        &SwInterfaceDetails::get_message_name_and_crc(),
     );
     println!("{:#?}", swinterfacedetails);
     println!("Interface IDX:");
