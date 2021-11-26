@@ -67,11 +67,6 @@ pub fn derive_message(input: proc_macro::TokenStream) -> proc_macro::TokenStream
                 })
              }
          }
-         impl VppApiMessage for #name {
-            pub fn get_message_name_and_crc() -> String {
-                 String::from(#ident)
-            }
-         }
          impl #name {
             pub fn get_message_name_and_crc() -> String {
                  String::from(#ident)
