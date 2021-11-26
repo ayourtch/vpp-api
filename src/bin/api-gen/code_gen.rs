@@ -88,6 +88,7 @@ pub fn create_cargo_toml(packageName: &str) {
     code.push_str("serde_yaml = \"0.8\" \n");
     code.push_str("vpp-api-encoding = {git=\"https://github.com/ayourtch/vpp-api-encoding\", branch=\"main\" } \n");
     code.push_str("vpp-api-transport = { git=\"https://github.com/ayourtch/vpp-api-transport/\", branch=\"main\" } \n");
+    code.push_str("vpp-api-message = \"*\" \n");
     code.push_str("lazy_static = \"1.4.0\" \n");
     code.push_str("regex = \"1\" \n");
     code.push_str("syn ={ version= \"1.0\", features=[\"extra-traits\",\"full\"]} \n");
@@ -104,7 +105,6 @@ pub fn create_cargo_toml(packageName: &str) {
 pub fn generate_lib_file(api_files: &LinkedHashMap<String, VppJsApiFile>, packageName: &str) {
     let mut code = String::new();
     code.push_str("pub mod reqrecv; \n");
-    code.push_str("pub trait VppNamedMessage {\n fn get_message_name_and_crc() -> String;\n}\n");
     for (name, f) in api_files.clone() {
         lazy_static! {
             static ref RE: Regex = Regex::new(r"/[a-z_0-9]*.api.json").unwrap();
