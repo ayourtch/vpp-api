@@ -181,7 +181,7 @@ impl VppJsApiEnum {
         if self.if_flag() {
             // This tells if the enum is a flag or not
             code.push_str(&format!(
-                "#[derive(Debug,Serialize, Deserialize, Clone, Copy)] \n"
+                "#[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq)] \n"
             ));
             /* match &self.info.enumtype {
                 Some(len) => code.push_str(&format!("#[repr({})]\n", &len)),
