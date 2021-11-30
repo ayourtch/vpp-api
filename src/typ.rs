@@ -561,9 +561,18 @@ pub trait AsEnumFlag {
 }
 
 #[derive(Clone, Debug)]
-pub struct EnumFlag<T: Clone+Debug+AsEnumFlag>(Vec<T>);
+pub struct EnumFlag<T: Clone + Debug + AsEnumFlag>(Vec<T>);
 
-impl<T: Clone+Debug+AsEnumFlag> TryFrom<Vec<T>> for EnumFlag<T> {
+impl<T> EnumFlag<T>
+where
+    T: Clone + Debug + AsEnumFlag + std::cmp::PartialEq,
+{
+    pub fn contains(&self, other: T) -> bool {
+        self.0.contains(&other)
+    }
+}
+
+impl<T: Clone + Debug + AsEnumFlag> TryFrom<Vec<T>> for EnumFlag<T> {
     type Error = String;
 
     fn try_from(value: Vec<T>) -> Result<Self, Self::Error> {
