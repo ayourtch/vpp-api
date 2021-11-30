@@ -1,7 +1,5 @@
 // Created with https://github.com/ayourtch/my-rust-boilerplate/
 
-use std::env;
-
 fn main() {
     use std::process::Command;
 
