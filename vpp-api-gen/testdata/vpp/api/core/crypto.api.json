@@ -1,0 +1,151 @@
+{
+    "types": [],
+    "messages": [
+        [
+            "crypto_set_async_dispatch",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_crypto_dispatch_mode_t",
+                "mode"
+            ],
+            {
+                "crc": "0x5ca4adc0"
+            }
+        ],
+        [
+            "crypto_set_async_dispatch_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ],
+        [
+            "crypto_set_handler",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "string",
+                "alg_name",
+                32
+            ],
+            [
+                "string",
+                "engine",
+                16
+            ],
+            [
+                "vl_api_crypto_op_class_type_t",
+                "oct"
+            ],
+            [
+                "u8",
+                "is_async"
+            ],
+            {
+                "crc": "0xce9ad00d"
+            }
+        ],
+        [
+            "crypto_set_handler_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ]
+    ],
+    "unions": [],
+    "enums": [
+        [
+            "crypto_dispatch_mode",
+            [
+                "CRYPTO_ASYNC_DISPATCH_POLLING",
+                0
+            ],
+            [
+                "CRYPTO_ASYNC_DISPATCH_INTERRUPT",
+                1
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ],
+        [
+            "crypto_op_class_type",
+            [
+                "CRYPTO_API_OP_SIMPLE",
+                0
+            ],
+            [
+                "CRYPTO_API_OP_CHAINED",
+                1
+            ],
+            [
+                "CRYPTO_API_OP_BOTH",
+                2
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ]
+    ],
+    "enumflags": [],
+    "services": {
+        "crypto_set_async_dispatch": {
+            "reply": "crypto_set_async_dispatch_reply"
+        },
+        "crypto_set_handler": {
+            "reply": "crypto_set_handler_reply"
+        }
+    },
+    "options": {
+        "version": "1.0.1"
+    },
+    "aliases": {},
+    "vl_api_version": "0x22355ec6",
+    "imports": [],
+    "counters": [],
+    "paths": []
+}
