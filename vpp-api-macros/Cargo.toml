@@ -1,0 +1,29 @@
+[package]
+name = "vpp-api-macros"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+proc-macro = true
+
+[[test]]
+name = "tests"
+path = "tests/progress.rs"
+
+[dev-dependencies]
+trybuild = { version = "1.0", features = ["diff"] }
+vpp-api-encoding = {git="https://github.com/ayourtch/vpp-api-encoding", branch="main" }
+vpp-api-message = "*"
+generic-array = { version = "*", features = ["serde"] }
+typenum = "*"
+serde = { version = "1.0", features = ["derive"] }
+bincode = "1.2.1"
+
+
+
+[dependencies]
+syn ={ version= "1.0", features=["extra-traits","full"]}
+quote = "1.0"
+proc-macro2 = "1.0.26"
