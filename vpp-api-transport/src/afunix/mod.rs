@@ -7,27 +7,9 @@ use crate::VppApiTransport;
 use std::collections::HashMap;
 
 use crate::get_encoder;
-use std::collections::VecDeque;
-use std::sync::{Arc, Mutex};
 
 mod big_array;
 use big_array::BigArray;
-
-#[derive(Debug, Default)]
-struct GlobalState {
-    created: bool,
-    receive_buffer: VecDeque<u8>,
-}
-
-lazy_static! {
-    static ref GLOBAL: Arc<Mutex<GlobalState>> = {
-        let gs = GlobalState {
-            ..Default::default()
-        };
-
-        Arc::new(Mutex::new(gs))
-    };
-}
 
 #[derive(Serialize, Deserialize, Debug)]
 struct SockMsgHeader {
@@ -47,17 +29,6 @@ pub struct Transport {
 
 impl Transport {
     pub fn new(path: &str) -> Self {
-        let mut gs = GLOBAL.lock().unwrap();
-        if gs.created {
-            panic!("One transport already created!");
-        }
-
-        // It's technically okay to have multiple transports for unix socket
-        // The tests can make use of this ability to parallelize
-        // But to retain the compatibility with the shared memory transport,
-        // we keep this (simplistic) lock here for now
-        gs.created = true;
-
         Transport {
             connected: false,
             sock_path: path.to_owned(),
@@ -66,13 +37,6 @@ impl Transport {
             message_max_index: 0,
             client_index: 0,
         }
-    }
-}
-
-impl Drop for Transport {
-    fn drop(&mut self) {
-        let mut gs = GLOBAL.lock().unwrap();
-        gs.created = false;
     }
 }
 
@@ -203,7 +167,7 @@ impl VppApiTransport for Transport {
         0
     }
     fn dump(&self) {
-        let gs = GLOBAL.lock().unwrap();
-        println!("Global state: {:?}", &gs);
+        // let gs = GLOBAL.lock().unwrap();
+        // println!("Global state: {:?}", &gs);
     }
 }
