@@ -1,7 +1,7 @@
 use serde::ser::SerializeSeq;
 use serde::{Deserialize, Serialize, Serializer};
 extern crate strum;
-use crate::basetypes::{maxSizeUnion, sizeof_alias, sizeof_struct, field_size};
+use crate::basetypes::{field_size, maxSizeUnion, sizeof_alias, sizeof_struct};
 use crate::file_schema::VppJsApiFile;
 use crate::parser_helper::{camelize_ident, get_ident, get_type};
 use linked_hash_map::LinkedHashMap;
@@ -94,11 +94,12 @@ impl VppJsApiType {
                     },
                     _ => code.push_str(&format!("{}, \n", get_ident(&self.fields[x].name))),
                 }
-            } 
-            else if self.fields[x].ctype.contains("flag"){
-                code.push_str(&format!("EnumFlag<{}>, \n",get_type(&self.fields[x].ctype) ));
-            }
-            else {
+            } else if self.fields[x].ctype.contains("flag") {
+                code.push_str(&format!(
+                    "EnumFlag<{}>, \n",
+                    get_type(&self.fields[x].ctype)
+                ));
+            } else {
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
                         VppJsApiFieldSize::Fixed(len) => code.push_str(&format!(
@@ -106,9 +107,10 @@ impl VppJsApiType {
                             get_type(&self.fields[x].ctype),
                             len
                         )),
-                        VppJsApiFieldSize::Variable(t) => {
-                            code.push_str(&format!("VariableSizeArray<{}>, \n", get_type(&self.fields[x].ctype)))
-                        }
+                        VppJsApiFieldSize::Variable(t) => code.push_str(&format!(
+                            "VariableSizeArray<{}>, \n",
+                            get_type(&self.fields[x].ctype)
+                        )),
                     },
                     _ => code.push_str(&format!("{}, \n", get_type(&self.fields[x].ctype))),
                 }
@@ -122,10 +124,10 @@ impl VppJsApiType {
         code.push_str(&format!(
             "#[derive(Debug, Clone, Serialize, Deserialize, Default, VppUnionIdent)] \n"
         ));
-        for x in 0..self.fields.len(){
+        for x in 0..self.fields.len() {
             let size_of_typ = field_size(&self.fields[x], &apifile);
-            let ident =  get_type(&self.fields[x].ctype);
-            code.push_str(&format!("#[types({}:{})] \n",ident, size_of_typ));
+            let ident = get_type(&self.fields[x].ctype);
+            code.push_str(&format!("#[types({}:{})] \n", ident, size_of_typ));
         }
         let unionsize = maxSizeUnion(&self, &apifile);
         code.push_str(&format!(

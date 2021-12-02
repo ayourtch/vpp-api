@@ -108,23 +108,21 @@ impl<'de> Deserialize<'de> for VppJsApiEnum {
         deserializer.deserialize_seq(VppJsApiEnumVisitor)
     }
 }
-pub fn isPowerOfTwo(n: &mut i64) -> bool 
-{
-    if *n == 0{
+pub fn isPowerOfTwo(n: &mut i64) -> bool {
+    if *n == 0 {
         return false;
     }
-    while *n != 1
-    {
-        if *n%2 != 0{
+    while *n != 1 {
+        if *n % 2 != 0 {
             return false;
-        }    
-        *n = *n/2;
+        }
+        *n = *n / 2;
     }
     return true;
 }
 impl VppJsApiEnum {
     pub fn if_flag(&self) -> bool {
-        if self.name.contains("flag"){
+        if self.name.contains("flag") {
             return true;
         }
         let mut prev: i64 = self.values[0].value;
@@ -132,7 +130,7 @@ impl VppJsApiEnum {
             if self.values[x].value == 0 {
                 continue;
             }
-            if !isPowerOfTwo(&mut self.values[x].value.clone()){
+            if !isPowerOfTwo(&mut self.values[x].value.clone()) {
                 return false;
             }
             let next = prev + 1;
@@ -140,7 +138,7 @@ impl VppJsApiEnum {
                 prev = next;
                 continue;
             } else {
-                if isPowerOfTwo(&mut self.values[x+1].value.clone()){
+                if isPowerOfTwo(&mut self.values[x + 1].value.clone()) {
                     return true;
                 }
                 return false;
@@ -148,9 +146,12 @@ impl VppJsApiEnum {
         }
         false
     }
-    pub fn generate_as_enumflag_trait(&self) -> String{
+    pub fn generate_as_enumflag_trait(&self) -> String {
         let mut code = String::new();
-        code.push_str(&format!("impl AsEnumFlag for {} {{\n",camelize_ident(&self.name)));
+        code.push_str(&format!(
+            "impl AsEnumFlag for {} {{\n",
+            camelize_ident(&self.name)
+        ));
         code.push_str("\t fn as_u32(data: &Self) -> u32{\n");
         code.push_str("\t\t *data as u32\n");
         code.push_str("\t }\n");
@@ -187,10 +188,9 @@ impl VppJsApiEnum {
                 Some(len) => code.push_str(&format!("#[repr({})]\n", &len)),
                 _ => code.push_str(&format!("#[repr({})]\n")),
             }*/
-        }
-        else{ 
-             // This tells if the enum is a flag or not
-             code.push_str(&format!(
+        } else {
+            // This tells if the enum is a flag or not
+            code.push_str(&format!(
                 "#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] \n"
             ));
             match &self.info.enumtype {
@@ -209,7 +209,7 @@ impl VppJsApiEnum {
         // code.push_str("\t #[serde(other)] \n\t Invalid \n");
         code.push_str("} \n");
         code.push_str(&self.impl_default());
-        if self.if_flag(){
+        if self.if_flag() {
             code.push_str(&self.generate_as_enumflag_trait());
         }
         code

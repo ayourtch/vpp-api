@@ -120,11 +120,13 @@ impl VppJsApiMessage {
                     },
                     _ => code.push_str(&format!("\tpub {} :, \n", get_ident(&self.fields[x].name))),
                 }
-            } 
-            else if self.fields[x].ctype.contains("flag"){
-                code.push_str(&format!("\t pub {} : EnumFlag<{}>, \n",get_ident(&self.fields[x].name),get_type(&self.fields[x].ctype) ));
-            }
-            else {
+            } else if self.fields[x].ctype.contains("flag") {
+                code.push_str(&format!(
+                    "\t pub {} : EnumFlag<{}>, \n",
+                    get_ident(&self.fields[x].name),
+                    get_type(&self.fields[x].ctype)
+                ));
+            } else {
                 code.push_str(&format!("\tpub {} : ", get_ident(&self.fields[x].name)));
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
@@ -133,9 +135,10 @@ impl VppJsApiMessage {
                             get_type(&self.fields[x].ctype),
                             len
                         )),
-                        VppJsApiFieldSize::Variable(t) => {
-                            code.push_str(&format!("VariableSizeArray<{}>, \n", get_type(&self.fields[x].ctype)))
-                        }
+                        VppJsApiFieldSize::Variable(t) => code.push_str(&format!(
+                            "VariableSizeArray<{}>, \n",
+                            get_type(&self.fields[x].ctype)
+                        )),
                     },
                     _ => code.push_str(&format!("{}, \n", get_type(&self.fields[x].ctype))),
                     /*code.push_str(&format!(
