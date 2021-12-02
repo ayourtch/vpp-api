@@ -14,8 +14,8 @@ path = "tests/progress.rs"
 
 [dev-dependencies]
 trybuild = { version = "1.0", features = ["diff"] }
-vpp-api-encoding = {git="https://github.com/ayourtch/vpp-api-encoding", branch="main" }
-vpp-api-message = "*"
+vpp-api-encoding = {path = "../vpp-api-encoding"}
+vpp-api-message = {path = "../vpp-api-message"}
 generic-array = { version = "*", features = ["serde"] }
 typenum = "*"
 serde = { version = "1.0", features = ["derive"] }
