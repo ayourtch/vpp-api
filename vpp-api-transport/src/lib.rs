@@ -161,12 +161,12 @@ pub trait VppApiTransport: Read + Write {
         Ok(context)
     }
 
-    fn skip_to_control_ping_reply(&mut self, context: u32) -> std::io::Result<()> {
+    fn skip_to_control_ping_reply(&mut self, _context: u32) -> std::io::Result<()> {
         let control_ping_reply_id = self.get_msg_index("control_ping_reply_f6b0b8ca").unwrap();
         loop {
             match self.read_one_msg_id_and_msg() {
                 Err(e) => return Err(e),
-                Ok((msg_id, data)) => {
+                Ok((msg_id, _data)) => {
                     if msg_id == control_ping_reply_id {
                         // FIXME: deserialize and match the context
                         return Ok(());

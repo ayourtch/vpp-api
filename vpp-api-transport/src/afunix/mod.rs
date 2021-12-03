@@ -16,7 +16,7 @@ use big_array::BigArray;
 #[derive(Debug, Default)]
 struct GlobalState {
     created: bool,
-    receive_buffer: VecDeque<u8>,
+    _receive_buffer: VecDeque<u8>,
 }
 
 lazy_static! {
