@@ -3,17 +3,17 @@
     unused_mut,
     unused_variables,
     unused_must_use,
-    non_camel_case_types,
+    non_camel_case_types
 )]
-use std::convert::TryInto;
 use bincode::Options;
+use std::convert::TryInto;
 use vpp_api_gen::interface::*;
 use vpp_api_gen::interface_types::*;
 use vpp_api_gen::ip_types::*;
 
 use vpp_api_transport::afunix;
-use vpp_api_transport::VppApiTransport;
 use vpp_api_transport::reqrecv::*;
+use vpp_api_transport::VppApiTransport;
 
 fn get_encoder() -> impl bincode::config::Options {
     bincode::DefaultOptions::new()
@@ -47,7 +47,7 @@ fn test_sw_interface_add_del_address() {
             prefix: AddressWithPrefix {
                 address: Address {
                     af: AddressFamily::ADDRESS_IP4,
-                    un: AddressUnion::new_Ip4Address([10,10,1,2]),
+                    un: AddressUnion::new_Ip4Address([10, 10, 1, 2]),
                 },
                 len: 24,
             },
@@ -75,7 +75,12 @@ fn test_sw_interface_set_flags() {
             client_index: t.get_client_index(),
             context: 0,
             sw_if_index: 0,
-            flags: vec![IfStatusFlags::IF_STATUS_API_FLAG_ADMIN_UP, IfStatusFlags::IF_STATUS_API_FLAG_LINK_UP].try_into().unwrap()
+            flags: vec![
+                IfStatusFlags::IF_STATUS_API_FLAG_ADMIN_UP,
+                IfStatusFlags::IF_STATUS_API_FLAG_LINK_UP,
+            ]
+            .try_into()
+            .unwrap(),
         },
         &mut *t,
         &SwInterfaceSetFlagsReply::get_message_name_and_crc(),

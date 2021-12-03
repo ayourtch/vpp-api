@@ -1,10 +1,18 @@
-#![allow(dead_code,unused_mut,unused_variables,unused_must_use, non_camel_case_types,unused_imports, unused_parens)]
+#![allow(
+    dead_code,
+    unused_mut,
+    unused_variables,
+    unused_must_use,
+    non_camel_case_types,
+    unused_imports,
+    unused_parens
+)]
 use generic_array::{ArrayLength, GenericArray};
+use serde::de::Error;
 use serde::{Deserialize, Serialize};
 use std::convert::TryFrom;
 use std::convert::TryInto;
 use std::fmt;
-use serde::de::Error;
 use typenum::{U10, U256, U32, U64};
 
 #[derive(Clone, Default)]
@@ -241,16 +249,16 @@ impl<'de> Deserialize<'de> for F64 {
 
 #[derive(Clone, Default, Deserialize)]
 #[serde(bound = "N: ArrayLength<T>, T: Deserialize<'de> + Default")]
-pub struct FixedSizeArray<T:Default+Debug, N: ArrayLength<T>>(pub GenericArray<T, N>);
+pub struct FixedSizeArray<T: Default + Debug, N: ArrayLength<T>>(pub GenericArray<T, N>);
 
-impl<T: Debug+Default, N: ArrayLength<T>> fmt::Debug for FixedSizeArray<T, N> {
+impl<T: Debug + Default, N: ArrayLength<T>> fmt::Debug for FixedSizeArray<T, N> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let v = &self.0;
         write!(f, "FixedSizeArray[{}]: [{:?}]", &N::to_u32(), &v)
     }
 }
 
-impl<T: Debug+Default+Clone, N: ArrayLength<T>> TryFrom<Vec<T>> for FixedSizeArray<T,N> {
+impl<T: Debug + Default + Clone, N: ArrayLength<T>> TryFrom<Vec<T>> for FixedSizeArray<T, N> {
     type Error = String;
 
     fn try_from(value: Vec<T>) -> Result<Self, Self::Error> {
@@ -273,7 +281,7 @@ impl<T: Debug+Default+Clone, N: ArrayLength<T>> TryFrom<Vec<T>> for FixedSizeArr
     }
 }
 
-impl<T: Serialize+Default+Debug, N: ArrayLength<T>> Serialize for FixedSizeArray<T, N> {
+impl<T: Serialize + Default + Debug, N: ArrayLength<T>> Serialize for FixedSizeArray<T, N> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
@@ -288,7 +296,6 @@ impl<T: Serialize+Default+Debug, N: ArrayLength<T>> Serialize for FixedSizeArray
         seq.end()
     }
 }
-
 
 // Copying Fixed Size String Deserialize for u8
 /* impl<'de,T: Deserialize<'de>+Default+Debug, N: ArrayLength<T>> Deserialize<'de> for FixedSizeArray<T,N> {
@@ -429,9 +436,10 @@ impl<T: Serialize+Default+Debug, N: ArrayLength<T>> Serialize for FixedSizeArray
 */
 #[derive(Copy, Clone, Default, Deserialize)]
 #[serde(bound = "T: Deserialize<'de> + Default")]
-pub struct SizedEnum<T, X>(T, PhantomData<X>); // This is the sized enum declaration, It's a unit struct 
+pub struct SizedEnum<T, X>(T, PhantomData<X>); // This is the sized enum declaration, It's a unit struct
 
-impl<T: Debug, X> fmt::Debug for SizedEnum<T, X> { // implement debug trait for sized enum 
+impl<T: Debug, X> fmt::Debug for SizedEnum<T, X> {
+    // implement debug trait for sized enum
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let v = &self.0;
         write!(f, "SizedEnum[{}]: {:?}", std::any::type_name::<X>(), &v)
@@ -580,37 +588,38 @@ impl<T: Clone + Debug + AsEnumFlag> TryFrom<Vec<T>> for EnumFlag<T> {
         for i in 0..value.len() {
             out.push(value[i].clone());
         }
-        Ok(EnumFlag(out))   
+        Ok(EnumFlag(out))
     }
 }
-impl <T: Clone+Debug+AsEnumFlag>Default for EnumFlag<T> {
-    fn default() -> Self { vec![].try_into().unwrap() }
+impl<T: Clone + Debug + AsEnumFlag> Default for EnumFlag<T> {
+    fn default() -> Self {
+        vec![].try_into().unwrap()
+    }
 }
-impl <T:Clone+Debug+AsEnumFlag> EnumFlag<T>{
+impl<T: Clone + Debug + AsEnumFlag> EnumFlag<T> {
     pub fn sum(&self) -> u32 {
-        let mut sum:u32 = 0;
-        for x in &self.0{
-            sum = sum + T::as_u32(x); // AsU8 and AsU32 trait needed for using T 
+        let mut sum: u32 = 0;
+        for x in &self.0 {
+            sum = sum + T::as_u32(x); // AsU8 and AsU32 trait needed for using T
         }
         sum
     }
 }
-impl <T:Clone+Debug+AsEnumFlag>Serialize for EnumFlag<T> {
+impl<T: Clone + Debug + AsEnumFlag> Serialize for EnumFlag<T> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
     {
-            let size: u32 = T::size_of_enum_flag();
-            match size{
-                32 => serializer.serialize_u32(self.sum()),
-                16 => serializer.serialize_u16(self.sum() as u16),
-                8 => serializer.serialize_u8(self.sum() as u8),
-                _ => panic!("EnumFlags do not support {} bit type flag",size)
-            }
-       
+        let size: u32 = T::size_of_enum_flag();
+        match size {
+            32 => serializer.serialize_u32(self.sum()),
+            16 => serializer.serialize_u16(self.sum() as u16),
+            8 => serializer.serialize_u8(self.sum() as u8),
+            _ => panic!("EnumFlags do not support {} bit type flag", size),
+        }
     }
 }
-impl<'de, T: Debug+Clone+AsEnumFlag+Deserialize<'de>> Deserialize<'de> for EnumFlag<T> {
+impl<'de, T: Debug + Clone + AsEnumFlag + Deserialize<'de>> Deserialize<'de> for EnumFlag<T> {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
         D: Deserializer<'de>,
@@ -621,98 +630,95 @@ impl<'de, T: Debug+Clone+AsEnumFlag+Deserialize<'de>> Deserialize<'de> for EnumF
         // let mut size = 0;
         impl<'de, T> Visitor<'de> for EnumFlagVisitor<T>
         where
-            T:Debug+Clone+AsEnumFlag,
+            T: Debug + Clone + AsEnumFlag,
         {
             type Value = EnumFlag<T>;
             fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
                 formatter.write_str("EnumFlag")
             }
 
-            fn visit_u32<E>(self, v: u32) -> Result<Self::Value, E> where
-                E: Error, {
-                    let mut res: Vec<T> = vec![];
-                    println!("{}",v);
-                    /* let number = u32::pow(2, v);
-                    let enum_d: T = AsU32::from_u32(number);
-                    res.push(enum_d);*/
-                    let felix = format!("{:032b}", v);
-                    let char_vec: Vec<char> = felix.chars().collect();
-                    for c in 0..char_vec.len() {
-                        if char_vec[c] == '1'{
-                            let size: u32 = char_vec.len() as u32-c as u32-1;
-                            let number = u32::pow(2, size);
-                            let enum_d = T::from_u32(number);
-                            res.push(enum_d);
-                        }
+            fn visit_u32<E>(self, v: u32) -> Result<Self::Value, E>
+            where
+                E: Error,
+            {
+                let mut res: Vec<T> = vec![];
+                println!("{}", v);
+                /* let number = u32::pow(2, v);
+                let enum_d: T = AsU32::from_u32(number);
+                res.push(enum_d);*/
+                let felix = format!("{:032b}", v);
+                let char_vec: Vec<char> = felix.chars().collect();
+                for c in 0..char_vec.len() {
+                    if char_vec[c] == '1' {
+                        let size: u32 = char_vec.len() as u32 - c as u32 - 1;
+                        let number = u32::pow(2, size);
+                        let enum_d = T::from_u32(number);
+                        res.push(enum_d);
                     }
-                    return Ok(EnumFlag::<T>(res));
-
+                }
+                return Ok(EnumFlag::<T>(res));
             }
-            fn visit_u16<E>(self, v: u16) -> Result<Self::Value, E> where
-                E: Error, {
-                    let mut res: Vec<T> = vec![];
-                    println!("{}",v);
-                    /* let number = u32::pow(2, v);
-                    let enum_d: T = AsU32::from_u32(number);
-                    res.push(enum_d);*/
-                    let felix = format!("{:016b}", v);
-                    let char_vec: Vec<char> = felix.chars().collect();
-                    for c in 0..char_vec.len() {
-                        if char_vec[c] == '1'{
-                            let size: u32 = char_vec.len() as u32-c as u32-1;
-                            let number = u32::pow(2, size);
-                            let enum_d = T::from_u32(number);
-                            res.push(enum_d);
-                        }
+            fn visit_u16<E>(self, v: u16) -> Result<Self::Value, E>
+            where
+                E: Error,
+            {
+                let mut res: Vec<T> = vec![];
+                println!("{}", v);
+                /* let number = u32::pow(2, v);
+                let enum_d: T = AsU32::from_u32(number);
+                res.push(enum_d);*/
+                let felix = format!("{:016b}", v);
+                let char_vec: Vec<char> = felix.chars().collect();
+                for c in 0..char_vec.len() {
+                    if char_vec[c] == '1' {
+                        let size: u32 = char_vec.len() as u32 - c as u32 - 1;
+                        let number = u32::pow(2, size);
+                        let enum_d = T::from_u32(number);
+                        res.push(enum_d);
                     }
-                    return Ok(EnumFlag::<T>(res));
-
+                }
+                return Ok(EnumFlag::<T>(res));
             }
-            fn visit_u8<E>(self, v: u8) -> Result<Self::Value, E> where
-                E: Error, {
-                    let mut res: Vec<T> = vec![];
-                    println!("{}",v);
-                    /* let number = u32::pow(2, v);
-                    let enum_d: T = AsU32::from_u32(number);
-                    res.push(enum_d);*/
-                    let felix = format!("{:08b}", v);
-                    let char_vec: Vec<char> = felix.chars().collect();
-                    for c in 0..char_vec.len() {
-                        if char_vec[c] == '1'{
-                            let size: u32 = char_vec.len() as u32-c as u32-1;
-                            let number = u32::pow(2, size);
-                            let enum_d = T::from_u32(number);
-                            res.push(enum_d);
-                        }
+            fn visit_u8<E>(self, v: u8) -> Result<Self::Value, E>
+            where
+                E: Error,
+            {
+                let mut res: Vec<T> = vec![];
+                println!("{}", v);
+                /* let number = u32::pow(2, v);
+                let enum_d: T = AsU32::from_u32(number);
+                res.push(enum_d);*/
+                let felix = format!("{:08b}", v);
+                let char_vec: Vec<char> = felix.chars().collect();
+                for c in 0..char_vec.len() {
+                    if char_vec[c] == '1' {
+                        let size: u32 = char_vec.len() as u32 - c as u32 - 1;
+                        let number = u32::pow(2, size);
+                        let enum_d = T::from_u32(number);
+                        res.push(enum_d);
                     }
-                    return Ok(EnumFlag::<T>(res));
-
+                }
+                return Ok(EnumFlag::<T>(res));
             }
         }
         let size: u32 = T::size_of_enum_flag();
-        match size{
+        match size {
             32 => {
-                return Ok(deserializer.deserialize_u32(
-                    EnumFlagVisitor {
-                        marker: PhantomData,
-                    },
-                )?);
-            },
+                return Ok(deserializer.deserialize_u32(EnumFlagVisitor {
+                    marker: PhantomData,
+                })?);
+            }
             16 => {
-                return Ok(deserializer.deserialize_u16(
-                    EnumFlagVisitor {
-                        marker: PhantomData,
-                    },
-                )?);
-            },
+                return Ok(deserializer.deserialize_u16(EnumFlagVisitor {
+                    marker: PhantomData,
+                })?);
+            }
             8 => {
-                return Ok(deserializer.deserialize_u8(
-                    EnumFlagVisitor {
-                        marker: PhantomData,
-                    },
-                )?);
-            },
-            _ => panic!("Deserializing not supported for {} bit set flags", size)
+                return Ok(deserializer.deserialize_u8(EnumFlagVisitor {
+                    marker: PhantomData,
+                })?);
+            }
+            _ => panic!("Deserializing not supported for {} bit set flags", size),
         }
     }
 }
@@ -738,10 +744,7 @@ pub struct PuntUnion {
 */
 
 #[derive(Clone, Default, Debug, Serialize, Deserialize)]
-pub struct TunnelFlags {
-}
+pub struct TunnelFlags {}
 
 #[derive(Clone, Default, Debug, Serialize, Deserialize)]
-pub struct IpFlowHashConfig {
-}
-
+pub struct IpFlowHashConfig {}

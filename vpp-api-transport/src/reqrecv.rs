@@ -6,7 +6,7 @@
     non_camel_case_types,
     unused_imports
 )]
-use vpp_api_message::VppApiMessage;
+use crate::VppApiTransport;
 use bincode::Options;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use std::collections::HashMap;
@@ -14,8 +14,7 @@ use std::convert::TryInto;
 use std::io::{Read, Write};
 use std::ops::Add;
 use std::time::{Duration, SystemTime};
-use crate::VppApiTransport;
-
+use vpp_api_message::VppApiMessage;
 
 fn get_encoder() -> impl bincode::config::Options {
     bincode::DefaultOptions::new()
