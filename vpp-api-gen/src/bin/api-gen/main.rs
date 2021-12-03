@@ -69,6 +69,10 @@ pub struct Opts {
     #[clap(long, default_value = "someVPP")]
     pub package_name: String,
 
+    /// Package name for the generated package
+    #[clap(long, default_value = "../")]
+    pub package_path: String,
+
     /// Print message names
     #[clap(long)]
     pub print_message_names: bool,
@@ -171,7 +175,12 @@ fn main() {
                 // println!("{}", &data);
                 let mut api_definition: Vec<(String, String)> = vec![];
                 if opts.generate_code {
-                    gen_code_file(&desc, &opts.in_file, &mut api_definition);
+                    gen_code_file(
+                        &desc,
+                        &opts.package_path,
+                        &opts.in_file,
+                        &mut api_definition,
+                    );
                 }
             }
             OptParseType::ApiType => {
@@ -208,6 +217,7 @@ fn main() {
                                 .trim_end_matches("json"),
                             &mut api_definition,
                             "test",
+                            &opts.package_path,
                         );
                     }
                 }
@@ -227,12 +237,18 @@ fn main() {
                         merge_sort(import_collection.clone(), 0, import_collection.len());
                     for x in import_collection {
                         println!("{}-{}", x.name, x.file.imports.len());
-                        gen_code(&x.file, &x.name, &mut api_definition, "test");
+                        gen_code(
+                            &x.file,
+                            &x.name,
+                            &mut api_definition,
+                            "test",
+                            &opts.package_path,
+                        );
                     }
                     // Searching for non types
                     for (name, f) in api_files.clone() {
                         if !name.ends_with("_types.api.json") {
-                            gen_code(&f, &name, &mut api_definition, "test");
+                            gen_code(&f, &name, &mut api_definition, "test", &opts.package_path);
                         }
                     }
                 }
@@ -240,22 +256,30 @@ fn main() {
                     // println!("{}", opts.package_name);
                     let mut api_definition: Vec<(String, String)> = vec![];
                     println!("Do whatever you need to hear with creating package");
-                    fs::create_dir_all(&format!(".././{}", opts.package_name))
+                    fs::create_dir_all(&format!("{}/{}", &opts.package_path, opts.package_name))
                         .expect("Error creating package dir");
-                    fs::create_dir_all(&format!(".././{}/src", opts.package_name))
+                    fs::create_dir_all(&format!("{}/{}/src", opts.package_path, opts.package_name))
                         .expect("Error creating package/src dir");
-                    fs::create_dir_all(&format!(".././{}/tests", opts.package_name))
-                        .expect("Error creating package/tests dir");
-                    fs::create_dir_all(&format!(".././{}/examples", opts.package_name))
-                        .expect("Error creating package/examples dir");
-                    generate_lib_file(&api_files, &opts.package_name);
-                    create_cargo_toml(&opts.package_name);
+                    fs::create_dir_all(&format!(
+                        "{}/{}/tests",
+                        opts.package_path, opts.package_name
+                    ))
+                    .expect("Error creating package/tests dir");
+                    fs::create_dir_all(&format!(
+                        "{}/{}/examples",
+                        opts.package_path, opts.package_name
+                    ))
+                    .expect("Error creating package/examples dir");
+                    generate_lib_file(&opts.package_path, &api_files, &opts.package_name);
+                    create_cargo_toml(&opts.package_path, &opts.package_name);
                     copy_file_with_fixup(
+                        &opts.package_path,
                         "./code-templates/tests/interface-test.rs",
                         &opts.package_name,
                         "tests/interface_test.rs",
                     );
                     copy_file_with_fixup(
+                        &opts.package_path,
                         "./code-templates/examples/progressive-vpp.rs",
                         &opts.package_name,
                         "examples/progressive-vpp.rs",
@@ -273,11 +297,23 @@ fn main() {
                     import_collection =
                         merge_sort(import_collection.clone(), 0, import_collection.len());
                     for x in import_collection {
-                        gen_code(&x.file, &x.name, &mut api_definition, &opts.package_name);
+                        gen_code(
+                            &x.file,
+                            &x.name,
+                            &mut api_definition,
+                            &opts.package_name,
+                            &opts.package_path,
+                        );
                     }
                     for (name, f) in api_files.clone() {
                         if !name.ends_with("_types.api.json") {
-                            gen_code(&f, &name, &mut api_definition, &opts.package_name);
+                            gen_code(
+                                &f,
+                                &name,
+                                &mut api_definition,
+                                &opts.package_name,
+                                &opts.package_path,
+                            );
                         }
                     }
                 }
