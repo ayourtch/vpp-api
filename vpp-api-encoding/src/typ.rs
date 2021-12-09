@@ -8,6 +8,7 @@
     unused_parens
 )]
 use generic_array::{ArrayLength, GenericArray};
+use log::trace;
 use serde::de::Error;
 use serde::{Deserialize, Serialize};
 use std::convert::TryFrom;
@@ -642,7 +643,7 @@ impl<'de, T: Debug + Clone + AsEnumFlag + Deserialize<'de>> Deserialize<'de> for
                 E: Error,
             {
                 let mut res: Vec<T> = vec![];
-                println!("{}", v);
+                trace!("{}", v);
                 /* let number = u32::pow(2, v);
                 let enum_d: T = AsU32::from_u32(number);
                 res.push(enum_d);*/
@@ -663,7 +664,7 @@ impl<'de, T: Debug + Clone + AsEnumFlag + Deserialize<'de>> Deserialize<'de> for
                 E: Error,
             {
                 let mut res: Vec<T> = vec![];
-                println!("{}", v);
+                trace!("{}", v);
                 /* let number = u32::pow(2, v);
                 let enum_d: T = AsU32::from_u32(number);
                 res.push(enum_d);*/
@@ -684,7 +685,7 @@ impl<'de, T: Debug + Clone + AsEnumFlag + Deserialize<'de>> Deserialize<'de> for
                 E: Error,
             {
                 let mut res: Vec<T> = vec![];
-                println!("{}", v);
+                trace!("{}", v);
                 /* let number = u32::pow(2, v);
                 let enum_d: T = AsU32::from_u32(number);
                 res.push(enum_d);*/

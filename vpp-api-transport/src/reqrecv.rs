@@ -8,6 +8,7 @@
 )]
 use crate::VppApiTransport;
 use bincode::Options;
+use log::{debug, trace};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use std::collections::HashMap;
 use std::convert::TryInto;
@@ -80,13 +81,33 @@ pub fn send_recv_msg<'a, T: Serialize + Deserialize<'a>, TR: Serialize + Deseria
     let enc = get_encoder();
     let msg = enc.serialize(&m).unwrap();
 
+    trace!(
+        "About to send msg: {} id: {} reply_id: {} msg:{:x?}",
+        name,
+        &vl_msg_id,
+        &reply_vl_msg_id,
+        &msg,
+    );
+
     v.extend_from_slice(&msg);
-    t.write(&v);
+    match t.write(&v) {
+        Ok(i) => {
+            if i < v.len() {
+                panic!("Short write.  wrote {}, of {} bytes", &i, v.len());
+            } else {
+                trace!("Wrote {} bytes to socket", &i);
+            }
+        }
+        Err(e) => {
+            panic!("error writing message for {}  {}", name, e);
+        }
+    }
     loop {
+        trace!("msg: {} waiting for reply", name);
         let res = t.read_one_msg_id_and_msg();
         // dbg!(&res);
         if let Ok((msg_id, data)) = res {
-            println!("id: {} data: {:x?}", msg_id, &data);
+            trace!("msg: {} id: {} data: {:x?}", name, msg_id, &data);
             if msg_id == reply_vl_msg_id {
                 let res = get_encoder()
                     .allow_trailing_bytes()
@@ -130,28 +151,36 @@ pub fn send_bulk_msg<
     let mut out: Vec<u8> = vec![];
     t.write(&v); // Dump message
     t.write(&c); // Ping message
-    dbg!(control_ping_id_reply);
+                 // dbg!(control_ping_id_reply);
     let mut out: Vec<TR> = vec![];
     let mut count = 0;
     loop {
-        println!("Reached loop");
+        trace!("Reached loop");
         let res = t.read_one_msg_id_and_msg();
         if let Ok((msg_id, data)) = res {
-            println!("id: {} data: {:x?}", msg_id, &data);
-            println!("{}", data.len());
+            trace!(
+                "msg: {} id: {} ctrl_id: {} reply_id: {} data: {:x?}",
+                name,
+                msg_id,
+                &control_ping_id_reply,
+                &reply_vl_msg_id,
+                &data
+            );
+            trace!("data.len: {}", data.len());
             if msg_id == control_ping_id_reply {
+                trace!("finished. returning {:?}", out);
                 return out;
             }
             if msg_id == reply_vl_msg_id {
-                println!("Received the intended message");
+                trace!("Received the intended message; attempt to deserialize");
                 let res = get_encoder()
                     .allow_trailing_bytes()
                     .deserialize::<TR>(&data)
                     .unwrap();
-                println!("Next thing will be the reply");
+                trace!("Next thing will be the reply");
                 out.extend_from_slice(&[res]);
             } else {
-                println!("Checking the next message for the reply id");
+                trace!("Checking the next message for the reply id");
             }
         } else {
             panic!("Result is an error: {:?}", &res);
