@@ -9,8 +9,10 @@ pub mod shmem;
 pub mod reqrecv;
 use bincode;
 use bincode::Options;
+use lazy_static::__Deref;
 use serde::{Deserialize, Serialize};
 use std::io::{Read, Write};
+use std::ops::DerefMut;
 
 #[derive(Serialize, Deserialize, Debug)]
 struct SockMsgHeader {
@@ -244,6 +246,44 @@ pub trait VppApiTransport: Read + Write {
         let ret = self.read_one_msg()?;
         let msg_id: u16 = ((ret[0] as u16) << 8) + (ret[1] as u16);
         Ok((msg_id, ret[2..].to_vec()))
+    }
+}
+
+impl<T> VppApiTransport for Box<T>
+where
+    T: VppApiTransport,
+{
+    fn connect(
+        &mut self,
+        name: &str,
+        chroot_prefix: Option<&str>,
+        rx_qlen: i32,
+    ) -> std::io::Result<()> {
+        self.deref_mut().connect(name, chroot_prefix, rx_qlen)
+    }
+
+    fn disconnect(&mut self) {
+        self.deref_mut().disconnect()
+    }
+
+    fn set_nonblocking(&mut self, nonblocking: bool) -> std::io::Result<()> {
+        self.deref_mut().set_nonblocking(nonblocking)
+    }
+
+    fn get_msg_index(&mut self, name: &str) -> Option<u16> {
+        self.deref_mut().get_msg_index(name)
+    }
+
+    fn get_table_max_index(&mut self) -> u16 {
+        self.deref_mut().get_table_max_index()
+    }
+
+    fn get_client_index(&self) -> u32 {
+        self.deref().get_client_index()
+    }
+
+    fn dump(&self) {
+        self.deref().dump()
     }
 }
 
