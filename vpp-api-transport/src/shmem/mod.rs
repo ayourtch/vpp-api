@@ -1,4 +1,5 @@
 mod shmem_bindgen;
+use crate::error::Result;
 use bincode;
 use bincode::Options;
 use serde::{Deserialize, Serialize};
@@ -130,12 +131,7 @@ impl std::io::Write for Transport {
 }
 
 impl VppApiTransport for Transport {
-    fn connect(
-        &mut self,
-        name: &str,
-        chroot_prefix: Option<&str>,
-        rx_qlen: i32,
-    ) -> std::io::Result<()> {
+    fn connect(&mut self, name: &str, chroot_prefix: Option<&str>, rx_qlen: i32) -> Result<()> {
         let name_c = CString::new(name).unwrap();
         let chroot_prefix_c = chroot_prefix.map(|x| CString::new(x).unwrap());
 
@@ -151,7 +147,8 @@ impl VppApiTransport for Transport {
             return Err(std::io::Error::new(
                 std::io::ErrorKind::Other,
                 format!("vac_connect returned {}", err),
-            ));
+            )
+            .into());
         }
         self.connected = true;
         Ok(())
@@ -162,7 +159,7 @@ impl VppApiTransport for Transport {
             self.connected = false;
         }
     }
-    fn set_nonblocking(&mut self, nonblocking: bool) -> std::io::Result<()> {
+    fn set_nonblocking(&mut self, nonblocking: bool) -> Result<()> {
         self.nonblocking = nonblocking;
         Ok(())
     }
