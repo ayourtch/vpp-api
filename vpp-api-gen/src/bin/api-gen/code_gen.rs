@@ -88,7 +88,7 @@ pub fn create_cargo_toml(package_path: &str, packageName: &str) {
     code.push_str("[dependencies] \n");
     code.push_str("serde = { version = \"1.0\", features = [\"derive\"] } \n");
     code.push_str("serde_json = \"1.0\" \n");
-    code.push_str("clap = \"3.0.0-beta.2\" \n");
+    code.push_str("clap = { version = \"3.0.0\", features = [\"derive\"] } \n");
     code.push_str("strum = \"*\" \n");
     code.push_str("strum_macros = \"*\" \n");
     code.push_str("log = \"*\" \n");
