@@ -3,6 +3,7 @@ use bincode::Options;
 use serde::{Deserialize, Serialize};
 use std::os::unix::net::UnixStream;
 
+use crate::error::Result;
 use crate::VppApiTransport;
 use std::collections::HashMap;
 
@@ -16,7 +17,7 @@ use big_array::BigArray;
 #[derive(Debug, Default)]
 struct GlobalState {
     created: bool,
-    receive_buffer: VecDeque<u8>,
+    _receive_buffer: VecDeque<u8>,
 }
 
 lazy_static! {
@@ -128,12 +129,7 @@ pub struct MsgSockClntCreateReplyEntry {
 }
 
 impl VppApiTransport for Transport {
-    fn connect(
-        &mut self,
-        name: &str,
-        _chroot_prefix: Option<&str>,
-        _rx_qlen: i32,
-    ) -> std::io::Result<()> {
+    fn connect(&mut self, name: &str, _chroot_prefix: Option<&str>, _rx_qlen: i32) -> Result<()> {
         use std::io::Write;
 
         let s = UnixStream::connect(&self.sock_path)?;
@@ -182,14 +178,16 @@ impl VppApiTransport for Transport {
             self.connected = false;
         }
     }
-    fn set_nonblocking(&mut self, nonblocking: bool) -> std::io::Result<()> {
+    fn set_nonblocking(&mut self, nonblocking: bool) -> Result<()> {
         if let Some(ref mut s) = self.sock {
-            s.set_nonblocking(nonblocking)
+            s.set_nonblocking(nonblocking)?;
+            Ok(())
         } else {
             Err(std::io::Error::new(
                 std::io::ErrorKind::NotConnected,
                 "trying to set unconnected socket non-blocking",
-            ))
+            )
+            .into())
         }
     }
 

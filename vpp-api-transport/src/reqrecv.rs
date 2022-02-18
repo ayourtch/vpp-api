@@ -6,8 +6,10 @@
     non_camel_case_types,
     unused_imports
 )]
+use super::error::Result;
 use crate::VppApiTransport;
 use bincode::Options;
+use log::{debug, error, trace};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use std::collections::HashMap;
 use std::convert::TryInto;
@@ -43,13 +45,56 @@ pub fn send_recv_one<
 >(
     m: &T,
     t: &mut dyn VppApiTransport,
-) -> TR {
-    send_recv_msg(
-        &T::get_message_name_and_crc(),
-        m,
-        t,
-        &TR::get_message_name_and_crc(),
-    )
+) -> Result<TR> {
+    let name = &T::get_message_name_and_crc();
+    let reply_name = &TR::get_message_name_and_crc();
+    let vl_msg_id = t.get_msg_index(name).unwrap();
+    let reply_vl_msg_id = t.get_msg_index(reply_name).unwrap();
+    let enc = get_encoder();
+    let mut v = enc.serialize(&vl_msg_id)?;
+    let enc = get_encoder();
+    let msg = enc.serialize(&m)?;
+
+    trace!(
+        "About to send msg: {} id: {} reply_id: {} msg:{:x?}",
+        name,
+        &vl_msg_id,
+        &reply_vl_msg_id,
+        &msg,
+    );
+
+    v.extend_from_slice(&msg);
+    match t.write(&v) {
+        Ok(i) => {
+            if i < v.len() {
+                return Err(format!("Short write.  wrote {}, of {} bytes", &i, v.len()).into());
+            } else {
+                trace!("Wrote {} bytes to socket", &i);
+            }
+        }
+        Err(e) => {
+            error!("error writing message for {}  {}", name, e);
+            return Err(e.into());
+        }
+    }
+    loop {
+        trace!("msg: {} waiting for reply", name);
+        match t.read_one_msg_id_and_msg() {
+            Ok((msg_id, data)) => {
+                trace!("msg: {} id: {} data: {:x?}", name, msg_id, &data);
+                if msg_id == reply_vl_msg_id {
+                    let res = get_encoder()
+                        .allow_trailing_bytes()
+                        .deserialize::<TR>(&data)?;
+                    return Ok(res);
+                }
+            }
+            Err(e) => {
+                error!("error from vpp: {:?}", &e);
+                return Err(e.into());
+            }
+        }
+    }
 }
 pub fn send_recv_many<
     'a,
@@ -58,13 +103,67 @@ pub fn send_recv_many<
 >(
     m: &T,
     t: &mut dyn VppApiTransport,
-) -> Vec<TR> {
-    send_bulk_msg(
-        &T::get_message_name_and_crc(),
-        m,
-        t,
-        &TR::get_message_name_and_crc(),
-    )
+) -> Result<Vec<TR>> {
+    let name = &T::get_message_name_and_crc();
+    let reply_name = &TR::get_message_name_and_crc();
+    let control_ping_id = t.get_msg_index("control_ping_51077d14").unwrap();
+    let control_ping_id_reply = t.get_msg_index("control_ping_reply_f6b0b8ca").unwrap();
+    let vl_msg_id = t.get_msg_index(name).unwrap();
+    let reply_vl_msg_id = t.get_msg_index(reply_name).unwrap();
+    let enc = get_encoder();
+    let mut v = enc.serialize(&vl_msg_id)?;
+    let enc = get_encoder();
+    let msg = enc.serialize(&m)?;
+    let control_ping = ControlPing {
+        client_index: t.get_client_index(),
+        context: 0,
+    };
+    let enc = get_encoder();
+    let mut c = enc.serialize(&control_ping_id)?;
+    let enc = get_encoder();
+    let control_ping_message = enc.serialize(&control_ping)?;
+    c.extend_from_slice(&control_ping_message);
+    v.extend_from_slice(&msg);
+    let mut out: Vec<u8> = vec![];
+    t.write(&v); // Dump message
+    t.write(&c); // Ping message
+                 // dbg!(control_ping_id_reply);
+    let mut out: Vec<TR> = vec![];
+    let mut count = 0;
+    loop {
+        trace!("Reached loop");
+        match t.read_one_msg_id_and_msg() {
+            Ok((msg_id, data)) => {
+                trace!(
+                    "msg: {} id: {} ctrl_id: {} reply_id: {} data: {:x?}",
+                    name,
+                    msg_id,
+                    &control_ping_id_reply,
+                    &reply_vl_msg_id,
+                    &data
+                );
+                trace!("data.len: {}", data.len());
+                if msg_id == control_ping_id_reply {
+                    trace!("finished. returning {:?}", out);
+                    return Ok(out);
+                }
+                if msg_id == reply_vl_msg_id {
+                    trace!("Received the intended message; attempt to deserialize");
+                    let res = get_encoder()
+                        .allow_trailing_bytes()
+                        .deserialize::<TR>(&data)?;
+                    trace!("Next thing will be the reply");
+                    out.extend_from_slice(&[res]);
+                } else {
+                    trace!("Checking the next message for the reply id");
+                }
+            }
+            Err(e) => {
+                error!("error from vpp: {:?}", &e);
+                return Err(e.into());
+            }
+        }
+    }
 }
 
 pub fn send_recv_msg<'a, T: Serialize + Deserialize<'a>, TR: Serialize + DeserializeOwned>(
@@ -80,13 +179,33 @@ pub fn send_recv_msg<'a, T: Serialize + Deserialize<'a>, TR: Serialize + Deseria
     let enc = get_encoder();
     let msg = enc.serialize(&m).unwrap();
 
+    trace!(
+        "About to send msg: {} id: {} reply_id: {} msg:{:x?}",
+        name,
+        &vl_msg_id,
+        &reply_vl_msg_id,
+        &msg,
+    );
+
     v.extend_from_slice(&msg);
-    t.write(&v);
+    match t.write(&v) {
+        Ok(i) => {
+            if i < v.len() {
+                panic!("Short write.  wrote {}, of {} bytes", &i, v.len());
+            } else {
+                trace!("Wrote {} bytes to socket", &i);
+            }
+        }
+        Err(e) => {
+            panic!("error writing message for {}  {}", name, e);
+        }
+    }
     loop {
+        trace!("msg: {} waiting for reply", name);
         let res = t.read_one_msg_id_and_msg();
         // dbg!(&res);
         if let Ok((msg_id, data)) = res {
-            println!("id: {} data: {:x?}", msg_id, &data);
+            trace!("msg: {} id: {} data: {:x?}", name, msg_id, &data);
             if msg_id == reply_vl_msg_id {
                 let res = get_encoder()
                     .allow_trailing_bytes()
@@ -130,28 +249,36 @@ pub fn send_bulk_msg<
     let mut out: Vec<u8> = vec![];
     t.write(&v); // Dump message
     t.write(&c); // Ping message
-    dbg!(control_ping_id_reply);
+                 // dbg!(control_ping_id_reply);
     let mut out: Vec<TR> = vec![];
     let mut count = 0;
     loop {
-        println!("Reached loop");
+        trace!("Reached loop");
         let res = t.read_one_msg_id_and_msg();
         if let Ok((msg_id, data)) = res {
-            println!("id: {} data: {:x?}", msg_id, &data);
-            println!("{}", data.len());
+            trace!(
+                "msg: {} id: {} ctrl_id: {} reply_id: {} data: {:x?}",
+                name,
+                msg_id,
+                &control_ping_id_reply,
+                &reply_vl_msg_id,
+                &data
+            );
+            trace!("data.len: {}", data.len());
             if msg_id == control_ping_id_reply {
+                trace!("finished. returning {:?}", out);
                 return out;
             }
             if msg_id == reply_vl_msg_id {
-                println!("Received the intended message");
+                trace!("Received the intended message; attempt to deserialize");
                 let res = get_encoder()
                     .allow_trailing_bytes()
                     .deserialize::<TR>(&data)
                     .unwrap();
-                println!("Next thing will be the reply");
+                trace!("Next thing will be the reply");
                 out.extend_from_slice(&[res]);
             } else {
-                println!("Checking the next message for the reply id");
+                trace!("Checking the next message for the reply id");
             }
         } else {
             panic!("Result is an error: {:?}", &res);

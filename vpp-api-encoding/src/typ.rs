@@ -8,11 +8,13 @@
     unused_parens
 )]
 use generic_array::{ArrayLength, GenericArray};
+use log::trace;
 use serde::de::Error;
 use serde::{Deserialize, Serialize};
 use std::convert::TryFrom;
 use std::convert::TryInto;
 use std::fmt;
+use std::str::Utf8Error;
 use typenum::{U10, U256, U32, U64};
 
 #[derive(Clone, Default)]
@@ -49,6 +51,34 @@ impl<N: ArrayLength<u8>> TryFrom<&str> for FixedSizeString<N> {
 
             Ok(FixedSizeString(out))
         }
+    }
+}
+
+impl<N> FixedSizeString<N>
+where
+    N: ArrayLength<u8>,
+{
+    pub fn equals_str(&self, compare_to: &str) -> bool {
+        let v = &self.0;
+        if let Ok(val_str) = std::str::from_utf8(v) {
+            if compare_to == val_str.trim_end_matches("\u{0}") {
+                return true;
+            }
+        }
+        false
+    }
+}
+
+impl<N> TryFrom<FixedSizeString<N>> for String
+where
+    N: ArrayLength<u8>,
+{
+    type Error = Utf8Error;
+
+    fn try_from(value: FixedSizeString<N>) -> Result<Self, Self::Error> {
+        let v = &value.0;
+        let val_str = std::str::from_utf8(v)?;
+        Ok(val_str.trim_end_matches("\u{0}").to_string())
     }
 }
 
@@ -642,7 +672,7 @@ impl<'de, T: Debug + Clone + AsEnumFlag + Deserialize<'de>> Deserialize<'de> for
                 E: Error,
             {
                 let mut res: Vec<T> = vec![];
-                println!("{}", v);
+                trace!("{}", v);
                 /* let number = u32::pow(2, v);
                 let enum_d: T = AsU32::from_u32(number);
                 res.push(enum_d);*/
@@ -663,7 +693,7 @@ impl<'de, T: Debug + Clone + AsEnumFlag + Deserialize<'de>> Deserialize<'de> for
                 E: Error,
             {
                 let mut res: Vec<T> = vec![];
-                println!("{}", v);
+                trace!("{}", v);
                 /* let number = u32::pow(2, v);
                 let enum_d: T = AsU32::from_u32(number);
                 res.push(enum_d);*/
@@ -684,7 +714,7 @@ impl<'de, T: Debug + Clone + AsEnumFlag + Deserialize<'de>> Deserialize<'de> for
                 E: Error,
             {
                 let mut res: Vec<T> = vec![];
-                println!("{}", v);
+                trace!("{}", v);
                 /* let number = u32::pow(2, v);
                 let enum_d: T = AsU32::from_u32(number);
                 res.push(enum_d);*/

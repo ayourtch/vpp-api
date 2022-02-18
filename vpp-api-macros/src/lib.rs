@@ -143,7 +143,7 @@ pub fn derive_unionident(input: proc_macro::TokenStream) -> proc_macro::TokenStr
         }
         let function_name_new = format!("new_{}", ident.to_string());
         let function_name_new_ident = syn::Ident::new(&function_name_new, name.span());
-        let function_name_set_ident =
+        let _function_name_set_ident =
             syn::Ident::new(&format!("set_{}", ident.to_string()), name.span());
         let function_name_get_ident =
             syn::Ident::new(&format!("get_{}", ident.to_string()), name.span());

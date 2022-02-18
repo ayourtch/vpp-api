@@ -6,11 +6,16 @@ mod macros;
 pub mod afunix;
 pub mod shmem;
 // Interactions. May be evicted later on...
+pub mod error;
 pub mod reqrecv;
+use crate::error::Error;
+use crate::error::Result;
 use bincode;
 use bincode::Options;
+use lazy_static::__Deref;
 use serde::{Deserialize, Serialize};
 use std::io::{Read, Write};
+use std::ops::DerefMut;
 
 #[derive(Serialize, Deserialize, Debug)]
 struct SockMsgHeader {
@@ -49,7 +54,7 @@ enum VarLen32 {
 use serde::ser::{SerializeTuple, Serializer};
 
 impl Serialize for VarLen32 {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
     where
         S: Serializer,
     {
@@ -78,7 +83,7 @@ use serde::de::{Deserializer, SeqAccess, Visitor};
 use std::fmt;
 
 impl<'de> Deserialize<'de> for VarLen32 {
-    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
     where
         D: Deserializer<'de>,
     {
@@ -89,7 +94,7 @@ impl<'de> Deserialize<'de> for VarLen32 {
                 formatter.write_str("VarLen32")
             }
 
-            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            fn visit_seq<A>(self, mut seq: A) -> std::result::Result<Self::Value, A::Error>
             where
                 A: SeqAccess<'de>,
             {
@@ -130,14 +135,9 @@ struct RawCliInbandReply {
 }
 
 pub trait VppApiTransport: Read + Write {
-    fn connect(
-        &mut self,
-        name: &str,
-        chroot_prefix: Option<&str>,
-        rx_qlen: i32,
-    ) -> std::io::Result<()>;
+    fn connect(&mut self, name: &str, chroot_prefix: Option<&str>, rx_qlen: i32) -> Result<()>;
     fn disconnect(&mut self);
-    fn set_nonblocking(&mut self, nonblocking: bool) -> std::io::Result<()>;
+    fn set_nonblocking(&mut self, nonblocking: bool) -> Result<()>;
 
     fn get_msg_index(&mut self, name: &str) -> Option<u16>;
     fn get_table_max_index(&mut self) -> u16;
@@ -161,12 +161,12 @@ pub trait VppApiTransport: Read + Write {
         Ok(context)
     }
 
-    fn skip_to_control_ping_reply(&mut self, context: u32) -> std::io::Result<()> {
+    fn skip_to_control_ping_reply(&mut self, _context: u32) -> Result<()> {
         let control_ping_reply_id = self.get_msg_index("control_ping_reply_f6b0b8ca").unwrap();
         loop {
             match self.read_one_msg_id_and_msg() {
                 Err(e) => return Err(e),
-                Ok((msg_id, data)) => {
+                Ok((msg_id, _data)) => {
                     if msg_id == control_ping_reply_id {
                         // FIXME: deserialize and match the context
                         return Ok(());
@@ -176,7 +176,7 @@ pub trait VppApiTransport: Read + Write {
         }
     }
 
-    fn run_cli_inband(&mut self, cmd: &str) -> std::io::Result<String> {
+    fn run_cli_inband(&mut self, cmd: &str) -> Result<String> {
         let cli_inband_id = self.get_msg_index("cli_inband_f8377302").unwrap();
         let cli_inband_reply_id = self.get_msg_index("cli_inband_reply_05879051").unwrap();
 
@@ -193,10 +193,9 @@ pub trait VppApiTransport: Read + Write {
 
         loop {
             match self.read_one_msg_id_and_msg() {
+                Err(Error::IoError(e)) if e.kind() == std::io::ErrorKind::WouldBlock => continue,
                 Err(e) => {
-                    if e.kind() != std::io::ErrorKind::WouldBlock {
-                        return Err(e);
-                    }
+                    return Err(e);
                 }
                 Ok((msg_id, data)) => {
                     if msg_id == cli_inband_reply_id {
@@ -216,7 +215,7 @@ pub trait VppApiTransport: Read + Write {
 
     fn dump(&self);
 
-    fn read_one_msg_into(&mut self, data: &mut Vec<u8>) -> std::io::Result<()> {
+    fn read_one_msg_into(&mut self, data: &mut Vec<u8>) -> Result<()> {
         let mut header_buf = [0; 16];
 
         self.read(&mut header_buf)?;
@@ -224,26 +223,67 @@ pub trait VppApiTransport: Read + Write {
 
         let target_size = hdr.msglen as usize;
 
+        // if target_size == 0 {
+        //     let e = format!("got 0 sized header back: {:?} {:x?}", hdr, &header_buf);
+        //     return Err(e.into());
+        // }
+
         data.resize(target_size, 0);
         let mut got = 0;
         while got < target_size {
-            let n = self.read(&mut data[got..target_size]).unwrap();
+            let n = self.read(&mut data[got..target_size])?;
             // println!("Got: {}, n: {}, target_size: {}", got, n, target_size);
             got = got + n;
         }
         Ok(())
     }
 
-    fn read_one_msg(&mut self) -> std::io::Result<Vec<u8>> {
+    fn read_one_msg(&mut self) -> Result<Vec<u8>> {
         let mut out: Vec<u8> = vec![];
         self.read_one_msg_into(&mut out)?;
         Ok(out)
     }
 
-    fn read_one_msg_id_and_msg(&mut self) -> std::io::Result<(u16, Vec<u8>)> {
+    fn read_one_msg_id_and_msg(&mut self) -> Result<(u16, Vec<u8>)> {
         let ret = self.read_one_msg()?;
+        if ret.len() < 3 {
+            return Err(format!("short read message len: {}  {:x?}", ret.len(), ret).into());
+        }
         let msg_id: u16 = ((ret[0] as u16) << 8) + (ret[1] as u16);
         Ok((msg_id, ret[2..].to_vec()))
+    }
+}
+
+impl<T> VppApiTransport for Box<T>
+where
+    T: VppApiTransport,
+{
+    fn connect(&mut self, name: &str, chroot_prefix: Option<&str>, rx_qlen: i32) -> Result<()> {
+        self.deref_mut().connect(name, chroot_prefix, rx_qlen)
+    }
+
+    fn disconnect(&mut self) {
+        self.deref_mut().disconnect()
+    }
+
+    fn set_nonblocking(&mut self, nonblocking: bool) -> Result<()> {
+        self.deref_mut().set_nonblocking(nonblocking)
+    }
+
+    fn get_msg_index(&mut self, name: &str) -> Option<u16> {
+        self.deref_mut().get_msg_index(name)
+    }
+
+    fn get_table_max_index(&mut self) -> u16 {
+        self.deref_mut().get_table_max_index()
+    }
+
+    fn get_client_index(&self) -> u32 {
+        self.deref().get_client_index()
+    }
+
+    fn dump(&self) {
+        self.deref().dump()
     }
 }
 
