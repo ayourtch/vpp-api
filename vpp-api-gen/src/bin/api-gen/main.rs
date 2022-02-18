@@ -272,15 +272,17 @@ fn main() {
                     .expect("Error creating package/examples dir");
                     generate_lib_file(&opts.package_path, &api_files, &opts.package_name);
                     create_cargo_toml(&opts.package_path, &opts.package_name);
+                    let crate_dir = env!("CARGO_MANIFEST_DIR");
+                    eprintln!("package path: {}", &crate_dir);
                     copy_file_with_fixup(
                         &opts.package_path,
-                        "./code-templates/tests/interface-test.rs",
+                        &format!("{}/code-templates/tests/interface-test.rs", crate_dir),
                         &opts.package_name,
                         "tests/interface_test.rs",
                     );
                     copy_file_with_fixup(
                         &opts.package_path,
-                        "./code-templates/examples/progressive-vpp.rs",
+                        &format!("{}/code-templates/examples/progressive-vpp.rs", crate_dir),
                         &opts.package_name,
                         "examples/progressive-vpp.rs",
                     );
