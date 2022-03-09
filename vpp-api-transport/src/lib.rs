@@ -13,7 +13,10 @@ use crate::error::Result;
 use bincode;
 use bincode::Options;
 use lazy_static::__Deref;
+use log::debug;
+use log::warn;
 use serde::{Deserialize, Serialize};
+use std::convert::TryInto;
 use std::io::{Read, Write};
 use std::ops::DerefMut;
 
@@ -218,24 +221,31 @@ pub trait VppApiTransport: Read + Write {
     fn read_one_msg_into(&mut self, data: &mut Vec<u8>) -> Result<()> {
         let mut header_buf = [0; 16];
 
-        self.read(&mut header_buf)?;
-        let hdr: SockMsgHeader = get_encoder().deserialize(&header_buf[..]).unwrap();
-
-        let target_size = hdr.msglen as usize;
-
-        // if target_size == 0 {
-        //     let e = format!("got 0 sized header back: {:?} {:x?}", hdr, &header_buf);
-        //     return Err(e.into());
-        // }
-
-        data.resize(target_size, 0);
-        let mut got = 0;
-        while got < target_size {
-            let n = self.read(&mut data[got..target_size])?;
-            // println!("Got: {}, n: {}, target_size: {}", got, n, target_size);
-            got = got + n;
+        if let Err(e) = self.read_exact(&mut header_buf) {
+            warn!("read invalid header: {:?} err: {:?}", header_buf, e);
+            return Err(Error::InvalidHeader);
         }
-        Ok(())
+
+        let hdr: SockMsgHeader = get_encoder().deserialize(&header_buf[..])?;
+        debug!("Got header: {:?}", hdr);
+
+        match hdr.msglen.try_into() {
+            Ok(msglen) => {
+                if msglen == 0 {
+                    return Err(Error::InvalidMessage);
+                }
+                data.resize(msglen, 0);
+                if let Err(e) = self.read_exact(data) {
+                    warn!("expected {} byte message, got error: {:?}", msglen, e);
+                    return Err(Error::InvalidMessage);
+                }
+                Ok(())
+            }
+            Err(e) => Err(Error::Error(format!(
+                "msg length {} couldn't be converted to usize: {}",
+                hdr.msglen, e
+            ))),
+        }
     }
 
     fn read_one_msg(&mut self) -> Result<Vec<u8>> {
