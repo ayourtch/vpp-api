@@ -56,7 +56,7 @@ fn main() {
             .build()
             .unwrap(),
         &mut *t,
-    );
+    ).unwrap();
     println!("{:?}", create_host_interface);
 
     // Step 4: Set Host Interface State up
@@ -99,7 +99,7 @@ fn main() {
             },
         },
         &mut *t,
-    );
+    ).unwrap();
     println!("{:?}", create_interface);
 
     /*let ipaddress:Vec<IpAddressDetails>  = send_bulk_msg(
@@ -143,7 +143,7 @@ fn main() {
             .build()
             .unwrap(),
         &mut *t,
-    );
+    ).unwrap();
     println!("{:#?}", swinterfacedetails);
     println!("Interface IDX:");
     let interfaceids = swinterfacedetails.iter().fold(String::new(), |mut acc, x| {

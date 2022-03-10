@@ -1,0 +1,54 @@
+name: Basic tests
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Run Tests'
+
+
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+    - name: Install the VPP for testing
+      run: |
+        curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | sudo bash
+        sudo apt-get install vpp vpp-plugin-core python3-vpp-api
+        sudo chmod 777 /dev/shm/global_vm
+        sudo chmod 777 /dev/shm/vpe-api
+        sudo chmod 777 /run/vpp/*.sock
+    - name: Build and test the code
+      run: |
+        cargo test
+    - name: benchmark the client over socket
+      run: |
+        cargo run --release --example vpp-api-transport-test -- -r 1000 -s /run/vpp/api.sock
+    - name: benchmark the client over shared memory
+      run: |
+        cargo run --release --example vpp-api-transport-test -- -r 1000
+    - name: Install vpp-api-gen test build prerequisites
+      run: |
+        sudo apt-get install -y build-essential clang-12
+    - name: Create a test package using vpp-api-gen
+      run: |
+        cargo run -- --in-file /usr/share/vpp/api/ --parse-type Tree --create-package --package-name testvpp
+    - name: Run tests within the generated package
+      run: |
+        cd ../testvpp
+        cargo test -- --test-threads 1
+
+
