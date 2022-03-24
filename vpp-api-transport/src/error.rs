@@ -4,6 +4,8 @@ use std::fmt;
 #[derive(Debug)]
 pub enum Error {
     Error(String),
+    InvalidHeader,
+    InvalidMessage,
     IoError(std::io::Error),
     BinCodeError(Box<bincode::ErrorKind>),
 }

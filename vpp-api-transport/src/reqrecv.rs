@@ -7,6 +7,7 @@
     unused_imports
 )]
 use super::error::Result;
+use crate::error::Error;
 use crate::VppApiTransport;
 use bincode::Options;
 use log::{debug, error, trace};
