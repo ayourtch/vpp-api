@@ -69,6 +69,13 @@ pub struct Opts {
     #[clap(long, default_value = "someVPP")]
     pub package_name: String,
 
+    /// Options to specify within generated Cargo.toml for all crates from vpp-api
+    #[clap(
+        long,
+        default_value = "{ git=\"https://github.com/ayourtch/vpp-api\", branch=\"main\" }"
+    )]
+    pub vppapi_opts: String,
+
     /// Package name for the generated package
     #[clap(long, default_value = "../")]
     pub package_path: String,
@@ -271,7 +278,7 @@ fn main() {
                     ))
                     .expect("Error creating package/examples dir");
                     generate_lib_file(&opts.package_path, &api_files, &opts.package_name);
-                    create_cargo_toml(&opts.package_path, &opts.package_name);
+                    create_cargo_toml(&opts.package_path, &opts.package_name, &opts.vppapi_opts);
                     let crate_dir = env!("CARGO_MANIFEST_DIR");
                     eprintln!("package path: {}", &crate_dir);
                     copy_file_with_fixup(

@@ -170,7 +170,7 @@ pub fn derive_unionident(input: proc_macro::TokenStream) -> proc_macro::TokenStr
         }
     });
     let expanded = quote! {
-        use bincode;
+        // use bincode;
         impl #name{
             fn new() -> #name {
                 let mut out: FixedSizeArray<u8, typenum::#ty> = Default::default();
