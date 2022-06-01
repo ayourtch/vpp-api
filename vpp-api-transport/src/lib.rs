@@ -4,6 +4,7 @@ extern crate lazy_static;
 #[macro_use]
 mod macros;
 pub mod afunix;
+pub mod mux;
 pub mod shmem;
 // Interactions. May be evicted later on...
 pub mod error;
