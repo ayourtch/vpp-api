@@ -307,8 +307,17 @@ mod tests {
     #[test]
     fn test_shmem_connect() {
         let mut t1 = shmem::Transport::new();
+        let b = shmem::Transport::get_recv_data_barrier().unwrap();
         let res = t1.connect("test", None, 32);
         assert!(res.is_ok(), "Should be able to connect over shmem");
+        let context = t1.control_ping();
+        std::thread::sleep(std::time::Duration::from_millis(1000));
+        assert!(context.is_ok(), "Should return the context");
+        b.wait();
+        let s = t1.run_cli_inband("show version");
+        assert!(s.is_ok(), "should be able to run a CLI");
+        let s = s.unwrap();
+        assert!(s.starts_with("vpp "));
         t1.disconnect();
         drop(t1);
     }
