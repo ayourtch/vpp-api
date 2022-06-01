@@ -107,27 +107,27 @@ impl VppJsApiMessage {
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
                         VppJsApiFieldSize::Fixed(len) => code.push_str(&format!(
-                            "\tpub {} : FixedSizeString<typenum::U{}>,\n",
+                            "\tpub {}: FixedSizeString<typenum::U{}>,\n",
                             get_ident(&self.fields[x].name),
                             len
                         )),
                         VppJsApiFieldSize::Variable(None) => code.push_str(&format!(
-                            "\tpub {} : VariableSizeString,\n",
+                            "\tpub {}: VariableSizeString,\n",
                             get_ident(&self.fields[x].name)
                         )),
                         _ => code
-                            .push_str(&format!("\tpub {} : ,\n", get_ident(&self.fields[x].name))),
+                            .push_str(&format!("\tpub {}: ,\n", get_ident(&self.fields[x].name))),
                     },
-                    _ => code.push_str(&format!("\tpub {} :,\n", get_ident(&self.fields[x].name))),
+                    _ => code.push_str(&format!("\tpub {}:,\n", get_ident(&self.fields[x].name))),
                 }
             } else if self.fields[x].ctype.contains("flag") {
                 code.push_str(&format!(
-                    "\t pub {} : EnumFlag<{}>,\n",
+                    "\t pub {}: EnumFlag<{}>,\n",
                     get_ident(&self.fields[x].name),
                     get_type(&self.fields[x].ctype)
                 ));
             } else {
-                code.push_str(&format!("\tpub {} : ", get_ident(&self.fields[x].name)));
+                code.push_str(&format!("\tpub {}: ", get_ident(&self.fields[x].name)));
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
                         VppJsApiFieldSize::Fixed(len) => code.push_str(&format!(
@@ -142,7 +142,7 @@ impl VppJsApiMessage {
                     },
                     _ => code.push_str(&format!("{},\n", get_type(&self.fields[x].ctype))),
                     /*code.push_str(&format!(
-                        "\tpub {} : {},\n",
+                        "\tpub {}: {},\n",
                         get_ident(&self.fields[x].name),
                         get_type(&self.fields[x].ctype)
                     ));*/

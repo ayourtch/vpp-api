@@ -80,7 +80,7 @@ impl VppJsApiType {
         ));
         for x in 0..self.fields.len() {
             // println!("{:#?}", self.fields);
-            code.push_str(&format!("\tpub {} : ", get_ident(&self.fields[x].name)));
+            code.push_str(&format!("\tpub {}: ", get_ident(&self.fields[x].name)));
             if self.fields[x].ctype == "string" {
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
