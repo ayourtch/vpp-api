@@ -129,7 +129,7 @@ fn main() {
         &SwInterfaceVhostUserDetails::get_message_name_and_crc(),
     );*/
 
-    // println!("Show VhostInterfaceDetails \n {:?}", vhostDetails);
+    // println!("Show VhostInterfaceDetails\n {:?}", vhostDetails);
 
     // Verify creation of Interface
     // FIXME: Need to implement Deserialize for FixedSizeArray to make this work
@@ -147,7 +147,7 @@ fn main() {
     println!("{:#?}", swinterfacedetails);
     println!("Interface IDX:");
     let interfaceids = swinterfacedetails.iter().fold(String::new(), |mut acc, x| {
-        acc.push_str(&format!("{:?} \n", &x.sw_if_index));
+        acc.push_str(&format!("{:?}\n", &x.sw_if_index));
         acc
     });
     println!("{}", interfaceids);

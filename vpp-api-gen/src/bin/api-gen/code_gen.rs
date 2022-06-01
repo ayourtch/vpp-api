@@ -77,37 +77,37 @@ fn vpp_api_crate(name: &str, vppapi_opts: &str) -> String {
 pub fn create_cargo_toml(package_path: &str, packageName: &str, vppapi_opts: &str) {
     println!("Generating Cargo file");
     let mut code = String::new();
-    code.push_str("[package] \n");
-    code.push_str(&format!("name = \"{}\" \n", packageName));
-    code.push_str("version = \"0.1.0\" \n");
-    code.push_str("authors = [\"Andrew Yourtchenko <ayourtch@gmail.com>\"] \n");
-    code.push_str("edition = \"2018\" \n\n");
+    code.push_str("[package]\n");
+    code.push_str(&format!("name = \"{}\"\n", packageName));
+    code.push_str("version = \"0.1.0\"\n");
+    code.push_str("authors = [\"Andrew Yourtchenko <ayourtch@gmail.com>\"]\n");
+    code.push_str("edition = \"2018\"\n\n");
 
-    code.push_str("[dev-dependencies] \n");
-    code.push_str("trybuild = {version = \"1.0\", features = [\"diff\"]} \n\n");
+    code.push_str("[dev-dependencies]\n");
+    code.push_str("trybuild = {version = \"1.0\", features = [\"diff\"]}\n\n");
     code.push_str(&vpp_api_crate("vpp-api-transport", &vppapi_opts));
 
-    code.push_str("[dependencies] \n");
-    code.push_str("serde = { version = \"1.0\", features = [\"derive\"] } \n");
-    code.push_str("serde_json = \"1.0\" \n");
-    code.push_str("clap = { version = \"3.0.0\", features = [\"derive\"] } \n");
-    code.push_str("strum = \"*\" \n");
-    code.push_str("strum_macros = \"*\" \n");
-    code.push_str("log = \"*\" \n");
-    code.push_str("env_logger = \"*\" \n");
-    code.push_str("linked-hash-map = { version = \"*\", features = [\"serde_impl\"] } \n");
-    code.push_str("convert_case = \"*\" \n");
-    code.push_str("serde_repr = \"0.1\" \n");
-    code.push_str("typenum = \"*\" \n");
-    code.push_str("bincode = \"1.2.1\" \n");
-    code.push_str("serde_yaml = \"0.8\" \n");
+    code.push_str("[dependencies]\n");
+    code.push_str("serde = { version = \"1.0\", features = [\"derive\"] }\n");
+    code.push_str("serde_json = \"1.0\"\n");
+    code.push_str("clap = { version = \"3.0.0\", features = [\"derive\"] }\n");
+    code.push_str("strum = \"*\"\n");
+    code.push_str("strum_macros = \"*\"\n");
+    code.push_str("log = \"*\"\n");
+    code.push_str("env_logger = \"*\"\n");
+    code.push_str("linked-hash-map = { version = \"*\", features = [\"serde_impl\"] }\n");
+    code.push_str("convert_case = \"*\"\n");
+    code.push_str("serde_repr = \"0.1\"\n");
+    code.push_str("typenum = \"*\"\n");
+    code.push_str("bincode = \"1.2.1\"\n");
+    code.push_str("serde_yaml = \"0.8\"\n");
     code.push_str(&vpp_api_crate("vpp-api-encoding", &vppapi_opts));
     code.push_str(&vpp_api_crate("vpp-api-message", &vppapi_opts));
-    code.push_str("lazy_static = \"1.4.0\" \n");
-    code.push_str("regex = \"1\" \n");
-    code.push_str("syn ={ version= \"1.0\", features=[\"extra-traits\",\"full\"]} \n");
-    code.push_str("quote = \"1.0\" \n");
-    code.push_str("proc-macro2 = \"1.0.26\" \n");
+    code.push_str("lazy_static = \"1.4.0\"\n");
+    code.push_str("regex = \"1\"\n");
+    code.push_str("syn ={ version= \"1.0\", features=[\"extra-traits\",\"full\"]}\n");
+    code.push_str("quote = \"1.0\"\n");
+    code.push_str("proc-macro2 = \"1.0.26\"\n");
     code.push_str(&vpp_api_crate("vpp-api-macros", &vppapi_opts));
 
     let mut file = File::create(format!("{}/{}/Cargo.toml", package_path, packageName)).unwrap();
@@ -129,7 +129,7 @@ pub fn generate_lib_file(
             .unwrap()
             .as_str()
             .trim_end_matches(".api.json");
-        code.push_str(&format!("pub mod {}; \n", fileName.trim_start_matches("/")));
+        code.push_str(&format!("pub mod {};\n", fileName.trim_start_matches("/")));
     }
     let mut file = File::create(format!("{}/{}/src/lib.rs", package_path, packageName)).unwrap();
     file.write_all(code.as_bytes()).unwrap();

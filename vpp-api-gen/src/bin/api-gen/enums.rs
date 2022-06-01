@@ -159,7 +159,7 @@ impl VppJsApiEnum {
         code.push_str("\t\t match data{\n");
         for x in 0..self.values.len() {
             code.push_str(&format!(
-                "\t\t\t {} => {}::{}, \n",
+                "\t\t\t {} => {}::{},\n",
                 self.values[x].value,
                 camelize_ident(&self.name),
                 get_ident(&self.values[x].name)
@@ -182,7 +182,7 @@ impl VppJsApiEnum {
         if self.if_flag() {
             // This tells if the enum is a flag or not
             code.push_str(&format!(
-                "#[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq)] \n"
+                "#[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq)]\n"
             ));
             /* match &self.info.enumtype {
                 Some(len) => code.push_str(&format!("#[repr({})]\n", &len)),
@@ -191,23 +191,23 @@ impl VppJsApiEnum {
         } else {
             // This tells if the enum is a flag or not
             code.push_str(&format!(
-                "#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)] \n"
+                "#[derive(Debug, Clone, Serialize_repr, Deserialize_repr)]\n"
             ));
             match &self.info.enumtype {
                 Some(len) => code.push_str(&format!("#[repr({})]\n", &len)),
                 _ => code.push_str(&format!("#[repr(u32)]\n")),
             }
         }
-        code.push_str(&format!("pub enum {} {{ \n", camelize_ident(&self.name)));
+        code.push_str(&format!("pub enum {} {{\n", camelize_ident(&self.name)));
         for x in 0..self.values.len() {
             code.push_str(&format!(
-                "\t {}={}, \n",
+                "\t {}={},\n",
                 get_ident(&self.values[x].name),
                 self.values[x].value
             ));
         }
-        // code.push_str("\t #[serde(other)] \n\t Invalid \n");
-        code.push_str("} \n");
+        // code.push_str("\t #[serde(other)]\n\t Invalid\n");
+        code.push_str("}\n");
         code.push_str(&self.impl_default());
         if self.if_flag() {
             code.push_str(&self.generate_as_enumflag_trait());
@@ -217,7 +217,7 @@ impl VppJsApiEnum {
     pub fn impl_default(&self) -> String {
         let mut code = String::new();
         code.push_str(&format!(
-            "impl Default for {} {{ \n",
+            "impl Default for {} {{\n",
             camelize_ident(&self.name)
         ));
         code.push_str(&format!(

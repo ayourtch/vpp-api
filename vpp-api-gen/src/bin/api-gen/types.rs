@@ -70,12 +70,12 @@ impl<'de> Deserialize<'de> for VppJsApiType {
 impl VppJsApiType {
     pub fn generate_code(&self) -> String {
         let mut code = String::new();
-        code.push_str(&format!("// Implementation for {} \n", &self.type_name));
+        code.push_str(&format!("// Implementation for {}\n", &self.type_name));
         code.push_str(&format!(
-            "#[derive(Debug, Clone, Serialize, Deserialize, Default)] \n"
+            "#[derive(Debug, Clone, Serialize, Deserialize, Default)]\n"
         ));
         code.push_str(&format!(
-            "pub struct {} {{ \n",
+            "pub struct {} {{\n",
             camelize_ident(&self.type_name)
         ));
         for x in 0..self.fields.len() {
@@ -85,53 +85,53 @@ impl VppJsApiType {
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
                         VppJsApiFieldSize::Fixed(len) => {
-                            code.push_str(&format!("FixedSizeString<typenum::U{}>, \n", len))
+                            code.push_str(&format!("FixedSizeString<typenum::U{}>,\n", len))
                         }
                         VppJsApiFieldSize::Variable(None) => {
-                            code.push_str(&format!("VariableSizeString, \n"))
+                            code.push_str(&format!("VariableSizeString,\n"))
                         }
                         _ => code.push_str(&format!("{},\n", get_ident(&self.fields[x].name))),
                     },
-                    _ => code.push_str(&format!("{}, \n", get_ident(&self.fields[x].name))),
+                    _ => code.push_str(&format!("{},\n", get_ident(&self.fields[x].name))),
                 }
             } else if self.fields[x].ctype.contains("flag") {
                 code.push_str(&format!(
-                    "EnumFlag<{}>, \n",
+                    "EnumFlag<{}>,\n",
                     get_type(&self.fields[x].ctype)
                 ));
             } else {
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
                         VppJsApiFieldSize::Fixed(len) => code.push_str(&format!(
-                            "FixedSizeArray<{}, typenum::U{}>, \n",
+                            "FixedSizeArray<{}, typenum::U{}>,\n",
                             get_type(&self.fields[x].ctype),
                             len
                         )),
                         VppJsApiFieldSize::Variable(t) => code.push_str(&format!(
-                            "VariableSizeArray<{}>, \n",
+                            "VariableSizeArray<{}>,\n",
                             get_type(&self.fields[x].ctype)
                         )),
                     },
-                    _ => code.push_str(&format!("{}, \n", get_type(&self.fields[x].ctype))),
+                    _ => code.push_str(&format!("{},\n", get_type(&self.fields[x].ctype))),
                 }
             }
         }
-        code.push_str("} \n");
+        code.push_str("}\n");
         code
     }
     pub fn generate_code_union(&self, apifile: &VppJsApiFile) -> String {
         let mut code = String::new();
         code.push_str(&format!(
-            "#[derive(Debug, Clone, Serialize, Deserialize, Default, VppUnionIdent)] \n"
+            "#[derive(Debug, Clone, Serialize, Deserialize, Default, VppUnionIdent)]\n"
         ));
         for x in 0..self.fields.len() {
             let size_of_typ = field_size(&self.fields[x], &apifile);
             let ident = get_type(&self.fields[x].ctype);
-            code.push_str(&format!("#[types({}:{})] \n", ident, size_of_typ));
+            code.push_str(&format!("#[types({}:{})]\n", ident, size_of_typ));
         }
         let unionsize = maxSizeUnion(&self, &apifile);
         code.push_str(&format!(
-            "pub struct {}(FixedSizeArray<u8, typenum::U{}>); \n",
+            "pub struct {}(FixedSizeArray<u8, typenum::U{}>);\n",
             camelize_ident(&self.type_name),
             unionsize
         ));
