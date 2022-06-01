@@ -92,14 +92,14 @@ impl VppJsApiMessage {
     pub fn generate_code(&self) -> String {
         let mut code = String::new();
         code.push_str(&format!(
-            "#[derive(Debug, Clone, Serialize, Deserialize, VppMessage)] \n"
+            "#[derive(Debug, Clone, Serialize, Deserialize, VppMessage)]\n"
         ));
         code.push_str(&format!(
-            "#[message_name_and_crc({}_{})] \n",
+            "#[message_name_and_crc({}_{})]\n",
             self.name,
             self.info.crc.trim_start_matches("0x")
         ));
-        code.push_str(&format!("pub struct {} {{ \n", camelize_ident(&self.name)));
+        code.push_str(&format!("pub struct {} {{\n", camelize_ident(&self.name)));
         for x in 0..self.fields.len() {
             if self.fields[x].name == "_vl_msg_id" {
                 // panic!("Something wrong");
@@ -107,22 +107,22 @@ impl VppJsApiMessage {
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
                         VppJsApiFieldSize::Fixed(len) => code.push_str(&format!(
-                            "\tpub {} : FixedSizeString<typenum::U{}>, \n",
+                            "\tpub {} : FixedSizeString<typenum::U{}>,\n",
                             get_ident(&self.fields[x].name),
                             len
                         )),
                         VppJsApiFieldSize::Variable(None) => code.push_str(&format!(
-                            "\tpub {} : VariableSizeString, \n",
+                            "\tpub {} : VariableSizeString,\n",
                             get_ident(&self.fields[x].name)
                         )),
                         _ => code
-                            .push_str(&format!("\tpub {} : , \n", get_ident(&self.fields[x].name))),
+                            .push_str(&format!("\tpub {} : ,\n", get_ident(&self.fields[x].name))),
                     },
-                    _ => code.push_str(&format!("\tpub {} :, \n", get_ident(&self.fields[x].name))),
+                    _ => code.push_str(&format!("\tpub {} :,\n", get_ident(&self.fields[x].name))),
                 }
             } else if self.fields[x].ctype.contains("flag") {
                 code.push_str(&format!(
-                    "\t pub {} : EnumFlag<{}>, \n",
+                    "\t pub {} : EnumFlag<{}>,\n",
                     get_ident(&self.fields[x].name),
                     get_type(&self.fields[x].ctype)
                 ));
@@ -131,40 +131,40 @@ impl VppJsApiMessage {
                 match &self.fields[x].maybe_size {
                     Some(cont) => match cont {
                         VppJsApiFieldSize::Fixed(len) => code.push_str(&format!(
-                            "FixedSizeArray<{}, typenum::U{}>, \n",
+                            "FixedSizeArray<{}, typenum::U{}>,\n",
                             get_type(&self.fields[x].ctype),
                             len
                         )),
                         VppJsApiFieldSize::Variable(t) => code.push_str(&format!(
-                            "VariableSizeArray<{}>, \n",
+                            "VariableSizeArray<{}>,\n",
                             get_type(&self.fields[x].ctype)
                         )),
                     },
-                    _ => code.push_str(&format!("{}, \n", get_type(&self.fields[x].ctype))),
+                    _ => code.push_str(&format!("{},\n", get_type(&self.fields[x].ctype))),
                     /*code.push_str(&format!(
-                        "\tpub {} : {}, \n",
+                        "\tpub {} : {},\n",
                         get_ident(&self.fields[x].name),
                         get_type(&self.fields[x].ctype)
                     ));*/
                 }
             }
         }
-        code.push_str("} \n");
+        code.push_str("}\n");
         // self.gen_impl_messages(&mut code);
         code
     }
     pub fn gen_impl_messages(&self, file: &mut String) {
-        file.push_str(&format!("impl {} {{ \n", camelize_ident(&self.name)));
+        file.push_str(&format!("impl {} {{\n", camelize_ident(&self.name)));
         file.push_str(&format!(
-            "\t pub fn get_message_name_and_crc() -> String {{ \n"
+            "\t pub fn get_message_name_and_crc() -> String {{\n"
         ));
         file.push_str(&format!(
-            "\t \t String::from(\"{}_{}\") \n",
+            "\t \t String::from(\"{}_{}\")\n",
             self.name,
             self.info.crc.trim_start_matches("0x")
         ));
-        file.push_str(&format!("\t }} \n"));
-        file.push_str(&format!("}} \n"));
+        file.push_str(&format!("\t }}\n"));
+        file.push_str(&format!("}}\n"));
     }
     pub fn iter_and_generate_code(messages: &Vec<VppJsApiMessage>) -> String {
         messages.iter().fold(String::new(), |mut acc, x| {

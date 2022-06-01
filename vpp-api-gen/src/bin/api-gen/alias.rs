@@ -36,9 +36,9 @@ impl VppJsApiAlias {
         match self.length {
             Some(len) => {
                 let newtype = get_type(&self.ctype);
-                code.push_str(&format!("[{};{}]; \n", newtype, len));
+                code.push_str(&format!("[{};{}];\n", newtype, len));
             }
-            _ => code.push_str(&format!("{}; \n", get_type(&self.ctype))),
+            _ => code.push_str(&format!("{};\n", get_type(&self.ctype))),
         }
         code
     }
