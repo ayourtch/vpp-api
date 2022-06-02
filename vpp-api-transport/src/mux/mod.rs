@@ -41,6 +41,21 @@ use std::thread;
  *
  */
 
+#[derive(Debug)]
+struct GlobalState {
+    muxes: HashMap<String, Transport>,
+}
+
+lazy_static! {
+    static ref GLOBAL: Arc<Mutex<GlobalState>> = {
+        let gs = GlobalState {
+            muxes: HashMap::new(),
+        };
+
+        Arc::new(Mutex::new(gs))
+    };
+}
+
 /*
  * The envelope encapsulating the messages traveling "upstream" - from fanout transport and Beacon
  * to Mux thread.
@@ -109,13 +124,9 @@ where
 }
 
 #[derive(Debug)]
-pub struct Transport<T>
-where
-    T: VppApiTransport,
-{
+pub struct Transport {
     upstream: UpstreamSender,
     downstream: DownstreamReceiver,
-    phantom: PhantomData<T>,
 }
 
 impl<T: VppApiTransport> Muxer<T> {
@@ -139,29 +150,34 @@ impl<T: VppApiTransport> Muxer<T> {
     }
 }
 
-pub fn new<T: 'static + VppApiTransport>(real_transport: T) -> Transport<T> {
-    let (upstream_tx, upstream_rx) = channel::<UpstreamMessage>();
-    let (dtx, drx) = new_downstream_pair().unwrap();
-    let mut mux = Muxer {
-        real_transport,
-        real_transport_connected: None,
-        fanout: vec![],
-        free_sender_index: 0,
-        upstream_tx,
-        upstream_rx,
-    };
-    // (Beacon, Fanout) -> Mux mpsc queue
-    let utx = mux.new_upstream_sender(dtx);
+pub fn new<T: 'static + VppApiTransport>(key: &str, create_underlay: fn() -> T) -> Transport {
+    let mut gs = GLOBAL.lock().unwrap();
+    if !gs.muxes.contains_key(key) {
+        let (upstream_tx, upstream_rx) = channel::<UpstreamMessage>();
+        let (dtx, drx) = new_downstream_pair().unwrap();
+        let real_transport = create_underlay();
+        let mut mux = Muxer {
+            real_transport,
+            real_transport_connected: None,
+            fanout: vec![],
+            free_sender_index: 0,
+            upstream_tx,
+            upstream_rx,
+        };
+        // (Beacon, Fanout) -> Mux mpsc queue
+        let utx = mux.new_upstream_sender(dtx);
 
-    // spawn the Mux thread (it will spawn the Beacon thread when connected)
-    thread::spawn(move || {
-        mux.handle();
-    });
-    Transport {
-        upstream: utx,
-        downstream: drx,
-        phantom: PhantomData,
+        // spawn the Mux thread (it will spawn the Beacon thread when connected)
+        thread::spawn(move || {
+            mux.handle();
+        });
+        let trans = Transport {
+            upstream: utx,
+            downstream: drx,
+        };
+        gs.muxes.insert(key.to_string(), trans);
     }
+    gs.muxes.get_mut(key).unwrap().new_transport()
 }
 
 impl<T: VppApiTransport> Drop for Muxer<T> {
@@ -195,8 +211,8 @@ impl<T: VppApiTransport> Muxer<T> {
     }
 }
 
-impl<T: VppApiTransport> Transport<T> {
-    pub fn new_transport(&mut self) -> Transport<T> {
+impl Transport {
+    pub fn new_transport(&mut self) -> Transport {
         let (dtx, drx) = new_downstream_pair().unwrap();
         self.upstream
             .sender
@@ -208,7 +224,6 @@ impl<T: VppApiTransport> Transport<T> {
                 Transport {
                     upstream: utx,
                     downstream: drx,
-                    phantom: PhantomData,
                 }
             }
             x => {
@@ -218,17 +233,17 @@ impl<T: VppApiTransport> Transport<T> {
     }
 }
 
-impl<T: VppApiTransport> Drop for Transport<T> {
+impl Drop for Transport {
     fn drop(&mut self) {}
 }
 
-impl<T: VppApiTransport> std::io::Read for Transport<T> {
+impl std::io::Read for Transport {
     fn read(&mut self, buf: &mut [u8]) -> std::io::Result<usize> {
         // FIXME
         Ok(0)
     }
 }
-impl<T: VppApiTransport> std::io::Write for Transport<T> {
+impl std::io::Write for Transport {
     fn write(&mut self, buf: &[u8]) -> std::io::Result<usize> {
         Ok(0)
     }
@@ -260,7 +275,7 @@ pub struct MsgSockClntCreateReplyEntry {
     index: u16,
 }
 
-impl<T: VppApiTransport> VppApiTransport for Transport<T> {
+impl VppApiTransport for Transport {
     fn connect(&mut self, name: &str, _chroot_prefix: Option<&str>, _rx_qlen: i32) -> Result<()> {
         use std::io::Write;
         // FIXME

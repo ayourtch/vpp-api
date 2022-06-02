@@ -315,8 +315,23 @@ mod tests {
 
     #[test]
     fn test_mux_connect() {
-        let mut t0 = shmem::Transport::new();
-        let mut t1 = mux::new(t0);
+        let mut t1 = mux::new("test", || shmem::Transport::new());
+        println!("T1: {:?}", &t1);
+        let mut t2 = t1.new_transport();
+        println!("T2: {:?}", &t2);
+    }
+
+    #[test]
+    fn test_mux_connect_2() {
+        let mut t1 = mux::new("test", || shmem::Transport::new());
+        println!("T1: {:?}", &t1);
+        let mut t2 = t1.new_transport();
+        println!("T2: {:?}", &t2);
+    }
+
+    #[test]
+    fn test_mux_connect_3() {
+        let mut t1 = mux::new("test-sock", || afunix::Transport::new("/run/vpp/api.sock"));
         println!("T1: {:?}", &t1);
         let mut t2 = t1.new_transport();
         println!("T2: {:?}", &t2);
