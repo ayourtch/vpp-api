@@ -116,11 +116,20 @@ impl Transport {
         }
         Ok(count)
     }
+
+    fn drain_notify_socket(&mut self) {
+        let mut gs = GLOBAL.lock().unwrap();
+        if let Some(ref mut notify) = gs.notify {
+            let mut buf: [u8; 1024] = [0; 1024];
+            notify.beacon.read(&mut buf);
+        }
+    }
 }
 
 impl std::io::Read for Transport {
     fn read(&mut self, buf: &mut [u8]) -> std::io::Result<usize> {
         let mut count = 0;
+        self.drain_notify_socket();
         while count < buf.len() {
             count = count + self.read_simple(&mut buf[count..])?;
         }
