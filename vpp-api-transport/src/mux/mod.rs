@@ -14,6 +14,7 @@ use socketpair::SocketpairStream;
 use std::collections::VecDeque;
 use std::sync::{Arc, Mutex};
 
+use socketpair::socketpair_stream;
 use std::marker::PhantomData;
 use std::sync::mpsc::{channel, Receiver, Sender};
 use std::thread;
@@ -46,7 +47,7 @@ use std::thread;
  */
 #[derive(Debug)]
 enum UpstreamMessage {
-    CreateFanout(DownstreamSender),
+    CreateDownstream(DownstreamSender),
     Connect((String, Option<String>, i32)),
     DataReady,
     Msg((usize, Vec<u8>)),
@@ -57,8 +58,8 @@ enum UpstreamMessage {
  */
 #[derive(Debug)]
 enum DownstreamMessage {
-    CreateFanoutResult(Result<UpstreamSender>),
-    ConnectResult(Result<()>),
+    CreateDownstreamReply(Result<UpstreamSender>),
+    ConnectReply(Result<()>),
     UpstreamSender(Sender<UpstreamMessage>),
     Msg(Vec<u8>),
 }
@@ -76,6 +77,25 @@ struct DownstreamSender {
 }
 
 #[derive(Debug)]
+struct DownstreamReceiver {
+    beacon: SocketpairStream,
+    receiver: Receiver<DownstreamMessage>,
+}
+
+#[derive(Debug)]
+pub struct TransportFactory {
+    mux_sender: UpstreamSender,
+}
+
+fn new_downstream_pair() -> Result<(DownstreamSender, DownstreamReceiver)> {
+    let (sender, receiver) = channel::<DownstreamMessage>();
+    let (activator, beacon) = socketpair_stream()?;
+    let tx = DownstreamSender { activator, sender };
+    let rx = DownstreamReceiver { beacon, receiver };
+    Ok((tx, rx))
+}
+
+#[derive(Debug)]
 pub struct Muxer<T>
 where
     T: VppApiTransport,
@@ -88,16 +108,59 @@ where
     upstream_rx: Receiver<UpstreamMessage>, // receiving end for Mux thread
 }
 
-fn new<T: VppApiTransport>(real_transport: T) -> Muxer<T> {
-    // (Beacon, Fanout) -> Mux mpsc queue
+#[derive(Debug)]
+pub struct Transport<T>
+where
+    T: VppApiTransport,
+{
+    upstream: UpstreamSender,
+    downstream: DownstreamReceiver,
+    phantom: PhantomData<T>,
+}
+
+impl<T: VppApiTransport> Muxer<T> {
+    fn new_upstream_sender(&mut self, d: DownstreamSender) -> UpstreamSender {
+        let sender = self.upstream_tx.clone();
+        let index = self.free_sender_index;
+        let utx = UpstreamSender { sender, index };
+        if self.free_sender_index >= self.fanout.len() {
+            self.fanout.push(Some(d));
+            self.free_sender_index = self.free_sender_index + 1;
+        } else {
+            assert!(self.fanout[self.free_sender_index].is_none());
+            self.fanout[self.free_sender_index] = Some(d);
+            while self.free_sender_index < self.fanout.len()
+                && self.fanout[self.free_sender_index].is_some()
+            {
+                self.free_sender_index = self.free_sender_index + 1;
+            }
+        }
+        utx
+    }
+}
+
+pub fn new<T: 'static + VppApiTransport>(real_transport: T) -> Transport<T> {
     let (upstream_tx, upstream_rx) = channel::<UpstreamMessage>();
-    Muxer {
+    let (dtx, drx) = new_downstream_pair().unwrap();
+    let mut mux = Muxer {
         real_transport,
         real_transport_connected: None,
         fanout: vec![],
         free_sender_index: 0,
         upstream_tx,
         upstream_rx,
+    };
+    // (Beacon, Fanout) -> Mux mpsc queue
+    let utx = mux.new_upstream_sender(dtx);
+
+    // spawn the Mux thread (it will spawn the Beacon thread when connected)
+    thread::spawn(move || {
+        mux.handle();
+    });
+    Transport {
+        upstream: utx,
+        downstream: drx,
+        phantom: PhantomData,
     }
 }
 
@@ -108,23 +171,52 @@ impl<T: VppApiTransport> Drop for Muxer<T> {
 }
 
 impl<T: VppApiTransport> Muxer<T> {
-    pub fn new_transport(&mut self) -> Transport<T> {
-        Transport {
-            index: 0,
-            phantom: PhantomData,
+    fn handle(&mut self) {
+        loop {
+            match self.upstream_rx.recv() {
+                Ok(msg) => match msg {
+                    UpstreamMessage::CreateDownstream(dtx) => {
+                        let utx = self.new_upstream_sender(dtx);
+                        self.fanout[utx.index]
+                            .as_ref()
+                            .unwrap()
+                            .sender
+                            .send(DownstreamMessage::CreateDownstreamReply(Ok(utx)));
+                    }
+                    x => {
+                        eprintln!("Unknown message {:?} received in Mux transport handler", x);
+                    }
+                },
+                Err(e) => {
+                    eprintln!("Error {:?} while receiving in Mux transport", e);
+                }
+            }
         }
     }
 }
 
-pub struct Transport<T>
-where
-    T: VppApiTransport,
-{
-    index: usize,
-    phantom: PhantomData<T>,
+impl<T: VppApiTransport> Transport<T> {
+    pub fn new_transport(&mut self) -> Transport<T> {
+        let (dtx, drx) = new_downstream_pair().unwrap();
+        self.upstream
+            .sender
+            .send(UpstreamMessage::CreateDownstream(dtx));
+        let res = drx.receiver.recv().unwrap();
+        match res {
+            DownstreamMessage::CreateDownstreamReply(utx) => {
+                let utx = utx.unwrap();
+                Transport {
+                    upstream: utx,
+                    downstream: drx,
+                    phantom: PhantomData,
+                }
+            }
+            x => {
+                panic!("Unexpected message {:?} in reply to CreateDownstream", x);
+            }
+        }
+    }
 }
-
-impl<T: VppApiTransport> Transport<T> {}
 
 impl<T: VppApiTransport> Drop for Transport<T> {
     fn drop(&mut self) {}

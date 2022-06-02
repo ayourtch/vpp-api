@@ -80,6 +80,7 @@ pub unsafe extern "C" fn vac_error_handler(_arg: *const u8, _msg: *const u8, _ms
     println!("Error: {} bytes of message", _msg_len);
 }
 
+#[derive(Debug)]
 pub struct Transport {
     connected: bool,
     nonblocking: bool,
@@ -123,6 +124,14 @@ impl Transport {
             let mut buf: [u8; 1024] = [0; 1024];
             notify.beacon.read(&mut buf);
         }
+    }
+}
+
+impl Drop for Transport {
+    fn drop(&mut self) {
+        eprintln!("Dropping transport!");
+        let mut gs = GLOBAL.lock().unwrap();
+        gs.created = false;
     }
 }
 

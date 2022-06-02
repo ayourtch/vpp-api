@@ -142,7 +142,7 @@ struct RawCliInbandReply {
 
 trait VppApiBeaconing: Read + Write + AsRawFd {}
 
-pub trait VppApiTransport: Read + Write {
+pub trait VppApiTransport: Read + Write + std::marker::Send {
     fn connect(&mut self, name: &str, chroot_prefix: Option<&str>, rx_qlen: i32) -> Result<()>;
     fn disconnect(&mut self);
     fn set_nonblocking(&mut self, nonblocking: bool) -> Result<()>;
@@ -309,8 +309,18 @@ where
 #[cfg(test)]
 mod tests {
     use crate::afunix;
+    use crate::mux;
     use crate::shmem;
     use crate::VppApiTransport;
+
+    #[test]
+    fn test_mux_connect() {
+        let mut t0 = shmem::Transport::new();
+        let mut t1 = mux::new(t0);
+        println!("T1: {:?}", &t1);
+        let mut t2 = t1.new_transport();
+        println!("T2: {:?}", &t2);
+    }
 
     #[test]
     fn test_shmem_connect() {
