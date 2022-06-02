@@ -129,6 +129,8 @@ pub struct MsgSockClntCreateReplyEntry {
     name: ArrayOf64U8,
 }
 
+impl VppApiBeaconing for UnixStream {}
+
 impl VppApiTransport for Transport {
     fn connect(&mut self, name: &str, _chroot_prefix: Option<&str>, _rx_qlen: i32) -> Result<()> {
         use std::io::Write;
@@ -203,7 +205,15 @@ impl VppApiTransport for Transport {
     }
 
     fn get_beacon_socket(&self) -> std::io::Result<Box<dyn VppApiBeaconing>> {
-        Err(std::io::Error::new(std::io::ErrorKind::NotConnected, "FIXME - not implemented").into())
+        if let Some(ref s) = self.sock {
+            let new_sock = s.try_clone()?;
+            Ok(Box::new(new_sock))
+        } else {
+            Err(
+                std::io::Error::new(std::io::ErrorKind::NotConnected, "FIXME - not implemented")
+                    .into(),
+            )
+        }
     }
     fn dump(&self) {
         let gs = GLOBAL.lock().unwrap();
