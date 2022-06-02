@@ -19,6 +19,8 @@ use log::warn;
 use serde::{Deserialize, Serialize};
 use std::convert::TryInto;
 use std::io::{Read, Write};
+use std::os::unix::prelude::AsRawFd;
+
 use std::ops::DerefMut;
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -138,6 +140,8 @@ struct RawCliInbandReply {
     reply: VarLen32,
 }
 
+trait VppApiBeaconing: Read + Write + AsRawFd {}
+
 pub trait VppApiTransport: Read + Write {
     fn connect(&mut self, name: &str, chroot_prefix: Option<&str>, rx_qlen: i32) -> Result<()>;
     fn disconnect(&mut self);
@@ -146,6 +150,7 @@ pub trait VppApiTransport: Read + Write {
     fn get_msg_index(&mut self, name: &str) -> Option<u16>;
     fn get_table_max_index(&mut self) -> u16;
     fn get_client_index(&self) -> u32;
+    fn get_beacon_socket(&self) -> std::io::Result<Box<dyn VppApiBeaconing>>;
 
     fn get_next_context(&mut self) -> u32 {
         // FIXME: use atomic autoincrementing
@@ -291,6 +296,9 @@ where
 
     fn get_client_index(&self) -> u32 {
         self.deref().get_client_index()
+    }
+    fn get_beacon_socket(&self) -> std::io::Result<Box<dyn VppApiBeaconing>> {
+        self.deref().get_beacon_socket()
     }
 
     fn dump(&self) {

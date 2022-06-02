@@ -4,6 +4,7 @@ use serde::{Deserialize, Serialize};
 use std::os::unix::net::UnixStream;
 
 use crate::error::Result;
+use crate::VppApiBeaconing;
 use crate::VppApiTransport;
 use std::collections::HashMap;
 
@@ -199,6 +200,10 @@ impl VppApiTransport for Transport {
     }
     fn get_table_max_index(&mut self) -> u16 {
         0
+    }
+
+    fn get_beacon_socket(&self) -> std::io::Result<Box<dyn VppApiBeaconing>> {
+        Err(std::io::Error::new(std::io::ErrorKind::NotConnected, "FIXME - not implemented").into())
     }
     fn dump(&self) {
         let gs = GLOBAL.lock().unwrap();

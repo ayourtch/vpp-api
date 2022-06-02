@@ -6,29 +6,34 @@ use serde::{Deserialize, Serialize};
 use shmem_bindgen::*;
 use std::ffi::CString;
 
+use crate::VppApiBeaconing;
 use crate::VppApiTransport;
 
+use socketpair::{socketpair_stream, SocketpairStream};
 use std::collections::VecDeque;
-use std::sync::{Arc, Barrier, Mutex};
+use std::io::{Read, Write};
+use std::os::unix::io::AsRawFd;
+use std::sync::{Arc, Mutex};
+
+#[derive(Debug)]
+struct NotifySocketpair {
+    activator: SocketpairStream,
+    beacon: SocketpairStream,
+}
 
 #[derive(Debug)]
 struct GlobalState {
     created: bool,
     receive_buffer: VecDeque<u8>,
-    recv_data_barrier: Arc<Barrier>,
-    recv_data_barrier_cloned: bool,
-    recv_data_barrier_enabled: bool,
+    notify: Option<NotifySocketpair>,
 }
 
 lazy_static! {
     static ref GLOBAL: Arc<Mutex<GlobalState>> = {
-        let recv_data_barrier = Arc::new(Barrier::new(2));
         let gs = GlobalState {
             created: false,
             receive_buffer: VecDeque::new(),
-            recv_data_barrier,
-            recv_data_barrier_cloned: false,
-            recv_data_barrier_enabled: false,
+            notify: None,
         };
 
         Arc::new(Mutex::new(gs))
@@ -65,10 +70,8 @@ pub unsafe extern "C" fn shmem_default_cb(raw_data: *const u8, len: i32) {
     for d in data_slice {
         gs.receive_buffer.push_back(*d);
     }
-    /* sync with the other thread, if any,
-    which will do the read or signaling about the read. */
-    if gs.recv_data_barrier_cloned && gs.recv_data_barrier_enabled {
-        gs.recv_data_barrier.wait();
+    if let Some(ref mut notify) = gs.notify {
+        writeln!(notify.activator, "");
     }
 }
 
@@ -98,21 +101,6 @@ impl Transport {
         }
     }
 
-    pub fn get_recv_data_barrier() -> std::io::Result<Arc<Barrier>> {
-        let mut gs = GLOBAL.lock().unwrap();
-        if gs.recv_data_barrier_cloned {
-            Err(std::io::Error::new(
-                std::io::ErrorKind::AlreadyExists,
-                "Receive data barrier already obtained elsewhere",
-            ))
-        } else {
-            let b = Arc::clone(&gs.recv_data_barrier);
-            gs.recv_data_barrier_cloned = true;
-            gs.recv_data_barrier_enabled = true;
-            Ok(b)
-        }
-    }
-
     fn read_simple(&mut self, buf: &mut [u8]) -> std::io::Result<usize> {
         let mut gs = GLOBAL.lock().unwrap();
         let mut count = 0;
@@ -128,35 +116,14 @@ impl Transport {
         }
         Ok(count)
     }
-
-    fn enable_data_barrier(en: bool) {
-        let mut gs = GLOBAL.lock().unwrap();
-        gs.recv_data_barrier_enabled = en;
-    }
 }
 
 impl std::io::Read for Transport {
     fn read(&mut self, buf: &mut [u8]) -> std::io::Result<usize> {
-        /*
-         * If we are operating without the barrier, then this is a no-op.
-         * If we have given the barrier to sync, this is called either
-         * from a handler that was awaken by the barrier wait already,
-         * or from a sync code - so either case we should not be waiting
-         * in callback.
-         *
-         * However, there seems to be a potential for a race if the read
-         * is called long enough after the write, that the callback
-         * is already triggered, thus will end up waiting there already,
-         * regardless of our wishes.
-         *
-         */
-        Transport::enable_data_barrier(false);
-
         let mut count = 0;
         while count < buf.len() {
             count = count + self.read_simple(&mut buf[count..])?;
         }
-        Transport::enable_data_barrier(true);
         return Ok(count);
     }
 }
@@ -178,6 +145,8 @@ impl std::io::Write for Transport {
         Ok(())
     }
 }
+
+impl VppApiBeaconing for SocketpairStream {}
 
 impl VppApiTransport for Transport {
     fn connect(&mut self, name: &str, chroot_prefix: Option<&str>, rx_qlen: i32) -> Result<()> {
@@ -228,6 +197,23 @@ impl VppApiTransport for Transport {
     fn get_table_max_index(&mut self) -> u16 {
         0
     }
+
+    fn get_beacon_socket(&self) -> std::io::Result<Box<dyn VppApiBeaconing>> {
+        let mut gs = GLOBAL.lock().unwrap();
+        let res = if let Some(ref notify) = gs.notify {
+            notify.beacon.try_clone()
+        } else {
+            let (activator, beacon) = socketpair_stream()?;
+            let notify = NotifySocketpair { activator, beacon };
+            notify.beacon.try_clone()
+        };
+        let out: std::io::Result<Box<dyn VppApiBeaconing>> = match res {
+            Ok(r) => Ok(Box::new(r)),
+            Err(e) => Err(e),
+        };
+        out
+    }
+
     fn dump(&self) {
         let gs = GLOBAL.lock().unwrap();
         println!("Global state: {:?}", &gs);
