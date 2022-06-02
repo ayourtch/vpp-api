@@ -10,32 +10,95 @@ use crate::VppApiTransport;
 use std::collections::HashMap;
 
 use crate::get_encoder;
+use socketpair::SocketpairStream;
 use std::collections::VecDeque;
 use std::sync::{Arc, Mutex};
 
 use std::marker::PhantomData;
-use std::sync::mpsc::channel;
+use std::sync::mpsc::{channel, Receiver, Sender};
 use std::thread;
 
-#[derive(Serialize, Deserialize, Debug)]
-struct SockMsgHeader {
-    _q: u64,
-    msglen: u32,
-    gc_mark: u32,
+/*
+ * Made for the sync model of operation, the Mux transport spawns two threads:
+ *
+ * 1) the Mux thread: it owns the underlying real transport.
+ *    It listens on a single MPSC receiver point, with the senders
+ *    being the fanout transports, and also the Beacon thread.
+ *
+ *    Upon getting a message from Fanout transports, it records the (index, context) mapping,
+ *    creates a translation, and sends the contents to the underlying real transport.
+ *
+ *    Upon getting a message from the Beacon sender, it performs the read
+ *    of the messages from the real transport, uses the context to get the (index, context)
+ *    mapping, translates the payload and dispatches them to the corresponding fanout transport.
+ *
+ *    In order to do that, underlying real transport is being set to non-blocking mode,
+ *    such that all of the pending messages can be drained out.
+ *
+ * 2) the Beacon thread: it polls the beacon socket and sends the DataReady
+ *    message to the Mux thread when there is data to be read.
+ *
+ */
+
+/*
+ * The envelope encapsulating the messages traveling "upstream" - from fanout transport and Beacon
+ * to Mux thread.
+ */
+#[derive(Debug)]
+enum UpstreamMessage {
+    CreateFanout(DownstreamSender),
+    Connect((String, Option<String>, i32)),
+    DataReady,
+    Msg((usize, Vec<u8>)),
 }
 
-enum MuxMessage {
-    DoClose,
-    DoOpen,
+/*
+ * The envelope encapsulating the messages traveling "downstream" - from Mux to a fanout transport.
+ */
+#[derive(Debug)]
+enum DownstreamMessage {
+    CreateFanoutResult(Result<UpstreamSender>),
+    ConnectResult(Result<()>),
+    UpstreamSender(Sender<UpstreamMessage>),
+    Msg(Vec<u8>),
 }
 
-#[derive(Debug, Default)]
+#[derive(Debug)]
+struct UpstreamSender {
+    sender: Sender<UpstreamMessage>,
+    index: usize,
+}
+
+#[derive(Debug)]
+struct DownstreamSender {
+    activator: SocketpairStream,
+    sender: Sender<DownstreamMessage>,
+}
+
+#[derive(Debug)]
 pub struct Muxer<T>
 where
     T: VppApiTransport,
 {
     real_transport: T,
-    real_transport_connected: bool,
+    real_transport_connected: Option<(String, Option<String>, i32)>,
+    fanout: Vec<Option<DownstreamSender>>,
+    free_sender_index: usize,
+    upstream_tx: Sender<UpstreamMessage>, // template to clone from
+    upstream_rx: Receiver<UpstreamMessage>, // receiving end for Mux thread
+}
+
+fn new<T: VppApiTransport>(real_transport: T) -> Muxer<T> {
+    // (Beacon, Fanout) -> Mux mpsc queue
+    let (upstream_tx, upstream_rx) = channel::<UpstreamMessage>();
+    Muxer {
+        real_transport,
+        real_transport_connected: None,
+        fanout: vec![],
+        free_sender_index: 0,
+        upstream_tx,
+        upstream_rx,
+    }
 }
 
 impl<T: VppApiTransport> Drop for Muxer<T> {
