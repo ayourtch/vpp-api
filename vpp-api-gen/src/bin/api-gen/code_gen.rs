@@ -120,6 +120,8 @@ pub fn generate_lib_file(
     packageName: &str,
 ) {
     let mut code = String::new();
+    let mut names_vec: Vec<String> = vec![];
+
     for (name, f) in api_files.clone() {
         lazy_static! {
             static ref RE: Regex = Regex::new(r"/[a-z_0-9]*.api.json").unwrap();
@@ -129,7 +131,11 @@ pub fn generate_lib_file(
             .unwrap()
             .as_str()
             .trim_end_matches(".api.json");
-        code.push_str(&format!("pub mod {};\n", fileName.trim_start_matches("/")));
+        names_vec.push(format!("{}", fileName.trim_start_matches("/")));
+    }
+    names_vec.sort();
+    for name in names_vec {
+        code.push_str(&format!("pub mod {};\n", name));
     }
     let mut file = File::create(format!("{}/{}/src/lib.rs", package_path, packageName)).unwrap();
     file.write_all(code.as_bytes()).unwrap();
