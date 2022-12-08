@@ -107,7 +107,7 @@ impl VppJsApiFile {
         preamble.push_str("use serde::{de::DeserializeOwned, Deserialize, Serialize};\n");
         preamble.push_str("pub use vpp_api_encoding::typ::*;\n");
         preamble.push_str("pub use vpp_api_encoding;\n");
-        preamble.push_str("use vpp_api_message::VppApiMessage;\n");
+        preamble.push_str("use vpp_api_message::{VppApiMessage, VppApiRequestMessageBody, VppApiReplyMessageBody};\n");
         preamble.push_str("use serde_repr::{Serialize_repr, Deserialize_repr};\n");
         preamble.push_str("use typenum;\n");
         let mut import_table: Vec<(String, Vec<String>)> = vec![];
@@ -142,7 +142,7 @@ impl VppJsApiFile {
             name,
             &mut import_table,
         );
-        let typmessage = VppJsApiMessage::iter_and_generate_code(&self.messages);
+        let typmessage = VppJsApiMessage::iter_and_generate_code(&self);
 
         for x in 0..import_table.len() {
             let name = &import_table[x].0;

@@ -88,11 +88,88 @@ impl<'de> Deserialize<'de> for VppJsApiMessage {
         deserializer.deserialize_seq(VppJsApiMessageVisitor)
     }
 }
+
+#[derive(Debug)]
+enum MessageType {
+    Request,
+    Reply,
+}
+
+#[derive(Debug)]
+enum MessageTypeError {
+    ReqMissingFields,
+    ReqZerothFieldMustBeMsgId(VppJsApiMessageFieldDef),
+    ReqFirstFieldMustBeClientIndex(VppJsApiMessageFieldDef),
+    ReqSecondFieldMustBeContext(VppJsApiMessageFieldDef),
+    RepMissingFields,
+    RepZerothFieldMustBeMsgId(VppJsApiMessageFieldDef),
+    RepFirstFieldMustBeContext(VppJsApiMessageFieldDef),
+}
+
 impl VppJsApiMessage {
-    pub fn generate_code(&self) -> String {
+    fn get_message_type(&self, file: &VppJsApiFile) -> Result<MessageType, MessageTypeError> {
+        if let Some(svc) = file.services.get(&self.name) {
+            if self.fields.len() < 3 {
+                return Err(MessageTypeError::ReqMissingFields);
+            }
+            if self.fields[0].name != "_vl_msg_id" {
+                return Err(MessageTypeError::ReqZerothFieldMustBeMsgId(
+                    self.fields[0].clone(),
+                ));
+            }
+            if self.fields[1].name != "client_index" {
+                return Err(MessageTypeError::ReqFirstFieldMustBeClientIndex(
+                    self.fields[1].clone(),
+                ));
+            }
+            if self.fields[2].name != "context" {
+                return Err(MessageTypeError::ReqSecondFieldMustBeContext(
+                    self.fields[2].clone(),
+                ));
+            }
+            return Ok(MessageType::Request);
+        }
+        // anything that is not a request is assumed to be a response
+        if self.fields.len() < 2 {
+            return Err(MessageTypeError::RepMissingFields);
+        }
+        if self.fields[0].name != "_vl_msg_id" {
+            return Err(MessageTypeError::RepZerothFieldMustBeMsgId(
+                self.fields[0].clone(),
+            ));
+        }
+        if self.fields[1].name != "context" {
+            return Err(MessageTypeError::RepFirstFieldMustBeContext(
+                self.fields[1].clone(),
+            ));
+        }
+        return Ok(MessageType::Reply);
+    }
+
+    pub fn generate_code(&self, file: &VppJsApiFile) -> String {
         let mut code = String::new();
+
+        let mtype = self.get_message_type(file);
+        if let Err(e) = mtype {
+            panic!(
+                "Could not determine message type for message {}, error: {:?}",
+                self.name, e
+            );
+        }
+        let mtype = mtype.unwrap();
+
+        let type_specific_derive = match mtype {
+            MessageType::Request => {
+                format!(", VppMessageRequest")
+            }
+            MessageType::Reply => {
+                format!(", VppMessageReply")
+            }
+        };
+
         code.push_str(&format!(
-            "#[derive(Debug, Clone, Serialize, Deserialize, VppMessage)]\n"
+            "#[derive(Debug, Clone, Serialize, Deserialize{})]\n",
+            type_specific_derive
         ));
         code.push_str(&format!(
             "#[message_name_and_crc({}_{})]\n",
@@ -101,6 +178,18 @@ impl VppJsApiMessage {
         ));
         code.push_str(&format!("pub struct {} {{\n", camelize_ident(&self.name)));
         for x in 0..self.fields.len() {
+            match mtype {
+                MessageType::Request => {
+                    if x < 3 {
+                        continue;
+                    }
+                }
+                MessageType::Reply => {
+                    if x < 2 {
+                        continue;
+                    }
+                }
+            }
             if self.fields[x].name == "_vl_msg_id" {
                 // panic!("Something wrong");
             } else if self.fields[x].ctype == "string" {
@@ -166,9 +255,9 @@ impl VppJsApiMessage {
         file.push_str(&format!("\t }}\n"));
         file.push_str(&format!("}}\n"));
     }
-    pub fn iter_and_generate_code(messages: &Vec<VppJsApiMessage>) -> String {
-        messages.iter().fold(String::new(), |mut acc, x| {
-            acc.push_str(&x.generate_code());
+    pub fn iter_and_generate_code(file: &VppJsApiFile) -> String {
+        file.messages.iter().fold(String::new(), |mut acc, x| {
+            acc.push_str(&x.generate_code(file));
             acc
         })
     }
