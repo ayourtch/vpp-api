@@ -612,7 +612,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -634,7 +635,8 @@
                 "minor"
             ],
             {
-                "crc": "0x9b32cf86"
+                "crc": "0x9b32cf86",
+                "options": {}
             }
         ],
         [
@@ -652,7 +654,10 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -670,7 +675,10 @@
                 "profile"
             ],
             {
-                "crc": "0x670d01d9"
+                "crc": "0x670d01d9",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -688,7 +696,10 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -710,7 +721,10 @@
                 "sa"
             ],
             {
-                "crc": "0x937c22d5"
+                "crc": "0x937c22d5",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -732,7 +746,11 @@
                 "sa_index"
             ],
             {
-                "crc": "0x01eab609"
+                "crc": "0x01eab609",
+                "options": {
+                    "vat_help": "sa_index <index>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -754,7 +772,10 @@
                 "child_sa"
             ],
             {
-                "crc": "0xff67741f"
+                "crc": "0xff67741f",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -780,7 +801,11 @@
                 "sa_index"
             ],
             {
-                "crc": "0x7fe9ad51"
+                "crc": "0x7fe9ad51",
+                "options": {
+                    "vat_help": "initiator|responder sa_index <index>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -808,7 +833,10 @@
                 "data_len"
             ],
             {
-                "crc": "0x1b37a342"
+                "crc": "0x1b37a342",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -838,7 +866,11 @@
                 "child_sa_index"
             ],
             {
-                "crc": "0xa7385e33"
+                "crc": "0xa7385e33",
+                "options": {
+                    "vat_help": "initiator|responder sa_index <index> child_sa_index <index>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -860,7 +892,10 @@
                 "ts"
             ],
             {
-                "crc": "0x518cb06f"
+                "crc": "0x518cb06f",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -887,7 +922,11 @@
                 "is_add"
             ],
             {
-                "crc": "0x2c925b55"
+                "crc": "0x2c925b55",
+                "options": {
+                    "vat_help": "name <profile_name> [del]",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -905,7 +944,11 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "name <profile_name> [del]",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -946,7 +989,11 @@
                 "data_len"
             ],
             {
-                "crc": "0x642c97cd"
+                "crc": "0x642c97cd",
+                "options": {
+                    "vat_help": "name <profile_name> auth_method <method> (auth_data 0x<data> | auth_data <data>)",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -964,7 +1011,11 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "name <profile_name> auth_method <method> (auth_data 0x<data> | auth_data <data>)",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1005,7 +1056,11 @@
                 "data_len"
             ],
             {
-                "crc": "0x4d7e2418"
+                "crc": "0x4d7e2418",
+                "options": {
+                    "vat_help": "name <profile_name> id_type <type> (id_data 0x<data> | id_data <data>) (local|remote)",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1023,7 +1078,11 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "name <profile_name> id_type <type> (id_data 0x<data> | id_data <data>) (local|remote)",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1046,7 +1105,10 @@
                 64
             ],
             {
-                "crc": "0xebf79a66"
+                "crc": "0xebf79a66",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1064,7 +1126,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1091,7 +1156,11 @@
                 "ts"
             ],
             {
-                "crc": "0x8eb8cfd1"
+                "crc": "0x8eb8cfd1",
+                "options": {
+                    "vat_help": "name <profile_name> protocol <proto> start_port <port> end_port <port> start_addr <ip> end_addr <ip> (local|remote)",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1109,7 +1178,11 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "name <profile_name> protocol <proto> start_port <port> end_port <port> start_addr <ip> end_addr <ip> (local|remote)",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1132,7 +1205,11 @@
                 256
             ],
             {
-                "crc": "0x799b69ec"
+                "crc": "0x799b69ec",
+                "options": {
+                    "vat_help": "file <absolute_file_path>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1150,7 +1227,11 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "file <absolute_file_path>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1177,7 +1258,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xca67182c"
+                "crc": "0xca67182c",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1195,7 +1279,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1222,7 +1309,11 @@
                 "responder"
             ],
             {
-                "crc": "0xa2055df1"
+                "crc": "0xa2055df1",
+                "options": {
+                    "vat_help": "<profile_name> interface <interface> address <addr>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1240,7 +1331,67 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<profile_name> interface <interface> address <addr>",
+                    "status": "in_progress"
+                }
+            }
+        ],
+        [
+            "ikev2_set_responder_hostname",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "string",
+                "name",
+                64
+            ],
+            [
+                "string",
+                "hostname",
+                64
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x350d6949",
+                "options": {
+                    "status": "in_progress"
+                }
+            }
+        ],
+        [
+            "ikev2_set_responder_hostname_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1267,7 +1418,11 @@
                 "tr"
             ],
             {
-                "crc": "0x076d7378"
+                "crc": "0x076d7378",
+                "options": {
+                    "vat_help": "<profile_name> <crypto alg> <key size> <integrity alg> <DH group>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1285,7 +1440,11 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<profile_name> <crypto alg> <key size> <integrity alg> <DH group>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1312,7 +1471,11 @@
                 "tr"
             ],
             {
-                "crc": "0xa63dc205"
+                "crc": "0xa63dc205",
+                "options": {
+                    "vat_help": "<profile_name> <crypto alg> <key size> <integrity alg>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1330,7 +1493,11 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<profile_name> <crypto alg> <key size> <integrity alg>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1369,7 +1536,11 @@
                 "lifetime_maxdata"
             ],
             {
-                "crc": "0x7039feaa"
+                "crc": "0x7039feaa",
+                "options": {
+                    "vat_help": "<profile_name> <seconds> <jitter> <handover> <max bytes>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1387,7 +1558,11 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<profile_name> <seconds> <jitter> <handover> <max bytes>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1410,7 +1585,11 @@
                 64
             ],
             {
-                "crc": "0xebf79a66"
+                "crc": "0xebf79a66",
+                "options": {
+                    "vat_help": "<profile_name>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1428,7 +1607,11 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<profile_name>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1450,7 +1633,11 @@
                 "ispi"
             ],
             {
-                "crc": "0x8d125bdd"
+                "crc": "0x8d125bdd",
+                "options": {
+                    "vat_help": "<ispi>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1468,7 +1655,11 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<ispi>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1490,7 +1681,11 @@
                 "ispi"
             ],
             {
-                "crc": "0x7f004d2e"
+                "crc": "0x7f004d2e",
+                "options": {
+                    "vat_help": "<ispi>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1508,7 +1703,11 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<ispi>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1530,7 +1729,11 @@
                 "ispi"
             ],
             {
-                "crc": "0x7f004d2e"
+                "crc": "0x7f004d2e",
+                "options": {
+                    "vat_help": "<ispi>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1548,7 +1751,11 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<ispi>",
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1571,7 +1778,10 @@
                 64
             ],
             {
-                "crc": "0xebf79a66"
+                "crc": "0xebf79a66",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1589,7 +1799,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1620,7 +1833,10 @@
                 64
             ],
             {
-                "crc": "0x615ce758"
+                "crc": "0x615ce758",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1638,7 +1854,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1664,7 +1883,10 @@
                 "max_retries"
             ],
             {
-                "crc": "0x6bdf4d65"
+                "crc": "0x6bdf4d65",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -1682,7 +1904,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ]
     ],
@@ -2504,6 +2729,9 @@
         "ikev2_set_responder": {
             "reply": "ikev2_set_responder_reply"
         },
+        "ikev2_set_responder_hostname": {
+            "reply": "ikev2_set_responder_hostname_reply"
+        },
         "ikev2_set_ike_transforms": {
             "reply": "ikev2_set_ike_transforms_reply"
         },
@@ -2560,7 +2788,7 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0xeeeccac1",
+    "vl_api_version": "0x8eb2437c",
     "imports": [
         "plugins/ikev2/ikev2_types.api",
         "vnet/ip/ip_types.api",

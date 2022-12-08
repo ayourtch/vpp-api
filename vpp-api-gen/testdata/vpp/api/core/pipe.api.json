@@ -24,7 +24,8 @@
                 "user_instance"
             ],
             {
-                "crc": "0xbb263bd3"
+                "crc": "0xbb263bd3",
+                "options": {}
             }
         ],
         [
@@ -51,7 +52,8 @@
                 2
             ],
             {
-                "crc": "0xd4c2c2b3"
+                "crc": "0xb7ce310c",
+                "options": {}
             }
         ],
         [
@@ -73,7 +75,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -91,7 +94,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -109,7 +113,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -136,7 +141,8 @@
                 "instance"
             ],
             {
-                "crc": "0x43ac107a"
+                "crc": "0xc52b799d",
+                "options": {}
             }
         ]
     ],

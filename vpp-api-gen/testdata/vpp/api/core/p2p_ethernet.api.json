@@ -28,7 +28,8 @@
                 "remote_mac"
             ],
             {
-                "crc": "0xeeb8e717"
+                "crc": "0x36a1a6dc",
+                "options": {}
             }
         ],
         [
@@ -50,7 +51,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -76,7 +78,8 @@
                 "remote_mac"
             ],
             {
-                "crc": "0x0b62c386"
+                "crc": "0x62f81c8c",
+                "options": {}
             }
         ],
         [
@@ -94,7 +97,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],

@@ -187,7 +187,8 @@
                 "nh_addr"
             ],
             {
-                "crc": "0x26fa3309"
+                "crc": "0x5a36c324",
+                "options": {}
             }
         ],
         [
@@ -205,7 +206,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -247,7 +249,8 @@
                 "sids"
             ],
             {
-                "crc": "0xec79ee6a"
+                "crc": "0x44ac92e8",
+                "options": {}
             }
         ],
         [
@@ -265,7 +268,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -311,7 +315,8 @@
                 "sids"
             ],
             {
-                "crc": "0xe531a102"
+                "crc": "0xb97bb56e",
+                "options": {}
             }
         ],
         [
@@ -329,7 +334,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -355,7 +361,8 @@
                 "sr_policy_index"
             ],
             {
-                "crc": "0xcb4d48d5"
+                "crc": "0xcb4d48d5",
+                "options": {}
             }
         ],
         [
@@ -373,7 +380,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -395,7 +403,8 @@
                 "encaps_source"
             ],
             {
-                "crc": "0xd3bad5e1"
+                "crc": "0xd3bad5e1",
+                "options": {}
             }
         ],
         [
@@ -413,7 +422,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -435,7 +445,8 @@
                 "hop_limit"
             ],
             {
-                "crc": "0xaa75d7d0"
+                "crc": "0xaa75d7d0",
+                "options": {}
             }
         ],
         [
@@ -453,7 +464,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -502,7 +514,8 @@
                 "traffic_type"
             ],
             {
-                "crc": "0x3711dace"
+                "crc": "0xe46b0a0f",
+                "options": {}
             }
         ],
         [
@@ -520,7 +533,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -538,7 +552,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -580,7 +595,90 @@
                 "xconnect_iface_or_vrf_table"
             ],
             {
-                "crc": "0x6a6c0265"
+                "crc": "0x2e9221b9",
+                "options": {}
+            }
+        ],
+        [
+            "sr_localsids_with_packet_stats_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            {
+                "crc": "0x51077d14",
+                "options": {
+                    "status": "in_progress"
+                }
+            }
+        ],
+        [
+            "sr_localsids_with_packet_stats_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_ip6_address_t",
+                "addr"
+            ],
+            [
+                "bool",
+                "end_psp"
+            ],
+            [
+                "vl_api_sr_behavior_t",
+                "behavior"
+            ],
+            [
+                "u32",
+                "fib_table"
+            ],
+            [
+                "u32",
+                "vlan_index"
+            ],
+            [
+                "vl_api_address_t",
+                "xconnect_nh_addr"
+            ],
+            [
+                "u32",
+                "xconnect_iface_or_vrf_table"
+            ],
+            [
+                "u64",
+                "good_traffic_bytes"
+            ],
+            [
+                "u64",
+                "good_traffic_pkt_count"
+            ],
+            [
+                "u64",
+                "bad_traffic_bytes"
+            ],
+            [
+                "u64",
+                "bad_traffic_pkt_count"
+            ],
+            {
+                "crc": "0xce0b1ce0",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -598,7 +696,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -638,7 +737,8 @@
                 "num_sid_lists"
             ],
             {
-                "crc": "0x07ec2d93"
+                "crc": "0xdb6ff2a1",
+                "options": {}
             }
         ],
         [
@@ -656,7 +756,10 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -696,7 +799,10 @@
                 "num_sid_lists"
             ],
             {
-                "crc": "0xca2e9bc8"
+                "crc": "0xca2e9bc8",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -714,7 +820,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -748,7 +855,8 @@
                 "bsid"
             ],
             {
-                "crc": "0x1c1ee786"
+                "crc": "0xd41258c9",
+                "options": {}
             }
         ]
     ],
@@ -1252,6 +1360,10 @@
             "reply": "sr_localsids_details",
             "stream": true
         },
+        "sr_localsids_with_packet_stats_dump": {
+            "reply": "sr_localsids_with_packet_stats_details",
+            "stream": true
+        },
         "sr_policies_dump": {
             "reply": "sr_policies_details",
             "stream": true
@@ -1290,7 +1402,7 @@
             "type": "vl_api_ip6_prefix_t"
         }
     },
-    "vl_api_version": "0xb17a64be",
+    "vl_api_version": "0x66d92d1b",
     "imports": [
         "vnet/interface_types.api",
         "vnet/ip/ip_types.api",

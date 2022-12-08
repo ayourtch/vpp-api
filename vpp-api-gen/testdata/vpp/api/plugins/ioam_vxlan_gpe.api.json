@@ -129,7 +129,8 @@
                 "trace_enable"
             ],
             {
-                "crc": "0x2481bef7"
+                "crc": "0x2481bef7",
+                "options": {}
             }
         ],
         [
@@ -147,7 +148,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -169,7 +171,8 @@
                 "id"
             ],
             {
-                "crc": "0x6b16a45e"
+                "crc": "0x6b16a45e",
+                "options": {}
             }
         ],
         [
@@ -187,7 +190,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -217,7 +221,8 @@
                 "remote"
             ],
             {
-                "crc": "0x997161fb"
+                "crc": "0x0fbb5fb1",
+                "options": {}
             }
         ],
         [
@@ -235,7 +240,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -265,7 +271,8 @@
                 "remote"
             ],
             {
-                "crc": "0x997161fb"
+                "crc": "0x0fbb5fb1",
+                "options": {}
             }
         ],
         [
@@ -283,7 +290,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -309,7 +317,8 @@
                 "dst_addr"
             ],
             {
-                "crc": "0x553f5b7b"
+                "crc": "0x3d3ec657",
+                "options": {}
             }
         ],
         [
@@ -327,7 +336,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -353,7 +363,8 @@
                 "dst_addr"
             ],
             {
-                "crc": "0x553f5b7b"
+                "crc": "0x3d3ec657",
+                "options": {}
             }
         ],
         [
@@ -371,7 +382,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],

@@ -140,7 +140,8 @@
                 "entry"
             ],
             {
-                "crc": "0x5aa0a538"
+                "crc": "0x8016cfd2",
+                "options": {}
             }
         ],
         [
@@ -158,7 +159,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -176,7 +178,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -194,7 +197,8 @@
                 "entry"
             ],
             {
-                "crc": "0xe3b6a503"
+                "crc": "0x981ee1a1",
+                "options": {}
             }
         ]
     ],

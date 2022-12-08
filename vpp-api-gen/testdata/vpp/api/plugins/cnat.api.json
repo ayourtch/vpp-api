@@ -397,7 +397,8 @@
                 "translation"
             ],
             {
-                "crc": "0xcd5aedf5"
+                "crc": "0xcd5aedf5",
+                "options": {}
             }
         ],
         [
@@ -419,7 +420,8 @@
                 "id"
             ],
             {
-                "crc": "0xe2fc8294"
+                "crc": "0xe2fc8294",
+                "options": {}
             }
         ],
         [
@@ -441,7 +443,8 @@
                 "id"
             ],
             {
-                "crc": "0x3a91bde5"
+                "crc": "0x3a91bde5",
+                "options": {}
             }
         ],
         [
@@ -459,7 +462,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -477,7 +481,8 @@
                 "translation"
             ],
             {
-                "crc": "0x347e1f16"
+                "crc": "0x347e1f16",
+                "options": {}
             }
         ],
         [
@@ -495,7 +500,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -513,7 +519,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -531,7 +538,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -549,7 +557,8 @@
                 "session"
             ],
             {
-                "crc": "0x7e5017c7"
+                "crc": "0x7e5017c7",
+                "options": {}
             }
         ],
         [
@@ -567,7 +576,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -597,7 +607,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xd997e96c"
+                "crc": "0xd997e96c",
+                "options": {}
             }
         ],
         [
@@ -615,7 +626,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -633,7 +645,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -667,11 +680,12 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x879513c1"
+                "crc": "0x879513c1",
+                "options": {}
             }
         ],
         [
-            "cnat_add_del_snat_prefix",
+            "cnat_snat_policy_add_del_exclude_pfx",
             [
                 "u16",
                 "_vl_msg_id"
@@ -693,11 +707,12 @@
                 "prefix"
             ],
             {
-                "crc": "0xe26dd79a"
+                "crc": "0xe26dd79a",
+                "options": {}
             }
         ],
         [
-            "cnat_add_del_snat_prefix_reply",
+            "cnat_snat_policy_add_del_exclude_pfx_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -711,7 +726,58 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "cnat_snat_policy_add_del_if",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "u8",
+                "is_add"
+            ],
+            [
+                "vl_api_cnat_snat_policy_table_t",
+                "table"
+            ],
+            {
+                "crc": "0x6828deca",
+                "options": {}
+            }
+        ],
+        [
+            "cnat_snat_policy_add_del_if_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -733,7 +799,8 @@
                 "policy"
             ],
             {
-                "crc": "0x5329b08d"
+                "crc": "0xd3e6eaf4",
+                "options": {}
             }
         ],
         [
@@ -751,7 +818,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -1495,13 +1563,39 @@
             }
         ],
         [
-            "cnat_snat_policies",
+            "cnat_snat_policy_table",
             [
-                "CNAT_SNAT_POLICY_NONE",
+                "CNAT_POLICY_INCLUDE_V4",
+                0
+            ],
+            [
+                "CNAT_POLICY_INCLUDE_V6",
                 1
             ],
+            [
+                "CNAT_POLICY_POD",
+                2
+            ],
             {
-                "enumtype": "u32"
+                "enumtype": "u8"
+            }
+        ],
+        [
+            "cnat_snat_policies",
+            [
+                "CNAT_POLICY_NONE",
+                0
+            ],
+            [
+                "CNAT_POLICY_IF_PFX",
+                1
+            ],
+            [
+                "CNAT_POLICY_K8S",
+                2
+            ],
+            {
+                "enumtype": "u8"
             }
         ]
     ],
@@ -1530,8 +1624,11 @@
         "cnat_get_snat_addresses": {
             "reply": "cnat_get_snat_addresses_reply"
         },
-        "cnat_add_del_snat_prefix": {
-            "reply": "cnat_add_del_snat_prefix_reply"
+        "cnat_snat_policy_add_del_exclude_pfx": {
+            "reply": "cnat_snat_policy_add_del_exclude_pfx_reply"
+        },
+        "cnat_snat_policy_add_del_if": {
+            "reply": "cnat_snat_policy_add_del_if_reply"
         },
         "cnat_set_snat_policy": {
             "reply": "cnat_set_snat_policy_reply"
@@ -1562,7 +1659,7 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0xd7e8d1ba",
+    "vl_api_version": "0xfd05573b",
     "imports": [
         "vnet/ip/ip_types.api",
         "vnet/fib/fib_types.api",

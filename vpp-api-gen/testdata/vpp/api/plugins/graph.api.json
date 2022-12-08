@@ -37,7 +37,10 @@
                 "want_arcs"
             ],
             {
-                "crc": "0x39c8792e"
+                "crc": "0x39c8792e",
+                "options": {
+                    "vat_help": "graph_node_dump [start <cursor>] [node_index <index>]|[node_name <name>]|[flags]"
+                }
             }
         ],
         [
@@ -59,7 +62,8 @@
                 "cursor"
             ],
             {
-                "crc": "0x53b48f5d"
+                "crc": "0x53b48f5d",
+                "options": {}
             }
         ],
         [
@@ -96,7 +100,8 @@
                 "n_arcs"
             ],
             {
-                "crc": "0xac762018"
+                "crc": "0xac762018",
+                "options": {}
             }
         ]
     ],

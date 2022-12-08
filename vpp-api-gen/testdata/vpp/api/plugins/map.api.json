@@ -149,7 +149,8 @@
                 64
             ],
             {
-                "crc": "0x7a5a18c9"
+                "crc": "0x249f195c",
+                "options": {}
             }
         ],
         [
@@ -171,7 +172,8 @@
                 "retval"
             ],
             {
-                "crc": "0x3e6d4e2c"
+                "crc": "0x3e6d4e2c",
+                "options": {}
             }
         ],
         [
@@ -193,7 +195,8 @@
                 "index"
             ],
             {
-                "crc": "0x8ac76db6"
+                "crc": "0x8ac76db6",
+                "options": {}
             }
         ],
         [
@@ -211,7 +214,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -245,7 +249,8 @@
                 "psid"
             ],
             {
-                "crc": "0xc65b32f7"
+                "crc": "0xc65b32f7",
+                "options": {}
             }
         ],
         [
@@ -263,7 +268,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -285,7 +291,8 @@
                 "cursor"
             ],
             {
-                "crc": "0xf75ba505"
+                "crc": "0xf75ba505",
+                "options": {}
             }
         ],
         [
@@ -307,7 +314,8 @@
                 "cursor"
             ],
             {
-                "crc": "0x53b48f5d"
+                "crc": "0x53b48f5d",
+                "options": {}
             }
         ],
         [
@@ -325,7 +333,10 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -380,7 +391,8 @@
                 64
             ],
             {
-                "crc": "0xfc1859dd"
+                "crc": "0x796edb50",
+                "options": {}
             }
         ],
         [
@@ -402,7 +414,8 @@
                 "domain_index"
             ],
             {
-                "crc": "0xe43e6ff6"
+                "crc": "0xe43e6ff6",
+                "options": {}
             }
         ],
         [
@@ -424,7 +437,8 @@
                 "psid"
             ],
             {
-                "crc": "0xc7cbeea5"
+                "crc": "0xc7cbeea5",
+                "options": {}
             }
         ],
         [
@@ -454,7 +468,8 @@
                 "is_translation"
             ],
             {
-                "crc": "0x59bb32f4"
+                "crc": "0x59bb32f4",
+                "options": {}
             }
         ],
         [
@@ -472,7 +487,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -490,7 +506,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -531,7 +548,8 @@
                 2
             ],
             {
-                "crc": "0x0e4ace0e"
+                "crc": "0x0e4ace0e",
+                "options": {}
             }
         ],
         [
@@ -557,7 +575,8 @@
                 "ignore_df"
             ],
             {
-                "crc": "0x9ff54d90"
+                "crc": "0x9ff54d90",
+                "options": {}
             }
         ],
         [
@@ -575,7 +594,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -597,7 +617,8 @@
                 "ip4_err_relay_src"
             ],
             {
-                "crc": "0x58210cbf"
+                "crc": "0x58210cbf",
+                "options": {}
             }
         ],
         [
@@ -615,7 +636,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -637,7 +659,8 @@
                 "enable_unreachable"
             ],
             {
-                "crc": "0x5d01f8c1"
+                "crc": "0x5d01f8c1",
+                "options": {}
             }
         ],
         [
@@ -655,7 +678,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -685,7 +709,8 @@
                 "ip6_nh_address"
             ],
             {
-                "crc": "0x17008c66"
+                "crc": "0xdae5af03",
+                "options": {}
             }
         ],
         [
@@ -703,7 +728,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -729,7 +755,8 @@
                 "fragments"
             ],
             {
-                "crc": "0x6abe9836"
+                "crc": "0x6abe9836",
+                "options": {}
             }
         ],
         [
@@ -747,7 +774,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -773,7 +801,8 @@
                 "tc_class"
             ],
             {
-                "crc": "0x9cac455c"
+                "crc": "0x9cac455c",
+                "options": {}
             }
         ],
         [
@@ -791,7 +820,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -813,7 +843,8 @@
                 "tcp_mss"
             ],
             {
-                "crc": "0x87a825d9"
+                "crc": "0x87a825d9",
+                "options": {}
             }
         ],
         [
@@ -831,7 +862,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -849,7 +881,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -923,7 +956,8 @@
                 "tc_class"
             ],
             {
-                "crc": "0x28092156"
+                "crc": "0x26272c90",
+                "options": {}
             }
         ]
     ],

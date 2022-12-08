@@ -99,6 +99,178 @@
     ],
     "messages": [
         [
+            "tap_create_v3",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "id",
+                {
+                    "default": 4294967295
+                }
+            ],
+            [
+                "bool",
+                "use_random_mac",
+                {
+                    "default": "true"
+                }
+            ],
+            [
+                "vl_api_mac_address_t",
+                "mac_address"
+            ],
+            [
+                "u16",
+                "num_rx_queues",
+                {
+                    "default": 1
+                }
+            ],
+            [
+                "u16",
+                "num_tx_queues",
+                {
+                    "default": 1
+                }
+            ],
+            [
+                "u16",
+                "tx_ring_sz",
+                {
+                    "default": 256
+                }
+            ],
+            [
+                "u16",
+                "rx_ring_sz",
+                {
+                    "default": 256
+                }
+            ],
+            [
+                "bool",
+                "host_mtu_set"
+            ],
+            [
+                "u32",
+                "host_mtu_size"
+            ],
+            [
+                "bool",
+                "host_mac_addr_set"
+            ],
+            [
+                "vl_api_mac_address_t",
+                "host_mac_addr"
+            ],
+            [
+                "bool",
+                "host_ip4_prefix_set"
+            ],
+            [
+                "vl_api_ip4_address_with_prefix_t",
+                "host_ip4_prefix"
+            ],
+            [
+                "bool",
+                "host_ip6_prefix_set"
+            ],
+            [
+                "vl_api_ip6_address_with_prefix_t",
+                "host_ip6_prefix"
+            ],
+            [
+                "bool",
+                "host_ip4_gw_set"
+            ],
+            [
+                "vl_api_ip4_address_t",
+                "host_ip4_gw"
+            ],
+            [
+                "bool",
+                "host_ip6_gw_set"
+            ],
+            [
+                "vl_api_ip6_address_t",
+                "host_ip6_gw"
+            ],
+            [
+                "vl_api_tap_flags_t",
+                "tap_flags"
+            ],
+            [
+                "bool",
+                "host_namespace_set"
+            ],
+            [
+                "string",
+                "host_namespace",
+                64
+            ],
+            [
+                "bool",
+                "host_if_name_set"
+            ],
+            [
+                "string",
+                "host_if_name",
+                64
+            ],
+            [
+                "bool",
+                "host_bridge_set"
+            ],
+            [
+                "string",
+                "host_bridge",
+                64
+            ],
+            [
+                "string",
+                "tag",
+                0
+            ],
+            {
+                "crc": "0x3f3fd1df",
+                "options": {}
+            }
+        ],
+        [
+            "tap_create_v3_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x5383d31f",
+                "options": {}
+            }
+        ],
+        [
             "tap_create_v2",
             [
                 "u16",
@@ -236,7 +408,8 @@
                 0
             ],
             {
-                "crc": "0x445835fd"
+                "crc": "0x2d0d6570",
+                "options": {}
             }
         ],
         [
@@ -258,7 +431,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -280,7 +454,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -298,7 +473,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -323,7 +499,8 @@
                 }
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -393,7 +570,8 @@
                 64
             ],
             {
-                "crc": "0xe53c16de"
+                "crc": "0x1e2b2a47",
+                "options": {}
             }
         ]
     ],
@@ -824,6 +1002,9 @@
     ],
     "enumflags": [],
     "services": {
+        "tap_create_v3": {
+            "reply": "tap_create_v3_reply"
+        },
         "tap_create_v2": {
             "reply": "tap_create_v2_reply"
         },
@@ -864,7 +1045,7 @@
             "type": "vl_api_ip6_prefix_t"
         }
     },
-    "vl_api_version": "0xc20c291f",
+    "vl_api_version": "0xc2f80dc7",
     "imports": [
         "vnet/interface_types.api",
         "vnet/ethernet/ethernet_types.api",

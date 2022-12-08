@@ -47,7 +47,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x3865946c"
+                "crc": "0x3865946c",
+                "options": {
+                    "vat_help": "<intfc> [disable]"
+                }
             }
         ],
         [
@@ -65,7 +68,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<intfc> [disable]"
+                }
             }
         ],
         [
@@ -126,7 +132,10 @@
                 "count"
             ],
             {
-                "crc": "0x101858ef"
+                "crc": "0xcb56e877",
+                "options": {
+                    "vat_help": "name <devname> mac <mac-addr> allow drop allow-range Mon - Fri 9:00 - 17:00"
+                }
             }
         ],
         [
@@ -144,7 +153,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "name <devname> mac <mac-addr> allow drop allow-range Mon - Fri 9:00 - 17:00"
+                }
             }
         ],
         [
@@ -166,7 +178,8 @@
                 "my_table_epoch"
             ],
             {
-                "crc": "0x8f454e23"
+                "crc": "0x8f454e23",
+                "options": {}
             }
         ],
         [
@@ -215,7 +228,8 @@
                 "nranges"
             ],
             {
-                "crc": "0x44921c06"
+                "crc": "0xda25b13a",
+                "options": {}
             }
         ],
         [
@@ -237,7 +251,8 @@
                 "table_epoch"
             ],
             {
-                "crc": "0x49bcc753"
+                "crc": "0x49bcc753",
+                "options": {}
             }
         ]
     ],

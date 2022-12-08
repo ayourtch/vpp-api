@@ -136,7 +136,8 @@
                 "proxy"
             ],
             {
-                "crc": "0x85486cbd"
+                "crc": "0x1823c3e7",
+                "options": {}
             }
         ],
         [
@@ -154,7 +155,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -172,7 +174,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -190,7 +193,8 @@
                 "proxy"
             ],
             {
-                "crc": "0x9228c150"
+                "crc": "0x5b948673",
+                "options": {}
             }
         ],
         [
@@ -216,7 +220,8 @@
                 "enable"
             ],
             {
-                "crc": "0xae6cfcfb"
+                "crc": "0xae6cfcfb",
+                "options": {}
             }
         ],
         [
@@ -234,7 +239,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -252,7 +258,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -270,7 +277,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf6458e5f"
+                "crc": "0xf6458e5f",
+                "options": {}
             }
         ]
     ],
@@ -713,6 +721,150 @@
         "vnet/ethernet/ethernet_types.api",
         "vnet/interface_types.api"
     ],
-    "counters": [],
-    "paths": []
+    "counters": [
+        {
+            "name": "arp",
+            "elements": [
+                {
+                    "name": "replies_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ARP replies sent"
+                },
+                {
+                    "name": "disabled",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ARP Disabled"
+                },
+                {
+                    "name": "l2_type_not_ethernet",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "L2 type not ethernet"
+                },
+                {
+                    "name": "l3_type_not_ip4",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "L3 type not IP4"
+                },
+                {
+                    "name": "l3_src_address_not_local",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "IP4 source address not local to subnet"
+                },
+                {
+                    "name": "l3_dst_address_not_local",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "IP4 destination address not local to subnet"
+                },
+                {
+                    "name": "l3_dst_address_unset",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "IP4 destination address is unset"
+                },
+                {
+                    "name": "l3_src_address_is_local",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "IP4 source address matches local interface"
+                },
+                {
+                    "name": "l3_src_address_learned",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ARP request IP4 source address learned"
+                },
+                {
+                    "name": "replies_received",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ARP replies received"
+                },
+                {
+                    "name": "opcode_not_request",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ARP opcode not request"
+                },
+                {
+                    "name": "proxy_arp_replies_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "Proxy ARP replies sent"
+                },
+                {
+                    "name": "l2_address_mismatch",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ARP hw addr does not match L2 frame src addr"
+                },
+                {
+                    "name": "gratuitous_arp",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ARP probe or announcement dropped"
+                },
+                {
+                    "name": "interface_no_table",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "Interface is not mapped to an IP table"
+                },
+                {
+                    "name": "interface_not_ip_enabled",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "Interface is not IP enabled"
+                },
+                {
+                    "name": "unnumbered_mismatch",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "RX interface is unnumbered to different subnet"
+                }
+            ]
+        }
+    ],
+    "paths": [
+        [
+            {
+                "path": "/err/arp-reply",
+                "counter": "arp"
+            },
+            {
+                "path": "/err/arp-disabled",
+                "counter": "arp"
+            },
+            {
+                "path": "/err/arp-input",
+                "counter": "arp"
+            },
+            {
+                "path": "/err/arp-proxy",
+                "counter": "arp"
+            }
+        ]
+    ]
 }

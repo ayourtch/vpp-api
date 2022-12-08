@@ -20,7 +20,8 @@
                 "is_disable"
             ],
             {
-                "crc": "0x47705c03"
+                "crc": "0x47705c03",
+                "options": {}
             }
         ],
         [
@@ -38,7 +39,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],

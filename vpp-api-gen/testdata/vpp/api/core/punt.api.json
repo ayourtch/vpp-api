@@ -177,7 +177,8 @@
                 "punt"
             ],
             {
-                "crc": "0x83799618"
+                "crc": "0x47d0e347",
+                "options": {}
             }
         ],
         [
@@ -195,7 +196,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -226,7 +228,8 @@
                 108
             ],
             {
-                "crc": "0xc8cd10fa"
+                "crc": "0x7875badb",
+                "options": {}
             }
         ],
         [
@@ -249,7 +252,8 @@
                 108
             ],
             {
-                "crc": "0xbd30ae90"
+                "crc": "0xbd30ae90",
+                "options": {}
             }
         ],
         [
@@ -271,7 +275,8 @@
                 "type"
             ],
             {
-                "crc": "0x52974935"
+                "crc": "0x916fb004",
+                "options": {}
             }
         ],
         [
@@ -294,7 +299,8 @@
                 108
             ],
             {
-                "crc": "0x1de0ce75"
+                "crc": "0x330466e4",
+                "options": {}
             }
         ],
         [
@@ -316,7 +322,8 @@
                 "punt"
             ],
             {
-                "crc": "0x98a444f4"
+                "crc": "0x75afa766",
+                "options": {}
             }
         ],
         [
@@ -334,7 +341,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -356,7 +364,8 @@
                 "reason"
             ],
             {
-                "crc": "0x5c0dd4fe"
+                "crc": "0x5c0dd4fe",
+                "options": {}
             }
         ],
         [
@@ -374,7 +383,8 @@
                 "reason"
             ],
             {
-                "crc": "0x2c9d4a40"
+                "crc": "0x2c9d4a40",
+                "options": {}
             }
         ]
     ],
@@ -621,15 +631,15 @@
             "punt_type",
             [
                 "PUNT_API_TYPE_L4",
-                1
+                0
             ],
             [
                 "PUNT_API_TYPE_IP_PROTO",
-                2
+                1
             ],
             [
                 "PUNT_API_TYPE_EXCEPTION",
-                3
+                2
             ],
             {
                 "enumtype": "u32"
@@ -678,7 +688,7 @@
             "type": "vl_api_ip6_prefix_t"
         }
     },
-    "vl_api_version": "0xee63b6c7",
+    "vl_api_version": "0x24d11934",
     "imports": [
         "vnet/ip/ip_types.api"
     ],

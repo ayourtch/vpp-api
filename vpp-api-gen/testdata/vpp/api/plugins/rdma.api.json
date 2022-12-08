@@ -54,7 +54,11 @@
                 }
             ],
             {
-                "crc": "0x076fe418"
+                "crc": "0x076fe418",
+                "options": {
+                    "deprecated": "21.01",
+                    "vat_help": "<host-if ifname> [name <name>] [rx-queue-size <size>] [tx-queue-size <size>] [num-rx-queues <size>] [mode <auto|ibv|dv>]"
+                }
             }
         ],
         [
@@ -124,7 +128,98 @@
                 }
             ],
             {
-                "crc": "0x5826a4f3"
+                "crc": "0x5826a4f3",
+                "options": {
+                    "deprecated": null,
+                    "vat_help": "<host-if ifname> [name <name>] [rx-queue-size <size>] [tx-queue-size <size>] [num-rx-queues <size>] [mode <auto|ibv|dv>] [no-multi-seg] [max-pktlen <size>]"
+                }
+            }
+        ],
+        [
+            "rdma_create_v3",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "string",
+                "host_if",
+                64
+            ],
+            [
+                "string",
+                "name",
+                64
+            ],
+            [
+                "u16",
+                "rxq_num",
+                {
+                    "default": 1
+                }
+            ],
+            [
+                "u16",
+                "rxq_size",
+                {
+                    "default": 1024
+                }
+            ],
+            [
+                "u16",
+                "txq_size",
+                {
+                    "default": 1024
+                }
+            ],
+            [
+                "vl_api_rdma_mode_t",
+                "mode",
+                {
+                    "default": 0
+                }
+            ],
+            [
+                "bool",
+                "no_multi_seg",
+                {
+                    "default": 0
+                }
+            ],
+            [
+                "u16",
+                "max_pktlen",
+                {
+                    "default": 0
+                }
+            ],
+            [
+                "vl_api_rdma_rss4_t",
+                "rss4",
+                {
+                    "default": 0
+                }
+            ],
+            [
+                "vl_api_rdma_rss6_t",
+                "rss6",
+                {
+                    "default": 0
+                }
+            ],
+            {
+                "crc": "0xc6287ea8",
+                "options": {
+                    "vat_help": "<host-if ifname> [name <name>] [rx-queue-size <size>] [tx-queue-size <size>] [num-rx-queues <size>] [mode <auto|ibv|dv>] [no-multi-seg] [max-pktlen <size>] [rss <ipv4|ipv4-udp|ipv4-tcp>] [rss <ipv6|ipv6-udp|ipv6-tcp>]"
+                }
             }
         ],
         [
@@ -146,7 +241,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -168,7 +264,31 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
+            }
+        ],
+        [
+            "rdma_create_v3_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -190,7 +310,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {
+                    "vat_help": "<sw_if_index index>"
+                }
             }
         ],
         [
@@ -208,7 +331,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<sw_if_index index>"
+                }
             }
         ]
     ],
@@ -393,6 +519,50 @@
             {
                 "enumtype": "u32"
             }
+        ],
+        [
+            "rdma_rss4",
+            [
+                "RDMA_API_RSS4_AUTO",
+                0
+            ],
+            [
+                "RDMA_API_RSS4_IP",
+                1
+            ],
+            [
+                "RDMA_API_RSS4_IP_UDP",
+                2
+            ],
+            [
+                "RDMA_API_RSS4_IP_TCP",
+                3
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "rdma_rss6",
+            [
+                "RDMA_API_RSS6_AUTO",
+                0
+            ],
+            [
+                "RDMA_API_RSS6_IP",
+                1
+            ],
+            [
+                "RDMA_API_RSS6_IP_UDP",
+                2
+            ],
+            [
+                "RDMA_API_RSS6_IP_TCP",
+                3
+            ],
+            {
+                "enumtype": "u32"
+            }
         ]
     ],
     "enumflags": [],
@@ -403,19 +573,22 @@
         "rdma_create_v2": {
             "reply": "rdma_create_v2_reply"
         },
+        "rdma_create_v3": {
+            "reply": "rdma_create_v3_reply"
+        },
         "rdma_delete": {
             "reply": "rdma_delete_reply"
         }
     },
     "options": {
-        "version": "2.0.0"
+        "version": "3.0.0"
     },
     "aliases": {
         "interface_index": {
             "type": "u32"
         }
     },
-    "vl_api_version": "0xd65e7dc4",
+    "vl_api_version": "0xdab70fa9",
     "imports": [
         "vnet/interface_types.api"
     ],

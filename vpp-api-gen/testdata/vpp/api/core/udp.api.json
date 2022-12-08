@@ -122,6 +122,21 @@
                 "u32",
                 "id"
             ]
+        ],
+        [
+            "udp_decap",
+            [
+                "u8",
+                "is_ip4"
+            ],
+            [
+                "u16",
+                "port"
+            ],
+            [
+                "vl_api_udp_decap_next_proto_t",
+                "next_proto"
+            ]
         ]
     ],
     "messages": [
@@ -144,7 +159,8 @@
                 "udp_encap"
             ],
             {
-                "crc": "0x61d5fc48"
+                "crc": "0xf74a60b1",
+                "options": {}
             }
         ],
         [
@@ -166,7 +182,8 @@
                 "id"
             ],
             {
-                "crc": "0xe2fc8294"
+                "crc": "0xe2fc8294",
+                "options": {}
             }
         ],
         [
@@ -188,7 +205,8 @@
                 "id"
             ],
             {
-                "crc": "0x3a91bde5"
+                "crc": "0x3a91bde5",
+                "options": {}
             }
         ],
         [
@@ -206,7 +224,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -224,7 +243,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -242,7 +262,54 @@
                 "udp_encap"
             ],
             {
-                "crc": "0x87c82821"
+                "crc": "0x8cfb9c76",
+                "options": {}
+            }
+        ],
+        [
+            "udp_decap_add_del",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "is_add"
+            ],
+            [
+                "vl_api_udp_decap_t",
+                "udp_decap"
+            ],
+            {
+                "crc": "0xd14a4f47",
+                "options": {}
+            }
+        ],
+        [
+            "udp_decap_add_del_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -469,6 +536,24 @@
             {
                 "enumtype": "u8"
             }
+        ],
+        [
+            "udp_decap_next_proto",
+            [
+                "UDP_API_DECAP_PROTO_IP4",
+                0
+            ],
+            [
+                "UDP_API_DECAP_PROTO_IP6",
+                1
+            ],
+            [
+                "UDP_API_DECAP_PROTO_MPLS",
+                2
+            ],
+            {
+                "enumtype": "u32"
+            }
         ]
     ],
     "enumflags": [],
@@ -482,6 +567,9 @@
         "udp_encap_dump": {
             "reply": "udp_encap_details",
             "stream": true
+        },
+        "udp_decap_add_del": {
+            "reply": "udp_decap_add_del_reply"
         }
     },
     "options": {
@@ -506,7 +594,7 @@
             "type": "vl_api_ip6_prefix_t"
         }
     },
-    "vl_api_version": "0x65e4a4b3",
+    "vl_api_version": "0x6804c5af",
     "imports": [
         "vnet/ip/ip_types.api"
     ],

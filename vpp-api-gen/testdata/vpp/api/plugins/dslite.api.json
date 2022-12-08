@@ -125,7 +125,8 @@
                 "is_add"
             ],
             {
-                "crc": "0xc448457a"
+                "crc": "0xde2a5b02",
+                "options": {}
             }
         ],
         [
@@ -143,7 +144,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -161,7 +163,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -179,7 +182,8 @@
                 "ip_address"
             ],
             {
-                "crc": "0xec26d648"
+                "crc": "0xec26d648",
+                "options": {}
             }
         ],
         [
@@ -205,7 +209,8 @@
                 "ip6_addr"
             ],
             {
-                "crc": "0x1e955f8d"
+                "crc": "0x78b50fdf",
+                "options": {}
             }
         ],
         [
@@ -223,7 +228,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -241,7 +247,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -267,7 +274,8 @@
                 "ip6_addr"
             ],
             {
-                "crc": "0x38e30db1"
+                "crc": "0x8e23608e",
+                "options": {}
             }
         ],
         [
@@ -293,7 +301,8 @@
                 "ip6_addr"
             ],
             {
-                "crc": "0x1e955f8d"
+                "crc": "0x78b50fdf",
+                "options": {}
             }
         ],
         [
@@ -311,7 +320,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -329,7 +339,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -355,7 +366,8 @@
                 "ip6_addr"
             ],
             {
-                "crc": "0x38e30db1"
+                "crc": "0x8e23608e",
+                "options": {}
             }
         ]
     ],

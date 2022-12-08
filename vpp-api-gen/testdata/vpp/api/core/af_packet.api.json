@@ -29,7 +29,8 @@
                 64
             ],
             {
-                "crc": "0xa190415f"
+                "crc": "0xa190415f",
+                "options": {}
             }
         ],
         [
@@ -51,7 +52,183 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
+            }
+        ],
+        [
+            "af_packet_create_v2",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_mac_address_t",
+                "hw_addr"
+            ],
+            [
+                "bool",
+                "use_random_hw_addr"
+            ],
+            [
+                "string",
+                "host_if_name",
+                64
+            ],
+            [
+                "u32",
+                "rx_frame_size"
+            ],
+            [
+                "u32",
+                "tx_frame_size"
+            ],
+            [
+                "u32",
+                "rx_frames_per_block"
+            ],
+            [
+                "u32",
+                "tx_frames_per_block"
+            ],
+            [
+                "u32",
+                "flags"
+            ],
+            [
+                "u16",
+                "num_rx_queues",
+                {
+                    "default": 1
+                }
+            ],
+            {
+                "crc": "0x4aff0436",
+                "options": {}
+            }
+        ],
+        [
+            "af_packet_create_v2_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x5383d31f",
+                "options": {}
+            }
+        ],
+        [
+            "af_packet_create_v3",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_af_packet_mode_t",
+                "mode"
+            ],
+            [
+                "vl_api_mac_address_t",
+                "hw_addr"
+            ],
+            [
+                "bool",
+                "use_random_hw_addr"
+            ],
+            [
+                "string",
+                "host_if_name",
+                64
+            ],
+            [
+                "u32",
+                "rx_frame_size"
+            ],
+            [
+                "u32",
+                "tx_frame_size"
+            ],
+            [
+                "u32",
+                "rx_frames_per_block"
+            ],
+            [
+                "u32",
+                "tx_frames_per_block"
+            ],
+            [
+                "vl_api_af_packet_flags_t",
+                "flags"
+            ],
+            [
+                "u16",
+                "num_rx_queues",
+                {
+                    "default": 1
+                }
+            ],
+            [
+                "u16",
+                "num_tx_queues",
+                {
+                    "default": 1
+                }
+            ],
+            {
+                "crc": "0xb3a809d4",
+                "options": {}
+            }
+        ],
+        [
+            "af_packet_create_v3_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -74,7 +251,8 @@
                 64
             ],
             {
-                "crc": "0x863fa648"
+                "crc": "0x863fa648",
+                "options": {}
             }
         ],
         [
@@ -92,7 +270,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -118,7 +297,8 @@
                 "set"
             ],
             {
-                "crc": "0x319cd5c8"
+                "crc": "0x319cd5c8",
+                "options": {}
             }
         ],
         [
@@ -136,7 +316,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -154,7 +335,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -177,7 +359,8 @@
                 64
             ],
             {
-                "crc": "0x58c7c042"
+                "crc": "0x58c7c042",
+                "options": {}
             }
         ]
     ],
@@ -344,12 +527,50 @@
             {
                 "enumtype": "u8"
             }
+        ],
+        [
+            "af_packet_mode",
+            [
+                "AF_PACKET_API_MODE_ETHERNET",
+                1
+            ],
+            [
+                "AF_PACKET_API_MODE_IP",
+                2
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "af_packet_flags",
+            [
+                "AF_PACKET_API_FLAG_QDISC_BYPASS",
+                1
+            ],
+            [
+                "AF_PACKET_API_FLAG_CKSUM_GSO",
+                2
+            ],
+            [
+                "AF_PACKET_API_FLAG_VERSION_2",
+                8
+            ],
+            {
+                "enumtype": "u32"
+            }
         ]
     ],
     "enumflags": [],
     "services": {
         "af_packet_create": {
             "reply": "af_packet_create_reply"
+        },
+        "af_packet_create_v2": {
+            "reply": "af_packet_create_v2_reply"
+        },
+        "af_packet_create_v3": {
+            "reply": "af_packet_create_v3_reply"
         },
         "af_packet_delete": {
             "reply": "af_packet_delete_reply"
@@ -374,7 +595,7 @@
             "length": 6
         }
     },
-    "vl_api_version": "0x4191e8ae",
+    "vl_api_version": "0x5b12de21",
     "imports": [
         "vnet/interface_types.api",
         "vnet/ethernet/ethernet_types.api"

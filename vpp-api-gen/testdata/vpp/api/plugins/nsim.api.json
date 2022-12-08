@@ -28,7 +28,10 @@
                 "sw_if_index1"
             ],
             {
-                "crc": "0x16f70bdf"
+                "crc": "0x9c3ead86",
+                "options": {
+                    "vat_help": "[<intfc0> | sw_if_index <swif0>] [<intfc1> | sw_if_index <swif1>] [disable]"
+                }
             }
         ],
         [
@@ -46,7 +49,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "[<intfc0> | sw_if_index <swif0>] [<intfc1> | sw_if_index <swif1>] [disable]"
+                }
             }
         ],
         [
@@ -72,7 +78,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x3865946c"
+                "crc": "0x3865946c",
+                "options": {
+                    "vat_help": "[<intfc> | sw_if_index <nnn> [disable]"
+                }
             }
         ],
         [
@@ -90,7 +99,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "[<intfc> | sw_if_index <nnn> [disable]"
+                }
             }
         ],
         [
@@ -124,7 +136,11 @@
                 "packets_per_drop"
             ],
             {
-                "crc": "0x16ed400f"
+                "crc": "0x16ed400f",
+                "options": {
+                    "deprecated": null,
+                    "vat_help": "delay <time> bandwidth <bw> [packet-size <nn>] [packets-per-drop <nnnn>]"
+                }
             }
         ],
         [
@@ -142,7 +158,11 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "deprecated": null,
+                    "vat_help": "delay <time> bandwidth <bw> [packet-size <nn>] [packets-per-drop <nnnn>]"
+                }
             }
         ],
         [
@@ -180,7 +200,10 @@
                 "packets_per_reorder"
             ],
             {
-                "crc": "0x64de8ed3"
+                "crc": "0x64de8ed3",
+                "options": {
+                    "vat_help": "delay <time> bandwidth <bw> [packet-size <nn>] [packets-per-drop <nnnn>]"
+                }
             }
         ],
         [
@@ -198,7 +221,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "delay <time> bandwidth <bw> [packet-size <nn>] [packets-per-drop <nnnn>]"
+                }
             }
         ]
     ],

@@ -125,7 +125,8 @@
                 "last_address"
             ],
             {
-                "crc": "0x4b02b946"
+                "crc": "0x67eede0d",
+                "options": {}
             }
         ],
         [
@@ -143,7 +144,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],

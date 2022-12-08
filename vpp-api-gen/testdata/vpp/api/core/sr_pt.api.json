@@ -2,7 +2,61 @@
     "types": [],
     "messages": [
         [
-            "l2_emulation",
+            "sr_pt_iface_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            {
+                "crc": "0x51077d14",
+                "options": {}
+            }
+        ],
+        [
+            "sr_pt_iface_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "u16",
+                "id"
+            ],
+            [
+                "u8",
+                "ingress_load"
+            ],
+            [
+                "u8",
+                "egress_load"
+            ],
+            [
+                "u8",
+                "tts_template"
+            ],
+            {
+                "crc": "0x1f472f85",
+                "options": {}
+            }
+        ],
+        [
+            "sr_pt_iface_add",
             [
                 "u16",
                 "_vl_msg_id"
@@ -20,15 +74,28 @@
                 "sw_if_index"
             ],
             [
-                "bool",
-                "enable"
+                "u16",
+                "id"
+            ],
+            [
+                "u8",
+                "ingress_load"
+            ],
+            [
+                "u8",
+                "egress_load"
+            ],
+            [
+                "u8",
+                "tts_template"
             ],
             {
-                "crc": "0xae6cfcfb"
+                "crc": "0x852c0cda",
+                "options": {}
             }
         ],
         [
-            "l2_emulation_reply",
+            "sr_pt_iface_add_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -42,7 +109,50 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "sr_pt_iface_del",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0xf9e6675e",
+                "options": {}
+            }
+        ],
+        [
+            "sr_pt_iface_del_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -213,8 +323,15 @@
     ],
     "enumflags": [],
     "services": {
-        "l2_emulation": {
-            "reply": "l2_emulation_reply"
+        "sr_pt_iface_dump": {
+            "reply": "sr_pt_iface_details",
+            "stream": true
+        },
+        "sr_pt_iface_add": {
+            "reply": "sr_pt_iface_add_reply"
+        },
+        "sr_pt_iface_del": {
+            "reply": "sr_pt_iface_del_reply"
         }
     },
     "options": {
@@ -225,7 +342,7 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0x6e8abdfb",
+    "vl_api_version": "0x1fddedad",
     "imports": [
         "vnet/interface_types.api"
     ],

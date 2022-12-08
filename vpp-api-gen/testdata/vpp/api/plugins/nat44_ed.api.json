@@ -137,78 +137,6 @@
     ],
     "messages": [
         [
-            "nat44_plugin_enable_disable",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "u32",
-                "inside_vrf"
-            ],
-            [
-                "u32",
-                "outside_vrf"
-            ],
-            [
-                "u32",
-                "users"
-            ],
-            [
-                "u32",
-                "user_memory"
-            ],
-            [
-                "u32",
-                "sessions"
-            ],
-            [
-                "u32",
-                "session_memory"
-            ],
-            [
-                "u32",
-                "user_sessions"
-            ],
-            [
-                "bool",
-                "enable"
-            ],
-            [
-                "vl_api_nat44_config_flags_t",
-                "flags"
-            ],
-            {
-                "crc": "0xdea0d501"
-            }
-        ],
-        [
-            "nat44_plugin_enable_disable_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804"
-            }
-        ],
-        [
             "nat44_ed_plugin_enable_disable",
             [
                 "u16",
@@ -247,7 +175,8 @@
                 "flags"
             ],
             {
-                "crc": "0xbe17f8dd"
+                "crc": "0xbe17f8dd",
+                "options": {}
             }
         ],
         [
@@ -265,11 +194,12 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
-            "nat_control_ping",
+            "nat44_forwarding_enable_disable",
             [
                 "u16",
                 "_vl_msg_id"
@@ -282,12 +212,19 @@
                 "u32",
                 "context"
             ],
+            [
+                "bool",
+                "enable"
+            ],
             {
-                "crc": "0x51077d14"
+                "crc": "0xb3e225d2",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
-            "nat_control_ping_reply",
+            "nat44_forwarding_enable_disable_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -300,20 +237,15 @@
                 "i32",
                 "retval"
             ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "vpe_pid"
-            ],
             {
-                "crc": "0xf6b0b8ca"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
-            "nat_show_config",
+            "nat_ipfix_enable_disable",
             [
                 "u16",
                 "_vl_msg_id"
@@ -326,12 +258,27 @@
                 "u32",
                 "context"
             ],
+            [
+                "u32",
+                "domain_id"
+            ],
+            [
+                "u16",
+                "src_port"
+            ],
+            [
+                "bool",
+                "enable"
+            ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x9af4a2d2",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
-            "nat_show_config_reply",
+            "nat_ipfix_enable_disable_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -344,80 +291,15 @@
                 "i32",
                 "retval"
             ],
-            [
-                "bool",
-                "static_mapping_only"
-            ],
-            [
-                "bool",
-                "static_mapping_connection_tracking"
-            ],
-            [
-                "bool",
-                "deterministic"
-            ],
-            [
-                "bool",
-                "endpoint_dependent"
-            ],
-            [
-                "bool",
-                "out2in_dpo"
-            ],
-            [
-                "bool",
-                "dslite_ce"
-            ],
-            [
-                "u32",
-                "translation_buckets"
-            ],
-            [
-                "u32",
-                "translation_memory_size"
-            ],
-            [
-                "u32",
-                "user_buckets"
-            ],
-            [
-                "u64",
-                "user_memory_size"
-            ],
-            [
-                "u32",
-                "max_translations_per_user"
-            ],
-            [
-                "u32",
-                "outside_vrf_id"
-            ],
-            [
-                "u32",
-                "inside_vrf_id"
-            ],
-            [
-                "u32",
-                "nat64_bib_buckets"
-            ],
-            [
-                "u64",
-                "nat64_bib_memory_size"
-            ],
-            [
-                "u32",
-                "nat64_st_buckets"
-            ],
-            [
-                "u64",
-                "nat64_st_memory_size"
-            ],
             {
-                "crc": "0x7903ef06"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
-            "nat_show_config_2",
+            "nat_set_timeouts",
             [
                 "u16",
                 "_vl_msg_id"
@@ -430,12 +312,31 @@
                 "u32",
                 "context"
             ],
+            [
+                "u32",
+                "udp"
+            ],
+            [
+                "u32",
+                "tcp_established"
+            ],
+            [
+                "u32",
+                "tcp_transitory"
+            ],
+            [
+                "u32",
+                "icmp"
+            ],
             {
-                "crc": "0x51077d14"
+                "crc": "0xd4746b16",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
-            "nat_show_config_2_reply",
+            "nat_set_timeouts_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -448,84 +349,57 @@
                 "i32",
                 "retval"
             ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {
+                    "deprecated": null
+                }
+            }
+        ],
+        [
+            "nat44_set_session_limit",
             [
-                "bool",
-                "static_mapping_only"
-            ],
-            [
-                "bool",
-                "static_mapping_connection_tracking"
-            ],
-            [
-                "bool",
-                "deterministic"
-            ],
-            [
-                "bool",
-                "endpoint_dependent"
-            ],
-            [
-                "bool",
-                "out2in_dpo"
-            ],
-            [
-                "bool",
-                "dslite_ce"
+                "u16",
+                "_vl_msg_id"
             ],
             [
                 "u32",
-                "translation_buckets"
-            ],
-            [
-                "u64",
-                "translation_memory_size"
+                "client_index"
             ],
             [
                 "u32",
-                "user_buckets"
-            ],
-            [
-                "u64",
-                "user_memory_size"
+                "context"
             ],
             [
                 "u32",
-                "max_translations_per_user"
+                "session_limit"
             ],
             [
                 "u32",
-                "outside_vrf_id"
-            ],
-            [
-                "u32",
-                "inside_vrf_id"
-            ],
-            [
-                "u32",
-                "nat64_bib_buckets"
-            ],
-            [
-                "u64",
-                "nat64_bib_memory_size"
-            ],
-            [
-                "u32",
-                "nat64_st_buckets"
-            ],
-            [
-                "u64",
-                "nat64_st_memory_size"
-            ],
-            [
-                "u32",
-                "max_translations_per_thread"
-            ],
-            [
-                "u32",
-                "max_users_per_thread"
+                "vrf_id"
             ],
             {
-                "crc": "0x0404a5b4"
+                "crc": "0x8899bbb1",
+                "options": {}
+            }
+        ],
+        [
+            "nat44_set_session_limit_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -543,7 +417,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -609,127 +484,8 @@
                 "flags"
             ],
             {
-                "crc": "0x93d8e267"
-            }
-        ],
-        [
-            "nat44_session_cleanup",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            {
-                "crc": "0x51077d14"
-            }
-        ],
-        [
-            "nat44_session_cleanup_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804"
-            }
-        ],
-        [
-            "nat44_set_session_limit",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "u32",
-                "session_limit"
-            ],
-            [
-                "u32",
-                "vrf_id"
-            ],
-            {
-                "crc": "0x8899bbb1"
-            }
-        ],
-        [
-            "nat44_set_session_limit_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804"
-            }
-        ],
-        [
-            "nat_set_log_level",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "vl_api_nat_log_level_t",
-                "log_level"
-            ],
-            {
-                "crc": "0x70076bfe"
-            }
-        ],
-        [
-            "nat_set_log_level_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804"
+                "crc": "0x93d8e267",
+                "options": {}
             }
         ],
         [
@@ -751,7 +507,8 @@
                 "worker_mask"
             ],
             {
-                "crc": "0xda926638"
+                "crc": "0xda926638",
+                "options": {}
             }
         ],
         [
@@ -769,7 +526,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -787,7 +545,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -814,11 +573,12 @@
                 64
             ],
             {
-                "crc": "0x84bf06fc"
+                "crc": "0x84bf06fc",
+                "options": {}
             }
         ],
         [
-            "nat_ipfix_enable_disable",
+            "nat44_ed_add_del_vrf_table",
             [
                 "u16",
                 "_vl_msg_id"
@@ -833,22 +593,19 @@
             ],
             [
                 "u32",
-                "domain_id"
-            ],
-            [
-                "u16",
-                "src_port"
+                "table_vrf_id"
             ],
             [
                 "bool",
-                "enable"
+                "is_add"
             ],
             {
-                "crc": "0x9af4a2d2"
+                "crc": "0x08330904",
+                "options": {}
             }
         ],
         [
-            "nat_ipfix_enable_disable_reply",
+            "nat44_ed_add_del_vrf_table_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -862,11 +619,12 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
-            "nat_set_timeouts",
+            "nat44_ed_add_del_vrf_route",
             [
                 "u16",
                 "_vl_msg_id"
@@ -881,26 +639,23 @@
             ],
             [
                 "u32",
-                "udp"
+                "table_vrf_id"
             ],
             [
                 "u32",
-                "tcp_established"
+                "vrf_id"
             ],
             [
-                "u32",
-                "tcp_transitory"
-            ],
-            [
-                "u32",
-                "icmp"
+                "bool",
+                "is_add"
             ],
             {
-                "crc": "0xd4746b16"
+                "crc": "0x59187407",
+                "options": {}
             }
         ],
         [
-            "nat_set_timeouts_reply",
+            "nat44_ed_add_del_vrf_route_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -914,11 +669,12 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
-            "nat_get_timeouts",
+            "nat44_ed_vrf_tables_dump",
             [
                 "u16",
                 "_vl_msg_id"
@@ -932,11 +688,12 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
-            "nat_get_timeouts_reply",
+            "nat44_ed_vrf_tables_details",
             [
                 "u16",
                 "_vl_msg_id"
@@ -946,147 +703,22 @@
                 "context"
             ],
             [
-                "i32",
-                "retval"
+                "u32",
+                "table_vrf_id"
             ],
             [
                 "u32",
-                "udp"
+                "n_vrf_ids"
             ],
             [
                 "u32",
-                "tcp_established"
-            ],
-            [
-                "u32",
-                "tcp_transitory"
-            ],
-            [
-                "u32",
-                "icmp"
+                "vrf_ids",
+                0,
+                "n_vrf_ids"
             ],
             {
-                "crc": "0x3c4df4e1"
-            }
-        ],
-        [
-            "nat_set_addr_and_port_alloc_alg",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "u8",
-                "alg"
-            ],
-            [
-                "u8",
-                "psid_offset"
-            ],
-            [
-                "u8",
-                "psid_length"
-            ],
-            [
-                "u16",
-                "psid"
-            ],
-            [
-                "u16",
-                "start_port"
-            ],
-            [
-                "u16",
-                "end_port"
-            ],
-            {
-                "crc": "0xdeeb746f"
-            }
-        ],
-        [
-            "nat_set_addr_and_port_alloc_alg_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804"
-            }
-        ],
-        [
-            "nat_get_addr_and_port_alloc_alg",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            {
-                "crc": "0x51077d14"
-            }
-        ],
-        [
-            "nat_get_addr_and_port_alloc_alg_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            [
-                "u8",
-                "alg"
-            ],
-            [
-                "u8",
-                "psid_offset"
-            ],
-            [
-                "u8",
-                "psid_length"
-            ],
-            [
-                "u16",
-                "psid"
-            ],
-            [
-                "u16",
-                "start_port"
-            ],
-            [
-                "u16",
-                "end_port"
-            ],
-            {
-                "crc": "0x3607a7d0"
+                "crc": "0x7b264e4f",
+                "options": {}
             }
         ],
         [
@@ -1112,7 +744,8 @@
                 "enable"
             ],
             {
-                "crc": "0x25e90abb"
+                "crc": "0x25e90abb",
+                "options": {}
             }
         ],
         [
@@ -1130,7 +763,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1148,7 +782,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -1174,11 +809,12 @@
                 "enable"
             ],
             {
-                "crc": "0x1c0b2a78"
+                "crc": "0x1c0b2a78",
+                "options": {}
             }
         ],
         [
-            "nat_ha_set_listener",
+            "nat44_ed_set_fq_options",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1192,23 +828,16 @@
                 "context"
             ],
             [
-                "vl_api_ip4_address_t",
-                "ip_address"
-            ],
-            [
-                "u16",
-                "port"
-            ],
-            [
                 "u32",
-                "path_mtu"
+                "frame_queue_nelts"
             ],
             {
-                "crc": "0xe4a8cb4e"
+                "crc": "0x2399bd71",
+                "options": {}
             }
         ],
         [
-            "nat_ha_set_listener_reply",
+            "nat44_ed_set_fq_options_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1222,59 +851,12 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
-            "nat_ha_set_failover",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "vl_api_ip4_address_t",
-                "ip_address"
-            ],
-            [
-                "u16",
-                "port"
-            ],
-            [
-                "u32",
-                "session_refresh_interval"
-            ],
-            {
-                "crc": "0x718246af"
-            }
-        ],
-        [
-            "nat_ha_set_failover_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804"
-            }
-        ],
-        [
-            "nat_ha_get_listener",
+            "nat44_ed_show_fq_options",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1288,11 +870,12 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
-            "nat_ha_get_listener_reply",
+            "nat44_ed_show_fq_options_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1306,23 +889,16 @@
                 "retval"
             ],
             [
-                "vl_api_ip4_address_t",
-                "ip_address"
-            ],
-            [
-                "u16",
-                "port"
-            ],
-            [
                 "u32",
-                "path_mtu"
+                "frame_queue_nelts"
             ],
             {
-                "crc": "0x123ea41f"
+                "crc": "0x7213b545",
+                "options": {}
             }
         ],
         [
-            "nat_ha_get_failover",
+            "nat44_add_del_interface_addr",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1335,60 +911,25 @@
                 "u32",
                 "context"
             ],
+            [
+                "bool",
+                "is_add"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "vl_api_nat_config_flags_t",
+                "flags"
+            ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x4aed50c0",
+                "options": {}
             }
         ],
         [
-            "nat_ha_get_failover_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            [
-                "vl_api_ip4_address_t",
-                "ip_address"
-            ],
-            [
-                "u16",
-                "port"
-            ],
-            [
-                "u32",
-                "session_refresh_interval"
-            ],
-            {
-                "crc": "0xa67d8752"
-            }
-        ],
-        [
-            "nat_ha_flush",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            {
-                "crc": "0x51077d14"
-            }
-        ],
-        [
-            "nat_ha_flush_reply",
+            "nat44_add_del_interface_addr_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1402,11 +943,12 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
-            "nat_ha_resync",
+            "nat44_interface_addr_dump",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1419,20 +961,13 @@
                 "u32",
                 "context"
             ],
-            [
-                "u8",
-                "want_resync_event"
-            ],
-            [
-                "u32",
-                "pid"
-            ],
             {
-                "crc": "0xc8ab9e03"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
-            "nat_ha_resync_reply",
+            "nat44_interface_addr_details",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1442,77 +977,16 @@
                 "context"
             ],
             [
-                "i32",
-                "retval"
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "vl_api_nat_config_flags_t",
+                "flags"
             ],
             {
-                "crc": "0xe8d4e804"
-            }
-        ],
-        [
-            "nat_ha_resync_completed_event",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "pid"
-            ],
-            [
-                "u32",
-                "missed_count"
-            ],
-            {
-                "crc": "0xfdc598fb"
-            }
-        ],
-        [
-            "nat44_del_user",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "vl_api_ip4_address_t",
-                "ip_address"
-            ],
-            [
-                "u32",
-                "fib_index"
-            ],
-            {
-                "crc": "0x99a9f998"
-            }
-        ],
-        [
-            "nat44_del_user_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804"
+                "crc": "0xe4aca9ca",
+                "options": {}
             }
         ],
         [
@@ -1550,7 +1024,8 @@
                 "flags"
             ],
             {
-                "crc": "0xd4c7568c"
+                "crc": "0x6f2b8055",
+                "options": {}
             }
         ],
         [
@@ -1568,7 +1043,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1586,7 +1062,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -1612,7 +1089,8 @@
                 "vrf_id"
             ],
             {
-                "crc": "0x45410ac4"
+                "crc": "0x0d1beac1",
+                "options": {}
             }
         ],
         [
@@ -1642,7 +1120,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf3699b83"
+                "crc": "0xf3699b83",
+                "options": {}
             }
         ],
         [
@@ -1660,7 +1139,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1678,7 +1158,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -1700,11 +1181,12 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5d286289"
+                "crc": "0x5d286289",
+                "options": {}
             }
         ],
         [
-            "nat44_interface_add_del_output_feature",
+            "nat44_ed_add_del_output_interface",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1722,19 +1204,16 @@
                 "is_add"
             ],
             [
-                "vl_api_nat_config_flags_t",
-                "flags"
-            ],
-            [
                 "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             {
-                "crc": "0xf3699b83"
+                "crc": "0x47d6e753",
+                "options": {}
             }
         ],
         [
-            "nat44_interface_add_del_output_feature_reply",
+            "nat44_ed_add_del_output_interface_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1748,11 +1227,12 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
-            "nat44_interface_output_feature_dump",
+            "nat44_ed_output_interface_get",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1765,12 +1245,17 @@
                 "u32",
                 "context"
             ],
+            [
+                "u32",
+                "cursor"
+            ],
             {
-                "crc": "0x51077d14"
+                "crc": "0xf75ba505",
+                "options": {}
             }
         ],
         [
-            "nat44_interface_output_feature_details",
+            "nat44_ed_output_interface_get_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1780,15 +1265,35 @@
                 "context"
             ],
             [
-                "vl_api_nat_config_flags_t",
-                "flags"
+                "i32",
+                "retval"
+            ],
+            [
+                "u32",
+                "cursor"
+            ],
+            {
+                "crc": "0x53b48f5d",
+                "options": {}
+            }
+        ],
+        [
+            "nat44_ed_output_interface_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
             ],
             [
                 "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             {
-                "crc": "0x5d286289"
+                "crc": "0x0b45011c",
+                "options": {}
             }
         ],
         [
@@ -1847,7 +1352,8 @@
                 64
             ],
             {
-                "crc": "0xe165e83b"
+                "crc": "0x5ae5f03e",
+                "options": {}
             }
         ],
         [
@@ -1865,7 +1371,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1932,7 +1439,8 @@
                 64
             ],
             {
-                "crc": "0x5e205f1a"
+                "crc": "0x5e205f1a",
+                "options": {}
             }
         ],
         [
@@ -1950,7 +1458,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1968,7 +1477,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -2019,7 +1529,8 @@
                 64
             ],
             {
-                "crc": "0x1a433ef7"
+                "crc": "0x06cb40b2",
+                "options": {}
             }
         ],
         [
@@ -2070,7 +1581,8 @@
                 64
             ],
             {
-                "crc": "0x8e12743f"
+                "crc": "0x02faaa22",
+                "options": {}
             }
         ],
         [
@@ -2088,7 +1600,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -2106,7 +1619,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -2149,11 +1663,12 @@
                 64
             ],
             {
-                "crc": "0x36d21351"
+                "crc": "0x2a52a030",
+                "options": {}
             }
         ],
         [
-            "nat44_add_del_interface_addr",
+            "nat44_add_del_lb_static_mapping",
             [
                 "u16",
                 "_vl_msg_id"
@@ -2171,19 +1686,47 @@
                 "is_add"
             ],
             [
-                "vl_api_interface_index_t",
-                "sw_if_index"
-            ],
-            [
                 "vl_api_nat_config_flags_t",
                 "flags"
             ],
+            [
+                "vl_api_ip4_address_t",
+                "external_addr"
+            ],
+            [
+                "u16",
+                "external_port"
+            ],
+            [
+                "u8",
+                "protocol"
+            ],
+            [
+                "u32",
+                "affinity"
+            ],
+            [
+                "string",
+                "tag",
+                64
+            ],
+            [
+                "u32",
+                "local_num"
+            ],
+            [
+                "vl_api_nat44_lb_addr_port_t",
+                "locals",
+                0,
+                "local_num"
+            ],
             {
-                "crc": "0xfc835325"
+                "crc": "0x4f68ee9d",
+                "options": {}
             }
         ],
         [
-            "nat44_add_del_interface_addr_reply",
+            "nat44_add_del_lb_static_mapping_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -2197,11 +1740,70 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
-            "nat44_interface_addr_dump",
+            "nat44_lb_static_mapping_add_del_local",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "is_add"
+            ],
+            [
+                "vl_api_ip4_address_t",
+                "external_addr"
+            ],
+            [
+                "u16",
+                "external_port"
+            ],
+            [
+                "u8",
+                "protocol"
+            ],
+            [
+                "vl_api_nat44_lb_addr_port_t",
+                "local"
+            ],
+            {
+                "crc": "0x7ca47547",
+                "options": {}
+            }
+        ],
+        [
+            "nat44_lb_static_mapping_add_del_local_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "nat44_lb_static_mapping_dump",
             [
                 "u16",
                 "_vl_msg_id"
@@ -2215,11 +1817,12 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
-            "nat44_interface_addr_details",
+            "nat44_lb_static_mapping_details",
             [
                 "u16",
                 "_vl_msg_id"
@@ -2229,15 +1832,109 @@
                 "context"
             ],
             [
-                "vl_api_interface_index_t",
-                "sw_if_index"
+                "vl_api_ip4_address_t",
+                "external_addr"
+            ],
+            [
+                "u16",
+                "external_port"
+            ],
+            [
+                "u8",
+                "protocol"
             ],
             [
                 "vl_api_nat_config_flags_t",
                 "flags"
             ],
+            [
+                "u32",
+                "affinity"
+            ],
+            [
+                "string",
+                "tag",
+                64
+            ],
+            [
+                "u32",
+                "local_num"
+            ],
+            [
+                "vl_api_nat44_lb_addr_port_t",
+                "locals",
+                0,
+                "local_num"
+            ],
             {
-                "crc": "0x3e687514"
+                "crc": "0xed5ce876",
+                "options": {}
+            }
+        ],
+        [
+            "nat44_del_session",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_ip4_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "protocol"
+            ],
+            [
+                "u16",
+                "port"
+            ],
+            [
+                "u32",
+                "vrf_id"
+            ],
+            [
+                "vl_api_nat_config_flags_t",
+                "flags"
+            ],
+            [
+                "vl_api_ip4_address_t",
+                "ext_host_address"
+            ],
+            [
+                "u16",
+                "ext_host_port"
+            ],
+            {
+                "crc": "0x15a5bf8c",
+                "options": {}
+            }
+        ],
+        [
+            "nat44_del_session_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -2255,7 +1952,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -2285,7 +1983,8 @@
                 "nstaticsessions"
             ],
             {
-                "crc": "0x355896c2"
+                "crc": "0x355896c2",
+                "options": {}
             }
         ],
         [
@@ -2311,7 +2010,8 @@
                 "vrf_id"
             ],
             {
-                "crc": "0xe1899c98"
+                "crc": "0xe1899c98",
+                "options": {}
             }
         ],
         [
@@ -2377,209 +2077,12 @@
                 "ext_host_nat_port"
             ],
             {
-                "crc": "0x1965fd69"
+                "crc": "0x2cf6e16d",
+                "options": {}
             }
         ],
         [
-            "nat44_add_del_lb_static_mapping",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "bool",
-                "is_add"
-            ],
-            [
-                "vl_api_nat_config_flags_t",
-                "flags"
-            ],
-            [
-                "vl_api_ip4_address_t",
-                "external_addr"
-            ],
-            [
-                "u16",
-                "external_port"
-            ],
-            [
-                "u8",
-                "protocol"
-            ],
-            [
-                "u32",
-                "affinity"
-            ],
-            [
-                "string",
-                "tag",
-                64
-            ],
-            [
-                "u32",
-                "local_num"
-            ],
-            [
-                "vl_api_nat44_lb_addr_port_t",
-                "locals",
-                0,
-                "local_num"
-            ],
-            {
-                "crc": "0x53b24611"
-            }
-        ],
-        [
-            "nat44_add_del_lb_static_mapping_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804"
-            }
-        ],
-        [
-            "nat44_lb_static_mapping_add_del_local",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "bool",
-                "is_add"
-            ],
-            [
-                "vl_api_ip4_address_t",
-                "external_addr"
-            ],
-            [
-                "u16",
-                "external_port"
-            ],
-            [
-                "u8",
-                "protocol"
-            ],
-            [
-                "vl_api_nat44_lb_addr_port_t",
-                "local"
-            ],
-            {
-                "crc": "0x2910a151"
-            }
-        ],
-        [
-            "nat44_lb_static_mapping_add_del_local_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804"
-            }
-        ],
-        [
-            "nat44_lb_static_mapping_dump",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            {
-                "crc": "0x51077d14"
-            }
-        ],
-        [
-            "nat44_lb_static_mapping_details",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "vl_api_ip4_address_t",
-                "external_addr"
-            ],
-            [
-                "u16",
-                "external_port"
-            ],
-            [
-                "u8",
-                "protocol"
-            ],
-            [
-                "vl_api_nat_config_flags_t",
-                "flags"
-            ],
-            [
-                "u32",
-                "affinity"
-            ],
-            [
-                "string",
-                "tag",
-                64
-            ],
-            [
-                "u32",
-                "local_num"
-            ],
-            [
-                "vl_api_nat44_lb_addr_port_t",
-                "locals",
-                0,
-                "local_num"
-            ],
-            {
-                "crc": "0x2267b9e8"
-            }
-        ],
-        [
-            "nat44_del_session",
+            "nat44_user_session_v2_dump",
             [
                 "u16",
                 "_vl_msg_id"
@@ -2594,23 +2097,62 @@
             ],
             [
                 "vl_api_ip4_address_t",
-                "address"
-            ],
-            [
-                "u8",
-                "protocol"
-            ],
-            [
-                "u16",
-                "port"
+                "ip_address"
             ],
             [
                 "u32",
                 "vrf_id"
             ],
+            {
+                "crc": "0xe1899c98",
+                "options": {}
+            }
+        ],
+        [
+            "nat44_user_session_v2_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_ip4_address_t",
+                "outside_ip_address"
+            ],
+            [
+                "u16",
+                "outside_port"
+            ],
+            [
+                "vl_api_ip4_address_t",
+                "inside_ip_address"
+            ],
+            [
+                "u16",
+                "inside_port"
+            ],
+            [
+                "u16",
+                "protocol"
+            ],
             [
                 "vl_api_nat_config_flags_t",
                 "flags"
+            ],
+            [
+                "u64",
+                "last_heard"
+            ],
+            [
+                "u64",
+                "total_bytes"
+            ],
+            [
+                "u32",
+                "total_pkts"
             ],
             [
                 "vl_api_ip4_address_t",
@@ -2620,52 +2162,25 @@
                 "u16",
                 "ext_host_port"
             ],
-            {
-                "crc": "0x4c49c387"
-            }
-        ],
-        [
-            "nat44_del_session_reply",
+            [
+                "vl_api_ip4_address_t",
+                "ext_host_nat_address"
+            ],
             [
                 "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804"
-            }
-        ],
-        [
-            "nat44_forwarding_enable_disable",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
+                "ext_host_nat_port"
             ],
             [
                 "bool",
-                "enable"
+                "is_timed_out"
             ],
             {
-                "crc": "0xb3e225d2"
+                "crc": "0xfd42b729",
+                "options": {}
             }
         ],
         [
-            "nat44_forwarding_enable_disable_reply",
+            "nat44_user_session_v3_details",
             [
                 "u16",
                 "_vl_msg_id"
@@ -2675,51 +2190,72 @@
                 "context"
             ],
             [
-                "i32",
-                "retval"
+                "vl_api_ip4_address_t",
+                "outside_ip_address"
             ],
-            {
-                "crc": "0xe8d4e804"
-            }
-        ],
-        [
-            "nat44_forwarding_is_enabled",
             [
                 "u16",
-                "_vl_msg_id"
+                "outside_port"
             ],
             [
-                "u32",
-                "client_index"
+                "vl_api_ip4_address_t",
+                "inside_ip_address"
             ],
-            [
-                "u32",
-                "context"
-            ],
-            {
-                "crc": "0x51077d14"
-            }
-        ],
-        [
-            "nat44_forwarding_is_enabled_reply",
             [
                 "u16",
-                "_vl_msg_id"
+                "inside_port"
+            ],
+            [
+                "u16",
+                "protocol"
+            ],
+            [
+                "vl_api_nat_config_flags_t",
+                "flags"
+            ],
+            [
+                "u64",
+                "last_heard"
+            ],
+            [
+                "u64",
+                "time_since_last_heard"
+            ],
+            [
+                "u64",
+                "total_bytes"
             ],
             [
                 "u32",
-                "context"
+                "total_pkts"
+            ],
+            [
+                "vl_api_ip4_address_t",
+                "ext_host_address"
+            ],
+            [
+                "u16",
+                "ext_host_port"
+            ],
+            [
+                "vl_api_ip4_address_t",
+                "ext_host_nat_address"
+            ],
+            [
+                "u16",
+                "ext_host_nat_port"
             ],
             [
                 "bool",
-                "enabled"
+                "is_timed_out"
             ],
             {
-                "crc": "0x46924a06"
+                "crc": "0xedae926e",
+                "options": {}
             }
         ],
         [
-            "nat44_ed_set_fq_options",
+            "nat44_user_session_v3_dump",
             [
                 "u16",
                 "_vl_msg_id"
@@ -2733,69 +2269,16 @@
                 "context"
             ],
             [
+                "vl_api_ip4_address_t",
+                "ip_address"
+            ],
+            [
                 "u32",
-                "frame_queue_nelts"
+                "vrf_id"
             ],
             {
-                "crc": "0x2399bd71"
-            }
-        ],
-        [
-            "nat44_ed_set_fq_options_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804"
-            }
-        ],
-        [
-            "nat44_ed_show_fq_options",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            {
-                "crc": "0x51077d14"
-            }
-        ],
-        [
-            "nat44_ed_show_fq_options_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            [
-                "u32",
-                "frame_queue_nelts"
-            ],
-            {
-                "crc": "0x7213b545"
+                "crc": "0xe1899c98",
+                "options": {}
             }
         ]
     ],
@@ -3286,38 +2769,28 @@
     ],
     "enumflags": [],
     "services": {
-        "nat_ha_resync": {
-            "reply": "nat_ha_resync_reply",
-            "events": [
-                "nat_ha_resync_completed_event"
-            ]
-        },
-        "nat44_plugin_enable_disable": {
-            "reply": "nat44_plugin_enable_disable_reply"
+        "nat44_ed_output_interface_get": {
+            "reply": "nat44_ed_output_interface_get_reply",
+            "stream": true,
+            "stream_msg": "nat44_ed_output_interface_details"
         },
         "nat44_ed_plugin_enable_disable": {
             "reply": "nat44_ed_plugin_enable_disable_reply"
         },
-        "nat_control_ping": {
-            "reply": "nat_control_ping_reply"
+        "nat44_forwarding_enable_disable": {
+            "reply": "nat44_forwarding_enable_disable_reply"
         },
-        "nat_show_config": {
-            "reply": "nat_show_config_reply"
+        "nat_ipfix_enable_disable": {
+            "reply": "nat_ipfix_enable_disable_reply"
         },
-        "nat_show_config_2": {
-            "reply": "nat_show_config_2_reply"
-        },
-        "nat44_show_running_config": {
-            "reply": "nat44_show_running_config_reply"
-        },
-        "nat44_session_cleanup": {
-            "reply": "nat44_session_cleanup_reply"
+        "nat_set_timeouts": {
+            "reply": "nat_set_timeouts_reply"
         },
         "nat44_set_session_limit": {
             "reply": "nat44_set_session_limit_reply"
         },
-        "nat_set_log_level": {
-            "reply": "nat_set_log_level_reply"
+        "nat44_show_running_config": {
+            "reply": "nat44_show_running_config_reply"
         },
         "nat_set_workers": {
             "reply": "nat_set_workers_reply"
@@ -3326,20 +2799,15 @@
             "reply": "nat_worker_details",
             "stream": true
         },
-        "nat_ipfix_enable_disable": {
-            "reply": "nat_ipfix_enable_disable_reply"
+        "nat44_ed_add_del_vrf_table": {
+            "reply": "nat44_ed_add_del_vrf_table_reply"
         },
-        "nat_set_timeouts": {
-            "reply": "nat_set_timeouts_reply"
+        "nat44_ed_add_del_vrf_route": {
+            "reply": "nat44_ed_add_del_vrf_route_reply"
         },
-        "nat_get_timeouts": {
-            "reply": "nat_get_timeouts_reply"
-        },
-        "nat_set_addr_and_port_alloc_alg": {
-            "reply": "nat_set_addr_and_port_alloc_alg_reply"
-        },
-        "nat_get_addr_and_port_alloc_alg": {
-            "reply": "nat_get_addr_and_port_alloc_alg_reply"
+        "nat44_ed_vrf_tables_dump": {
+            "reply": "nat44_ed_vrf_tables_details",
+            "stream": true
         },
         "nat_set_mss_clamping": {
             "reply": "nat_set_mss_clamping_reply"
@@ -3347,23 +2815,18 @@
         "nat_get_mss_clamping": {
             "reply": "nat_get_mss_clamping_reply"
         },
-        "nat_ha_set_listener": {
-            "reply": "nat_ha_set_listener_reply"
+        "nat44_ed_set_fq_options": {
+            "reply": "nat44_ed_set_fq_options_reply"
         },
-        "nat_ha_set_failover": {
-            "reply": "nat_ha_set_failover_reply"
+        "nat44_ed_show_fq_options": {
+            "reply": "nat44_ed_show_fq_options_reply"
         },
-        "nat_ha_get_listener": {
-            "reply": "nat_ha_get_listener_reply"
+        "nat44_add_del_interface_addr": {
+            "reply": "nat44_add_del_interface_addr_reply"
         },
-        "nat_ha_get_failover": {
-            "reply": "nat_ha_get_failover_reply"
-        },
-        "nat_ha_flush": {
-            "reply": "nat_ha_flush_reply"
-        },
-        "nat44_del_user": {
-            "reply": "nat44_del_user_reply"
+        "nat44_interface_addr_dump": {
+            "reply": "nat44_interface_addr_details",
+            "stream": true
         },
         "nat44_add_del_address_range": {
             "reply": "nat44_add_del_address_range_reply"
@@ -3379,12 +2842,8 @@
             "reply": "nat44_interface_details",
             "stream": true
         },
-        "nat44_interface_add_del_output_feature": {
-            "reply": "nat44_interface_add_del_output_feature_reply"
-        },
-        "nat44_interface_output_feature_dump": {
-            "reply": "nat44_interface_output_feature_details",
-            "stream": true
+        "nat44_ed_add_del_output_interface": {
+            "reply": "nat44_ed_add_del_output_interface_reply"
         },
         "nat44_add_del_static_mapping": {
             "reply": "nat44_add_del_static_mapping_reply"
@@ -3403,21 +2862,6 @@
             "reply": "nat44_identity_mapping_details",
             "stream": true
         },
-        "nat44_add_del_interface_addr": {
-            "reply": "nat44_add_del_interface_addr_reply"
-        },
-        "nat44_interface_addr_dump": {
-            "reply": "nat44_interface_addr_details",
-            "stream": true
-        },
-        "nat44_user_dump": {
-            "reply": "nat44_user_details",
-            "stream": true
-        },
-        "nat44_user_session_dump": {
-            "reply": "nat44_user_session_details",
-            "stream": true
-        },
         "nat44_add_del_lb_static_mapping": {
             "reply": "nat44_add_del_lb_static_mapping_reply"
         },
@@ -3431,21 +2875,25 @@
         "nat44_del_session": {
             "reply": "nat44_del_session_reply"
         },
-        "nat44_forwarding_enable_disable": {
-            "reply": "nat44_forwarding_enable_disable_reply"
+        "nat44_user_dump": {
+            "reply": "nat44_user_details",
+            "stream": true
         },
-        "nat44_forwarding_is_enabled": {
-            "reply": "nat44_forwarding_is_enabled_reply"
+        "nat44_user_session_dump": {
+            "reply": "nat44_user_session_details",
+            "stream": true
         },
-        "nat44_ed_set_fq_options": {
-            "reply": "nat44_ed_set_fq_options_reply"
+        "nat44_user_session_v2_dump": {
+            "reply": "nat44_user_session_v2_details",
+            "stream": true
         },
-        "nat44_ed_show_fq_options": {
-            "reply": "nat44_ed_show_fq_options_reply"
+        "nat44_user_session_v3_dump": {
+            "reply": "nat44_user_session_v3_details",
+            "stream": true
         }
     },
     "options": {
-        "version": "5.2.0"
+        "version": "5.5.0"
     },
     "aliases": {
         "ip4_address": {
@@ -3469,7 +2917,7 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0xfd9ae40f",
+    "vl_api_version": "0x354f61c0",
     "imports": [
         "vnet/ip/ip_types.api",
         "vnet/interface_types.api",

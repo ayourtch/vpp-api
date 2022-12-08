@@ -16,7 +16,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -108,7 +109,8 @@
                 "partner_state"
             ],
             {
-                "crc": "0x745ae0ba"
+                "crc": "0xd9a83d2f",
+                "options": {}
             }
         ]
     ],

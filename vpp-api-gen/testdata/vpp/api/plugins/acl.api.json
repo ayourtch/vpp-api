@@ -175,7 +175,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -197,7 +198,8 @@
                 "minor"
             ],
             {
-                "crc": "0x9b32cf86"
+                "crc": "0x9b32cf86",
+                "options": {}
             }
         ],
         [
@@ -215,7 +217,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -241,7 +244,8 @@
                 "vpe_pid"
             ],
             {
-                "crc": "0xf6b0b8ca"
+                "crc": "0xf6b0b8ca",
+                "options": {}
             }
         ],
         [
@@ -259,7 +263,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -277,7 +282,8 @@
                 "conn_table_max_entries"
             ],
             {
-                "crc": "0x7a096d3d"
+                "crc": "0x7a096d3d",
+                "options": {}
             }
         ],
         [
@@ -314,7 +320,10 @@
                 "count"
             ],
             {
-                "crc": "0x1cabdeab"
+                "crc": "0xee5c2f18",
+                "options": {
+                    "vat_help": "<acl-idx> <permit|permit+reflect|deny|action N> [src IP/plen] [dst IP/plen] [sport X-Y] [dport X-Y] [proto P] [tcpflags FL MASK], ... , ..."
+                }
             }
         ],
         [
@@ -336,7 +345,8 @@
                 "retval"
             ],
             {
-                "crc": "0xac407b0c"
+                "crc": "0xac407b0c",
+                "options": {}
             }
         ],
         [
@@ -358,7 +368,10 @@
                 "acl_index"
             ],
             {
-                "crc": "0xef34fea4"
+                "crc": "0xef34fea4",
+                "options": {
+                    "vat_help": "<acl-idx>"
+                }
             }
         ],
         [
@@ -376,7 +389,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<acl-idx>"
+                }
             }
         ],
         [
@@ -413,7 +429,10 @@
                 "acl_index"
             ],
             {
-                "crc": "0x4b54bebd"
+                "crc": "0x4b54bebd",
+                "options": {
+                    "vat_help": "<intfc> | sw_if_index <if-idx> [add|del] [input|output] acl <acl-idx>"
+                }
             }
         ],
         [
@@ -431,7 +450,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<intfc> | sw_if_index <if-idx> [add|del] [input|output] acl <acl-idx>"
+                }
             }
         ],
         [
@@ -467,7 +489,10 @@
                 "count"
             ],
             {
-                "crc": "0x473982bd"
+                "crc": "0x473982bd",
+                "options": {
+                    "vat_help": "<intfc> | sw_if_index <if-idx> input [acl-idx list] output [acl-idx list]"
+                }
             }
         ],
         [
@@ -485,7 +510,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<intfc> | sw_if_index <if-idx> input [acl-idx list] output [acl-idx list]"
+                }
             }
         ],
         [
@@ -507,7 +535,10 @@
                 "acl_index"
             ],
             {
-                "crc": "0xef34fea4"
+                "crc": "0xef34fea4",
+                "options": {
+                    "vat_help": "[<acl-idx>]"
+                }
             }
         ],
         [
@@ -540,7 +571,8 @@
                 "count"
             ],
             {
-                "crc": "0x7a97f21c"
+                "crc": "0x95babae0",
+                "options": {}
             }
         ],
         [
@@ -565,7 +597,10 @@
                 }
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {
+                    "vat_help": "[<intfc> | sw_if_index <if-idx>]"
+                }
             }
         ],
         [
@@ -597,7 +632,8 @@
                 "count"
             ],
             {
-                "crc": "0xe695d256"
+                "crc": "0xe695d256",
+                "options": {}
             }
         ],
         [
@@ -630,7 +666,10 @@
                 "count"
             ],
             {
-                "crc": "0xd648fd0a"
+                "crc": "0xce6fbad0",
+                "options": {
+                    "vat_help": "..."
+                }
             }
         ],
         [
@@ -652,7 +691,8 @@
                 "retval"
             ],
             {
-                "crc": "0xac407b0c"
+                "crc": "0xac407b0c",
+                "options": {}
             }
         ],
         [
@@ -692,7 +732,10 @@
                 "count"
             ],
             {
-                "crc": "0xe34402a7"
+                "crc": "0x2a461dd4",
+                "options": {
+                    "vat_help": "<acl-idx> <permit|deny|action N> [count <count>] [src] ip <ipaddress/[plen]> mac <mac> mask <mac_mask>, ... , ..."
+                }
             }
         ],
         [
@@ -714,7 +757,8 @@
                 "retval"
             ],
             {
-                "crc": "0xac407b0c"
+                "crc": "0xac407b0c",
+                "options": {}
             }
         ],
         [
@@ -736,7 +780,10 @@
                 "acl_index"
             ],
             {
-                "crc": "0xef34fea4"
+                "crc": "0xef34fea4",
+                "options": {
+                    "vat_help": "<acl-idx>"
+                }
             }
         ],
         [
@@ -754,7 +801,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<acl-idx>"
+                }
             }
         ],
         [
@@ -787,7 +837,10 @@
                 "acl_index"
             ],
             {
-                "crc": "0x4b8690b1"
+                "crc": "0x4b8690b1",
+                "options": {
+                    "vat_help": "<intfc> | sw_if_index <if-idx> [add|del] acl <acl-idx>"
+                }
             }
         ],
         [
@@ -805,7 +858,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<intfc> | sw_if_index <if-idx> [add|del] acl <acl-idx>"
+                }
             }
         ],
         [
@@ -830,7 +886,10 @@
                 }
             ],
             {
-                "crc": "0xef34fea4"
+                "crc": "0xef34fea4",
+                "options": {
+                    "vat_help": "[<acl-idx>]"
+                }
             }
         ],
         [
@@ -863,7 +922,8 @@
                 "count"
             ],
             {
-                "crc": "0x57c7482f"
+                "crc": "0x27135b59",
+                "options": {}
             }
         ],
         [
@@ -881,7 +941,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -905,7 +966,8 @@
                 "count"
             ],
             {
-                "crc": "0xaccf9b05"
+                "crc": "0xaccf9b05",
+                "options": {}
             }
         ],
         [
@@ -927,7 +989,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -955,7 +1018,8 @@
                 "count"
             ],
             {
-                "crc": "0xa0c5d56d"
+                "crc": "0xa0c5d56d",
+                "options": {}
             }
         ],
         [
@@ -991,7 +1055,10 @@
                 "count"
             ],
             {
-                "crc": "0x3f5c2d2d"
+                "crc": "0x3f5c2d2d",
+                "options": {
+                    "vat_help": "<intfc> | sw_if_index <if-idx> input [ethertype list] output [ethertype list]"
+                }
             }
         ],
         [
@@ -1009,7 +1076,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<intfc> | sw_if_index <if-idx> input [ethertype list] output [ethertype list]"
+                }
             }
         ],
         [
@@ -1031,7 +1101,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {
+                    "vat_help": "[<intfc> | sw_if_index <if-idx>]"
+                }
             }
         ],
         [
@@ -1063,7 +1136,8 @@
                 "count"
             ],
             {
-                "crc": "0xcc2bfded"
+                "crc": "0xcc2bfded",
+                "options": {}
             }
         ],
         [
@@ -1085,7 +1159,10 @@
                 "enable"
             ],
             {
-                "crc": "0xb3e225d2"
+                "crc": "0xb3e225d2",
+                "options": {
+                    "vat_help": "[disable]"
+                }
             }
         ],
         [
@@ -1103,7 +1180,98 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "[disable]"
+                }
+            }
+        ],
+        [
+            "acl_plugin_use_hash_lookup_set",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "enable"
+            ],
+            {
+                "crc": "0xb3e225d2",
+                "options": {
+                    "status": "in_progress"
+                }
+            }
+        ],
+        [
+            "acl_plugin_use_hash_lookup_set_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {
+                    "status": "in_progress"
+                }
+            }
+        ],
+        [
+            "acl_plugin_use_hash_lookup_get",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            {
+                "crc": "0x51077d14",
+                "options": {
+                    "status": "in_progress"
+                }
+            }
+        ],
+        [
+            "acl_plugin_use_hash_lookup_get_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "enable"
+            ],
+            {
+                "crc": "0x5392ad31",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ]
     ],
@@ -1575,10 +1743,16 @@
         },
         "acl_stats_intf_counters_enable": {
             "reply": "acl_stats_intf_counters_enable_reply"
+        },
+        "acl_plugin_use_hash_lookup_set": {
+            "reply": "acl_plugin_use_hash_lookup_set_reply"
+        },
+        "acl_plugin_use_hash_lookup_get": {
+            "reply": "acl_plugin_use_hash_lookup_get_reply"
         }
     },
     "options": {
-        "version": "2.0.0"
+        "version": "2.0.1"
     },
     "aliases": {
         "ip4_address": {
@@ -1606,7 +1780,7 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0x4a805ebc",
+    "vl_api_version": "0x5133bba0",
     "imports": [
         "plugins/acl/acl_types.api",
         "vnet/ip/ip_types.api",

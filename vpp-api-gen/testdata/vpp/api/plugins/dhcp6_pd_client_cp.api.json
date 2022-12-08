@@ -126,7 +126,8 @@
                 "enable"
             ],
             {
-                "crc": "0xa75a0772"
+                "crc": "0xa75a0772",
+                "options": {}
             }
         ],
         [
@@ -144,7 +145,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -179,7 +181,8 @@
                 "is_add"
             ],
             {
-                "crc": "0x9b3d11e0"
+                "crc": "0x3982f30a",
+                "options": {}
             }
         ],
         [
@@ -197,7 +200,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],

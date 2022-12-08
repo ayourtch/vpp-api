@@ -38,7 +38,10 @@
                 }
             ],
             {
-                "crc": "0xf522b44a"
+                "crc": "0xf522b44a",
+                "options": {
+                    "vat_help": "trace_set_filters [none] | [(include_node|exclude_node) <node-index>] | [(include_classifier|exclude_classifier) <classifier-index>] [count <count>]"
+                }
             }
         ],
         [
@@ -56,7 +59,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "trace_set_filters [none] | [(include_node|exclude_node) <node-index>] | [(include_classifier|exclude_classifier) <classifier-index>] [count <count>]"
+                }
             }
         ],
         [
@@ -94,7 +100,10 @@
                 "pre_capture_clear"
             ],
             {
-                "crc": "0x9e791a9b"
+                "crc": "0x9e791a9b",
+                "options": {
+                    "vat_help": "trace_capture_packets [node_index <index>] [max <max>] [pre_capture_clear] [use_filter] [verbose]"
+                }
             }
         ],
         [
@@ -112,7 +121,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "trace_capture_packets [node_index <index>] [max <max>] [pre_capture_clear] [use_filter] [verbose]"
+                }
             }
         ],
         [
@@ -130,7 +142,10 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {
+                    "vat_help": "trace_clear_capture"
+                }
             }
         ],
         [
@@ -148,7 +163,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "trace_clear_capture"
+                }
             }
         ],
         [
@@ -182,7 +200,10 @@
                 "max_records"
             ],
             {
-                "crc": "0xc7d6681f"
+                "crc": "0xc7d6681f",
+                "options": {
+                    "vat_help": "trace_dump [thread_id <tid>] [position <pos>] [max <max>]"
+                }
             }
         ],
         [
@@ -224,7 +245,8 @@
                 "done"
             ],
             {
-                "crc": "0xe0e87f9d"
+                "crc": "0xe0e87f9d",
+                "options": {}
             }
         ],
         [
@@ -271,7 +293,8 @@
                 0
             ],
             {
-                "crc": "0x1553e9eb"
+                "crc": "0x1553e9eb",
+                "options": {}
             }
         ]
     ],

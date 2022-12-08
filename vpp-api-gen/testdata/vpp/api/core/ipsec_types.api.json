@@ -248,6 +248,124 @@
             ]
         ],
         [
+            "ipsec_spd_entry",
+            [
+                "u32",
+                "spd_id"
+            ],
+            [
+                "i32",
+                "priority"
+            ],
+            [
+                "bool",
+                "is_outbound"
+            ],
+            [
+                "u32",
+                "sa_id"
+            ],
+            [
+                "vl_api_ipsec_spd_action_t",
+                "policy"
+            ],
+            [
+                "u8",
+                "protocol"
+            ],
+            [
+                "vl_api_address_t",
+                "remote_address_start"
+            ],
+            [
+                "vl_api_address_t",
+                "remote_address_stop"
+            ],
+            [
+                "vl_api_address_t",
+                "local_address_start"
+            ],
+            [
+                "vl_api_address_t",
+                "local_address_stop"
+            ],
+            [
+                "u16",
+                "remote_port_start"
+            ],
+            [
+                "u16",
+                "remote_port_stop"
+            ],
+            [
+                "u16",
+                "local_port_start"
+            ],
+            [
+                "u16",
+                "local_port_stop"
+            ]
+        ],
+        [
+            "ipsec_spd_entry_v2",
+            [
+                "u32",
+                "spd_id"
+            ],
+            [
+                "i32",
+                "priority"
+            ],
+            [
+                "bool",
+                "is_outbound"
+            ],
+            [
+                "u32",
+                "sa_id"
+            ],
+            [
+                "vl_api_ipsec_spd_action_t",
+                "policy"
+            ],
+            [
+                "u8",
+                "protocol"
+            ],
+            [
+                "vl_api_address_t",
+                "remote_address_start"
+            ],
+            [
+                "vl_api_address_t",
+                "remote_address_stop"
+            ],
+            [
+                "vl_api_address_t",
+                "local_address_start"
+            ],
+            [
+                "vl_api_address_t",
+                "local_address_stop"
+            ],
+            [
+                "u16",
+                "remote_port_start"
+            ],
+            [
+                "u16",
+                "remote_port_stop"
+            ],
+            [
+                "u16",
+                "local_port_start"
+            ],
+            [
+                "u16",
+                "local_port_stop"
+            ]
+        ],
+        [
             "ipsec_sad_entry",
             [
                 "u32",
@@ -1157,6 +1275,10 @@
                 "IPSEC_API_CRYPTO_ALG_3DES_CBC",
                 11
             ],
+            [
+                "IPSEC_API_CRYPTO_ALG_CHACHA20_POLY1305",
+                12
+            ],
             {
                 "enumtype": "u32"
             }
@@ -1225,6 +1347,10 @@
                 "IPSEC_API_SAD_FLAG_IS_INBOUND",
                 64
             ],
+            [
+                "IPSEC_API_SAD_FLAG_ASYNC",
+                128
+            ],
             {
                 "enumtype": "u32"
             }
@@ -1238,6 +1364,28 @@
             [
                 "IPSEC_API_PROTO_AH",
                 51
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "ipsec_spd_action",
+            [
+                "IPSEC_API_SPD_ACTION_BYPASS",
+                0
+            ],
+            [
+                "IPSEC_API_SPD_ACTION_DISCARD",
+                1
+            ],
+            [
+                "IPSEC_API_SPD_ACTION_RESOLVE",
+                2
+            ],
+            [
+                "IPSEC_API_SPD_ACTION_PROTECT",
+                3
             ],
             {
                 "enumtype": "u32"
@@ -1282,7 +1430,7 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0x48f74470",
+    "vl_api_version": "0x7892423b",
     "imports": [
         "vnet/ip/ip_types.api",
         "vnet/tunnel/tunnel_types.api",

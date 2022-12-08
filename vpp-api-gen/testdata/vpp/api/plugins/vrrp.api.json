@@ -234,7 +234,8 @@
                 "n_addrs"
             ],
             {
-                "crc": "0x6dc4b881"
+                "crc": "0xc5cf15aa",
+                "options": {}
             }
         ],
         [
@@ -252,7 +253,126 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "vrrp_vr_update",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "vrrp_index"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "u8",
+                "vr_id"
+            ],
+            [
+                "u8",
+                "priority"
+            ],
+            [
+                "u16",
+                "interval"
+            ],
+            [
+                "vl_api_vrrp_vr_flags_t",
+                "flags"
+            ],
+            [
+                "u8",
+                "n_addrs"
+            ],
+            [
+                "vl_api_address_t",
+                "addrs",
+                0,
+                "n_addrs"
+            ],
+            {
+                "crc": "0x0b51e2f4",
+                "options": {}
+            }
+        ],
+        [
+            "vrrp_vr_update_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "u32",
+                "vrrp_index"
+            ],
+            {
+                "crc": "0x5317d608",
+                "options": {}
+            }
+        ],
+        [
+            "vrrp_vr_del",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "vrrp_index"
+            ],
+            {
+                "crc": "0x6029baa1",
+                "options": {}
+            }
+        ],
+        [
+            "vrrp_vr_del_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -274,7 +394,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -306,7 +427,8 @@
                 "n_addrs"
             ],
             {
-                "crc": "0x0412fa71"
+                "crc": "0x46edcebd",
+                "options": {}
             }
         ],
         [
@@ -340,7 +462,8 @@
                 "is_start"
             ],
             {
-                "crc": "0x0662a3b7"
+                "crc": "0x0662a3b7",
+                "options": {}
             }
         ],
         [
@@ -358,7 +481,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -398,7 +522,8 @@
                 "n_addrs"
             ],
             {
-                "crc": "0xbaa2e52b"
+                "crc": "0x20bec71f",
+                "options": {}
             }
         ],
         [
@@ -416,7 +541,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -446,7 +572,8 @@
                 "vr_id"
             ],
             {
-                "crc": "0x6fa3f7c4"
+                "crc": "0x6fa3f7c4",
+                "options": {}
             }
         ],
         [
@@ -486,7 +613,8 @@
                 "n_peer_addrs"
             ],
             {
-                "crc": "0xabd9145e"
+                "crc": "0x3d99c108",
+                "options": {}
             }
         ],
         [
@@ -530,7 +658,8 @@
                 "n_ifs"
             ],
             {
-                "crc": "0x337f4ba4"
+                "crc": "0xd67df299",
+                "options": {}
             }
         ],
         [
@@ -548,7 +677,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -582,7 +712,8 @@
                 "dump_all"
             ],
             {
-                "crc": "0xa34dfc6d"
+                "crc": "0xa34dfc6d",
+                "options": {}
             }
         ],
         [
@@ -622,7 +753,8 @@
                 "n_ifs"
             ],
             {
-                "crc": "0x99bcca9c"
+                "crc": "0x73c36f81",
+                "options": {}
             }
         ],
         [
@@ -652,7 +784,8 @@
                 "new_state"
             ],
             {
-                "crc": "0xc1fea6a5"
+                "crc": "0xc1fea6a5",
+                "options": {}
             }
         ],
         [
@@ -678,7 +811,8 @@
                 "pid"
             ],
             {
-                "crc": "0xc5e2af94"
+                "crc": "0xc5e2af94",
+                "options": {}
             }
         ],
         [
@@ -696,7 +830,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -1142,6 +1277,12 @@
         "vrrp_vr_add_del": {
             "reply": "vrrp_vr_add_del_reply"
         },
+        "vrrp_vr_update": {
+            "reply": "vrrp_vr_update_reply"
+        },
+        "vrrp_vr_del": {
+            "reply": "vrrp_vr_del_reply"
+        },
         "vrrp_vr_dump": {
             "reply": "vrrp_vr_details",
             "stream": true
@@ -1165,7 +1306,7 @@
         }
     },
     "options": {
-        "version": "1.0.1"
+        "version": "1.1.1"
     },
     "aliases": {
         "interface_index": {
@@ -1193,7 +1334,7 @@
             "length": 6
         }
     },
-    "vl_api_version": "0x6a3c71cd",
+    "vl_api_version": "0x674aea12",
     "imports": [
         "vnet/interface_types.api",
         "vnet/ip/ip_types.api",

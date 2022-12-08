@@ -148,7 +148,70 @@
                 }
             ],
             {
-                "crc": "0x7c6da6ae"
+                "crc": "0xa645b2b0",
+                "options": {}
+            }
+        ],
+        [
+            "vxlan_gpe_add_del_tunnel_v2",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_address_t",
+                "local"
+            ],
+            [
+                "vl_api_address_t",
+                "remote"
+            ],
+            [
+                "u16",
+                "local_port"
+            ],
+            [
+                "u16",
+                "remote_port"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "mcast_sw_if_index"
+            ],
+            [
+                "u32",
+                "encap_vrf_id"
+            ],
+            [
+                "u32",
+                "decap_vrf_id"
+            ],
+            [
+                "vl_api_ip_proto_t",
+                "protocol"
+            ],
+            [
+                "u32",
+                "vni"
+            ],
+            [
+                "bool",
+                "is_add",
+                {
+                    "default": "true"
+                }
+            ],
+            {
+                "crc": "0xd62fdb35",
+                "options": {}
             }
         ],
         [
@@ -170,7 +233,31 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
+            }
+        ],
+        [
+            "vxlan_gpe_add_del_tunnel_v2_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -192,7 +279,31 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
+            }
+        ],
+        [
+            "vxlan_gpe_tunnel_v2_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -242,7 +353,67 @@
                 "is_ipv6"
             ],
             {
-                "crc": "0x57712346"
+                "crc": "0x0968fc8b",
+                "options": {}
+            }
+        ],
+        [
+            "vxlan_gpe_tunnel_v2_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "vl_api_address_t",
+                "local"
+            ],
+            [
+                "vl_api_address_t",
+                "remote"
+            ],
+            [
+                "u16",
+                "local_port"
+            ],
+            [
+                "u16",
+                "remote_port"
+            ],
+            [
+                "u32",
+                "vni"
+            ],
+            [
+                "vl_api_ip_proto_t",
+                "protocol"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "mcast_sw_if_index"
+            ],
+            [
+                "u32",
+                "encap_vrf_id"
+            ],
+            [
+                "u32",
+                "decap_vrf_id"
+            ],
+            [
+                "bool",
+                "is_ipv6"
+            ],
+            {
+                "crc": "0x06be4870",
+                "options": {}
             }
         ],
         [
@@ -275,7 +446,8 @@
                 }
             ],
             {
-                "crc": "0x65247409"
+                "crc": "0x65247409",
+                "options": {}
             }
         ],
         [
@@ -293,7 +465,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -689,8 +862,15 @@
         "vxlan_gpe_add_del_tunnel": {
             "reply": "vxlan_gpe_add_del_tunnel_reply"
         },
+        "vxlan_gpe_add_del_tunnel_v2": {
+            "reply": "vxlan_gpe_add_del_tunnel_v2_reply"
+        },
         "vxlan_gpe_tunnel_dump": {
             "reply": "vxlan_gpe_tunnel_details",
+            "stream": true
+        },
+        "vxlan_gpe_tunnel_v2_dump": {
+            "reply": "vxlan_gpe_tunnel_v2_details",
             "stream": true
         },
         "sw_interface_set_vxlan_gpe_bypass": {
@@ -698,7 +878,7 @@
         }
     },
     "options": {
-        "version": "2.0.0"
+        "version": "2.1.0"
     },
     "aliases": {
         "interface_index": {
@@ -722,7 +902,7 @@
             "type": "vl_api_ip6_prefix_t"
         }
     },
-    "vl_api_version": "0x7a970d0b",
+    "vl_api_version": "0x3bc06278",
     "imports": [
         "vnet/interface_types.api",
         "vnet/ip/ip_types.api"

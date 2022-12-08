@@ -60,7 +60,10 @@
                 "features"
             ],
             {
-                "crc": "0xa9f1370c"
+                "crc": "0x1944f8db",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -82,7 +85,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -120,7 +126,8 @@
                 "features"
             ],
             {
-                "crc": "0x5d096e1a"
+                "crc": "0x5d096e1a",
+                "options": {}
             }
         ],
         [
@@ -142,7 +149,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -164,7 +172,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -182,7 +191,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -200,7 +210,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -238,7 +249,8 @@
                 "features"
             ],
             {
-                "crc": "0x16187f3a"
+                "crc": "0x6ca9c167",
+                "options": {}
             }
         ]
     ],

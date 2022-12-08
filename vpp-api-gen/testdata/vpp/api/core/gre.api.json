@@ -299,7 +299,8 @@
                 "tunnel"
             ],
             {
-                "crc": "0x6efc9c22"
+                "crc": "0xa27d7f17",
+                "options": {}
             }
         ],
         [
@@ -321,7 +322,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -343,7 +345,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -361,7 +364,8 @@
                 "tunnel"
             ],
             {
-                "crc": "0x003bfbf1"
+                "crc": "0x24435433",
+                "options": {}
             }
         ]
     ],

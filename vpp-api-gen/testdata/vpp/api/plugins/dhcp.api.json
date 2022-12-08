@@ -240,7 +240,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -262,7 +263,8 @@
                 "minor"
             ],
             {
-                "crc": "0x9b32cf86"
+                "crc": "0x9b32cf86",
+                "options": {}
             }
         ],
         [
@@ -280,7 +282,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -306,7 +309,8 @@
                 "vpe_pid"
             ],
             {
-                "crc": "0xf6b0b8ca"
+                "crc": "0xf6b0b8ca",
+                "options": {}
             }
         ],
         [
@@ -344,7 +348,8 @@
                 "dhcp_src_address"
             ],
             {
-                "crc": "0x6767230e"
+                "crc": "0x4058a689",
+                "options": {}
             }
         ],
         [
@@ -362,7 +367,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -409,7 +415,8 @@
                 "is_add"
             ],
             {
-                "crc": "0x50537301"
+                "crc": "0x50537301",
+                "options": {}
             }
         ],
         [
@@ -427,7 +434,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -453,7 +461,8 @@
                 "client"
             ],
             {
-                "crc": "0x959b80a3"
+                "crc": "0x1af013ea",
+                "options": {}
             }
         ],
         [
@@ -471,7 +480,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -493,7 +503,8 @@
                 "lease"
             ],
             {
-                "crc": "0xe908fd1d"
+                "crc": "0xe18124b7",
+                "options": {}
             }
         ],
         [
@@ -511,7 +522,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -533,7 +545,8 @@
                 "lease"
             ],
             {
-                "crc": "0xacd82f5a"
+                "crc": "0x8897b2d8",
+                "options": {}
             }
         ],
         [
@@ -555,7 +568,8 @@
                 "is_ip6"
             ],
             {
-                "crc": "0x5c5b063f"
+                "crc": "0x5c5b063f",
+                "options": {}
             }
         ],
         [
@@ -608,7 +622,8 @@
                 "count"
             ],
             {
-                "crc": "0xce16f044"
+                "crc": "0xdcbaf540",
+                "options": {}
             }
         ],
         [
@@ -631,7 +646,8 @@
                 10
             ],
             {
-                "crc": "0x0f6ca323"
+                "crc": "0x0f6ca323",
+                "options": {}
             }
         ],
         [
@@ -649,7 +665,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -671,7 +688,8 @@
                 "enable"
             ],
             {
-                "crc": "0xb3e225d2"
+                "crc": "0xb3e225d2",
+                "options": {}
             }
         ],
         [
@@ -689,7 +707,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -757,7 +776,8 @@
                 "n_addresses"
             ],
             {
-                "crc": "0xf6f14ef0"
+                "crc": "0xf8222476",
+                "options": {}
             }
         ],
         [
@@ -775,7 +795,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -843,7 +864,8 @@
                 "n_prefixes"
             ],
             {
-                "crc": "0x064badb8"
+                "crc": "0x3739fd8d",
+                "options": {}
             }
         ],
         [
@@ -861,7 +883,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -887,7 +910,8 @@
                 "pid"
             ],
             {
-                "crc": "0x05b454b5"
+                "crc": "0x05b454b5",
+                "options": {}
             }
         ],
         [
@@ -905,7 +929,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -931,7 +956,8 @@
                 "pid"
             ],
             {
-                "crc": "0xc5e2af94"
+                "crc": "0xc5e2af94",
+                "options": {}
             }
         ],
         [
@@ -949,7 +975,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1009,7 +1036,8 @@
                 "n_addresses"
             ],
             {
-                "crc": "0x9f3af9e5"
+                "crc": "0x85b7b17e",
+                "options": {}
             }
         ],
         [
@@ -1069,7 +1097,8 @@
                 "n_prefixes"
             ],
             {
-                "crc": "0xcb3e462b"
+                "crc": "0x5e878029",
+                "options": {}
             }
         ]
     ],
@@ -1485,15 +1514,15 @@
             "dhcp_client_state",
             [
                 "DHCP_CLIENT_STATE_API_DISCOVER",
-                1
+                0
             ],
             [
                 "DHCP_CLIENT_STATE_API_REQUEST",
-                2
+                1
             ],
             [
                 "DHCP_CLIENT_STATE_API_BOUND",
-                3
+                2
             ],
             {
                 "enumtype": "u32"
@@ -1640,7 +1669,7 @@
             "length": 6
         }
     },
-    "vl_api_version": "0x3cf8291a",
+    "vl_api_version": "0xaee239f2",
     "imports": [
         "vnet/interface_types.api",
         "vnet/ip/ip_types.api",

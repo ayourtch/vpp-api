@@ -63,7 +63,8 @@
                 8
             ],
             {
-                "crc": "0x9c5e1c2f"
+                "crc": "0x9c5e1c2f",
+                "options": {}
             }
         ],
         [
@@ -93,7 +94,8 @@
                 "message_table"
             ],
             {
-                "crc": "0x42ec4560"
+                "crc": "0x42ec4560",
+                "options": {}
             }
         ],
         [
@@ -115,7 +117,8 @@
                 "do_cleanup"
             ],
             {
-                "crc": "0x7e1c04e3"
+                "crc": "0x7e1c04e3",
+                "options": {}
             }
         ],
         [
@@ -133,7 +136,8 @@
                 "handle"
             ],
             {
-                "crc": "0x3d3b6312"
+                "crc": "0x3d3b6312",
+                "options": {}
             }
         ],
         [
@@ -147,7 +151,8 @@
                 "dummy"
             ],
             {
-                "crc": "0xc3a3a452"
+                "crc": "0xc3a3a452",
+                "options": {}
             }
         ],
         [
@@ -161,7 +166,8 @@
                 "dummy"
             ],
             {
-                "crc": "0xc3a3a452"
+                "crc": "0xc3a3a452",
+                "options": {}
             }
         ],
         [
@@ -175,7 +181,8 @@
                 "dummy"
             ],
             {
-                "crc": "0xc3a3a452"
+                "crc": "0xc3a3a452",
+                "options": {}
             }
         ],
         [
@@ -219,7 +226,8 @@
                 "data_len"
             ],
             {
-                "crc": "0x7e8a2c95"
+                "crc": "0x7e8a2c95",
+                "options": {}
             }
         ],
         [
@@ -237,7 +245,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -260,7 +269,8 @@
                 64
             ],
             {
-                "crc": "0xebf79a66"
+                "crc": "0xebf79a66",
+                "options": {}
             }
         ],
         [
@@ -282,7 +292,8 @@
                 "first_msg_id"
             ],
             {
-                "crc": "0x7d337472"
+                "crc": "0x7d337472",
+                "options": {}
             }
         ],
         [
@@ -300,7 +311,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -328,7 +340,8 @@
                 "count"
             ],
             {
-                "crc": "0x5f0d99d6"
+                "crc": "0x5f0d99d6",
+                "options": {}
             }
         ],
         [
@@ -359,7 +372,8 @@
                 "last_msg_id"
             ],
             {
-                "crc": "0xf476d3ce"
+                "crc": "0xf476d3ce",
+                "options": {}
             }
         ],
         [
@@ -378,7 +392,8 @@
                 64
             ],
             {
-                "crc": "0x455fb9c4"
+                "crc": "0x455fb9c4",
+                "options": {}
             }
         ],
         [
@@ -414,7 +429,8 @@
                 "count"
             ],
             {
-                "crc": "0x35166268"
+                "crc": "0x35166268",
+                "options": {}
             }
         ],
         [
@@ -436,7 +452,8 @@
                 "index"
             ],
             {
-                "crc": "0x8ac76db6"
+                "crc": "0x8ac76db6",
+                "options": {}
             }
         ],
         [
@@ -454,7 +471,8 @@
                 "response"
             ],
             {
-                "crc": "0x8f38b1ee"
+                "crc": "0x8f38b1ee",
+                "options": {}
             }
         ],
         [
@@ -486,7 +504,8 @@
                 "nitems"
             ],
             {
-                "crc": "0x51646d92"
+                "crc": "0x51646d92",
+                "options": {}
             }
         ],
         [
@@ -504,7 +523,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -522,7 +542,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -540,7 +561,125 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "control_ping",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            {
+                "crc": "0x51077d14",
+                "options": {}
+            }
+        ],
+        [
+            "control_ping_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "vpe_pid"
+            ],
+            {
+                "crc": "0xf6b0b8ca",
+                "options": {}
+            }
+        ],
+        [
+            "memclnt_create_v2",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "ctx_quota"
+            ],
+            [
+                "u64",
+                "input_queue"
+            ],
+            [
+                "string",
+                "name",
+                64
+            ],
+            [
+                "u32",
+                "api_versions",
+                8
+            ],
+            [
+                "bool",
+                "keepalive",
+                {
+                    "default": "true"
+                }
+            ],
+            {
+                "crc": "0xc4bd4882",
+                "options": {}
+            }
+        ],
+        [
+            "memclnt_create_v2_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "response"
+            ],
+            [
+                "u64",
+                "handle"
+            ],
+            [
+                "u32",
+                "index"
+            ],
+            [
+                "u64",
+                "message_table"
+            ],
+            {
+                "crc": "0x42ec4560",
+                "options": {}
             }
         ]
     ],
@@ -586,13 +725,19 @@
         },
         "memclnt_keepalive": {
             "reply": "memclnt_keepalive_reply"
+        },
+        "control_ping": {
+            "reply": "control_ping_reply"
+        },
+        "memclnt_create_v2": {
+            "reply": "memclnt_create_v2_reply"
         }
     },
     "options": {
         "version": "2.1.0"
     },
     "aliases": {},
-    "vl_api_version": "0x8d3dd881",
+    "vl_api_version": "0x21d36234",
     "imports": [],
     "counters": [],
     "paths": []

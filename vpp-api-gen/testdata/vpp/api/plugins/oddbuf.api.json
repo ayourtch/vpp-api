@@ -24,7 +24,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x3865946c"
+                "crc": "0x3865946c",
+                "options": {
+                    "vat_help": "<intfc> [disable]"
+                }
             }
         ],
         [
@@ -42,7 +45,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<intfc> [disable]"
+                }
             }
         ]
     ],

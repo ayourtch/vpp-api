@@ -36,7 +36,8 @@
                 "app_data"
             ],
             {
-                "crc": "0xde08aa6d"
+                "crc": "0xde08aa6d",
+                "options": {}
             }
         ],
         [
@@ -54,7 +55,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -72,7 +74,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -90,7 +93,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -108,7 +112,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -146,7 +151,8 @@
                 "app_data"
             ],
             {
-                "crc": "0x0f1d374c"
+                "crc": "0x0f1d374c",
+                "options": {}
             }
         ]
     ],

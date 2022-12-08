@@ -267,7 +267,8 @@
                 "loc_num"
             ],
             {
-                "crc": "0xde6df50f"
+                "crc": "0xf0847644",
+                "options": {}
             }
         ],
         [
@@ -289,7 +290,8 @@
                 "fwd_entry_index"
             ],
             {
-                "crc": "0xefe5f176"
+                "crc": "0xefe5f176",
+                "options": {}
             }
         ],
         [
@@ -314,7 +316,8 @@
                 }
             ],
             {
-                "crc": "0xc264d7bf"
+                "crc": "0xc264d7bf",
+                "options": {}
             }
         ],
         [
@@ -332,7 +335,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -369,7 +373,8 @@
                 "vni"
             ],
             {
-                "crc": "0x3ccff273"
+                "crc": "0x3ccff273",
+                "options": {}
             }
         ],
         [
@@ -387,7 +392,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -405,7 +411,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -433,7 +440,8 @@
                 "count"
             ],
             {
-                "crc": "0xaa70da20"
+                "crc": "0xaa70da20",
+                "options": {}
             }
         ],
         [
@@ -455,7 +463,8 @@
                 "vni"
             ],
             {
-                "crc": "0x8d1f2fe9"
+                "crc": "0x8d1f2fe9",
+                "options": {}
             }
         ],
         [
@@ -483,7 +492,8 @@
                 "count"
             ],
             {
-                "crc": "0xf9f53f1b"
+                "crc": "0xc4844876",
+                "options": {}
             }
         ],
         [
@@ -505,7 +515,8 @@
                 "fwd_entry_index"
             ],
             {
-                "crc": "0x39bce980"
+                "crc": "0x39bce980",
+                "options": {}
             }
         ],
         [
@@ -527,7 +538,8 @@
                 "rmt_loc"
             ],
             {
-                "crc": "0xee80b19a"
+                "crc": "0x483df51a",
+                "options": {}
             }
         ],
         [
@@ -549,7 +561,8 @@
                 "is_vxlan"
             ],
             {
-                "crc": "0xbd819eac"
+                "crc": "0xbd819eac",
+                "options": {}
             }
         ],
         [
@@ -567,7 +580,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -585,7 +599,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -607,7 +622,8 @@
                 "encap_mode"
             ],
             {
-                "crc": "0x36e3f7ca"
+                "crc": "0x36e3f7ca",
+                "options": {}
             }
         ],
         [
@@ -644,7 +660,8 @@
                 "nh_addr"
             ],
             {
-                "crc": "0x812da2f2"
+                "crc": "0x43fc8b54",
+                "options": {}
             }
         ],
         [
@@ -662,7 +679,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -684,7 +702,8 @@
                 "is_ip4"
             ],
             {
-                "crc": "0xf652ceb4"
+                "crc": "0xf652ceb4",
+                "options": {}
             }
         ],
         [
@@ -712,7 +731,8 @@
                 "count"
             ],
             {
-                "crc": "0x79d54eb9"
+                "crc": "0x7a1ca5a2",
+                "options": {}
             }
         ]
     ],

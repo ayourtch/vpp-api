@@ -62,7 +62,10 @@
                 64
             ],
             {
-                "crc": "0xc785c6fc"
+                "crc": "0xc785c6fc",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -84,7 +87,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -131,7 +137,10 @@
                 "custom_dev_instance"
             ],
             {
-                "crc": "0x0e71d40b"
+                "crc": "0x0e71d40b",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -149,7 +158,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -217,7 +229,8 @@
                 64
             ],
             {
-                "crc": "0xdba1cc1d"
+                "crc": "0xdba1cc1d",
+                "options": {}
             }
         ],
         [
@@ -239,7 +252,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -290,7 +304,8 @@
                 "custom_dev_instance"
             ],
             {
-                "crc": "0xb2483771"
+                "crc": "0xb2483771",
+                "options": {}
             }
         ],
         [
@@ -308,7 +323,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -330,7 +346,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -348,7 +365,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -400,7 +418,8 @@
                 "sock_errno"
             ],
             {
-                "crc": "0x98530df1"
+                "crc": "0x0cee1e53",
+                "options": {}
             }
         ],
         [
@@ -425,7 +444,8 @@
                 }
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ]
     ],

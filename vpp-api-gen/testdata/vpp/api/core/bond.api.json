@@ -43,7 +43,10 @@
                 "numa_only"
             ],
             {
-                "crc": "0x48883c7e"
+                "crc": "0xf1dbd4ff",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -65,7 +68,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -114,7 +118,8 @@
                 }
             ],
             {
-                "crc": "0x912fda76"
+                "crc": "0x912fda76",
+                "options": {}
             }
         ],
         [
@@ -136,7 +141,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -158,7 +164,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -176,7 +183,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -210,7 +218,10 @@
                 "is_long_timeout"
             ],
             {
-                "crc": "0x076ecfa7"
+                "crc": "0xe7d14948",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -228,7 +239,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -262,7 +274,8 @@
                 "is_long_timeout"
             ],
             {
-                "crc": "0xe7d14948"
+                "crc": "0xe7d14948",
+                "options": {}
             }
         ],
         [
@@ -280,7 +293,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -302,7 +316,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -320,7 +337,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -342,7 +362,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -360,7 +381,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -378,7 +400,10 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -425,7 +450,8 @@
                 64
             ],
             {
-                "crc": "0xf5ef2106"
+                "crc": "0xbb7c929b",
+                "options": {}
             }
         ],
         [
@@ -450,7 +476,8 @@
                 }
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -497,7 +524,8 @@
                 64
             ],
             {
-                "crc": "0x9428a69c"
+                "crc": "0x9428a69c",
+                "options": {}
             }
         ],
         [
@@ -519,7 +547,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -558,7 +589,8 @@
                 "weight"
             ],
             {
-                "crc": "0x3c4a0e23"
+                "crc": "0x3c4a0e23",
+                "options": {}
             }
         ],
         [
@@ -580,7 +612,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -619,7 +652,8 @@
                 "weight"
             ],
             {
-                "crc": "0x3c4a0e23"
+                "crc": "0x3c4a0e23",
+                "options": {}
             }
         ],
         [
@@ -645,7 +679,8 @@
                 "weight"
             ],
             {
-                "crc": "0xdeb510a0"
+                "crc": "0xdeb510a0",
+                "options": {}
             }
         ],
         [
@@ -663,7 +698,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],

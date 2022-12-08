@@ -145,7 +145,8 @@
                 "encap_vrf_id"
             ],
             {
-                "crc": "0x596892cb"
+                "crc": "0x15bed0c2",
+                "options": {}
             }
         ],
         [
@@ -167,7 +168,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -197,7 +199,8 @@
                 "new_remote_cookie"
             ],
             {
-                "crc": "0xb3f4faf7"
+                "crc": "0xb3f4faf7",
+                "options": {}
             }
         ],
         [
@@ -215,7 +218,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -267,7 +271,8 @@
                 "l2_sublayer_present"
             ],
             {
-                "crc": "0x1dab5c7e"
+                "crc": "0x50b88993",
+                "options": {}
             }
         ],
         [
@@ -285,7 +290,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -311,7 +317,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x3865946c"
+                "crc": "0x3865946c",
+                "options": {}
             }
         ],
         [
@@ -329,7 +336,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -351,7 +359,8 @@
                 "key"
             ],
             {
-                "crc": "0xc9892c86"
+                "crc": "0xc9892c86",
+                "options": {}
             }
         ],
         [
@@ -369,7 +378,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],

@@ -135,7 +135,8 @@
                 "n_segments"
             ],
             {
-                "crc": "0xa1a70c70"
+                "crc": "0xa1a70c70",
+                "options": {}
             }
         ],
         [
@@ -153,7 +154,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -197,7 +199,8 @@
                 "n_segments"
             ],
             {
-                "crc": "0x88482c17"
+                "crc": "0x88482c17",
+                "options": {}
             }
         ],
         [
@@ -215,7 +218,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -237,7 +241,8 @@
                 "bsid"
             ],
             {
-                "crc": "0xe29d34fa"
+                "crc": "0xe29d34fa",
+                "options": {}
             }
         ],
         [
@@ -255,7 +260,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -312,7 +318,8 @@
                 "vpn_label"
             ],
             {
-                "crc": "0x7d1b0a0b"
+                "crc": "0x64acff63",
+                "options": {}
             }
         ],
         [
@@ -330,7 +337,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -360,7 +368,8 @@
                 "color"
             ],
             {
-                "crc": "0x5e1c5c13"
+                "crc": "0x0e7eb978",
+                "options": {}
             }
         ],
         [
@@ -378,7 +387,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],

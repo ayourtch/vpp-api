@@ -247,7 +247,8 @@
                 "bt_is_add"
             ],
             {
-                "crc": "0x35e59209"
+                "crc": "0x35e59209",
+                "options": {}
             }
         ],
         [
@@ -265,7 +266,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -283,7 +285,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -305,7 +308,8 @@
                 "bt_tbl_id"
             ],
             {
-                "crc": "0xfc44a9dd"
+                "crc": "0xfc44a9dd",
+                "options": {}
             }
         ],
         [
@@ -335,7 +339,8 @@
                 "br_route"
             ],
             {
-                "crc": "0xf29edca0"
+                "crc": "0xfd02f3ea",
+                "options": {}
             }
         ],
         [
@@ -353,7 +358,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -375,7 +381,8 @@
                 "br_tbl_id"
             ],
             {
-                "crc": "0x38339846"
+                "crc": "0x38339846",
+                "options": {}
             }
         ],
         [
@@ -393,7 +400,8 @@
                 "br_route"
             ],
             {
-                "crc": "0x39ee6a56"
+                "crc": "0x4008caee",
+                "options": {}
             }
         ],
         [
@@ -429,7 +437,8 @@
                 "bi_n_bytes"
             ],
             {
-                "crc": "0x3856dc3d"
+                "crc": "0x3856dc3d",
+                "options": {}
             }
         ],
         [
@@ -451,7 +460,8 @@
                 "bi_index"
             ],
             {
-                "crc": "0xd49c5793"
+                "crc": "0xd49c5793",
+                "options": {}
             }
         ],
         [
@@ -473,7 +483,8 @@
                 "bi_index"
             ],
             {
-                "crc": "0x7d45edf6"
+                "crc": "0x7d45edf6",
+                "options": {}
             }
         ],
         [
@@ -491,7 +502,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -509,7 +521,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -541,7 +554,8 @@
                 "bi_n_bytes"
             ],
             {
-                "crc": "0xb76192df"
+                "crc": "0xb76192df",
+                "options": {}
             }
         ],
         [
@@ -567,7 +581,8 @@
                 "bdt_is_add"
             ],
             {
-                "crc": "0x889657ac"
+                "crc": "0x889657ac",
+                "options": {}
             }
         ],
         [
@@ -585,7 +600,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -603,7 +619,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -621,7 +638,8 @@
                 "bdt_tbl_id"
             ],
             {
-                "crc": "0xd27942c0"
+                "crc": "0xd27942c0",
+                "options": {}
             }
         ],
         [
@@ -665,7 +683,8 @@
                 "bde_n_paths"
             ],
             {
-                "crc": "0x648323eb"
+                "crc": "0x9eb80cb4",
+                "options": {}
             }
         ],
         [
@@ -683,7 +702,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -705,7 +725,8 @@
                 "bde_tbl_id"
             ],
             {
-                "crc": "0xb5fa54ad"
+                "crc": "0xb5fa54ad",
+                "options": {}
             }
         ],
         [
@@ -745,7 +766,8 @@
                 "bde_n_paths"
             ],
             {
-                "crc": "0xe5b039a9"
+                "crc": "0x84c218f1",
+                "options": {}
             }
         ]
     ],

@@ -139,7 +139,8 @@
                 }
             ],
             {
-                "crc": "0xbb641285"
+                "crc": "0xb8011d0b",
+                "options": {}
             }
         ],
         [
@@ -157,7 +158,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -175,7 +177,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -213,7 +216,8 @@
                 "max_msg_size"
             ],
             {
-                "crc": "0xd3da60ac"
+                "crc": "0x424cfa4e",
+                "options": {}
             }
         ],
         [
@@ -235,7 +239,8 @@
                 "severity"
             ],
             {
-                "crc": "0x571348c3"
+                "crc": "0x571348c3",
+                "options": {}
             }
         ],
         [
@@ -253,7 +258,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -271,7 +277,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -293,7 +300,8 @@
                 "severity"
             ],
             {
-                "crc": "0xeb1833f8"
+                "crc": "0xeb1833f8",
+                "options": {}
             }
         ]
     ],

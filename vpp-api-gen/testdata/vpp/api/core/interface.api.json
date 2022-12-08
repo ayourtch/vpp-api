@@ -121,7 +121,8 @@
                 "flags"
             ],
             {
-                "crc": "0x6a2b491a"
+                "crc": "0xf5aec1b8",
+                "options": {}
             }
         ],
         [
@@ -139,7 +140,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -165,7 +167,8 @@
                 "promisc_on"
             ],
             {
-                "crc": "0xd40860d4"
+                "crc": "0xd40860d4",
+                "options": {}
             }
         ],
         [
@@ -183,7 +186,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -209,7 +213,8 @@
                 "mtu"
             ],
             {
-                "crc": "0xe6746899"
+                "crc": "0xe6746899",
+                "options": {}
             }
         ],
         [
@@ -227,7 +232,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -254,7 +260,8 @@
                 4
             ],
             {
-                "crc": "0x5cbe85e5"
+                "crc": "0x5cbe85e5",
+                "options": {}
             }
         ],
         [
@@ -272,7 +279,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -298,7 +306,8 @@
                 "enable"
             ],
             {
-                "crc": "0xae6cfcfb"
+                "crc": "0xae6cfcfb",
+                "options": {}
             }
         ],
         [
@@ -316,7 +325,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -346,7 +356,8 @@
                 "deleted"
             ],
             {
-                "crc": "0xf709f78d"
+                "crc": "0x2d3d95a7",
+                "options": {}
             }
         ],
         [
@@ -372,7 +383,8 @@
                 "pid"
             ],
             {
-                "crc": "0x476f5a08"
+                "crc": "0x476f5a08",
+                "options": {}
             }
         ],
         [
@@ -390,7 +402,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -512,7 +525,8 @@
                 64
             ],
             {
-                "crc": "0x17b69fa2"
+                "crc": "0x6c221fc7",
+                "options": {}
             }
         ],
         [
@@ -546,7 +560,8 @@
                 0
             ],
             {
-                "crc": "0xaa610c27"
+                "crc": "0xaa610c27",
+                "options": {}
             }
         ],
         [
@@ -580,7 +595,8 @@
                 "prefix"
             ],
             {
-                "crc": "0x5803d5c4"
+                "crc": "0x5463d73b",
+                "options": {}
             }
         ],
         [
@@ -598,7 +614,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -616,7 +633,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -634,7 +652,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -652,7 +671,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -670,7 +690,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -700,7 +721,8 @@
                 "vrf_id"
             ],
             {
-                "crc": "0xdf42a577"
+                "crc": "0xdf42a577",
+                "options": {}
             }
         ],
         [
@@ -718,7 +740,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -744,7 +767,8 @@
                 "is_ipv6"
             ],
             {
-                "crc": "0x2d033de4"
+                "crc": "0x2d033de4",
+                "options": {}
             }
         ],
         [
@@ -766,7 +790,8 @@
                 "vrf_id"
             ],
             {
-                "crc": "0xa6eb0109"
+                "crc": "0xa6eb0109",
+                "options": {}
             }
         ],
         [
@@ -796,7 +821,8 @@
                 "is_add"
             ],
             {
-                "crc": "0x938ef33b"
+                "crc": "0x154a6439",
+                "options": {}
             }
         ],
         [
@@ -814,7 +840,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -836,7 +863,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -854,7 +882,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -885,7 +914,8 @@
                 64
             ],
             {
-                "crc": "0x426f8bc1"
+                "crc": "0x426f8bc1",
+                "options": {}
             }
         ],
         [
@@ -903,7 +933,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -933,7 +964,8 @@
                 "is_add"
             ],
             {
-                "crc": "0x638bb9f4"
+                "crc": "0x638bb9f4",
+                "options": {}
             }
         ],
         [
@@ -951,7 +983,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -977,7 +1010,8 @@
                 "mac_address"
             ],
             {
-                "crc": "0x6aca746a"
+                "crc": "0xc536e7eb",
+                "options": {}
             }
         ],
         [
@@ -995,7 +1029,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1017,7 +1052,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -1039,7 +1075,8 @@
                 "mac_address"
             ],
             {
-                "crc": "0x40ef2c08"
+                "crc": "0x40ef2c08",
+                "options": {}
             }
         ],
         [
@@ -1073,7 +1110,8 @@
                 "mode"
             ],
             {
-                "crc": "0x780f5cee"
+                "crc": "0xb04d1cfe",
+                "options": {}
             }
         ],
         [
@@ -1091,7 +1129,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1125,7 +1164,8 @@
                 "is_main"
             ],
             {
-                "crc": "0xdb65f3c9"
+                "crc": "0xdb65f3c9",
+                "options": {}
             }
         ],
         [
@@ -1143,7 +1183,115 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "sw_interface_set_tx_placement",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "u32",
+                "queue_id"
+            ],
+            [
+                "u32",
+                "array_size"
+            ],
+            [
+                "u32",
+                "threads",
+                0,
+                "array_size"
+            ],
+            {
+                "crc": "0x4e0cd5ff",
+                "options": {
+                    "vat_help": "<interface | sw_if_index <index>> queue <n> [threads <list> | mask <hex>]"
+                }
+            }
+        ],
+        [
+            "sw_interface_set_tx_placement_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<interface | sw_if_index <index>> queue <n> [threads <list> | mask <hex>]"
+                }
+            }
+        ],
+        [
+            "sw_interface_set_interface_name",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "string",
+                "name",
+                64
+            ],
+            {
+                "crc": "0x45a1d548",
+                "options": {}
+            }
+        ],
+        [
+            "sw_interface_set_interface_name_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1165,7 +1313,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -1199,7 +1348,101 @@
                 "mode"
             ],
             {
-                "crc": "0xf6d7d024"
+                "crc": "0x9e44a7ce",
+                "options": {}
+            }
+        ],
+        [
+            "sw_interface_tx_placement_get",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "cursor"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x47250981",
+                "options": {
+                    "vat_help": "[interface | sw_if_index <index>]"
+                }
+            }
+        ],
+        [
+            "sw_interface_tx_placement_get_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "u32",
+                "cursor"
+            ],
+            {
+                "crc": "0x53b48f5d",
+                "options": {}
+            }
+        ],
+        [
+            "sw_interface_tx_placement_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "u32",
+                "queue_id"
+            ],
+            [
+                "u8",
+                "shared"
+            ],
+            [
+                "u32",
+                "array_size"
+            ],
+            [
+                "u32",
+                "threads",
+                0,
+                "array_size"
+            ],
+            {
+                "crc": "0x00381a2e",
+                "options": {}
             }
         ],
         [
@@ -1225,7 +1468,8 @@
                 "new_show_dev_instance"
             ],
             {
-                "crc": "0x2b8858b8"
+                "crc": "0x2b8858b8",
+                "options": {}
             }
         ],
         [
@@ -1243,7 +1487,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1281,7 +1526,8 @@
                 "inner_vlan_id"
             ],
             {
-                "crc": "0xcb371063"
+                "crc": "0x790ca755",
+                "options": {}
             }
         ],
         [
@@ -1303,7 +1549,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -1329,7 +1576,8 @@
                 "vlan_id"
             ],
             {
-                "crc": "0xaf34ac8b"
+                "crc": "0xaf34ac8b",
+                "options": {}
             }
         ],
         [
@@ -1351,7 +1599,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -1373,7 +1622,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -1391,7 +1641,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1413,7 +1664,8 @@
                 "mac_address"
             ],
             {
-                "crc": "0x42bb5d22"
+                "crc": "0x42bb5d22",
+                "options": {}
             }
         ],
         [
@@ -1435,7 +1687,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -1465,7 +1718,8 @@
                 "user_instance"
             ],
             {
-                "crc": "0xd36a3ee2"
+                "crc": "0xd36a3ee2",
+                "options": {}
             }
         ],
         [
@@ -1487,7 +1741,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -1509,7 +1764,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -1527,7 +1783,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1553,7 +1810,8 @@
                 "enable_disable"
             ],
             {
-                "crc": "0x5501adee"
+                "crc": "0x5501adee",
+                "options": {}
             }
         ],
         [
@@ -1571,7 +1829,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -1970,6 +2229,11 @@
                 "sw_interface_event"
             ]
         },
+        "sw_interface_tx_placement_get": {
+            "reply": "sw_interface_tx_placement_get_reply",
+            "stream": true,
+            "stream_msg": "sw_interface_tx_placement_details"
+        },
         "sw_interface_set_flags": {
             "reply": "sw_interface_set_flags_reply"
         },
@@ -2028,6 +2292,12 @@
         "sw_interface_set_rx_placement": {
             "reply": "sw_interface_set_rx_placement_reply"
         },
+        "sw_interface_set_tx_placement": {
+            "reply": "sw_interface_set_tx_placement_reply"
+        },
+        "sw_interface_set_interface_name": {
+            "reply": "sw_interface_set_interface_name_reply"
+        },
         "sw_interface_rx_placement_dump": {
             "reply": "sw_interface_rx_placement_details",
             "stream": true
@@ -2058,7 +2328,7 @@
         }
     },
     "options": {
-        "version": "3.2.2"
+        "version": "3.2.3"
     },
     "aliases": {
         "interface_index": {
@@ -2086,7 +2356,7 @@
             "type": "vl_api_ip6_prefix_t"
         }
     },
-    "vl_api_version": "0x29a0076c",
+    "vl_api_version": "0x13ab947a",
     "imports": [
         "vnet/interface_types.api",
         "vnet/ethernet/ethernet_types.api",

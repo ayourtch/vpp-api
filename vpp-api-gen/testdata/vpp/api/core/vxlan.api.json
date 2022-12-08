@@ -148,7 +148,8 @@
                 "vni"
             ],
             {
-                "crc": "0xa35dc8f5"
+                "crc": "0x0c09dc80",
+                "options": {}
             }
         ],
         [
@@ -212,7 +213,80 @@
                 "vni"
             ],
             {
-                "crc": "0x4f223f40"
+                "crc": "0x4f223f40",
+                "options": {}
+            }
+        ],
+        [
+            "vxlan_add_del_tunnel_v3",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "is_add",
+                {
+                    "default": "true"
+                }
+            ],
+            [
+                "u32",
+                "instance",
+                {
+                    "default": 4294967295
+                }
+            ],
+            [
+                "vl_api_address_t",
+                "src_address"
+            ],
+            [
+                "vl_api_address_t",
+                "dst_address"
+            ],
+            [
+                "u16",
+                "src_port"
+            ],
+            [
+                "u16",
+                "dst_port"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "mcast_sw_if_index"
+            ],
+            [
+                "u32",
+                "encap_vrf_id"
+            ],
+            [
+                "u32",
+                "decap_next_index"
+            ],
+            [
+                "u32",
+                "vni"
+            ],
+            [
+                "bool",
+                "is_l3",
+                {
+                    "default": false
+                }
+            ],
+            {
+                "crc": "0x0072b037",
+                "options": {}
             }
         ],
         [
@@ -234,7 +308,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -256,7 +331,31 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
+            }
+        ],
+        [
+            "vxlan_add_del_tunnel_v3_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -278,7 +377,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -300,7 +400,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -346,7 +447,8 @@
                 "vni"
             ],
             {
-                "crc": "0xe782f70f"
+                "crc": "0xc3916cb1",
+                "options": {}
             }
         ],
         [
@@ -400,7 +502,8 @@
                 "vni"
             ],
             {
-                "crc": "0xd3bdd4d9"
+                "crc": "0xd3bdd4d9",
+                "options": {}
             }
         ],
         [
@@ -433,7 +536,8 @@
                 }
             ],
             {
-                "crc": "0x65247409"
+                "crc": "0x65247409",
+                "options": {}
             }
         ],
         [
@@ -451,7 +555,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -484,7 +589,8 @@
                 }
             ],
             {
-                "crc": "0x89a1564b"
+                "crc": "0x9cc95087",
+                "options": {}
             }
         ],
         [
@@ -502,7 +608,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -901,6 +1008,9 @@
         "vxlan_add_del_tunnel_v2": {
             "reply": "vxlan_add_del_tunnel_v2_reply"
         },
+        "vxlan_add_del_tunnel_v3": {
+            "reply": "vxlan_add_del_tunnel_v3_reply"
+        },
         "vxlan_tunnel_dump": {
             "reply": "vxlan_tunnel_details",
             "stream": true
@@ -941,7 +1051,7 @@
             "type": "vl_api_ip6_prefix_t"
         }
     },
-    "vl_api_version": "0xd703028e",
+    "vl_api_version": "0x95381587",
     "imports": [
         "vnet/interface_types.api",
         "vnet/ip/ip_types.api"

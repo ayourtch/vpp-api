@@ -17,11 +17,14 @@
             ],
             [
                 "string",
-                "namespace",
+                "netns",
                 32
             ],
             {
-                "crc": "0xb561a74a"
+                "crc": "0x69749409",
+                "options": {
+                    "in_progress": null
+                }
             }
         ],
         [
@@ -39,7 +42,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "in_progress": null
+                }
             }
         ],
         [
@@ -57,7 +63,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -72,11 +79,14 @@
             ],
             [
                 "string",
-                "namespace",
+                "netns",
                 32
             ],
             {
-                "crc": "0xeaeef6d3"
+                "crc": "0x5102feee",
+                "options": {
+                    "in_progress": null
+                }
             }
         ],
         [
@@ -112,11 +122,14 @@
             ],
             [
                 "string",
-                "namespace",
+                "netns",
                 32
             ],
             {
-                "crc": "0xf3157f59"
+                "crc": "0x40482b80",
+                "options": {
+                    "in_progress": null
+                }
             }
         ],
         [
@@ -134,7 +147,76 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "in_progress": null
+                }
+            }
+        ],
+        [
+            "lcp_itf_pair_add_del_v2",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "is_add"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "string",
+                "host_if_name",
+                16
+            ],
+            [
+                "vl_api_lcp_itf_host_type_t",
+                "host_if_type"
+            ],
+            [
+                "string",
+                "netns",
+                32
+            ],
+            {
+                "crc": "0x40482b80",
+                "options": {
+                    "in_progress": null
+                }
+            }
+        ],
+        [
+            "lcp_itf_pair_add_del_v2_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "host_sw_if_index"
+            ],
+            {
+                "crc": "0x39452f52",
+                "options": {}
             }
         ],
         [
@@ -156,7 +238,8 @@
                 "cursor"
             ],
             {
-                "crc": "0xf75ba505"
+                "crc": "0xf75ba505",
+                "options": {}
             }
         ],
         [
@@ -178,7 +261,8 @@
                 "cursor"
             ],
             {
-                "crc": "0x53b48f5d"
+                "crc": "0x53b48f5d",
+                "options": {}
             }
         ],
         [
@@ -214,11 +298,14 @@
             ],
             [
                 "string",
-                "namespace",
+                "netns",
                 32
             ],
             {
-                "crc": "0x5a95842f"
+                "crc": "0x8b5481af",
+                "options": {
+                    "in_progress": null
+                }
             }
         ],
         [
@@ -236,7 +323,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -254,7 +342,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -272,7 +361,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -290,7 +380,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -489,6 +580,9 @@
         "lcp_itf_pair_add_del": {
             "reply": "lcp_itf_pair_add_del_reply"
         },
+        "lcp_itf_pair_add_del_v2": {
+            "reply": "lcp_itf_pair_add_del_v2_reply"
+        },
         "lcp_itf_pair_replace_begin": {
             "reply": "lcp_itf_pair_replace_begin_reply"
         },
@@ -504,7 +598,7 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0x2fa1e410",
+    "vl_api_version": "0x64780a3",
     "imports": [
         "vnet/interface_types.api"
     ],

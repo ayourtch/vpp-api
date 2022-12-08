@@ -32,7 +32,8 @@
                 "is_l2"
             ],
             {
-                "crc": "0xacc8fea1"
+                "crc": "0x23ddd96b",
+                "options": {}
             }
         ],
         [
@@ -50,7 +51,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -72,7 +74,8 @@
                 "is_l2"
             ],
             {
-                "crc": "0xd6cf0c3d"
+                "crc": "0xd6cf0c3d",
+                "options": {}
             }
         ],
         [
@@ -102,7 +105,8 @@
                 "is_l2"
             ],
             {
-                "crc": "0x055643fc"
+                "crc": "0x8a20e79f",
+                "options": {}
             }
         ]
     ],

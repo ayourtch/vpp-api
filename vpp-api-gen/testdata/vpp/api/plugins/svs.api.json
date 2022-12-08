@@ -113,7 +113,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -135,7 +136,8 @@
                 "minor"
             ],
             {
-                "crc": "0x9b32cf86"
+                "crc": "0x9b32cf86",
+                "options": {}
             }
         ],
         [
@@ -165,7 +167,8 @@
                 "table_id"
             ],
             {
-                "crc": "0x7d21cb2a"
+                "crc": "0x7d21cb2a",
+                "options": {}
             }
         ],
         [
@@ -183,7 +186,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -217,7 +221,8 @@
                 "source_table_id"
             ],
             {
-                "crc": "0xd39e31fc"
+                "crc": "0xe49bc63c",
+                "options": {}
             }
         ],
         [
@@ -235,7 +240,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -269,7 +275,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x634b89d2"
+                "crc": "0x634b89d2",
+                "options": {}
             }
         ],
         [
@@ -287,7 +294,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -305,7 +313,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -331,7 +340,8 @@
                 "af"
             ],
             {
-                "crc": "0xb8523d64"
+                "crc": "0x6282cd55",
+                "options": {}
             }
         ]
     ],

@@ -69,7 +69,8 @@
                 248
             ],
             {
-                "crc": "0x7dea480b"
+                "crc": "0x7dea480b",
+                "options": {}
             }
         ],
         [
@@ -91,7 +92,8 @@
                 "entry_index"
             ],
             {
-                "crc": "0x6296a9eb"
+                "crc": "0x6296a9eb",
+                "options": {}
             }
         ],
         [
@@ -113,7 +115,8 @@
                 "entry_index"
             ],
             {
-                "crc": "0xcdaf8ccb"
+                "crc": "0xcdaf8ccb",
+                "options": {}
             }
         ],
         [
@@ -180,7 +183,8 @@
                 248
             ],
             {
-                "crc": "0x046fb556"
+                "crc": "0x046fb556",
+                "options": {}
             }
         ],
         [
@@ -226,7 +230,8 @@
                 "next_node"
             ],
             {
-                "crc": "0x898d857d"
+                "crc": "0x0a0f42b0",
+                "options": {}
             }
         ],
         [
@@ -248,7 +253,8 @@
                 "map_index"
             ],
             {
-                "crc": "0xb2b127ef"
+                "crc": "0xb2b127ef",
+                "options": {}
             }
         ],
         [
@@ -270,7 +276,8 @@
                 "map_index"
             ],
             {
-                "crc": "0x8fc06b82"
+                "crc": "0x8fc06b82",
+                "options": {}
             }
         ],
         [
@@ -312,7 +319,8 @@
                 "next_node"
             ],
             {
-                "crc": "0xb34ac8a1"
+                "crc": "0x2fefcf49",
+                "options": {}
             }
         ]
     ],

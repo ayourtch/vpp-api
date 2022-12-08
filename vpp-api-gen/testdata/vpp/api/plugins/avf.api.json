@@ -36,7 +36,10 @@
                 "txq_size"
             ],
             {
-                "crc": "0xdaab8ae2"
+                "crc": "0xdaab8ae2",
+                "options": {
+                    "vat_help": "<pci-address> [rx-queue-size <size>] [tx-queue-size <size>] [num-rx-queues <size>]"
+                }
             }
         ],
         [
@@ -58,7 +61,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -80,7 +84,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {
+                    "vat_help": "<sw_if_index>"
+                }
             }
         ],
         [
@@ -98,7 +105,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<sw_if_index>"
+                }
             }
         ]
     ],

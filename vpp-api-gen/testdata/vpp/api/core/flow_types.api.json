@@ -97,6 +97,19 @@
             ]
         ],
         [
+            "generic_pattern",
+            [
+                "u8",
+                "spec",
+                1024
+            ],
+            [
+                "u8",
+                "mask",
+                1024
+            ]
+        ],
+        [
             "ip_port_and_mask",
             [
                 "u16",
@@ -379,7 +392,7 @@
                 "dst_port"
             ],
             [
-                "u16",
+                "u32",
                 "vni"
             ]
         ],
@@ -410,7 +423,7 @@
                 "dst_port"
             ],
             [
-                "u16",
+                "u32",
                 "vni"
             ]
         ],
@@ -477,6 +490,17 @@
             ]
         ],
         [
+            "flow_generic",
+            [
+                "i32",
+                "foo"
+            ],
+            [
+                "vl_api_generic_pattern_t",
+                "pattern"
+            ]
+        ],
+        [
             "flow_rule",
             [
                 "vl_api_flow_type_t",
@@ -512,6 +536,61 @@
             ],
             [
                 "vl_api_flow_t",
+                "flow"
+            ]
+        ],
+        [
+            "flow_rule_v2",
+            [
+                "vl_api_flow_type_v2_t",
+                "type"
+            ],
+            [
+                "u32",
+                "index"
+            ],
+            [
+                "vl_api_flow_action_v2_t",
+                "actions"
+            ],
+            [
+                "u32",
+                "mark_flow_id"
+            ],
+            [
+                "u32",
+                "redirect_node_index"
+            ],
+            [
+                "u32",
+                "redirect_device_input_next_index"
+            ],
+            [
+                "u32",
+                "redirect_queue"
+            ],
+            [
+                "u32",
+                "queue_index"
+            ],
+            [
+                "u32",
+                "queue_num"
+            ],
+            [
+                "i32",
+                "buffer_advance"
+            ],
+            [
+                "u64",
+                "rss_types"
+            ],
+            [
+                "vl_api_rss_function_t",
+                "rss_fun"
+            ],
+            [
+                "vl_api_flow_v2_t",
                 "flow"
             ]
         ]
@@ -586,6 +665,69 @@
             [
                 "vl_api_flow_ip4_gtpu_t",
                 "ip4_gtpu"
+            ]
+        ],
+        [
+            "flow_v2",
+            [
+                "vl_api_flow_ethernet_t",
+                "ethernet"
+            ],
+            [
+                "vl_api_flow_ip4_t",
+                "ip4"
+            ],
+            [
+                "vl_api_flow_ip6_t",
+                "ip6"
+            ],
+            [
+                "vl_api_flow_ip4_l2tpv3oip_t",
+                "ip4_l2tpv3oip"
+            ],
+            [
+                "vl_api_flow_ip4_ipsec_esp_t",
+                "ip4_ipsec_esp"
+            ],
+            [
+                "vl_api_flow_ip4_ipsec_ah_t",
+                "ip4_ipsec_ah"
+            ],
+            [
+                "vl_api_flow_ip4_n_tuple_t",
+                "ip4_n_tuple"
+            ],
+            [
+                "vl_api_flow_ip6_n_tuple_t",
+                "ip6_n_tuple"
+            ],
+            [
+                "vl_api_flow_ip4_n_tuple_tagged_t",
+                "ip4_n_tuple_tagged"
+            ],
+            [
+                "vl_api_flow_ip6_n_tuple_tagged_t",
+                "ip6_n_tuple_tagged"
+            ],
+            [
+                "vl_api_flow_ip4_vxlan_t",
+                "ip4_vxlan"
+            ],
+            [
+                "vl_api_flow_ip6_vxlan_t",
+                "ip6_vxlan"
+            ],
+            [
+                "vl_api_flow_ip4_gtpc_t",
+                "ip4_gtpc"
+            ],
+            [
+                "vl_api_flow_ip4_gtpu_t",
+                "ip4_gtpu"
+            ],
+            [
+                "vl_api_flow_generic_t",
+                "generic"
             ]
         ]
     ],
@@ -863,6 +1005,72 @@
             }
         ],
         [
+            "flow_type_v2",
+            [
+                "FLOW_TYPE_ETHERNET_V2",
+                1
+            ],
+            [
+                "FLOW_TYPE_IP4_V2",
+                2
+            ],
+            [
+                "FLOW_TYPE_IP6_V2",
+                3
+            ],
+            [
+                "FLOW_TYPE_IP4_L2TPV3OIP_V2",
+                4
+            ],
+            [
+                "FLOW_TYPE_IP4_IPSEC_ESP_V2",
+                5
+            ],
+            [
+                "FLOW_TYPE_IP4_IPSEC_AH_V2",
+                6
+            ],
+            [
+                "FLOW_TYPE_IP4_N_TUPLE_V2",
+                7
+            ],
+            [
+                "FLOW_TYPE_IP6_N_TUPLE_V2",
+                8
+            ],
+            [
+                "FLOW_TYPE_IP4_N_TUPLE_TAGGED_V2",
+                9
+            ],
+            [
+                "FLOW_TYPE_IP6_N_TUPLE_TAGGED_V2",
+                10
+            ],
+            [
+                "FLOW_TYPE_IP4_VXLAN_V2",
+                11
+            ],
+            [
+                "FLOW_TYPE_IP6_VXLAN_V2",
+                12
+            ],
+            [
+                "FLOW_TYPE_IP4_GTPC_V2",
+                13
+            ],
+            [
+                "FLOW_TYPE_IP4_GTPU_V2",
+                14
+            ],
+            [
+                "FLOW_TYPE_GENERIC_V2",
+                15
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
             "flow_action",
             [
                 "FLOW_ACTION_COUNT",
@@ -891,12 +1099,68 @@
             {
                 "enumtype": "u32"
             }
+        ],
+        [
+            "flow_action_v2",
+            [
+                "FLOW_ACTION_COUNT_V2",
+                1
+            ],
+            [
+                "FLOW_ACTION_MARK_V2",
+                2
+            ],
+            [
+                "FLOW_ACTION_BUFFER_ADVANCE_V2",
+                4
+            ],
+            [
+                "FLOW_ACTION_REDIRECT_TO_NODE_V2",
+                8
+            ],
+            [
+                "FLOW_ACTION_REDIRECT_TO_QUEUE_V2",
+                16
+            ],
+            [
+                "FLOW_ACTION_RSS_V2",
+                32
+            ],
+            [
+                "FLOW_ACTION_DROP_V2",
+                64
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "rss_function",
+            [
+                "RSS_FUNC_DEFAULT",
+                0
+            ],
+            [
+                "RSS_FUNC_TOEPLITZ",
+                1
+            ],
+            [
+                "RSS_FUNC_SIMPLE_XOR",
+                2
+            ],
+            [
+                "RSS_FUNC_SYMMETRIC_TOEPLITZ",
+                3
+            ],
+            {
+                "enumtype": "u32"
+            }
         ]
     ],
     "enumflags": [],
     "services": {},
     "options": {
-        "version": "0.0.2"
+        "version": "0.0.4"
     },
     "aliases": {
         "mac_address": {
@@ -921,7 +1185,7 @@
             "type": "vl_api_ip6_prefix_t"
         }
     },
-    "vl_api_version": "0xd3adaa63",
+    "vl_api_version": "0x5657caac",
     "imports": [
         "vnet/ethernet/ethernet_types.api",
         "vnet/ip/ip_types.api"

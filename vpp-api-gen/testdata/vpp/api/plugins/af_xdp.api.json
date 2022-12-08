@@ -2,7 +2,200 @@
     "types": [],
     "messages": [
         [
-            "adl_interface_enable_disable",
+            "af_xdp_create",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "string",
+                "host_if",
+                64
+            ],
+            [
+                "string",
+                "name",
+                64
+            ],
+            [
+                "u16",
+                "rxq_num",
+                {
+                    "default": 1
+                }
+            ],
+            [
+                "u16",
+                "rxq_size",
+                {
+                    "default": 0
+                }
+            ],
+            [
+                "u16",
+                "txq_size",
+                {
+                    "default": 0
+                }
+            ],
+            [
+                "vl_api_af_xdp_mode_t",
+                "mode",
+                {
+                    "default": 0
+                }
+            ],
+            [
+                "vl_api_af_xdp_flag_t",
+                "flags",
+                {
+                    "default": 0
+                }
+            ],
+            [
+                "string",
+                "prog",
+                256
+            ],
+            {
+                "crc": "0x21226c99",
+                "options": {
+                    "vat_help": "<host-if linux-ifname> [name ifname] [rx-queue-size size] [tx-queue-size size] [num-rx-queues <num|all>] [prog pathname] [zero-copy|no-zero-copy] [no-syscall-lock]"
+                }
+            }
+        ],
+        [
+            "af_xdp_create_v2",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "string",
+                "host_if",
+                64
+            ],
+            [
+                "string",
+                "name",
+                64
+            ],
+            [
+                "u16",
+                "rxq_num",
+                {
+                    "default": 1
+                }
+            ],
+            [
+                "u16",
+                "rxq_size",
+                {
+                    "default": 0
+                }
+            ],
+            [
+                "u16",
+                "txq_size",
+                {
+                    "default": 0
+                }
+            ],
+            [
+                "vl_api_af_xdp_mode_t",
+                "mode",
+                {
+                    "default": 0
+                }
+            ],
+            [
+                "vl_api_af_xdp_flag_t",
+                "flags",
+                {
+                    "default": 0
+                }
+            ],
+            [
+                "string",
+                "prog",
+                256
+            ],
+            [
+                "string",
+                "namespace",
+                64
+            ],
+            {
+                "crc": "0xe17ec2eb",
+                "options": {
+                    "vat_help": "<host-if linux-ifname> [name ifname] [rx-queue-size size] [tx-queue-size size] [num-rx-queues <num|all>] [prog pathname] [netns ns] [zero-copy|no-zero-copy] [no-syscall-lock]"
+                }
+            }
+        ],
+        [
+            "af_xdp_create_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x5383d31f",
+                "options": {}
+            }
+        ],
+        [
+            "af_xdp_create_v2_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x5383d31f",
+                "options": {}
+            }
+        ],
+        [
+            "af_xdp_delete",
             [
                 "u16",
                 "_vl_msg_id"
@@ -19,17 +212,15 @@
                 "vl_api_interface_index_t",
                 "sw_if_index"
             ],
-            [
-                "bool",
-                "enable_disable"
-            ],
             {
-                "crc": "0x5501adee",
-                "options": {}
+                "crc": "0xf9e6675e",
+                "options": {
+                    "vat_help": "<sw_if_index index>"
+                }
             }
         ],
         [
-            "adl_interface_enable_disable_reply",
+            "af_xdp_delete_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -44,65 +235,9 @@
             ],
             {
                 "crc": "0xe8d4e804",
-                "options": {}
-            }
-        ],
-        [
-            "adl_allowlist_enable_disable",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "vl_api_interface_index_t",
-                "sw_if_index"
-            ],
-            [
-                "u32",
-                "fib_id"
-            ],
-            [
-                "bool",
-                "ip4"
-            ],
-            [
-                "bool",
-                "ip6"
-            ],
-            [
-                "bool",
-                "default_adl"
-            ],
-            {
-                "crc": "0xea88828d",
-                "options": {}
-            }
-        ],
-        [
-            "adl_allowlist_enable_disable_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804",
-                "options": {}
+                "options": {
+                    "vat_help": "<sw_if_index index>"
+                }
             }
         ]
     ],
@@ -269,26 +404,58 @@
             {
                 "enumtype": "u8"
             }
+        ],
+        [
+            "af_xdp_mode",
+            [
+                "AF_XDP_API_MODE_AUTO",
+                0
+            ],
+            [
+                "AF_XDP_API_MODE_COPY",
+                1
+            ],
+            [
+                "AF_XDP_API_MODE_ZERO_COPY",
+                2
+            ],
+            {
+                "enumtype": "u32"
+            }
         ]
     ],
-    "enumflags": [],
+    "enumflags": [
+        [
+            "af_xdp_flag",
+            [
+                "AF_XDP_API_FLAGS_NO_SYSCALL_LOCK",
+                1
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ]
+    ],
     "services": {
-        "adl_interface_enable_disable": {
-            "reply": "adl_interface_enable_disable_reply"
+        "af_xdp_create": {
+            "reply": "af_xdp_create_reply"
         },
-        "adl_allowlist_enable_disable": {
-            "reply": "adl_allowlist_enable_disable_reply"
+        "af_xdp_create_v2": {
+            "reply": "af_xdp_create_v2_reply"
+        },
+        "af_xdp_delete": {
+            "reply": "af_xdp_delete_reply"
         }
     },
     "options": {
-        "version": "0.0.1"
+        "version": "1.0.0"
     },
     "aliases": {
         "interface_index": {
             "type": "u32"
         }
     },
-    "vl_api_version": "0xb752b7a2",
+    "vl_api_version": "0x346626ce",
     "imports": [
         "vnet/interface_types.api"
     ],

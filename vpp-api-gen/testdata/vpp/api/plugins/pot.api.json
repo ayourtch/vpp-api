@@ -53,7 +53,8 @@
                 0
             ],
             {
-                "crc": "0xad5da3a3"
+                "crc": "0xad5da3a3",
+                "options": {}
             }
         ],
         [
@@ -71,7 +72,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -98,7 +100,8 @@
                 0
             ],
             {
-                "crc": "0x0770af98"
+                "crc": "0x0770af98",
+                "options": {}
             }
         ],
         [
@@ -116,7 +119,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -139,7 +143,8 @@
                 0
             ],
             {
-                "crc": "0xcd63f53b"
+                "crc": "0xcd63f53b",
+                "options": {}
             }
         ],
         [
@@ -157,7 +162,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -179,7 +185,8 @@
                 "id"
             ],
             {
-                "crc": "0x005b7d59"
+                "crc": "0x005b7d59",
+                "options": {}
             }
         ],
         [
@@ -229,7 +236,8 @@
                 "polynomial_public"
             ],
             {
-                "crc": "0xb7ce0618"
+                "crc": "0xb7ce0618",
+                "options": {}
             }
         ]
     ],

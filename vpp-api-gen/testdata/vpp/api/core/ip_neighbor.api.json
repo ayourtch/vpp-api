@@ -140,7 +140,8 @@
                 "neighbor"
             ],
             {
-                "crc": "0x105518b6"
+                "crc": "0x0607c257",
+                "options": {}
             }
         ],
         [
@@ -162,7 +163,8 @@
                 "stats_index"
             ],
             {
-                "crc": "0x1992deab"
+                "crc": "0x1992deab",
+                "options": {}
             }
         ],
         [
@@ -191,7 +193,8 @@
                 "af"
             ],
             {
-                "crc": "0xcd831298"
+                "crc": "0xd817a484",
+                "options": {}
             }
         ],
         [
@@ -213,7 +216,8 @@
                 "neighbor"
             ],
             {
-                "crc": "0x870e80b9"
+                "crc": "0xe29d79f0",
+                "options": {}
             }
         ],
         [
@@ -247,7 +251,8 @@
                 "recycle"
             ],
             {
-                "crc": "0xf4a5cf44"
+                "crc": "0xf4a5cf44",
+                "options": {}
             }
         ],
         [
@@ -265,7 +270,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -283,7 +289,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -301,7 +308,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -319,7 +327,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -337,7 +346,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -366,7 +376,8 @@
                 }
             ],
             {
-                "crc": "0x16aa35d2"
+                "crc": "0x16aa35d2",
+                "options": {}
             }
         ],
         [
@@ -384,7 +395,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -421,7 +433,10 @@
                 }
             ],
             {
-                "crc": "0x1a312870"
+                "crc": "0x73e70a86",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -439,7 +454,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -461,7 +479,10 @@
                 "neighbor"
             ],
             {
-                "crc": "0x83933131"
+                "crc": "0xbdb092b2",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -498,7 +519,8 @@
                 }
             ],
             {
-                "crc": "0x73e70a86"
+                "crc": "0x73e70a86",
+                "options": {}
             }
         ],
         [
@@ -516,7 +538,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -542,7 +565,8 @@
                 "neighbor"
             ],
             {
-                "crc": "0xc1d53dc0"
+                "crc": "0xc1d53dc0",
+                "options": {}
             }
         ]
     ],
@@ -1034,6 +1058,113 @@
         "vnet/ethernet/ethernet_types.api",
         "vnet/interface_types.api"
     ],
-    "counters": [],
-    "paths": []
+    "counters": [
+        {
+            "name": "ip4_neighbor",
+            "elements": [
+                {
+                    "name": "throttled",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ARP requests throttled"
+                },
+                {
+                    "name": "resolved",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ARP requests resolved"
+                },
+                {
+                    "name": "no_buffers",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ARP requests out of buffer"
+                },
+                {
+                    "name": "request_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ARP requests sent"
+                },
+                {
+                    "name": "non_arp_adj",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ARPs to non-ARP adjacencies"
+                },
+                {
+                    "name": "no_source_address",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no source address for ARP request"
+                }
+            ]
+        },
+        {
+            "name": "ip6_neighbor",
+            "elements": [
+                {
+                    "name": "throttled",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "throttled"
+                },
+                {
+                    "name": "drop",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "address overflow drops"
+                },
+                {
+                    "name": "request_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "neighbor solicitations sent"
+                },
+                {
+                    "name": "no_source_address",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no source address for ND solicitation"
+                },
+                {
+                    "name": "no_buffers",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no buffers"
+                }
+            ]
+        }
+    ],
+    "paths": [
+        [
+            {
+                "path": "/err/ip4-arp",
+                "counter": "ip4_neighbor"
+            },
+            {
+                "path": "/err/ip4-glean",
+                "counter": "ip4_neighbor"
+            },
+            {
+                "path": "/err/ip6-arp",
+                "counter": "ip6_neighbor"
+            },
+            {
+                "path": "/err/ip6-glean",
+                "counter": "ip6_neighbor"
+            }
+        ]
+    ]
 }

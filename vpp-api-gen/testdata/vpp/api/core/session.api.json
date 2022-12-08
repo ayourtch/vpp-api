@@ -123,7 +123,8 @@
                 0
             ],
             {
-                "crc": "0x5f4a260d"
+                "crc": "0x5f4a260d",
+                "options": {}
             }
         ],
         [
@@ -178,7 +179,8 @@
                 0
             ],
             {
-                "crc": "0x5c89c3b0"
+                "crc": "0x5c89c3b0",
+                "options": {}
             }
         ],
         [
@@ -196,7 +198,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -214,7 +217,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -246,7 +250,8 @@
                 "certkey_len"
             ],
             {
-                "crc": "0x02eb8016"
+                "crc": "0x02eb8016",
+                "options": {}
             }
         ],
         [
@@ -268,7 +273,8 @@
                 "index"
             ],
             {
-                "crc": "0xb42958d0"
+                "crc": "0xb42958d0",
+                "options": {}
             }
         ],
         [
@@ -290,7 +296,8 @@
                 "index"
             ],
             {
-                "crc": "0x8ac76db6"
+                "crc": "0x8ac76db6",
+                "options": {}
             }
         ],
         [
@@ -308,7 +315,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -340,7 +348,10 @@
                 "cert_len"
             ],
             {
-                "crc": "0x3f5cfe45"
+                "crc": "0x3f5cfe45",
+                "options": {
+                    "deprecated": "to be removed post 21.06"
+                }
             }
         ],
         [
@@ -358,7 +369,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "deprecated": "to be removed post 21.06"
+                }
             }
         ],
         [
@@ -390,7 +404,10 @@
                 "key_len"
             ],
             {
-                "crc": "0x5eaf70cd"
+                "crc": "0x5eaf70cd",
+                "options": {
+                    "deprecated": "to be removed post 21.06"
+                }
             }
         ],
         [
@@ -408,7 +425,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "deprecated": "to be removed post 21.06"
+                }
             }
         ],
         [
@@ -441,7 +461,8 @@
                 }
             ],
             {
-                "crc": "0x753253dc"
+                "crc": "0x753253dc",
+                "options": {}
             }
         ],
         [
@@ -491,7 +512,8 @@
                 0
             ],
             {
-                "crc": "0x5735ffe7"
+                "crc": "0x5735ffe7",
+                "options": {}
             }
         ],
         [
@@ -516,7 +538,8 @@
                 }
             ],
             {
-                "crc": "0xc264d7bf"
+                "crc": "0xc264d7bf",
+                "options": {}
             }
         ],
         [
@@ -534,7 +557,53 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "session_sapi_enable_disable",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "is_enable",
+                {
+                    "default": "true"
+                }
+            ],
+            {
+                "crc": "0xc264d7bf",
+                "options": {}
+            }
+        ],
+        [
+            "session_sapi_enable_disable_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -576,7 +645,118 @@
                 0
             ],
             {
-                "crc": "0x6306aecb"
+                "crc": "0x6306aecb",
+                "options": {
+                    "deprecated": null
+                }
+            }
+        ],
+        [
+            "app_namespace_add_del_v2",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u64",
+                "secret"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index",
+                {
+                    "default": 4294967295
+                }
+            ],
+            [
+                "u32",
+                "ip4_fib_id"
+            ],
+            [
+                "u32",
+                "ip6_fib_id"
+            ],
+            [
+                "string",
+                "namespace_id",
+                64
+            ],
+            [
+                "string",
+                "netns",
+                64
+            ],
+            {
+                "crc": "0xee0755cf",
+                "options": {}
+            }
+        ],
+        [
+            "app_namespace_add_del_v3",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u64",
+                "secret"
+            ],
+            [
+                "bool",
+                "is_add",
+                {
+                    "default": "true"
+                }
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index",
+                {
+                    "default": 4294967295
+                }
+            ],
+            [
+                "u32",
+                "ip4_fib_id"
+            ],
+            [
+                "u32",
+                "ip6_fib_id"
+            ],
+            [
+                "string",
+                "namespace_id",
+                64
+            ],
+            [
+                "string",
+                "netns",
+                64
+            ],
+            [
+                "string",
+                "sock_name",
+                0
+            ],
+            {
+                "crc": "0x8a7e40a1",
+                "options": {}
             }
         ],
         [
@@ -598,7 +778,56 @@
                 "appns_index"
             ],
             {
-                "crc": "0x85137120"
+                "crc": "0x85137120",
+                "options": {
+                    "deprecated": null
+                }
+            }
+        ],
+        [
+            "app_namespace_add_del_v2_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "u32",
+                "appns_index"
+            ],
+            {
+                "crc": "0x85137120",
+                "options": {}
+            }
+        ],
+        [
+            "app_namespace_add_del_v3_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "u32",
+                "appns_index"
+            ],
+            {
+                "crc": "0x85137120",
+                "options": {}
             }
         ],
         [
@@ -660,7 +889,8 @@
                 64
             ],
             {
-                "crc": "0xe31f9443"
+                "crc": "0x82a90af5",
+                "options": {}
             }
         ],
         [
@@ -678,7 +908,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -696,7 +927,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -747,7 +979,8 @@
                 64
             ],
             {
-                "crc": "0x304b91f0"
+                "crc": "0x4ef746e7",
+                "options": {}
             }
         ]
     ],
@@ -1141,23 +1374,23 @@
             "transport_proto",
             [
                 "TRANSPORT_PROTO_API_TCP",
-                1
+                0
             ],
             [
                 "TRANSPORT_PROTO_API_UDP",
-                2
+                1
             ],
             [
                 "TRANSPORT_PROTO_API_NONE",
-                3
+                2
             ],
             [
                 "TRANSPORT_PROTO_API_TLS",
-                4
+                3
             ],
             [
                 "TRANSPORT_PROTO_API_QUIC",
-                5
+                4
             ],
             {
                 "enumtype": "u8"
@@ -1208,8 +1441,17 @@
         "session_enable_disable": {
             "reply": "session_enable_disable_reply"
         },
+        "session_sapi_enable_disable": {
+            "reply": "session_sapi_enable_disable_reply"
+        },
         "app_namespace_add_del": {
             "reply": "app_namespace_add_del_reply"
+        },
+        "app_namespace_add_del_v2": {
+            "reply": "app_namespace_add_del_v2_reply"
+        },
+        "app_namespace_add_del_v3": {
+            "reply": "app_namespace_add_del_v3_reply"
         },
         "session_rule_add_del": {
             "reply": "session_rule_add_del_reply"
@@ -1244,7 +1486,7 @@
             "type": "vl_api_ip6_prefix_t"
         }
     },
-    "vl_api_version": "0x32fe1c77",
+    "vl_api_version": "0x72bfc653",
     "imports": [
         "vnet/interface_types.api",
         "vnet/ip/ip_types.api"

@@ -131,6 +131,10 @@
         [
             "wireguard_peer",
             [
+                "u32",
+                "peer_index"
+            ],
+            [
                 "u8",
                 "public_key",
                 32
@@ -195,7 +199,8 @@
                 "generate_key"
             ],
             {
-                "crc": "0xa530137e"
+                "crc": "0xa530137e",
+                "options": {}
             }
         ],
         [
@@ -217,7 +222,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -239,7 +245,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -257,7 +264,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -283,7 +291,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x2c954158"
+                "crc": "0x2c954158",
+                "options": {}
             }
         ],
         [
@@ -301,7 +310,95 @@
                 "interface"
             ],
             {
-                "crc": "0x0dd4865d"
+                "crc": "0x0dd4865d",
+                "options": {}
+            }
+        ],
+        [
+            "want_wireguard_peer_events",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index",
+                {
+                    "default": 4294967295
+                }
+            ],
+            [
+                "u32",
+                "peer_index",
+                {
+                    "default": 4294967295
+                }
+            ],
+            [
+                "u32",
+                "enable_disable"
+            ],
+            [
+                "u32",
+                "pid"
+            ],
+            {
+                "crc": "0x3bc666c8",
+                "options": {}
+            }
+        ],
+        [
+            "want_wireguard_peer_events_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "wireguard_peer_event",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "pid"
+            ],
+            [
+                "u32",
+                "peer_index"
+            ],
+            [
+                "vl_api_wireguard_peer_flags_t",
+                "flags"
+            ],
+            {
+                "crc": "0x4e1b5d67",
+                "options": {}
             }
         ],
         [
@@ -323,7 +420,8 @@
                 "peer"
             ],
             {
-                "crc": "0xed792326"
+                "crc": "0x9b8aad61",
+                "options": {}
             }
         ],
         [
@@ -345,7 +443,8 @@
                 "peer_index"
             ],
             {
-                "crc": "0x084a0cd3"
+                "crc": "0x084a0cd3",
+                "options": {}
             }
         ],
         [
@@ -367,7 +466,8 @@
                 "peer_index"
             ],
             {
-                "crc": "0x3b74607a"
+                "crc": "0x3b74607a",
+                "options": {}
             }
         ],
         [
@@ -385,7 +485,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -402,8 +503,16 @@
                 "u32",
                 "context"
             ],
+            [
+                "u32",
+                "peer_index",
+                {
+                    "default": 4294967295
+                }
+            ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x3b74607a",
+                "options": {}
             }
         ],
         [
@@ -421,7 +530,53 @@
                 "peer"
             ],
             {
-                "crc": "0x2097f740"
+                "crc": "0x6a9f6bc3",
+                "options": {}
+            }
+        ],
+        [
+            "wg_set_async_mode",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "async_enable",
+                {
+                    "default": false
+                }
+            ],
+            {
+                "crc": "0xa6465f7c",
+                "options": {}
+            }
+        ],
+        [
+            "wg_set_async_mode_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -817,6 +972,10 @@
                 "WIREGUARD_PEER_STATUS_DEAD",
                 1
             ],
+            [
+                "WIREGUARD_PEER_ESTABLISHED",
+                2
+            ],
             {
                 "enumtype": "u8"
             }
@@ -824,6 +983,12 @@
     ],
     "enumflags": [],
     "services": {
+        "want_wireguard_peer_events": {
+            "reply": "want_wireguard_peer_events_reply",
+            "events": [
+                "wireguard_peer_event"
+            ]
+        },
         "wireguard_interface_create": {
             "reply": "wireguard_interface_create_reply"
         },
@@ -843,10 +1008,13 @@
         "wireguard_peers_dump": {
             "reply": "wireguard_peers_details",
             "stream": true
+        },
+        "wg_set_async_mode": {
+            "reply": "wg_set_async_mode_reply"
         }
     },
     "options": {
-        "version": "0.1.0"
+        "version": "0.3.0"
     },
     "aliases": {
         "interface_index": {
@@ -870,7 +1038,7 @@
             "type": "vl_api_ip6_prefix_t"
         }
     },
-    "vl_api_version": "0x1e1d4252",
+    "vl_api_version": "0x5d8f9252",
     "imports": [
         "vnet/interface_types.api",
         "vnet/ip/ip_types.api"

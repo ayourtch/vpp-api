@@ -188,7 +188,8 @@
                 "initial_interval"
             ],
             {
-                "crc": "0x3eb00b1c"
+                "crc": "0x3eb00b1c",
+                "options": {}
             }
         ],
         [
@@ -206,7 +207,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -264,7 +266,8 @@
                 "pref_lifetime"
             ],
             {
-                "crc": "0xe098785f"
+                "crc": "0x82cc1b28",
+                "options": {}
             }
         ],
         [
@@ -282,7 +285,54 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "ip6nd_proxy_enable_disable",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "bool",
+                "is_enable"
+            ],
+            {
+                "crc": "0x7daa1e3a",
+                "options": {}
+            }
+        ],
+        [
+            "ip6nd_proxy_enable_disable_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -312,7 +362,8 @@
                 "ip"
             ],
             {
-                "crc": "0x3fdf6659"
+                "crc": "0xc2e4a686",
+                "options": {}
             }
         ],
         [
@@ -330,7 +381,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -352,7 +404,8 @@
                 "ip"
             ],
             {
-                "crc": "0xd35be8ff"
+                "crc": "0x30b9ff4a",
+                "options": {}
             }
         ],
         [
@@ -370,7 +423,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -412,7 +466,8 @@
                 "stop"
             ],
             {
-                "crc": "0xe5de609c"
+                "crc": "0xe5de609c",
+                "options": {}
             }
         ],
         [
@@ -430,7 +485,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -456,7 +512,8 @@
                 "pid"
             ],
             {
-                "crc": "0x3ec6d6c2"
+                "crc": "0x3ec6d6c2",
+                "options": {}
             }
         ],
         [
@@ -474,7 +531,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -530,7 +588,8 @@
                 "n_prefixes"
             ],
             {
-                "crc": "0x47e8cfbe"
+                "crc": "0x0364c1c5",
+                "options": {}
             }
         ]
     ],
@@ -935,6 +994,9 @@
         "sw_interface_ip6nd_ra_prefix": {
             "reply": "sw_interface_ip6nd_ra_prefix_reply"
         },
+        "ip6nd_proxy_enable_disable": {
+            "reply": "ip6nd_proxy_enable_disable_reply"
+        },
         "ip6nd_proxy_add_del": {
             "reply": "ip6nd_proxy_add_del_reply"
         },
@@ -971,7 +1033,7 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0x90f5895b",
+    "vl_api_version": "0x64750117",
     "imports": [
         "vnet/ip/ip_types.api",
         "vnet/interface_types.api"

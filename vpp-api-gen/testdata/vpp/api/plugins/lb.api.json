@@ -150,7 +150,10 @@
                 }
             ],
             {
-                "crc": "0x22ddb739"
+                "crc": "0x56cd3261",
+                "options": {
+                    "vat_help": "[ip4-src-address <addr>] [ip6-src-address <addr>] [buckets <n>] [timeout <s>]"
+                }
             }
         ],
         [
@@ -168,7 +171,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "[ip4-src-address <addr>] [ip6-src-address <addr>] [buckets <n>] [timeout <s>]"
+                }
             }
         ],
         [
@@ -232,7 +238,10 @@
                 "is_del"
             ],
             {
-                "crc": "0xd15b7ddc"
+                "crc": "0x6fa569c7",
+                "options": {
+                    "vat_help": "<prefix> [protocol (tcp|udp) port <n>] [encap (gre6|gre4|l3dsr|nat4|nat6)] [dscp <n>] [type (nodeport|clusterip) target_port <n>] [new_len <n>] [del]"
+                }
             }
         ],
         [
@@ -250,7 +259,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<prefix> [protocol (tcp|udp) port <n>] [encap (gre6|gre4|l3dsr|nat4|nat6)] [dscp <n>] [type (nodeport|clusterip) target_port <n>] [new_len <n>] [del]"
+                }
             }
         ],
         [
@@ -295,7 +307,10 @@
                 "is_flush"
             ],
             {
-                "crc": "0x78628987"
+                "crc": "0x35d72500",
+                "options": {
+                    "vat_help": "<vip-prefix> [protocol (tcp|udp) port <n>] [<address>] [del] [flush]"
+                }
             }
         ],
         [
@@ -313,7 +328,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<vip-prefix> [protocol (tcp|udp) port <n>] [<address>] [del] [flush]"
+                }
             }
         ],
         [
@@ -343,7 +361,8 @@
                 "port"
             ],
             {
-                "crc": "0x1063f819"
+                "crc": "0x1063f819",
+                "options": {}
             }
         ],
         [
@@ -361,7 +380,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -398,7 +418,8 @@
                 "port"
             ],
             {
-                "crc": "0xc7bcb124"
+                "crc": "0x56110cb7",
+                "options": {}
             }
         ],
         [
@@ -436,7 +457,8 @@
                 "flow_table_length"
             ],
             {
-                "crc": "0x08f39bed"
+                "crc": "0x1329ec9b",
+                "options": {}
             }
         ],
         [
@@ -466,7 +488,10 @@
                 "port"
             ],
             {
-                "crc": "0x1063f819"
+                "crc": "0x1063f819",
+                "options": {
+                    "vat_help": "<vip-prefix> [protocol (tcp|udp) port <n>]"
+                }
             }
         ],
         [
@@ -496,7 +521,8 @@
                 "in_use_since"
             ],
             {
-                "crc": "0x9c39f60e"
+                "crc": "0x8d24c29e",
+                "options": {}
             }
         ],
         [
@@ -522,7 +548,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x47d6e753"
+                "crc": "0x47d6e753",
+                "options": {}
             }
         ],
         [
@@ -540,7 +567,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -566,7 +594,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x47d6e753"
+                "crc": "0x47d6e753",
+                "options": {}
             }
         ],
         [
@@ -584,7 +613,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],

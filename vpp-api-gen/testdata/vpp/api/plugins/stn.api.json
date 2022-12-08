@@ -125,7 +125,8 @@
                 "is_add"
             ],
             {
-                "crc": "0x53f751e6"
+                "crc": "0x224c6edd",
+                "options": {}
             }
         ],
         [
@@ -143,7 +144,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -161,7 +163,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -183,7 +186,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xb0f6606c"
+                "crc": "0xa51935a6",
+                "options": {}
             }
         ]
     ],

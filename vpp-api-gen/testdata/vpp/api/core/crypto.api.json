@@ -20,7 +20,8 @@
                 "mode"
             ],
             {
-                "crc": "0x5ca4adc0"
+                "crc": "0x5ca4adc0",
+                "options": {}
             }
         ],
         [
@@ -38,7 +39,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -74,7 +76,8 @@
                 "is_async"
             ],
             {
-                "crc": "0xce9ad00d"
+                "crc": "0xce9ad00d",
+                "options": {}
             }
         ],
         [
@@ -92,7 +95,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],

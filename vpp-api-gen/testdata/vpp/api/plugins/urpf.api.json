@@ -314,7 +314,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x2bf8a77c"
+                "crc": "0xcc274cd1",
+                "options": {}
             }
         ],
         [
@@ -332,7 +333,72 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "urpf_update_v2",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "is_input",
+                {
+                    "default": "true"
+                }
+            ],
+            [
+                "vl_api_urpf_mode_t",
+                "mode"
+            ],
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "u32",
+                "table_id",
+                {
+                    "default": 4294967295
+                }
+            ],
+            {
+                "crc": "0xb873d028",
+                "options": {}
+            }
+        ],
+        [
+            "urpf_update_v2_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -1045,15 +1111,15 @@
             "urpf_mode",
             [
                 "URPF_API_MODE_OFF",
-                1
+                0
             ],
             [
                 "URPF_API_MODE_LOOSE",
-                2
+                1
             ],
             [
                 "URPF_API_MODE_STRICT",
-                3
+                2
             ],
             {
                 "enumtype": "u8"
@@ -1064,6 +1130,9 @@
     "services": {
         "urpf_update": {
             "reply": "urpf_update_reply"
+        },
+        "urpf_update_v2": {
+            "reply": "urpf_update_v2_reply"
         }
     },
     "options": {
@@ -1091,7 +1160,7 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0xb2bfd2c4",
+    "vl_api_version": "0xd0c7b3c9",
     "imports": [
         "vnet/ip/ip_types.api",
         "vnet/fib/fib_types.api",

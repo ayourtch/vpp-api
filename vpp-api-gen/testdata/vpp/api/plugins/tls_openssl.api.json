@@ -35,7 +35,10 @@
                 64
             ],
             {
-                "crc": "0xe34d95c1"
+                "crc": "0xe34d95c1",
+                "options": {
+                    "vat_help": "tls openssl set [engine <engine name>] [alg [algorithm] [async]"
+                }
             }
         ],
         [
@@ -53,7 +56,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "tls openssl set [engine <engine name>] [alg [algorithm] [async]"
+                }
             }
         ]
     ],

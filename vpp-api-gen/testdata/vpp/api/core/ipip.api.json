@@ -291,7 +291,8 @@
                 "tunnel"
             ],
             {
-                "crc": "0xa9decfcd"
+                "crc": "0x2ac399f5",
+                "options": {}
             }
         ],
         [
@@ -313,7 +314,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -335,7 +337,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -353,7 +356,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -399,7 +403,8 @@
                 "tc_tos"
             ],
             {
-                "crc": "0x56e93cc0"
+                "crc": "0xb9ec1863",
+                "options": {}
             }
         ],
         [
@@ -421,7 +426,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -443,7 +449,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -461,7 +468,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -483,7 +491,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -501,7 +510,8 @@
                 "tunnel"
             ],
             {
-                "crc": "0x53236d75"
+                "crc": "0xd31cb34e",
+                "options": {}
             }
         ]
     ],

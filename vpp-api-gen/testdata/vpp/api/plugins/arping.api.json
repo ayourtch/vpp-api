@@ -99,7 +99,7 @@
     ],
     "messages": [
         [
-            "geneve_add_del_tunnel",
+            "arping",
             [
                 "u16",
                 "_vl_msg_id"
@@ -113,43 +113,40 @@
                 "context"
             ],
             [
-                "bool",
-                "is_add"
-            ],
-            [
                 "vl_api_address_t",
-                "local_address"
-            ],
-            [
-                "vl_api_address_t",
-                "remote_address"
+                "address"
             ],
             [
                 "vl_api_interface_index_t",
-                "mcast_sw_if_index"
+                "sw_if_index"
+            ],
+            [
+                "bool",
+                "is_garp"
             ],
             [
                 "u32",
-                "encap_vrf_id"
+                "repeat",
+                {
+                    "default": 1
+                }
             ],
             [
-                "u32",
-                "decap_next_index"
-            ],
-            [
-                "u32",
-                "vni"
+                "f64",
+                "interval",
+                {
+                    "default": 1.0
+                }
             ],
             {
-                "crc": "0x99445831",
+                "crc": "0x48817482",
                 "options": {
-                    "deprecated": null,
-                    "vat_help": "src <ip-addr> { dst <ip-addr> | group <mcast-ip-addr> { <intfc> | mcast_sw_if_index <nn> } } vni <vni> [encap-vrf-id <nn>] [decap-next <l2|nn>] [del]"
+                    "vat_help": "<address> <interface> [gratuitouss] [repeat <count>] [interval <sec>]"
                 }
             }
         ],
         [
-            "geneve_add_del_tunnel_reply",
+            "arping_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -163,208 +160,12 @@
                 "retval"
             ],
             [
-                "vl_api_interface_index_t",
-                "sw_if_index"
+                "u32",
+                "reply_count"
             ],
             {
-                "crc": "0x5383d31f",
+                "crc": "0xbb9d1cbd",
                 "options": {}
-            }
-        ],
-        [
-            "geneve_add_del_tunnel2",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "bool",
-                "is_add"
-            ],
-            [
-                "vl_api_address_t",
-                "local_address"
-            ],
-            [
-                "vl_api_address_t",
-                "remote_address"
-            ],
-            [
-                "vl_api_interface_index_t",
-                "mcast_sw_if_index"
-            ],
-            [
-                "u32",
-                "encap_vrf_id"
-            ],
-            [
-                "u32",
-                "decap_next_index"
-            ],
-            [
-                "u32",
-                "vni"
-            ],
-            [
-                "bool",
-                "l3_mode"
-            ],
-            {
-                "crc": "0x8c2a9999",
-                "options": {}
-            }
-        ],
-        [
-            "geneve_add_del_tunnel2_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            [
-                "vl_api_interface_index_t",
-                "sw_if_index"
-            ],
-            {
-                "crc": "0x5383d31f",
-                "options": {}
-            }
-        ],
-        [
-            "geneve_tunnel_dump",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "vl_api_interface_index_t",
-                "sw_if_index"
-            ],
-            {
-                "crc": "0xf9e6675e",
-                "options": {
-                    "vat_help": "[<intfc> | sw_if_index <nn>]"
-                }
-            }
-        ],
-        [
-            "geneve_tunnel_details",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "vl_api_interface_index_t",
-                "sw_if_index"
-            ],
-            [
-                "vl_api_address_t",
-                "src_address"
-            ],
-            [
-                "vl_api_address_t",
-                "dst_address"
-            ],
-            [
-                "vl_api_interface_index_t",
-                "mcast_sw_if_index"
-            ],
-            [
-                "u32",
-                "encap_vrf_id"
-            ],
-            [
-                "u32",
-                "decap_next_index"
-            ],
-            [
-                "u32",
-                "vni"
-            ],
-            {
-                "crc": "0x6b16eb24",
-                "options": {}
-            }
-        ],
-        [
-            "sw_interface_set_geneve_bypass",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "vl_api_interface_index_t",
-                "sw_if_index"
-            ],
-            [
-                "bool",
-                "is_ipv6"
-            ],
-            [
-                "bool",
-                "enable"
-            ],
-            {
-                "crc": "0x65247409",
-                "options": {
-                    "vat_help": "<intfc> | sw_if_index <id> [ip4 | ip6] [enable | disable]"
-                }
-            }
-        ],
-        [
-            "sw_interface_set_geneve_bypass_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            {
-                "crc": "0xe8d4e804",
-                "options": {
-                    "vat_help": "<intfc> | sw_if_index <id> [ip4 | ip6] [enable | disable]"
-                }
             }
         ]
     ],
@@ -757,30 +558,16 @@
     ],
     "enumflags": [],
     "services": {
-        "geneve_add_del_tunnel": {
-            "reply": "geneve_add_del_tunnel_reply"
-        },
-        "geneve_add_del_tunnel2": {
-            "reply": "geneve_add_del_tunnel2_reply"
-        },
-        "geneve_tunnel_dump": {
-            "reply": "geneve_tunnel_details",
-            "stream": true
-        },
-        "sw_interface_set_geneve_bypass": {
-            "reply": "sw_interface_set_geneve_bypass_reply"
+        "arping": {
+            "reply": "arping_reply"
         }
     },
     "options": {
-        "version": "2.1.0"
+        "version": "1.0.0"
     },
     "aliases": {
         "interface_index": {
             "type": "u32"
-        },
-        "mac_address": {
-            "type": "u8",
-            "length": 6
         },
         "ip4_address": {
             "type": "u8",
@@ -800,10 +587,9 @@
             "type": "vl_api_ip6_prefix_t"
         }
     },
-    "vl_api_version": "0xe3dbb8a3",
+    "vl_api_version": "0x666f91cc",
     "imports": [
         "vnet/interface_types.api",
-        "vnet/ethernet/ethernet_types.api",
         "vnet/ip/ip_types.api"
     ],
     "counters": [],

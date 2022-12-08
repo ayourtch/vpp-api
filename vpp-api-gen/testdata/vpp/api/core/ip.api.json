@@ -513,6 +513,35 @@
             ]
         ],
         [
+            "ip_route_v2",
+            [
+                "u32",
+                "table_id"
+            ],
+            [
+                "u32",
+                "stats_index"
+            ],
+            [
+                "vl_api_prefix_t",
+                "prefix"
+            ],
+            [
+                "u8",
+                "n_paths"
+            ],
+            [
+                "u8",
+                "src"
+            ],
+            [
+                "vl_api_fib_path_t",
+                "paths",
+                0,
+                "n_paths"
+            ]
+        ],
+        [
             "ip_mroute",
             [
                 "u32",
@@ -554,6 +583,30 @@
             [
                 "vl_api_address_t",
                 "nh"
+            ]
+        ],
+        [
+            "punt_redirect_v2",
+            [
+                "vl_api_interface_index_t",
+                "rx_sw_if_index",
+                {
+                    "default": 4294967295
+                }
+            ],
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "u32",
+                "n_paths"
+            ],
+            [
+                "vl_api_fib_path_t",
+                "paths",
+                0,
+                "n_paths"
             ]
         ],
         [
@@ -607,7 +660,8 @@
                 "table"
             ],
             {
-                "crc": "0x0ffdaec0"
+                "crc": "0x0ffdaec0",
+                "options": {}
             }
         ],
         [
@@ -625,7 +679,54 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "ip_table_allocate",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_ip_table_t",
+                "table"
+            ],
+            {
+                "crc": "0xb9d2e09e",
+                "options": {}
+            }
+        ],
+        [
+            "ip_table_allocate_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_ip_table_t",
+                "table"
+            ],
+            {
+                "crc": "0x1728303a",
+                "options": {}
             }
         ],
         [
@@ -643,7 +744,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -665,7 +767,8 @@
                 "table"
             ],
             {
-                "crc": "0xb9d2e09e"
+                "crc": "0xb9d2e09e",
+                "options": {}
             }
         ],
         [
@@ -683,7 +786,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -705,7 +809,8 @@
                 "table"
             ],
             {
-                "crc": "0xb9d2e09e"
+                "crc": "0xb9d2e09e",
+                "options": {}
             }
         ],
         [
@@ -723,7 +828,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -745,7 +851,8 @@
                 "table"
             ],
             {
-                "crc": "0xb9d2e09e"
+                "crc": "0xb9d2e09e",
+                "options": {}
             }
         ],
         [
@@ -763,7 +870,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -781,7 +889,8 @@
                 "table"
             ],
             {
-                "crc": "0xc79fca0f"
+                "crc": "0xc79fca0f",
+                "options": {}
             }
         ],
         [
@@ -814,7 +923,44 @@
                 "route"
             ],
             {
-                "crc": "0xc1ff832d"
+                "crc": "0xb8ecfe0d",
+                "options": {}
+            }
+        ],
+        [
+            "ip_route_add_del_v2",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "is_add",
+                {
+                    "default": "true"
+                }
+            ],
+            [
+                "bool",
+                "is_multipath"
+            ],
+            [
+                "vl_api_ip_route_v2_t",
+                "route"
+            ],
+            {
+                "crc": "0x521ef330",
+                "options": {
+                    "in_progress": null
+                }
             }
         ],
         [
@@ -836,7 +982,33 @@
                 "stats_index"
             ],
             {
-                "crc": "0x1992deab"
+                "crc": "0x1992deab",
+                "options": {}
+            }
+        ],
+        [
+            "ip_route_add_del_v2_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "u32",
+                "stats_index"
+            ],
+            {
+                "crc": "0x1992deab",
+                "options": {
+                    "in_progress": null
+                }
             }
         ],
         [
@@ -858,7 +1030,37 @@
                 "table"
             ],
             {
-                "crc": "0xb9d2e09e"
+                "crc": "0xb9d2e09e",
+                "options": {}
+            }
+        ],
+        [
+            "ip_route_v2_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u8",
+                "src"
+            ],
+            [
+                "vl_api_ip_table_t",
+                "table"
+            ],
+            {
+                "crc": "0xd16f72e6",
+                "options": {
+                    "in_progress": null
+                }
             }
         ],
         [
@@ -876,7 +1078,29 @@
                 "route"
             ],
             {
-                "crc": "0xd1ffaae1"
+                "crc": "0xbda8f315",
+                "options": {}
+            }
+        ],
+        [
+            "ip_route_v2_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_ip_route_v2_t",
+                "route"
+            ],
+            {
+                "crc": "0xb09aa6c0",
+                "options": {
+                    "in_progress": null
+                }
             }
         ],
         [
@@ -906,7 +1130,41 @@
                 "prefix"
             ],
             {
-                "crc": "0xe2986185"
+                "crc": "0x710d6471",
+                "options": {}
+            }
+        ],
+        [
+            "ip_route_lookup_v2",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "table_id"
+            ],
+            [
+                "u8",
+                "exact"
+            ],
+            [
+                "vl_api_prefix_t",
+                "prefix"
+            ],
+            {
+                "crc": "0x710d6471",
+                "options": {
+                    "in_progress": null
+                }
             }
         ],
         [
@@ -928,7 +1186,33 @@
                 "route"
             ],
             {
-                "crc": "0xae99de8e"
+                "crc": "0x5d8febcb",
+                "options": {}
+            }
+        ],
+        [
+            "ip_route_lookup_v2_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_ip_route_v2_t",
+                "route"
+            ],
+            {
+                "crc": "0x84cc9e03",
+                "options": {
+                    "in_progress": null
+                }
             }
         ],
         [
@@ -982,7 +1266,10 @@
                 "symmetric"
             ],
             {
-                "crc": "0x084ee09e"
+                "crc": "0x084ee09e",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -1000,7 +1287,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -1030,7 +1320,8 @@
                 "flow_hash_config"
             ],
             {
-                "crc": "0x6d132100"
+                "crc": "0x6d132100",
+                "options": {}
             }
         ],
         [
@@ -1048,7 +1339,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1070,7 +1362,8 @@
                 "router_id"
             ],
             {
-                "crc": "0x03e4f48e"
+                "crc": "0x03e4f48e",
+                "options": {}
             }
         ],
         [
@@ -1088,7 +1381,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1114,7 +1408,8 @@
                 "enable"
             ],
             {
-                "crc": "0xae6cfcfb"
+                "crc": "0xae6cfcfb",
+                "options": {}
             }
         ],
         [
@@ -1132,7 +1427,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1150,7 +1446,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -1172,7 +1469,8 @@
                 "table"
             ],
             {
-                "crc": "0xb9d2e09e"
+                "crc": "0xb9d2e09e",
+                "options": {}
             }
         ],
         [
@@ -1205,7 +1503,8 @@
                 "route"
             ],
             {
-                "crc": "0x0dd7e790"
+                "crc": "0x0dd7e790",
+                "options": {}
             }
         ],
         [
@@ -1227,7 +1526,8 @@
                 "stats_index"
             ],
             {
-                "crc": "0x1992deab"
+                "crc": "0x1992deab",
+                "options": {}
             }
         ],
         [
@@ -1249,7 +1549,8 @@
                 "table"
             ],
             {
-                "crc": "0xb9d2e09e"
+                "crc": "0xb9d2e09e",
+                "options": {}
             }
         ],
         [
@@ -1267,7 +1568,8 @@
                 "route"
             ],
             {
-                "crc": "0xc5cb23fc"
+                "crc": "0xc5cb23fc",
+                "options": {}
             }
         ],
         [
@@ -1289,7 +1591,8 @@
                 "prefix"
             ],
             {
-                "crc": "0xb1199745"
+                "crc": "0xee29b797",
+                "options": {}
             }
         ],
         [
@@ -1315,7 +1618,8 @@
                 "is_ipv6"
             ],
             {
-                "crc": "0x2d033de4"
+                "crc": "0x2d033de4",
+                "options": {}
             }
         ],
         [
@@ -1337,7 +1641,8 @@
                 "ip_sw_if_index"
             ],
             {
-                "crc": "0xaa12a483"
+                "crc": "0xcc59bd42",
+                "options": {}
             }
         ],
         [
@@ -1362,7 +1667,8 @@
                 }
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -1384,7 +1690,8 @@
                 "is_ipv6"
             ],
             {
-                "crc": "0xeb152d07"
+                "crc": "0xeb152d07",
+                "options": {}
             }
         ],
         [
@@ -1406,7 +1713,8 @@
                 "is_ipv6"
             ],
             {
-                "crc": "0x98d231ca"
+                "crc": "0x98d231ca",
+                "options": {}
             }
         ],
         [
@@ -1424,7 +1732,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -1459,7 +1768,8 @@
                 256
             ],
             {
-                "crc": "0x64398a9a"
+                "crc": "0x6f4a4cfb",
+                "options": {}
             }
         ],
         [
@@ -1492,7 +1802,8 @@
                 "is_ip6"
             ],
             {
-                "crc": "0xdb867cea"
+                "crc": "0xdb867cea",
+                "options": {}
             }
         ],
         [
@@ -1510,7 +1821,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1539,7 +1851,10 @@
                 }
             ],
             {
-                "crc": "0xa9a5592c"
+                "crc": "0x6580f635",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -1557,7 +1872,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -1583,7 +1901,8 @@
                 "is_ipv6"
             ],
             {
-                "crc": "0x2d033de4"
+                "crc": "0x2d033de4",
+                "options": {}
             }
         ],
         [
@@ -1601,7 +1920,103 @@
                 "punt"
             ],
             {
-                "crc": "0x3924f5d3"
+                "crc": "0x2cef63e7",
+                "options": {}
+            }
+        ],
+        [
+            "add_del_ip_punt_redirect_v2",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "is_add",
+                {
+                    "default": "true"
+                }
+            ],
+            [
+                "vl_api_punt_redirect_v2_t",
+                "punt"
+            ],
+            {
+                "crc": "0x9e804227",
+                "options": {}
+            }
+        ],
+        [
+            "add_del_ip_punt_redirect_v2_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "ip_punt_redirect_v2_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            {
+                "crc": "0xd817a484",
+                "options": {}
+            }
+        ],
+        [
+            "ip_punt_redirect_v2_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_punt_redirect_v2_t",
+                "punt"
+            ],
+            {
+                "crc": "0x7ba42e1d",
+                "options": {}
             }
         ],
         [
@@ -1634,7 +2049,8 @@
                 }
             ],
             {
-                "crc": "0x91189f40"
+                "crc": "0x7df1dff1",
+                "options": {}
             }
         ],
         [
@@ -1652,7 +2068,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1670,7 +2087,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -1692,7 +2110,8 @@
                 "prefix"
             ],
             {
-                "crc": "0x0ee460e8"
+                "crc": "0xa8085523",
+                "options": {}
             }
         ],
         [
@@ -1739,7 +2158,8 @@
                 "vrf_id"
             ],
             {
-                "crc": "0x8bfc76f2"
+                "crc": "0x92a067e3",
+                "options": {}
             }
         ],
         [
@@ -1757,7 +2177,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1802,7 +2223,8 @@
                 "udp_out_vrf_id"
             ],
             {
-                "crc": "0xe1ba8987"
+                "crc": "0xe1ba8987",
+                "options": {}
             }
         ],
         [
@@ -1820,7 +2242,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1846,7 +2269,8 @@
                 "ip"
             ],
             {
-                "crc": "0x2931d9fa"
+                "crc": "0x1c10f15f",
+                "options": {}
             }
         ],
         [
@@ -1864,7 +2288,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1886,7 +2311,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -1908,7 +2334,8 @@
                 "ip"
             ],
             {
-                "crc": "0xd16b7130"
+                "crc": "0xd16b7130",
+                "options": {}
             }
         ],
         [
@@ -1950,7 +2377,8 @@
                 "node_id"
             ],
             {
-                "crc": "0x51ccd868"
+                "crc": "0x51ccd868",
+                "options": {}
             }
         ],
         [
@@ -1968,7 +2396,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1990,7 +2419,8 @@
                 "id"
             ],
             {
-                "crc": "0x6b16a45e"
+                "crc": "0x6b16a45e",
+                "options": {}
             }
         ],
         [
@@ -2008,7 +2438,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -2050,7 +2481,8 @@
                 "type"
             ],
             {
-                "crc": "0x16467d25"
+                "crc": "0x16467d25",
+                "options": {}
             }
         ],
         [
@@ -2068,7 +2500,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -2094,7 +2527,8 @@
                 "type"
             ],
             {
-                "crc": "0xea13ff63"
+                "crc": "0xea13ff63",
+                "options": {}
             }
         ],
         [
@@ -2132,7 +2566,8 @@
                 "is_ip6"
             ],
             {
-                "crc": "0xd5eb8d34"
+                "crc": "0xd5eb8d34",
+                "options": {}
             }
         ],
         [
@@ -2166,7 +2601,8 @@
                 "type"
             ],
             {
-                "crc": "0x885c85a6"
+                "crc": "0xeb77968d",
+                "options": {}
             }
         ],
         [
@@ -2184,7 +2620,100 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "ip_local_reass_enable_disable",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "enable_ip4"
+            ],
+            [
+                "bool",
+                "enable_ip6"
+            ],
+            {
+                "crc": "0x34e2ccc4",
+                "options": {}
+            }
+        ],
+        [
+            "ip_local_reass_enable_disable_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "ip_local_reass_get",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            {
+                "crc": "0x51077d14",
+                "options": {}
+            }
+        ],
+        [
+            "ip_local_reass_get_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "bool",
+                "ip4_is_enabled"
+            ],
+            [
+                "bool",
+                "ip6_is_enabled"
+            ],
+            {
+                "crc": "0x3e93a702",
+                "options": {}
             }
         ],
         [
@@ -2206,7 +2735,8 @@
                 "pmtu"
             ],
             {
-                "crc": "0x10bbe5cb"
+                "crc": "0x10bbe5cb",
+                "options": {}
             }
         ],
         [
@@ -2224,7 +2754,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -2246,7 +2777,8 @@
                 "cursor"
             ],
             {
-                "crc": "0xf75ba505"
+                "crc": "0xf75ba505",
+                "options": {}
             }
         ],
         [
@@ -2268,7 +2800,8 @@
                 "cursor"
             ],
             {
-                "crc": "0x53b48f5d"
+                "crc": "0x53b48f5d",
+                "options": {}
             }
         ],
         [
@@ -2286,7 +2819,8 @@
                 "pmtu"
             ],
             {
-                "crc": "0xac9539a7"
+                "crc": "0xac9539a7",
+                "options": {}
             }
         ],
         [
@@ -2304,7 +2838,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -2322,7 +2857,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -2340,7 +2876,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -2358,7 +2895,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -3668,6 +4206,9 @@
         "ip_table_add_del": {
             "reply": "ip_table_add_del_reply"
         },
+        "ip_table_allocate": {
+            "reply": "ip_table_allocate_reply"
+        },
         "ip_table_dump": {
             "reply": "ip_table_details",
             "stream": true
@@ -3684,12 +4225,22 @@
         "ip_route_add_del": {
             "reply": "ip_route_add_del_reply"
         },
+        "ip_route_add_del_v2": {
+            "reply": "ip_route_add_del_v2_reply"
+        },
         "ip_route_dump": {
             "reply": "ip_route_details",
             "stream": true
         },
+        "ip_route_v2_dump": {
+            "reply": "ip_route_v2_details",
+            "stream": true
+        },
         "ip_route_lookup": {
             "reply": "ip_route_lookup_reply"
+        },
+        "ip_route_lookup_v2": {
+            "reply": "ip_route_lookup_v2_reply"
         },
         "set_ip_flow_hash": {
             "reply": "set_ip_flow_hash_reply"
@@ -3740,6 +4291,13 @@
             "reply": "ip_punt_redirect_details",
             "stream": true
         },
+        "add_del_ip_punt_redirect_v2": {
+            "reply": "add_del_ip_punt_redirect_v2_reply"
+        },
+        "ip_punt_redirect_v2_dump": {
+            "reply": "ip_punt_redirect_v2_details",
+            "stream": true
+        },
         "ip_container_proxy_add_del": {
             "reply": "ip_container_proxy_add_del_reply"
         },
@@ -3774,6 +4332,12 @@
         "ip_reassembly_enable_disable": {
             "reply": "ip_reassembly_enable_disable_reply"
         },
+        "ip_local_reass_enable_disable": {
+            "reply": "ip_local_reass_enable_disable_reply"
+        },
+        "ip_local_reass_get": {
+            "reply": "ip_local_reass_get_reply"
+        },
         "ip_path_mtu_update": {
             "reply": "ip_path_mtu_update_reply"
         },
@@ -3785,7 +4349,7 @@
         }
     },
     "options": {
-        "version": "3.0.3"
+        "version": "3.2.0"
     },
     "aliases": {
         "interface_index": {
@@ -3813,7 +4377,7 @@
             "length": 6
         }
     },
-    "vl_api_version": "0x4dc31a92",
+    "vl_api_version": "0x41299705",
     "imports": [
         "vnet/interface_types.api",
         "vnet/fib/fib_types.api",
@@ -3825,6 +4389,1011 @@
         "vnet/ip/ip_types.api",
         "vnet/interface_types.api"
     ],
-    "counters": [],
-    "paths": []
+    "counters": [
+        {
+            "name": "ip_frag",
+            "elements": [
+                {
+                    "name": "none",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "packet fragmented"
+                },
+                {
+                    "name": "small_packet",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "packet smaller than MTU"
+                },
+                {
+                    "name": "fragment_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "number of sent fragments"
+                },
+                {
+                    "name": "cant_fragment_header",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "can't fragment header"
+                },
+                {
+                    "name": "dont_fragment_set",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "can't fragment this packet"
+                },
+                {
+                    "name": "malformed",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "malformed packet"
+                },
+                {
+                    "name": "memory",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "could not allocate buffer"
+                },
+                {
+                    "name": "unknown",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "unknown error"
+                }
+            ]
+        },
+        {
+            "name": "ip4",
+            "elements": [
+                {
+                    "name": "none",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "valid ip4 packets"
+                },
+                {
+                    "name": "too_short",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 length < 20 bytes"
+                },
+                {
+                    "name": "bad_length",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 length > l2 length"
+                },
+                {
+                    "name": "bad_checksum",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "bad ip4 checksum"
+                },
+                {
+                    "name": "version",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 version != 4"
+                },
+                {
+                    "name": "options",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 options present"
+                },
+                {
+                    "name": "fragment_offset_one",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 fragment offset == 1"
+                },
+                {
+                    "name": "time_expired",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 ttl <= 1"
+                },
+                {
+                    "name": "hdr_too_short",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 IHL < 5"
+                },
+                {
+                    "name": "mtu_exceeded",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 MTU exceeded and DF set"
+                },
+                {
+                    "name": "dst_lookup_miss",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 destination lookup miss"
+                },
+                {
+                    "name": "src_lookup_miss",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 source lookup miss"
+                },
+                {
+                    "name": "drop",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 drop"
+                },
+                {
+                    "name": "punt",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 punt"
+                },
+                {
+                    "name": "same_interface",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 egress interface same as ingress"
+                },
+                {
+                    "name": "unknown_protocol",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "unknown ip protocol"
+                },
+                {
+                    "name": "tcp_checksum",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "bad tcp checksum"
+                },
+                {
+                    "name": "udp_checksum",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "bad udp checksum"
+                },
+                {
+                    "name": "udp_length",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "inconsistent udp/ip lengths"
+                },
+                {
+                    "name": "spoofed_local_packets",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip4 spoofed local-address packet drops"
+                },
+                {
+                    "name": "inacl_table_miss",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "input ACL table-miss drops"
+                },
+                {
+                    "name": "inacl_session_deny",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "input ACL session deny drops"
+                },
+                {
+                    "name": "outacl_table_miss",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "output ACL table-miss drops"
+                },
+                {
+                    "name": "outacl_session_deny",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "output ACL session deny drops"
+                },
+                {
+                    "name": "rpf_failure",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "Multicast RPF check failed"
+                },
+                {
+                    "name": "reass_duplicate_fragment",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "duplicate/overlapping fragments"
+                },
+                {
+                    "name": "reass_limit_reached",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "drops due to concurrent reassemblies limit"
+                },
+                {
+                    "name": "reass_fragment_chain_too_long",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "fragment chain too long (drop)"
+                },
+                {
+                    "name": "reass_no_buf",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "out of buffers (drop)"
+                },
+                {
+                    "name": "reass_malformed_packet",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "malformed packets"
+                },
+                {
+                    "name": "reass_internal_error",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "drops due to internal reassembly error"
+                },
+                {
+                    "name": "reass_timeout",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "fragments dropped due to reassembly timeout"
+                },
+                {
+                    "name": "reass_to_custom_app",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "send to custom drop app"
+                },
+                {
+                    "name": "reass_success",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "successful reassemblies"
+                },
+                {
+                    "name": "reass_fragments_reassembled",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "fragments reassembled"
+                },
+                {
+                    "name": "reass_fragments_rcvd",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "fragments received"
+                },
+                {
+                    "name": "reass_unsupp_ip_prot",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "unsupported ip protocol"
+                }
+            ]
+        },
+        {
+            "name": "ip6",
+            "elements": [
+                {
+                    "name": "none",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "valid ip6 packets"
+                },
+                {
+                    "name": "too_short",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip6 length < 40 bytes"
+                },
+                {
+                    "name": "bad_length",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip6 length > l2 length"
+                },
+                {
+                    "name": "version",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip6 version != 6"
+                },
+                {
+                    "name": "time_expired",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip6 ttl <= 1"
+                },
+                {
+                    "name": "mtu_exceeded",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip6 MTU exceeded"
+                },
+                {
+                    "name": "dst_lookup_miss",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip6 destination lookup miss"
+                },
+                {
+                    "name": "src_lookup_miss",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip6 source lookup miss"
+                },
+                {
+                    "name": "drop",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip6 drop"
+                },
+                {
+                    "name": "punt",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip6 punt"
+                },
+                {
+                    "name": "unknown_protocol",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "unknown ip protocol"
+                },
+                {
+                    "name": "udp_checksum",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "bad udp checksum"
+                },
+                {
+                    "name": "icmp_checksum",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "bad icmp checksum"
+                },
+                {
+                    "name": "udp_length",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "inconsistent udp/ip lengths"
+                },
+                {
+                    "name": "unknown_udp_port",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no listener for udp port"
+                },
+                {
+                    "name": "spoofed_local_packets",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ip6 spoofed local-address packet drops"
+                },
+                {
+                    "name": "inacl_table_miss",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "input ACL table-miss drops"
+                },
+                {
+                    "name": "inacl_session_deny",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "input ACL session deny drops"
+                },
+                {
+                    "name": "outacl_table_miss",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "output ACL table-miss drops"
+                },
+                {
+                    "name": "outacl_session_deny",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "output ACL session deny drops"
+                },
+                {
+                    "name": "rpf_failure",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "Multicast RPF check failed"
+                },
+                {
+                    "name": "reass_missing_upper",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "missing-upper layer drops"
+                },
+                {
+                    "name": "reass_duplicate_fragment",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "duplicate fragments"
+                },
+                {
+                    "name": "reass_overlapping_fragment",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "overlapping fragments"
+                },
+                {
+                    "name": "reass_limit_reached",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "drops due to concurrent reassemblies limit"
+                },
+                {
+                    "name": "reass_fragment_chain_too_long",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "fragment chain too long (drop)"
+                },
+                {
+                    "name": "reass_no_buf",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "out of buffers (drop)"
+                },
+                {
+                    "name": "reass_timeout",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "fragments dropped due to reassembly timeout"
+                },
+                {
+                    "name": "reass_internal_error",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "drops due to internal reassembly error"
+                },
+                {
+                    "name": "reass_invalid_frag_len",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "invalid fragment length"
+                },
+                {
+                    "name": "reass_to_custom_app",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "send to custom drop app"
+                },
+                {
+                    "name": "reass_no_frag_hdr",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no fragmentation header"
+                },
+                {
+                    "name": "reass_invalid_frag_size",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "drop due to invalid fragment size"
+                },
+                {
+                    "name": "reass_success",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "successful reassemblies"
+                },
+                {
+                    "name": "reass_fragments_reassembled",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "fragments reassembled"
+                },
+                {
+                    "name": "reass_fragments_rcvd",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "fragments received"
+                },
+                {
+                    "name": "reass_unsupp_ip_proto",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "unsupported ip protocol"
+                }
+            ]
+        },
+        {
+            "name": "icmp4",
+            "elements": [
+                {
+                    "name": "none",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "valid packets"
+                },
+                {
+                    "name": "unknown_type",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "unknown type"
+                },
+                {
+                    "name": "invalid_code_for_type",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "invalid code for type"
+                },
+                {
+                    "name": "invalid_hop_limit_for_type",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "hop_limit != 255"
+                },
+                {
+                    "name": "length_too_small_for_type",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "payload length too small for type"
+                },
+                {
+                    "name": "options_with_odd_length",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "total option length not multiple of 8 bytes"
+                },
+                {
+                    "name": "option_with_zero_length",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "option has zero length"
+                },
+                {
+                    "name": "echo_replies_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "echo replies sent"
+                },
+                {
+                    "name": "dst_lookup_miss",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "icmp6 dst address lookup misses"
+                },
+                {
+                    "name": "dest_unreach_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "destination unreachable response sent"
+                },
+                {
+                    "name": "ttl_expire_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "hop limit exceeded response sent"
+                },
+                {
+                    "name": "param_problem_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "parameter problem response sent"
+                },
+                {
+                    "name": "drop",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "error message dropped"
+                }
+            ]
+        },
+        {
+            "name": "icmp6",
+            "elements": [
+                {
+                    "name": "none",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "valid packets"
+                },
+                {
+                    "name": "unknown_type",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "unknown type"
+                },
+                {
+                    "name": "invalid_code_for_type",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "invalid code for type"
+                },
+                {
+                    "name": "invalid_hop_limit_for_type",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "hop_limit != 255"
+                },
+                {
+                    "name": "length_too_small_for_type",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "payload length too small for type"
+                },
+                {
+                    "name": "options_with_odd_length",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "total option length not multiple of 8 bytes"
+                },
+                {
+                    "name": "option_with_zero_length",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "option has zero length"
+                },
+                {
+                    "name": "echo_replies_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "echo replies sent"
+                },
+                {
+                    "name": "neighbor_solicitation_source_not_on_link",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "neighbor solicitations from source not on link"
+                },
+                {
+                    "name": "neighbor_solicitation_source_unknown",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "neighbor solicitations for unknown targets"
+                },
+                {
+                    "name": "neighbor_advertisements_tx",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "neighbor advertisements sent"
+                },
+                {
+                    "name": "neighbor_advertisements_rx",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "neighbor advertisements received"
+                },
+                {
+                    "name": "router_solicitation_source_not_on_link",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "router solicitations from source not on link"
+                },
+                {
+                    "name": "router_solicitation_unsupported_intf",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "neighbor discovery unsupported interface"
+                },
+                {
+                    "name": "router_solicitation_radv_not_config",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "neighbor discovery not configured"
+                },
+                {
+                    "name": "router_advertisement_source_not_link_local",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "router advertisement source not link local"
+                },
+                {
+                    "name": "router_advertisements_tx",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "router advertisements sent"
+                },
+                {
+                    "name": "router_advertisements_rx",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "router advertisements received"
+                },
+                {
+                    "name": "dst_lookup_miss",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "icmp6 dst address lookup misses"
+                },
+                {
+                    "name": "dest_unreach_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "destination unreachable response sent"
+                },
+                {
+                    "name": "packet_too_big_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "packet too big response sent"
+                },
+                {
+                    "name": "ttl_expire_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "hop limit exceeded response sent"
+                },
+                {
+                    "name": "param_problem_sent",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "parameter problem response sent"
+                },
+                {
+                    "name": "drop",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "error message dropped"
+                },
+                {
+                    "name": "alloc_failure",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "buffer allocation failure"
+                }
+            ]
+        }
+    ],
+    "paths": [
+        [
+            {
+                "path": "/err/ip-frag",
+                "counter": "ip_frag"
+            },
+            {
+                "path": "/err/mpls-frag",
+                "counter": "ip_frag"
+            },
+            {
+                "path": "/err/ip4-mpls-label-disposition-pipe",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip4-mpls-label-disposition-uniform",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip4-local",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip4-input",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip4-full-reassembly",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip4-local-full-reassembly",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip4-full-reassembly-feature",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip4-full-reassembly-custom",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip4-full-reassembly-expire-walk",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip4-sv-reassembly",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip4-sv-reassembly-feature",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip4-sv-reassembly-output-feature",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip4-sv-reassembly-custom-next",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip4-sv-reassembly-expire-walk",
+                "counter": "ip4"
+            },
+            {
+                "path": "/err/ip6-mpls-label-disposition-pipe",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip6-mpls-label-disposition-uniform",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip6-local",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip6-input",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip6-full-reassembly",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip6-local-full-reassembly",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip6-full-reassembly-feature",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip6-full-reassembly-custom",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip6-full-reassembly-expire-walk",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip6-sv-reassembly",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip6-sv-reassembly-feature",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip6-sv-reassembly-output-feature",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip6-sv-reassembly-custom-next",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip6-sv-reassembly-expire-walk",
+                "counter": "ip6"
+            },
+            {
+                "path": "/err/ip4-icmp-input",
+                "counter": "icmp4"
+            },
+            {
+                "path": "/err/ip4-icmp-error",
+                "counter": "icmp4"
+            },
+            {
+                "path": "/err/ip6-icmp-input",
+                "counter": "icmp6"
+            },
+            {
+                "path": "/err/ip6-icmp-error",
+                "counter": "icmp6"
+            }
+        ]
+    ]
 }

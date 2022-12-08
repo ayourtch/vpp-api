@@ -24,7 +24,10 @@
                 "enable_disable"
             ],
             {
-                "crc": "0x5501adee"
+                "crc": "0x5501adee",
+                "options": {
+                    "vat_help": "<intfc> | sw_if_index <nn> [enable | disable]"
+                }
             }
         ],
         [
@@ -42,7 +45,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<intfc> | sw_if_index <nn> [enable | disable]"
+                }
             }
         ]
     ],

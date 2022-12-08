@@ -28,7 +28,11 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xb782c976"
+                "crc": "0xb782c976",
+                "options": {
+                    "replaced_by": "flowprobe_interface_add_del",
+                    "vat_help": "<intfc> [disable]"
+                }
             }
         ],
         [
@@ -46,7 +50,129 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "replaced_by": "flowprobe_interface_add_del",
+                    "vat_help": "<intfc> [disable]"
+                }
+            }
+        ],
+        [
+            "flowprobe_interface_add_del",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "is_add"
+            ],
+            [
+                "vl_api_flowprobe_which_t",
+                "which"
+            ],
+            [
+                "vl_api_flowprobe_direction_t",
+                "direction"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x3420739c",
+                "options": {
+                    "in_progress": null,
+                    "vat_help": "(<intfc> | sw_if_index <if-idx>) [(ip4|ip6|l2)] [(rx|tx|both)] [disable]"
+                }
+            }
+        ],
+        [
+            "flowprobe_interface_add_del_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {
+                    "in_progress": null,
+                    "vat_help": "(<intfc> | sw_if_index <if-idx>) [(ip4|ip6|l2)] [(rx|tx|both)] [disable]"
+                }
+            }
+        ],
+        [
+            "flowprobe_interface_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index",
+                {
+                    "default": 4294967295
+                }
+            ],
+            {
+                "crc": "0xf9e6675e",
+                "options": {
+                    "in_progress": null,
+                    "vat_help": "[<if-idx>]"
+                }
+            }
+        ],
+        [
+            "flowprobe_interface_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_flowprobe_which_t",
+                "which"
+            ],
+            [
+                "vl_api_flowprobe_direction_t",
+                "direction"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x427d77e0",
+                "options": {
+                    "in_progress": null
+                }
             }
         ],
         [
@@ -76,7 +202,11 @@
                 "passive_timer"
             ],
             {
-                "crc": "0xbaa46c09"
+                "crc": "0xbaa46c09",
+                "options": {
+                    "replaced_by": "flowprobe_set_params",
+                    "vat_help": "record <[l2] [l3] [l4]> [active <timer> passive <timer>]"
+                }
             }
         ],
         [
@@ -94,7 +224,127 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "replaced_by": "flowprobe_set_params",
+                    "vat_help": "record <[l2] [l3] [l4]> [active <timer> passive <timer>]"
+                }
+            }
+        ],
+        [
+            "flowprobe_set_params",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_flowprobe_record_flags_t",
+                "record_flags"
+            ],
+            [
+                "u32",
+                "active_timer",
+                {
+                    "default": 4294967295
+                }
+            ],
+            [
+                "u32",
+                "passive_timer",
+                {
+                    "default": 4294967295
+                }
+            ],
+            {
+                "crc": "0xbaa46c09",
+                "options": {
+                    "in_progress": null,
+                    "vat_help": "record [l2] [l3] [l4] [active <timer>] [passive <timer>]"
+                }
+            }
+        ],
+        [
+            "flowprobe_set_params_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {
+                    "in_progress": null,
+                    "vat_help": "record [l2] [l3] [l4] [active <timer>] [passive <timer>]"
+                }
+            }
+        ],
+        [
+            "flowprobe_get_params",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            {
+                "crc": "0x51077d14",
+                "options": {
+                    "in_progress": null
+                }
+            }
+        ],
+        [
+            "flowprobe_get_params_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_flowprobe_record_flags_t",
+                "record_flags"
+            ],
+            [
+                "u32",
+                "active_timer"
+            ],
+            [
+                "u32",
+                "passive_timer"
+            ],
+            {
+                "crc": "0xf350d621",
+                "options": {
+                    "in_progress": null
+                }
             }
         ]
     ],
@@ -281,6 +531,24 @@
             }
         ],
         [
+            "flowprobe_which",
+            [
+                "FLOWPROBE_WHICH_IP4",
+                0
+            ],
+            [
+                "FLOWPROBE_WHICH_IP6",
+                1
+            ],
+            [
+                "FLOWPROBE_WHICH_L2",
+                2
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ],
+        [
             "flowprobe_record_flags",
             [
                 "FLOWPROBE_RECORD_FLAG_L2",
@@ -297,6 +565,24 @@
             {
                 "enumtype": "u8"
             }
+        ],
+        [
+            "flowprobe_direction",
+            [
+                "FLOWPROBE_DIRECTION_RX",
+                0
+            ],
+            [
+                "FLOWPROBE_DIRECTION_TX",
+                1
+            ],
+            [
+                "FLOWPROBE_DIRECTION_BOTH",
+                2
+            ],
+            {
+                "enumtype": "u8"
+            }
         ]
     ],
     "enumflags": [],
@@ -304,19 +590,32 @@
         "flowprobe_tx_interface_add_del": {
             "reply": "flowprobe_tx_interface_add_del_reply"
         },
+        "flowprobe_interface_add_del": {
+            "reply": "flowprobe_interface_add_del_reply"
+        },
+        "flowprobe_interface_dump": {
+            "reply": "flowprobe_interface_details",
+            "stream": true
+        },
         "flowprobe_params": {
             "reply": "flowprobe_params_reply"
+        },
+        "flowprobe_set_params": {
+            "reply": "flowprobe_set_params_reply"
+        },
+        "flowprobe_get_params": {
+            "reply": "flowprobe_get_params_reply"
         }
     },
     "options": {
-        "version": "1.0.0"
+        "version": "2.1.0"
     },
     "aliases": {
         "interface_index": {
             "type": "u32"
         }
     },
-    "vl_api_version": "0x8da9f1c",
+    "vl_api_version": "0x72c9c142",
     "imports": [
         "vnet/interface_types.api"
     ],

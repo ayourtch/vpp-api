@@ -133,7 +133,10 @@
                 "client_mac"
             ],
             {
-                "crc": "0x46ace853"
+                "crc": "0xf6fd759e",
+                "options": {
+                    "vat_help": "client-addr <client-addr> session-id <nn> [encap-if-index <nn>] [decap-next [ip4|ip6|node <name>]] local-mac <local-mac> client-mac <client-mac> [del]"
+                }
             }
         ],
         [
@@ -155,7 +158,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -177,7 +181,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {
+                    "vat_help": "[<intfc> | sw_if_index <nn>]"
+                }
             }
         ],
         [
@@ -219,7 +226,8 @@
                 "client_mac"
             ],
             {
-                "crc": "0x332bc742"
+                "crc": "0x4b8e8a4a",
+                "options": {}
             }
         ],
         [
@@ -245,7 +253,10 @@
                 "is_add"
             ],
             {
-                "crc": "0xeacd9aaa"
+                "crc": "0xeacd9aaa",
+                "options": {
+                    "vat_help": "[ sw_if_index <intfc> is_add <bool> ]"
+                }
             }
         ],
         [
@@ -263,7 +274,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],

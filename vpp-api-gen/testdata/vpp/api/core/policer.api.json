@@ -41,7 +41,8 @@
                 "bind_enable"
             ],
             {
-                "crc": "0xdcf516f9"
+                "crc": "0xdcf516f9",
+                "options": {}
             }
         ],
         [
@@ -59,7 +60,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -90,7 +92,8 @@
                 "apply"
             ],
             {
-                "crc": "0x233f0ef5"
+                "crc": "0x233f0ef5",
+                "options": {}
             }
         ],
         [
@@ -108,7 +111,59 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "policer_output",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "string",
+                "name",
+                64
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "bool",
+                "apply"
+            ],
+            {
+                "crc": "0x233f0ef5",
+                "options": {}
+            }
+        ],
+        [
+            "policer_output_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -179,7 +234,8 @@
                 "violate_action"
             ],
             {
-                "crc": "0xcb948f6e"
+                "crc": "0x2b31dd38",
+                "options": {}
             }
         ],
         [
@@ -201,7 +257,8 @@
                 "policer_index"
             ],
             {
-                "crc": "0xa177cef2"
+                "crc": "0xa177cef2",
+                "options": {}
             }
         ],
         [
@@ -228,7 +285,8 @@
                 64
             ],
             {
-                "crc": "0x35f1ae0f"
+                "crc": "0x35f1ae0f",
+                "options": {}
             }
         ],
         [
@@ -327,7 +385,8 @@
                 "last_update_time"
             ],
             {
-                "crc": "0xa43f781a"
+                "crc": "0x72d0e248",
+                "options": {}
             }
         ]
     ],
@@ -592,6 +651,9 @@
         "policer_input": {
             "reply": "policer_input_reply"
         },
+        "policer_output": {
+            "reply": "policer_output_reply"
+        },
         "policer_add_del": {
             "reply": "policer_add_del_reply"
         },
@@ -608,7 +670,7 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0xf14848c",
+    "vl_api_version": "0xd11df44e",
     "imports": [
         "vnet/interface_types.api",
         "vnet/policer/policer_types.api"

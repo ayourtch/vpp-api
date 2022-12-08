@@ -117,7 +117,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -135,7 +136,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -153,7 +155,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -171,7 +174,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -189,7 +193,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -231,7 +236,8 @@
                 "ip6_addr"
             ],
             {
-                "crc": "0x1e00cfce"
+                "crc": "0xe3d736a1",
+                "options": {}
             }
         ],
         [
@@ -285,7 +291,8 @@
                 "conf_key_id"
             ],
             {
-                "crc": "0x7a6d1185"
+                "crc": "0x939cd26a",
+                "options": {}
             }
         ],
         [
@@ -303,7 +310,86 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "bfd_udp_upd",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "u32",
+                "desired_min_tx"
+            ],
+            [
+                "u32",
+                "required_min_rx"
+            ],
+            [
+                "vl_api_address_t",
+                "local_addr"
+            ],
+            [
+                "vl_api_address_t",
+                "peer_addr"
+            ],
+            [
+                "u8",
+                "detect_mult"
+            ],
+            [
+                "bool",
+                "is_authenticated"
+            ],
+            [
+                "u8",
+                "bfd_key_id"
+            ],
+            [
+                "u32",
+                "conf_key_id"
+            ],
+            {
+                "crc": "0x939cd26a",
+                "options": {}
+            }
+        ],
+        [
+            "bfd_udp_upd_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "u32",
+                "stats_index"
+            ],
+            {
+                "crc": "0x1992deab",
+                "options": {}
             }
         ],
         [
@@ -345,7 +431,8 @@
                 "detect_mult"
             ],
             {
-                "crc": "0x783a3ff6"
+                "crc": "0x913df085",
+                "options": {}
             }
         ],
         [
@@ -363,7 +450,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -393,7 +481,8 @@
                 "peer_addr"
             ],
             {
-                "crc": "0x8096514d"
+                "crc": "0xdcb13a89",
+                "options": {}
             }
         ],
         [
@@ -411,7 +500,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -429,7 +519,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -483,7 +574,8 @@
                 "detect_mult"
             ],
             {
-                "crc": "0x60653c02"
+                "crc": "0x09fb2f2d",
+                "options": {}
             }
         ],
         [
@@ -517,7 +609,8 @@
                 "flags"
             ],
             {
-                "crc": "0xcf313851"
+                "crc": "0x04b4bdfd",
+                "options": {}
             }
         ],
         [
@@ -535,7 +628,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -561,7 +655,8 @@
                 "pid"
             ],
             {
-                "crc": "0xc5e2af94"
+                "crc": "0xc5e2af94",
+                "options": {}
             }
         ],
         [
@@ -579,7 +674,67 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
+            }
+        ],
+        [
+            "bfd_udp_session_event",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "pid"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "vl_api_address_t",
+                "local_addr"
+            ],
+            [
+                "vl_api_address_t",
+                "peer_addr"
+            ],
+            [
+                "vl_api_bfd_state_t",
+                "state"
+            ],
+            [
+                "bool",
+                "is_authenticated"
+            ],
+            [
+                "u8",
+                "bfd_key_id"
+            ],
+            [
+                "u32",
+                "conf_key_id"
+            ],
+            [
+                "u32",
+                "required_min_rx"
+            ],
+            [
+                "u32",
+                "desired_min_tx"
+            ],
+            [
+                "u8",
+                "detect_mult"
+            ],
+            {
+                "crc": "0x8eaaf062",
+                "options": {}
             }
         ],
         [
@@ -614,7 +769,8 @@
                 20
             ],
             {
-                "crc": "0x690b8877"
+                "crc": "0x690b8877",
+                "options": {}
             }
         ],
         [
@@ -632,7 +788,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -654,7 +811,8 @@
                 "conf_key_id"
             ],
             {
-                "crc": "0x65310b22"
+                "crc": "0x65310b22",
+                "options": {}
             }
         ],
         [
@@ -672,7 +830,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -690,7 +849,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -716,7 +876,8 @@
                 "auth_type"
             ],
             {
-                "crc": "0x84130e9f"
+                "crc": "0x84130e9f",
+                "options": {}
             }
         ],
         [
@@ -758,7 +919,8 @@
                 "conf_key_id"
             ],
             {
-                "crc": "0x493ee0ec"
+                "crc": "0x21fd1bdb",
+                "options": {}
             }
         ],
         [
@@ -776,7 +938,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -810,7 +973,8 @@
                 "is_delayed"
             ],
             {
-                "crc": "0x99978c32"
+                "crc": "0x9a05e2e0",
+                "options": {}
             }
         ],
         [
@@ -828,7 +992,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -1243,6 +1408,12 @@
     ],
     "enumflags": [],
     "services": {
+        "want_bfd_events": {
+            "reply": "want_bfd_events_reply",
+            "events": [
+                "bfd_udp_session_event"
+            ]
+        },
         "bfd_udp_set_echo_source": {
             "reply": "bfd_udp_set_echo_source_reply"
         },
@@ -1254,6 +1425,9 @@
         },
         "bfd_udp_add": {
             "reply": "bfd_udp_add_reply"
+        },
+        "bfd_udp_upd": {
+            "reply": "bfd_udp_upd_reply"
         },
         "bfd_udp_mod": {
             "reply": "bfd_udp_mod_reply"
@@ -1267,9 +1441,6 @@
         },
         "bfd_udp_session_set_flags": {
             "reply": "bfd_udp_session_set_flags_reply"
-        },
-        "want_bfd_events": {
-            "reply": "want_bfd_events_reply"
         },
         "bfd_auth_set_key": {
             "reply": "bfd_auth_set_key_reply"
@@ -1313,11 +1484,92 @@
             "type": "vl_api_ip6_prefix_t"
         }
     },
-    "vl_api_version": "0x2181de03",
+    "vl_api_version": "0xe65443a6",
     "imports": [
         "vnet/interface_types.api",
         "vnet/ip/ip_types.api"
     ],
-    "counters": [],
-    "paths": []
+    "counters": [
+        {
+            "name": "bfd_udp",
+            "elements": [
+                {
+                    "name": "none",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "OK"
+                },
+                {
+                    "name": "no_session",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no-session"
+                },
+                {
+                    "name": "bad",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "bad packet"
+                },
+                {
+                    "name": "length",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "too short"
+                },
+                {
+                    "name": "failed_verification",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "failed-verification"
+                },
+                {
+                    "name": "src_mismatch",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "src-mismatch"
+                },
+                {
+                    "name": "dst_mismatch",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "dst-mismatch"
+                },
+                {
+                    "name": "ttl",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ttl"
+                }
+            ]
+        }
+    ],
+    "paths": [
+        [
+            {
+                "path": "/err/bfd-udp4-input",
+                "counter": "bfd"
+            },
+            {
+                "path": "/err/bfd-udp6-input",
+                "counter": "bfd"
+            },
+            {
+                "path": "/err/bfd-udp4-echo-input",
+                "counter": "bfd"
+            },
+            {
+                "path": "/err/bfd-udp6-echo-input",
+                "counter": "bfd"
+            }
+        ]
+    ]
 }

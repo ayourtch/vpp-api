@@ -24,7 +24,8 @@
                 "crypto_enable"
             ],
             {
-                "crc": "0xb4274502"
+                "crc": "0xb4274502",
+                "options": {}
             }
         ],
         [
@@ -42,7 +43,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],

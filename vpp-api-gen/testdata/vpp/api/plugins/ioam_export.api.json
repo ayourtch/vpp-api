@@ -125,7 +125,8 @@
                 "src_address"
             ],
             {
-                "crc": "0xe4d4ebfa"
+                "crc": "0xd4c76d3a",
+                "options": {}
             }
         ],
         [
@@ -143,7 +144,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],

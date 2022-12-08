@@ -29,7 +29,10 @@
                 108
             ],
             {
-                "crc": "0xa2ce1a10"
+                "crc": "0xa2ce1a10",
+                "options": {
+                    "vat_help": "[add|del] id <id> filename <file>"
+                }
             }
         ],
         [
@@ -47,7 +50,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "[add|del] id <id> filename <file>"
+                }
             }
         ],
         [
@@ -110,7 +116,10 @@
                 24
             ],
             {
-                "crc": "0xb1b25061"
+                "crc": "0xb1b25061",
+                "options": {
+                    "vat_help": "[id <id>] [socket-id <id>] [ring_size <size>] [buffer_size <size>] [hw_addr <mac_address>] [secret <string>] [mode ip] <master|slave>"
+                }
             }
         ],
         [
@@ -132,7 +141,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -154,7 +164,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {
+                    "vat_help": "<sw_if_index>"
+                }
             }
         ],
         [
@@ -172,7 +185,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<sw_if_index>"
+                }
             }
         ],
         [
@@ -195,7 +211,8 @@
                 108
             ],
             {
-                "crc": "0x7ff326f7"
+                "crc": "0x7ff326f7",
+                "options": {}
             }
         ],
         [
@@ -213,7 +230,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -272,7 +290,8 @@
                 64
             ],
             {
-                "crc": "0xd0382c4c"
+                "crc": "0xda34feb9",
+                "options": {}
             }
         ],
         [
@@ -290,7 +309,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ]
     ],

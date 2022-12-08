@@ -28,7 +28,43 @@
                 "gso_size"
             ],
             {
-                "crc": "0xb7c893d7"
+                "crc": "0xb7c893d7",
+                "options": {}
+            }
+        ],
+        [
+            "pg_create_interface_v2",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "interface_id"
+            ],
+            [
+                "bool",
+                "gso_enabled"
+            ],
+            [
+                "u32",
+                "gso_size"
+            ],
+            [
+                "vl_api_pg_interface_mode_t",
+                "mode"
+            ],
+            {
+                "crc": "0x8657466a",
+                "options": {}
             }
         ],
         [
@@ -50,7 +86,31 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
+            }
+        ],
+        [
+            "pg_create_interface_v2_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -76,7 +136,10 @@
                 "coalesce_enabled"
             ],
             {
-                "crc": "0xa2ef99e7"
+                "crc": "0xa2ef99e7",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -94,7 +157,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -132,7 +198,8 @@
                 0
             ],
             {
-                "crc": "0x3712fb6c"
+                "crc": "0x3712fb6c",
+                "options": {}
             }
         ],
         [
@@ -150,7 +217,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -180,7 +248,8 @@
                 0
             ],
             {
-                "crc": "0x01f94f3a"
+                "crc": "0x01f94f3a",
+                "options": {}
             }
         ],
         [
@@ -198,7 +267,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -365,12 +435,33 @@
             {
                 "enumtype": "u8"
             }
+        ],
+        [
+            "pg_interface_mode",
+            [
+                "PG_API_MODE_ETHERNET",
+                0
+            ],
+            [
+                "PG_API_MODE_IP4",
+                1
+            ],
+            [
+                "PG_API_MODE_IP6",
+                2
+            ],
+            {
+                "enumtype": "u8"
+            }
         ]
     ],
     "enumflags": [],
     "services": {
         "pg_create_interface": {
             "reply": "pg_create_interface_reply"
+        },
+        "pg_create_interface_v2": {
+            "reply": "pg_create_interface_v2_reply"
         },
         "pg_interface_enable_disable_coalesce": {
             "reply": "pg_interface_enable_disable_coalesce_reply"
@@ -390,7 +481,7 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0x3a037a0e",
+    "vl_api_version": "0x32a1ad3b",
     "imports": [
         "vnet/interface_types.api"
     ],

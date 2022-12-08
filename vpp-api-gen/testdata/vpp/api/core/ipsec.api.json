@@ -248,6 +248,124 @@
             ]
         ],
         [
+            "ipsec_spd_entry",
+            [
+                "u32",
+                "spd_id"
+            ],
+            [
+                "i32",
+                "priority"
+            ],
+            [
+                "bool",
+                "is_outbound"
+            ],
+            [
+                "u32",
+                "sa_id"
+            ],
+            [
+                "vl_api_ipsec_spd_action_t",
+                "policy"
+            ],
+            [
+                "u8",
+                "protocol"
+            ],
+            [
+                "vl_api_address_t",
+                "remote_address_start"
+            ],
+            [
+                "vl_api_address_t",
+                "remote_address_stop"
+            ],
+            [
+                "vl_api_address_t",
+                "local_address_start"
+            ],
+            [
+                "vl_api_address_t",
+                "local_address_stop"
+            ],
+            [
+                "u16",
+                "remote_port_start"
+            ],
+            [
+                "u16",
+                "remote_port_stop"
+            ],
+            [
+                "u16",
+                "local_port_start"
+            ],
+            [
+                "u16",
+                "local_port_stop"
+            ]
+        ],
+        [
+            "ipsec_spd_entry_v2",
+            [
+                "u32",
+                "spd_id"
+            ],
+            [
+                "i32",
+                "priority"
+            ],
+            [
+                "bool",
+                "is_outbound"
+            ],
+            [
+                "u32",
+                "sa_id"
+            ],
+            [
+                "vl_api_ipsec_spd_action_t",
+                "policy"
+            ],
+            [
+                "u8",
+                "protocol"
+            ],
+            [
+                "vl_api_address_t",
+                "remote_address_start"
+            ],
+            [
+                "vl_api_address_t",
+                "remote_address_stop"
+            ],
+            [
+                "vl_api_address_t",
+                "local_address_start"
+            ],
+            [
+                "vl_api_address_t",
+                "local_address_stop"
+            ],
+            [
+                "u16",
+                "remote_port_start"
+            ],
+            [
+                "u16",
+                "remote_port_stop"
+            ],
+            [
+                "u16",
+                "local_port_start"
+            ],
+            [
+                "u16",
+                "local_port_stop"
+            ]
+        ],
+        [
             "ipsec_sad_entry",
             [
                 "u32",
@@ -678,65 +796,6 @@
             ]
         ],
         [
-            "ipsec_spd_entry",
-            [
-                "u32",
-                "spd_id"
-            ],
-            [
-                "i32",
-                "priority"
-            ],
-            [
-                "bool",
-                "is_outbound"
-            ],
-            [
-                "u32",
-                "sa_id"
-            ],
-            [
-                "vl_api_ipsec_spd_action_t",
-                "policy"
-            ],
-            [
-                "u8",
-                "protocol"
-            ],
-            [
-                "vl_api_address_t",
-                "remote_address_start"
-            ],
-            [
-                "vl_api_address_t",
-                "remote_address_stop"
-            ],
-            [
-                "vl_api_address_t",
-                "local_address_start"
-            ],
-            [
-                "vl_api_address_t",
-                "local_address_stop"
-            ],
-            [
-                "u16",
-                "remote_port_start"
-            ],
-            [
-                "u16",
-                "remote_port_stop"
-            ],
-            [
-                "u16",
-                "local_port_start"
-            ],
-            [
-                "u16",
-                "local_port_stop"
-            ]
-        ],
-        [
             "ipsec_tunnel_protect",
             [
                 "vl_api_interface_index_t",
@@ -804,7 +863,8 @@
                 "spd_id"
             ],
             {
-                "crc": "0x20e89a95"
+                "crc": "0x20e89a95",
+                "options": {}
             }
         ],
         [
@@ -822,7 +882,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -852,7 +913,8 @@
                 "spd_id"
             ],
             {
-                "crc": "0x80f80cbb"
+                "crc": "0x80f80cbb",
+                "options": {}
             }
         ],
         [
@@ -870,7 +932,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -896,7 +959,37 @@
                 "entry"
             ],
             {
-                "crc": "0x9f384b8d"
+                "crc": "0x338b7411",
+                "options": {
+                    "deprecated": null
+                }
+            }
+        ],
+        [
+            "ipsec_spd_entry_add_del_v2",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "is_add"
+            ],
+            [
+                "vl_api_ipsec_spd_entry_v2_t",
+                "entry"
+            ],
+            {
+                "crc": "0x7bfe69fc",
+                "options": {}
             }
         ],
         [
@@ -918,7 +1011,33 @@
                 "stat_index"
             ],
             {
-                "crc": "0x9ffac24b"
+                "crc": "0x9ffac24b",
+                "options": {
+                    "deprecated": null
+                }
+            }
+        ],
+        [
+            "ipsec_spd_entry_add_del_v2_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "u32",
+                "stat_index"
+            ],
+            {
+                "crc": "0x9ffac24b",
+                "options": {}
             }
         ],
         [
@@ -936,7 +1055,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -958,7 +1078,8 @@
                 "npolicies"
             ],
             {
-                "crc": "0xa04bb254"
+                "crc": "0xa04bb254",
+                "options": {}
             }
         ],
         [
@@ -984,7 +1105,8 @@
                 "sa_id"
             ],
             {
-                "crc": "0xafefbf7d"
+                "crc": "0xafefbf7d",
+                "options": {}
             }
         ],
         [
@@ -1002,7 +1124,8 @@
                 "entry"
             ],
             {
-                "crc": "0xf2222790"
+                "crc": "0x5813d7a2",
+                "options": {}
             }
         ],
         [
@@ -1028,7 +1151,10 @@
                 "entry"
             ],
             {
-                "crc": "0xb8def364"
+                "crc": "0xab64b5c6",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -1054,7 +1180,8 @@
                 "entry"
             ],
             {
-                "crc": "0xaca78b27"
+                "crc": "0xaca78b27",
+                "options": {}
             }
         ],
         [
@@ -1080,7 +1207,73 @@
                 "entry"
             ],
             {
-                "crc": "0xc77ebd92"
+                "crc": "0xc77ebd92",
+                "options": {}
+            }
+        ],
+        [
+            "ipsec_sad_entry_add",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_ipsec_sad_entry_v3_t",
+                "entry"
+            ],
+            {
+                "crc": "0x50229353",
+                "options": {}
+            }
+        ],
+        [
+            "ipsec_sad_entry_del",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "id"
+            ],
+            {
+                "crc": "0x3a91bde5",
+                "options": {}
+            }
+        ],
+        [
+            "ipsec_sad_entry_del_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1102,7 +1295,10 @@
                 "stat_index"
             ],
             {
-                "crc": "0x9ffac24b"
+                "crc": "0x9ffac24b",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -1124,7 +1320,8 @@
                 "stat_index"
             ],
             {
-                "crc": "0x9ffac24b"
+                "crc": "0x9ffac24b",
+                "options": {}
             }
         ],
         [
@@ -1146,7 +1343,31 @@
                 "stat_index"
             ],
             {
-                "crc": "0x9ffac24b"
+                "crc": "0x9ffac24b",
+                "options": {}
+            }
+        ],
+        [
+            "ipsec_sad_entry_add_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "u32",
+                "stat_index"
+            ],
+            {
+                "crc": "0x9ffac24b",
+                "options": {}
             }
         ],
         [
@@ -1168,7 +1389,8 @@
                 "tunnel"
             ],
             {
-                "crc": "0x143f155d"
+                "crc": "0x30d5f133",
+                "options": {}
             }
         ],
         [
@@ -1186,7 +1408,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1212,7 +1435,8 @@
                 "nh"
             ],
             {
-                "crc": "0xddd2ba36"
+                "crc": "0xcd239930",
+                "options": {}
             }
         ],
         [
@@ -1230,7 +1454,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1252,7 +1477,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -1270,7 +1496,8 @@
                 "tun"
             ],
             {
-                "crc": "0xac6c823b"
+                "crc": "0x21663a50",
+                "options": {}
             }
         ],
         [
@@ -1296,7 +1523,8 @@
                 "spd_index_valid"
             ],
             {
-                "crc": "0x8971de19"
+                "crc": "0x8971de19",
+                "options": {}
             }
         ],
         [
@@ -1318,7 +1546,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x7a0bcf3e"
+                "crc": "0x7a0bcf3e",
+                "options": {}
             }
         ],
         [
@@ -1340,7 +1569,8 @@
                 "itf"
             ],
             {
-                "crc": "0x6f50b3bc"
+                "crc": "0x6f50b3bc",
+                "options": {}
             }
         ],
         [
@@ -1362,7 +1592,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -1384,7 +1615,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -1402,7 +1634,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1424,7 +1657,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -1442,7 +1676,8 @@
                 "itf"
             ],
             {
-                "crc": "0x548a73b8"
+                "crc": "0x548a73b8",
+                "options": {}
             }
         ],
         [
@@ -1464,7 +1699,10 @@
                 "sa_id"
             ],
             {
-                "crc": "0x2076c2f4"
+                "crc": "0x2076c2f4",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -1486,7 +1724,8 @@
                 "sa_id"
             ],
             {
-                "crc": "0x2076c2f4"
+                "crc": "0x2076c2f4",
+                "options": {}
             }
         ],
         [
@@ -1508,7 +1747,8 @@
                 "sa_id"
             ],
             {
-                "crc": "0x2076c2f4"
+                "crc": "0x2076c2f4",
+                "options": {}
             }
         ],
         [
@@ -1550,7 +1790,10 @@
                 "stat_index"
             ],
             {
-                "crc": "0xb30c7f41"
+                "crc": "0x345d14a7",
+                "options": {
+                    "deprecated": null
+                }
             }
         ],
         [
@@ -1592,7 +1835,8 @@
                 "stat_index"
             ],
             {
-                "crc": "0xe2130051"
+                "crc": "0xe2130051",
+                "options": {}
             }
         ],
         [
@@ -1630,7 +1874,8 @@
                 "stat_index"
             ],
             {
-                "crc": "0x2fc991ee"
+                "crc": "0x2fc991ee",
+                "options": {}
             }
         ],
         [
@@ -1648,7 +1893,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -1679,7 +1925,8 @@
                 "active"
             ],
             {
-                "crc": "0xee601c29"
+                "crc": "0xee601c29",
+                "options": {}
             }
         ],
         [
@@ -1705,7 +1952,8 @@
                 "index"
             ],
             {
-                "crc": "0x5bcfd3b7"
+                "crc": "0x5bcfd3b7",
+                "options": {}
             }
         ],
         [
@@ -1723,7 +1971,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -1745,7 +1994,8 @@
                 "async_enable"
             ],
             {
-                "crc": "0xa6465f7c"
+                "crc": "0xa6465f7c",
+                "options": {}
             }
         ],
         [
@@ -1763,7 +2013,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -2502,6 +2753,10 @@
                 "IPSEC_API_CRYPTO_ALG_3DES_CBC",
                 11
             ],
+            [
+                "IPSEC_API_CRYPTO_ALG_CHACHA20_POLY1305",
+                12
+            ],
             {
                 "enumtype": "u32"
             }
@@ -2570,6 +2825,10 @@
                 "IPSEC_API_SAD_FLAG_IS_INBOUND",
                 64
             ],
+            [
+                "IPSEC_API_SAD_FLAG_ASYNC",
+                128
+            ],
             {
                 "enumtype": "u32"
             }
@@ -2583,6 +2842,28 @@
             [
                 "IPSEC_API_PROTO_AH",
                 51
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "ipsec_spd_action",
+            [
+                "IPSEC_API_SPD_ACTION_BYPASS",
+                0
+            ],
+            [
+                "IPSEC_API_SPD_ACTION_DISCARD",
+                1
+            ],
+            [
+                "IPSEC_API_SPD_ACTION_RESOLVE",
+                2
+            ],
+            [
+                "IPSEC_API_SPD_ACTION_PROTECT",
+                3
             ],
             {
                 "enumtype": "u32"
@@ -3549,28 +3830,6 @@
             {
                 "enumtype": "u8"
             }
-        ],
-        [
-            "ipsec_spd_action",
-            [
-                "IPSEC_API_SPD_ACTION_BYPASS",
-                0
-            ],
-            [
-                "IPSEC_API_SPD_ACTION_DISCARD",
-                1
-            ],
-            [
-                "IPSEC_API_SPD_ACTION_RESOLVE",
-                2
-            ],
-            [
-                "IPSEC_API_SPD_ACTION_PROTECT",
-                3
-            ],
-            {
-                "enumtype": "u32"
-            }
         ]
     ],
     "enumflags": [
@@ -3605,6 +3864,9 @@
         "ipsec_spd_entry_add_del": {
             "reply": "ipsec_spd_entry_add_del_reply"
         },
+        "ipsec_spd_entry_add_del_v2": {
+            "reply": "ipsec_spd_entry_add_del_v2_reply"
+        },
         "ipsec_spds_dump": {
             "reply": "ipsec_spds_details",
             "stream": true
@@ -3621,6 +3883,12 @@
         },
         "ipsec_sad_entry_add_del_v3": {
             "reply": "ipsec_sad_entry_add_del_v3_reply"
+        },
+        "ipsec_sad_entry_add": {
+            "reply": "ipsec_sad_entry_add_reply"
+        },
+        "ipsec_sad_entry_del": {
+            "reply": "ipsec_sad_entry_del_reply"
         },
         "ipsec_tunnel_protect_update": {
             "reply": "ipsec_tunnel_protect_update_reply"
@@ -3670,7 +3938,7 @@
         }
     },
     "options": {
-        "version": "5.0.1"
+        "version": "5.0.2"
     },
     "aliases": {
         "ip4_address": {
@@ -3694,7 +3962,7 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0x196d64b0",
+    "vl_api_version": "0xd8d93805",
     "imports": [
         "vnet/ipsec/ipsec_types.api",
         "vnet/ip/ip_types.api",
@@ -3708,6 +3976,389 @@
         "vnet/interface_types.api",
         "vnet/ip/ip_types.api"
     ],
-    "counters": [],
-    "paths": []
+    "counters": [
+        {
+            "name": "esp_decrypt",
+            "elements": [
+                {
+                    "name": "rx_pkts",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ESP pkts received"
+                },
+                {
+                    "name": "rx_post_pkts",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ESP-POST pkts received"
+                },
+                {
+                    "name": "handoff",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "hand-off"
+                },
+                {
+                    "name": "decryption_failed",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ESP decryption failed"
+                },
+                {
+                    "name": "integ_error",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "integrity check failed"
+                },
+                {
+                    "name": "crypto_engine_error",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "crypto engine error (packet dropped)"
+                },
+                {
+                    "name": "replay",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "SA replayed packet"
+                },
+                {
+                    "name": "runt",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "undersized packet"
+                },
+                {
+                    "name": "no_buffers",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no buffers (packet dropped)"
+                },
+                {
+                    "name": "oversized_header",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "buffer with oversized header (dropped)"
+                },
+                {
+                    "name": "no_tail_space",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no enough buffer tail space (dropped)"
+                },
+                {
+                    "name": "tun_no_proto",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no tunnel protocol"
+                },
+                {
+                    "name": "unsup_payload",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "unsupported payload"
+                }
+            ]
+        },
+        {
+            "name": "esp_encrypt",
+            "elements": [
+                {
+                    "name": "rx_pkts",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ESP pkts received"
+                },
+                {
+                    "name": "post_rx_pkts",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ESP-post pkts received"
+                },
+                {
+                    "name": "handoff",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "Hand-off"
+                },
+                {
+                    "name": "seq_cycled",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "sequence number cycled (packet dropped)"
+                },
+                {
+                    "name": "crypto_engine_error",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "crypto engine error (packet dropped)"
+                },
+                {
+                    "name": "crypto_queue_full",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "crypto queue full (packet dropped)"
+                },
+                {
+                    "name": "no_buffers",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no buffers (packet dropped)"
+                },
+                {
+                    "name": "no_protection",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no protecting SA (packet dropped)"
+                },
+                {
+                    "name": "no_encryption",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no Encrypting SA (packet dropped)"
+                }
+            ]
+        },
+        {
+            "name": "ah_encrypt",
+            "elements": [
+                {
+                    "name": "rx_pkts",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "AH pkts received"
+                },
+                {
+                    "name": "crypto_engine_error",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "crypto engine error (packet dropped)"
+                },
+                {
+                    "name": "seq_cycled",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "sequence number cycled (packet dropped)"
+                }
+            ]
+        },
+        {
+            "name": "ah_decrypt",
+            "elements": [
+                {
+                    "name": "rx_pkts",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "AH pkts received"
+                },
+                {
+                    "name": "decryption_failed",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "AH decryption failed"
+                },
+                {
+                    "name": "integ_error",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "Integrity check failed"
+                },
+                {
+                    "name": "no_tail_space",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "not enough buffer tail space (dropped)"
+                },
+                {
+                    "name": "drop_fragments",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "IP fragments drop"
+                },
+                {
+                    "name": "replay",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "SA replayed packet"
+                }
+            ]
+        },
+        {
+            "name": "ipsec_tun",
+            "elements": [
+                {
+                    "name": "rx",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "good packets received"
+                },
+                {
+                    "name": "disabled",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "ipsec packets received on disabled interface"
+                },
+                {
+                    "name": "no_tunnel",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no matching tunnel"
+                },
+                {
+                    "name": "tunnel_mismatch",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "SPI-tunnel mismatch"
+                },
+                {
+                    "name": "nat_keepalive",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "NAT Keepalive"
+                },
+                {
+                    "name": "too_short",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "Too Short"
+                },
+                {
+                    "name": "spi_0",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "SPI 0"
+                }
+            ]
+        }
+    ],
+    "paths": [
+        [
+            {
+                "path": "/err/esp4-encrypt",
+                "counter": "esp_encrypt"
+            },
+            {
+                "path": "/err/esp4-encrypt-post",
+                "counter": "esp_encrypt"
+            },
+            {
+                "path": "/err/esp4-encrypt-tun",
+                "counter": "esp_encrypt"
+            },
+            {
+                "path": "/err/esp4-encrypt-tun-post",
+                "counter": "esp_encrypt"
+            },
+            {
+                "path": "/err/esp6-encrypt",
+                "counter": "esp_encrypt"
+            },
+            {
+                "path": "/err/esp6-encrypt-post",
+                "counter": "esp_encrypt"
+            },
+            {
+                "path": "/err/esp6-encrypt-tun",
+                "counter": "esp_encrypt"
+            },
+            {
+                "path": "/err/esp6-encrypt-tun-post",
+                "counter": "esp_encrypt"
+            },
+            {
+                "path": "/err/esp-mpls-encrypt-tun",
+                "counter": "esp_encrypt"
+            },
+            {
+                "path": "/err/esp-mpls-encrypt-tun-post",
+                "counter": "esp_encrypt"
+            },
+            {
+                "path": "/err/esp4-decrypt",
+                "counter": "esp_decrypt"
+            },
+            {
+                "path": "/err/esp4-decrypt-post",
+                "counter": "esp_decrypt"
+            },
+            {
+                "path": "/err/esp4-decrypt-tun",
+                "counter": "esp_decrypt"
+            },
+            {
+                "path": "/err/esp4-decrypt-tun-post",
+                "counter": "esp_decrypt"
+            },
+            {
+                "path": "/err/esp6-decrypt",
+                "counter": "esp_decrypt"
+            },
+            {
+                "path": "/err/esp6-decrypt-post",
+                "counter": "esp_decrypt"
+            },
+            {
+                "path": "/err/esp6-decrypt-tun",
+                "counter": "esp_decrypt"
+            },
+            {
+                "path": "/err/esp6-decrypt-tun-post",
+                "counter": "esp_decrypt"
+            },
+            {
+                "path": "/err/ah4-encrypt",
+                "counter": "ah_encrypt"
+            },
+            {
+                "path": "/err/ah6-encrypt",
+                "counter": "ah_encrypt"
+            },
+            {
+                "path": "/err/ipsec4-tun-input",
+                "counter": "ipsec_tun"
+            },
+            {
+                "path": "/err/ipsec6-tun-input",
+                "counter": "ipsec_tun"
+            }
+        ]
+    ]
 }

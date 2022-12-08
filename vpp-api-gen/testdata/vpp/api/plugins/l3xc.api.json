@@ -220,7 +220,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -242,7 +243,8 @@
                 "minor"
             ],
             {
-                "crc": "0x9b32cf86"
+                "crc": "0x9b32cf86",
+                "options": {}
             }
         ],
         [
@@ -264,7 +266,8 @@
                 "l3xc"
             ],
             {
-                "crc": "0x0787b1d3"
+                "crc": "0xe96aabdf",
+                "options": {}
             }
         ],
         [
@@ -286,7 +289,8 @@
                 "stats_index"
             ],
             {
-                "crc": "0x1992deab"
+                "crc": "0x1992deab",
+                "options": {}
             }
         ],
         [
@@ -312,7 +316,8 @@
                 "is_ip6"
             ],
             {
-                "crc": "0xe7dbef91"
+                "crc": "0xe7dbef91",
+                "options": {}
             }
         ],
         [
@@ -330,7 +335,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -352,7 +358,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -370,7 +377,8 @@
                 "l3xc"
             ],
             {
-                "crc": "0xd4f69627"
+                "crc": "0xbc5bf852",
+                "options": {}
             }
         ]
     ],

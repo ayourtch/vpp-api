@@ -2,7 +2,7 @@
     "types": [],
     "messages": [
         [
-            "cop_interface_enable_disable",
+            "mss_clamp_enable_disable",
             [
                 "u16",
                 "_vl_msg_id"
@@ -20,15 +20,28 @@
                 "sw_if_index"
             ],
             [
-                "bool",
-                "enable_disable"
+                "u16",
+                "ipv4_mss"
+            ],
+            [
+                "u16",
+                "ipv6_mss"
+            ],
+            [
+                "vl_api_mss_clamp_dir_t",
+                "ipv4_direction"
+            ],
+            [
+                "vl_api_mss_clamp_dir_t",
+                "ipv6_direction"
             ],
             {
-                "crc": "0x5501adee"
+                "crc": "0xd31b44e3",
+                "options": {}
             }
         ],
         [
-            "cop_interface_enable_disable_reply",
+            "mss_clamp_enable_disable_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -42,11 +55,12 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
-            "cop_whitelist_enable_disable",
+            "mss_clamp_get",
             [
                 "u16",
                 "_vl_msg_id"
@@ -60,31 +74,20 @@
                 "context"
             ],
             [
+                "u32",
+                "cursor"
+            ],
+            [
                 "vl_api_interface_index_t",
                 "sw_if_index"
             ],
-            [
-                "u32",
-                "fib_id"
-            ],
-            [
-                "bool",
-                "ip4"
-            ],
-            [
-                "bool",
-                "ip6"
-            ],
-            [
-                "bool",
-                "default_cop"
-            ],
             {
-                "crc": "0xdebe13ea"
+                "crc": "0x47250981",
+                "options": {}
             }
         ],
         [
-            "cop_whitelist_enable_disable_reply",
+            "mss_clamp_get_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -97,8 +100,48 @@
                 "i32",
                 "retval"
             ],
+            [
+                "u32",
+                "cursor"
+            ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0x53b48f5d",
+                "options": {}
+            }
+        ],
+        [
+            "mss_clamp_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "u16",
+                "ipv4_mss"
+            ],
+            [
+                "u16",
+                "ipv6_mss"
+            ],
+            [
+                "vl_api_mss_clamp_dir_t",
+                "ipv4_direction"
+            ],
+            [
+                "vl_api_mss_clamp_dir_t",
+                "ipv6_direction"
+            ],
+            {
+                "crc": "0xd3a4de61",
+                "options": {}
             }
         ]
     ],
@@ -267,27 +310,80 @@
             }
         ]
     ],
-    "enumflags": [],
+    "enumflags": [
+        [
+            "mss_clamp_dir",
+            [
+                "MSS_CLAMP_DIR_NONE",
+                0
+            ],
+            [
+                "MSS_CLAMP_DIR_RX",
+                1
+            ],
+            [
+                "MSS_CLAMP_DIR_TX",
+                2
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ]
+    ],
     "services": {
-        "cop_interface_enable_disable": {
-            "reply": "cop_interface_enable_disable_reply"
+        "mss_clamp_get": {
+            "reply": "mss_clamp_get_reply",
+            "stream": true,
+            "stream_msg": "mss_clamp_details"
         },
-        "cop_whitelist_enable_disable": {
-            "reply": "cop_whitelist_enable_disable_reply"
+        "mss_clamp_enable_disable": {
+            "reply": "mss_clamp_enable_disable_reply"
         }
     },
     "options": {
-        "version": "1.0.1"
+        "version": "1.0.0"
     },
     "aliases": {
         "interface_index": {
             "type": "u32"
         }
     },
-    "vl_api_version": "0x9785cf9f",
+    "vl_api_version": "0xea8186c0",
     "imports": [
         "vnet/interface_types.api"
     ],
-    "counters": [],
-    "paths": []
+    "counters": [
+        {
+            "name": "mss_clamp",
+            "elements": [
+                {
+                    "name": "clamped",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "packets clamped"
+                }
+            ]
+        }
+    ],
+    "paths": [
+        [
+            {
+                "path": "/err/tcp-mss-clamping-ip4-in",
+                "counter": "mss-clamp"
+            },
+            {
+                "path": "/err/tcp-mss-clamping-ip4-out",
+                "counter": "mss-clamp"
+            },
+            {
+                "path": "/err/tcp-mss-clamping-ip6-in",
+                "counter": "mss-clamp"
+            },
+            {
+                "path": "/err/tcp-mss-clamping-ip6-out",
+                "counter": "mss-clamp"
+            }
+        ]
+    ]
 }

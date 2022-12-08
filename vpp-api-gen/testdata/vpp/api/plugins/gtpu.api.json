@@ -145,7 +145,10 @@
                 "tteid"
             ],
             {
-                "crc": "0x9a9c0426"
+                "crc": "0xca983a2b",
+                "options": {
+                    "vat_help": "src <ip-addr> {dst <ip-addr> | group <mcast-ip-addr> {<intfc> | mcast_sw_if_index <nn>}} teid <nn> [tteid <nn>] [encap-vrf-id <nn>] [decap-next <l2|nn>] [del]"
+                }
             }
         ],
         [
@@ -167,7 +170,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5383d31f"
+                "crc": "0x5383d31f",
+                "options": {}
             }
         ],
         [
@@ -201,7 +205,10 @@
                 "tteid"
             ],
             {
-                "crc": "0x8a2db108"
+                "crc": "0x79f33816",
+                "options": {
+                    "vat_help": "dst <ip-addr> teid <nn> tteid <nn> [encap-vrf-id <nn>]"
+                }
             }
         ],
         [
@@ -219,7 +226,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "dst <ip-addr> teid <nn> tteid <nn> [encap-vrf-id <nn>]"
+                }
             }
         ],
         [
@@ -241,7 +251,10 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {
+                    "vat_help": "[<intfc> | sw_if_index <nn>]"
+                }
             }
         ],
         [
@@ -287,7 +300,8 @@
                 "tteid"
             ],
             {
-                "crc": "0x4535cf95"
+                "crc": "0x27f434ae",
+                "options": {}
             }
         ],
         [
@@ -317,7 +331,10 @@
                 "enable"
             ],
             {
-                "crc": "0x65247409"
+                "crc": "0x65247409",
+                "options": {
+                    "vat_help": "<intfc> | sw_if_index <id> [ip4 | ip6] [enable | disable]"
+                }
             }
         ],
         [
@@ -335,7 +352,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<intfc> | sw_if_index <id> [ip4 | ip6] [enable | disable]"
+                }
             }
         ],
         [
@@ -365,7 +385,10 @@
                 "enable"
             ],
             {
-                "crc": "0xf0b08786"
+                "crc": "0xf0b08786",
+                "options": {
+                    "vat_help": "hw <intfc> rx <tunnel-name> [del]"
+                }
             }
         ],
         [
@@ -383,7 +406,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "hw <intfc> rx <tunnel-name> [del]"
+                }
             }
         ]
     ],

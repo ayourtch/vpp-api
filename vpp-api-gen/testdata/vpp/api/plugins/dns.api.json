@@ -20,7 +20,10 @@
                 "enable"
             ],
             {
-                "crc": "0x8050327d"
+                "crc": "0x8050327d",
+                "options": {
+                    "vat_help": "[enable][disable]"
+                }
             }
         ],
         [
@@ -38,7 +41,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "[enable][disable]"
+                }
             }
         ],
         [
@@ -69,7 +75,10 @@
                 16
             ],
             {
-                "crc": "0x3bb05d8c"
+                "crc": "0x3bb05d8c",
+                "options": {
+                    "vat_help": "<ip-address> [del]"
+                }
             }
         ],
         [
@@ -87,7 +96,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "vat_help": "<ip-address> [del]"
+                }
             }
         ],
         [
@@ -110,7 +122,10 @@
                 256
             ],
             {
-                "crc": "0xc6566676"
+                "crc": "0xc6566676",
+                "options": {
+                    "vat_help": "<hostname>"
+                }
             }
         ],
         [
@@ -146,7 +161,8 @@
                 16
             ],
             {
-                "crc": "0xc2d758c3"
+                "crc": "0xc2d758c3",
+                "options": {}
             }
         ],
         [
@@ -173,7 +189,10 @@
                 16
             ],
             {
-                "crc": "0xae96a1a3"
+                "crc": "0xae96a1a3",
+                "options": {
+                    "vat_help": "<ip4|ip6>"
+                }
             }
         ],
         [
@@ -196,7 +215,8 @@
                 256
             ],
             {
-                "crc": "0x49ed78d6"
+                "crc": "0x49ed78d6",
+                "options": {}
             }
         ]
     ],

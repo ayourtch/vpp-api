@@ -153,7 +153,8 @@
                 "group"
             ],
             {
-                "crc": "0x3f93a51a"
+                "crc": "0x19a49f1e",
+                "options": {}
             }
         ],
         [
@@ -171,7 +172,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -201,7 +203,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xb1edfb96"
+                "crc": "0xb1edfb96",
+                "options": {}
             }
         ],
         [
@@ -219,7 +222,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -249,7 +253,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x0b9be9ce"
+                "crc": "0x0b9be9ce",
+                "options": {}
             }
         ],
         [
@@ -267,7 +272,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -297,7 +303,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x1a9ec24a"
+                "crc": "0x1a9ec24a",
+                "options": {}
             }
         ],
         [
@@ -315,7 +322,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -337,7 +345,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -363,7 +372,8 @@
                 "gaddr"
             ],
             {
-                "crc": "0x52f12a89"
+                "crc": "0x38f09929",
+                "options": {}
             }
         ],
         [
@@ -385,7 +395,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -403,7 +414,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -429,7 +441,8 @@
                 "pid"
             ],
             {
-                "crc": "0xcfaccc1f"
+                "crc": "0xcfaccc1f",
+                "options": {}
             }
         ],
         [
@@ -447,7 +460,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -473,7 +487,8 @@
                 "gaddr"
             ],
             {
-                "crc": "0xd7696eaf"
+                "crc": "0x85fe93ec",
+                "options": {}
             }
         ],
         [
@@ -495,7 +510,8 @@
                 "gp"
             ],
             {
-                "crc": "0xd4f20ac5"
+                "crc": "0x5b14a5ce",
+                "options": {}
             }
         ],
         [
@@ -513,7 +529,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -531,7 +548,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -549,7 +567,8 @@
                 "gp"
             ],
             {
-                "crc": "0xc3b3c526"
+                "crc": "0x259ccd81",
+                "options": {}
             }
         ]
     ],

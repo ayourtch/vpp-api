@@ -394,7 +394,8 @@
                 "mb_prefix"
             ],
             {
-                "crc": "0x48249a27"
+                "crc": "0xc7533b32",
+                "options": {}
             }
         ],
         [
@@ -412,7 +413,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -441,7 +443,8 @@
                 "mt_tunnel"
             ],
             {
-                "crc": "0xe57ce61d"
+                "crc": "0x44350ac1",
+                "options": {}
             }
         ],
         [
@@ -467,7 +470,8 @@
                 "tunnel_index"
             ],
             {
-                "crc": "0xafb01472"
+                "crc": "0xafb01472",
+                "options": {}
             }
         ],
         [
@@ -492,7 +496,8 @@
                 }
             ],
             {
-                "crc": "0xf9e6675e"
+                "crc": "0xf9e6675e",
+                "options": {}
             }
         ],
         [
@@ -510,7 +515,8 @@
                 "mt_tunnel"
             ],
             {
-                "crc": "0xf3c0928e"
+                "crc": "0x57118ae3",
+                "options": {}
             }
         ],
         [
@@ -539,7 +545,8 @@
                 "mt_table"
             ],
             {
-                "crc": "0x57817512"
+                "crc": "0x57817512",
+                "options": {}
             }
         ],
         [
@@ -557,7 +564,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -575,7 +583,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -593,7 +602,8 @@
                 "mt_table"
             ],
             {
-                "crc": "0xf03ecdc8"
+                "crc": "0xf03ecdc8",
+                "options": {}
             }
         ],
         [
@@ -623,7 +633,8 @@
                 "mr_route"
             ],
             {
-                "crc": "0x343cff54"
+                "crc": "0x8e1d1e07",
+                "options": {}
             }
         ],
         [
@@ -645,7 +656,8 @@
                 "stats_index"
             ],
             {
-                "crc": "0x1992deab"
+                "crc": "0x1992deab",
+                "options": {}
             }
         ],
         [
@@ -667,7 +679,8 @@
                 "table"
             ],
             {
-                "crc": "0x935fdefa"
+                "crc": "0x935fdefa",
+                "options": {}
             }
         ],
         [
@@ -685,7 +698,8 @@
                 "mr_route"
             ],
             {
-                "crc": "0xd0ac384c"
+                "crc": "0x9b5043dc",
+                "options": {}
             }
         ],
         [
@@ -714,7 +728,8 @@
                 }
             ],
             {
-                "crc": "0xae6cfcfb"
+                "crc": "0xae6cfcfb",
+                "options": {}
             }
         ],
         [
@@ -732,7 +747,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
@@ -1504,6 +1520,144 @@
         "vnet/ip/ip_types.api",
         "vnet/interface_types.api"
     ],
-    "counters": [],
-    "paths": []
+    "counters": [
+        {
+            "name": "mpls",
+            "elements": [
+                {
+                    "name": "none",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "no error"
+                },
+                {
+                    "name": "unknown_protocol",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "unknown protocol"
+                },
+                {
+                    "name": "unsupported_version",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "unsupported version"
+                },
+                {
+                    "name": "pkts_decap",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "MPLS input packets decapsulated"
+                },
+                {
+                    "name": "pkts_encap",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "MPLS output packets encapsulated"
+                },
+                {
+                    "name": "pkts_need_frag",
+                    "severity": "info",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "MPLS output packets needs fragmentation"
+                },
+                {
+                    "name": "no_label",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "MPLS no label for fib/dst"
+                },
+                {
+                    "name": "ttl_expired",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "MPLS ttl expired"
+                },
+                {
+                    "name": "s_not_set",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "MPLS s-bit not set"
+                },
+                {
+                    "name": "bad_label",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "invalid FIB id in label"
+                },
+                {
+                    "name": "not_ip4",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "non-ip4 packets dropped"
+                },
+                {
+                    "name": "disallowed_fib",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "disallowed FIB id"
+                },
+                {
+                    "name": "not_enabled",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "MPLS not enabled"
+                },
+                {
+                    "name": "drop",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "MPLS DROP DPO"
+                },
+                {
+                    "name": "punt",
+                    "severity": "error",
+                    "type": "counter64",
+                    "units": "packets",
+                    "description": "MPLS PUNT DPO"
+                }
+            ]
+        }
+    ],
+    "paths": [
+        [
+            {
+                "path": "/err/mpls-input",
+                "counter": "mpls"
+            },
+            {
+                "path": "/err/mpls-output",
+                "counter": "mpls"
+            },
+            {
+                "path": "/err/mpls-lookup",
+                "counter": "mpls"
+            },
+            {
+                "path": "/err/mpls-midchain",
+                "counter": "mpls"
+            },
+            {
+                "path": "/err/mpls-adj-incomplete",
+                "counter": "mpls"
+            },
+            {
+                "path": "/err/mpls-frag",
+                "counter": "mpls"
+            }
+        ]
+    ]
 }

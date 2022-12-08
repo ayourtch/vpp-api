@@ -24,271 +24,9 @@
                 "build_metadata",
                 17
             ]
-        ],
-        [
-            "thread_data",
-            [
-                "u32",
-                "id"
-            ],
-            [
-                "string",
-                "name",
-                64
-            ],
-            [
-                "string",
-                "type",
-                64
-            ],
-            [
-                "u32",
-                "pid"
-            ],
-            [
-                "u32",
-                "cpu_id"
-            ],
-            [
-                "u32",
-                "core"
-            ],
-            [
-                "u32",
-                "cpu_socket"
-            ]
         ]
     ],
     "messages": [
-        [
-            "control_ping",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            {
-                "crc": "0x51077d14"
-            }
-        ],
-        [
-            "control_ping_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "vpe_pid"
-            ],
-            {
-                "crc": "0xf6b0b8ca"
-            }
-        ],
-        [
-            "cli",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "u64",
-                "cmd_in_shmem"
-            ],
-            {
-                "crc": "0x23bfbfff"
-            }
-        ],
-        [
-            "cli_inband",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "string",
-                "cmd",
-                0
-            ],
-            {
-                "crc": "0xf8377302"
-            }
-        ],
-        [
-            "cli_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            [
-                "u64",
-                "reply_in_shmem"
-            ],
-            {
-                "crc": "0x06d68297"
-            }
-        ],
-        [
-            "cli_inband_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            [
-                "string",
-                "reply",
-                0
-            ],
-            {
-                "crc": "0x05879051"
-            }
-        ],
-        [
-            "get_node_index",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "string",
-                "node_name",
-                64
-            ],
-            {
-                "crc": "0xf1984c64"
-            }
-        ],
-        [
-            "get_node_index_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            [
-                "u32",
-                "node_index"
-            ],
-            {
-                "crc": "0xa8600b89"
-            }
-        ],
-        [
-            "add_node_next",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "string",
-                "node_name",
-                64
-            ],
-            [
-                "string",
-                "next_name",
-                64
-            ],
-            {
-                "crc": "0x2457116d"
-            }
-        ],
-        [
-            "add_node_next_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            [
-                "u32",
-                "next_index"
-            ],
-            {
-                "crc": "0x2ed75f32"
-            }
-        ],
         [
             "show_version",
             [
@@ -304,7 +42,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -342,11 +81,12 @@
                 256
             ],
             {
-                "crc": "0xc919bde1"
+                "crc": "0xc919bde1",
+                "options": {}
             }
         ],
         [
-            "show_threads",
+            "show_vpe_system_time",
             [
                 "u16",
                 "_vl_msg_id"
@@ -360,11 +100,12 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
-            "show_threads_reply",
+            "show_vpe_system_time_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -378,107 +119,12 @@
                 "retval"
             ],
             [
-                "u32",
-                "count"
-            ],
-            [
-                "vl_api_thread_data_t",
-                "thread_data",
-                0,
-                "count"
+                "vl_api_timestamp_t",
+                "vpe_system_time"
             ],
             {
-                "crc": "0xefd78e83"
-            }
-        ],
-        [
-            "get_node_graph",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            {
-                "crc": "0x51077d14"
-            }
-        ],
-        [
-            "get_node_graph_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            [
-                "u64",
-                "reply_in_shmem"
-            ],
-            {
-                "crc": "0x06d68297"
-            }
-        ],
-        [
-            "get_next_index",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "string",
-                "node_name",
-                64
-            ],
-            [
-                "string",
-                "next_name",
-                64
-            ],
-            {
-                "crc": "0x2457116d"
-            }
-        ],
-        [
-            "get_next_index_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            [
-                "u32",
-                "next_index"
-            ],
-            {
-                "crc": "0x2ed75f32"
+                "crc": "0x7ffd8193",
+                "options": {}
             }
         ],
         [
@@ -500,7 +146,8 @@
                 "start_timestamp"
             ],
             {
-                "crc": "0x6ab31753"
+                "crc": "0x6ab31753",
+                "options": {}
             }
         ],
         [
@@ -532,141 +179,8 @@
                 256
             ],
             {
-                "crc": "0x255827a1"
-            }
-        ],
-        [
-            "show_vpe_system_time",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            {
-                "crc": "0x51077d14"
-            }
-        ],
-        [
-            "show_vpe_system_time_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "i32",
-                "retval"
-            ],
-            [
-                "vl_api_timestamp_t",
-                "vpe_system_time"
-            ],
-            {
-                "crc": "0x7ffd8193"
-            }
-        ],
-        [
-            "get_f64_endian_value",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "f64",
-                "f64_one",
-                {
-                    "default": 1.0
-                }
-            ],
-            {
-                "crc": "0x809fcd44"
-            }
-        ],
-        [
-            "get_f64_endian_value_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "u32",
-                "retval"
-            ],
-            [
-                "f64",
-                "f64_one_result"
-            ],
-            {
-                "crc": "0x7e02e404"
-            }
-        ],
-        [
-            "get_f64_increment_by_one",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "f64",
-                "f64_value",
-                {
-                    "default": 1.0
-                }
-            ],
-            {
-                "crc": "0xb64f027e"
-            }
-        ],
-        [
-            "get_f64_increment_by_one_reply",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "u32",
-                "retval"
-            ],
-            [
-                "f64",
-                "f64_value"
-            ],
-            {
-                "crc": "0xd25dbaa3"
+                "crc": "0x03d61cc0",
+                "options": {}
             }
         ]
     ],
@@ -717,49 +231,19 @@
     ],
     "enumflags": [],
     "services": {
-        "control_ping": {
-            "reply": "control_ping_reply"
-        },
-        "cli": {
-            "reply": "cli_reply"
-        },
-        "cli_inband": {
-            "reply": "cli_inband_reply"
-        },
-        "get_node_index": {
-            "reply": "get_node_index_reply"
-        },
-        "add_node_next": {
-            "reply": "add_node_next_reply"
-        },
         "show_version": {
             "reply": "show_version_reply"
-        },
-        "show_threads": {
-            "reply": "show_threads_reply"
-        },
-        "get_node_graph": {
-            "reply": "get_node_graph_reply"
-        },
-        "get_next_index": {
-            "reply": "get_next_index_reply"
-        },
-        "log_dump": {
-            "reply": "log_details",
-            "stream": true
         },
         "show_vpe_system_time": {
             "reply": "show_vpe_system_time_reply"
         },
-        "get_f64_endian_value": {
-            "reply": "get_f64_endian_value_reply"
-        },
-        "get_f64_increment_by_one": {
-            "reply": "get_f64_increment_by_one_reply"
+        "log_dump": {
+            "reply": "log_details",
+            "stream": true
         }
     },
     "options": {
-        "version": "1.6.1"
+        "version": "1.7.0"
     },
     "aliases": {
         "timestamp": {
@@ -769,7 +253,7 @@
             "type": "f64"
         }
     },
-    "vl_api_version": "0x40364e00",
+    "vl_api_version": "0xbbfa7484",
     "imports": [
         "vpp/api/vpe_types.api"
     ],

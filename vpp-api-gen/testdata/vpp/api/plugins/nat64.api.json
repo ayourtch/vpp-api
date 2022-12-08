@@ -152,7 +152,10 @@
                 "enable"
             ],
             {
-                "crc": "0x45948b90"
+                "crc": "0x45948b90",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -170,7 +173,10 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {
+                    "status": "in_progress"
+                }
             }
         ],
         [
@@ -204,7 +210,8 @@
                 "icmp"
             ],
             {
-                "crc": "0xd4746b16"
+                "crc": "0xd4746b16",
+                "options": {}
             }
         ],
         [
@@ -222,7 +229,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -240,7 +248,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -274,7 +283,8 @@
                 "icmp"
             ],
             {
-                "crc": "0x3c4df4e1"
+                "crc": "0x3c4df4e1",
+                "options": {}
             }
         ],
         [
@@ -308,7 +318,8 @@
                 "is_add"
             ],
             {
-                "crc": "0x21234ef3"
+                "crc": "0xa3b944e3",
+                "options": {}
             }
         ],
         [
@@ -326,7 +337,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -344,7 +356,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -366,7 +379,8 @@
                 "vrf_id"
             ],
             {
-                "crc": "0x9bb99cdb"
+                "crc": "0x9bb99cdb",
+                "options": {}
             }
         ],
         [
@@ -396,7 +410,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0xf3699b83"
+                "crc": "0xf3699b83",
+                "options": {}
             }
         ],
         [
@@ -414,7 +429,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -432,7 +448,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -454,7 +471,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x5d286289"
+                "crc": "0x5d286289",
+                "options": {}
             }
         ],
         [
@@ -500,7 +518,8 @@
                 "is_add"
             ],
             {
-                "crc": "0x90fae58a"
+                "crc": "0x1c404de5",
+                "options": {}
             }
         ],
         [
@@ -518,7 +537,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -540,7 +560,8 @@
                 "proto"
             ],
             {
-                "crc": "0xcfcb6b75"
+                "crc": "0xcfcb6b75",
+                "options": {}
             }
         ],
         [
@@ -586,7 +607,8 @@
                 "ses_num"
             ],
             {
-                "crc": "0x62c8541d"
+                "crc": "0x43bc3ddf",
+                "options": {}
             }
         ],
         [
@@ -608,7 +630,8 @@
                 "proto"
             ],
             {
-                "crc": "0xcfcb6b75"
+                "crc": "0xcfcb6b75",
+                "options": {}
             }
         ],
         [
@@ -658,7 +681,8 @@
                 "proto"
             ],
             {
-                "crc": "0xc770d620"
+                "crc": "0xdd3361ed",
+                "options": {}
             }
         ],
         [
@@ -688,7 +712,8 @@
                 "is_add"
             ],
             {
-                "crc": "0x727b2f4c"
+                "crc": "0x727b2f4c",
+                "options": {}
             }
         ],
         [
@@ -706,7 +731,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ],
         [
@@ -724,7 +750,8 @@
                 "context"
             ],
             {
-                "crc": "0x51077d14"
+                "crc": "0x51077d14",
+                "options": {}
             }
         ],
         [
@@ -746,7 +773,8 @@
                 "vrf_id"
             ],
             {
-                "crc": "0x20568de3"
+                "crc": "0x20568de3",
+                "options": {}
             }
         ],
         [
@@ -772,7 +800,8 @@
                 "sw_if_index"
             ],
             {
-                "crc": "0x47d6e753"
+                "crc": "0x47d6e753",
+                "options": {}
             }
         ],
         [
@@ -790,7 +819,8 @@
                 "retval"
             ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0xe8d4e804",
+                "options": {}
             }
         ]
     ],
