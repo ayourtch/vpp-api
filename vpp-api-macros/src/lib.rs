@@ -85,6 +85,20 @@ pub fn derive_message(input: proc_macro::TokenStream) -> proc_macro::TokenStream
     };
     expanded.into()
 }
+
+#[proc_macro_derive(VppMessageRequest, attributes(message_name_and_crc))]
+pub fn derive_message_request(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
+    let out = derive_message(input);
+    out
+}
+
+#[proc_macro_derive(VppMessageReply, attributes(message_name_and_crc))]
+pub fn derive_message_reply(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
+    let out = derive_message(input);
+    out
+}
+
+
 #[proc_macro_derive(VppUnionIdent, attributes(types))]
 pub fn derive_unionident(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let input = parse_macro_input!(input as DeriveInput);

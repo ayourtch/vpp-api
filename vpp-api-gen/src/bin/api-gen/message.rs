@@ -151,10 +151,12 @@ impl VppJsApiMessage {
 
         let mtype = self.get_message_type(file);
         if let Err(e) = mtype {
-            panic!(
+
+            eprintln!(
                 "Could not determine message type for message {}, error: {:?}",
                 self.name, e
             );
+            return "".to_string();
         }
         let mtype = mtype.unwrap();
 
