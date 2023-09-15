@@ -18,9 +18,9 @@ use std::str::Utf8Error;
 use typenum::{U10, U256, U32, U64};
 
 #[derive(Clone, Default)]
-pub struct FixedSizeString<N: ArrayLength<u8>>(GenericArray<u8, N>);
+pub struct FixedSizeString<N: ArrayLength>(GenericArray<u8, N>);
 
-impl<N: ArrayLength<u8>> fmt::Debug for FixedSizeString<N> {
+impl<N: ArrayLength> fmt::Debug for FixedSizeString<N> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let v = &self.0;
         let val_str = match std::str::from_utf8(v) {
@@ -31,7 +31,7 @@ impl<N: ArrayLength<u8>> fmt::Debug for FixedSizeString<N> {
     }
 }
 
-impl<N: ArrayLength<u8>> TryFrom<&str> for FixedSizeString<N> {
+impl<N: ArrayLength> TryFrom<&str> for FixedSizeString<N> {
     type Error = String;
 
     fn try_from(value: &str) -> Result<Self, Self::Error> {
@@ -56,7 +56,7 @@ impl<N: ArrayLength<u8>> TryFrom<&str> for FixedSizeString<N> {
 
 impl<N> FixedSizeString<N>
 where
-    N: ArrayLength<u8>,
+    N: ArrayLength,
 {
     pub fn equals_str(&self, compare_to: &str) -> bool {
         let v = &self.0;
@@ -71,7 +71,7 @@ where
 
 impl<N> TryFrom<FixedSizeString<N>> for String
 where
-    N: ArrayLength<u8>,
+    N: ArrayLength,
 {
     type Error = Utf8Error;
 
@@ -82,7 +82,7 @@ where
     }
 }
 
-impl<N: ArrayLength<u8>> Serialize for FixedSizeString<N> {
+impl<N: ArrayLength> Serialize for FixedSizeString<N> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
@@ -98,7 +98,7 @@ impl<N: ArrayLength<u8>> Serialize for FixedSizeString<N> {
     }
 }
 
-impl<'de, N: ArrayLength<u8>> Deserialize<'de> for FixedSizeString<N> {
+impl<'de, N: ArrayLength> Deserialize<'de> for FixedSizeString<N> {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
         D: Deserializer<'de>,
@@ -108,7 +108,7 @@ impl<'de, N: ArrayLength<u8>> Deserialize<'de> for FixedSizeString<N> {
         }
         impl<'de, N> Visitor<'de> for FixedSizeStringVisitor<N>
         where
-            N: ArrayLength<u8>,
+            N: ArrayLength,
         {
             type Value = FixedSizeString<N>;
             fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
@@ -278,17 +278,17 @@ impl<'de> Deserialize<'de> for F64 {
 }
 
 #[derive(Clone, Default, Deserialize)]
-#[serde(bound = "N: ArrayLength<T>, T: Deserialize<'de> + Default")]
-pub struct FixedSizeArray<T: Default + Debug, N: ArrayLength<T>>(pub GenericArray<T, N>);
+#[serde(bound = "N: ArrayLength, T: Deserialize<'de> + Default")]
+pub struct FixedSizeArray<T: Default + Debug, N: ArrayLength>(pub GenericArray<T, N>);
 
-impl<T: Debug + Default, N: ArrayLength<T>> fmt::Debug for FixedSizeArray<T, N> {
+impl<T: Debug + Default, N: ArrayLength> fmt::Debug for FixedSizeArray<T, N> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let v = &self.0;
         write!(f, "FixedSizeArray[{}]: [{:?}]", &N::to_u32(), &v)
     }
 }
 
-impl<T: Debug + Default + Clone, N: ArrayLength<T>> TryFrom<Vec<T>> for FixedSizeArray<T, N> {
+impl<T: Debug + Default + Clone, N: ArrayLength> TryFrom<Vec<T>> for FixedSizeArray<T, N> {
     type Error = String;
 
     fn try_from(value: Vec<T>) -> Result<Self, Self::Error> {
@@ -311,7 +311,7 @@ impl<T: Debug + Default + Clone, N: ArrayLength<T>> TryFrom<Vec<T>> for FixedSiz
     }
 }
 
-impl<T: Serialize + Default + Debug, N: ArrayLength<T>> Serialize for FixedSizeArray<T, N> {
+impl<T: Serialize + Default + Debug, N: ArrayLength> Serialize for FixedSizeArray<T, N> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
