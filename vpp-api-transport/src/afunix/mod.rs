@@ -49,9 +49,11 @@ pub struct Transport {
 impl Transport {
     pub fn new(path: &str) -> Self {
         let mut gs = GLOBAL.lock().unwrap();
+        /*
         if gs.created {
             panic!("One transport already created!");
         }
+        */
 
         // It's technically okay to have multiple transports for unix socket
         // The tests can make use of this ability to parallelize
