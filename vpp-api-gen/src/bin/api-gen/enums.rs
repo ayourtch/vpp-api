@@ -138,6 +138,10 @@ impl VppJsApiEnum {
                 prev = next;
                 continue;
             } else {
+                if self.values.len() <= x + 1 {
+                    // avoid panic in the next if
+                    return false;
+                }
                 if isPowerOfTwo(&mut self.values[x + 1].value.clone()) {
                     return true;
                 }
