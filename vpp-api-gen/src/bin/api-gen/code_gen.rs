@@ -6,7 +6,6 @@
     non_camel_case_types,
     unused_imports
 )]
-use env_logger::filter;
 use lazy_static::lazy_static;
 use linked_hash_map::LinkedHashMap;
 use regex::Regex;
