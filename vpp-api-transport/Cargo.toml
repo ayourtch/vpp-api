@@ -23,6 +23,7 @@ serde = { version = "1.0", features = ["derive"] }
 bincode = "1.2.1"
 vpp-api-message = {path = "../vpp-api-message" }
 log = "0.4.14"
+socketpair = "0.15.0"
 
 [dev-dependencies]
 serde_json = "1.0"

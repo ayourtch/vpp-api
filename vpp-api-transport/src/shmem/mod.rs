@@ -6,21 +6,34 @@ use serde::{Deserialize, Serialize};
 use shmem_bindgen::*;
 use std::ffi::CString;
 
+use crate::VppApiBeaconing;
 use crate::VppApiTransport;
 
+use socketpair::{socketpair_stream, SocketpairStream};
 use std::collections::VecDeque;
+use std::io::{Read, Write};
+use std::os::unix::io::AsRawFd;
 use std::sync::{Arc, Mutex};
 
-#[derive(Debug, Default)]
+#[derive(Debug)]
+struct NotifySocketpair {
+    activator: SocketpairStream,
+    beacon: SocketpairStream,
+}
+
+#[derive(Debug)]
 struct GlobalState {
     created: bool,
     receive_buffer: VecDeque<u8>,
+    notify: Option<NotifySocketpair>,
 }
 
 lazy_static! {
     static ref GLOBAL: Arc<Mutex<GlobalState>> = {
         let gs = GlobalState {
-            ..Default::default()
+            created: false,
+            receive_buffer: VecDeque::new(),
+            notify: None,
         };
 
         Arc::new(Mutex::new(gs))
@@ -57,6 +70,9 @@ pub unsafe extern "C" fn shmem_default_cb(raw_data: *const u8, len: i32) {
     for d in data_slice {
         gs.receive_buffer.push_back(*d);
     }
+    if let Some(ref mut notify) = gs.notify {
+        writeln!(notify.activator, "");
+    }
 }
 
 #[no_mangle]
@@ -64,6 +80,7 @@ pub unsafe extern "C" fn vac_error_handler(_arg: *const u8, _msg: *const u8, _ms
     println!("Error: {} bytes of message", _msg_len);
 }
 
+#[derive(Debug)]
 pub struct Transport {
     connected: bool,
     nonblocking: bool,
@@ -100,11 +117,28 @@ impl Transport {
         }
         Ok(count)
     }
+
+    fn drain_notify_socket(&mut self) {
+        let mut gs = GLOBAL.lock().unwrap();
+        if let Some(ref mut notify) = gs.notify {
+            let mut buf: [u8; 1024] = [0; 1024];
+            notify.beacon.read(&mut buf);
+        }
+    }
+}
+
+impl Drop for Transport {
+    fn drop(&mut self) {
+        eprintln!("Dropping transport!");
+        let mut gs = GLOBAL.lock().unwrap();
+        gs.created = false;
+    }
 }
 
 impl std::io::Read for Transport {
     fn read(&mut self, buf: &mut [u8]) -> std::io::Result<usize> {
         let mut count = 0;
+        self.drain_notify_socket();
         while count < buf.len() {
             count = count + self.read_simple(&mut buf[count..])?;
         }
@@ -129,6 +163,8 @@ impl std::io::Write for Transport {
         Ok(())
     }
 }
+
+impl VppApiBeaconing for SocketpairStream {}
 
 impl VppApiTransport for Transport {
     fn connect(&mut self, name: &str, chroot_prefix: Option<&str>, rx_qlen: i32) -> Result<()> {
@@ -179,6 +215,23 @@ impl VppApiTransport for Transport {
     fn get_table_max_index(&mut self) -> u16 {
         0
     }
+
+    fn get_beacon_socket(&self) -> std::io::Result<Box<dyn VppApiBeaconing>> {
+        let mut gs = GLOBAL.lock().unwrap();
+        let res = if let Some(ref notify) = gs.notify {
+            notify.beacon.try_clone()
+        } else {
+            let (activator, beacon) = socketpair_stream()?;
+            let notify = NotifySocketpair { activator, beacon };
+            notify.beacon.try_clone()
+        };
+        let out: std::io::Result<Box<dyn VppApiBeaconing>> = match res {
+            Ok(r) => Ok(Box::new(r)),
+            Err(e) => Err(e),
+        };
+        out
+    }
+
     fn dump(&self) {
         let gs = GLOBAL.lock().unwrap();
         println!("Global state: {:?}", &gs);
