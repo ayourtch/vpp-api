@@ -11,8 +11,31 @@ pub fn parse_api_tree(opts: &Opts, root: &str, map: &mut LinkedHashMap<String, V
     if opts.verbose > 2 {
         println!("parse tree: {:?}", root);
     }
-    for entry in fs::read_dir(root).unwrap() {
-        let entry = entry.unwrap();
+
+    let mut entries = vec![];
+    for entry in fs::read_dir(root).expect("Could not read the directory") {
+        match entry {
+            Ok(ent) => entries.push(ent),
+            Err(e) => {
+                eprintln!("Error reading directory entry: {:?}", &e);
+            }
+        }
+    }
+    /*
+     * JSON definitions pull in all the dependent definitions
+     * into a self-sufficient file, thus creating effectively duplicate
+     * definitions.
+     *
+     * We apply heuristic of "The first seen user owns the definition",
+     * which means that we must first process the files that are likely
+     * to be the origin - thus "core" should go before "plugins".
+     *
+     * Admittedly lexicographic sort is a bit of a hack/overkill,
+     * but it does that part of the job very nicely.
+     */
+    entries.sort_by(|a,b| a.path().cmp(&b.path()));
+
+    for entry in &entries {
         let path = entry.path();
         if opts.verbose > 2 {
             println!("Entry: {:?}", &entry);
