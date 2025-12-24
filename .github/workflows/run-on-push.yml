@@ -32,6 +32,7 @@ jobs:
         sudo chmod 777 /dev/shm/vpe-api
         sudo chmod 777 /run/vpp/*.sock
     - name: Find libvppapiclient.so and print its location for checking
+      run: |
         sudo find / -name libvppapiclient.so -print
     - name: Build and test the code
       run: |
