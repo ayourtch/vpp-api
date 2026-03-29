@@ -35,6 +35,8 @@ jobs:
         echo "Changing permissions and testing that VPP is alive"
         sudo chmod o+w /run/vpp/api.sock
         sudo chmod o+w /run/vpp/cli.sock
+        sudo chmod 777 /dev/shm/global_vm
+        sudo chmod 777 /dev/shm/vpe-api
         vppctl show version
     - name: Find libvppapiclient.so and print its location for checking
       run: |
