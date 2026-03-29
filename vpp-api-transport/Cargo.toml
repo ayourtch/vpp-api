@@ -30,4 +30,4 @@ serde_yaml = "0.8"
 clap = { version = "3.0.0", features = [ "derive" ] }
 
 [build-dependencies]
-bindgen = "0.57.0"
+bindgen = "0.71"
