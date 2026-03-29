@@ -9,6 +9,8 @@ use std::fmt;
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct VppJsApiEnumInfo {
     pub enumtype: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub comment: Option<String>,
 }
 
 #[derive(Debug, Clone, Deserialize)]

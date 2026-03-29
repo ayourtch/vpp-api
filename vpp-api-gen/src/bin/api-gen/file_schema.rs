@@ -46,6 +46,8 @@ pub struct VppJsApiFile {
     pub imports: Vec<String>,
     pub counters: Vec<VppJsApiCounter>,
     pub paths: Vec<Vec<VppJsApiPath>>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub module: Option<String>,
 }
 
 impl VppJsApiFile {

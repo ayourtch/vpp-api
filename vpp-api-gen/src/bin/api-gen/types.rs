@@ -8,6 +8,24 @@ use linked_hash_map::LinkedHashMap;
 use serde::de::{self, Deserializer, SeqAccess, Visitor};
 use std::fmt;
 
+// Optional metadata that may appear at the end of a type/union definition array
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct VppJsApiTypeInfo {
+    #[serde(default)]
+    pub crc: Option<String>,
+    #[serde(default)]
+    pub comment: Option<String>,
+}
+
+// Helper enum for deserializing type elements which can be field defs or trailing metadata
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum VppJsApiTypeHelper {
+    Field(VppJsApiMessageFieldDef),
+    Info(VppJsApiTypeInfo),
+    Name(String),
+}
+
 // This holds the Type and Union Data
 #[derive(Debug, Clone)]
 pub struct VppJsApiType {
@@ -42,17 +60,27 @@ impl<'de> Visitor<'de> for VppJsApiTypeVisitor {
     where
         V: SeqAccess<'de>,
     {
-        let type_name: String = seq
-            .next_element()?
-            .ok_or_else(|| de::Error::invalid_length(0, &self))?;
+        let type_name: String =
+            if let Some(VppJsApiTypeHelper::Name(s)) = seq.next_element()? {
+                s
+            } else {
+                return Err(de::Error::invalid_length(0, &self));
+            };
         let mut fields: Vec<VppJsApiMessageFieldDef> = vec![];
         loop {
             let nxt = seq.next_element();
             log::debug!("Next: {:#?}", &nxt);
-            if let Ok(Some(v)) = nxt {
-                fields.push(v);
-            } else {
-                break;
+            match nxt? {
+                Some(VppJsApiTypeHelper::Field(f)) => fields.push(f),
+                Some(VppJsApiTypeHelper::Info(_)) => {
+                    // Trailing metadata map (may contain crc, comment, etc.) - consume and stop
+                    break;
+                }
+                Some(VppJsApiTypeHelper::Name(_)) => {
+                    // Unexpected string element - skip
+                    break;
+                }
+                None => break,
             }
         }
         Ok(VppJsApiType { type_name, fields })
