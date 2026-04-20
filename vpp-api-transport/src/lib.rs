@@ -4,6 +4,7 @@ extern crate lazy_static;
 #[macro_use]
 mod macros;
 pub mod afunix;
+pub mod mux;
 pub mod shmem;
 // Interactions. May be evicted later on...
 pub mod error;
@@ -18,6 +19,8 @@ use log::warn;
 use serde::{Deserialize, Serialize};
 use std::convert::TryInto;
 use std::io::{Read, Write};
+use std::os::unix::prelude::AsRawFd;
+
 use std::ops::DerefMut;
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -137,7 +140,9 @@ struct RawCliInbandReply {
     reply: VarLen32,
 }
 
-pub trait VppApiTransport: Read + Write {
+trait VppApiBeaconing: Read + Write + AsRawFd {}
+
+pub trait VppApiTransport: Read + Write + std::marker::Send {
     fn connect(&mut self, name: &str, chroot_prefix: Option<&str>, rx_qlen: i32) -> Result<()>;
     fn disconnect(&mut self);
     fn set_nonblocking(&mut self, nonblocking: bool) -> Result<()>;
@@ -145,6 +150,7 @@ pub trait VppApiTransport: Read + Write {
     fn get_msg_index(&mut self, name: &str) -> Option<u16>;
     fn get_table_max_index(&mut self) -> u16;
     fn get_client_index(&self) -> u32;
+    fn get_beacon_socket(&self) -> std::io::Result<Box<dyn VppApiBeaconing>>;
 
     fn get_next_context(&mut self) -> u32 {
         // FIXME: use atomic autoincrementing
@@ -291,6 +297,9 @@ where
     fn get_client_index(&self) -> u32 {
         self.deref().get_client_index()
     }
+    fn get_beacon_socket(&self) -> std::io::Result<Box<dyn VppApiBeaconing>> {
+        self.deref().get_beacon_socket()
+    }
 
     fn dump(&self) {
         self.deref().dump()
@@ -300,14 +309,46 @@ where
 #[cfg(test)]
 mod tests {
     use crate::afunix;
+    use crate::mux;
     use crate::shmem;
     use crate::VppApiTransport;
+
+    #[test]
+    fn test_mux_connect() {
+        let mut t1 = mux::new("test", || shmem::Transport::new());
+        println!("T1: {:?}", &t1);
+        let mut t2 = t1.new_transport();
+        println!("T2: {:?}", &t2);
+    }
+
+    #[test]
+    fn test_mux_connect_2() {
+        let mut t1 = mux::new("test", || shmem::Transport::new());
+        println!("T1: {:?}", &t1);
+        let mut t2 = t1.new_transport();
+        println!("T2: {:?}", &t2);
+    }
+
+    #[test]
+    fn test_mux_connect_3() {
+        let mut t1 = mux::new("test-sock", || afunix::Transport::new("/run/vpp/api.sock"));
+        println!("T1: {:?}", &t1);
+        let mut t2 = t1.new_transport();
+        println!("T2: {:?}", &t2);
+    }
 
     #[test]
     fn test_shmem_connect() {
         let mut t1 = shmem::Transport::new();
         let res = t1.connect("test", None, 32);
         assert!(res.is_ok(), "Should be able to connect over shmem");
+        let context = t1.control_ping();
+        std::thread::sleep(std::time::Duration::from_millis(1000));
+        assert!(context.is_ok(), "Should return the context");
+        let s = t1.run_cli_inband("show version");
+        assert!(s.is_ok(), "should be able to run a CLI");
+        let s = s.unwrap();
+        assert!(s.starts_with("vpp "));
         t1.disconnect();
         drop(t1);
     }
