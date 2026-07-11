@@ -10,6 +10,15 @@ homepage = "https://wiki.fd.io/view/VPP"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+# "shm" enables the shared-memory transport, which links against
+# libvppapiclient.so (set VPP_LIB_DIR if it is not in the default
+# location). Disable default features for a pure-Rust AF_UNIX-only
+# build with no native VPP library dependency:
+#   vpp-api-transport = { ..., default-features = false }
+default = ["shm"]
+shm = []
+
 [lib]
 name = "vpp_api_transport"
 path = "src/lib.rs"

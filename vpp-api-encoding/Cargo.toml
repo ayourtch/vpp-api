@@ -16,7 +16,7 @@ serde_yaml = "0.8"
 minreq = { version = "2.3.0", features = ["https-rustls", "json-using-serde"] }
 clap = { version = "3.0.0", features = ["derive"] }
 typenum = "*"
-generic-array = { version = "*", features = ["serde"] }
+generic-array = { version = "^1.1", features = ["serde"] }
 bincode = "1.2.1"
 serde_repr = "0.1"
 

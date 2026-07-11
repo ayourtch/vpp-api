@@ -67,6 +67,56 @@ where
         }
         false
     }
+
+    /// Raw bytes, including any trailing NUL padding.
+    pub fn as_bytes(&self) -> &[u8] {
+        &self.0
+    }
+
+    /// The string content: bytes up to the first NUL.
+    pub fn content_bytes(&self) -> &[u8] {
+        let end = self.0.iter().position(|&b| b == 0).unwrap_or(self.0.len());
+        &self.0[..end]
+    }
+
+    /// Content as &str, if it is valid UTF-8.
+    pub fn try_as_str(&self) -> Result<&str, Utf8Error> {
+        std::str::from_utf8(self.content_bytes())
+    }
+
+    /// Content as a String, replacing invalid UTF-8 sequences.
+    pub fn to_string_lossy(&self) -> String {
+        String::from_utf8_lossy(self.content_bytes()).into_owned()
+    }
+}
+
+impl<N: ArrayLength> fmt::Display for FixedSizeString<N> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", String::from_utf8_lossy(self.content_bytes()))
+    }
+}
+
+impl<N: ArrayLength> PartialEq<str> for FixedSizeString<N> {
+    fn eq(&self, other: &str) -> bool {
+        self.content_bytes() == other.as_bytes()
+    }
+}
+
+impl<N: ArrayLength> PartialEq<&str> for FixedSizeString<N> {
+    fn eq(&self, other: &&str) -> bool {
+        self.content_bytes() == other.as_bytes()
+    }
+}
+
+impl<N> TryFrom<&FixedSizeString<N>> for String
+where
+    N: ArrayLength,
+{
+    type Error = Utf8Error;
+
+    fn try_from(value: &FixedSizeString<N>) -> Result<Self, Self::Error> {
+        Ok(value.try_as_str()?.to_string())
+    }
 }
 
 impl<N> TryFrom<FixedSizeString<N>> for String
@@ -166,6 +216,57 @@ impl TryFrom<&str> for VariableSizeString {
         }
 
         Ok(VariableSizeString(out))
+    }
+}
+
+impl VariableSizeString {
+    /// The raw string bytes.
+    pub fn as_bytes(&self) -> &[u8] {
+        &self.0
+    }
+
+    /// As &str, if it is valid UTF-8.
+    pub fn try_as_str(&self) -> Result<&str, Utf8Error> {
+        std::str::from_utf8(&self.0)
+    }
+
+    /// As a String, replacing invalid UTF-8 sequences.
+    pub fn to_string_lossy(&self) -> String {
+        String::from_utf8_lossy(&self.0).into_owned()
+    }
+}
+
+impl fmt::Display for VariableSizeString {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", String::from_utf8_lossy(&self.0))
+    }
+}
+
+impl PartialEq<str> for VariableSizeString {
+    fn eq(&self, other: &str) -> bool {
+        self.0 == other.as_bytes()
+    }
+}
+
+impl PartialEq<&str> for VariableSizeString {
+    fn eq(&self, other: &&str) -> bool {
+        self.0 == other.as_bytes()
+    }
+}
+
+impl TryFrom<&VariableSizeString> for String {
+    type Error = Utf8Error;
+
+    fn try_from(value: &VariableSizeString) -> Result<Self, Self::Error> {
+        Ok(value.try_as_str()?.to_string())
+    }
+}
+
+impl TryFrom<VariableSizeString> for String {
+    type Error = Utf8Error;
+
+    fn try_from(value: VariableSizeString) -> Result<Self, Self::Error> {
+        Ok(value.try_as_str()?.to_string())
     }
 }
 

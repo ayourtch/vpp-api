@@ -28,6 +28,16 @@ fn git_version() -> String {
 }
 
 fn main() {
+    println!("cargo:rustc-env=GIT_VERSION=version {}", &git_version());
+    println!("cargo:rerun-if-env-changed=VPP_LIB_DIR");
+
+    // The shared-memory transport is the only part that needs
+    // libvppapiclient.so and the bindgen run; an AF_UNIX-only build
+    // (default-features = false) has no native dependencies at all.
+    if env::var("CARGO_FEATURE_SHM").is_err() {
+        return;
+    }
+
     let vpp_lib_dir = match env::var("VPP_LIB_DIR") {
         Ok(val) => val,
         Err(_e) => find_vpp_lib_dir(),
@@ -39,8 +49,6 @@ fn main() {
 
     // Tell cargo to tell rustc to link the VPP client library
     println!("{}", flags);
-
-    println!("cargo:rustc-env=GIT_VERSION=version {}", &git_version());
 
     let bindings = bindgen::Builder::default()
         .header("src/shmem_wrapper.h")

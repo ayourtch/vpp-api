@@ -4,6 +4,7 @@ extern crate lazy_static;
 #[macro_use]
 mod macros;
 pub mod afunix;
+#[cfg(feature = "shm")]
 pub mod shmem;
 // Interactions. May be evicted later on...
 pub mod error;
@@ -300,9 +301,11 @@ where
 #[cfg(test)]
 mod tests {
     use crate::afunix;
+    #[cfg(feature = "shm")]
     use crate::shmem;
     use crate::VppApiTransport;
 
+    #[cfg(feature = "shm")]
     #[test]
     fn test_shmem_connect() {
         let mut t1 = shmem::Transport::new();
